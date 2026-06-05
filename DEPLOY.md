@@ -31,13 +31,41 @@ This app uses **Next.js static export** (`out/`) — ideal for Cloudflare Pages.
 
 ## 3. Cloudflare Pages
 
+### Production branch must be `main`
+
+If **Vyas** (or another branch) deploys as preview but **main** does not update production, the project is using the wrong production branch.
+
+1. Open [Cloudflare Dashboard](https://dash.cloudflare.com) → **Workers & Pages** → your **python-lms** project
+2. Go to **Settings** → **Builds & deployments**
+3. Set **Production branch** to **`main`** (not `Vyas`)
+4. Keep **Preview deployments** enabled so `Vyas` and other branches still get preview URLs
+5. Click **Retry deployment** on the latest **main** build, or push to `main` again
+
 | Setting | Value |
 |---------|--------|
+| **Production branch** | `main` |
 | **Build command** | `npm run build` |
 | **Build output directory** | `out` |
 | **Framework preset** | None |
+| **Node version** | `20` (environment variable `NODE_VERSION`) |
 
-**Environment variables** (Cloudflare Pages → Settings → Environment variables):
+### GitHub Actions production deploy (recommended)
+
+This repo includes [`.github/workflows/cloudflare-production.yml`](.github/workflows/cloudflare-production.yml). It deploys **only when `main` is pushed**, so production stays on `main` even if Cloudflare preview builds use other branches.
+
+Add these **GitHub repository secrets** (Settings → Secrets and variables → Actions):
+
+| Secret | Where to get it |
+|--------|-----------------|
+| `CLOUDFLARE_API_TOKEN` | Cloudflare → My Profile → API Tokens → Create Token → **Edit Cloudflare Workers** template (include Account / Pages) |
+| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare dashboard URL or Workers & Pages overview |
+| `NEXT_PUBLIC_SUPABASE_URL` | Same as local `.env.local` |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Same as local `.env.local` |
+| `NEXT_PUBLIC_STRIPE_PRICE_LABEL` | Optional display label |
+
+After secrets are set, every push to **`main`** runs the workflow and publishes to production.
+
+**Environment variables** (also set in Cloudflare Pages → Settings → Environment variables for Git-based builds):
 
 | Variable | Value |
 |----------|--------|
