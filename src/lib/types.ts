@@ -67,3 +67,72 @@ export interface UserProgress {
   quizScores: Record<string, number>;
   lastVisited?: string;
 }
+
+export type PracticeDifficulty = "easy" | "medium" | "hard";
+
+export type PracticeStatus = "not_started" | "attempted" | "solved";
+
+export interface PracticeTest {
+  id: string;
+  label: string;
+  setup?: string;
+  stdin?: string;
+  expectedStdout?: string;
+  assertCode?: string;
+  visibility: "public";
+}
+
+export interface PracticeExample {
+  input: string;
+  output: string;
+  explanation?: string;
+}
+
+export interface PracticeProblem {
+  id: string;
+  topicId: string;
+  slug: string;
+  title: string;
+  difficulty: PracticeDifficulty;
+  order: number;
+  description: string;
+  examples?: PracticeExample[];
+  constraints?: string[];
+  hints: string[];
+  starterCode: string;
+  publicTests: PracticeTest[];
+}
+
+export interface LessonProgressRow {
+  user_id: string;
+  topic_id: string;
+  completed: boolean;
+  quiz_score: number;
+  last_visited_at: string | null;
+}
+
+export interface PracticeProgressRow {
+  user_id: string;
+  problem_id: string;
+  status: PracticeStatus;
+  code_draft: string;
+  public_passed: boolean;
+  hidden_passed: boolean;
+  submitted_at: string | null;
+  updated_at: string;
+}
+
+export interface EntitlementRow {
+  id: string;
+  user_id: string;
+  product: string;
+  stripe_payment_intent: string | null;
+  purchased_at: string;
+}
+
+export interface ProfileRow {
+  id: string;
+  full_name: string;
+  mobile: string;
+  created_at: string;
+}

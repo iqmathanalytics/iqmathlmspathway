@@ -4,6 +4,14 @@ import { module2Lessons } from "./module-2";
 import { module3Lessons } from "./module-3";
 import { module4Lessons } from "./module-4";
 import { module5Lessons } from "./module-5";
+import { module6Lessons } from "./module-6";
+import { module7Lessons } from "./module-7";
+import { module8Lessons } from "./module-8";
+import { module9Lessons } from "./module-9";
+import { module10Lessons } from "./module-10";
+import { module11Lessons } from "./module-11";
+import { module12Lessons } from "./module-12";
+import { module13Lessons } from "./module-13";
 
 const allLessons: Record<string, TopicLesson> = {
   ...module1Lessons,
@@ -11,6 +19,14 @@ const allLessons: Record<string, TopicLesson> = {
   ...module3Lessons,
   ...module4Lessons,
   ...module5Lessons,
+  ...module6Lessons,
+  ...module7Lessons,
+  ...module8Lessons,
+  ...module9Lessons,
+  ...module10Lessons,
+  ...module11Lessons,
+  ...module12Lessons,
+  ...module13Lessons,
 };
 
 export function getLesson(topicId: string): TopicLesson | undefined {

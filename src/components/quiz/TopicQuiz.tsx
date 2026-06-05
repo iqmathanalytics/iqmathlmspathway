@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import type { TopicQuiz as TopicQuizType } from "@/lib/types";
-import { saveQuizScore } from "@/lib/progress";
+import { saveQuizScoreAsync } from "@/lib/progress-service";
+import { useAuth } from "@/contexts/AuthContext";
 import { CheckCircle2, XCircle, HelpCircle } from "lucide-react";
 import clsx from "clsx";
 
@@ -12,6 +13,7 @@ interface TopicQuizProps {
 }
 
 export function TopicQuiz({ quiz, onComplete }: TopicQuizProps) {
+  const { user } = useAuth();
   const [current, setCurrent] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
@@ -30,7 +32,7 @@ export function TopicQuiz({ quiz, onComplete }: TopicQuizProps) {
     }
   }
 
-  function handleNext() {
+  async function handleNext() {
     if (current < quiz.questions.length - 1) {
       setCurrent((c) => c + 1);
       setSelected(null);
@@ -38,7 +40,9 @@ export function TopicQuiz({ quiz, onComplete }: TopicQuizProps) {
       return;
     }
     const percent = Math.round((correctCount / quiz.questions.length) * 100);
-    saveQuizScore(quiz.topicId, percent);
+    if (user) {
+      await saveQuizScoreAsync(user.id, quiz.topicId, percent);
+    }
     setFinalPercent(percent);
     setFinished(true);
     onComplete?.(percent);

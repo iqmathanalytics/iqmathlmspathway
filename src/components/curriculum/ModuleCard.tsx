@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Module } from "@/lib/types";
 import { Lock, CheckCircle2, Circle } from "lucide-react";
 import clsx from "clsx";
+import { NavigationLink } from "@/components/ui/NavigationLink";
 
 interface ModuleCardProps {
   module: Module;
@@ -69,7 +70,7 @@ export function ModuleCard({ module, completedTopicIds }: ModuleCardProps) {
           return (
             <li key={topic.id}>
               {href ? (
-                <Link
+                <NavigationLink
                   href={href}
                   className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm text-gray-700 hover:bg-brand-50 hover:text-brand-900"
                 >
@@ -79,7 +80,7 @@ export function ModuleCard({ module, completedTopicIds }: ModuleCardProps) {
                     <Circle className="h-4 w-4 text-gray-300" />
                   )}
                   {topic.title}
-                </Link>
+                </NavigationLink>
               ) : (
                 <span className="flex items-center gap-2 px-2 py-1.5 text-sm text-gray-400">
                   <Lock className="h-3.5 w-3.5" />

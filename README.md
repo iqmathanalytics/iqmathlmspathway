@@ -1,6 +1,6 @@
 # PyPath — Python Learning Platform
 
-A beginner-friendly website to learn Python from scratch toward **Data Science**. Baby-simple lessons, visual diagrams, in-browser coding, quizzes, and progress tracking.
+A structured Python learning platform toward **Data Science** — clear lessons, visual diagrams, in-browser IDE, quizzes, and progress tracking.
 
 ## Quick start
 
@@ -9,25 +9,26 @@ npm install
 npm run dev
 ```
 
-`npm run dev` clears `.next` first (prevents vendor-chunk errors). Use `npm run dev:quick` to skip cleaning.
+`npm run dev` always clears a stale cache and frees port 3000 before starting (prevents `/_next/static/...` 404 errors).
 
-Open [http://localhost:3000](http://localhost:3000).
+- **Preview production build:** `npm run preview:static` → http://localhost:8788 (not port 3000)
+- **Faster restart** (only if dev was working): `npm run dev:quick`
+- **Stop dev servers:** `npm run dev:kill`
+
+**Never run `npm run build` while `npm run dev` is running** — the build script now blocks this automatically.
+
+Open [http://localhost:3000](http://localhost:3000) — use that URL exactly, not `http://localhost:3000/**`.
 
 ## Deploy (Cloudflare Pages)
 
 See [DEPLOY.md](./DEPLOY.md) for GitHub + Cloudflare setup. Build output is the `out/` folder (`npm run build`).
 
-### Homepage shows 500 or React error #418?
+### Still seeing 404 on `/_next/static/...`?
 
-Usually a **stale `.next` cache** or an old dev server. Fix:
-
-```bash
-npm run dev:fresh
-```
-
-Then hard-refresh the browser (Ctrl+Shift+R).
-
-If you see `Cannot find module './vendor-chunks/...'`, run `npm run dev:fresh` or use `npm run dev` (auto-cleans `.next` each start).
+1. Stop all dev terminals (or `npm run dev:kill`)
+2. Run `npm run dev` again
+3. Hard-refresh: **Ctrl+Shift+R** (or use an Incognito window)
+4. Confirm the address bar is `http://localhost:3000` with no extra path
 
 ## What's included (Phase 1)
 
@@ -38,9 +39,31 @@ If you see `Cannot find module './vendor-chunks/...'`, run `npm run dev:fresh` o
 - **Module 3** — Operators (7 topics)
 - **Module 4** — Strings (5 topics)
 - **Module 5** — Lists (6 topics)
+- **Module 6** — Tuples (5 topics)
+- **Module 7** — Sets (4 topics)
+- **Module 8** — Dictionaries (4 topics)
+- **Module 9** — Conditionals (3 topics)
+- **Module 10** — Loops (5 topics)
+- **Module 11** — Comprehensions (3 topics)
+- **Module 12** — Functions (5 topics)
+- **Module 13** — Lambda (1 topic)
+
+**Foundations track complete** — 57 topics across 13 modules.
+
+## Phase 5 — Accounts, practice, premium
+
+- **Register / login** — Name, email, mobile, password (Supabase Auth)
+- **Cloud progress** — lessons, quizzes, and practice sync when signed in
+- **399 practice problems** — 6–7 per topic across all 13 modules
+- **Practice workspace** — dedicated code space with public tests + hidden submit grading
+- **Freemium** — first 5 problems per topic free; Stripe one-time unlock for all premium
+- **Dashboard** — `/dashboard` for lesson and practice stats
+
+Configure `.env.local` from [`.env.example`](./.env.example). See [DEPLOY.md](./DEPLOY.md) for Supabase + Stripe setup.
+
 - **Python IDE** — run code in the browser via [Pyodide](https://pyodide.org/)
-- **Quizzes** — after each Module 1 topic
-- **Progress** — saved in your browser (`localStorage`)
+- **Quizzes** — after each topic
+- **Progress** — local cache + Supabase sync when logged in
 
 ## Project structure
 

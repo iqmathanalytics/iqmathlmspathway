@@ -35,30 +35,47 @@ Learn Python from zero toward Data Science. Work is delivered in **phases** so e
 
 ---
 
-## Phase 3 — Collections & control flow (Modules 6–10) — Next
+## Phase 3 — Collections & control flow (✅ Done)
 
-- Tuples, sets, dictionaries
-- Conditionals and loops with flow diagrams
-- More practice assignments (guided → semi-independent)
+| Module | Status |
+|--------|--------|
+| Module 6: Tuples | ✅ |
+| Module 7: Sets | ✅ |
+| Module 8: Dictionaries | ✅ |
+| Module 9: Conditionals | ✅ |
+| Module 10: Loops | ✅ |
+| Module 11: Comprehensions | ✅ |
+| Module 12: Functions | ✅ |
+| Module 13: Lambda | ✅ |
 
----
+**Foundations milestone:** All 13 modules published (57 topics).
 
-## Phase 4 — Functions & comprehensions (Modules 11–13)
+## Phase 4 — Functions & comprehensions (✅ Done)
 
-- Functions, scope, recursion (gentle intro)
+- Functions, scope, recursion
 - List/dict comprehensions
 - Lambda functions
-- **Foundations complete** badge / progress milestone
+- Foundations complete
 
 ---
 
-## Phase 5 — Platform polish
+## Phase 5 — Accounts, practice, premium (Done)
 
-- User accounts (optional) + cloud progress sync
+| Deliverable | Status |
+|-------------|--------|
+| Supabase Auth (register/login) | Done |
+| Cloud lesson + practice progress | Done |
+| Practice workspace + public tests | Done |
+| Hidden test grading (Edge Function + Piston) | Done |
+| Stripe one-time premium unlock | Done |
+| 399 practice problems (all modules) | Done |
+| Dashboard | Done |
+
+Remaining polish (future):
+
 - Search across lessons
 - Dark mode
 - Printable cheat sheets per module
-- Assignment submission (stretch)
 
 ---
 

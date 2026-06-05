@@ -13,6 +13,8 @@ interface CodeEditorProps {
   onCursorChange?: (line: number, col: number) => void;
   readOnly?: boolean;
   minHeight?: string;
+  height?: string;
+  className?: string;
 }
 
 const editorTheme = EditorView.theme({
@@ -52,11 +54,14 @@ export function CodeEditor({
   onCursorChange,
   readOnly = false,
   minHeight = "220px",
+  height,
+  className,
 }: CodeEditorProps) {
   return (
+    <div className={className}>
     <CodeMirror
       value={value}
-      height={minHeight}
+      height={height ?? minHeight}
       theme={[oneDark, editorTheme]}
       extensions={[
         python(),
@@ -85,5 +90,6 @@ export function CodeEditor({
       }}
       aria-label="Python code editor"
     />
+    </div>
   );
 }

@@ -10,6 +10,7 @@ import { MarkCompleteButton } from "@/components/lesson/MarkCompleteButton";
 import { TopicQuizSection } from "./TopicQuizSection";
 import { TopicLessonHeader } from "@/components/lesson/TopicLessonHeader";
 import { KeyTakeaways } from "@/components/lesson/KeyTakeaways";
+import { TopicPracticeLink } from "@/components/lesson/TopicPracticeLink";
 
 interface TopicPageProps {
   params: Promise<{ moduleSlug: string; topicSlug: string }>;
@@ -65,6 +66,12 @@ export default async function TopicPage({ params }: TopicPageProps) {
         title={topic.title}
         intro={lesson.intro}
         estimatedMinutes={topic.estimatedMinutes}
+      />
+
+      <TopicPracticeLink
+        moduleSlug={module.slug}
+        topicSlug={topic.slug}
+        topicId={topic.id}
       />
 
       <TopicLessonLayout blocks={lesson.blocks} />

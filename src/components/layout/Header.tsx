@@ -3,13 +3,16 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { BookOpen, Home, Route } from "lucide-react";
+import { Home, LayoutDashboard, Route, Terminal } from "lucide-react";
 import clsx from "clsx";
 import { PLATFORM_NAME } from "@/data/curriculum";
+import { AuthNav } from "@/components/layout/AuthNav";
 
 const nav = [
   { href: "/", label: "Home", icon: Home },
   { href: "/learn", label: "Learning Path", icon: Route },
+  { href: "/practice", label: "Practice", icon: Terminal },
+  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
 ];
 
 export function Header() {
@@ -31,7 +34,7 @@ export function Header() {
         </Link>
         <nav className="flex items-center gap-1">
           {nav.map(({ href, label, icon: Icon }) => {
-            const isActive = mounted && pathname === href;
+            const isActive = mounted && (pathname === href || pathname.startsWith(`${href}/`));
             return (
               <Link
                 key={href}
@@ -44,17 +47,11 @@ export function Header() {
                 )}
               >
                 <Icon className="h-4 w-4" />
-                <span className="hidden sm:inline">{label}</span>
+                <span className="hidden md:inline">{label}</span>
               </Link>
             );
           })}
-          <Link
-            href="/learn"
-            className="ml-2 hidden items-center gap-1.5 rounded-lg bg-brand-600 px-3 py-2 text-sm font-medium text-white hover:bg-brand-700 sm:flex"
-          >
-            <BookOpen className="h-4 w-4" />
-            Start Learning
-          </Link>
+          <AuthNav />
         </nav>
       </div>
     </header>

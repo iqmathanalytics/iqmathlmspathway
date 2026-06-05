@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { loadProgress } from "@/lib/progress";
 import { getPublishedTopicCount } from "@/data/curriculum";
+import { useProgress } from "@/contexts/ProgressContext";
 import { ProgressBar } from "./ProgressBar";
 import { ClientOnly } from "@/components/ui/ClientOnly";
+import { Loader2 } from "lucide-react";
 
 function ProgressSkeleton() {
   const total = getPublishedTopicCount();
@@ -17,16 +17,18 @@ function ProgressSkeleton() {
 }
 
 function ProgressTrackerInner() {
-  const [percent, setPercent] = useState(0);
-  const [completed, setCompleted] = useState(0);
+  const { progress, ready } = useProgress();
   const total = getPublishedTopicCount();
+  const completed = progress.completedTopics.length;
+  const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
 
-  useEffect(() => {
-    const p = loadProgress();
-    const done = p.completedTopics.length;
-    setCompleted(done);
-    setPercent(total > 0 ? Math.round((done / total) * 100) : 0);
-  }, [total]);
+  if (!ready) {
+    return (
+      <div className="flex justify-center rounded-xl border border-brand-100 bg-brand-50/50 p-6">
+        <Loader2 className="h-6 w-6 animate-spin text-brand-600" />
+      </div>
+    );
+  }
 
   return (
     <div className="rounded-xl border border-brand-100 bg-brand-50/50 p-4">

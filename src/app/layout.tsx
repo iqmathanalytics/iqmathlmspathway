@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { AppProviders } from "@/components/providers/AppProviders";
 import { PLATFORM_NAME, PLATFORM_TAGLINE } from "@/data/curriculum";
 
 export const metadata: Metadata = {
@@ -20,9 +21,11 @@ export default function RootLayout({
         className="flex min-h-screen flex-col font-sans antialiased"
         suppressHydrationWarning
       >
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <AppProviders>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </AppProviders>
       </body>
     </html>
   );

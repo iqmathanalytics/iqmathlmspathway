@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import type { Module } from "@/lib/types";
-import { loadProgress } from "@/lib/progress";
 import { ModuleCard } from "@/components/curriculum/ModuleCard";
 import { ProgressTracker } from "@/components/progress/ProgressTracker";
+import { useProgress } from "@/contexts/ProgressContext";
 import { ClientOnly } from "@/components/ui/ClientOnly";
+import { Loader2 } from "lucide-react";
 
 interface LearningPathClientProps {
   modules: Module[];
@@ -32,16 +32,23 @@ function ModuleGrid({
 }
 
 function LearningPathInner({ modules }: LearningPathClientProps) {
-  const [completedIds, setCompletedIds] = useState<string[]>([]);
+  const { progress, ready } = useProgress();
 
-  useEffect(() => {
-    setCompletedIds(loadProgress().completedTopics);
-  }, []);
+  if (!ready) {
+    return (
+      <div className="space-y-8">
+        <ProgressTracker />
+        <div className="flex justify-center py-12">
+          <Loader2 className="h-8 w-8 animate-spin text-brand-600" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-8">
       <ProgressTracker />
-      <ModuleGrid modules={modules} completedIds={completedIds} />
+      <ModuleGrid modules={modules} completedIds={progress.completedTopics} />
     </div>
   );
 }

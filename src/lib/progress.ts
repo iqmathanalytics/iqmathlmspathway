@@ -1,16 +1,44 @@
 import type { UserProgress } from "@/lib/types";
 
-const STORAGE_KEY = "pypath-progress-v1";
+const LEGACY_KEY = "pypath-progress-v1";
+const GUEST_KEY = "pypath-progress-guest-v1";
 
 const defaultProgress: UserProgress = {
   completedTopics: [],
   quizScores: {},
 };
 
+let activeUserId: string | null = null;
+
+function userKey(userId: string) {
+  return `pypath-progress-user-${userId}-v1`;
+}
+
+/** Call when auth session changes so progress reads/writes the correct scope. */
+export function setActiveProgressUser(userId: string | null): void {
+  activeUserId = userId;
+}
+
+export function getActiveProgressUser(): string | null {
+  return activeUserId;
+}
+
+/** Remove guest and legacy browser progress keys (never used for signed-in users). */
+export function clearGuestAndLegacyProgress(): void {
+  if (typeof window === "undefined") return;
+  try {
+    localStorage.removeItem(LEGACY_KEY);
+    localStorage.removeItem(GUEST_KEY);
+  } catch {
+    /* ignore */
+  }
+}
+
 export function loadProgress(): UserProgress {
   if (typeof window === "undefined") return { ...defaultProgress };
+  if (!activeUserId) return { ...defaultProgress };
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(userKey(activeUserId));
     if (!raw) return { ...defaultProgress };
     return { ...defaultProgress, ...JSON.parse(raw) };
   } catch {
@@ -19,36 +47,17 @@ export function loadProgress(): UserProgress {
 }
 
 export function saveProgress(progress: UserProgress): void {
+  if (typeof window === "undefined" || !activeUserId) return;
+  localStorage.setItem(userKey(activeUserId), JSON.stringify(progress));
+}
+
+export function clearProgressForUser(userId: string): void {
   if (typeof window === "undefined") return;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+  localStorage.removeItem(userKey(userId));
 }
 
-export function markTopicComplete(topicId: string): UserProgress {
-  const progress = loadProgress();
-  if (!progress.completedTopics.includes(topicId)) {
-    progress.completedTopics.push(topicId);
+export function notifyProgressUpdated(): void {
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new Event("pypath-progress-updated"));
   }
-  progress.lastVisited = topicId;
-  saveProgress(progress);
-  return progress;
-}
-
-export function saveQuizScore(topicId: string, scorePercent: number): UserProgress {
-  const progress = loadProgress();
-  const prev = progress.quizScores[topicId] ?? 0;
-  progress.quizScores[topicId] = Math.max(prev, scorePercent);
-  saveProgress(progress);
-  return progress;
-}
-
-export function isTopicCompleted(topicId: string): boolean {
-  return loadProgress().completedTopics.includes(topicId);
-}
-
-export function getCompletionPercent(totalPublished: number): number {
-  if (totalPublished === 0) return 0;
-  const completed = loadProgress().completedTopics.length;
-  const publishedCompleted = loadProgress().completedTopics.filter(() => true);
-  void publishedCompleted;
-  return Math.round((completed / totalPublished) * 100);
 }
