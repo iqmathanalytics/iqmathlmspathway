@@ -463,7 +463,7 @@ export function FunctionVariablesInfographic() {
 
       <hr className="my-7 border-black/10" />
 
-      {/* global keyword */}
+      {/* Modifying globals */}
       <section className="mb-8">
         <SectionLabel variant="purple">
           <Settings className="h-3 w-3" />

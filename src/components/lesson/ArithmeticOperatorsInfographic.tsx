@@ -254,7 +254,7 @@ export function ArithmeticOperatorsInfographic() {
           <span className="font-semibold text-[#8b2070]">print</span>
           <span className="text-gray-800">(</span>
           <span className="text-[#1a5fb4]">10</span>
-          <span className="text-gray-800"> // </span>
+          <span className="text-gray-800">{" // "}</span>
           <span className="text-[#1a5fb4]">3</span>
           <span className="text-gray-800">) </span>
           <span className="italic text-[#5a8a5a]"># 3</span>
@@ -288,7 +288,7 @@ export function ArithmeticOperatorsInfographic() {
           </code>{" "}
           vs{" "}
           <code className="rounded bg-black/[0.07] px-1.5 py-0.5 font-mono text-[12.5px]">
-            //
+            {"//"}
           </code>{" "}
           — what&apos;s the difference?
         </h3>
@@ -314,7 +314,7 @@ export function ArithmeticOperatorsInfographic() {
           </div>
           <div className="flex flex-col items-center gap-2 rounded-xl border border-black/15 bg-white/55 p-4 text-center">
             <span className="rounded-md bg-purple-100 px-3 py-1 font-mono text-[15px] font-semibold text-[#5e3fa3]">
-              //
+              {"//"}
             </span>
             <span className="font-mono text-lg font-semibold text-gray-900">
               10 // 3
@@ -348,7 +348,7 @@ export function ArithmeticOperatorsInfographic() {
             </code>
             . Use{" "}
             <code className="rounded bg-black/[0.07] px-1 font-mono text-[12.5px]">
-              //
+              {"//"}
             </code>{" "}
             when you need a clean whole number, like calculating how many full
             boxes fit on a shelf.
