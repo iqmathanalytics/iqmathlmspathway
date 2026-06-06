@@ -3,6 +3,7 @@
 import {
   ArrowDownUp,
   ArrowRight,
+  BookOpen,
   Brain,
   Eraser,
   Lightbulb,
@@ -12,6 +13,7 @@ import {
   Plus,
   RotateCcw,
   Ruler,
+  Target,
   Wrench,
 } from "lucide-react";
 import { useLessonPractice } from "@/components/lesson/LessonPracticeContext";
@@ -123,6 +125,28 @@ function CodeWindow({
   );
 }
 
+function OutputBox({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mt-2 overflow-hidden rounded-lg border border-black/10 bg-black/[0.03]">
+      <div className="border-b border-black/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+        Output
+      </div>
+      <pre className="px-3 py-2.5 font-mono text-[13px] text-gray-700">
+        {children}
+      </pre>
+    </div>
+  );
+}
+
+const OVERVIEW_METHODS = [
+  { symbol: "append()", name: "Add to end", note: "Adds one item at the end", symbolClass: "text-[#1a5fb4]" },
+  { symbol: "insert()", name: "Add at index", note: "Inserts at a position", symbolClass: "text-[#2d7a45]" },
+  { symbol: "extend()", name: "Merge lists", note: "Adds all items from another list", symbolClass: "text-[#5e3fa3]" },
+  { symbol: "remove()", name: "Remove value", note: "Deletes first matching value", symbolClass: "text-[#1a5fb4]" },
+  { symbol: "pop()", name: "Pop item", note: "Removes and returns an item", symbolClass: "text-[#2d7a45]" },
+  { symbol: "sort()", name: "Sort", note: "Orders items ascending", symbolClass: "text-[#5e3fa3]" },
+] as const;
+
 const OPERATIONS = [
   {
     symbol: "+",
@@ -163,6 +187,8 @@ const METHOD_ROWS = [
   { method: "sort()", purpose: "Sort list in ascending order" },
   { method: "reverse()", purpose: "Reverse item order in place" },
   { method: "clear()", purpose: "Remove all items" },
+  { method: "count()", purpose: "Count occurrences of a value" },
+  { method: "index()", purpose: "Find position of a value" },
   { method: "len()", purpose: "Count items" },
 ] as const;
 
@@ -175,6 +201,8 @@ const REF_ROWS = [
   { code: "items.sort()", result: "Sort ascending" },
   { code: "items.reverse()", result: "Reverse order" },
   { code: "items.clear()", result: "Empty the list" },
+  { code: "items.count(90)", result: "Count occurrences" },
+  { code: "items.index(85)", result: "Find first position" },
   { code: "len(items)", result: "Count items" },
 ] as const;
 
@@ -200,11 +228,37 @@ export function ListMethodsInfographic() {
           Common List Operations
         </h3>
         <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
-          Python lists are mutable, which means you can add, remove, and modify
-          items after creating the list.
+          Python lists are <strong>mutable</strong>, which means you can add,
+          remove, and modify items after creating the list. Call methods with
+          dot notation:{" "}
+          <code className="rounded bg-black/[0.07] px-1 font-mono text-[12.5px]">
+            my_list.method()
+          </code>
+          .
         </p>
 
         <div className="flex flex-col gap-1.5">
+          {OVERVIEW_METHODS.map((m) => (
+            <div
+              key={m.symbol}
+              className="flex items-center gap-3 rounded-lg border border-black/10 bg-white/50 px-3.5 py-2.5"
+            >
+              <span
+                className={`min-w-20 shrink-0 text-center font-mono text-sm font-semibold ${m.symbolClass}`}
+              >
+                {m.symbol}
+              </span>
+              <div className="min-w-0 flex-1">
+                <p className="text-[13.5px] font-semibold text-gray-900">
+                  {m.name}
+                </p>
+                <p className="text-[12.5px] text-gray-500">{m.note}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-3 flex flex-col gap-1.5">
           {OPERATIONS.map((op) => (
             <div
               key={op.name}
@@ -228,6 +282,33 @@ export function ListMethodsInfographic() {
 
       <hr className="my-7 border-black/10" />
 
+      {/* Syntax */}
+      <section className="mb-8">
+        <SectionLabel variant="teal">
+          <BookOpen className="h-3 w-3" />
+          Syntax
+        </SectionLabel>
+        <h3 className="mb-1.5 text-base font-semibold tracking-tight">
+          List Methods Change the List In Place
+        </h3>
+        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
+          Unlike strings, most list methods modify the original list directly.
+          You do not need to reassign unless you want a copy.
+        </p>
+
+        <CodeWindow filename="syntax.py">
+          <span className="text-gray-800">items = [&quot;pen&quot;]</span>
+          {"\n"}
+          <span className="text-gray-800">items.append(&quot;pencil&quot;)</span>
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(items) </span>
+          <span className="italic text-[#5a8a5a]"># [&apos;pen&apos;, &apos;pencil&apos;]</span>
+        </CodeWindow>
+      </section>
+
+      <hr className="my-7 border-black/10" />
+
       {/* Section 2: Adding items */}
       <section className="mb-8">
         <SectionLabel variant="green">
@@ -235,30 +316,51 @@ export function ListMethodsInfographic() {
           Adding items
         </SectionLabel>
         <h3 className="mb-1.5 text-base font-semibold tracking-tight">
-          append() and insert()
+          append() — add to the end
         </h3>
         <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
-          Use append() to add an item at the end of a list and insert() to
-          place an item at a specific position.
+          append() adds exactly <strong>one</strong> item to the end of the
+          list. Use it when you collect values one at a time.
         </p>
 
-        <CodeExercisePanel practiceIndex={0} filename="add_items.py">
+        <CodeExercisePanel practiceIndex={0} filename="append.py">
           <span className="text-gray-800">items = [&quot;pen&quot;]</span>
-          {"\n"}
           {"\n"}
           <span className="text-gray-800">items.append(&quot;pencil&quot;)</span>
           {"\n"}
           <span className="font-semibold text-[#8b2070]">print</span>
           <span className="text-gray-800">(items)</span>
+        </CodeExercisePanel>
+
+        <OutputBox>[&apos;pen&apos;, &apos;pencil&apos;]</OutputBox>
+      </section>
+
+      <hr className="my-7 border-black/10" />
+
+      {/* insert() */}
+      <section className="mb-8">
+        <SectionLabel variant="green">
+          <Plus className="h-3 w-3" />
+          insert()
+        </SectionLabel>
+        <h3 className="mb-1.5 text-base font-semibold tracking-tight">
+          insert() — add at any position
+        </h3>
+        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
+          insert(index, item) places a new value at the given position. Existing
+          items shift to the right. Index 0 means the front of the list.
+        </p>
+
+        <CodeWindow filename="insert.py">
+          <span className="text-gray-800">items = [&quot;pen&quot;, &quot;pencil&quot;]</span>
           {"\n"}
-          {"\n"}
-          <span className="text-gray-800">
-            items.insert(0, &quot;eraser&quot;)
-          </span>
+          <span className="text-gray-800">items.insert(0, &quot;eraser&quot;)</span>
           {"\n"}
           <span className="font-semibold text-[#8b2070]">print</span>
           <span className="text-gray-800">(items)</span>
-        </CodeExercisePanel>
+        </CodeWindow>
+
+        <OutputBox>[&apos;eraser&apos;, &apos;pen&apos;, &apos;pencil&apos;]</OutputBox>
 
         <div className="mt-3 overflow-hidden rounded-xl border border-black/15 bg-white/50">
           <table className="w-full border-collapse text-[13.5px]">
@@ -307,7 +409,7 @@ export function ListMethodsInfographic() {
           of the current list.
         </p>
 
-        <CodeWindow filename="extend.py">
+        <CodeExercisePanel practiceIndex={5} filename="extend.py">
           <span className="text-gray-800">a = [1, 2]</span>
           {"\n"}
           <span className="text-gray-800">b = [3, 4]</span>
@@ -317,16 +419,48 @@ export function ListMethodsInfographic() {
           {"\n"}
           <span className="font-semibold text-[#8b2070]">print</span>
           <span className="text-gray-800">(a)</span>
-          {"\n"}
-          {"\n"}
-          <span className="italic text-[#5a8a5a]"># [1, 2, 3, 4]</span>
-        </CodeWindow>
+        </CodeExercisePanel>
+
+        <OutputBox>[1, 2, 3, 4]</OutputBox>
+
+        <div className="mt-3 overflow-hidden rounded-xl border border-black/15 bg-white/50">
+          <table className="w-full border-collapse text-[13.5px]">
+            <thead>
+              <tr className="border-b border-black/15 bg-black/[0.05]">
+                <th className="px-3.5 py-2 text-left text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+                  Code
+                </th>
+                <th className="px-3.5 py-2 text-left text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+                  Result
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b border-black/10">
+                <td className="px-3.5 py-2.5 font-mono text-gray-800">
+                  [1,2].append([3,4])
+                </td>
+                <td className="px-3.5 py-2.5 font-mono text-gray-600">
+                  [1, 2, [3, 4]]
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3.5 py-2.5 font-mono text-gray-800">
+                  [1,2].extend([3,4])
+                </td>
+                <td className="px-3.5 py-2.5 font-mono text-gray-600">
+                  [1, 2, 3, 4]
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <div className="mt-2.5 flex gap-2 rounded-lg bg-black/[0.04] px-3 py-2.5 text-[13px] leading-relaxed text-gray-600">
           <Lightbulb className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
           <span>
-            append() adds one item; extend() adds each item from another
-            collection.
+            append() adds one item (even if that item is a list); extend()
+            unpacks the other collection and adds each element.
           </span>
         </div>
       </section>
@@ -360,6 +494,8 @@ export function ListMethodsInfographic() {
           <span className="italic text-[#5a8a5a]"># [1, 3, 2]</span>
         </CodeExercisePanel>
 
+        <OutputBox>[1, 3, 2]</OutputBox>
+
         <div className="mt-2.5 flex gap-2 rounded-lg bg-black/[0.04] px-3 py-2.5 text-[13px] leading-relaxed text-gray-600">
           <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
           <span>Only the first occurrence of 2 is removed.</span>
@@ -375,7 +511,12 @@ export function ListMethodsInfographic() {
           Remove and Return an Item
         </h3>
         <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
-          pop() removes an item and returns it for later use.
+          pop() removes an item and returns it. With no argument it removes the
+          last item. Pass an index to remove from a specific position:{" "}
+          <code className="rounded bg-black/[0.07] px-1 font-mono text-[12px]">
+            pop(0)
+          </code>{" "}
+          removes the first.
         </p>
 
         <CodeExercisePanel practiceIndex={2} filename="pop.py">
@@ -384,13 +525,14 @@ export function ListMethodsInfographic() {
           {"\n"}
           <span className="text-gray-800">last = nums.pop()</span>
           {"\n"}
+          <span className="text-gray-800">first = nums.pop(0)</span>
+          {"\n"}
           {"\n"}
           <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">(last)</span>
-          {"\n"}
-          <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">(nums)</span>
+          <span className="text-gray-800">(last, first, nums)</span>
         </CodeExercisePanel>
+
+        <OutputBox>2 1 [3]</OutputBox>
 
         <div className="mt-3 overflow-hidden rounded-xl border border-black/15 bg-white/50">
           <table className="w-full border-collapse text-[13.5px]">
@@ -453,6 +595,8 @@ export function ListMethodsInfographic() {
           <span className="italic text-[#5a8a5a]"># [78, 85, 92]</span>
         </CodeExercisePanel>
 
+        <OutputBox>[78, 85, 92]</OutputBox>
+
         <div className="mt-2.5 flex gap-2 rounded-lg bg-black/[0.04] px-3 py-2.5 text-[13px] leading-relaxed text-gray-600">
           <Lightbulb className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
           <span>
@@ -477,7 +621,7 @@ export function ListMethodsInfographic() {
           vice versa.
         </p>
 
-        <CodeWindow filename="reverse.py">
+        <CodeExercisePanel practiceIndex={6} filename="reverse.py">
           <span className="text-gray-800">nums = [1, 2, 3]</span>
           {"\n"}
           {"\n"}
@@ -485,10 +629,9 @@ export function ListMethodsInfographic() {
           {"\n"}
           <span className="font-semibold text-[#8b2070]">print</span>
           <span className="text-gray-800">(nums)</span>
-          {"\n"}
-          {"\n"}
-          <span className="italic text-[#5a8a5a]"># [3, 2, 1]</span>
-        </CodeWindow>
+        </CodeExercisePanel>
+
+        <OutputBox>[3, 2, 1]</OutputBox>
       </section>
 
       <hr className="my-7 border-black/10" />
@@ -507,7 +650,7 @@ export function ListMethodsInfographic() {
           object.
         </p>
 
-        <CodeWindow filename="clear.py">
+        <CodeExercisePanel practiceIndex={7} filename="clear.py">
           <span className="text-gray-800">items = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</span>
           {"\n"}
           {"\n"}
@@ -515,10 +658,9 @@ export function ListMethodsInfographic() {
           {"\n"}
           <span className="font-semibold text-[#8b2070]">print</span>
           <span className="text-gray-800">(items)</span>
-          {"\n"}
-          {"\n"}
-          <span className="italic text-[#5a8a5a]"># []</span>
-        </CodeWindow>
+        </CodeExercisePanel>
+
+        <OutputBox>[]</OutputBox>
       </section>
 
       <hr className="my-7 border-black/10" />
@@ -546,6 +688,43 @@ export function ListMethodsInfographic() {
           {"\n"}
           <span className="italic text-[#5a8a5a]"># 3</span>
         </CodeExercisePanel>
+
+        <OutputBox>3</OutputBox>
+      </section>
+
+      <hr className="my-7 border-black/10" />
+
+      {/* count() and index() */}
+      <section className="mb-8">
+        <SectionLabel variant="blue">
+          <MapPin className="h-3 w-3" />
+          Searching
+        </SectionLabel>
+        <h3 className="mb-1.5 text-base font-semibold tracking-tight">
+          count() and index()
+        </h3>
+        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
+          count(value) returns how many times a value appears. index(value)
+          returns the position of the first match. If the value is missing,
+          index() raises an error.
+        </p>
+
+        <CodeWindow filename="search.py">
+          <span className="text-gray-800">scores = [90, 85, 90, 78]</span>
+          {"\n"}
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(scores.count(90))</span>
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(scores.index(85))</span>
+        </CodeWindow>
+
+        <OutputBox>
+          2
+          {"\n"}
+          1
+        </OutputBox>
       </section>
 
       <hr className="my-7 border-black/10" />
@@ -587,6 +766,34 @@ export function ListMethodsInfographic() {
             </tbody>
           </table>
         </div>
+      </section>
+
+      <hr className="my-7 border-black/10" />
+
+      {/* Practice */}
+      <section className="mb-8">
+        <SectionLabel variant="purple">
+          <Target className="h-3 w-3" />
+          Practice
+        </SectionLabel>
+        <h3 className="mb-3 text-base font-semibold tracking-tight">
+          Try Yourself
+        </h3>
+        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
+          Load exercises in the IDE using the buttons on the right or click{" "}
+          <strong>IDE</strong> on any code block below.
+        </p>
+        <CodeExercisePanel practiceIndex={8} filename="challenge.py">
+          <span className="text-gray-800">nums = [3, 1, 4]</span>
+          {"\n"}
+          <span className="text-gray-800">nums.append(1)</span>
+          {"\n"}
+          <span className="text-gray-800">nums.sort()</span>
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(nums)</span>
+        </CodeExercisePanel>
+        <OutputBox>[1, 1, 3, 4]</OutputBox>
       </section>
 
       <hr className="my-7 border-black/10" />
