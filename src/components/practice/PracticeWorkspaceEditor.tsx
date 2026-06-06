@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState, type Dispatch, type SetStateAction } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type Dispatch, type SetStateAction } from "react";
 import type { PracticeProblem } from "@/lib/types";
 import { CodeEditor } from "@/components/ide/CodeEditor";
 import { ConsolePanel } from "@/components/ide/ConsolePanel";
@@ -38,9 +38,13 @@ export function PracticeWorkspaceEditor({
   topicTitle,
 }: PracticeWorkspaceEditorProps) {
   const { session } = useAuth();
-  const { rows, saveDraft, markSolved, refresh } = usePracticeProgress([problem.id]);
+  const { rows, loading: progressLoading, saveDraft, markSolved, refresh } =
+    usePracticeProgress([problem.id]);
 
-  const [code, setCode] = useState("");
+  const [code, setCode] = useState(problem.starterCode ?? "");
+  const codeInitializedRef = useRef<string | null>(null);
+  const rowsRef = useRef(rows);
+  rowsRef.current = rows;
   const [hintsShown, setHintsShown] = useState(0);
   const [testResults, setTestResults] = useState<TestRunResult[] | null>(null);
   const [testing, setTesting] = useState(false);
@@ -50,11 +54,19 @@ export function PracticeWorkspaceEditor({
   const { lines, loading, running, error, runCode, clearConsole } = usePyodideRunner();
 
   useEffect(() => {
-    setCode("");
+    codeInitializedRef.current = null;
     setTestResults(null);
     setSubmitMessage(null);
     setHintsShown(0);
   }, [problem.id]);
+
+  useEffect(() => {
+    if (progressLoading) return;
+    if (codeInitializedRef.current === problem.id) return;
+    codeInitializedRef.current = problem.id;
+    const draft = rowsRef.current[problem.id]?.code_draft;
+    setCode(draft ?? problem.starterCode ?? "");
+  }, [problem.id, problem.starterCode, progressLoading]);
 
   useEffect(() => {
     if (!code.trim()) return;

@@ -1,12 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type {
   PracticeChallengeSegment,
   PracticeLiveCheckRule,
   PracticeProblem,
 } from "@/lib/types";
-import { usePyodideRunner } from "@/components/ide/usePyodideRunner";
+import { CodeEditor } from "@/components/ide/CodeEditor";
 import { runPublicTests } from "@/lib/practice-runner";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePracticeProgress } from "@/hooks/usePracticeProgress";
@@ -162,7 +162,8 @@ export function ChallengePracticeLayout({
   topicTitle,
 }: ChallengePracticeLayoutProps) {
   const { session } = useAuth();
-  const { rows, saveDraft, markSolved } = usePracticeProgress([problem.id]);
+  const { rows, loading: progressLoading, saveDraft, markSolved } =
+    usePracticeProgress([problem.id]);
 
   const [code, setCode] = useState(problem.starterCode);
   const [hintsShown, setHintsShown] = useState(0);
@@ -171,8 +172,10 @@ export function ChallengePracticeLayout({
     type: ResultType;
     message: React.ReactNode;
   } | null>(null);
+  const codeInitializedRef = useRef<string | null>(null);
+  const rowsRef = useRef(rows);
+  rowsRef.current = rows;
 
-  const { loading, running } = usePyodideRunner();
   const content = problem.challengeContent;
   const status = rows[problem.id]?.status ?? "not_started";
   const example = problem.examples?.[0];
@@ -189,11 +192,18 @@ export function ChallengePracticeLayout({
   }, [content?.liveCheckRules, printCount, printValues]);
 
   useEffect(() => {
-    const draft = rows[problem.id]?.code_draft;
-    setCode(draft ?? problem.starterCode);
+    codeInitializedRef.current = null;
     setCheckResult(null);
     setHintsShown(0);
-  }, [problem.id, problem.starterCode, rows]);
+  }, [problem.id]);
+
+  useEffect(() => {
+    if (progressLoading) return;
+    if (codeInitializedRef.current === problem.id) return;
+    codeInitializedRef.current = problem.id;
+    const draft = rowsRef.current[problem.id]?.code_draft;
+    setCode(draft ?? problem.starterCode);
+  }, [problem.id, problem.starterCode, progressLoading]);
 
   useEffect(() => {
     if (!code.trim()) return;
@@ -824,16 +834,13 @@ export function ChallengePracticeLayout({
             </span>
           </div>
 
-          <div className="min-h-0 flex-1">
-            <textarea
+          <div className="min-h-0 flex-1 overflow-hidden">
+            <CodeEditor
               value={code}
-              onChange={(e) => setCode(e.target.value)}
-              spellCheck={false}
-              placeholder={
-                content?.editorPlaceholder ??
-                "# Write your Python code here..."
-              }
-              className="block h-full min-h-[200px] w-full resize-none border-none bg-transparent px-4 py-3.5 font-mono text-sm leading-relaxed text-[#cdd6f4] outline-none placeholder:text-[#45475a] lg:min-h-0"
+              onChange={setCode}
+              onRun={handleRunCheck}
+              height="100%"
+              className="h-full min-h-[240px]"
             />
           </div>
 
@@ -851,7 +858,7 @@ export function ChallengePracticeLayout({
                 type="button"
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={handleRunCheck}
-                disabled={loading || running || checking}
+                disabled={checking}
                 className="inline-flex items-center gap-1.5 rounded-md border border-blue-400/30 bg-blue-500/20 px-4 py-2 text-[13.5px] font-medium text-blue-200 transition hover:bg-blue-500/30 disabled:opacity-50"
               >
                 {checking ? (
