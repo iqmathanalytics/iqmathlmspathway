@@ -50,14 +50,14 @@ export function usePracticeProgress(problemIds: string[]) {
       const sb = getSupabase();
       if (!sb) return;
 
-      const existing = rows[problemId];
-      const nextStatus =
-        status ??
-        existing?.status ??
-        (code.trim() ? "attempted" : "not_started");
-
-      await sb.from("practice_progress").upsert(
-        {
+      let snapshot: PracticeProgressRow | null = null;
+      setRows((prev) => {
+        const existing = prev[problemId];
+        const nextStatus =
+          status ??
+          existing?.status ??
+          (code.trim() ? "attempted" : "not_started");
+        snapshot = {
           user_id: user.id,
           problem_id: problemId,
           code_draft: code,
@@ -66,25 +66,17 @@ export function usePracticeProgress(problemIds: string[]) {
           hidden_passed: existing?.hidden_passed ?? false,
           submitted_at: existing?.submitted_at ?? null,
           updated_at: new Date().toISOString(),
-        },
-        { onConflict: "user_id,problem_id" }
-      );
+        };
+        return { ...prev, [problemId]: snapshot };
+      });
 
-      setRows((prev) => ({
-        ...prev,
-        [problemId]: {
-          user_id: user.id,
-          problem_id: problemId,
-          code_draft: code,
-          status: nextStatus,
-          public_passed: existing?.public_passed ?? false,
-          hidden_passed: existing?.hidden_passed ?? false,
-          submitted_at: existing?.submitted_at ?? null,
-          updated_at: new Date().toISOString(),
-        },
-      }));
+      if (!snapshot) return;
+
+      await sb.from("practice_progress").upsert(snapshot, {
+        onConflict: "user_id,problem_id",
+      });
     },
-    [user, rows]
+    [user]
   );
 
   const markSolved = useCallback(
