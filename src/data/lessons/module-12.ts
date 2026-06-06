@@ -6,32 +6,67 @@ export const module12Lessons: Record<string, TopicLesson> = {
     intro:
       "A function groups steps under one name so you can reuse them. You define it with def, run its body when you call it, and optionally return a value.",
     blocks: [
-      { type: "heading", content: "Define with def" },
       {
-        type: "code",
-        code:
-          'def greet():\n    print("Hello from a function")\n\ngreet()',
-      },
-      { type: "heading", content: "Return a value" },
-      {
-        type: "code",
-        code:
-          "def add(a, b):\n    return a + b\n\nresult = add(3, 5)\nprint(result)  # 8",
-      },
-      {
-        type: "visual",
-        diagram: {
-          title: "Function structure",
-          variant: "stack",
-          nodes: [
-            { id: "d", label: "def name(...):", sublabel: "Header — name and parameters" },
-            { id: "b", label: "Indented body", sublabel: "Code that runs on call" },
-            { id: "r", label: "return value", sublabel: "Optional — sends result back" },
-          ],
-        },
+        type: "infographic",
+        infographic: "functions-creating",
       },
       {
         type: "practice",
+        practiceLabel: "Greet",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and define a simple function that prints a greeting.",
+        starterCode:
+          'def greet():\n    print("Hello from a function")\n\ngreet()',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Parameters",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and pass a name into the greet function.",
+        starterCode:
+          'def greet(name):\n    print("Hello", name)\n\ngreet("Sam")',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Return",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and use return to send a sum back from add().",
+        starterCode:
+          "def add(a, b):\n    return a + b\n\nresult = add(3, 5)\nprint(result)",
+      },
+      {
+        type: "practice",
+        practiceLabel: "Student",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and print name and age with multiple parameters.",
+        starterCode:
+          'def student(name, age):\n    print("Name:", name)\n    print("Age:", age)\n\nstudent("Mia", 20)',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Area",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and calculate the area of a rectangle with return.",
+        starterCode:
+          "def area(length, width):\n    return length * width\n\nresult = area(5, 4)\nprint(result)",
+      },
+      {
+        type: "practice",
+        practiceLabel: "Multiply",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and return the product of two numbers.",
+        starterCode:
+          "def multiply(a, b):\n    return a * b\n\nprint(multiply(4, 3))",
+      },
+      {
+        type: "practice",
+        practiceLabel: "Challenge",
         practicePrompt:
           "Define square(n) that returns n * n. Print square(6).",
         starterCode:
@@ -94,31 +129,67 @@ export const module12Lessons: Record<string, TopicLesson> = {
     intro:
       "Parameters receive values when a function is called. Positional arguments match by order; keyword arguments match by name. Defaults apply when an argument is omitted.",
     blocks: [
-      { type: "heading", content: "Positional arguments" },
       {
-        type: "code",
-        code:
-          "def describe(name, age):\n    print(name, age)\n\ndescribe(\"Sam\", 30)",
-      },
-      { type: "heading", content: "Default values" },
-      {
-        type: "code",
-        code:
-          'def greet(name, greeting="Hello"):\n    print(greeting, name)\n\ngreet("Alex")\ngreet("Alex", "Hi")',
-      },
-      { type: "heading", content: "Keyword arguments" },
-      {
-        type: "code",
-        code:
-          'describe(age=25, name="Jordan")  # order does not matter',
-      },
-      {
-        type: "tip",
-        content:
-          "Put parameters with defaults after those without defaults in the definition.",
+        type: "infographic",
+        infographic: "function-arguments",
       },
       {
         type: "practice",
+        practiceLabel: "Positional",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and pass arguments by position to describe().",
+        starterCode:
+          'def describe(name, age):\n    print(name, age)\n\ndescribe("Sam", 30)',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Default",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and call greet() using the default greeting.",
+        starterCode:
+          'def greet(name, greeting="Hello"):\n    print(greeting, name)\n\ngreet("Alex")',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Override",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and override the default greeting with Hi.",
+        starterCode:
+          'def greet(name, greeting="Hello"):\n    print(greeting, name)\n\ngreet("Alex", "Hi")',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Keyword",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and pass arguments by parameter name.",
+        starterCode:
+          'def describe(name, age):\n    print(name, age)\n\ndescribe(age=25, name="Jordan")',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Register",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and register students with and without a custom course.",
+        starterCode:
+          'def register(name, course="Python"):\n    print("Name:", name)\n    print("Course:", course)\n\nregister("Mia")\nregister("John", "Data Science")',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Student",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and use a default age when only the name is given.",
+        starterCode:
+          'def student(name, age=18):\n    print(name, age)\n\nstudent("Asha")\nstudent("Rahul", 20)',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Challenge",
         practicePrompt:
           "Define power(base, exp=2) returning base ** exp. Print power(3) and power(2, 5).",
         starterCode:
@@ -136,36 +207,76 @@ export const module12Lessons: Record<string, TopicLesson> = {
     intro:
       "Variables created inside a function are local — they exist only while that function runs. Variables defined outside are global unless you assign to them inside the function.",
     blocks: [
-      { type: "heading", content: "Local variables" },
       {
-        type: "code",
-        code:
-          "def compute():\n    total = 100  # local\n    return total\n\ncompute()\n# print(total)  # NameError — total not visible here",
-      },
-      { type: "heading", content: "Reading globals vs assigning" },
-      {
-        type: "code",
-        code:
-          'count = 0\n\ndef read_global():\n    print(count)  # OK — read only\n\ndef reset_wrong():\n    count = 0  # creates NEW local count\n\nread_global()',
-      },
-      {
-        type: "visual",
-        diagram: {
-          title: "Scope",
-          variant: "compare",
-          nodes: [
-            { id: "l", label: "Local", sublabel: "Inside the function" },
-            { id: "g", label: "Global", sublabel: "Module level — shared" },
-          ],
-        },
-      },
-      {
-        type: "tip",
-        content:
-          "Prefer passing values in and returning results instead of modifying globals — clearer for data work and testing.",
+        type: "infographic",
+        infographic: "function-variables",
       },
       {
         type: "practice",
+        practiceLabel: "Local",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and see how a local variable works inside compute().",
+        starterCode:
+          "def compute():\n    total = 100\n    return total\n\nprint(compute())",
+      },
+      {
+        type: "practice",
+        practiceLabel: "Read Global",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and read a global variable from inside a function.",
+        starterCode:
+          "count = 0\n\ndef read_global():\n    print(count)\n\nread_global()",
+      },
+      {
+        type: "practice",
+        practiceLabel: "Local Assign",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and observe that assigning inside a function creates a local variable.",
+        starterCode:
+          "count = 10\n\ndef reset_wrong():\n    count = 0\n\nreset_wrong()\nprint(count)",
+      },
+      {
+        type: "practice",
+        practiceLabel: "global",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and use the global keyword to modify count.",
+        starterCode:
+          "count = 10\n\ndef reset():\n    global count\n    count = 0\n\nreset()\nprint(count)",
+      },
+      {
+        type: "practice",
+        practiceLabel: "Return",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and reset a value using return instead of global.",
+        starterCode:
+          "def reset(value):\n    return 0\n\ncount = 10\ncount = reset(count)\nprint(count)",
+      },
+      {
+        type: "practice",
+        practiceLabel: "Marks",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and check a mark against a global passing_mark.",
+        starterCode:
+          'passing_mark = 40\n\ndef check(mark):\n    if mark >= passing_mark:\n        return "Pass"\n    return "Fail"\n\nprint(check(55))',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Show",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and print a global value from inside show().",
+        starterCode:
+          "value = 50\n\ndef show():\n    print(value)\n\nshow()",
+      },
+      {
+        type: "practice",
+        practiceLabel: "Challenge",
         practicePrompt:
           "Define add_tax(price, rate=0.08) that returns price * (1 + rate). Use price = 50 and print add_tax(price).",
         starterCode:
@@ -184,34 +295,39 @@ export const module12Lessons: Record<string, TopicLesson> = {
       "Recursion is when a function calls itself to solve a smaller version of the same problem. Every recursive function needs a base case that stops the calls.",
     blocks: [
       {
-        type: "code",
-        code:
-          "def countdown(n):\n    if n <= 0:\n        print(\"Done\")\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(3)",
-      },
-      {
-        type: "paragraph",
-        content:
-          "Each call waits for the next to finish. The base case (n <= 0 here) prevents infinite recursion.",
-      },
-      {
-        type: "code",
-        code:
-          "def factorial(n):\n    if n <= 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(5))  # 120",
-      },
-      {
-        type: "visual",
-        diagram: {
-          title: "Recursion pattern",
-          variant: "flow",
-          nodes: [
-            { id: "b", label: "Base case", sublabel: "Stop and return" },
-            { id: "r", label: "Recursive case", sublabel: "Call self with smaller input" },
-          ],
-          arrows: [{ from: "r", to: "b" }],
-        },
+        type: "infographic",
+        infographic: "function-recursion",
       },
       {
         type: "practice",
+        practiceLabel: "Countdown",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and watch countdown() call itself until Done.",
+        starterCode:
+          'def countdown(n):\n    if n <= 0:\n        print("Done")\n        return\n    print(n)\n    countdown(n - 1)\n\ncountdown(3)',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Factorial",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and compute factorial(5) with recursion.",
+        starterCode:
+          "def factorial(n):\n    if n <= 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(5))",
+      },
+      {
+        type: "practice",
+        practiceLabel: "Sum",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and sum numbers from 1 to n using recursion.",
+        starterCode:
+          "def sum_to_n(n):\n    if n == 0:\n        return 0\n    return n + sum_to_n(n - 1)\n\nprint(sum_to_n(4))",
+      },
+      {
+        type: "practice",
+        practiceLabel: "Challenge",
         practicePrompt:
           "Write sum_upto(n) that returns 1 + 2 + ... + n using recursion (base: n <= 0 returns 0).",
         starterCode:
