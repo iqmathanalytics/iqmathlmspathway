@@ -263,10 +263,10 @@ export const module4Lessons: Record<string, TopicLesson> = {
       },
     ],
     keyTakeaways: [
-      "String methods use dot notation: text.upper(), text.split(',').",
-      "Strings are immutable — store the result: clean = text.strip().lower().",
-      "strip/lstrip/rstrip remove extra spaces; split/join handle CSV-style data.",
-      "replace(), find(), count(), and in help search and edit text.",
+      "Python has 47 string methods — case, search, is…() checks, split/join, trim/pad, format, and replace.",
+      "Strings are immutable — store results: clean = text.strip().lower().",
+      "find() returns -1 if missing; index() raises ValueError. count() returns 0 safely.",
+      "strip(), split(), join(), and replace() are the most common in data work.",
     ],
   },
 };

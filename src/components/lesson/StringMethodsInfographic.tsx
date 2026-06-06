@@ -1,41 +1,45 @@
 "use client";
 
-import {
-  ArrowRight,
-  BarChart3,
-  BookOpen,
-  Lightbulb,
-  MapPin,
-  Play,
-  Search,
-  Target,
-  Wrench,
-} from "lucide-react";
+import { ArrowRight, Play, Target } from "lucide-react";
 import { useLessonPractice } from "@/components/lesson/LessonPracticeContext";
+import {
+  STRING_CAT_NAV,
+  STRING_METHOD_CATEGORIES,
+  STRING_TOC_LINKS,
+  type StringMethodEntry,
+} from "@/components/lesson/stringMethodsContent";
 
-function SectionLabel({
-  children,
-  variant,
-}: {
-  children: React.ReactNode;
-  variant: "purple" | "green" | "blue" | "amber" | "teal" | "red";
-}) {
-  const styles = {
-    purple: "bg-purple-100 text-purple-800",
-    green: "bg-green-100 text-green-800",
-    blue: "bg-blue-100 text-blue-800",
-    amber: "bg-amber-100 text-amber-900",
-    teal: "bg-teal-100 text-teal-800",
-    red: "bg-red-100 text-red-800",
-  };
-  return (
-    <span
-      className={`mb-2.5 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide ${styles[variant]}`}
-    >
-      {children}
-    </span>
-  );
-}
+type LabelVariant =
+  | "purple"
+  | "green"
+  | "blue"
+  | "amber"
+  | "teal"
+  | "red"
+  | "orange"
+  | "pink";
+
+const PILL_STYLES: Record<LabelVariant, string> = {
+  green: "bg-green-100 text-green-800",
+  blue: "bg-blue-100 text-blue-800",
+  purple: "bg-purple-100 text-purple-800",
+  teal: "bg-teal-100 text-teal-800",
+  amber: "bg-amber-100 text-amber-900",
+  orange: "bg-orange-100 text-orange-900",
+  red: "bg-red-100 text-red-800",
+  pink: "bg-fuchsia-100 text-fuchsia-900",
+};
+
+const CAT_BTN_STYLES: Record<LabelVariant, string> = {
+  green: "border-green-200/80 bg-green-50 text-green-800 hover:opacity-90",
+  blue: "border-blue-200/80 bg-blue-50 text-blue-800 hover:opacity-90",
+  purple: "border-purple-200/80 bg-purple-50 text-purple-800 hover:opacity-90",
+  teal: "border-teal-200/80 bg-teal-50 text-teal-800 hover:opacity-90",
+  amber: "border-amber-200/80 bg-amber-50 text-amber-900 hover:opacity-90",
+  orange: "border-orange-200/80 bg-orange-50 text-orange-900 hover:opacity-90",
+  red: "border-red-200/80 bg-red-50 text-red-800 hover:opacity-90",
+  pink: "border-fuchsia-200/80 bg-fuchsia-50 text-fuchsia-900 hover:opacity-90",
+};
 
 function CodeExercisePanel({
   practiceIndex,
@@ -61,8 +65,10 @@ function CodeExercisePanel({
         <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-        <span className="font-mono text-[11px] text-gray-500">{filename}</span>
-        <div className="ml-auto flex items-center gap-1">
+        <span className="ml-auto font-mono text-[11px] text-gray-500">
+          {filename}
+        </span>
+        <div className="ml-1 flex items-center gap-1">
           <button
             type="button"
             onMouseDown={(e) => e.preventDefault()}
@@ -91,701 +97,284 @@ function CodeExercisePanel({
           )}
         </div>
       </div>
-      <pre className="overflow-x-auto bg-transparent px-4 py-3.5 font-mono text-[13.5px] leading-loose">
+      <pre className="overflow-x-auto bg-transparent px-4 py-3 font-mono text-[13px] leading-[1.9] text-gray-800">
         {children}
       </pre>
     </div>
   );
 }
 
-function CodeWindow({
-  filename,
-  children,
-}: {
-  filename: string;
-  children: React.ReactNode;
-}) {
+function CodeWindow({ code }: { code: string }) {
   return (
     <div className="overflow-hidden rounded-xl border border-black/15 bg-white/60">
       <div className="flex items-center gap-1.5 border-b border-black/10 bg-black/[0.03] px-3 py-1.5">
         <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-        <span className="font-mono text-[11px] text-gray-500">{filename}</span>
       </div>
-      <pre className="overflow-x-auto bg-transparent px-4 py-3.5 font-mono text-[13.5px] leading-loose">
-        {children}
+      <pre className="overflow-x-auto bg-transparent px-4 py-3 font-mono text-[13px] leading-[1.9] text-gray-800">
+        {code}
       </pre>
     </div>
   );
 }
 
-function OutputBox({ children }: { children: React.ReactNode }) {
+function Annotation({
+  icon = "💡",
+  children,
+}: {
+  icon?: string;
+  children: React.ReactNode;
+}) {
   return (
-    <div className="mt-2 overflow-hidden rounded-lg border border-black/10 bg-black/[0.03]">
-      <div className="border-b border-black/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500">
-        Output
-      </div>
-      <pre className="px-3 py-2.5 font-mono text-[13px] text-gray-700">
-        {children}
-      </pre>
+    <div className="mt-2 flex gap-2 rounded-lg bg-black/[0.04] px-3 py-2.5 text-[13px] leading-relaxed text-gray-600">
+      <span className="shrink-0">{icon}</span>
+      <span>{children}</span>
     </div>
   );
 }
 
-const OVERVIEW_METHODS = [
-  {
-    symbol: "upper()",
-    name: "Uppercase",
-    note: "Converts every letter to capitals",
-    example: '"hi".upper() → "HI"',
-    symbolClass: "text-[#1a5fb4]",
-  },
-  {
-    symbol: "lower()",
-    name: "Lowercase",
-    note: "Converts every letter to small letters",
-    example: '"HI".lower() → "hi"',
-    symbolClass: "text-[#2d7a45]",
-  },
-  {
-    symbol: "strip()",
-    name: "Trim spaces",
-    note: "Removes spaces from both ends",
-    example: '" hi ".strip() → "hi"',
-    symbolClass: "text-[#5e3fa3]",
-  },
-  {
-    symbol: "split()",
-    name: "Split into list",
-    note: "Breaks a string at a separator",
-    example: '"a,b".split(",") → ["a","b"]',
-    symbolClass: "text-[#1a5fb4]",
-  },
-  {
-    symbol: "join()",
-    name: "Join a list",
-    note: "Combines list items into one string",
-    example: '"-".join(["a","b"]) → "a-b"',
-    symbolClass: "text-[#2d7a45]",
-  },
-  {
-    symbol: "replace()",
-    name: "Replace text",
-    note: "Swaps one substring for another",
-    example: '"cat".replace("c","b") → "bat"',
-    symbolClass: "text-[#5e3fa3]",
-  },
-] as const;
+function WarnBox({
+  variant,
+  children,
+}: {
+  variant: "amber" | "red" | "blue" | "teal";
+  children: React.ReactNode;
+}) {
+  const styles = {
+    amber: "border-amber-200/80 bg-amber-50 [&_strong]:text-amber-900",
+    red: "border-red-200/80 bg-red-50 [&_strong]:text-red-800",
+    blue: "border-blue-200/80 bg-blue-50 [&_strong]:text-blue-800",
+    teal: "border-teal-200/80 bg-teal-50 [&_strong]:text-teal-800",
+  };
+  return (
+    <div
+      className={`mt-2 flex items-start gap-2 rounded-lg border px-3 py-2.5 text-[13px] leading-relaxed text-gray-600 ${styles[variant]}`}
+    >
+      {children}
+    </div>
+  );
+}
 
-const DATA_SCIENCE_ROWS = [
-  { method: "strip()", use: "Clean messy data" },
-  { method: "split()", use: "Parse CSV values" },
-  { method: "join()", use: "Create reports" },
-  { method: "replace()", use: "Text cleaning" },
-  { method: "len()", use: "Measure text length" },
-  { method: "startswith()", use: "Validate prefixes" },
-  { method: "endswith()", use: "Check file extensions" },
-] as const;
+function CmpTable({
+  headers,
+  rows,
+}: {
+  headers: string[];
+  rows: string[][];
+}) {
+  return (
+    <div className="mt-2 overflow-hidden rounded-xl border border-black/15 bg-white/50">
+      <table className="w-full border-collapse text-[13px]">
+        <thead>
+          <tr className="border-b border-black/15 bg-black/[0.05]">
+            {headers.map((h) => (
+              <th
+                key={h}
+                className="px-3 py-2 text-left text-[10.5px] font-semibold uppercase tracking-wide text-gray-500"
+              >
+                {h}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr
+              key={row.join("|")}
+              className="border-b border-black/10 last:border-b-0"
+            >
+              {row.map((cell, i) => (
+                <td
+                  key={`${i}-${cell}`}
+                  className={`px-3 py-2 text-gray-600 ${
+                    i === 0 ? "font-mono text-[13px] font-semibold text-[#1a5fb4]" : ""
+                  }`}
+                >
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 
-const REF_ROWS = [
-  { method: "upper()", purpose: "Uppercase text", example: '"python".upper()' },
-  { method: "lower()", purpose: "Lowercase text", example: '"PYTHON".lower()' },
-  { method: "title()", purpose: "Title Case words", example: '"hello world".title()' },
-  { method: "strip()", purpose: "Remove end spaces", example: '" hi ".strip()' },
-  { method: "lstrip()", purpose: "Remove left spaces", example: '" hi".lstrip()' },
-  { method: "rstrip()", purpose: "Remove right spaces", example: '"hi ".rstrip()' },
-  { method: "split()", purpose: "String → list", example: '"a,b".split(",")' },
-  { method: "join()", purpose: "List → string", example: '"-".join(lst)' },
-  { method: "replace()", purpose: "Replace text", example: 's.replace("a","b")' },
-  { method: "find()", purpose: "Find substring index", example: 's.find("py")' },
-  { method: "count()", purpose: "Count occurrences", example: 's.count("a")' },
-  { method: "len()", purpose: "Character count", example: "len(s)" },
-  { method: "startswith()", purpose: "Check beginning", example: 's.startswith("Hi")' },
-  { method: "endswith()", purpose: "Check ending", example: 's.endswith(".csv")' },
-] as const;
+function StringMethodBlock({ method }: { method: StringMethodEntry }) {
+  const codePanel =
+    method.practiceIndex != null ? (
+      <CodeExercisePanel
+        practiceIndex={method.practiceIndex}
+        filename={`${method.id}.py`}
+      >
+        {method.code}
+      </CodeExercisePanel>
+    ) : (
+      <CodeWindow code={method.code} />
+    );
+
+  return (
+    <article id={method.id} className="scroll-mt-6">
+      <h4 className="mb-1 font-mono text-[15px] font-semibold tracking-tight">
+        {method.title}
+      </h4>
+      <p className="mb-2.5 text-[13.5px] leading-relaxed text-gray-600">
+        {method.description}
+      </p>
+      {codePanel}
+      {method.cmpTable && (
+        <CmpTable
+          headers={method.cmpTable.headers}
+          rows={method.cmpTable.rows}
+        />
+      )}
+      {method.warn && (
+        <WarnBox variant={method.warn.variant}>{method.warn.text}</WarnBox>
+      )}
+      {method.annotation && (
+        <Annotation icon={method.annotation.icon}>
+          {method.annotation.text}
+        </Annotation>
+      )}
+    </article>
+  );
+}
 
 export function StringMethodsInfographic() {
   return (
     <div className="max-w-none text-gray-900">
-      <header className="mb-8 border-b border-black/10 pb-5">
+      <header className="mb-6 border-b border-black/10 pb-5">
         <h2 className="text-xl font-semibold tracking-tight">
-          Useful String Methods
+          String Methods
         </h2>
         <p className="mt-1 text-[13px] text-gray-500">
-          Modify, search, split, and analyze strings efficiently
+          All 47 built-in Python string methods — what each one does with
+          examples
         </p>
       </header>
 
-      {/* Section 1: Overview */}
-      <section className="mb-8">
-        <SectionLabel variant="blue">
-          <Wrench className="h-3 w-3" />
-          Overview
-        </SectionLabel>
-        <h3 className="mb-1.5 text-base font-semibold tracking-tight">
-          Common String Operations
-        </h3>
-        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
-          Python provides many built-in string methods for changing text,
-          removing spaces, searching content, splitting data, and more. You
-          call them with dot notation:{" "}
-          <code className="rounded bg-black/[0.07] px-1 font-mono text-[12.5px]">
-            variable.method()
-          </code>
-          .
-        </p>
+      {/* Category nav */}
+      <nav className="mb-6 flex flex-wrap gap-1.5">
+        {STRING_CAT_NAV.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            className={`rounded-full border px-3 py-1 text-[12px] font-semibold transition ${CAT_BTN_STYLES[link.variant]}`}
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
 
-        <div className="flex flex-col gap-1.5">
-          {OVERVIEW_METHODS.map((m) => (
-            <div
-              key={m.symbol}
-              className="flex items-center gap-3 rounded-lg border border-black/10 bg-white/50 px-3.5 py-2.5"
+      {/* TOC */}
+      <nav className="mb-8 flex flex-wrap gap-1 rounded-xl border border-black/15 bg-white/50 p-3.5">
+        {STRING_TOC_LINKS.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            className="rounded-full border border-black/10 px-2 py-0.5 font-mono text-[11.5px] font-semibold text-gray-600 transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700"
+          >
+            {link.label}
+          </a>
+        ))}
+        <a
+          href="#len"
+          className="rounded-full border border-black/10 px-2 py-0.5 font-mono text-[11.5px] font-semibold text-gray-600 transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700"
+        >
+          len()
+        </a>
+      </nav>
+
+      {STRING_METHOD_CATEGORIES.map((category) => (
+        <div key={category.id}>
+          <div
+            id={category.id}
+            className="scroll-mt-6 mb-4 mt-2 flex items-center gap-2.5 border-b-2 border-black/10 pb-2"
+          >
+            <span
+              className={`rounded-full px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide ${PILL_STYLES[category.pillVariant]}`}
             >
-              <span
-                className={`min-w-16 shrink-0 text-center font-mono text-sm font-semibold ${m.symbolClass}`}
-              >
-                {m.symbol}
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-[13.5px] font-semibold text-gray-900">
-                  {m.name}
-                </p>
-                <p className="text-[12.5px] text-gray-500">{m.note}</p>
+              {category.pill}
+            </span>
+            <h3 className="text-sm font-semibold text-gray-900">
+              {category.heading}
+            </h3>
+          </div>
+
+          <div className="space-y-6">
+            {category.methods.map((method, idx) => (
+              <div key={method.id}>
+                <StringMethodBlock method={method} />
+                {idx < category.methods.length - 1 && (
+                  <hr className="mt-6 border-black/10" />
+                )}
               </div>
-              <p className="hidden shrink-0 whitespace-nowrap font-mono text-[12px] text-gray-500 sm:block">
-                {m.example}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          <hr className="my-8 border-black/10" />
         </div>
-      </section>
+      ))}
 
-      <hr className="my-7 border-black/10" />
-
-      {/* Syntax */}
-      <section className="mb-8">
-        <SectionLabel variant="teal">
-          <BookOpen className="h-3 w-3" />
-          Syntax
-        </SectionLabel>
-        <h3 className="mb-1.5 text-base font-semibold tracking-tight">
-          How to Call a String Method
-        </h3>
-        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
-          Strings are immutable — methods return a <strong>new</strong> string
-          instead of changing the original. Always store the result if you need
-          it later.
-        </p>
-
-        <CodeWindow filename="syntax.py">
-          <span className="text-gray-800">text = &quot;hello&quot;</span>
-          {"\n"}
-          <span className="text-gray-800">result = text.upper()</span>
-          {"\n"}
-          <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">(text) </span>
-          <span className="italic text-[#5a8a5a]"># hello — unchanged</span>
-          {"\n"}
-          <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">(result) </span>
-          <span className="italic text-[#5a8a5a]"># HELLO</span>
-        </CodeWindow>
-
-        <div className="mt-2.5 flex gap-2 rounded-lg bg-black/[0.04] px-3 py-2.5 text-[13px] leading-relaxed text-gray-600">
-          <Lightbulb className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
-          <span>
-            Chain methods together:{" "}
-            <code className="rounded bg-black/[0.07] px-1 font-mono text-[12px]">
-              messy.strip().lower()
-            </code>{" "}
-            cleans and lowercases in one line.
+      {/* Bonus: len() */}
+      <section id="len" className="scroll-mt-6 mb-8">
+        <div className="mb-4 flex items-center gap-2.5 border-b-2 border-black/10 pb-2">
+          <span className="rounded-full bg-orange-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-orange-900">
+            ⭐ Bonus
           </span>
+          <h3 className="text-sm font-semibold text-gray-900">
+            Built-in len() function
+          </h3>
         </div>
-      </section>
-
-      <hr className="my-7 border-black/10" />
-
-      {/* Section 2: Case conversion */}
-      <section className="mb-8">
-        <SectionLabel variant="green">Case conversion</SectionLabel>
-        <h3 className="mb-1.5 text-base font-semibold tracking-tight">
-          upper(), lower(), and title()
-        </h3>
-        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
-          These methods change letter casing. They are useful when comparing
-          user input or normalizing messy data before analysis.
-        </p>
-
-        <CodeExercisePanel practiceIndex={0} filename="case_methods.py">
-          <span className="text-gray-800">name = &quot;  python  &quot;</span>
-          {"\n"}
-          {"\n"}
-          <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">(name.upper())</span>
-          {"\n"}
-          <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">(name.lower())</span>
-          {"\n"}
-          <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">(&quot;hello world&quot;.title())</span>
-        </CodeExercisePanel>
-
-        <OutputBox>
-          PYTHON
-          {"\n"}
-          {"  python  "}
-          {"\n"}
-          Hello World
-        </OutputBox>
-
-        <div className="mt-3 overflow-hidden rounded-xl border border-black/15 bg-white/50">
-          <table className="w-full border-collapse text-[13.5px]">
-            <thead>
-              <tr className="border-b border-black/15 bg-black/[0.05]">
-                <th className="px-3.5 py-2 text-left text-[11px] font-semibold uppercase tracking-wide text-gray-500">
-                  Method
-                </th>
-                <th className="px-3.5 py-2 text-left text-[11px] font-semibold uppercase tracking-wide text-gray-500">
-                  What it does
-                </th>
-                <th className="px-3.5 py-2 text-left text-[11px] font-semibold uppercase tracking-wide text-gray-500">
-                  Example result
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-black/10">
-                <td className="px-3.5 py-2.5 font-mono text-gray-800">upper()</td>
-                <td className="px-3.5 py-2.5 text-gray-600">All capitals</td>
-                <td className="px-3.5 py-2.5 font-mono text-gray-600">&quot;PYTHON&quot;</td>
-              </tr>
-              <tr className="border-b border-black/10">
-                <td className="px-3.5 py-2.5 font-mono text-gray-800">lower()</td>
-                <td className="px-3.5 py-2.5 text-gray-600">All lowercase</td>
-                <td className="px-3.5 py-2.5 font-mono text-gray-600">&quot;python&quot;</td>
-              </tr>
-              <tr>
-                <td className="px-3.5 py-2.5 font-mono text-gray-800">title()</td>
-                <td className="px-3.5 py-2.5 text-gray-600">Capitalize each word</td>
-                <td className="px-3.5 py-2.5 font-mono text-gray-600">&quot;Hello World&quot;</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <hr className="my-7 border-black/10" />
-
-      {/* strip family */}
-      <section className="mb-8">
-        <SectionLabel variant="purple">Whitespace</SectionLabel>
-        <h3 className="mb-1.5 text-base font-semibold tracking-tight">
-          strip(), lstrip(), and rstrip()
-        </h3>
-        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
-          Real-world data often has extra spaces from copy-paste or CSV files.
-          These methods remove unwanted whitespace from one or both ends.
-        </p>
-
-        <CodeWindow filename="strip_methods.py">
-          <span className="text-gray-800">text = &quot;  hello  &quot;</span>
-          {"\n"}
-          {"\n"}
-          <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">(text.strip())</span>
-          {"\n"}
-          <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">(text.lstrip())</span>
-          {"\n"}
-          <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">(text.rstrip())</span>
-        </CodeWindow>
-
-        <OutputBox>
-          hello
-          {"\n"}
-          hello
-          {"\n"}
-          {"  hello"}
-        </OutputBox>
-
-        <div className="mt-2.5 flex gap-2 rounded-lg bg-black/[0.04] px-3 py-2.5 text-[13px] leading-relaxed text-gray-600">
-          <Lightbulb className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
-          <span>
-            strip() removes spaces at both ends; lstrip() only left; rstrip()
-            only right. None of them remove spaces in the middle.
-          </span>
-        </div>
-      </section>
-
-      <hr className="my-7 border-black/10" />
-
-      {/* Section 3: Split and join */}
-      <section className="mb-8">
-        <SectionLabel variant="purple">Split and join</SectionLabel>
-        <h3 className="mb-1.5 text-base font-semibold tracking-tight">
-          Convert Between Strings and Lists
-        </h3>
-        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
-          split() breaks a string into a list using a separator. join() does
-          the reverse — it takes a list and builds one string. Together they
-          are essential for working with CSV and tabular text data.
-        </p>
-
-        <CodeExercisePanel practiceIndex={1} filename="split_join.py">
-          <span className="text-gray-800">
-            csv_line = &quot;apple,banana,mango&quot;
-          </span>
-          {"\n"}
-          {"\n"}
-          <span className="text-gray-800">fruits = csv_line.split(&quot;,&quot;)</span>
-          {"\n"}
-          <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">(fruits)</span>
-          {"\n"}
-          {"\n"}
-          <span className="text-gray-800">joined = &quot;-&quot;.join(fruits)</span>
-          {"\n"}
-          <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">(joined)</span>
-        </CodeExercisePanel>
-
-        <OutputBox>
-          [&apos;apple&apos;, &apos;banana&apos;, &apos;mango&apos;]
-          {"\n"}
-          apple-banana-mango
-        </OutputBox>
-
-        <div className="mt-3 overflow-hidden rounded-xl border border-black/15 bg-white/50">
-          <table className="w-full border-collapse text-[13.5px]">
-            <thead>
-              <tr className="border-b border-black/15 bg-black/[0.05]">
-                <th className="px-3.5 py-2 text-left text-[11px] font-semibold uppercase tracking-wide text-gray-500">
-                  Operation
-                </th>
-                <th className="px-3.5 py-2 text-left text-[11px] font-semibold uppercase tracking-wide text-gray-500">
-                  Result
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-black/10">
-                <td className="px-3.5 py-2.5 font-mono text-gray-800">
-                  split(&quot;,&quot;)
-                </td>
-                <td className="px-3.5 py-2.5 font-mono text-sm text-gray-600">
-                  [&apos;apple&apos;, &apos;banana&apos;, &apos;mango&apos;]
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3.5 py-2.5 font-mono text-gray-800">
-                  &quot;-&quot;.join(...)
-                </td>
-                <td className="px-3.5 py-2.5 font-mono text-gray-600">
-                  apple-banana-mango
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div className="mt-2.5 flex gap-2 rounded-lg bg-black/[0.04] px-3 py-2.5 text-[13px] leading-relaxed text-gray-600">
-          <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
-          <span>
-            split() is called on the string; join() is called on the separator
-            string:{" "}
-            <code className="rounded bg-black/[0.07] px-1 font-mono text-[12px]">
-              &quot;-&quot;.join(list)
-            </code>
-            .
-          </span>
-        </div>
-      </section>
-
-      <hr className="my-7 border-black/10" />
-
-      {/* Section 4: Search and replace */}
-      <section className="mb-8">
-        <SectionLabel variant="teal">Search and replace</SectionLabel>
-        <h3 className="mb-3 text-base font-semibold tracking-tight">
-          replace(), find(), and count()
-        </h3>
-        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
-          replace() swaps text inside a string. find() returns the starting
-          index of a substring (or -1 if missing). count() tells you how many
-          times a value appears. Use{" "}
+        <h4 className="mb-1 font-mono text-[15px] font-semibold">len()</h4>
+        <p className="mb-2.5 text-[13.5px] leading-relaxed text-gray-600">
           <code className="rounded bg-black/[0.07] px-1 font-mono text-[12.5px]">
-            in
+            len()
           </code>{" "}
-          for a simple True/False check.
+          is a built-in function, not a string method. Returns the total number
+          of characters in a string.
         </p>
+        <CodeExercisePanel practiceIndex={3} filename="len.py">
+          {`s = "Python"
 
-        <CodeExercisePanel practiceIndex={2} filename="replace.py">
-          <span className="text-gray-800">text = &quot;I love Python&quot;</span>
-          {"\n"}
-          {"\n"}
-          <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">
-            (text.replace(&quot;love&quot;, &quot;enjoy&quot;))
-          </span>
-          {"\n"}
-          <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">(text.find(&quot;Py&quot;))</span>
-          {"\n"}
-          <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">(text.count(&quot;o&quot;))</span>
-          {"\n"}
-          <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">
-            (&quot;Python&quot; in text)
-          </span>
+print(len(s))   # 6`}
         </CodeExercisePanel>
-
-        <OutputBox>
-          I enjoy Python
-          {"\n"}
-          7
-          {"\n"}
-          2
-          {"\n"}
-          True
-        </OutputBox>
-
-        <div className="mt-3 overflow-hidden rounded-xl border border-black/15 bg-white/50">
-          <table className="w-full border-collapse text-[13.5px]">
-            <thead>
-              <tr className="border-b border-black/15 bg-black/[0.05]">
-                <th className="px-3.5 py-2 text-left text-[11px] font-semibold uppercase tracking-wide text-gray-500">
-                  Expression
-                </th>
-                <th className="px-3.5 py-2 text-left text-[11px] font-semibold uppercase tracking-wide text-gray-500">
-                  Output
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-black/10">
-                <td className="px-3.5 py-2.5 font-mono text-sm text-gray-800">
-                  replace(&quot;love&quot;,&quot;enjoy&quot;)
-                </td>
-                <td className="px-3.5 py-2.5 text-gray-600">I enjoy Python</td>
-              </tr>
-              <tr className="border-b border-black/10">
-                <td className="px-3.5 py-2.5 font-mono text-sm text-gray-800">
-                  find(&quot;Py&quot;)
-                </td>
-                <td className="px-3.5 py-2.5 font-semibold text-[#2d7a45]">7</td>
-              </tr>
-              <tr className="border-b border-black/10">
-                <td className="px-3.5 py-2.5 font-mono text-sm text-gray-800">
-                  count(&quot;o&quot;)
-                </td>
-                <td className="px-3.5 py-2.5 font-semibold text-[#2d7a45]">2</td>
-              </tr>
-              <tr>
-                <td className="px-3.5 py-2.5 font-mono text-sm text-gray-800">
-                  &quot;Python&quot; in text
-                </td>
-                <td className="px-3.5 py-2.5 font-semibold text-[#2d7a45]">
-                  True
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <Annotation icon="📌">
+          You&apos;ll use{" "}
+          <code className="rounded bg-black/[0.07] px-1 font-mono text-[12px]">
+            len()
+          </code>{" "}
+          constantly — for loops, checking if a string is empty, and finding the
+          last index (
+          <code className="rounded bg-black/[0.07] px-1 font-mono text-[12px]">
+            len(text) - 1
+          </code>
+          ).
+        </Annotation>
       </section>
 
       <hr className="my-7 border-black/10" />
 
-      {/* Section 5: Length */}
+      {/* Practice challenge */}
       <section className="mb-8">
-        <SectionLabel variant="amber">Length</SectionLabel>
-        <h3 className="mb-1.5 text-base font-semibold tracking-tight">
-          len() Function
-        </h3>
-        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
-          len() returns the total number of characters in a string.
-        </p>
-
-        <CodeExercisePanel practiceIndex={3} filename="length.py">
-          <span className="text-gray-800">s = &quot;Python&quot;</span>
-          {"\n"}
-          {"\n"}
-          <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">(</span>
-          <span className="font-semibold text-[#8b2070]">len</span>
-          <span className="text-gray-800">(s))</span>
-        </CodeExercisePanel>
-
-        <OutputBox>6</OutputBox>
-
-        <p className="mt-2.5 text-[13.5px] leading-relaxed text-gray-600">
-          len() counts every character including spaces and punctuation. It
-          works on strings, lists, and other collections.
-        </p>
-      </section>
-
-      <hr className="my-7 border-black/10" />
-
-      {/* Section 6: startswith / endswith */}
-      <section className="mb-8">
-        <SectionLabel variant="blue">Beginning and end</SectionLabel>
-        <h3 className="mb-1.5 text-base font-semibold tracking-tight">
-          startswith() and endswith()
-        </h3>
-        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
-          These methods help verify how a string starts or ends.
-        </p>
-
-        <CodeExercisePanel practiceIndex={4} filename="check.py">
-          <span className="text-gray-800">greeting = &quot;Hi Python&quot;</span>
-          {"\n"}
-          <span className="text-gray-800">file_name = &quot;sales.csv&quot;</span>
-          {"\n"}
-          {"\n"}
-          <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">
-            (greeting.startswith(&quot;Hi&quot;))
-          </span>
-          {"\n"}
-          <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">
-            (file_name.endswith(&quot;.csv&quot;))
-          </span>
-          {"\n"}
-          <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">
-            (file_name.endswith(&quot;.pdf&quot;))
-          </span>
-        </CodeExercisePanel>
-
-        <OutputBox>
-          True
-          {"\n"}
-          True
-          {"\n"}
-          False
-        </OutputBox>
-
-        <div className="mt-2.5 flex gap-2 rounded-lg bg-black/[0.04] px-3 py-2.5 text-[13px] leading-relaxed text-gray-600">
-          <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
-          <span>
-            endswith() is commonly used to validate file types such as .csv,
-            .txt, and .pdf.
-          </span>
-        </div>
-      </section>
-
-      <hr className="my-7 border-black/10" />
-
-      {/* Section 7: Data science */}
-      <section className="mb-8">
-        <SectionLabel variant="red">
-          <BarChart3 className="h-3 w-3" />
-          Data science usage
-        </SectionLabel>
-        <h3 className="mb-3 text-base font-semibold tracking-tight">
-          Why These Methods Matter
-        </h3>
-
-        <div className="overflow-hidden rounded-xl border border-black/15 bg-white/50">
-          <table className="w-full border-collapse text-[13.5px]">
-            <thead>
-              <tr className="border-b border-black/15 bg-black/[0.05]">
-                <th className="px-3.5 py-2 text-left text-[11px] font-semibold uppercase tracking-wide text-gray-500">
-                  Method
-                </th>
-                <th className="px-3.5 py-2 text-left text-[11px] font-semibold uppercase tracking-wide text-gray-500">
-                  Common Use
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {DATA_SCIENCE_ROWS.map((row) => (
-                <tr
-                  key={row.method}
-                  className="border-b border-black/10 last:border-b-0"
-                >
-                  <td className="px-3.5 py-2.5 font-mono text-sm font-semibold text-gray-800">
-                    {row.method}
-                  </td>
-                  <td className="px-3.5 py-2.5 text-gray-600">{row.use}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <hr className="my-7 border-black/10" />
-
-      {/* Practice */}
-      <section className="mb-8">
-        <SectionLabel variant="purple">
+        <span className="mb-2.5 inline-flex items-center gap-1.5 rounded-full bg-purple-100 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-purple-800">
           <Target className="h-3 w-3" />
           Practice
-        </SectionLabel>
+        </span>
         <h3 className="mb-3 text-base font-semibold tracking-tight">
-          Try Yourself
+          Try yourself
         </h3>
         <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
-          Use the IDE on the right. Click any exercise below or the{" "}
-          <strong>IDE</strong> button on a code block to load starter code.
+          Click <strong>IDE</strong> on any exercise block above, or load the
+          challenge below.
         </p>
         <CodeExercisePanel practiceIndex={5} filename="clean_data.py">
-          <span className="text-gray-800">messy = &quot;  HELLO world  &quot;</span>
-          {"\n"}
-          <span className="text-gray-800">clean = messy.strip().lower()</span>
-          {"\n"}
-          <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">(clean.replace(&quot;world&quot;, &quot;python&quot;))</span>
+          {`messy = "  HELLO world  "
+clean = messy.strip().lower()
+print(clean.replace("world", "python"))`}
         </CodeExercisePanel>
-        <OutputBox>hello python</OutputBox>
-      </section>
-
-      <hr className="my-7 border-black/10" />
-
-      {/* Quick reference */}
-      <section>
-        <h3 className="mb-2.5 text-base font-semibold tracking-tight">
-          Quick reference
-        </h3>
-        <div className="overflow-hidden rounded-xl border border-black/15 bg-white/50">
-          <table className="w-full border-collapse text-[13.5px]">
-            <thead>
-              <tr className="border-b border-black/15 bg-black/[0.05]">
-                <th className="px-3 py-2 text-left text-[11px] font-semibold uppercase tracking-wide text-gray-500">
-                  Method
-                </th>
-                <th className="px-3 py-2 text-left text-[11px] font-semibold uppercase tracking-wide text-gray-500">
-                  Purpose
-                </th>
-                <th className="px-3 py-2 text-left text-[11px] font-semibold uppercase tracking-wide text-gray-500">
-                  Example
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {REF_ROWS.map((row) => (
-                <tr
-                  key={row.method}
-                  className="border-b border-black/10 last:border-b-0"
-                >
-                  <td className="px-3 py-2.5 font-mono text-sm font-semibold text-gray-800">
-                    {row.method}
-                  </td>
-                  <td className="px-3 py-2.5 text-gray-600">{row.purpose}</td>
-                  <td className="px-3 py-2.5 text-gray-600">
-                    <code className="rounded bg-black/[0.07] px-1 font-mono text-[12.5px] text-gray-800">
-                      {row.example}
-                    </code>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
       </section>
     </div>
   );
