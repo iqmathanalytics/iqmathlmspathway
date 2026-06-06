@@ -2,6 +2,62 @@
 
 import type { LessonBlock } from "@/lib/types";
 import { FlowDiagram } from "@/components/visual/FlowDiagram";
+import { IntroProgrammingInfographic } from "@/components/lesson/IntroProgrammingInfographic";
+import { ChoosingPythonInfographic } from "@/components/lesson/ChoosingPythonInfographic";
+import { SettingUpPythonInfographic } from "@/components/lesson/SettingUpPythonInfographic";
+import { PythonIdesInfographic } from "@/components/lesson/PythonIdesInfographic";
+import { InputOutputInfographic } from "@/components/lesson/InputOutputInfographic";
+import { CommentsInfographic } from "@/components/lesson/CommentsInfographic";
+import { VariablesInfographic } from "@/components/lesson/VariablesInfographic";
+import { DataTypesInfographic } from "@/components/lesson/DataTypesInfographic";
+import { TypeCastingInfographic } from "@/components/lesson/TypeCastingInfographic";
+import { ArithmeticOperatorsInfographic } from "@/components/lesson/ArithmeticOperatorsInfographic";
+import { AssignmentOperatorsInfographic } from "@/components/lesson/AssignmentOperatorsInfographic";
+import { ComparisonOperatorsInfographic } from "@/components/lesson/ComparisonOperatorsInfographic";
+import { LogicalOperatorsInfographic } from "@/components/lesson/LogicalOperatorsInfographic";
+import { IdentityOperatorsInfographic } from "@/components/lesson/IdentityOperatorsInfographic";
+import { MembershipOperatorsInfographic } from "@/components/lesson/MembershipOperatorsInfographic";
+import { BitwiseOperatorsInfographic } from "@/components/lesson/BitwiseOperatorsInfographic";
+import { CreatingStringsInfographic } from "@/components/lesson/CreatingStringsInfographic";
+import { FormattingStringsInfographic } from "@/components/lesson/FormattingStringsInfographic";
+import { StringIndexingInfographic } from "@/components/lesson/StringIndexingInfographic";
+import { StringSlicingInfographic } from "@/components/lesson/StringSlicingInfographic";
+import { StringMethodsInfographic } from "@/components/lesson/StringMethodsInfographic";
+import { CreatingListsInfographic } from "@/components/lesson/CreatingListsInfographic";
+import { ListCharacteristicsInfographic } from "@/components/lesson/ListCharacteristicsInfographic";
+import { ListIndexingInfographic } from "@/components/lesson/ListIndexingInfographic";
+import { ListSlicingInfographic } from "@/components/lesson/ListSlicingInfographic";
+import { ListMethodsInfographic } from "@/components/lesson/ListMethodsInfographic";
+import { ListModifyingInfographic } from "@/components/lesson/ListModifyingInfographic";
+import { TupleSyntaxInfographic } from "@/components/lesson/TupleSyntaxInfographic";
+import { TupleIndexingInfographic } from "@/components/lesson/TupleIndexingInfographic";
+import { TuplePropertiesInfographic } from "@/components/lesson/TuplePropertiesInfographic";
+import { TupleSlicingInfographic } from "@/components/lesson/TupleSlicingInfographic";
+import { TupleMethodsInfographic } from "@/components/lesson/TupleMethodsInfographic";
+import { SetSyntaxInfographic } from "@/components/lesson/SetSyntaxInfographic";
+import { SetUpdatingInfographic } from "@/components/lesson/SetUpdatingInfographic";
+import { SetOperationsInfographic } from "@/components/lesson/SetOperationsInfographic";
+import { SetMethodsInfographic } from "@/components/lesson/SetMethodsInfographic";
+import { DictionarySyntaxInfographic } from "@/components/lesson/DictionarySyntaxInfographic";
+import { DictionaryKeysValuesInfographic } from "@/components/lesson/DictionaryKeysValuesInfographic";
+import { DictionaryAccessingInfographic } from "@/components/lesson/DictionaryAccessingInfographic";
+import { DictionaryMethodsInfographic } from "@/components/lesson/DictionaryMethodsInfographic";
+import { IfStatementInfographic } from "@/components/lesson/IfStatementInfographic";
+import { IfElseInfographic } from "@/components/lesson/IfElseInfographic";
+import { IfElifElseInfographic } from "@/components/lesson/IfElifElseInfographic";
+import { WhileLoopInfographic } from "@/components/lesson/WhileLoopInfographic";
+import { ForLoopInfographic } from "@/components/lesson/ForLoopInfographic";
+import { BreakContinueInfographic } from "@/components/lesson/BreakContinueInfographic";
+import { PassStatementInfographic } from "@/components/lesson/PassStatementInfographic";
+import { RangeFunctionInfographic } from "@/components/lesson/RangeFunctionInfographic";
+import { ListComprehensionInfographic } from "@/components/lesson/ListComprehensionInfographic";
+import { ComprehensionUsesInfographic } from "@/components/lesson/ComprehensionUsesInfographic";
+import { DictionaryComprehensionInfographic } from "@/components/lesson/DictionaryComprehensionInfographic";
+import { FunctionsCreatingInfographic } from "@/components/lesson/FunctionsCreatingInfographic";
+import { FunctionArgumentsInfographic } from "@/components/lesson/FunctionArgumentsInfographic";
+import { FunctionVariablesInfographic } from "@/components/lesson/FunctionVariablesInfographic";
+import { FunctionRecursionInfographic } from "@/components/lesson/FunctionRecursionInfographic";
+import { LambdaFunctionsInfographic } from "@/components/lesson/LambdaFunctionsInfographic";
 import { Lightbulb, Code2, Pencil } from "lucide-react";
 
 interface LessonContentProps {
@@ -54,6 +110,176 @@ export function LessonContent({
             return block.diagram ? (
               <FlowDiagram key={i} diagram={block.diagram} />
             ) : null;
+          case "infographic":
+            if (block.infographic === "intro-programming") {
+              return <IntroProgrammingInfographic key={i} />;
+            }
+            if (block.infographic === "choosing-python") {
+              return <ChoosingPythonInfographic key={i} />;
+            }
+            if (block.infographic === "setting-up-python") {
+              return <SettingUpPythonInfographic key={i} />;
+            }
+            if (block.infographic === "python-ides") {
+              return <PythonIdesInfographic key={i} />;
+            }
+            if (block.infographic === "input-output") {
+              return <InputOutputInfographic key={i} />;
+            }
+            if (block.infographic === "comments") {
+              return <CommentsInfographic key={i} />;
+            }
+            if (block.infographic === "variables") {
+              return <VariablesInfographic key={i} />;
+            }
+            if (block.infographic === "data-types") {
+              return <DataTypesInfographic key={i} />;
+            }
+            if (block.infographic === "typecasting") {
+              return <TypeCastingInfographic key={i} />;
+            }
+            if (block.infographic === "math-operators") {
+              return <ArithmeticOperatorsInfographic key={i} />;
+            }
+            if (block.infographic === "assignment-operators") {
+              return <AssignmentOperatorsInfographic key={i} />;
+            }
+            if (block.infographic === "comparison-operators") {
+              return <ComparisonOperatorsInfographic key={i} />;
+            }
+            if (block.infographic === "logical-operators") {
+              return <LogicalOperatorsInfographic key={i} />;
+            }
+            if (block.infographic === "identity-operators") {
+              return <IdentityOperatorsInfographic key={i} />;
+            }
+            if (block.infographic === "membership-operators") {
+              return <MembershipOperatorsInfographic key={i} />;
+            }
+            if (block.infographic === "bitwise-operators") {
+              return <BitwiseOperatorsInfographic key={i} />;
+            }
+            if (block.infographic === "creating-strings") {
+              return <CreatingStringsInfographic key={i} />;
+            }
+            if (block.infographic === "formatting-strings") {
+              return <FormattingStringsInfographic key={i} />;
+            }
+            if (block.infographic === "string-indexing") {
+              return <StringIndexingInfographic key={i} />;
+            }
+            if (block.infographic === "string-slicing") {
+              return <StringSlicingInfographic key={i} />;
+            }
+            if (block.infographic === "string-methods") {
+              return <StringMethodsInfographic key={i} />;
+            }
+            if (block.infographic === "creating-lists") {
+              return <CreatingListsInfographic key={i} />;
+            }
+            if (block.infographic === "list-characteristics") {
+              return <ListCharacteristicsInfographic key={i} />;
+            }
+            if (block.infographic === "list-indexing") {
+              return <ListIndexingInfographic key={i} />;
+            }
+            if (block.infographic === "list-slicing") {
+              return <ListSlicingInfographic key={i} />;
+            }
+            if (block.infographic === "list-methods") {
+              return <ListMethodsInfographic key={i} />;
+            }
+            if (block.infographic === "list-modifying") {
+              return <ListModifyingInfographic key={i} />;
+            }
+            if (block.infographic === "tuple-syntax") {
+              return <TupleSyntaxInfographic key={i} />;
+            }
+            if (block.infographic === "tuple-indexing") {
+              return <TupleIndexingInfographic key={i} />;
+            }
+            if (block.infographic === "tuple-properties") {
+              return <TuplePropertiesInfographic key={i} />;
+            }
+            if (block.infographic === "tuple-slicing") {
+              return <TupleSlicingInfographic key={i} />;
+            }
+            if (block.infographic === "tuple-methods") {
+              return <TupleMethodsInfographic key={i} />;
+            }
+            if (block.infographic === "set-syntax") {
+              return <SetSyntaxInfographic key={i} />;
+            }
+            if (block.infographic === "set-updating") {
+              return <SetUpdatingInfographic key={i} />;
+            }
+            if (block.infographic === "set-operations") {
+              return <SetOperationsInfographic key={i} />;
+            }
+            if (block.infographic === "set-methods") {
+              return <SetMethodsInfographic key={i} />;
+            }
+            if (block.infographic === "dictionary-syntax") {
+              return <DictionarySyntaxInfographic key={i} />;
+            }
+            if (block.infographic === "dictionary-keys-values") {
+              return <DictionaryKeysValuesInfographic key={i} />;
+            }
+            if (block.infographic === "dictionary-accessing") {
+              return <DictionaryAccessingInfographic key={i} />;
+            }
+            if (block.infographic === "dictionary-methods") {
+              return <DictionaryMethodsInfographic key={i} />;
+            }
+            if (block.infographic === "if-statement") {
+              return <IfStatementInfographic key={i} />;
+            }
+            if (block.infographic === "if-else") {
+              return <IfElseInfographic key={i} />;
+            }
+            if (block.infographic === "if-elif-else") {
+              return <IfElifElseInfographic key={i} />;
+            }
+            if (block.infographic === "while-loop") {
+              return <WhileLoopInfographic key={i} />;
+            }
+            if (block.infographic === "for-loop") {
+              return <ForLoopInfographic key={i} />;
+            }
+            if (block.infographic === "break-continue") {
+              return <BreakContinueInfographic key={i} />;
+            }
+            if (block.infographic === "pass-statement") {
+              return <PassStatementInfographic key={i} />;
+            }
+            if (block.infographic === "range-function") {
+              return <RangeFunctionInfographic key={i} />;
+            }
+            if (block.infographic === "list-comprehension") {
+              return <ListComprehensionInfographic key={i} />;
+            }
+            if (block.infographic === "comprehension-uses") {
+              return <ComprehensionUsesInfographic key={i} />;
+            }
+            if (block.infographic === "dict-comprehension") {
+              return <DictionaryComprehensionInfographic key={i} />;
+            }
+            if (block.infographic === "functions-creating") {
+              return <FunctionsCreatingInfographic key={i} />;
+            }
+            if (block.infographic === "function-arguments") {
+              return <FunctionArgumentsInfographic key={i} />;
+            }
+            if (block.infographic === "function-variables") {
+              return <FunctionVariablesInfographic key={i} />;
+            }
+            if (block.infographic === "function-recursion") {
+              return <FunctionRecursionInfographic key={i} />;
+            }
+            if (block.infographic === "lambda-functions") {
+              return <LambdaFunctionsInfographic key={i} />;
+            }
+            return null;
           case "code":
             return (
               <div key={i} className="my-4">
@@ -70,6 +296,10 @@ export function LessonContent({
             practiceCounter += 1;
             const practiceIdx = practiceCounter;
             const isActive = practiceIdx === activePracticeIndex;
+
+            if (practiceMode === "sidebar" && block.ideOnly) {
+              return null;
+            }
 
             if (practiceMode === "sidebar") {
               return (

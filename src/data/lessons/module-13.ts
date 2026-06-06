@@ -6,48 +6,49 @@ export const module13Lessons: Record<string, TopicLesson> = {
     intro:
       "A lambda is a small anonymous function written in one expression. Use it for short operations you pass to other functions — especially sorting and filtering.",
     blocks: [
-      { type: "heading", content: "Syntax" },
       {
-        type: "code",
-        code:
-          "double = lambda x: x * 2\nprint(double(5))  # 10",
-      },
-      {
-        type: "paragraph",
-        content:
-          "The form is lambda parameters: expression. There is no return keyword — the expression's value is returned automatically.",
-      },
-      { type: "heading", content: "Equivalent def" },
-      {
-        type: "code",
-        code:
-          "# Same behavior with def\ndef double(x):\n    return x * 2",
-      },
-      {
-        type: "visual",
-        diagram: {
-          title: "lambda structure",
-          variant: "stack",
-          nodes: [
-            { id: "l", label: "lambda", sublabel: "Keyword" },
-            { id: "a", label: "args", sublabel: "One or more parameters" },
-            { id: "e", label: "expression", sublabel: "Single result — no statements" },
-          ],
-        },
-      },
-      { type: "heading", content: "With sorted and map" },
-      {
-        type: "code",
-        code:
-          'names = ["Zoe", "Amy", "Mia"]\nprint(sorted(names, key=lambda n: len(n)))\n\nnums = [1, 2, 3]\nprint(list(map(lambda x: x ** 2, nums)))  # [1, 4, 9]',
-      },
-      {
-        type: "tip",
-        content:
-          "If the logic needs more than one line, multiple statements, or a docstring, use def instead of lambda.",
+        type: "infographic",
+        infographic: "lambda-functions",
       },
       {
         type: "practice",
+        practiceLabel: "Double",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and use a lambda to double a number.",
+        starterCode:
+          "double = lambda x: x * 2\n\nprint(double(5))",
+      },
+      {
+        type: "practice",
+        practiceLabel: "Add",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and add two numbers with a two-argument lambda.",
+        starterCode:
+          "add = lambda a, b: a + b\n\nprint(add(3, 4))",
+      },
+      {
+        type: "practice",
+        practiceLabel: "Sort",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and sort names by length using a lambda key.",
+        starterCode:
+          'names = ["Sam", "Alexander", "Bob"]\n\nnames.sort(key=lambda x: len(x))\n\nprint(names)',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Square",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and square a number with a lambda.",
+        starterCode:
+          "square = lambda n: n * n\n\nprint(square(6))",
+      },
+      {
+        type: "practice",
+        practiceLabel: "Challenge",
         practicePrompt:
           "Use lambda with sorted to order prices = [19, 5, 42, 8] from highest to lowest (reverse=True).",
         starterCode:

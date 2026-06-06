@@ -35,8 +35,75 @@ export interface TopicQuiz {
   questions: QuizQuestion[];
 }
 
+export type LessonInfographic =
+  | "intro-programming"
+  | "choosing-python"
+  | "setting-up-python"
+  | "python-ides"
+  | "input-output"
+  | "comments"
+  | "variables"
+  | "data-types"
+  | "typecasting"
+  | "math-operators"
+  | "assignment-operators"
+  | "comparison-operators"
+  | "logical-operators"
+  | "identity-operators"
+  | "membership-operators"
+  | "bitwise-operators"
+  | "creating-strings"
+  | "formatting-strings"
+  | "string-indexing"
+  | "string-slicing"
+  | "string-methods"
+  | "creating-lists"
+  | "list-characteristics"
+  | "list-indexing"
+  | "list-slicing"
+  | "list-methods"
+  | "list-modifying"
+  | "tuple-syntax"
+  | "tuple-indexing"
+  | "tuple-properties"
+  | "tuple-slicing"
+  | "tuple-methods"
+  | "set-syntax"
+  | "set-updating"
+  | "set-operations"
+  | "set-methods"
+  | "dictionary-syntax"
+  | "dictionary-keys-values"
+  | "dictionary-accessing"
+  | "dictionary-methods"
+  | "if-statement"
+  | "if-else"
+  | "if-elif-else"
+  | "while-loop"
+  | "for-loop"
+  | "break-continue"
+  | "pass-statement"
+  | "range-function"
+  | "list-comprehension"
+  | "comprehension-uses"
+  | "dict-comprehension"
+  | "functions-creating"
+  | "function-arguments"
+  | "function-variables"
+  | "function-recursion"
+  | "lambda-functions";
+
 export interface LessonBlock {
-  type: "heading" | "paragraph" | "list" | "tip" | "diagram" | "code" | "practice" | "visual";
+  type:
+    | "heading"
+    | "paragraph"
+    | "list"
+    | "tip"
+    | "diagram"
+    | "code"
+    | "practice"
+    | "visual"
+    | "infographic";
   content?: string;
   items?: string[];
   /** For code blocks */
@@ -46,6 +113,12 @@ export interface LessonBlock {
   /** Practice prompt shown above IDE */
   practicePrompt?: string;
   starterCode?: string;
+  /** Short label for IDE exercise tabs */
+  practiceLabel?: string;
+  /** Load in IDE only — no practice card in lesson body */
+  ideOnly?: boolean;
+  /** Named infographic layout for rich lesson visuals */
+  infographic?: LessonInfographic;
 }
 
 export interface DiagramData {

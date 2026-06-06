@@ -6,46 +6,45 @@ export const module4Lessons: Record<string, TopicLesson> = {
     intro:
       "A string is text — names, messages, column labels in a spreadsheet. In Python, you put text inside quotes.",
     blocks: [
-      { type: "heading", content: "Single and double quotes" },
       {
-        type: "paragraph",
-        content:
-          'Both "hello" and \'hello\' work the same. Use whichever quote is easier when your text contains the other kind.',
-      },
-      {
-        type: "code",
-        code:
-          'message = "Hello"\nname = \'Python\'\nprint(message, name)\n\n# Apostrophe inside double quotes:\nprint("It\'s a great day")',
-      },
-      { type: "heading", content: "Multiline strings" },
-      {
-        type: "paragraph",
-        content: "Triple quotes \"\"\" ... \"\"\" let you write text across many lines.",
-      },
-      {
-        type: "code",
-        code:
-          'poem = """Roses are red\nViolets are blue\nPython is fun"""\nprint(poem)',
-      },
-      {
-        type: "visual",
-        diagram: {
-          title: "String = text in quotes",
-          variant: "flow",
-          nodes: [
-            { id: "q", label: "Quotes", sublabel: '" or \'' },
-            { id: "t", label: "Text inside", sublabel: "Your characters" },
-            { id: "s", label: "str type", sublabel: "Python stores it" },
-          ],
-          arrows: [
-            { from: "q", to: "t" },
-            { from: "t", to: "s" },
-          ],
-        },
+        type: "infographic",
+        infographic: "creating-strings",
       },
       {
         type: "practice",
-        practicePrompt: "Create a string with your name and a multiline string with two favorite foods. Print both.",
+        practiceLabel: "Quotes",
+        ideOnly: true,
+        practicePrompt: "Run the code and see single vs double quotes.",
+        starterCode:
+          'message = "Hello"\nname = \'Python\'\n\nprint(message, name)',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Apostrophe",
+        ideOnly: true,
+        practicePrompt: "Run the code — notice the apostrophe inside double quotes.",
+        starterCode: 'print("It\'s a great day")',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Multiline",
+        ideOnly: true,
+        practicePrompt: "Run the poem and see how line breaks are preserved.",
+        starterCode:
+          'poem = """Roses are red\nViolets are blue\nPython is fun"""\n\nprint(poem)',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Type check",
+        ideOnly: true,
+        practicePrompt: "Run the code and confirm the type is str.",
+        starterCode: 'text = "Python"\n\nprint(type(text))',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Challenge",
+        practicePrompt:
+          "Create a string with your name and a multiline string with two favorite foods. Print both.",
         starterCode:
           'my_name = "Alex"\nfoods = """Pizza\nIce cream"""\nprint(my_name)\nprint(foods)',
       },
@@ -61,33 +60,38 @@ export const module4Lessons: Record<string, TopicLesson> = {
     intro:
       "Often you want to mix text with variables — like a greeting with a name. f-strings are the recommended way to format strings in modern Python.",
     blocks: [
-      { type: "heading", content: "f-strings (recommended)" },
       {
-        type: "paragraph",
-        content: 'Put f before the quotes. Inside {}, write a variable or expression.',
-      },
-      {
-        type: "code",
-        code:
-          'name = "Sam"\nage = 20\nprint(f"Hello, {name}!")\nprint(f"Next year you will be {age + 1}")',
-      },
-      { type: "heading", content: ".format() method" },
-      {
-        type: "code",
-        code: 'city = "London"\nprint("I live in {}".format(city))\nprint("I live in {0}".format(city))',
-      },
-      { type: "heading", content: "Comma in print()" },
-      {
-        type: "code",
-        code: 'score = 95\nprint("Your score is", score)',
-      },
-      {
-        type: "tip",
-        content: "For data science, f-strings are perfect for quick labels in charts and reports.",
+        type: "infographic",
+        infographic: "formatting-strings",
       },
       {
         type: "practice",
-        practicePrompt: "Use an f-string to print: Hello, NAME! You have N items.",
+        practiceLabel: "f-Strings",
+        ideOnly: true,
+        practicePrompt: "Run the code and see variables inside f-strings.",
+        starterCode:
+          'name = "Sam"\nage = 20\n\nprint(f"Hello, {name}!")\nprint(f"Next year you will be {age + 1}")',
+      },
+      {
+        type: "practice",
+        practiceLabel: "format()",
+        ideOnly: true,
+        practicePrompt: "Run the code and see how .format() replaces placeholders.",
+        starterCode:
+          'city = "London"\n\nprint("I live in {}".format(city))\nprint("I live in {0}".format(city))',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Comma print",
+        ideOnly: true,
+        practicePrompt: "Run the code and see comma-separated print output.",
+        starterCode: 'score = 95\n\nprint("Your score is", score)',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Challenge",
+        practicePrompt:
+          "Use an f-string to print: Hello, NAME! You have N items.",
         starterCode:
           'user = "Mia"\nitems = 3\nprint(f"Hello, {user}! You have {items} items.")',
       },
@@ -104,32 +108,44 @@ export const module4Lessons: Record<string, TopicLesson> = {
       "Each character in a string has a position called an index. Python counts from 0 — the first letter is index 0.",
     blocks: [
       {
-        type: "visual",
-        diagram: {
-          title: 'Indexes in "Python"',
-          variant: "stack",
-          nodes: [
-            { id: "0", label: "P", sublabel: "index 0" },
-            { id: "1", label: "y", sublabel: "index 1" },
-            { id: "2", label: "t", sublabel: "index 2" },
-            { id: "3", label: "h", sublabel: "index 3" },
-            { id: "4", label: "o", sublabel: "index 4" },
-            { id: "5", label: "n", sublabel: "index 5" },
-          ],
-        },
-      },
-      {
-        type: "code",
-        code:
-          'word = "Python"\nprint(word[0])   # P\nprint(word[1])   # y\nprint(word[-1])  # n (last character)',
-      },
-      {
-        type: "paragraph",
-        content:
-          "Negative indexes count from the end: -1 is last, -2 is second-to-last.",
+        type: "infographic",
+        infographic: "string-indexing",
       },
       {
         type: "practice",
+        practiceLabel: "Basic indexing",
+        ideOnly: true,
+        practicePrompt: "Run the code and see characters at index 0, 1, and 2.",
+        starterCode:
+          'word = "Python"\n\nprint(word[0])   # P\nprint(word[1])   # y\nprint(word[2])   # t',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Negative index",
+        ideOnly: true,
+        practicePrompt: "Run the code and see how -1, -2, -3 count from the end.",
+        starterCode:
+          'word = "Python"\n\nprint(word[-1])   # n\nprint(word[-2])   # o\nprint(word[-3])   # h',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Index error",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and observe the IndexError in the console.",
+        starterCode: 'word = "Python"\n\nprint(word[10])',
+      },
+      {
+        type: "practice",
+        practiceLabel: "First & last",
+        ideOnly: true,
+        practicePrompt: "Run the code to extract first and last letters.",
+        starterCode:
+          'name = "Spiderboy"\n\nfirst_letter = name[0]\nlast_letter = name[-1]\n\nprint(first_letter)\nprint(last_letter)',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Challenge",
         practicePrompt:
           'For text = "Data", print the first char, third char, and last char (use -1).',
         starterCode:
@@ -148,38 +164,37 @@ export const module4Lessons: Record<string, TopicLesson> = {
       "Slicing means cutting out a piece of a string — a substring. You use [start:end] where end is not included.",
     blocks: [
       {
-        type: "heading",
-        content: "Basic slicing [start:end]",
-      },
-      {
-        type: "code",
-        code:
-          'word = "DataScience"\nprint(word[0:4])   # Data\nprint(word[4:11])  # Science\nprint(word[:4])    # Data (from start)\nprint(word[4:])    # Science (to end)',
-      },
-      {
-        type: "visual",
-        diagram: {
-          title: "word[0:4] → characters at 0,1,2,3",
-          variant: "flow",
-          nodes: [
-            { id: "s", label: "Start 0", sublabel: "Include" },
-            { id: "m", label: "Middle", sublabel: "1, 2, 3" },
-            { id: "e", label: "End 4", sublabel: "Stop before" },
-          ],
-          arrows: [
-            { from: "s", to: "m" },
-            { from: "m", to: "e" },
-          ],
-        },
-      },
-      { type: "heading", content: "Step slicing [start:end:step]" },
-      {
-        type: "code",
-        code: 'text = "Python"\nprint(text[::2])   # Pto  (every 2nd letter)\nprint(text[::-1])  # nohtyP (reverse)',
+        type: "infographic",
+        infographic: "string-slicing",
       },
       {
         type: "practice",
-        practicePrompt: 'From email = "user@mail.com", slice the username and domain parts.',
+        practiceLabel: "Basic slice",
+        ideOnly: true,
+        practicePrompt: "Run the code and see how [start:end] extracts substrings.",
+        starterCode:
+          'word = "DataScience"\n\nprint(word[0:4])    # Data\nprint(word[4:11])   # Science\nprint(word[:4])     # Data\nprint(word[4:])     # Science',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Step slice",
+        ideOnly: true,
+        practicePrompt: "Run the code and see every 2nd and 3rd character.",
+        starterCode:
+          'text = "Python"\n\nprint(text[::2])    # Pto\nprint(text[::3])    # Ph',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Reverse",
+        ideOnly: true,
+        practicePrompt: "Run the code and see the reversed string.",
+        starterCode: 'text = "Python"\n\nprint(text[::-1])   # nohtyP',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Challenge",
+        practicePrompt:
+          'From email = "user@mail.com", slice the username and domain parts.',
         starterCode:
           'email = "user@mail.com"\nusername = email[0:4]\ndomain = email[5:]\nprint(username)\nprint(domain)',
       },
@@ -195,34 +210,52 @@ export const module4Lessons: Record<string, TopicLesson> = {
     intro:
       "Strings come with built-in methods — handy tools for cleaning and changing text. You will use these a lot when preparing data.",
     blocks: [
-      { type: "heading", content: "Case and whitespace" },
       {
-        type: "code",
-        code:
-          'name = "  python  "\nprint(name.upper())      # "  PYTHON  "\nprint(name.lower())      # "  python  "\nprint(name.strip())      # "python" (trims spaces)',
-      },
-      { type: "heading", content: "split and join" },
-      {
-        type: "code",
-        code:
-          'csv_line = "apple,banana,mango"\nfruits = csv_line.split(",")\nprint(fruits)\n\njoined = "-".join(fruits)\nprint(joined)',
-      },
-      { type: "heading", content: "find and replace" },
-      {
-        type: "code",
-        code:
-          'text = "I love Python"\nprint(text.replace("love", "enjoy"))\nprint("Python" in text)  # True',
-      },
-      {
-        type: "list",
-        items: [
-          "len(s) — length of string",
-          "s.startswith(\"Hi\") — check beginning",
-          "s.endswith(\".csv\") — check file names",
-        ],
+        type: "infographic",
+        infographic: "string-methods",
       },
       {
         type: "practice",
+        practiceLabel: "Case & strip",
+        ideOnly: true,
+        practicePrompt: "Run the code and compare upper(), lower(), and strip().",
+        starterCode:
+          'name = "  python  "\n\nprint(name.upper())   # "  PYTHON  "\nprint(name.lower())   # "  python  "\nprint(name.strip())   # "python"',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Split & join",
+        ideOnly: true,
+        practicePrompt: "Run the code and see split() turn CSV into a list, then join().",
+        starterCode:
+          'csv_line = "apple,banana,mango"\n\nfruits = csv_line.split(",")\nprint(fruits)\n\njoined = "-".join(fruits)\nprint(joined)',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Replace",
+        ideOnly: true,
+        practicePrompt: "Run the code and see replace() and the in operator.",
+        starterCode:
+          'text = "I love Python"\n\nprint(text.replace("love", "enjoy"))\nprint("Python" in text)',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Length",
+        ideOnly: true,
+        practicePrompt: "Run the code and check the string length.",
+        starterCode: 's = "Python"\n\nprint(len(s))   # 6',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Start & end",
+        ideOnly: true,
+        practicePrompt: "Run the code and see startswith() and endswith().",
+        starterCode:
+          'greeting = "Hi Python"\nfile_name = "sales.csv"\n\nprint(greeting.startswith("Hi"))\nprint(file_name.endswith(".csv"))',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Challenge",
         practicePrompt:
           "Clean messy = '  HELLO world  ': strip, lower, then replace 'world' with 'Python'.",
         starterCode:
