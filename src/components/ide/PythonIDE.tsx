@@ -27,7 +27,7 @@ export function PythonIDE({
 }: PythonIDEProps) {
   const [code, setCode] = useState(initialCode);
   const [cursor, setCursor] = useState({ line: 1, col: 1 });
-  const { lines, loading, running, error, runCode, clearConsole } =
+  const { lines, loading, running, error, runCode, clearConsole, stdinActive, stdinDraft, setStdinDraft, submitStdin } =
     usePyodideRunner();
 
   useEffect(() => {
@@ -128,6 +128,10 @@ export function PythonIDE({
         error={error}
         onClear={clearConsole}
         maxHeight={consoleMaxHeight}
+        stdinActive={stdinActive}
+        stdinDraft={stdinDraft}
+        onStdinDraftChange={setStdinDraft}
+        onStdinSubmit={submitStdin}
       />
 
       {/* Status bar */}

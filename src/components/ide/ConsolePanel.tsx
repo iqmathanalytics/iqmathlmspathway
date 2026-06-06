@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Terminal, Trash2, Copy, Check } from "lucide-react";
-import { useState } from "react";
 import type { ConsoleLine } from "./types";
 import clsx from "clsx";
 
@@ -14,6 +13,10 @@ interface ConsolePanelProps {
   onClear: () => void;
   /** Max height of the scrollable output area (px) */
   maxHeight?: number;
+  stdinActive?: boolean;
+  stdinDraft?: string;
+  onStdinDraftChange?: (value: string) => void;
+  onStdinSubmit?: (value: string) => void;
 }
 
 function lineClass(kind: ConsoleLine["kind"]) {
@@ -22,6 +25,8 @@ function lineClass(kind: ConsoleLine["kind"]) {
       return "text-emerald-300";
     case "stderr":
       return "text-amber-300";
+    case "stdin":
+      return "text-sky-200";
     case "error":
       return "text-red-400";
     case "info":
@@ -39,6 +44,8 @@ function linePrefix(kind: ConsoleLine["kind"]) {
       return "›";
     case "stderr":
       return "!";
+    case "stdin":
+      return "‹";
     case "error":
       return "✕";
     case "info":
@@ -57,27 +64,41 @@ export function ConsolePanel({
   error,
   onClear,
   maxHeight = 220,
+  stdinActive = false,
+  stdinDraft = "",
+  onStdinDraftChange,
+  onStdinSubmit,
 }: ConsolePanelProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const stdinRef = useRef<HTMLInputElement>(null);
   const [copied, setCopied] = useState(false);
   const prevCountRef = useRef(0);
 
-  // Scroll only inside the console panel when new output arrives during a run — not on button clicks
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
 
     const grew = lines.length > prevCountRef.current;
     const hasRunOutput = lines.some(
-      (l) => l.kind === "stdout" || l.kind === "stderr" || l.kind === "error"
+      (l) =>
+        l.kind === "stdout" ||
+        l.kind === "stderr" ||
+        l.kind === "stdin" ||
+        l.kind === "error"
     );
 
-    if (grew && (running || hasRunOutput)) {
+    if (grew && (running || hasRunOutput || stdinActive)) {
       el.scrollTop = el.scrollHeight;
     }
 
     prevCountRef.current = lines.length;
-  }, [lines, running]);
+  }, [lines, running, stdinActive]);
+
+  useEffect(() => {
+    if (stdinActive) {
+      stdinRef.current?.focus();
+    }
+  }, [stdinActive]);
 
   const textToCopy = error ? error : lines.map((l) => l.text).join("");
 
@@ -92,13 +113,23 @@ export function ConsolePanel({
     }
   }
 
+  function handleStdinSubmit(e: FormEvent) {
+    e.preventDefault();
+    onStdinSubmit?.(stdinDraft);
+  }
+
   return (
     <div className="flex flex-col border-t border-gray-700 bg-[#0d1117]">
       <div className="flex items-center justify-between border-b border-gray-800 bg-[#161b22] px-3 py-1.5">
         <div className="flex items-center gap-2 text-xs text-gray-400">
           <Terminal className="h-3.5 w-3.5" />
           <span className="font-medium text-gray-300">Console</span>
-          {running && (
+          {stdinActive && (
+            <span className="rounded bg-sky-600/20 px-1.5 py-0.5 text-sky-300">
+              Waiting for input…
+            </span>
+          )}
+          {running && !stdinActive && (
             <span className="rounded bg-brand-600/20 px-1.5 py-0.5 text-brand-400">
               Running…
             </span>
@@ -170,7 +201,8 @@ export function ConsolePanel({
                 <span className="min-w-0 flex-1">{line.text}</span>
                 {line.time &&
                   line.kind !== "stdout" &&
-                  line.kind !== "stderr" && (
+                  line.kind !== "stderr" &&
+                  line.kind !== "stdin" && (
                     <span className="shrink-0 text-[10px] opacity-40">
                       {line.time}
                     </span>
@@ -180,6 +212,28 @@ export function ConsolePanel({
           </div>
         )}
       </div>
+
+      {stdinActive && onStdinSubmit && onStdinDraftChange && (
+        <form
+          onSubmit={handleStdinSubmit}
+          className="flex items-center gap-2 border-t border-sky-900/60 bg-[#0c1929] px-3 py-2"
+        >
+          <span className="select-none font-mono text-[13px] text-sky-300/70">
+            ›
+          </span>
+          <input
+            ref={stdinRef}
+            type="text"
+            value={stdinDraft}
+            onChange={(e) => onStdinDraftChange(e.target.value)}
+            className="min-w-0 flex-1 bg-transparent font-mono text-[13px] text-sky-100 outline-none placeholder:text-gray-500"
+            placeholder="Type your answer and press Enter"
+            aria-label="Program input"
+            autoComplete="off"
+            spellCheck={false}
+          />
+        </form>
+      )}
     </div>
   );
 }

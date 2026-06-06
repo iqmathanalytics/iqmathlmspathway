@@ -31,6 +31,7 @@ async function runSingleTest(
       onStdout: (chunk) => {
         stdout += chunk;
       },
+      stdinLines: test.stdin ? [test.stdin] : undefined,
     });
 
     const actual = normalizeStdout(stdout);

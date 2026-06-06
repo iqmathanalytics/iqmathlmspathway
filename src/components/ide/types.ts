@@ -1,4 +1,10 @@
-export type ConsoleLineKind = "stdout" | "stderr" | "info" | "error" | "divider";
+export type ConsoleLineKind =
+  | "stdout"
+  | "stderr"
+  | "stdin"
+  | "info"
+  | "error"
+  | "divider";
 
 export interface ConsoleLine {
   id: string;

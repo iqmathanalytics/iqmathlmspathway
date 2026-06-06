@@ -46,7 +46,18 @@ export function PracticeWorkspaceEditor({
   const [submitting, setSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState<string | null>(null);
 
-  const { lines, loading, running, error, runCode, clearConsole } = usePyodideRunner();
+  const {
+    lines,
+    loading,
+    running,
+    error,
+    runCode,
+    clearConsole,
+    stdinActive,
+    stdinDraft,
+    setStdinDraft,
+    submitStdin,
+  } = usePyodideRunner();
 
   useEffect(() => {
     setCode("");
@@ -208,6 +219,10 @@ export function PracticeWorkspaceEditor({
             error={error}
             onClear={clearConsole}
             maxHeight={200}
+            stdinActive={stdinActive}
+            stdinDraft={stdinDraft}
+            onStdinDraftChange={setStdinDraft}
+            onStdinSubmit={submitStdin}
           />
         </div>
       </div>

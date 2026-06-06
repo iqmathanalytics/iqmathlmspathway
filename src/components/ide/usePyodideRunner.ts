@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { consoleStdin } from "@/lib/console-stdin";
 import { loadPyodideRuntime, runPythonWithLock, type PyodideRuntime } from "@/lib/pyodide-runtime";
 import type { ConsoleLine } from "./types";
 
@@ -23,10 +24,14 @@ export function usePyodideRunner() {
   const [loading, setLoading] = useState(true);
   const [running, setRunning] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [stdinActive, setStdinActive] = useState(false);
+  const [stdinDraft, setStdinDraft] = useState("");
   const pyodideRef = useRef<PyodideRuntime | null>(null);
 
   const clearConsole = useCallback(() => {
     setLines([]);
+    setStdinActive(false);
+    setStdinDraft("");
   }, []);
 
   useEffect(() => {
@@ -64,10 +69,22 @@ export function usePyodideRunner() {
     };
   }, []);
 
+  const submitStdin = useCallback((line: string) => {
+    setStdinActive(false);
+    setStdinDraft("");
+    setLines((prev) => [
+      ...prev,
+      { id: nextId(), kind: "stdin", text: line },
+    ]);
+    consoleStdin.submit(line);
+  }, []);
+
   const runCode = useCallback(
     async (code: string) => {
       if (!pyodideRef.current || running) return;
       setRunning(true);
+      setStdinActive(false);
+      setStdinDraft("");
 
       setLines((prev) => [
         ...prev,
@@ -92,6 +109,8 @@ export function usePyodideRunner() {
         await runPythonWithLock(pyodideRef.current, code, {
           onStdout: appendStdout,
           onStderr: appendStderr,
+          interactiveStdin: true,
+          onStdinRequest: () => setStdinActive(true),
         });
       } catch (e) {
         const msg = e instanceof Error ? e.message : String(e);
@@ -101,6 +120,8 @@ export function usePyodideRunner() {
         ]);
       } finally {
         setRunning(false);
+        setStdinActive(false);
+        setStdinDraft("");
       }
     },
     [running]
@@ -113,5 +134,9 @@ export function usePyodideRunner() {
     error,
     runCode,
     clearConsole,
+    stdinActive,
+    stdinDraft,
+    setStdinDraft,
+    submitStdin,
   };
 }
