@@ -3,9 +3,12 @@
 import {
   ArrowRight,
   BarChart3,
+  BookOpen,
   Lightbulb,
   MapPin,
   Play,
+  Search,
+  Target,
   Wrench,
 } from "lucide-react";
 import { useLessonPractice } from "@/components/lesson/LessonPracticeContext";
@@ -95,23 +98,82 @@ function CodeExercisePanel({
   );
 }
 
+function CodeWindow({
+  filename,
+  children,
+}: {
+  filename: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="overflow-hidden rounded-xl border border-black/15 bg-white/60">
+      <div className="flex items-center gap-1.5 border-b border-black/10 bg-black/[0.03] px-3 py-1.5">
+        <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+        <span className="font-mono text-[11px] text-gray-500">{filename}</span>
+      </div>
+      <pre className="overflow-x-auto bg-transparent px-4 py-3.5 font-mono text-[13.5px] leading-loose">
+        {children}
+      </pre>
+    </div>
+  );
+}
+
+function OutputBox({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mt-2 overflow-hidden rounded-lg border border-black/10 bg-black/[0.03]">
+      <div className="border-b border-black/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+        Output
+      </div>
+      <pre className="px-3 py-2.5 font-mono text-[13px] text-gray-700">
+        {children}
+      </pre>
+    </div>
+  );
+}
+
 const OVERVIEW_METHODS = [
   {
     symbol: "upper()",
     name: "Uppercase",
-    note: "Converts text to capital letters",
+    note: "Converts every letter to capitals",
+    example: '"hi".upper() → "HI"',
     symbolClass: "text-[#1a5fb4]",
   },
   {
     symbol: "lower()",
     name: "Lowercase",
-    note: "Converts text to lowercase",
+    note: "Converts every letter to small letters",
+    example: '"HI".lower() → "hi"',
     symbolClass: "text-[#2d7a45]",
   },
   {
     symbol: "strip()",
-    name: "Trim Spaces",
-    note: "Removes leading and trailing whitespace",
+    name: "Trim spaces",
+    note: "Removes spaces from both ends",
+    example: '" hi ".strip() → "hi"',
+    symbolClass: "text-[#5e3fa3]",
+  },
+  {
+    symbol: "split()",
+    name: "Split into list",
+    note: "Breaks a string at a separator",
+    example: '"a,b".split(",") → ["a","b"]',
+    symbolClass: "text-[#1a5fb4]",
+  },
+  {
+    symbol: "join()",
+    name: "Join a list",
+    note: "Combines list items into one string",
+    example: '"-".join(["a","b"]) → "a-b"',
+    symbolClass: "text-[#2d7a45]",
+  },
+  {
+    symbol: "replace()",
+    name: "Replace text",
+    note: "Swaps one substring for another",
+    example: '"cat".replace("c","b") → "bat"',
     symbolClass: "text-[#5e3fa3]",
   },
 ] as const;
@@ -129,11 +191,16 @@ const DATA_SCIENCE_ROWS = [
 const REF_ROWS = [
   { method: "upper()", purpose: "Uppercase text", example: '"python".upper()' },
   { method: "lower()", purpose: "Lowercase text", example: '"PYTHON".lower()' },
-  { method: "strip()", purpose: "Remove spaces", example: '" hi ".strip()' },
-  { method: "split()", purpose: "String → List", example: '"a,b".split(",")' },
-  { method: "join()", purpose: "List → String", example: '"-".join(lst)' },
+  { method: "title()", purpose: "Title Case words", example: '"hello world".title()' },
+  { method: "strip()", purpose: "Remove end spaces", example: '" hi ".strip()' },
+  { method: "lstrip()", purpose: "Remove left spaces", example: '" hi".lstrip()' },
+  { method: "rstrip()", purpose: "Remove right spaces", example: '"hi ".rstrip()' },
+  { method: "split()", purpose: "String → list", example: '"a,b".split(",")' },
+  { method: "join()", purpose: "List → string", example: '"-".join(lst)' },
   { method: "replace()", purpose: "Replace text", example: 's.replace("a","b")' },
-  { method: "len()", purpose: "Length", example: "len(s)" },
+  { method: "find()", purpose: "Find substring index", example: 's.find("py")' },
+  { method: "count()", purpose: "Count occurrences", example: 's.count("a")' },
+  { method: "len()", purpose: "Character count", example: "len(s)" },
   { method: "startswith()", purpose: "Check beginning", example: 's.startswith("Hi")' },
   { method: "endswith()", purpose: "Check ending", example: 's.endswith(".csv")' },
 ] as const;
@@ -161,7 +228,12 @@ export function StringMethodsInfographic() {
         </h3>
         <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
           Python provides many built-in string methods for changing text,
-          removing spaces, searching content, splitting data, and more.
+          removing spaces, searching content, splitting data, and more. You
+          call them with dot notation:{" "}
+          <code className="rounded bg-black/[0.07] px-1 font-mono text-[12.5px]">
+            variable.method()
+          </code>
+          .
         </p>
 
         <div className="flex flex-col gap-1.5">
@@ -181,8 +253,54 @@ export function StringMethodsInfographic() {
                 </p>
                 <p className="text-[12.5px] text-gray-500">{m.note}</p>
               </div>
+              <p className="hidden shrink-0 whitespace-nowrap font-mono text-[12px] text-gray-500 sm:block">
+                {m.example}
+              </p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <hr className="my-7 border-black/10" />
+
+      {/* Syntax */}
+      <section className="mb-8">
+        <SectionLabel variant="teal">
+          <BookOpen className="h-3 w-3" />
+          Syntax
+        </SectionLabel>
+        <h3 className="mb-1.5 text-base font-semibold tracking-tight">
+          How to Call a String Method
+        </h3>
+        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
+          Strings are immutable — methods return a <strong>new</strong> string
+          instead of changing the original. Always store the result if you need
+          it later.
+        </p>
+
+        <CodeWindow filename="syntax.py">
+          <span className="text-gray-800">text = &quot;hello&quot;</span>
+          {"\n"}
+          <span className="text-gray-800">result = text.upper()</span>
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(text) </span>
+          <span className="italic text-[#5a8a5a]"># hello — unchanged</span>
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(result) </span>
+          <span className="italic text-[#5a8a5a]"># HELLO</span>
+        </CodeWindow>
+
+        <div className="mt-2.5 flex gap-2 rounded-lg bg-black/[0.04] px-3 py-2.5 text-[13px] leading-relaxed text-gray-600">
+          <Lightbulb className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
+          <span>
+            Chain methods together:{" "}
+            <code className="rounded bg-black/[0.07] px-1 font-mono text-[12px]">
+              messy.strip().lower()
+            </code>{" "}
+            cleans and lowercases in one line.
+          </span>
         </div>
       </section>
 
@@ -191,31 +309,112 @@ export function StringMethodsInfographic() {
       {/* Section 2: Case conversion */}
       <section className="mb-8">
         <SectionLabel variant="green">Case conversion</SectionLabel>
-        <h3 className="mb-3 text-base font-semibold tracking-tight">
-          upper(), lower(), strip()
+        <h3 className="mb-1.5 text-base font-semibold tracking-tight">
+          upper(), lower(), and title()
         </h3>
+        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
+          These methods change letter casing. They are useful when comparing
+          user input or normalizing messy data before analysis.
+        </p>
 
         <CodeExercisePanel practiceIndex={0} filename="case_methods.py">
           <span className="text-gray-800">name = &quot;  python  &quot;</span>
           {"\n"}
           {"\n"}
           <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">(name.upper()) </span>
-          <span className="italic text-[#5a8a5a]"># &quot;  PYTHON  &quot;</span>
+          <span className="text-gray-800">(name.upper())</span>
           {"\n"}
           <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">(name.lower()) </span>
-          <span className="italic text-[#5a8a5a]"># &quot;  python  &quot;</span>
+          <span className="text-gray-800">(name.lower())</span>
           {"\n"}
           <span className="font-semibold text-[#8b2070]">print</span>
-          <span className="text-gray-800">(name.strip()) </span>
-          <span className="italic text-[#5a8a5a]"># &quot;python&quot;</span>
+          <span className="text-gray-800">(&quot;hello world&quot;.title())</span>
         </CodeExercisePanel>
+
+        <OutputBox>
+          PYTHON
+          {"\n"}
+          {"  python  "}
+          {"\n"}
+          Hello World
+        </OutputBox>
+
+        <div className="mt-3 overflow-hidden rounded-xl border border-black/15 bg-white/50">
+          <table className="w-full border-collapse text-[13.5px]">
+            <thead>
+              <tr className="border-b border-black/15 bg-black/[0.05]">
+                <th className="px-3.5 py-2 text-left text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+                  Method
+                </th>
+                <th className="px-3.5 py-2 text-left text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+                  What it does
+                </th>
+                <th className="px-3.5 py-2 text-left text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+                  Example result
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b border-black/10">
+                <td className="px-3.5 py-2.5 font-mono text-gray-800">upper()</td>
+                <td className="px-3.5 py-2.5 text-gray-600">All capitals</td>
+                <td className="px-3.5 py-2.5 font-mono text-gray-600">&quot;PYTHON&quot;</td>
+              </tr>
+              <tr className="border-b border-black/10">
+                <td className="px-3.5 py-2.5 font-mono text-gray-800">lower()</td>
+                <td className="px-3.5 py-2.5 text-gray-600">All lowercase</td>
+                <td className="px-3.5 py-2.5 font-mono text-gray-600">&quot;python&quot;</td>
+              </tr>
+              <tr>
+                <td className="px-3.5 py-2.5 font-mono text-gray-800">title()</td>
+                <td className="px-3.5 py-2.5 text-gray-600">Capitalize each word</td>
+                <td className="px-3.5 py-2.5 font-mono text-gray-600">&quot;Hello World&quot;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <hr className="my-7 border-black/10" />
+
+      {/* strip family */}
+      <section className="mb-8">
+        <SectionLabel variant="purple">Whitespace</SectionLabel>
+        <h3 className="mb-1.5 text-base font-semibold tracking-tight">
+          strip(), lstrip(), and rstrip()
+        </h3>
+        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
+          Real-world data often has extra spaces from copy-paste or CSV files.
+          These methods remove unwanted whitespace from one or both ends.
+        </p>
+
+        <CodeWindow filename="strip_methods.py">
+          <span className="text-gray-800">text = &quot;  hello  &quot;</span>
+          {"\n"}
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(text.strip())</span>
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(text.lstrip())</span>
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(text.rstrip())</span>
+        </CodeWindow>
+
+        <OutputBox>
+          hello
+          {"\n"}
+          hello
+          {"\n"}
+          {"  hello"}
+        </OutputBox>
 
         <div className="mt-2.5 flex gap-2 rounded-lg bg-black/[0.04] px-3 py-2.5 text-[13px] leading-relaxed text-gray-600">
           <Lightbulb className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
           <span>
-            strip() removes extra spaces at the beginning and end of a string.
+            strip() removes spaces at both ends; lstrip() only left; rstrip()
+            only right. None of them remove spaces in the middle.
           </span>
         </div>
       </section>
@@ -229,8 +428,9 @@ export function StringMethodsInfographic() {
           Convert Between Strings and Lists
         </h3>
         <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
-          split() breaks a string into a list, while join() combines a list into
-          a string.
+          split() breaks a string into a list using a separator. join() does
+          the reverse — it takes a list and builds one string. Together they
+          are essential for working with CSV and tabular text data.
         </p>
 
         <CodeExercisePanel practiceIndex={1} filename="split_join.py">
@@ -250,6 +450,12 @@ export function StringMethodsInfographic() {
           <span className="font-semibold text-[#8b2070]">print</span>
           <span className="text-gray-800">(joined)</span>
         </CodeExercisePanel>
+
+        <OutputBox>
+          [&apos;apple&apos;, &apos;banana&apos;, &apos;mango&apos;]
+          {"\n"}
+          apple-banana-mango
+        </OutputBox>
 
         <div className="mt-3 overflow-hidden rounded-xl border border-black/15 bg-white/50">
           <table className="w-full border-collapse text-[13.5px]">
@@ -283,6 +489,18 @@ export function StringMethodsInfographic() {
             </tbody>
           </table>
         </div>
+
+        <div className="mt-2.5 flex gap-2 rounded-lg bg-black/[0.04] px-3 py-2.5 text-[13px] leading-relaxed text-gray-600">
+          <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
+          <span>
+            split() is called on the string; join() is called on the separator
+            string:{" "}
+            <code className="rounded bg-black/[0.07] px-1 font-mono text-[12px]">
+              &quot;-&quot;.join(list)
+            </code>
+            .
+          </span>
+        </div>
       </section>
 
       <hr className="my-7 border-black/10" />
@@ -291,8 +509,17 @@ export function StringMethodsInfographic() {
       <section className="mb-8">
         <SectionLabel variant="teal">Search and replace</SectionLabel>
         <h3 className="mb-3 text-base font-semibold tracking-tight">
-          Finding and replacing text
+          replace(), find(), and count()
         </h3>
+        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
+          replace() swaps text inside a string. find() returns the starting
+          index of a substring (or -1 if missing). count() tells you how many
+          times a value appears. Use{" "}
+          <code className="rounded bg-black/[0.07] px-1 font-mono text-[12.5px]">
+            in
+          </code>{" "}
+          for a simple True/False check.
+        </p>
 
         <CodeExercisePanel practiceIndex={2} filename="replace.py">
           <span className="text-gray-800">text = &quot;I love Python&quot;</span>
@@ -304,10 +531,26 @@ export function StringMethodsInfographic() {
           </span>
           {"\n"}
           <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(text.find(&quot;Py&quot;))</span>
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(text.count(&quot;o&quot;))</span>
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
           <span className="text-gray-800">
             (&quot;Python&quot; in text)
           </span>
         </CodeExercisePanel>
+
+        <OutputBox>
+          I enjoy Python
+          {"\n"}
+          7
+          {"\n"}
+          2
+          {"\n"}
+          True
+        </OutputBox>
 
         <div className="mt-3 overflow-hidden rounded-xl border border-black/15 bg-white/50">
           <table className="w-full border-collapse text-[13.5px]">
@@ -327,6 +570,18 @@ export function StringMethodsInfographic() {
                   replace(&quot;love&quot;,&quot;enjoy&quot;)
                 </td>
                 <td className="px-3.5 py-2.5 text-gray-600">I enjoy Python</td>
+              </tr>
+              <tr className="border-b border-black/10">
+                <td className="px-3.5 py-2.5 font-mono text-sm text-gray-800">
+                  find(&quot;Py&quot;)
+                </td>
+                <td className="px-3.5 py-2.5 font-semibold text-[#2d7a45]">7</td>
+              </tr>
+              <tr className="border-b border-black/10">
+                <td className="px-3.5 py-2.5 font-mono text-sm text-gray-800">
+                  count(&quot;o&quot;)
+                </td>
+                <td className="px-3.5 py-2.5 font-semibold text-[#2d7a45]">2</td>
               </tr>
               <tr>
                 <td className="px-3.5 py-2.5 font-mono text-sm text-gray-800">
@@ -360,9 +615,15 @@ export function StringMethodsInfographic() {
           <span className="font-semibold text-[#8b2070]">print</span>
           <span className="text-gray-800">(</span>
           <span className="font-semibold text-[#8b2070]">len</span>
-          <span className="text-gray-800">(s)) </span>
-          <span className="italic text-[#5a8a5a]"># 6</span>
+          <span className="text-gray-800">(s))</span>
         </CodeExercisePanel>
+
+        <OutputBox>6</OutputBox>
+
+        <p className="mt-2.5 text-[13.5px] leading-relaxed text-gray-600">
+          len() counts every character including spaces and punctuation. It
+          works on strings, lists, and other collections.
+        </p>
       </section>
 
       <hr className="my-7 border-black/10" />
@@ -392,7 +653,20 @@ export function StringMethodsInfographic() {
           <span className="text-gray-800">
             (file_name.endswith(&quot;.csv&quot;))
           </span>
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">
+            (file_name.endswith(&quot;.pdf&quot;))
+          </span>
         </CodeExercisePanel>
+
+        <OutputBox>
+          True
+          {"\n"}
+          True
+          {"\n"}
+          False
+        </OutputBox>
 
         <div className="mt-2.5 flex gap-2 rounded-lg bg-black/[0.04] px-3 py-2.5 text-[13px] leading-relaxed text-gray-600">
           <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
@@ -442,6 +716,32 @@ export function StringMethodsInfographic() {
             </tbody>
           </table>
         </div>
+      </section>
+
+      <hr className="my-7 border-black/10" />
+
+      {/* Practice */}
+      <section className="mb-8">
+        <SectionLabel variant="purple">
+          <Target className="h-3 w-3" />
+          Practice
+        </SectionLabel>
+        <h3 className="mb-3 text-base font-semibold tracking-tight">
+          Try Yourself
+        </h3>
+        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
+          Use the IDE on the right. Click any exercise below or the{" "}
+          <strong>IDE</strong> button on a code block to load starter code.
+        </p>
+        <CodeExercisePanel practiceIndex={5} filename="clean_data.py">
+          <span className="text-gray-800">messy = &quot;  HELLO world  &quot;</span>
+          {"\n"}
+          <span className="text-gray-800">clean = messy.strip().lower()</span>
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(clean.replace(&quot;world&quot;, &quot;python&quot;))</span>
+        </CodeExercisePanel>
+        <OutputBox>hello python</OutputBox>
       </section>
 
       <hr className="my-7 border-black/10" />

@@ -317,9 +317,10 @@ export const module5Lessons: Record<string, TopicLesson> = {
       },
     ],
     keyTakeaways: [
-      "append() adds to the end; insert() adds at a position; extend() merges another list.",
-      "remove() deletes a value; pop() removes the last (or at index).",
-      "sort() orders the list; reverse() flips order; clear() empties it.",
+      "append() adds one item; insert() adds at an index; extend() merges lists.",
+      "append([3,4]) nests a list; extend([3,4]) adds each element separately.",
+      "remove() deletes by value; pop() removes and returns (last or at index).",
+      "sort(), reverse(), and clear() change the list in place; count() and index() search.",
     ],
   },
   "m5-t6": {

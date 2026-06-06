@@ -263,9 +263,10 @@ export const module4Lessons: Record<string, TopicLesson> = {
       },
     ],
     keyTakeaways: [
-      "Methods use dot: text.upper(), text.split(',').",
-      "strip() removes extra spaces — common in real data.",
-      "split/join help work with comma-separated values.",
+      "String methods use dot notation: text.upper(), text.split(',').",
+      "Strings are immutable — store the result: clean = text.strip().lower().",
+      "strip/lstrip/rstrip remove extra spaces; split/join handle CSV-style data.",
+      "replace(), find(), count(), and in help search and edit text.",
     ],
   },
 };
