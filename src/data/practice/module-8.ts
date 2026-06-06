@@ -4,33 +4,52 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t1-p01",
     "topicId": "m8-t1",
-    "slug": "m8_t1-1",
-    "title": "Dictionary Syntax: Warm-up",
+    "slug": "create-dict",
+    "title": "Dictionary Syntax: Create a Dict",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Dictionary Syntax. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Create d = {\"name\": \"Ana\", \"age\": 20} and print d[\"name\"].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "d"
+      ],
+      "requiresDictKey": "name",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Dictionaries use "
+        },
+        {
+          "type": "code",
+          "value": "{key: value}"
+        },
+        {
+          "type": "text",
+          "value": " syntax."
+        }
+      ],
+      "editorPlaceholder": "# create dict",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "Ana"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: Ana"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "d = {\"name\":\"Ana\",\"age\":20}\\nprint(d[\"name\"])"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t1-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "Ana",
         "visibility": "public"
       }
     ]
@@ -38,33 +57,51 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t1-p02",
     "topicId": "m8-t1",
-    "slug": "m8_t1-2",
-    "title": "Dictionary Syntax: Output Two Values",
+    "slug": "empty-dict",
+    "title": "Dictionary Syntax: Empty Dict",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Dictionary Syntax and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Create d = {}, print len(d).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "d"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Empty dict with "
+        },
+        {
+          "type": "code",
+          "value": "{}"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# {}",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "0"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 0"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "d = {}\\nprint(len(d))"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t1-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "0",
         "visibility": "public"
       }
     ]
@@ -72,33 +109,58 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t1-p03",
     "topicId": "m8-t1",
-    "slug": "m8_t1-3",
-    "title": "Dictionary Syntax: Simple Loop",
-    "difficulty": "medium",
+    "slug": "dict-func",
+    "title": "Dictionary Syntax: dict() Constructor",
+    "difficulty": "easy",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Dictionary Syntax.",
+    "layout": "challenge",
+    "description": "Print dict(name=\"Bob\", age=25)[\"name\"].",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# dict()",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "dict()"
+        },
+        {
+          "type": "text",
+          "value": " with keyword args."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "Bob",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "Bob"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: Bob"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(dict(name=\"Bob\", age=25)[\"name\"])"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t1-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "Bob",
         "visibility": "public"
       }
     ]
@@ -106,33 +168,52 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t1-p04",
     "topicId": "m8-t1",
-    "slug": "m8_t1-4",
-    "title": "Dictionary Syntax: Condition",
+    "slug": "access-bracket",
+    "title": "Dictionary Syntax: Bracket Access",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Set d={\"x\":10}, print d[\"x\"].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "d"
+      ],
+      "requiresDictKey": "x",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Access with "
+        },
+        {
+          "type": "code",
+          "value": "d[\"key\"]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# d[key]",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "10"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 10"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "d = {\"x\":10}\\nprint(d[\"x\"])"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t1-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "10",
         "visibility": "public"
       }
     ]
@@ -140,33 +221,44 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t1-p05",
     "topicId": "m8-t1",
-    "slug": "m8_t1-5",
-    "title": "Dictionary Syntax: Function Stub",
+    "slug": "nested-dict",
+    "title": "Dictionary Syntax: Nested Dict",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Set d={\"user\":{\"name\":\"Kim\"}}, print d[\"user\"][\"name\"].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "d"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Access nested dict values."
+        }
+      ],
+      "editorPlaceholder": "# nested",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "Kim"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: Kim"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "d = {\"user\":{\"name\":\"Kim\"}}\\nprint(d[\"user\"][\"name\"])"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t1-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "Kim",
         "visibility": "public"
       }
     ]
@@ -174,33 +266,44 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t1-p06",
     "topicId": "m8-t1",
-    "slug": "m8_t1-6",
-    "title": "Dictionary Syntax: List Practice",
+    "slug": "change-value",
+    "title": "Dictionary Syntax: Change Value",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Dictionary Syntax and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Set d={\"a\":1}, d[\"a\"]=2, print d[\"a\"].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "d"
+      ],
+      "requiresDictKey": "a",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Dicts are mutable — change values."
+        }
+      ],
+      "editorPlaceholder": "# change",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "2"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 2"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "d = {\"a\":1}\\nd[\"a\"]=2\\nprint(d[\"a\"])"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t1-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "2",
         "visibility": "public"
       }
     ]
@@ -208,33 +311,44 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t1-p07",
     "topicId": "m8-t1",
-    "slug": "m8_t1-7",
-    "title": "Dictionary Syntax: Dict Lookup",
+    "slug": "add-key",
+    "title": "Dictionary Syntax: Add New Key",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Set d={\"a\":1}, d[\"b\"]=2, print d[\"b\"].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "d"
+      ],
+      "requiresDictKey": "b",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Add new key-value pairs."
+        }
+      ],
+      "editorPlaceholder": "# add key",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "2"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 2"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "d = {\"a\":1}\\nd[\"b\"]=2\\nprint(d[\"b\"])"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t1-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "2",
         "visibility": "public"
       }
     ]
@@ -242,33 +356,52 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t2-p01",
     "topicId": "m8-t2",
-    "slug": "m8_t2-1",
-    "title": "Keys and Values: Warm-up",
+    "slug": "keys",
+    "title": "Keys and Values: keys()",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Keys and Values. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Set d={\"a\":1,\"b\":2}, print list(d.keys()).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "d"
+      ],
+      "requiresDictKey": "a",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".keys()"
+        },
+        {
+          "type": "text",
+          "value": " to get all keys."
+        }
+      ],
+      "editorPlaceholder": "# keys",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "['a', 'b']"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print keys as list"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "d = {\"a\":1,\"b\":2}\\nprint(list(d.keys()))"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t2-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "['a', 'b']",
         "visibility": "public"
       }
     ]
@@ -276,33 +409,51 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t2-p02",
     "topicId": "m8-t2",
-    "slug": "m8_t2-2",
-    "title": "Keys and Values: Output Two Values",
+    "slug": "values",
+    "title": "Keys and Values: values()",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Keys and Values and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Set d={\"a\":1,\"b\":2}, print list(d.values()).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "d"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".values()"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# values",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "[1, 2]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print values"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "d = {\"a\":1,\"b\":2}\\nprint(list(d.values()))"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t2-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "[1, 2]",
         "visibility": "public"
       }
     ]
@@ -310,33 +461,51 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t2-p03",
     "topicId": "m8-t2",
-    "slug": "m8_t2-3",
-    "title": "Keys and Values: Simple Loop",
+    "slug": "items",
+    "title": "Keys and Values: items()",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Keys and Values.",
+    "layout": "challenge",
+    "description": "Set d={\"x\":1}, print list(d.items()).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "d"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".items()"
+        },
+        {
+          "type": "text",
+          "value": " for key-value pairs."
+        }
+      ],
+      "editorPlaceholder": "# items",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "[('x', 1)]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print items"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "d = {\"x\":1}\\nprint(list(d.items()))"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t2-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "[('x', 1)]",
         "visibility": "public"
       }
     ]
@@ -344,33 +513,58 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t2-p04",
     "topicId": "m8-t2",
-    "slug": "m8_t2-4",
-    "title": "Keys and Values: Condition",
+    "slug": "get",
+    "title": "Keys and Values: get()",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Print {\"a\":1}.get(\"b\", 0).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# get",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! get() returns default if key missing.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".get(\"b\", 0)"
+        },
+        {
+          "type": "text",
+          "value": " for safe access."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "0",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "0"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 0"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({\"a\":1}.get(\"b\", 0))"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t2-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "0",
         "visibility": "public"
       }
     ]
@@ -378,33 +572,58 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t2-p05",
     "topicId": "m8-t2",
-    "slug": "m8_t2-5",
-    "title": "Keys and Values: Function Stub",
+    "slug": "in-dict",
+    "title": "Keys and Values: Key Membership",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print \"name\" in {\"name\":\"Ana\"}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# in dict",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Check if key exists with "
+        },
+        {
+          "type": "code",
+          "value": "in"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(\"name\" in {\"name\":\"Ana\"})"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t2-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -412,33 +631,50 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t2-p06",
     "topicId": "m8-t2",
-    "slug": "m8_t2-6",
-    "title": "Keys and Values: List Practice",
+    "slug": "len-dict",
+    "title": "Keys and Values: Dict Length",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Keys and Values and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Print len({\"a\":1,\"b\":2,\"c\":3}).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# len",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "len() counts key-value pairs."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "3",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "3"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 3"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(len({\"a\":1,\"b\":2,\"c\":3}))"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t2-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "3",
         "visibility": "public"
       }
     ]
@@ -446,28 +682,36 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t2-p07",
     "topicId": "m8-t2",
-    "slug": "m8_t2-7",
-    "title": "Keys and Values: Dict Lookup",
+    "slug": "topic-lookup",
+    "title": "Keys and Values: Topic Lookup",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Create d={\"topic\":\"Python\"}, print d[\"topic\"].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresDictKey": "topic",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Look up value by key."
+        }
+      ],
+      "editorPlaceholder": "# d[\"topic\"]",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "Python"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: Python"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "d = {\"topic\":\"Python\"}\\nprint(d[\"topic\"])"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t2-p07-t1",
@@ -480,33 +724,52 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t3-p01",
     "topicId": "m8-t3",
-    "slug": "m8_t3-1",
-    "title": "Accessing Dictionaries: Warm-up",
+    "slug": "keys",
+    "title": "Accessing Dictionaries: keys()",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Accessing Dictionaries. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Set d={\"a\":1,\"b\":2}, print list(d.keys()).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "d"
+      ],
+      "requiresDictKey": "a",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".keys()"
+        },
+        {
+          "type": "text",
+          "value": " to get all keys."
+        }
+      ],
+      "editorPlaceholder": "# keys",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "['a', 'b']"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print keys as list"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "d = {\"a\":1,\"b\":2}\\nprint(list(d.keys()))"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t3-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "['a', 'b']",
         "visibility": "public"
       }
     ]
@@ -514,33 +777,51 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t3-p02",
     "topicId": "m8-t3",
-    "slug": "m8_t3-2",
-    "title": "Accessing Dictionaries: Output Two Values",
+    "slug": "values",
+    "title": "Accessing Dictionaries: values()",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Accessing Dictionaries and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Set d={\"a\":1,\"b\":2}, print list(d.values()).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "d"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".values()"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# values",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "[1, 2]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print values"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "d = {\"a\":1,\"b\":2}\\nprint(list(d.values()))"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t3-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "[1, 2]",
         "visibility": "public"
       }
     ]
@@ -548,33 +829,51 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t3-p03",
     "topicId": "m8-t3",
-    "slug": "m8_t3-3",
-    "title": "Accessing Dictionaries: Simple Loop",
+    "slug": "items",
+    "title": "Accessing Dictionaries: items()",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Accessing Dictionaries.",
+    "layout": "challenge",
+    "description": "Set d={\"x\":1}, print list(d.items()).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "d"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".items()"
+        },
+        {
+          "type": "text",
+          "value": " for key-value pairs."
+        }
+      ],
+      "editorPlaceholder": "# items",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "[('x', 1)]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print items"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "d = {\"x\":1}\\nprint(list(d.items()))"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t3-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "[('x', 1)]",
         "visibility": "public"
       }
     ]
@@ -582,33 +881,58 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t3-p04",
     "topicId": "m8-t3",
-    "slug": "m8_t3-4",
-    "title": "Accessing Dictionaries: Condition",
+    "slug": "get",
+    "title": "Accessing Dictionaries: get()",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Print {\"a\":1}.get(\"b\", 0).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# get",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! get() returns default if key missing.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".get(\"b\", 0)"
+        },
+        {
+          "type": "text",
+          "value": " for safe access."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "0",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "0"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 0"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({\"a\":1}.get(\"b\", 0))"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t3-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "0",
         "visibility": "public"
       }
     ]
@@ -616,33 +940,58 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t3-p05",
     "topicId": "m8-t3",
-    "slug": "m8_t3-5",
-    "title": "Accessing Dictionaries: Function Stub",
+    "slug": "in-dict",
+    "title": "Accessing Dictionaries: Key Membership",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print \"name\" in {\"name\":\"Ana\"}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# in dict",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Check if key exists with "
+        },
+        {
+          "type": "code",
+          "value": "in"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(\"name\" in {\"name\":\"Ana\"})"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t3-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -650,33 +999,50 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t3-p06",
     "topicId": "m8-t3",
-    "slug": "m8_t3-6",
-    "title": "Accessing Dictionaries: List Practice",
+    "slug": "len-dict",
+    "title": "Accessing Dictionaries: Dict Length",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Accessing Dictionaries and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Print len({\"a\":1,\"b\":2,\"c\":3}).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# len",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "len() counts key-value pairs."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "3",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "3"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 3"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(len({\"a\":1,\"b\":2,\"c\":3}))"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t3-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "3",
         "visibility": "public"
       }
     ]
@@ -684,28 +1050,36 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t3-p07",
     "topicId": "m8-t3",
-    "slug": "m8_t3-7",
-    "title": "Accessing Dictionaries: Dict Lookup",
+    "slug": "topic-lookup",
+    "title": "Accessing Dictionaries: Topic Lookup",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Create d={\"topic\":\"Python\"}, print d[\"topic\"].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresDictKey": "topic",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Look up value by key."
+        }
+      ],
+      "editorPlaceholder": "# d[\"topic\"]",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "Python"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: Python"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "d = {\"topic\":\"Python\"}\\nprint(d[\"topic\"])"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t3-p07-t1",
@@ -718,33 +1092,52 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t4-p01",
     "topicId": "m8-t4",
-    "slug": "m8_t4-1",
-    "title": "Dictionary Methods: Warm-up",
+    "slug": "keys",
+    "title": "Dictionary Methods: keys()",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Dictionary Methods. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Set d={\"a\":1,\"b\":2}, print list(d.keys()).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "d"
+      ],
+      "requiresDictKey": "a",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".keys()"
+        },
+        {
+          "type": "text",
+          "value": " to get all keys."
+        }
+      ],
+      "editorPlaceholder": "# keys",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "['a', 'b']"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print keys as list"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "d = {\"a\":1,\"b\":2}\\nprint(list(d.keys()))"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t4-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "['a', 'b']",
         "visibility": "public"
       }
     ]
@@ -752,33 +1145,51 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t4-p02",
     "topicId": "m8-t4",
-    "slug": "m8_t4-2",
-    "title": "Dictionary Methods: Output Two Values",
+    "slug": "values",
+    "title": "Dictionary Methods: values()",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Dictionary Methods and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Set d={\"a\":1,\"b\":2}, print list(d.values()).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "d"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".values()"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# values",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "[1, 2]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print values"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "d = {\"a\":1,\"b\":2}\\nprint(list(d.values()))"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t4-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "[1, 2]",
         "visibility": "public"
       }
     ]
@@ -786,33 +1197,51 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t4-p03",
     "topicId": "m8-t4",
-    "slug": "m8_t4-3",
-    "title": "Dictionary Methods: Simple Loop",
+    "slug": "items",
+    "title": "Dictionary Methods: items()",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Dictionary Methods.",
+    "layout": "challenge",
+    "description": "Set d={\"x\":1}, print list(d.items()).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "d"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".items()"
+        },
+        {
+          "type": "text",
+          "value": " for key-value pairs."
+        }
+      ],
+      "editorPlaceholder": "# items",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "[('x', 1)]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print items"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "d = {\"x\":1}\\nprint(list(d.items()))"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t4-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "[('x', 1)]",
         "visibility": "public"
       }
     ]
@@ -820,33 +1249,58 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t4-p04",
     "topicId": "m8-t4",
-    "slug": "m8_t4-4",
-    "title": "Dictionary Methods: Condition",
+    "slug": "get",
+    "title": "Dictionary Methods: get()",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Print {\"a\":1}.get(\"b\", 0).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# get",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! get() returns default if key missing.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".get(\"b\", 0)"
+        },
+        {
+          "type": "text",
+          "value": " for safe access."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "0",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "0"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 0"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({\"a\":1}.get(\"b\", 0))"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t4-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "0",
         "visibility": "public"
       }
     ]
@@ -854,33 +1308,58 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t4-p05",
     "topicId": "m8-t4",
-    "slug": "m8_t4-5",
-    "title": "Dictionary Methods: Function Stub",
+    "slug": "in-dict",
+    "title": "Dictionary Methods: Key Membership",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print \"name\" in {\"name\":\"Ana\"}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# in dict",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Check if key exists with "
+        },
+        {
+          "type": "code",
+          "value": "in"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(\"name\" in {\"name\":\"Ana\"})"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t4-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -888,33 +1367,50 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t4-p06",
     "topicId": "m8-t4",
-    "slug": "m8_t4-6",
-    "title": "Dictionary Methods: List Practice",
+    "slug": "len-dict",
+    "title": "Dictionary Methods: Dict Length",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Dictionary Methods and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Print len({\"a\":1,\"b\":2,\"c\":3}).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# len",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "len() counts key-value pairs."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "3",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "3"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 3"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(len({\"a\":1,\"b\":2,\"c\":3}))"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t4-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "3",
         "visibility": "public"
       }
     ]
@@ -922,28 +1418,36 @@ export const module8Practice: PracticeProblem[] = [
   {
     "id": "m8-t4-p07",
     "topicId": "m8-t4",
-    "slug": "m8_t4-7",
-    "title": "Dictionary Methods: Dict Lookup",
+    "slug": "topic-lookup",
+    "title": "Dictionary Methods: Topic Lookup",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Create d={\"topic\":\"Python\"}, print d[\"topic\"].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresDictKey": "topic",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Look up value by key."
+        }
+      ],
+      "editorPlaceholder": "# d[\"topic\"]",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "Python"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: Python"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "d = {\"topic\":\"Python\"}\\nprint(d[\"topic\"])"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m8-t4-p07-t1",

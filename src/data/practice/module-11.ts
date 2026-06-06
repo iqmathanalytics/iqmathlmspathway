@@ -4,33 +4,58 @@ export const module11Practice: PracticeProblem[] = [
   {
     "id": "m11-t1-p01",
     "topicId": "m11-t1",
-    "slug": "m11_t1-1",
-    "title": "List Comprehension Syntax: Warm-up",
+    "slug": "lc-basic",
+    "title": "List Comprehension Syntax: Basic List Comp",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to List Comprehension Syntax. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Print [x for x in range(3)].",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# list comp",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "List comprehension: "
+        },
+        {
+          "type": "code",
+          "value": "[x for x in range(3)]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[0, 1, 2]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "[0, 1, 2]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [0, 1, 2]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print([x for x in range(3)])"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t1-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "[0, 1, 2]",
         "visibility": "public"
       }
     ]
@@ -38,33 +63,50 @@ export const module11Practice: PracticeProblem[] = [
   {
     "id": "m11-t1-p02",
     "topicId": "m11-t1",
-    "slug": "m11_t1-2",
-    "title": "List Comprehension Syntax: Output Two Values",
+    "slug": "lc-squares",
+    "title": "List Comprehension Syntax: Squares",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to List Comprehension Syntax and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Print [x*x for x in range(1,4)].",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# squares",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Square each number in comprehension."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[1, 4, 9]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "[1, 4, 9]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [1, 4, 9]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print([x*x for x in range(1,4)])"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t1-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "[1, 4, 9]",
         "visibility": "public"
       }
     ]
@@ -72,33 +114,58 @@ export const module11Practice: PracticeProblem[] = [
   {
     "id": "m11-t1-p03",
     "topicId": "m11-t1",
-    "slug": "m11_t1-3",
-    "title": "List Comprehension Syntax: Simple Loop",
+    "slug": "lc-filter",
+    "title": "List Comprehension Syntax: Filter Evens",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on List Comprehension Syntax.",
+    "layout": "challenge",
+    "description": "Print [x for x in range(6) if x%2==0].",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# filter",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Add "
+        },
+        {
+          "type": "code",
+          "value": "if"
+        },
+        {
+          "type": "text",
+          "value": " to filter items."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[0, 2, 4]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "[0, 2, 4]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [0, 2, 4]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print([x for x in range(6) if x%2==0])"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t1-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "[0, 2, 4]",
         "visibility": "public"
       }
     ]
@@ -106,33 +173,50 @@ export const module11Practice: PracticeProblem[] = [
   {
     "id": "m11-t1-p04",
     "topicId": "m11-t1",
-    "slug": "m11_t1-4",
-    "title": "List Comprehension Syntax: Condition",
+    "slug": "lc-string",
+    "title": "List Comprehension Syntax: Uppercase List",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Print [c.upper() for c in [\"a\",\"b\"]].",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# upper",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Transform each item in comprehension."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "['A', 'B']",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "['A', 'B']"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: ['A', 'B']"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print([c.upper() for c in [\"a\",\"b\"]])"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t1-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "['A', 'B']",
         "visibility": "public"
       }
     ]
@@ -140,33 +224,50 @@ export const module11Practice: PracticeProblem[] = [
   {
     "id": "m11-t1-p05",
     "topicId": "m11-t1",
-    "slug": "m11_t1-5",
-    "title": "List Comprehension Syntax: Function Stub",
-    "difficulty": "medium",
+    "slug": "lc-nested",
+    "title": "List Comprehension Syntax: Nested Comp",
+    "difficulty": "hard",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print [j for i in range(2) for j in range(2)].",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# nested",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Nested comprehension loops."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[0, 1, 0, 1]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "[0, 1, 0, 1]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [0, 1, 0, 1]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print([j for i in range(2) for j in range(2)])"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t1-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "[0, 1, 0, 1]",
         "visibility": "public"
       }
     ]
@@ -174,33 +275,50 @@ export const module11Practice: PracticeProblem[] = [
   {
     "id": "m11-t1-p06",
     "topicId": "m11-t1",
-    "slug": "m11_t1-6",
-    "title": "List Comprehension Syntax: List Practice",
+    "slug": "lc-len",
+    "title": "List Comprehension Syntax: Lengths",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about List Comprehension Syntax and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Print [len(w) for w in [\"hi\",\"hey\"]].",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# len comp",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Apply function in comprehension."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[2, 3]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "[2, 3]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [2, 3]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print([len(w) for w in [\"hi\",\"hey\"]])"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t1-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "[2, 3]",
         "visibility": "public"
       }
     ]
@@ -208,33 +326,50 @@ export const module11Practice: PracticeProblem[] = [
   {
     "id": "m11-t1-p07",
     "topicId": "m11-t1",
-    "slug": "m11_t1-7",
-    "title": "List Comprehension Syntax: Dict Lookup",
+    "slug": "lc-condition",
+    "title": "List Comprehension Syntax: Conditional Expression",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Print [x if x%2==0 else -x for x in range(1,4)].",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# cond",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "if/else inside comprehension."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[-1, 2, -3]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "[-1, 2, -3]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [-1, 2, -3]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print([x if x%2==0 else -x for x in range(1,4)])"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t1-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "[-1, 2, -3]",
         "visibility": "public"
       }
     ]
@@ -242,33 +377,58 @@ export const module11Practice: PracticeProblem[] = [
   {
     "id": "m11-t2-p01",
     "topicId": "m11-t2",
-    "slug": "m11_t2-1",
-    "title": "Uses of Comprehensions: Warm-up",
+    "slug": "lc-basic",
+    "title": "Uses of Comprehensions: Basic List Comp",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Uses of Comprehensions. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Print [x for x in range(3)].",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# list comp",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "List comprehension: "
+        },
+        {
+          "type": "code",
+          "value": "[x for x in range(3)]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[0, 1, 2]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "[0, 1, 2]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [0, 1, 2]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print([x for x in range(3)])"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t2-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "[0, 1, 2]",
         "visibility": "public"
       }
     ]
@@ -276,33 +436,50 @@ export const module11Practice: PracticeProblem[] = [
   {
     "id": "m11-t2-p02",
     "topicId": "m11-t2",
-    "slug": "m11_t2-2",
-    "title": "Uses of Comprehensions: Output Two Values",
+    "slug": "lc-squares",
+    "title": "Uses of Comprehensions: Squares",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Uses of Comprehensions and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Print [x*x for x in range(1,4)].",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# squares",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Square each number in comprehension."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[1, 4, 9]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "[1, 4, 9]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [1, 4, 9]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print([x*x for x in range(1,4)])"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t2-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "[1, 4, 9]",
         "visibility": "public"
       }
     ]
@@ -310,33 +487,58 @@ export const module11Practice: PracticeProblem[] = [
   {
     "id": "m11-t2-p03",
     "topicId": "m11-t2",
-    "slug": "m11_t2-3",
-    "title": "Uses of Comprehensions: Simple Loop",
+    "slug": "lc-filter",
+    "title": "Uses of Comprehensions: Filter Evens",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Uses of Comprehensions.",
+    "layout": "challenge",
+    "description": "Print [x for x in range(6) if x%2==0].",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# filter",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Add "
+        },
+        {
+          "type": "code",
+          "value": "if"
+        },
+        {
+          "type": "text",
+          "value": " to filter items."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[0, 2, 4]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "[0, 2, 4]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [0, 2, 4]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print([x for x in range(6) if x%2==0])"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t2-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "[0, 2, 4]",
         "visibility": "public"
       }
     ]
@@ -344,33 +546,50 @@ export const module11Practice: PracticeProblem[] = [
   {
     "id": "m11-t2-p04",
     "topicId": "m11-t2",
-    "slug": "m11_t2-4",
-    "title": "Uses of Comprehensions: Condition",
+    "slug": "lc-string",
+    "title": "Uses of Comprehensions: Uppercase List",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Print [c.upper() for c in [\"a\",\"b\"]].",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# upper",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Transform each item in comprehension."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "['A', 'B']",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "['A', 'B']"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: ['A', 'B']"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print([c.upper() for c in [\"a\",\"b\"]])"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t2-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "['A', 'B']",
         "visibility": "public"
       }
     ]
@@ -378,33 +597,50 @@ export const module11Practice: PracticeProblem[] = [
   {
     "id": "m11-t2-p05",
     "topicId": "m11-t2",
-    "slug": "m11_t2-5",
-    "title": "Uses of Comprehensions: Function Stub",
-    "difficulty": "medium",
+    "slug": "lc-nested",
+    "title": "Uses of Comprehensions: Nested Comp",
+    "difficulty": "hard",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print [j for i in range(2) for j in range(2)].",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# nested",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Nested comprehension loops."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[0, 1, 0, 1]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "[0, 1, 0, 1]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [0, 1, 0, 1]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print([j for i in range(2) for j in range(2)])"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t2-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "[0, 1, 0, 1]",
         "visibility": "public"
       }
     ]
@@ -412,33 +648,50 @@ export const module11Practice: PracticeProblem[] = [
   {
     "id": "m11-t2-p06",
     "topicId": "m11-t2",
-    "slug": "m11_t2-6",
-    "title": "Uses of Comprehensions: List Practice",
+    "slug": "lc-len",
+    "title": "Uses of Comprehensions: Lengths",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Uses of Comprehensions and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Print [len(w) for w in [\"hi\",\"hey\"]].",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# len comp",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Apply function in comprehension."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[2, 3]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "[2, 3]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [2, 3]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print([len(w) for w in [\"hi\",\"hey\"]])"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t2-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "[2, 3]",
         "visibility": "public"
       }
     ]
@@ -446,33 +699,50 @@ export const module11Practice: PracticeProblem[] = [
   {
     "id": "m11-t2-p07",
     "topicId": "m11-t2",
-    "slug": "m11_t2-7",
-    "title": "Uses of Comprehensions: Dict Lookup",
+    "slug": "lc-condition",
+    "title": "Uses of Comprehensions: Conditional Expression",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Print [x if x%2==0 else -x for x in range(1,4)].",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# cond",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "if/else inside comprehension."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[-1, 2, -3]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "[-1, 2, -3]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [-1, 2, -3]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print([x if x%2==0 else -x for x in range(1,4)])"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t2-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "[-1, 2, -3]",
         "visibility": "public"
       }
     ]
@@ -480,33 +750,58 @@ export const module11Practice: PracticeProblem[] = [
   {
     "id": "m11-t3-p01",
     "topicId": "m11-t3",
-    "slug": "m11_t3-1",
-    "title": "Dictionary Comprehensions: Warm-up",
+    "slug": "dc-basic",
+    "title": "Dictionary Comprehensions: Basic Dict Comp",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Dictionary Comprehensions. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Print {x:x*2 for x in range(3)}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# dict comp",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Dict comprehension: "
+        },
+        {
+          "type": "code",
+          "value": "{k:v for ...}"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "{0: 0, 1: 2, 2: 4}",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "{0: 0, 1: 2, 2: 4}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: {0: 0, 1: 2, 2: 4}"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({x:x*2 for x in range(3)})"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t3-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "{0: 0, 1: 2, 2: 4}",
         "visibility": "public"
       }
     ]
@@ -514,33 +809,50 @@ export const module11Practice: PracticeProblem[] = [
   {
     "id": "m11-t3-p02",
     "topicId": "m11-t3",
-    "slug": "m11_t3-2",
-    "title": "Dictionary Comprehensions: Output Two Values",
+    "slug": "dc-keys",
+    "title": "Dictionary Comprehensions: From List",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Dictionary Comprehensions and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Print {c:len(c) for c in [\"a\",\"ab\"]}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# from list",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Build dict from list."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "{'a': 1, 'ab': 2}",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "{'a': 1, 'ab': 2}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: {'a': 1, 'ab': 2}"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({c:len(c) for c in [\"a\",\"ab\"]})"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t3-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "{'a': 1, 'ab': 2}",
         "visibility": "public"
       }
     ]
@@ -548,33 +860,50 @@ export const module11Practice: PracticeProblem[] = [
   {
     "id": "m11-t3-p03",
     "topicId": "m11-t3",
-    "slug": "m11_t3-3",
-    "title": "Dictionary Comprehensions: Simple Loop",
+    "slug": "dc-filter",
+    "title": "Dictionary Comprehensions: Filter Dict Comp",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Dictionary Comprehensions.",
+    "layout": "challenge",
+    "description": "Print {x:x for x in range(5) if x%2==1}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# filter",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Filter in dict comprehension."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "{1: 1, 3: 3}",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "{1: 1, 3: 3}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: {1: 1, 3: 3}"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({x:x for x in range(5) if x%2==1})"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t3-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "{1: 1, 3: 3}",
         "visibility": "public"
       }
     ]
@@ -582,33 +911,50 @@ export const module11Practice: PracticeProblem[] = [
   {
     "id": "m11-t3-p04",
     "topicId": "m11-t3",
-    "slug": "m11_t3-4",
-    "title": "Dictionary Comprehensions: Condition",
+    "slug": "dc-invert",
+    "title": "Dictionary Comprehensions: Invert Keys Values",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Print {v:k for k,v in {\"a\":1,\"b\":2}.items()}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# invert",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Swap keys and values."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "{1: 'a', 2: 'b'}",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "{1: 'a', 2: 'b'}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: {1: 'a', 2: 'b'}"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({v:k for k,v in {\"a\":1,\"b\":2}.items()})"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t3-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "{1: 'a', 2: 'b'}",
         "visibility": "public"
       }
     ]
@@ -616,33 +962,50 @@ export const module11Practice: PracticeProblem[] = [
   {
     "id": "m11-t3-p05",
     "topicId": "m11-t3",
-    "slug": "m11_t3-5",
-    "title": "Dictionary Comprehensions: Function Stub",
-    "difficulty": "medium",
+    "slug": "dc-string",
+    "title": "Dictionary Comprehensions: Char Positions",
+    "difficulty": "hard",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print {c:i for i,c in enumerate(\"ab\")}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# enum",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Dict comp with enumerate."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "{'a': 0, 'b': 1}",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "{'a': 0, 'b': 1}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: {'a': 0, 'b': 1}"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({c:i for i,c in enumerate(\"ab\")})"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t3-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "{'a': 0, 'b': 1}",
         "visibility": "public"
       }
     ]
@@ -650,33 +1013,40 @@ export const module11Practice: PracticeProblem[] = [
   {
     "id": "m11-t3-p06",
     "topicId": "m11-t3",
-    "slug": "m11_t3-6",
-    "title": "Dictionary Comprehensions: List Practice",
+    "slug": "dc-conditional",
+    "title": "Dictionary Comprehensions: Conditional Values",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Dictionary Comprehensions and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Print {x:(\"even\" if x%2==0 else \"odd\") for x in range(3)}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Conditional expression in dict comp."
+        }
+      ],
+      "editorPlaceholder": "# cond dict",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "{0: 'even', 1: 'odd', 2: 'even'}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Use dict comprehension"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({x:(\"even\" if x%2==0 else \"odd\") for x in range(3)})"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t3-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "{0: 'even', 1: 'odd', 2: 'even'}",
         "visibility": "public"
       }
     ]
@@ -684,33 +1054,50 @@ export const module11Practice: PracticeProblem[] = [
   {
     "id": "m11-t3-p07",
     "topicId": "m11-t3",
-    "slug": "m11_t3-7",
-    "title": "Dictionary Comprehensions: Dict Lookup",
+    "slug": "dc-merge",
+    "title": "Dictionary Comprehensions: Combine Two Lists",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Print {k:v for k,v in zip([\"a\",\"b\"],[1,2])}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# zip",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use zip in dict comprehension."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "{'a': 1, 'b': 2}",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "{'a': 1, 'b': 2}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: {'a': 1, 'b': 2}"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({k:v for k,v in zip([\"a\",\"b\"],[1,2])})"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t3-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "{'a': 1, 'b': 2}",
         "visibility": "public"
       }
     ]

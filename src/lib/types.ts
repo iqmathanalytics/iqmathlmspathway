@@ -88,6 +88,7 @@ export type LessonInfographic =
   | "comprehension-uses"
   | "dict-comprehension"
   | "functions-creating"
+  | "functions-calling"
   | "function-arguments"
   | "function-variables"
   | "function-recursion"
@@ -156,9 +157,90 @@ export interface PracticeTest {
 }
 
 export interface PracticeExample {
-  input: string;
+  input?: string;
   output: string;
   explanation?: string;
+}
+
+export interface PracticeChallengeSegment {
+  type: "text" | "code";
+  value: string;
+}
+
+export type PracticeLiveCheckRule =
+  | {
+      id: string;
+      label: string;
+      kind: "print-count";
+      expected: number;
+    }
+  | {
+      id: string;
+      label: string;
+      kind: "print-value";
+      index: number;
+      expected: string;
+    }
+  | {
+      id: string;
+      label: string;
+      kind: "print-contains";
+      value: string;
+    }
+  | {
+      id: string;
+      label: string;
+      kind: "print-sequence";
+      expected: string[];
+    };
+
+export interface PracticeChallengeApproachLine {
+  type: "number" | "string";
+  value: string;
+}
+
+export interface PracticeChallengeContent {
+  introSegments?: PracticeChallengeSegment[];
+  introLead?: string;
+  introBullets?: PracticeChallengeSegment[][];
+  introFooter?: PracticeChallengeSegment[];
+  learnSection?: {
+    title: string;
+    body: string;
+    codeExample: string;
+  };
+  steps?: {
+    title: string;
+    items: string[];
+    codePreview?: {
+      comment?: string;
+      lines: string[];
+    };
+  };
+  approaches?: {
+    title: string;
+    items: Array<{
+      title: string;
+      note: string;
+      lines: PracticeChallengeApproachLine[];
+    }>;
+  };
+  inputLabel?: string;
+  outputOnly?: boolean;
+  requiresComment?: boolean;
+  badgeVariant?: "blue";
+  expectCommaPrint?: boolean;
+  requiresForLoop?: boolean;
+  requiresIfCondition?: boolean;
+  requiresFunction?: string;
+  requiresVariables?: string[];
+  requiresListAccess?: boolean;
+  requiresDictKey?: string;
+  editorPlaceholder?: string;
+  liveCheckRules?: PracticeLiveCheckRule[];
+  emptyMessage?: string;
+  successDetail?: string;
+  printCountHint?: string;
 }
 
 export interface PracticeProblem {
@@ -169,6 +251,8 @@ export interface PracticeProblem {
   difficulty: PracticeDifficulty;
   order: number;
   description: string;
+  layout?: "default" | "challenge";
+  challengeContent?: PracticeChallengeContent;
   examples?: PracticeExample[];
   constraints?: string[];
   hints: string[];

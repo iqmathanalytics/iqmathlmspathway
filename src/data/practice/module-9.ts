@@ -4,33 +4,52 @@ export const module9Practice: PracticeProblem[] = [
   {
     "id": "m9-t1-p01",
     "topicId": "m9-t1",
-    "slug": "m9_t1-1",
-    "title": "if Statement: Warm-up",
+    "slug": "if-basic",
+    "title": "if Statement: Simple if",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to if Statement. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Set x=10, if x>5: print(\"yes\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "x"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "if"
+        },
+        {
+          "type": "text",
+          "value": " to run code only when condition is True."
+        }
+      ],
+      "editorPlaceholder": "# if x > 5",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "yes"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Use if statement",
+      "Output: yes"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "x = 10\\nif x > 5:\\n    print(\"yes\")"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m9-t1-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "yes",
         "visibility": "public"
       }
     ]
@@ -38,33 +57,43 @@ export const module9Practice: PracticeProblem[] = [
   {
     "id": "m9-t1-p02",
     "topicId": "m9-t1",
-    "slug": "m9_t1-2",
-    "title": "if Statement: Output Two Values",
+    "slug": "if-false",
+    "title": "if Statement: if Skipped",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to if Statement and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Set x=2, if x>5: print(\"yes\"). Print \"done\" after.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "x"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "When condition is False, if block is skipped."
+        }
+      ],
+      "editorPlaceholder": "# if skipped",
+      "successDetail": "Correct! if block was skipped."
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "done"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: done"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "x = 2\\nif x > 5:\\n    print(\"yes\")\\nprint(\"done\")"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m9-t1-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "done",
         "visibility": "public"
       }
     ]
@@ -72,33 +101,41 @@ export const module9Practice: PracticeProblem[] = [
   {
     "id": "m9-t1-p03",
     "topicId": "m9-t1",
-    "slug": "m9_t1-3",
-    "title": "if Statement: Simple Loop",
+    "slug": "if-zero",
+    "title": "if Statement: if with Zero",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on if Statement.",
+    "layout": "challenge",
+    "description": "Set n=0, if n: print(\"nonzero\") else: print(\"zero\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresIfCondition": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "0 is falsy in Python."
+        }
+      ],
+      "editorPlaceholder": "# if n",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "zero"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: zero"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "n = 0\\nif n:\\n    print(\"nonzero\")\\nelse:\\n    print(\"zero\")"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m9-t1-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "zero",
         "visibility": "public"
       }
     ]
@@ -106,28 +143,44 @@ export const module9Practice: PracticeProblem[] = [
   {
     "id": "m9-t1-p04",
     "topicId": "m9-t1",
-    "slug": "m9_t1-4",
-    "title": "if Statement: Condition",
+    "slug": "if-score",
+    "title": "if Statement: Score Check",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Set score=75, if score>=60: print(\"Pass\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresIfCondition": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Check score with "
+        },
+        {
+          "type": "code",
+          "value": "if score >= 60"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# if score",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "Pass"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: Pass"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "score = 75\\nif score >= 60:\\n    print(\"Pass\")"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m9-t1-p04-t1",
@@ -140,28 +193,38 @@ export const module9Practice: PracticeProblem[] = [
   {
     "id": "m9-t1-p05",
     "topicId": "m9-t1",
-    "slug": "m9_t1-5",
-    "title": "if Statement: Function Stub",
+    "slug": "if-string",
+    "title": "if Statement: if with String",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Set name=\"Ana\", if name: print(\"Hello\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "name"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Non-empty strings are truthy."
+        }
+      ],
+      "editorPlaceholder": "# if name",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "Hello"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: Hello"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "name = \"Ana\"\\nif name:\\n    print(\"Hello\")"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m9-t1-p05-t1",
@@ -174,33 +237,51 @@ export const module9Practice: PracticeProblem[] = [
   {
     "id": "m9-t1-p06",
     "topicId": "m9-t1",
-    "slug": "m9_t1-6",
-    "title": "if Statement: List Practice",
+    "slug": "if-and",
+    "title": "if Statement: if with and",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about if Statement and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Set age=20, score=80, if age>=18 and score>=60: print(\"ok\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "age"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Combine conditions with "
+        },
+        {
+          "type": "code",
+          "value": "and"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# if and",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "ok"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: ok"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "age=20\\nscore=80\\nif age>=18 and score>=60:\\n    print(\"ok\")"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m9-t1-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "ok",
         "visibility": "public"
       }
     ]
@@ -208,33 +289,44 @@ export const module9Practice: PracticeProblem[] = [
   {
     "id": "m9-t1-p07",
     "topicId": "m9-t1",
-    "slug": "m9_t1-7",
-    "title": "if Statement: Dict Lookup",
+    "slug": "if-list",
+    "title": "if Statement: if with List",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Set items=[1,2], if len(items)>0: print(\"has items\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "items"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Check list length in condition."
+        }
+      ],
+      "editorPlaceholder": "# if list",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "has items"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: has items"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "items=[1,2]\\nif len(items)>0:\\n    print(\"has items\")"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m9-t1-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "has items",
         "visibility": "public"
       }
     ]
@@ -242,33 +334,49 @@ export const module9Practice: PracticeProblem[] = [
   {
     "id": "m9-t2-p01",
     "topicId": "m9-t2",
-    "slug": "m9_t2-1",
-    "title": "if-else: Warm-up",
+    "slug": "if-else-pass",
+    "title": "if-else: Pass or Fail",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to if-else. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Set score=75, if score>=60: print(\"Pass\") else: print(\"Fail\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresIfCondition": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "if/else"
+        },
+        {
+          "type": "text",
+          "value": " for two outcomes."
+        }
+      ],
+      "editorPlaceholder": "# if else",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "Pass"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: Pass"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "score=75\\nif score>=60:\\n    print(\"Pass\")\\nelse:\\n    print(\"Fail\")"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m9-t2-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "Pass",
         "visibility": "public"
       }
     ]
@@ -276,33 +384,49 @@ export const module9Practice: PracticeProblem[] = [
   {
     "id": "m9-t2-p02",
     "topicId": "m9-t2",
-    "slug": "m9_t2-2",
-    "title": "if-else: Output Two Values",
+    "slug": "if-else-even",
+    "title": "if-else: Even or Odd",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to if-else and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Set n=4, if n%2==0: print(\"even\") else: print(\"odd\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresIfCondition": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "%"
+        },
+        {
+          "type": "text",
+          "value": " to check even/odd."
+        }
+      ],
+      "editorPlaceholder": "# even odd",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "even"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: even"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "n=4\\nif n%2==0:\\n    print(\"even\")\\nelse:\\n    print(\"odd\")"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m9-t2-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "even",
         "visibility": "public"
       }
     ]
@@ -310,33 +434,41 @@ export const module9Practice: PracticeProblem[] = [
   {
     "id": "m9-t2-p03",
     "topicId": "m9-t2",
-    "slug": "m9_t2-3",
-    "title": "if-else: Simple Loop",
+    "slug": "if-else-compare",
+    "title": "if-else: Compare Two Values",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on if-else.",
+    "layout": "challenge",
+    "description": "Set a=5, b=3, if a>b: print(\"a wins\") else: print(\"b wins\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresIfCondition": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Compare two variables."
+        }
+      ],
+      "editorPlaceholder": "# compare",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "a wins"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: a wins"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a=5\\nb=3\\nif a>b:\\n    print(\"a wins\")\\nelse:\\n    print(\"b wins\")"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m9-t2-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "a wins",
         "visibility": "public"
       }
     ]
@@ -344,33 +476,41 @@ export const module9Practice: PracticeProblem[] = [
   {
     "id": "m9-t2-p04",
     "topicId": "m9-t2",
-    "slug": "m9_t2-4",
-    "title": "if-else: Condition",
+    "slug": "if-else-sign",
+    "title": "if-else: Positive or Negative",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Set x=-3, if x>=0: print(\"pos\") else: print(\"neg\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresIfCondition": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Check sign of a number."
+        }
+      ],
+      "editorPlaceholder": "# sign",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "neg"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: neg"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "x=-3\\nif x>=0:\\n    print(\"pos\")\\nelse:\\n    print(\"neg\")"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m9-t2-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "neg",
         "visibility": "public"
       }
     ]
@@ -378,33 +518,41 @@ export const module9Practice: PracticeProblem[] = [
   {
     "id": "m9-t2-p05",
     "topicId": "m9-t2",
-    "slug": "m9_t2-5",
-    "title": "if-else: Function Stub",
+    "slug": "if-else-empty",
+    "title": "if-else: Empty String",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Set s=\"\", if s: print(\"has text\") else: print(\"empty\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresIfCondition": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Empty string is falsy."
+        }
+      ],
+      "editorPlaceholder": "# empty str",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "empty"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: empty"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "s=\"\"\\nif s:\\n    print(\"has text\")\\nelse:\\n    print(\"empty\")"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m9-t2-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "empty",
         "visibility": "public"
       }
     ]
@@ -412,33 +560,41 @@ export const module9Practice: PracticeProblem[] = [
   {
     "id": "m9-t2-p06",
     "topicId": "m9-t2",
-    "slug": "m9_t2-6",
-    "title": "if-else: List Practice",
+    "slug": "if-else-nested",
+    "title": "if-else: Nested if-else",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about if-else and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Set x=10, if x>0: print(\"positive\") else: print(\"non-positive\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresIfCondition": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Simple if-else on positive check."
+        }
+      ],
+      "editorPlaceholder": "# nested",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "positive"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: positive"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "x=10\\nif x>0:\\n    print(\"positive\")\\nelse:\\n    print(\"non-positive\")"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m9-t2-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "positive",
         "visibility": "public"
       }
     ]
@@ -446,33 +602,41 @@ export const module9Practice: PracticeProblem[] = [
   {
     "id": "m9-t2-p07",
     "topicId": "m9-t2",
-    "slug": "m9_t2-7",
-    "title": "if-else: Dict Lookup",
+    "slug": "if-else-login",
+    "title": "if-else: Login Check",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Set user=\"admin\", if user==\"admin\": print(\"welcome\") else: print(\"denied\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresIfCondition": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Compare string for login."
+        }
+      ],
+      "editorPlaceholder": "# login",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "welcome"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: welcome"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "user=\"admin\"\\nif user==\"admin\":\\n    print(\"welcome\")\\nelse:\\n    print(\"denied\")"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m9-t2-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "welcome",
         "visibility": "public"
       }
     ]
@@ -480,33 +644,49 @@ export const module9Practice: PracticeProblem[] = [
   {
     "id": "m9-t3-p01",
     "topicId": "m9-t3",
-    "slug": "m9_t3-1",
-    "title": "if-elif-else: Warm-up",
+    "slug": "elif-grade-a",
+    "title": "if-elif-else: Grade A",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to if-elif-else. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Set score=90, if score>=90: print(\"A\") elif score>=80: print(\"B\") else: print(\"C\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresIfCondition": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "elif"
+        },
+        {
+          "type": "text",
+          "value": " for multiple conditions."
+        }
+      ],
+      "editorPlaceholder": "# elif grades",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "A"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: A"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "score=90\\nif score>=90:\\n    print(\"A\")\\nelif score>=80:\\n    print(\"B\")\\nelse:\\n    print(\"C\")"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m9-t3-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "A",
         "visibility": "public"
       }
     ]
@@ -514,33 +694,41 @@ export const module9Practice: PracticeProblem[] = [
   {
     "id": "m9-t3-p02",
     "topicId": "m9-t3",
-    "slug": "m9_t3-2",
-    "title": "if-elif-else: Output Two Values",
+    "slug": "elif-grade-b",
+    "title": "if-elif-else: Grade B",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to if-elif-else and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Set score=85, use if/elif/else for grades, print B.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresIfCondition": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Score 85 should print B."
+        }
+      ],
+      "editorPlaceholder": "# grade B",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "B"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: B"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "score=85\\nif score>=90: print(\"A\")\\nelif score>=80: print(\"B\")\\nelse: print(\"C\")"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m9-t3-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "B",
         "visibility": "public"
       }
     ]
@@ -548,33 +736,41 @@ export const module9Practice: PracticeProblem[] = [
   {
     "id": "m9-t3-p03",
     "topicId": "m9-t3",
-    "slug": "m9_t3-3",
-    "title": "if-elif-else: Simple Loop",
+    "slug": "elif-grade-c",
+    "title": "if-elif-else: Grade C",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on if-elif-else.",
+    "layout": "challenge",
+    "description": "Set score=70, use if/elif/else, print C.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresIfCondition": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Score 70 falls to else branch."
+        }
+      ],
+      "editorPlaceholder": "# grade C",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "C"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: C"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "score=70\\nif score>=90: print(\"A\")\\nelif score>=80: print(\"B\")\\nelse: print(\"C\")"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m9-t3-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "C",
         "visibility": "public"
       }
     ]
@@ -582,33 +778,41 @@ export const module9Practice: PracticeProblem[] = [
   {
     "id": "m9-t3-p04",
     "topicId": "m9-t3",
-    "slug": "m9_t3-4",
-    "title": "if-elif-else: Condition",
+    "slug": "elif-weather",
+    "title": "if-elif-else: Weather Categories",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Set temp=25, if temp>30: print(\"hot\") elif temp>20: print(\"warm\") else: print(\"cool\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresIfCondition": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Chain elif for temperature."
+        }
+      ],
+      "editorPlaceholder": "# weather",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "warm"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: warm"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "temp=25\\nif temp>30: print(\"hot\")\\nelif temp>20: print(\"warm\")\\nelse: print(\"cool\")"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m9-t3-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "warm",
         "visibility": "public"
       }
     ]
@@ -616,33 +820,41 @@ export const module9Practice: PracticeProblem[] = [
   {
     "id": "m9-t3-p05",
     "topicId": "m9-t3",
-    "slug": "m9_t3-5",
-    "title": "if-elif-else: Function Stub",
+    "slug": "elif-three",
+    "title": "if-elif-else: Three Branches",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Set n=0, if n>0: print(\"pos\") elif n<0: print(\"neg\") else: print(\"zero\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresIfCondition": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Handle positive, negative, and zero."
+        }
+      ],
+      "editorPlaceholder": "# three way",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "zero"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: zero"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "n=0\\nif n>0: print(\"pos\")\\nelif n<0: print(\"neg\")\\nelse: print(\"zero\")"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m9-t3-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "zero",
         "visibility": "public"
       }
     ]
@@ -650,33 +862,41 @@ export const module9Practice: PracticeProblem[] = [
   {
     "id": "m9-t3-p06",
     "topicId": "m9-t3",
-    "slug": "m9_t3-6",
-    "title": "if-elif-else: List Practice",
+    "slug": "elif-speed",
+    "title": "if-elif-else: Speed Limit",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about if-elif-else and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Set speed=55, if speed>65: print(\"ticket\") elif speed>50: print(\"warning\") else: print(\"ok\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresIfCondition": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Multiple elif for speed check."
+        }
+      ],
+      "editorPlaceholder": "# speed",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "warning"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: warning"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "speed=55\\nif speed>65: print(\"ticket\")\\nelif speed>50: print(\"warning\")\\nelse: print(\"ok\")"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m9-t3-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "warning",
         "visibility": "public"
       }
     ]
@@ -684,33 +904,41 @@ export const module9Practice: PracticeProblem[] = [
   {
     "id": "m9-t3-p07",
     "topicId": "m9-t3",
-    "slug": "m9_t3-7",
-    "title": "if-elif-else: Dict Lookup",
+    "slug": "elif-menu",
+    "title": "if-elif-else: Menu Choice",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Set choice=\"b\", if choice==\"a\": print(\"add\") elif choice==\"b\": print(\"view\") else: print(\"exit\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresIfCondition": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use elif for menu options."
+        }
+      ],
+      "editorPlaceholder": "# menu",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "view"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: view"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "choice=\"b\"\\nif choice==\"a\": print(\"add\")\\nelif choice==\"b\": print(\"view\")\\nelse: print(\"exit\")"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m9-t3-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "view",
         "visibility": "public"
       }
     ]

@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import clsx from "clsx";
 import { PracticeBreadcrumb } from "./PracticeBreadcrumb";
+import { ChallengePracticeLayout } from "./ChallengePracticeLayout";
 
 interface PracticeWorkspaceEditorProps {
   problem: PracticeProblem;
@@ -132,6 +133,18 @@ export function PracticeWorkspaceEditor({
     if (problem.difficulty === "medium") return "bg-amber-100 text-amber-800";
     return "bg-red-100 text-red-800";
   }, [problem.difficulty]);
+
+  if (problem.layout === "challenge") {
+    return (
+      <ChallengePracticeLayout
+        problem={problem}
+        moduleSlug={moduleSlug}
+        topicSlug={topicSlug}
+        moduleName={moduleName}
+        topicTitle={topicTitle}
+      />
+    );
+  }
 
   return (
     <div className="flex min-h-[calc(100vh-8rem)] flex-col">

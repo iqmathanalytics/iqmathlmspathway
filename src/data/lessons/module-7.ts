@@ -249,6 +249,15 @@ export const module7Lessons: Record<string, TopicLesson> = {
       },
       {
         type: "practice",
+        practiceLabel: "Modify",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and use add(), update(), remove(), and pop() on a set.",
+        starterCode:
+          "s = {1, 2, 3}\n\ns.add(4)\ns.update({5, 6})\ns.remove(2)\ns.pop()\n\nprint(s)",
+      },
+      {
+        type: "practice",
         practiceLabel: "Subset",
         ideOnly: true,
         practicePrompt: "Run the code and check whether a is a subset of b.",
@@ -298,9 +307,9 @@ export const module7Lessons: Record<string, TopicLesson> = {
       },
     ],
     keyTakeaways: [
+      "add(), update(), remove(), and pop() change set contents.",
       "issubset, issuperset, isdisjoint test relationships between sets.",
       "Sets help remove duplicates quickly.",
-      "Useful before analysis when you need unique categories or IDs.",
     ],
   },
 };

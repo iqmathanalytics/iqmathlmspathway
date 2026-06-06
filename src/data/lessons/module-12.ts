@@ -85,33 +85,48 @@ export const module12Lessons: Record<string, TopicLesson> = {
       "After you define a function, you call it by name with parentheses. Python jumps to the function body, runs it, then continues where the call left off.",
     blocks: [
       {
-        type: "code",
-        code:
-          'def show_status(score):\n    if score >= 60:\n        print("Pass")\n    else:\n        print("Fail")\n\nshow_status(72)\nshow_status(45)',
-      },
-      {
-        type: "paragraph",
-        content:
-          "You can call a function many times with different inputs. Built-in functions like print() and len() work the same way — you invoke them with arguments.",
-      },
-      {
-        type: "visual",
-        diagram: {
-          title: "Call flow",
-          variant: "flow",
-          nodes: [
-            { id: "c", label: "Call function", sublabel: "name(args)" },
-            { id: "r", label: "Run body", sublabel: "Execute indented block" },
-            { id: "back", label: "Return", sublabel: "Back to caller" },
-          ],
-          arrows: [
-            { from: "c", to: "r" },
-            { from: "r", to: "back" },
-          ],
-        },
+        type: "infographic",
+        infographic: "functions-calling",
       },
       {
         type: "practice",
+        practiceLabel: "No arguments",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and call greet() twice to print Hello! each time.",
+        starterCode:
+          'def greet():\n    print("Hello!")\n\ngreet()\ngreet()',
+      },
+      {
+        type: "practice",
+        practiceLabel: "With arguments",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and call add() with different numbers.",
+        starterCode:
+          "def add(a, b):\n    print(a + b)\n\nadd(5, 3)\nadd(10, 20)",
+      },
+      {
+        type: "practice",
+        practiceLabel: "Return value",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code, store the return value in a variable, and print it.",
+        starterCode:
+          "def square(n):\n    return n * n\n\nresult = square(4)\nprint(result)\nprint(square(5))",
+      },
+      {
+        type: "practice",
+        practiceLabel: "Multiple calls",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and call show_status() with different scores.",
+        starterCode:
+          'def show_status(score):\n    if score >= 60:\n        print("Pass")\n    else:\n        print("Fail")\n\nshow_status(72)\nshow_status(45)',
+      },
+      {
+        type: "practice",
+        practiceLabel: "Challenge",
         practicePrompt:
           "Define double(x) returning x * 2. Call it with 10 and print the result.",
         starterCode:
@@ -119,7 +134,7 @@ export const module12Lessons: Record<string, TopicLesson> = {
       },
     ],
     keyTakeaways: [
-      "Call with function_name(arguments).",
+      "Call with function_name() or function_name(arguments).",
       "Each call runs the body independently.",
       "Use the returned value or assign it to a variable.",
     ],

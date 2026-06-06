@@ -2,10 +2,13 @@
 
 import {
   ArrowRight,
+  Code2,
   Lightbulb,
   Link2,
   MapPin,
   Play,
+  Search,
+  Target,
 } from "lucide-react";
 import { useLessonPractice } from "@/components/lesson/LessonPracticeContext";
 
@@ -14,7 +17,7 @@ function SectionLabel({
   variant,
 }: {
   children: React.ReactNode;
-  variant: "purple" | "green" | "blue" | "amber" | "teal";
+  variant: "purple" | "green" | "blue" | "amber" | "teal" | "red";
 }) {
   const styles = {
     purple: "bg-purple-100 text-purple-800",
@@ -22,6 +25,7 @@ function SectionLabel({
     blue: "bg-blue-100 text-blue-800",
     amber: "bg-amber-100 text-amber-900",
     teal: "bg-teal-100 text-teal-800",
+    red: "bg-red-100 text-red-800",
   };
   return (
     <span
@@ -85,6 +89,28 @@ function CodeExercisePanel({
             </button>
           )}
         </div>
+      </div>
+      <pre className="overflow-x-auto bg-transparent px-4 py-3.5 font-mono text-[13.5px] leading-loose">
+        {children}
+      </pre>
+    </div>
+  );
+}
+
+function CodeWindow({
+  filename,
+  children,
+}: {
+  filename: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="overflow-hidden rounded-xl border border-black/15 bg-white/60">
+      <div className="flex items-center gap-1.5 border-b border-black/10 bg-black/[0.03] px-3 py-1.5">
+        <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+        <span className="font-mono text-[11px] text-gray-500">{filename}</span>
       </div>
       <pre className="overflow-x-auto bg-transparent px-4 py-3.5 font-mono text-[13.5px] leading-loose">
         {children}
@@ -259,12 +285,15 @@ export function LogicalOperatorsInfographic() {
 
       {/* Section 2: Code example */}
       <section className="mb-8">
-        <SectionLabel variant="green">In code</SectionLabel>
+        <SectionLabel variant="green">
+          <Code2 className="h-3 w-3" />
+          In code
+        </SectionLabel>
         <h3 className="mb-3 text-base font-semibold tracking-tight">
           Real-world example
         </h3>
 
-        <CodeExercisePanel practiceIndex={0} filename="logical.py">
+        <CodeWindow filename="logical.py">
           <span className="text-gray-800">has_ticket = </span>
           <span className="font-semibold text-[#2d7a45]">True</span>
           {"\n"}
@@ -301,14 +330,17 @@ export function LogicalOperatorsInfographic() {
           <span className="italic text-[#5a8a5a]">
             # <span className="font-semibold text-[#b83232]">False</span>
           </span>
-        </CodeExercisePanel>
+        </CodeWindow>
       </section>
 
       <hr className="my-7 border-black/10" />
 
       {/* Section 3: and truth table */}
       <section className="mb-8">
-        <SectionLabel variant="blue">Closer look</SectionLabel>
+        <SectionLabel variant="blue">
+          <Search className="h-3 w-3" />
+          Closer look
+        </SectionLabel>
         <h3 className="mb-1.5 text-base font-semibold tracking-tight">
           How{" "}
           <code className="rounded bg-black/[0.07] px-1.5 py-0.5 font-mono text-[12.5px]">
@@ -375,7 +407,10 @@ export function LogicalOperatorsInfographic() {
 
       {/* Section 4: or truth table */}
       <section className="mb-8">
-        <SectionLabel variant="green">Closer look</SectionLabel>
+        <SectionLabel variant="green">
+          <Search className="h-3 w-3" />
+          Closer look
+        </SectionLabel>
         <h3 className="mb-1.5 text-base font-semibold tracking-tight">
           How{" "}
           <code className="rounded bg-black/[0.07] px-1.5 py-0.5 font-mono text-[12.5px]">
@@ -507,6 +542,157 @@ export function LogicalOperatorsInfographic() {
             </code>
             . Reads more naturally.
           </span>
+        </div>
+      </section>
+
+      <hr className="my-7 border-black/10" />
+
+      {/* Practice */}
+      <section className="mb-8">
+        <SectionLabel variant="purple">
+          <Target className="h-3 w-3" />
+          Practice
+        </SectionLabel>
+        <h3 className="mb-3 text-base font-semibold tracking-tight">
+          Try Yourself
+        </h3>
+
+        <CodeExercisePanel practiceIndex={0} filename="logical.py">
+          <span className="text-gray-800">has_ticket = </span>
+          <span className="font-semibold text-[#2d7a45]">True</span>
+          {"\n"}
+          <span className="text-gray-800">is_adult = </span>
+          <span className="font-semibold text-[#2d7a45]">True</span>
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(has_ticket </span>
+          <span className="font-semibold text-[#1a5fb4]">and</span>
+          <span className="text-gray-800"> is_adult)</span>
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(</span>
+          <span className="font-semibold text-[#2d7a45]">True</span>
+          <span className="text-gray-800"> </span>
+          <span className="font-semibold text-[#1a5fb4]">or</span>
+          <span className="text-gray-800"> </span>
+          <span className="font-semibold text-[#b83232]">False</span>
+          <span className="text-gray-800">)</span>
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(</span>
+          <span className="font-semibold text-[#1a5fb4]">not</span>
+          <span className="text-gray-800"> </span>
+          <span className="font-semibold text-[#2d7a45]">True</span>
+          <span className="text-gray-800">)</span>
+        </CodeExercisePanel>
+
+        <div className="mt-4 space-y-4">
+          <div>
+            <p className="mb-2 text-[13px] font-medium text-gray-700">
+              Test every <code className="rounded bg-black/[0.07] px-1 font-mono text-[12px]">and</code> combination:
+            </p>
+            <CodeExercisePanel practiceIndex={1} filename="and_table.py">
+              <span className="font-semibold text-[#8b2070]">print</span>
+              <span className="text-gray-800">(</span>
+              <span className="font-semibold text-[#2d7a45]">True</span>
+              <span className="text-gray-800"> </span>
+              <span className="font-semibold text-[#1a5fb4]">and</span>
+              <span className="text-gray-800"> </span>
+              <span className="font-semibold text-[#2d7a45]">True</span>
+              <span className="text-gray-800">)</span>
+              {"\n"}
+              <span className="font-semibold text-[#8b2070]">print</span>
+              <span className="text-gray-800">(</span>
+              <span className="font-semibold text-[#2d7a45]">True</span>
+              <span className="text-gray-800"> </span>
+              <span className="font-semibold text-[#1a5fb4]">and</span>
+              <span className="text-gray-800"> </span>
+              <span className="font-semibold text-[#b83232]">False</span>
+              <span className="text-gray-800">)</span>
+              {"\n"}
+              <span className="font-semibold text-[#8b2070]">print</span>
+              <span className="text-gray-800">(</span>
+              <span className="font-semibold text-[#b83232]">False</span>
+              <span className="text-gray-800"> </span>
+              <span className="font-semibold text-[#1a5fb4]">and</span>
+              <span className="text-gray-800"> </span>
+              <span className="font-semibold text-[#2d7a45]">True</span>
+              <span className="text-gray-800">)</span>
+              {"\n"}
+              <span className="font-semibold text-[#8b2070]">print</span>
+              <span className="text-gray-800">(</span>
+              <span className="font-semibold text-[#b83232]">False</span>
+              <span className="text-gray-800"> </span>
+              <span className="font-semibold text-[#1a5fb4]">and</span>
+              <span className="text-gray-800"> </span>
+              <span className="font-semibold text-[#b83232]">False</span>
+              <span className="text-gray-800">)</span>
+            </CodeExercisePanel>
+          </div>
+
+          <div>
+            <p className="mb-2 text-[13px] font-medium text-gray-700">
+              Test every <code className="rounded bg-black/[0.07] px-1 font-mono text-[12px]">or</code> combination:
+            </p>
+            <CodeExercisePanel practiceIndex={2} filename="or_table.py">
+              <span className="font-semibold text-[#8b2070]">print</span>
+              <span className="text-gray-800">(</span>
+              <span className="font-semibold text-[#2d7a45]">True</span>
+              <span className="text-gray-800"> </span>
+              <span className="font-semibold text-[#1a5fb4]">or</span>
+              <span className="text-gray-800"> </span>
+              <span className="font-semibold text-[#2d7a45]">True</span>
+              <span className="text-gray-800">)</span>
+              {"\n"}
+              <span className="font-semibold text-[#8b2070]">print</span>
+              <span className="text-gray-800">(</span>
+              <span className="font-semibold text-[#2d7a45]">True</span>
+              <span className="text-gray-800"> </span>
+              <span className="font-semibold text-[#1a5fb4]">or</span>
+              <span className="text-gray-800"> </span>
+              <span className="font-semibold text-[#b83232]">False</span>
+              <span className="text-gray-800">)</span>
+              {"\n"}
+              <span className="font-semibold text-[#8b2070]">print</span>
+              <span className="text-gray-800">(</span>
+              <span className="font-semibold text-[#b83232]">False</span>
+              <span className="text-gray-800"> </span>
+              <span className="font-semibold text-[#1a5fb4]">or</span>
+              <span className="text-gray-800"> </span>
+              <span className="font-semibold text-[#2d7a45]">True</span>
+              <span className="text-gray-800">)</span>
+              {"\n"}
+              <span className="font-semibold text-[#8b2070]">print</span>
+              <span className="text-gray-800">(</span>
+              <span className="font-semibold text-[#b83232]">False</span>
+              <span className="text-gray-800"> </span>
+              <span className="font-semibold text-[#1a5fb4]">or</span>
+              <span className="text-gray-800"> </span>
+              <span className="font-semibold text-[#b83232]">False</span>
+              <span className="text-gray-800">)</span>
+            </CodeExercisePanel>
+          </div>
+
+          <div>
+            <p className="mb-2 text-[13px] font-medium text-gray-700">
+              Flip values with <code className="rounded bg-black/[0.07] px-1 font-mono text-[12px]">not</code>:
+            </p>
+            <CodeExercisePanel practiceIndex={3} filename="not_flip.py">
+              <span className="font-semibold text-[#8b2070]">print</span>
+              <span className="text-gray-800">(</span>
+              <span className="font-semibold text-[#1a5fb4]">not</span>
+              <span className="text-gray-800"> </span>
+              <span className="font-semibold text-[#2d7a45]">True</span>
+              <span className="text-gray-800">)</span>
+              {"\n"}
+              <span className="font-semibold text-[#8b2070]">print</span>
+              <span className="text-gray-800">(</span>
+              <span className="font-semibold text-[#1a5fb4]">not</span>
+              <span className="text-gray-800"> </span>
+              <span className="font-semibold text-[#b83232]">False</span>
+              <span className="text-gray-800">)</span>
+            </CodeExercisePanel>
+          </div>
         </div>
       </section>
 

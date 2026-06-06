@@ -254,6 +254,32 @@ export const module8Lessons: Record<string, TopicLesson> = {
       },
       {
         type: "practice",
+        practiceLabel: "popitem()",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and use popitem() to remove the last key-value pair.",
+        starterCode:
+          'data = {"a": 1, "b": 2, "c": 3}\n\npair = data.popitem()\nprint(pair)\nprint(data)',
+      },
+      {
+        type: "practice",
+        practiceLabel: "copy()",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and copy a dictionary without changing the original.",
+        starterCode:
+          'original = {"x": 1, "y": 2}\nduplicate = original.copy()\n\nduplicate["z"] = 3\nprint(original)\nprint(duplicate)',
+      },
+      {
+        type: "practice",
+        practiceLabel: "clear()",
+        ideOnly: true,
+        practicePrompt: "Run the code and empty a dictionary with clear().",
+        starterCode:
+          'data = {"a": 1, "b": 2}\n\ndata.clear()\nprint(data)',
+      },
+      {
+        type: "practice",
         practiceLabel: "Student",
         ideOnly: true,
         practicePrompt:
@@ -273,7 +299,7 @@ export const module8Lessons: Record<string, TopicLesson> = {
     keyTakeaways: [
       "keys(), values(), items() list dictionary contents.",
       "items() is best for loops over key-value pairs.",
-      "pop() and update() modify the dictionary in place.",
+      "pop(), popitem(), update(), copy(), and clear() modify the dictionary.",
     ],
   },
 };

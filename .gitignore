@@ -18,6 +18,9 @@
 .DS_Store
 *.pem
 
+# curriculum reference notebooks (local only)
+Python_day*.ipynb
+
 # debug
 npm-debug.log*
 yarn-debug.log*

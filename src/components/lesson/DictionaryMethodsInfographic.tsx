@@ -147,7 +147,10 @@ const METHOD_SUMMARY_ROWS = [
   { method: "values()", purpose: "Get all values" },
   { method: "items()", purpose: "Get key-value pairs" },
   { method: "pop(key)", purpose: "Remove key and return value" },
+  { method: "popitem()", purpose: "Remove and return last key-value pair" },
   { method: "update(dict)", purpose: "Merge or update dictionary" },
+  { method: "copy()", purpose: "Shallow copy of the dictionary" },
+  { method: "clear()", purpose: "Remove all key-value pairs" },
 ] as const;
 
 const REF_ROWS = [
@@ -155,7 +158,10 @@ const REF_ROWS = [
   { code: "dict.values()", meaning: "All values" },
   { code: "dict.items()", meaning: "All key-value pairs" },
   { code: "dict.pop(key)", meaning: "Remove key" },
+  { code: "dict.popitem()", meaning: "Remove last pair" },
   { code: "dict.update(other)", meaning: "Merge dictionaries" },
+  { code: "dict.copy()", meaning: "Duplicate dictionary" },
+  { code: "dict.clear()", meaning: "Empty dictionary" },
 ] as const;
 
 export function DictionaryMethodsInfographic() {
@@ -521,6 +527,109 @@ export function DictionaryMethodsInfographic() {
         <p className="mt-2.5 text-[13.5px] leading-relaxed text-gray-600">
           update() adds new key-value pairs or updates existing ones.
         </p>
+      </section>
+
+      <hr className="my-7 border-black/10" />
+
+      {/* popitem() */}
+      <section className="mb-8">
+        <SectionLabel variant="teal">
+          <Package className="h-3 w-3" />
+          popitem()
+        </SectionLabel>
+        <h3 className="mb-3 text-base font-semibold tracking-tight">
+          Remove the Last Pair
+        </h3>
+        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
+          popitem() removes and returns the last inserted key-value pair as a
+          tuple.
+        </p>
+
+        <CodeWindow filename="popitem.py">
+          <span className="text-gray-800">data = {"{"}&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: 3{"}"}</span>
+          {"\n"}
+          {"\n"}
+          <span className="text-gray-800">pair = data.popitem()</span>
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(pair)</span>
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(data)</span>
+        </CodeWindow>
+
+        <OutputBox>
+          (&apos;c&apos;, 3)
+          {"\n"}
+          {"\n"}
+          {`{'a': 1, 'b': 2}`}
+        </OutputBox>
+      </section>
+
+      <hr className="my-7 border-black/10" />
+
+      {/* copy() */}
+      <section className="mb-8">
+        <SectionLabel variant="green">
+          <RefreshCw className="h-3 w-3" />
+          copy()
+        </SectionLabel>
+        <h3 className="mb-3 text-base font-semibold tracking-tight">
+          Copy a Dictionary
+        </h3>
+        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
+          copy() creates a shallow duplicate so changes to the copy do not
+          affect the original.
+        </p>
+
+        <CodeWindow filename="copy.py">
+          <span className="text-gray-800">original = {"{"}&quot;x&quot;: 1, &quot;y&quot;: 2{"}"}</span>
+          {"\n"}
+          <span className="text-gray-800">duplicate = original.copy()</span>
+          {"\n"}
+          {"\n"}
+          <span className="text-gray-800">duplicate[&quot;z&quot;] = 3</span>
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(original)</span>
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(duplicate)</span>
+        </CodeWindow>
+
+        <OutputBox>
+          {`{'x': 1, 'y': 2}`}
+          {"\n"}
+          {`{'x': 1, 'y': 2, 'z': 3}`}
+        </OutputBox>
+      </section>
+
+      <hr className="my-7 border-black/10" />
+
+      {/* clear() */}
+      <section className="mb-8">
+        <SectionLabel variant="red">
+          <Trash2 className="h-3 w-3" />
+          clear()
+        </SectionLabel>
+        <h3 className="mb-3 text-base font-semibold tracking-tight">
+          Empty the Dictionary
+        </h3>
+        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
+          clear() removes every key-value pair from the dictionary.
+        </p>
+
+        <CodeWindow filename="clear.py">
+          <span className="text-gray-800">data = {"{"}&quot;a&quot;: 1, &quot;b&quot;: 2{"}"}</span>
+          {"\n"}
+          {"\n"}
+          <span className="text-gray-800">data.clear()</span>
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(data)</span>
+        </CodeWindow>
+
+        <OutputBox>{`{}`}</OutputBox>
       </section>
 
       <hr className="my-7 border-black/10" />
