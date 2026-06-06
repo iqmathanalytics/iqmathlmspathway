@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { loadPyodideRuntime, type PyodideRuntime } from "@/lib/pyodide-runtime";
+import { loadPyodideRuntime, runPythonWithLock, type PyodideRuntime } from "@/lib/pyodide-runtime";
 import type { ConsoleLine } from "./types";
 
 let lineId = 0;
@@ -89,9 +89,10 @@ export function usePyodideRunner() {
       };
 
       try {
-        pyodideRef.current.setStdout({ batched: appendStdout });
-        pyodideRef.current.setStderr({ batched: appendStderr });
-        await pyodideRef.current.runPythonAsync(code);
+        await runPythonWithLock(pyodideRef.current, code, {
+          onStdout: appendStdout,
+          onStderr: appendStderr,
+        });
       } catch (e) {
         const msg = e instanceof Error ? e.message : String(e);
         setLines((prev) => [

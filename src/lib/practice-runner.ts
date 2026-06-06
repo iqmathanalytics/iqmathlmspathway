@@ -1,5 +1,5 @@
 import type { PracticeTest } from "@/lib/types";
-import { loadPyodideRuntime } from "@/lib/pyodide-runtime";
+import { loadPyodideRuntime, runPythonWithLock } from "@/lib/pyodide-runtime";
 
 export interface TestRunResult {
   testId: string;
@@ -21,24 +21,18 @@ async function runSingleTest(
   const pyodide = await loadPyodideRuntime();
   let stdout = "";
 
-  // Use write (not batched) so newlines between print() calls are preserved.
-  pyodide.setStdout({
-    write: (buffer: Uint8Array) => {
-      stdout += new TextDecoder().decode(buffer);
-      return buffer.length;
-    },
-  });
-  pyodide.setStderr({
-    write: (buffer: Uint8Array) => buffer.length,
-  });
-
   const parts: string[] = [];
   if (test.setup) parts.push(test.setup);
   parts.push(userCode);
   if (test.assertCode) parts.push(test.assertCode);
 
   try {
-    await pyodide.runPythonAsync(parts.join("\n\n"));
+    await runPythonWithLock(pyodide, parts.join("\n\n"), {
+      onStdout: (chunk) => {
+        stdout += chunk;
+      },
+    });
+
     const actual = normalizeStdout(stdout);
 
     if (test.expectedStdout !== undefined) {
@@ -50,7 +44,7 @@ async function runSingleTest(
         passed,
         expected,
         actual,
-        error: passed ? undefined : actual !== expected ? "Output does not match expected." : undefined,
+        error: passed ? undefined : "Output does not match expected.",
       };
     }
 
