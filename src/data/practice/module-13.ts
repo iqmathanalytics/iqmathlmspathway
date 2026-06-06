@@ -4,33 +4,40 @@ export const module13Practice: PracticeProblem[] = [
   {
     "id": "m13-t1-p01",
     "topicId": "m13-t1",
-    "slug": "m13_t1-1",
-    "title": "Lambda Functions: Warm-up",
+    "slug": "lambda-basic",
+    "title": "Lambda Functions: Basic Lambda",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Lambda Functions. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Set f = lambda x: x*2, print f(5).",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Lambda is a small anonymous function."
+        }
+      ],
+      "editorPlaceholder": "# lambda x: x*2",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "10"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 10"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "f = lambda x: x*2\\nprint(f(5))"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m13-t1-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "10",
         "visibility": "public"
       }
     ]
@@ -38,33 +45,40 @@ export const module13Practice: PracticeProblem[] = [
   {
     "id": "m13-t1-p02",
     "topicId": "m13-t1",
-    "slug": "m13_t1-2",
-    "title": "Lambda Functions: Output Two Values",
+    "slug": "lambda-add",
+    "title": "Lambda Functions: Lambda Add",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Lambda Functions and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Set add = lambda a,b: a+b, print add(3,4).",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Lambda with two parameters."
+        }
+      ],
+      "editorPlaceholder": "# lambda add",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "7"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 7"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "add = lambda a,b: a+b\\nprint(add(3,4))"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m13-t1-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "7",
         "visibility": "public"
       }
     ]
@@ -72,33 +86,40 @@ export const module13Practice: PracticeProblem[] = [
   {
     "id": "m13-t1-p03",
     "topicId": "m13-t1",
-    "slug": "m13_t1-3",
-    "title": "Lambda Functions: Simple Loop",
+    "slug": "lambda-square",
+    "title": "Lambda Functions: Lambda Square",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Lambda Functions.",
+    "layout": "challenge",
+    "description": "Set sq = lambda x: x**2, print sq(4).",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use lambda for short operations."
+        }
+      ],
+      "editorPlaceholder": "# lambda square",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "16"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 16"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "sq = lambda x: x**2\\nprint(sq(4))"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m13-t1-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "16",
         "visibility": "public"
       }
     ]
@@ -106,33 +127,58 @@ export const module13Practice: PracticeProblem[] = [
   {
     "id": "m13-t1-p04",
     "topicId": "m13-t1",
-    "slug": "m13_t1-4",
-    "title": "Lambda Functions: Condition",
+    "slug": "lambda-map",
+    "title": "Lambda Functions: map with Lambda",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Print list(map(lambda x: x*2, [1,2,3])).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# map lambda",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "map()"
+        },
+        {
+          "type": "text",
+          "value": " with lambda."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[2, 4, 6]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "[2, 4, 6]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [2, 4, 6]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(list(map(lambda x: x*2, [1,2,3])))"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m13-t1-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "[2, 4, 6]",
         "visibility": "public"
       }
     ]
@@ -140,33 +186,58 @@ export const module13Practice: PracticeProblem[] = [
   {
     "id": "m13-t1-p05",
     "topicId": "m13-t1",
-    "slug": "m13_t1-5",
-    "title": "Lambda Functions: Function Stub",
+    "slug": "lambda-filter",
+    "title": "Lambda Functions: filter with Lambda",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print list(filter(lambda x: x>2, [1,2,3,4])).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# filter",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "filter()"
+        },
+        {
+          "type": "text",
+          "value": " with lambda."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[3, 4]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "[3, 4]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [3, 4]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(list(filter(lambda x: x>2, [1,2,3,4])))"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m13-t1-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "[3, 4]",
         "visibility": "public"
       }
     ]
@@ -174,33 +245,50 @@ export const module13Practice: PracticeProblem[] = [
   {
     "id": "m13-t1-p06",
     "topicId": "m13-t1",
-    "slug": "m13_t1-6",
-    "title": "Lambda Functions: List Practice",
+    "slug": "lambda-sorted",
+    "title": "Lambda Functions: sorted with Lambda",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Lambda Functions and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Print sorted(['bb','a','ccc'], key=lambda s: len(s)).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# sorted",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Sort by length using lambda key."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "['a', 'bb', 'ccc']",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "['a', 'bb', 'ccc']"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: ['a', 'bb', 'ccc']"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(sorted(['bb','a','ccc'], key=lambda s: len(s)))"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m13-t1-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "['a', 'bb', 'ccc']",
         "visibility": "public"
       }
     ]
@@ -208,33 +296,58 @@ export const module13Practice: PracticeProblem[] = [
   {
     "id": "m13-t1-p07",
     "topicId": "m13-t1",
-    "slug": "m13_t1-7",
-    "title": "Lambda Functions: Dict Lookup",
+    "slug": "lambda-immediate",
+    "title": "Lambda Functions: Immediate Call",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Print (lambda x: x+1)(9).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# IIFE",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Call lambda immediately: "
+        },
+        {
+          "type": "code",
+          "value": "(lambda x: x+1)(9)"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "10",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "10"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 10"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print((lambda x: x+1)(9))"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m13-t1-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "10",
         "visibility": "public"
       }
     ]

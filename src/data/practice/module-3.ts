@@ -4,33 +4,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t1-p01",
     "topicId": "m3-t1",
-    "slug": "m3_t1-1",
-    "title": "Arithmetic Operators: Warm-up",
+    "slug": "add",
+    "title": "Arithmetic Operators: Addition",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Arithmetic Operators. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Print 10 + 3.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# print 10 + 3",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 10 + 3 = 13.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "10 + 3"
+        },
+        {
+          "type": "text",
+          "value": " inside print()."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints 13",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "13"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "13"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 13"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(10 + 3)"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t1-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "13",
         "visibility": "public"
       }
     ]
@@ -38,33 +63,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t1-p02",
     "topicId": "m3-t1",
-    "slug": "m3_t1-2",
-    "title": "Arithmetic Operators: Output Two Values",
+    "slug": "subtract",
+    "title": "Arithmetic Operators: Subtraction",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Arithmetic Operators and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Print 20 - 5.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# print 20 - 5",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 20 - 5 = 15.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "20 - 5"
+        },
+        {
+          "type": "text",
+          "value": " inside print()."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints 15",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "15"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "15"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 15"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(20 - 5)"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t1-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "15",
         "visibility": "public"
       }
     ]
@@ -72,33 +122,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t1-p03",
     "topicId": "m3-t1",
-    "slug": "m3_t1-3",
-    "title": "Arithmetic Operators: Simple Loop",
-    "difficulty": "medium",
+    "slug": "multiply",
+    "title": "Arithmetic Operators: Multiplication",
+    "difficulty": "easy",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Arithmetic Operators.",
+    "layout": "challenge",
+    "description": "Print 4 * 6.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# print 4 * 6",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 4 * 6 = 24.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "4 * 6"
+        },
+        {
+          "type": "text",
+          "value": " inside print()."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints 24",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "24"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "24"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 24"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(4 * 6)"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t1-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "24",
         "visibility": "public"
       }
     ]
@@ -106,33 +181,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t1-p04",
     "topicId": "m3-t1",
-    "slug": "m3_t1-4",
-    "title": "Arithmetic Operators: Condition",
-    "difficulty": "medium",
+    "slug": "divide",
+    "title": "Arithmetic Operators: Division",
+    "difficulty": "easy",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Print 20 / 4.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# print 20 / 4",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 20 / 4 = 5.0.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "20 / 4"
+        },
+        {
+          "type": "text",
+          "value": " inside print()."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints 5.0",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "5.0"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "5.0"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 5.0"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(20 / 4)"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t1-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "5.0",
         "visibility": "public"
       }
     ]
@@ -140,33 +240,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t1-p05",
     "topicId": "m3-t1",
-    "slug": "m3_t1-5",
-    "title": "Arithmetic Operators: Function Stub",
+    "slug": "floor-div",
+    "title": "Arithmetic Operators: Floor Division",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print 17 // 5 (whole number division).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# print 17 // 5",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 17 // 5 = 3.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "17 // 5"
+        },
+        {
+          "type": "text",
+          "value": " inside print()."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints 3",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "3"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "3"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 3"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(17 // 5)"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t1-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "3",
         "visibility": "public"
       }
     ]
@@ -174,33 +299,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t1-p06",
     "topicId": "m3-t1",
-    "slug": "m3_t1-6",
-    "title": "Arithmetic Operators: List Practice",
-    "difficulty": "hard",
+    "slug": "modulo",
+    "title": "Arithmetic Operators: Modulo",
+    "difficulty": "medium",
     "order": 6,
-    "description": "Create a list of three items about Arithmetic Operators and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Print 17 % 5 (remainder).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# print 17 % 5",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 17 % 5 = 2.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "17 % 5"
+        },
+        {
+          "type": "text",
+          "value": " inside print()."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints 2",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "2"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "2"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 2"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(17 % 5)"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t1-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "2",
         "visibility": "public"
       }
     ]
@@ -208,33 +358,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t1-p07",
     "topicId": "m3-t1",
-    "slug": "m3_t1-7",
-    "title": "Arithmetic Operators: Dict Lookup",
+    "slug": "power",
+    "title": "Arithmetic Operators: Exponent",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Print 2 ** 3 (2 to the power of 3).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# print 2 ** 3",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 2 ** 3 = 8.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "2 ** 3"
+        },
+        {
+          "type": "text",
+          "value": " inside print()."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints 8",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "8"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "8"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 8"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(2 ** 3)"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t1-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "8",
         "visibility": "public"
       }
     ]
@@ -242,33 +417,45 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t2-p01",
     "topicId": "m3-t2",
-    "slug": "m3_t2-1",
-    "title": "Assignment Operators: Warm-up",
+    "slug": "assign-basic",
+    "title": "Assignment Operators: Basic Assignment",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Assignment Operators. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Set x = 10, then print x.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# use x = 10",
+      "emptyMessage": "Assign to x, apply the operator, then print x.",
+      "successDetail": "Correct! After x = 10, x is 10.",
+      "requiresVariables": [
+        "x"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Set x = 10, then print x."
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "10"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Use variable x",
+      "Final output: 10"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "Start with x = a number, use x = 10, then print(x)"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t2-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "10",
         "visibility": "public"
       }
     ]
@@ -276,33 +463,45 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t2-p02",
     "topicId": "m3-t2",
-    "slug": "m3_t2-2",
-    "title": "Assignment Operators: Output Two Values",
+    "slug": "add-assign",
+    "title": "Assignment Operators: Add Assign +=",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Assignment Operators and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Set x = 10, then x += 5, print x.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# use x += 5",
+      "emptyMessage": "Assign to x, apply the operator, then print x.",
+      "successDetail": "Correct! After x += 5, x is 15.",
+      "requiresVariables": [
+        "x"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Set x = 10, then x += 5, print x."
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "15"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Use variable x",
+      "Final output: 15"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "Start with x = a number, use x += 5, then print(x)"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t2-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "15",
         "visibility": "public"
       }
     ]
@@ -310,33 +509,45 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t2-p03",
     "topicId": "m3-t2",
-    "slug": "m3_t2-3",
-    "title": "Assignment Operators: Simple Loop",
-    "difficulty": "medium",
+    "slug": "sub-assign",
+    "title": "Assignment Operators: Subtract Assign -=",
+    "difficulty": "easy",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Assignment Operators.",
+    "layout": "challenge",
+    "description": "Set x = 10, then x -= 3, print x.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# use x -= 3",
+      "emptyMessage": "Assign to x, apply the operator, then print x.",
+      "successDetail": "Correct! After x -= 3, x is 7.",
+      "requiresVariables": [
+        "x"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Set x = 10, then x -= 3, print x."
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "7"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Use variable x",
+      "Final output: 7"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "Start with x = a number, use x -= 3, then print(x)"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t2-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "7",
         "visibility": "public"
       }
     ]
@@ -344,33 +555,45 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t2-p04",
     "topicId": "m3-t2",
-    "slug": "m3_t2-4",
-    "title": "Assignment Operators: Condition",
+    "slug": "mul-assign",
+    "title": "Assignment Operators: Multiply Assign *=",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Set x = 4, then x *= 3, print x.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# use x *= 3",
+      "emptyMessage": "Assign to x, apply the operator, then print x.",
+      "successDetail": "Correct! After x *= 3, x is 12.",
+      "requiresVariables": [
+        "x"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Set x = 4, then x *= 3, print x."
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "12"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Use variable x",
+      "Final output: 12"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "Start with x = a number, use x *= 3, then print(x)"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t2-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "12",
         "visibility": "public"
       }
     ]
@@ -378,33 +601,45 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t2-p05",
     "topicId": "m3-t2",
-    "slug": "m3_t2-5",
-    "title": "Assignment Operators: Function Stub",
+    "slug": "div-assign",
+    "title": "Assignment Operators: Divide Assign /=",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Set x = 20, then x /= 4, print x.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# use x /= 4",
+      "emptyMessage": "Assign to x, apply the operator, then print x.",
+      "successDetail": "Correct! After x /= 4, x is 5.0.",
+      "requiresVariables": [
+        "x"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Set x = 20, then x /= 4, print x."
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "5.0"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Use variable x",
+      "Final output: 5.0"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "Start with x = a number, use x /= 4, then print(x)"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t2-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "5.0",
         "visibility": "public"
       }
     ]
@@ -412,33 +647,45 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t2-p06",
     "topicId": "m3-t2",
-    "slug": "m3_t2-6",
-    "title": "Assignment Operators: List Practice",
-    "difficulty": "hard",
+    "slug": "mod-assign",
+    "title": "Assignment Operators: Modulo Assign %=",
+    "difficulty": "medium",
     "order": 6,
-    "description": "Create a list of three items about Assignment Operators and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Set x = 17, then x %= 5, print x.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# use x %= 5",
+      "emptyMessage": "Assign to x, apply the operator, then print x.",
+      "successDetail": "Correct! After x %= 5, x is 2.",
+      "requiresVariables": [
+        "x"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Set x = 17, then x %= 5, print x."
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "2"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Use variable x",
+      "Final output: 2"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "Start with x = a number, use x %= 5, then print(x)"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t2-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "2",
         "visibility": "public"
       }
     ]
@@ -446,33 +693,45 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t2-p07",
     "topicId": "m3-t2",
-    "slug": "m3_t2-7",
-    "title": "Assignment Operators: Dict Lookup",
+    "slug": "pow-assign",
+    "title": "Assignment Operators: Power Assign **=",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Set x = 2, then x **= 3, print x.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# use x **= 3",
+      "emptyMessage": "Assign to x, apply the operator, then print x.",
+      "successDetail": "Correct! After x **= 3, x is 8.",
+      "requiresVariables": [
+        "x"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Set x = 2, then x **= 3, print x."
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "8"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Use variable x",
+      "Final output: 8"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "Start with x = a number, use x **= 3, then print(x)"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t2-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "8",
         "visibility": "public"
       }
     ]
@@ -480,33 +739,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t3-p01",
     "topicId": "m3-t3",
-    "slug": "m3_t3-1",
-    "title": "Comparison Operators: Warm-up",
+    "slug": "gt",
+    "title": "Comparison Operators: Greater Than",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Comparison Operators. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Print whether 5 > 3 is true.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# print 5 > 3",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 5 > 3 is True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print the result of "
+        },
+        {
+          "type": "code",
+          "value": "5 > 3"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints True",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(5 > 3)"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t3-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -514,33 +798,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t3-p02",
     "topicId": "m3-t3",
-    "slug": "m3_t3-2",
-    "title": "Comparison Operators: Output Two Values",
+    "slug": "eq",
+    "title": "Comparison Operators: Equal To",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Comparison Operators and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Print whether 2 == 2 is true.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# print 2 == 2",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 2 == 2 is True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print the result of "
+        },
+        {
+          "type": "code",
+          "value": "2 == 2"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints True",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(2 == 2)"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t3-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -548,33 +857,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t3-p03",
     "topicId": "m3-t3",
-    "slug": "m3_t3-3",
-    "title": "Comparison Operators: Simple Loop",
-    "difficulty": "medium",
+    "slug": "neq",
+    "title": "Comparison Operators: Not Equal",
+    "difficulty": "easy",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Comparison Operators.",
+    "layout": "challenge",
+    "description": "Print whether 1 != 0 is true.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# print 1 != 0",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 1 != 0 is True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print the result of "
+        },
+        {
+          "type": "code",
+          "value": "1 != 0"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints True",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(1 != 0)"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t3-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -582,33 +916,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t3-p04",
     "topicId": "m3-t3",
-    "slug": "m3_t3-4",
-    "title": "Comparison Operators: Condition",
+    "slug": "lte",
+    "title": "Comparison Operators: Less or Equal",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Print whether 4 <= 4 is true.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# print 4 <= 4",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 4 <= 4 is True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print the result of "
+        },
+        {
+          "type": "code",
+          "value": "4 <= 4"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints True",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(4 <= 4)"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t3-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -616,33 +975,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t3-p05",
     "topicId": "m3-t3",
-    "slug": "m3_t3-5",
-    "title": "Comparison Operators: Function Stub",
+    "slug": "lt-false",
+    "title": "Comparison Operators: Less Than False",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print whether 10 < 5 is false.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# print 10 < 5",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 10 < 5 is False.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print the result of "
+        },
+        {
+          "type": "code",
+          "value": "10 < 5"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints False",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "False"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "False"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: False"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(10 < 5)"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t3-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "False",
         "visibility": "public"
       }
     ]
@@ -650,33 +1034,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t3-p06",
     "topicId": "m3-t3",
-    "slug": "m3_t3-6",
-    "title": "Comparison Operators: List Practice",
-    "difficulty": "hard",
+    "slug": "gte",
+    "title": "Comparison Operators: Greater or Equal",
+    "difficulty": "medium",
     "order": 6,
-    "description": "Create a list of three items about Comparison Operators and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Print whether 7 >= 7 is true.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# print 7 >= 7",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 7 >= 7 is True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print the result of "
+        },
+        {
+          "type": "code",
+          "value": "7 >= 7"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints True",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(7 >= 7)"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t3-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -684,33 +1093,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t3-p07",
     "topicId": "m3-t3",
-    "slug": "m3_t3-7",
-    "title": "Comparison Operators: Dict Lookup",
+    "slug": "compare-vars",
+    "title": "Comparison Operators: Compare Variables",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Set a=10, b=5, print a > b.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# print a > b",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! a > b is True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print the result of "
+        },
+        {
+          "type": "code",
+          "value": "a > b"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints True",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(a > b)"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t3-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -718,33 +1152,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t4-p01",
     "topicId": "m3-t4",
-    "slug": "m3_t4-1",
-    "title": "Logical Operators: Warm-up",
+    "slug": "and-true",
+    "title": "Logical Operators: and True",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Logical Operators. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Print True and True.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# True and True",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! True and True = True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "True and True"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints True",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(True and True)"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t4-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -752,33 +1211,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t4-p02",
     "topicId": "m3-t4",
-    "slug": "m3_t4-2",
-    "title": "Logical Operators: Output Two Values",
+    "slug": "and-false",
+    "title": "Logical Operators: and False",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Logical Operators and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Print True and False.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# True and False",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! True and False = False.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "True and False"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints False",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "False"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "False"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: False"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(True and False)"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t4-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "False",
         "visibility": "public"
       }
     ]
@@ -786,33 +1270,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t4-p03",
     "topicId": "m3-t4",
-    "slug": "m3_t4-3",
-    "title": "Logical Operators: Simple Loop",
-    "difficulty": "medium",
+    "slug": "or-true",
+    "title": "Logical Operators: or True",
+    "difficulty": "easy",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Logical Operators.",
+    "layout": "challenge",
+    "description": "Print False or True.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# False or True",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! False or True = True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "False or True"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints True",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(False or True)"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t4-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -820,33 +1329,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t4-p04",
     "topicId": "m3-t4",
-    "slug": "m3_t4-4",
-    "title": "Logical Operators: Condition",
+    "slug": "not-false",
+    "title": "Logical Operators: not False",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Print not False.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# not False",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! not False = True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "not False"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints True",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(not False)"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t4-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -854,33 +1388,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t4-p05",
     "topicId": "m3-t4",
-    "slug": "m3_t4-5",
-    "title": "Logical Operators: Function Stub",
+    "slug": "not-true",
+    "title": "Logical Operators: not True",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print not True.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# not True",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! not True = False.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "not True"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints False",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "False"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "False"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: False"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(not True)"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t4-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "False",
         "visibility": "public"
       }
     ]
@@ -888,33 +1447,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t4-p06",
     "topicId": "m3-t4",
-    "slug": "m3_t4-6",
-    "title": "Logical Operators: List Practice",
-    "difficulty": "hard",
+    "slug": "and-compare",
+    "title": "Logical Operators: and with Comparison",
+    "difficulty": "medium",
     "order": 6,
-    "description": "Create a list of three items about Logical Operators and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Print 5 > 3 and 2 < 4.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# 5 > 3 and 2 < 4",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 5 > 3 and 2 < 4 = True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "5 > 3 and 2 < 4"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints True",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(5 > 3 and 2 < 4)"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t4-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -922,33 +1506,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t4-p07",
     "topicId": "m3-t4",
-    "slug": "m3_t4-7",
-    "title": "Logical Operators: Dict Lookup",
+    "slug": "or-compare",
+    "title": "Logical Operators: or with Comparison",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Print 5 > 10 or 3 == 3.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# 5 > 10 or 3 == 3",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 5 > 10 or 3 == 3 = True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "5 > 10 or 3 == 3"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints True",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(5 > 10 or 3 == 3)"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t4-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -956,33 +1565,61 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t5-p01",
     "topicId": "m3-t5",
-    "slug": "m3_t5-1",
-    "title": "Identity Operators: Warm-up",
+    "slug": "is-none",
+    "title": "Identity Operators: is None",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Identity Operators. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Set x = None, print x is None.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# x is None",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! is checks same object.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Check if "
+        },
+        {
+          "type": "code",
+          "value": "x is None"
+        },
+        {
+          "type": "text",
+          "value": " when x = None."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints True",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True"
+        }
+      ],
+      "requiresVariables": [
+        "x"
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "x = None\\nprint(x is None)"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t5-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -990,33 +1627,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t5-p02",
     "topicId": "m3-t5",
-    "slug": "m3_t5-2",
-    "title": "Identity Operators: Output Two Values",
+    "slug": "is-same-list",
+    "title": "Identity Operators: Same List Reference",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Identity Operators and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Set a = [1,2]; b = a; print a is b.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# same reference",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! Same object, same reference.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "When b points to the same list as a, "
+        },
+        {
+          "type": "code",
+          "value": "a is b"
+        },
+        {
+          "type": "text",
+          "value": " is True."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints True",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [1, 2]\\nb = a\\nprint(a is b)"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t5-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -1024,33 +1686,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t5-p03",
     "topicId": "m3-t5",
-    "slug": "m3_t5-3",
-    "title": "Identity Operators: Simple Loop",
+    "slug": "is-diff-list",
+    "title": "Identity Operators: Different Lists",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Identity Operators.",
+    "layout": "challenge",
+    "description": "Set a = [1]; b = [1]; print a is b.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# different objects",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! Different objects in memory.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Two separate lists with same values: "
+        },
+        {
+          "type": "code",
+          "value": "a is b"
+        },
+        {
+          "type": "text",
+          "value": " is False."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints False",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "False"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "False"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: False"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [1]\\nb = [1]\\nprint(a is b)"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t5-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "False",
         "visibility": "public"
       }
     ]
@@ -1058,33 +1745,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t5-p04",
     "topicId": "m3-t5",
-    "slug": "m3_t5-4",
-    "title": "Identity Operators: Condition",
+    "slug": "is-not",
+    "title": "Identity Operators: is not",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Set x = 5, print x is not None.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# is not None",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! is not is the opposite of is.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "is not"
+        },
+        {
+          "type": "text",
+          "value": " to check x is not None."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints True",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "x = 5\\nprint(x is not None)"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t5-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -1092,33 +1804,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t5-p05",
     "topicId": "m3-t5",
-    "slug": "m3_t5-5",
-    "title": "Identity Operators: Function Stub",
+    "slug": "is-int",
+    "title": "Identity Operators: Small int is",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print 5 is 5.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# 5 is 5",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! Python may reuse small integers.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "5 is 5"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints True",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(5 is 5)"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t5-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -1126,33 +1863,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t5-p06",
     "topicId": "m3-t5",
-    "slug": "m3_t5-6",
-    "title": "Identity Operators: List Practice",
+    "slug": "is-not-diff",
+    "title": "Identity Operators: is not Different",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Identity Operators and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Set a = [1,2]; b = [1,2]; print a is not b.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# is not b",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! Same values, different objects.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Different list objects: "
+        },
+        {
+          "type": "code",
+          "value": "a is not b"
+        },
+        {
+          "type": "text",
+          "value": " is True."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints True",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [1, 2]\\nb = [1, 2]\\nprint(a is not b)"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t5-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -1160,33 +1922,60 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t5-p07",
     "topicId": "m3-t5",
-    "slug": "m3_t5-7",
-    "title": "Identity Operators: Dict Lookup",
+    "slug": "none-check-fn",
+    "title": "Identity Operators: None in Function",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Define f() returning None, print f() is None.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# function returns None",
+      "emptyMessage": "Define f() that returns None, check with is None.",
+      "successDetail": "Correct! None checks use is, not ==.",
+      "requiresFunction": "f",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Define "
+        },
+        {
+          "type": "code",
+          "value": "f()"
+        },
+        {
+          "type": "text",
+          "value": " returning None, print "
+        },
+        {
+          "type": "code",
+          "value": "f() is None"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Define function f",
+      "Return None",
+      "Print f() is None"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def f():\\n    return None\\nprint(f() is None)"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t5-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -1194,33 +1983,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t6-p01",
     "topicId": "m3-t6",
-    "slug": "m3_t6-1",
-    "title": "Membership Operators: Warm-up",
+    "slug": "in-str",
+    "title": "Membership Operators: in String",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Membership Operators. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Print \"a\" in \"abc\".",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# \"a\" in \"abc\"",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! \"a\" in \"abc\" is True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "\"a\" in \"abc\""
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints True",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(\"a\" in \"abc\")"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t6-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -1228,33 +2042,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t6-p02",
     "topicId": "m3-t6",
-    "slug": "m3_t6-2",
-    "title": "Membership Operators: Output Two Values",
+    "slug": "not-in-str",
+    "title": "Membership Operators: not in String",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Membership Operators and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Print \"z\" not in \"abc\".",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# \"z\" not in \"abc\"",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! \"z\" not in \"abc\" is True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "\"z\" not in \"abc\""
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints True",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(\"z\" not in \"abc\")"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t6-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -1262,33 +2101,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t6-p03",
     "topicId": "m3-t6",
-    "slug": "m3_t6-3",
-    "title": "Membership Operators: Simple Loop",
-    "difficulty": "medium",
+    "slug": "in-list",
+    "title": "Membership Operators: in List",
+    "difficulty": "easy",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Membership Operators.",
+    "layout": "challenge",
+    "description": "Print 2 in [1, 2, 3].",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# 2 in [1, 2, 3]",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 2 in [1, 2, 3] is True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "2 in [1, 2, 3]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints True",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(2 in [1, 2, 3])"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t6-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -1296,33 +2160,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t6-p04",
     "topicId": "m3-t6",
-    "slug": "m3_t6-4",
-    "title": "Membership Operators: Condition",
+    "slug": "not-in-list",
+    "title": "Membership Operators: not in List",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Print 5 not in [1, 2, 3].",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# 5 not in [1, 2, 3]",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 5 not in [1, 2, 3] is True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "5 not in [1, 2, 3]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints True",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(5 not in [1, 2, 3])"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t6-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -1330,33 +2219,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t6-p05",
     "topicId": "m3-t6",
-    "slug": "m3_t6-5",
-    "title": "Membership Operators: Function Stub",
+    "slug": "in-set",
+    "title": "Membership Operators: in Set",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print 3 in {1, 2, 3}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# 3 in {1, 2, 3}",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 3 in {1, 2, 3} is True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "3 in {1, 2, 3}"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints True",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(3 in {1, 2, 3})"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t6-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -1364,33 +2278,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t6-p06",
     "topicId": "m3-t6",
-    "slug": "m3_t6-6",
-    "title": "Membership Operators: List Practice",
-    "difficulty": "hard",
+    "slug": "in-dict",
+    "title": "Membership Operators: in Dictionary",
+    "difficulty": "medium",
     "order": 6,
-    "description": "Create a list of three items about Membership Operators and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Print \"name\" in {\"name\": \"Ana\", \"age\": 20}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# \"name\" in {\"name\": \"Ana\", \"age\": 20}",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! \"name\" in {\"name\": \"Ana\", \"age\": 20} is True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "\"name\" in {\"name\": \"Ana\", \"age\": 20}"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints True",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(\"name\" in {\"name\": \"Ana\", \"age\": 20})"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t6-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -1398,33 +2337,59 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t6-p07",
     "topicId": "m3-t6",
-    "slug": "m3_t6-7",
-    "title": "Membership Operators: Dict Lookup",
+    "slug": "in-loop",
+    "title": "Membership Operators: Check in Loop",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Print 2 in [1,2,3] and 5 in [1,2,3] on separate lines.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# membership checks",
+      "emptyMessage": "Print two in/not in checks on separate lines.",
+      "successDetail": "Correct! in works on lists, strings, and more.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "2 in [1,2,3]"
+        },
+        {
+          "type": "text",
+          "value": " then "
+        },
+        {
+          "type": "code",
+          "value": "5 in [1,2,3]"
+        },
+        {
+          "type": "text",
+          "value": " on separate lines."
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "True\nFalse"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Two print() calls",
+      "Line 1: True",
+      "Line 2: False"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(2 in [1, 2, 3])\\nprint(5 in [1, 2, 3])"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t6-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "True\nFalse",
         "visibility": "public"
       }
     ]
@@ -1432,33 +2397,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t7-p01",
     "topicId": "m3-t7",
-    "slug": "m3_t7-1",
-    "title": "Bitwise Operators: Warm-up",
+    "slug": "and-bit",
+    "title": "Bitwise Operators: Bitwise AND &",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Bitwise Operators. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Print 5 & 1.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# 5 & 1",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 5 & 1 = 1.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "5 & 1"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints 1",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "1"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "1"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 1"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(5 & 1)"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t7-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "1",
         "visibility": "public"
       }
     ]
@@ -1466,33 +2456,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t7-p02",
     "topicId": "m3-t7",
-    "slug": "m3_t7-2",
-    "title": "Bitwise Operators: Output Two Values",
+    "slug": "or-bit",
+    "title": "Bitwise Operators: Bitwise OR |",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Bitwise Operators and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Print 5 | 2.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# 5 | 2",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 5 | 2 = 7.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "5 | 2"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints 7",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "7"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "7"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 7"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(5 | 2)"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t7-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "7",
         "visibility": "public"
       }
     ]
@@ -1500,33 +2515,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t7-p03",
     "topicId": "m3-t7",
-    "slug": "m3_t7-3",
-    "title": "Bitwise Operators: Simple Loop",
+    "slug": "xor-bit",
+    "title": "Bitwise Operators: Bitwise XOR ^",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Bitwise Operators.",
+    "layout": "challenge",
+    "description": "Print 5 ^ 1.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# 5 ^ 1",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 5 ^ 1 = 4.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "5 ^ 1"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints 4",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "4"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "4"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 4"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(5 ^ 1)"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t7-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "4",
         "visibility": "public"
       }
     ]
@@ -1534,33 +2574,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t7-p04",
     "topicId": "m3-t7",
-    "slug": "m3_t7-4",
-    "title": "Bitwise Operators: Condition",
+    "slug": "left-shift",
+    "title": "Bitwise Operators: Left Shift <<",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Print 3 << 1.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# 3 << 1",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 3 << 1 = 6.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "3 << 1"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints 6",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "6"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "6"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 6"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(3 << 1)"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t7-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "6",
         "visibility": "public"
       }
     ]
@@ -1568,33 +2633,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t7-p05",
     "topicId": "m3-t7",
-    "slug": "m3_t7-5",
-    "title": "Bitwise Operators: Function Stub",
+    "slug": "right-shift",
+    "title": "Bitwise Operators: Right Shift >>",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print 8 >> 1.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# 8 >> 1",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 8 >> 1 = 4.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "8 >> 1"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints 4",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "4"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "4"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 4"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(8 >> 1)"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t7-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "4",
         "visibility": "public"
       }
     ]
@@ -1602,33 +2692,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t7-p06",
     "topicId": "m3-t7",
-    "slug": "m3_t7-6",
-    "title": "Bitwise Operators: List Practice",
+    "slug": "and-mask",
+    "title": "Bitwise Operators: AND Mask",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Bitwise Operators and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Print 12 & 10.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# 12 & 10",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! 12 & 10 = 8.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "12 & 10"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints 8",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "8"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "8"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 8"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(12 & 10)"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t7-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "8",
         "visibility": "public"
       }
     ]
@@ -1636,33 +2751,58 @@ export const module3Practice: PracticeProblem[] = [
   {
     "id": "m3-t7-p07",
     "topicId": "m3-t7",
-    "slug": "m3_t7-7",
-    "title": "Bitwise Operators: Dict Lookup",
+    "slug": "combo-bit",
+    "title": "Bitwise Operators: Combined Bitwise",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Print (5 & 3) | 2.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# (5 & 3) | 2",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! (5 & 3) | 2 = 3.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "(5 & 3) | 2"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints 3",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "3"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "3"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 3"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print((5 & 3) | 2)"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m3-t7-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "3",
         "visibility": "public"
       }
     ]

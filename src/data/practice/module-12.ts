@@ -4,33 +4,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t1-p01",
     "topicId": "m12-t1",
-    "slug": "m12_t1-1",
-    "title": "Creating Functions: Warm-up",
+    "slug": "def-basic",
+    "title": "Creating Functions: Define a Function",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Creating Functions. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Define def greet(): print(\"Hi\"), call it.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "greet",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Define and call a simple function."
+        }
+      ],
+      "editorPlaceholder": "# def greet",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "Hi"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: Hi"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def greet():\\n    print(\"Hi\")\\ngreet()"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t1-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "Hi",
         "visibility": "public"
       }
     ]
@@ -38,33 +46,49 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t1-p02",
     "topicId": "m12-t1",
-    "slug": "m12_t1-2",
-    "title": "Creating Functions: Output Two Values",
+    "slug": "def-return",
+    "title": "Creating Functions: Return Value",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Creating Functions and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Define def add(a,b): return a+b, print add(2,3).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "add",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "return"
+        },
+        {
+          "type": "text",
+          "value": " to send back a value."
+        }
+      ],
+      "editorPlaceholder": "# return",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "5"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 5"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def add(a,b):\\n    return a+b\\nprint(add(2,3))"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t1-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "5",
         "visibility": "public"
       }
     ]
@@ -72,33 +96,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t1-p03",
     "topicId": "m12-t1",
-    "slug": "m12_t1-3",
-    "title": "Creating Functions: Simple Loop",
+    "slug": "def-param",
+    "title": "Creating Functions: Parameter",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Creating Functions.",
+    "layout": "challenge",
+    "description": "Define def shout(name): print(name.upper()), call shout(\"hi\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "shout",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Pass an argument to a function."
+        }
+      ],
+      "editorPlaceholder": "# param",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "HI"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: HI"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def shout(name):\\n    print(name.upper())\\nshout(\"hi\")"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t1-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "HI",
         "visibility": "public"
       }
     ]
@@ -106,33 +138,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t1-p04",
     "topicId": "m12-t1",
-    "slug": "m12_t1-4",
-    "title": "Creating Functions: Condition",
+    "slug": "def-default",
+    "title": "Creating Functions: Default Parameter",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Define def greet(name=\"Guest\"): print(f\"Hi {name}\"), call greet().",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "greet",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Default parameter values."
+        }
+      ],
+      "editorPlaceholder": "# default",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "Hi Guest"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: Hi Guest"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def greet(name=\"Guest\"):\\n    print(f\"Hi {name}\")\\ngreet()"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t1-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "Hi Guest",
         "visibility": "public"
       }
     ]
@@ -140,33 +180,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t1-p05",
     "topicId": "m12-t1",
-    "slug": "m12_t1-5",
-    "title": "Creating Functions: Function Stub",
-    "difficulty": "medium",
+    "slug": "def-multiple-return",
+    "title": "Creating Functions: Multiple Returns",
+    "difficulty": "hard",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Define def minmax(a,b): return min(a,b), max(a,b), print minmax(3,7)[0].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "minmax",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Return multiple values as tuple."
+        }
+      ],
+      "editorPlaceholder": "# multi return",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "3"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 3"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def minmax(a,b):\\n    return min(a,b), max(a,b)\\nprint(minmax(3,7)[0])"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t1-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "3",
         "visibility": "public"
       }
     ]
@@ -174,33 +222,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t1-p06",
     "topicId": "m12-t1",
-    "slug": "m12_t1-6",
-    "title": "Creating Functions: List Practice",
+    "slug": "def-scope",
+    "title": "Creating Functions: Local Variable",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Creating Functions and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Define def f(): x=10; return x, print f().",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "f",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Variables inside functions are local."
+        }
+      ],
+      "editorPlaceholder": "# local",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "10"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 10"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def f():\\n    x=10\\n    return x\\nprint(f())"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t1-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "10",
         "visibility": "public"
       }
     ]
@@ -208,33 +264,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t1-p07",
     "topicId": "m12-t1",
-    "slug": "m12_t1-7",
-    "title": "Creating Functions: Dict Lookup",
+    "slug": "def-nested",
+    "title": "Creating Functions: Function Calling Function",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Define def double(x): return x*2, def quad(x): return double(double(x)), print quad(2).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "quad",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "One function can call another."
+        }
+      ],
+      "editorPlaceholder": "# nested fn",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "8"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 8"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def double(x): return x*2\\ndef quad(x): return double(double(x))\\nprint(quad(2))"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t1-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "8",
         "visibility": "public"
       }
     ]
@@ -242,33 +306,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t2-p01",
     "topicId": "m12-t2",
-    "slug": "m12_t2-1",
-    "title": "Calling Functions: Warm-up",
+    "slug": "def-basic",
+    "title": "Calling Functions: Define a Function",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Calling Functions. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Define def greet(): print(\"Hi\"), call it.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "greet",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Define and call a simple function."
+        }
+      ],
+      "editorPlaceholder": "# def greet",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "Hi"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: Hi"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def greet():\\n    print(\"Hi\")\\ngreet()"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t2-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "Hi",
         "visibility": "public"
       }
     ]
@@ -276,33 +348,49 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t2-p02",
     "topicId": "m12-t2",
-    "slug": "m12_t2-2",
-    "title": "Calling Functions: Output Two Values",
+    "slug": "def-return",
+    "title": "Calling Functions: Return Value",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Calling Functions and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Define def add(a,b): return a+b, print add(2,3).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "add",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "return"
+        },
+        {
+          "type": "text",
+          "value": " to send back a value."
+        }
+      ],
+      "editorPlaceholder": "# return",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "5"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 5"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def add(a,b):\\n    return a+b\\nprint(add(2,3))"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t2-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "5",
         "visibility": "public"
       }
     ]
@@ -310,33 +398,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t2-p03",
     "topicId": "m12-t2",
-    "slug": "m12_t2-3",
-    "title": "Calling Functions: Simple Loop",
+    "slug": "def-param",
+    "title": "Calling Functions: Parameter",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Calling Functions.",
+    "layout": "challenge",
+    "description": "Define def shout(name): print(name.upper()), call shout(\"hi\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "shout",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Pass an argument to a function."
+        }
+      ],
+      "editorPlaceholder": "# param",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "HI"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: HI"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def shout(name):\\n    print(name.upper())\\nshout(\"hi\")"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t2-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "HI",
         "visibility": "public"
       }
     ]
@@ -344,33 +440,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t2-p04",
     "topicId": "m12-t2",
-    "slug": "m12_t2-4",
-    "title": "Calling Functions: Condition",
+    "slug": "def-default",
+    "title": "Calling Functions: Default Parameter",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Define def greet(name=\"Guest\"): print(f\"Hi {name}\"), call greet().",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "greet",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Default parameter values."
+        }
+      ],
+      "editorPlaceholder": "# default",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "Hi Guest"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: Hi Guest"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def greet(name=\"Guest\"):\\n    print(f\"Hi {name}\")\\ngreet()"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t2-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "Hi Guest",
         "visibility": "public"
       }
     ]
@@ -378,33 +482,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t2-p05",
     "topicId": "m12-t2",
-    "slug": "m12_t2-5",
-    "title": "Calling Functions: Function Stub",
-    "difficulty": "medium",
+    "slug": "def-multiple-return",
+    "title": "Calling Functions: Multiple Returns",
+    "difficulty": "hard",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Define def minmax(a,b): return min(a,b), max(a,b), print minmax(3,7)[0].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "minmax",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Return multiple values as tuple."
+        }
+      ],
+      "editorPlaceholder": "# multi return",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "3"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 3"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def minmax(a,b):\\n    return min(a,b), max(a,b)\\nprint(minmax(3,7)[0])"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t2-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "3",
         "visibility": "public"
       }
     ]
@@ -412,33 +524,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t2-p06",
     "topicId": "m12-t2",
-    "slug": "m12_t2-6",
-    "title": "Calling Functions: List Practice",
+    "slug": "def-scope",
+    "title": "Calling Functions: Local Variable",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Calling Functions and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Define def f(): x=10; return x, print f().",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "f",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Variables inside functions are local."
+        }
+      ],
+      "editorPlaceholder": "# local",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "10"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 10"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def f():\\n    x=10\\n    return x\\nprint(f())"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t2-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "10",
         "visibility": "public"
       }
     ]
@@ -446,33 +566,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t2-p07",
     "topicId": "m12-t2",
-    "slug": "m12_t2-7",
-    "title": "Calling Functions: Dict Lookup",
+    "slug": "def-nested",
+    "title": "Calling Functions: Function Calling Function",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Define def double(x): return x*2, def quad(x): return double(double(x)), print quad(2).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "quad",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "One function can call another."
+        }
+      ],
+      "editorPlaceholder": "# nested fn",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "8"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 8"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def double(x): return x*2\\ndef quad(x): return double(double(x))\\nprint(quad(2))"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t2-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "8",
         "visibility": "public"
       }
     ]
@@ -480,33 +608,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t3-p01",
     "topicId": "m12-t3",
-    "slug": "m12_t3-1",
-    "title": "Function Arguments: Warm-up",
+    "slug": "def-basic",
+    "title": "Function Arguments: Define a Function",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Function Arguments. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Define def greet(): print(\"Hi\"), call it.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "greet",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Define and call a simple function."
+        }
+      ],
+      "editorPlaceholder": "# def greet",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "Hi"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: Hi"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def greet():\\n    print(\"Hi\")\\ngreet()"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t3-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "Hi",
         "visibility": "public"
       }
     ]
@@ -514,33 +650,49 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t3-p02",
     "topicId": "m12-t3",
-    "slug": "m12_t3-2",
-    "title": "Function Arguments: Output Two Values",
+    "slug": "def-return",
+    "title": "Function Arguments: Return Value",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Function Arguments and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Define def add(a,b): return a+b, print add(2,3).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "add",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "return"
+        },
+        {
+          "type": "text",
+          "value": " to send back a value."
+        }
+      ],
+      "editorPlaceholder": "# return",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "5"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 5"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def add(a,b):\\n    return a+b\\nprint(add(2,3))"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t3-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "5",
         "visibility": "public"
       }
     ]
@@ -548,33 +700,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t3-p03",
     "topicId": "m12-t3",
-    "slug": "m12_t3-3",
-    "title": "Function Arguments: Simple Loop",
+    "slug": "def-param",
+    "title": "Function Arguments: Parameter",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Function Arguments.",
+    "layout": "challenge",
+    "description": "Define def shout(name): print(name.upper()), call shout(\"hi\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "shout",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Pass an argument to a function."
+        }
+      ],
+      "editorPlaceholder": "# param",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "HI"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: HI"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def shout(name):\\n    print(name.upper())\\nshout(\"hi\")"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t3-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "HI",
         "visibility": "public"
       }
     ]
@@ -582,33 +742,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t3-p04",
     "topicId": "m12-t3",
-    "slug": "m12_t3-4",
-    "title": "Function Arguments: Condition",
+    "slug": "def-default",
+    "title": "Function Arguments: Default Parameter",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Define def greet(name=\"Guest\"): print(f\"Hi {name}\"), call greet().",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "greet",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Default parameter values."
+        }
+      ],
+      "editorPlaceholder": "# default",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "Hi Guest"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: Hi Guest"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def greet(name=\"Guest\"):\\n    print(f\"Hi {name}\")\\ngreet()"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t3-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "Hi Guest",
         "visibility": "public"
       }
     ]
@@ -616,33 +784,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t3-p05",
     "topicId": "m12-t3",
-    "slug": "m12_t3-5",
-    "title": "Function Arguments: Function Stub",
-    "difficulty": "medium",
+    "slug": "def-multiple-return",
+    "title": "Function Arguments: Multiple Returns",
+    "difficulty": "hard",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Define def minmax(a,b): return min(a,b), max(a,b), print minmax(3,7)[0].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "minmax",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Return multiple values as tuple."
+        }
+      ],
+      "editorPlaceholder": "# multi return",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "3"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 3"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def minmax(a,b):\\n    return min(a,b), max(a,b)\\nprint(minmax(3,7)[0])"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t3-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "3",
         "visibility": "public"
       }
     ]
@@ -650,33 +826,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t3-p06",
     "topicId": "m12-t3",
-    "slug": "m12_t3-6",
-    "title": "Function Arguments: List Practice",
+    "slug": "def-scope",
+    "title": "Function Arguments: Local Variable",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Function Arguments and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Define def f(): x=10; return x, print f().",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "f",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Variables inside functions are local."
+        }
+      ],
+      "editorPlaceholder": "# local",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "10"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 10"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def f():\\n    x=10\\n    return x\\nprint(f())"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t3-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "10",
         "visibility": "public"
       }
     ]
@@ -684,33 +868,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t3-p07",
     "topicId": "m12-t3",
-    "slug": "m12_t3-7",
-    "title": "Function Arguments: Dict Lookup",
+    "slug": "def-nested",
+    "title": "Function Arguments: Function Calling Function",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Define def double(x): return x*2, def quad(x): return double(double(x)), print quad(2).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "quad",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "One function can call another."
+        }
+      ],
+      "editorPlaceholder": "# nested fn",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "8"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 8"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def double(x): return x*2\\ndef quad(x): return double(double(x))\\nprint(quad(2))"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t3-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "8",
         "visibility": "public"
       }
     ]
@@ -718,33 +910,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t4-p01",
     "topicId": "m12-t4",
-    "slug": "m12_t4-1",
-    "title": "Variables in Functions: Warm-up",
+    "slug": "def-basic",
+    "title": "Variables in Functions: Define a Function",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Variables in Functions. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Define def greet(): print(\"Hi\"), call it.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "greet",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Define and call a simple function."
+        }
+      ],
+      "editorPlaceholder": "# def greet",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "Hi"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: Hi"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def greet():\\n    print(\"Hi\")\\ngreet()"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t4-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "Hi",
         "visibility": "public"
       }
     ]
@@ -752,33 +952,49 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t4-p02",
     "topicId": "m12-t4",
-    "slug": "m12_t4-2",
-    "title": "Variables in Functions: Output Two Values",
+    "slug": "def-return",
+    "title": "Variables in Functions: Return Value",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Variables in Functions and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Define def add(a,b): return a+b, print add(2,3).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "add",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "return"
+        },
+        {
+          "type": "text",
+          "value": " to send back a value."
+        }
+      ],
+      "editorPlaceholder": "# return",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "5"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 5"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def add(a,b):\\n    return a+b\\nprint(add(2,3))"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t4-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "5",
         "visibility": "public"
       }
     ]
@@ -786,33 +1002,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t4-p03",
     "topicId": "m12-t4",
-    "slug": "m12_t4-3",
-    "title": "Variables in Functions: Simple Loop",
+    "slug": "def-param",
+    "title": "Variables in Functions: Parameter",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Variables in Functions.",
+    "layout": "challenge",
+    "description": "Define def shout(name): print(name.upper()), call shout(\"hi\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "shout",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Pass an argument to a function."
+        }
+      ],
+      "editorPlaceholder": "# param",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "HI"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: HI"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def shout(name):\\n    print(name.upper())\\nshout(\"hi\")"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t4-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "HI",
         "visibility": "public"
       }
     ]
@@ -820,33 +1044,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t4-p04",
     "topicId": "m12-t4",
-    "slug": "m12_t4-4",
-    "title": "Variables in Functions: Condition",
+    "slug": "def-default",
+    "title": "Variables in Functions: Default Parameter",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Define def greet(name=\"Guest\"): print(f\"Hi {name}\"), call greet().",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "greet",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Default parameter values."
+        }
+      ],
+      "editorPlaceholder": "# default",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "Hi Guest"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: Hi Guest"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def greet(name=\"Guest\"):\\n    print(f\"Hi {name}\")\\ngreet()"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t4-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "Hi Guest",
         "visibility": "public"
       }
     ]
@@ -854,33 +1086,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t4-p05",
     "topicId": "m12-t4",
-    "slug": "m12_t4-5",
-    "title": "Variables in Functions: Function Stub",
-    "difficulty": "medium",
+    "slug": "def-multiple-return",
+    "title": "Variables in Functions: Multiple Returns",
+    "difficulty": "hard",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Define def minmax(a,b): return min(a,b), max(a,b), print minmax(3,7)[0].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "minmax",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Return multiple values as tuple."
+        }
+      ],
+      "editorPlaceholder": "# multi return",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "3"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 3"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def minmax(a,b):\\n    return min(a,b), max(a,b)\\nprint(minmax(3,7)[0])"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t4-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "3",
         "visibility": "public"
       }
     ]
@@ -888,33 +1128,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t4-p06",
     "topicId": "m12-t4",
-    "slug": "m12_t4-6",
-    "title": "Variables in Functions: List Practice",
+    "slug": "def-scope",
+    "title": "Variables in Functions: Local Variable",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Variables in Functions and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Define def f(): x=10; return x, print f().",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "f",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Variables inside functions are local."
+        }
+      ],
+      "editorPlaceholder": "# local",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "10"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 10"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def f():\\n    x=10\\n    return x\\nprint(f())"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t4-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "10",
         "visibility": "public"
       }
     ]
@@ -922,33 +1170,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t4-p07",
     "topicId": "m12-t4",
-    "slug": "m12_t4-7",
-    "title": "Variables in Functions: Dict Lookup",
+    "slug": "def-nested",
+    "title": "Variables in Functions: Function Calling Function",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Define def double(x): return x*2, def quad(x): return double(double(x)), print quad(2).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "quad",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "One function can call another."
+        }
+      ],
+      "editorPlaceholder": "# nested fn",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "8"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 8"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def double(x): return x*2\\ndef quad(x): return double(double(x))\\nprint(quad(2))"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t4-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "8",
         "visibility": "public"
       }
     ]
@@ -956,33 +1212,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t5-p01",
     "topicId": "m12-t5",
-    "slug": "m12_t5-1",
-    "title": "Recursion: Warm-up",
+    "slug": "rec-base",
+    "title": "Recursion: Base Case",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Recursion. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Define def countdown(n): print(n); if n>1: countdown(n-1), call countdown(3).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "countdown",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Recursion calls itself with a base case."
+        }
+      ],
+      "editorPlaceholder": "# countdown",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "3\n2\n1"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print 3, 2, 1"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def countdown(n):\\n    print(n)\\n    if n>1:\\n        countdown(n-1)\\ncountdown(3)"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t5-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "3\n2\n1",
         "visibility": "public"
       }
     ]
@@ -990,33 +1254,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t5-p02",
     "topicId": "m12-t5",
-    "slug": "m12_t5-2",
-    "title": "Recursion: Output Two Values",
+    "slug": "rec-factorial",
+    "title": "Recursion: Factorial",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Recursion and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Define def fact(n): return 1 if n<=1 else n*fact(n-1), print fact(5).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "fact",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Classic recursive factorial."
+        }
+      ],
+      "editorPlaceholder": "# factorial",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "120"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 120"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def fact(n):\\n    return 1 if n<=1 else n*fact(n-1)\\nprint(fact(5))"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t5-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "120",
         "visibility": "public"
       }
     ]
@@ -1024,33 +1296,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t5-p03",
     "topicId": "m12-t5",
-    "slug": "m12_t5-3",
-    "title": "Recursion: Simple Loop",
+    "slug": "rec-sum",
+    "title": "Recursion: Recursive Sum",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Recursion.",
+    "layout": "challenge",
+    "description": "Define def rsum(n): return 0 if n<=0 else n+rsum(n-1), print rsum(5).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "rsum",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Sum 1 to n recursively."
+        }
+      ],
+      "editorPlaceholder": "# rsum",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "15"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 15"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def rsum(n):\\n    return 0 if n<=0 else n+rsum(n-1)\\nprint(rsum(5))"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t5-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "15",
         "visibility": "public"
       }
     ]
@@ -1058,33 +1338,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t5-p04",
     "topicId": "m12-t5",
-    "slug": "m12_t5-4",
-    "title": "Recursion: Condition",
+    "slug": "rec-fib",
+    "title": "Recursion: Fibonacci Step",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Define def fib(n): return n if n<=1 else fib(n-1)+fib(n-2), print fib(6).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "fib",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Fibonacci uses two recursive calls."
+        }
+      ],
+      "editorPlaceholder": "# fib",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "8"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 8"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def fib(n):\\n    return n if n<=1 else fib(n-1)+fib(n-2)\\nprint(fib(6))"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t5-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "8",
         "visibility": "public"
       }
     ]
@@ -1092,33 +1380,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t5-p05",
     "topicId": "m12-t5",
-    "slug": "m12_t5-5",
-    "title": "Recursion: Function Stub",
-    "difficulty": "medium",
+    "slug": "rec-power",
+    "title": "Recursion: Power",
+    "difficulty": "hard",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Define def power(b,e): return 1 if e==0 else b*power(b,e-1), print power(2,3).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "power",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Recursive exponentiation."
+        }
+      ],
+      "editorPlaceholder": "# power",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "8"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 8"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def power(b,e):\\n    return 1 if e==0 else b*power(b,e-1)\\nprint(power(2,3))"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t5-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "8",
         "visibility": "public"
       }
     ]
@@ -1126,33 +1422,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t5-p06",
     "topicId": "m12-t5",
-    "slug": "m12_t5-6",
-    "title": "Recursion: List Practice",
+    "slug": "rec-len",
+    "title": "Recursion: Recursive Length",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Recursion and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Define def rlen(s): return 0 if s==\"\" else 1+rlen(s[1:]), print rlen(\"abc\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "rlen",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Count string length recursively."
+        }
+      ],
+      "editorPlaceholder": "# rlen",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "3"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 3"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def rlen(s):\\n    return 0 if s==\"\" else 1+rlen(s[1:])\\nprint(rlen(\"abc\"))"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t5-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "3",
         "visibility": "public"
       }
     ]
@@ -1160,33 +1464,41 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t5-p07",
     "topicId": "m12-t5",
-    "slug": "m12_t5-7",
-    "title": "Recursion: Dict Lookup",
+    "slug": "rec-countdown-silent",
+    "title": "Recursion: Silent Base",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Define def print_down(n): if n>=1: print(n); print_down(n-1), call print_down(2).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "print_down",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Base case when n < 1 stops recursion."
+        }
+      ],
+      "editorPlaceholder": "# print_down",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "2\n1"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print 2, 1"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def print_down(n):\\n    if n>=1:\\n        print(n)\\n        print_down(n-1)\\nprint_down(2)"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m12-t5-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "2\n1",
         "visibility": "public"
       }
     ]

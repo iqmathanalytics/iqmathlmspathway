@@ -124,11 +124,37 @@ export const module3Lessons: Record<string, TopicLesson> = {
       },
       {
         type: "practice",
-        practiceLabel: "Logical basics",
+        practiceLabel: "Basics",
         ideOnly: true,
-        practicePrompt: "Run the code and check each True/False result.",
+        practicePrompt:
+          "Run the code and check each True/False result for and, or, and not.",
         starterCode:
-          "has_ticket = True\nis_adult = True\nprint(has_ticket and is_adult)  # True\n\nprint(True or False)   # True\nprint(not True)        # False",
+          "has_ticket = True\nis_adult = True\nprint(has_ticket and is_adult)\nprint(True or False)\nprint(not True)",
+      },
+      {
+        type: "practice",
+        practiceLabel: "and table",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and print all four combinations of and — only one should be True.",
+        starterCode:
+          "print(True and True)\nprint(True and False)\nprint(False and True)\nprint(False and False)",
+      },
+      {
+        type: "practice",
+        practiceLabel: "or table",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and print all four combinations of or — only one should be False.",
+        starterCode:
+          "print(True or True)\nprint(True or False)\nprint(False or True)\nprint(False or False)",
+      },
+      {
+        type: "practice",
+        practiceLabel: "not",
+        ideOnly: true,
+        practicePrompt: "Run the code and see how not flips True and False.",
+        starterCode: "print(not True)\nprint(not False)",
       },
       {
         type: "practice",
@@ -140,9 +166,9 @@ export const module3Lessons: Record<string, TopicLesson> = {
       },
     ],
     keyTakeaways: [
-      "and — both true; or — at least one true; not — opposite.",
-      "Logical operators work on bool values.",
-      "Perfect for combining checks in conditions.",
+      "and — both must be True; or — at least one True; not — flips the value.",
+      "Use truth tables to predict results before running code.",
+      "Perfect for combining checks in if statements.",
     ],
   },
   "m3-t5": {

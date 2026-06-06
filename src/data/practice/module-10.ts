@@ -4,33 +4,49 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t1-p01",
     "topicId": "m10-t1",
-    "slug": "m10_t1-1",
-    "title": "while Loop: Warm-up",
+    "slug": "while-count",
+    "title": "while Loop: Count with while",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to while Loop. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Use while to print 1, 2, 3 on separate lines.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "while"
+        },
+        {
+          "type": "text",
+          "value": " loop with a counter."
+        }
+      ],
+      "editorPlaceholder": "# while loop",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "1\n2\n3"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Use while",
+      "Print 1, 2, 3"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "n=1\\nwhile n<=3:\\n    print(n)\\n    n+=1"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t1-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "1\n2\n3",
         "visibility": "public"
       }
     ]
@@ -38,33 +54,40 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t1-p02",
     "topicId": "m10-t1",
-    "slug": "m10_t1-2",
-    "title": "while Loop: Output Two Values",
+    "slug": "while-sum",
+    "title": "while Loop: Sum to 5",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to while Loop and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Use while to print 1+2+3+4+5 result: 15.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Accumulate sum in a while loop."
+        }
+      ],
+      "editorPlaceholder": "# while sum",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "15"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 15"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "total=0\\nn=1\\nwhile n<=5:\\n    total+=n\\n    n+=1\\nprint(total)"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t1-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "15",
         "visibility": "public"
       }
     ]
@@ -72,33 +95,40 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t1-p03",
     "topicId": "m10-t1",
-    "slug": "m10_t1-3",
-    "title": "while Loop: Simple Loop",
+    "slug": "while-condition",
+    "title": "while Loop: while Until Done",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on while Loop.",
+    "layout": "challenge",
+    "description": "Set x=3, while x>0: print(x); x-=1. Output 3,2,1.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Loop while condition is true."
+        }
+      ],
+      "editorPlaceholder": "# while x>0",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "3\n2\n1"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print 3, 2, 1"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "x=3\\nwhile x>0:\\n    print(x)\\n    x-=1"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t1-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "3\n2\n1",
         "visibility": "public"
       }
     ]
@@ -106,33 +136,48 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t1-p04",
     "topicId": "m10-t1",
-    "slug": "m10_t1-4",
-    "title": "while Loop: Condition",
+    "slug": "while-break",
+    "title": "while Loop: while with break",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Use while True, print 1,2 then break.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "break"
+        },
+        {
+          "type": "text",
+          "value": " to exit loop early."
+        }
+      ],
+      "editorPlaceholder": "# while break",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "1\n2"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output 1 then 2"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "n=0\\nwhile True:\\n    n+=1\\n    print(n)\\n    if n==2: break"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t1-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "1\n2",
         "visibility": "public"
       }
     ]
@@ -140,33 +185,40 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t1-p05",
     "topicId": "m10-t1",
-    "slug": "m10_t1-5",
-    "title": "while Loop: Function Stub",
-    "difficulty": "medium",
+    "slug": "while-input-sim",
+    "title": "while Loop: Simulated Input Loop",
+    "difficulty": "hard",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Set count=0, while count<3: print(\"tick\"); count+=1.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Repeat exactly 3 times with while."
+        }
+      ],
+      "editorPlaceholder": "# while 3x",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "tick\ntick\ntick"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print tick three times"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "count=0\\nwhile count<3:\\n    print(\"tick\")\\n    count+=1"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t1-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "tick\ntick\ntick",
         "visibility": "public"
       }
     ]
@@ -174,33 +226,40 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t1-p06",
     "topicId": "m10-t1",
-    "slug": "m10_t1-6",
-    "title": "while Loop: List Practice",
+    "slug": "while-factorial",
+    "title": "while Loop: Factorial Setup",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about while Loop and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Use while to compute 4! = 24 and print it.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Multiply numbers 1 to 4 in a while loop."
+        }
+      ],
+      "editorPlaceholder": "# factorial",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "24"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 24"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "n=4\\nresult=1\\nwhile n>0:\\n    result*=n\\n    n-=1\\nprint(result)"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t1-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "24",
         "visibility": "public"
       }
     ]
@@ -208,33 +267,40 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t1-p07",
     "topicId": "m10-t1",
-    "slug": "m10_t1-7",
-    "title": "while Loop: Dict Lookup",
+    "slug": "while-infinite-guard",
+    "title": "while Loop: Guard Variable",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Set running=True, n=0, while running: print(n); n+=1; if n>=3: running=False.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use a flag variable to stop the loop."
+        }
+      ],
+      "editorPlaceholder": "# guard",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "0\n1\n2"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print 0, 1, 2"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "running=True\\nn=0\\nwhile running:\\n    print(n)\\n    n+=1\\n    if n>=3: running=False"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t1-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "0\n1\n2",
         "visibility": "public"
       }
     ]
@@ -242,33 +308,49 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t2-p01",
     "topicId": "m10-t2",
-    "slug": "m10_t2-1",
-    "title": "for Loop: Warm-up",
+    "slug": "for-range",
+    "title": "for Loop: for with range",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to for Loop. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Use for i in range(1,4): print(i).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresForLoop": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Loop with "
+        },
+        {
+          "type": "code",
+          "value": "range(1,4)"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# for range",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "1\n2\n3"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print 1, 2, 3"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "for i in range(1,4):\\n    print(i)"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t2-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "1\n2\n3",
         "visibility": "public"
       }
     ]
@@ -276,33 +358,41 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t2-p02",
     "topicId": "m10-t2",
-    "slug": "m10_t2-2",
-    "title": "for Loop: Output Two Values",
+    "slug": "for-list",
+    "title": "for Loop: for over List",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to for Loop and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "For item in [\"a\",\"b\",\"c\"]: print(item).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresForLoop": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Loop directly over a list."
+        }
+      ],
+      "editorPlaceholder": "# for list",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "a\nb\nc"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print a, b, c"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "for item in [\"a\",\"b\",\"c\"]:\\n    print(item)"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t2-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "a\nb\nc",
         "visibility": "public"
       }
     ]
@@ -310,33 +400,41 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t2-p03",
     "topicId": "m10-t2",
-    "slug": "m10_t2-3",
-    "title": "for Loop: Simple Loop",
+    "slug": "for-string",
+    "title": "for Loop: for over String",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on for Loop.",
+    "layout": "challenge",
+    "description": "For char in \"hi\": print(char).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresForLoop": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Loop over each character."
+        }
+      ],
+      "editorPlaceholder": "# for string",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "h\ni"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print h then i"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "for char in \"hi\":\\n    print(char)"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t2-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "h\ni",
         "visibility": "public"
       }
     ]
@@ -344,33 +442,41 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t2-p04",
     "topicId": "m10-t2",
-    "slug": "m10_t2-4",
-    "title": "for Loop: Condition",
+    "slug": "for-accumulate",
+    "title": "for Loop: Accumulate in for",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Use for to sum [1,2,3,4] and print 10.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresForLoop": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Build a total inside a for loop."
+        }
+      ],
+      "editorPlaceholder": "# for sum",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "10"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 10"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "total=0\\nfor n in [1,2,3,4]:\\n    total+=n\\nprint(total)"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t2-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "10",
         "visibility": "public"
       }
     ]
@@ -378,33 +484,41 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t2-p05",
     "topicId": "m10-t2",
-    "slug": "m10_t2-5",
-    "title": "for Loop: Function Stub",
-    "difficulty": "medium",
+    "slug": "for-enumerate",
+    "title": "for Loop: Index with range",
+    "difficulty": "hard",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print index:value for [\"x\",\"y\"] as 0:x and 1:y.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresForLoop": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use index with range and list length."
+        }
+      ],
+      "editorPlaceholder": "# index loop",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "0:x\n1:y"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print 0:x and 1:y"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "items=[\"x\",\"y\"]\\nfor i in range(len(items)):\\n    print(f\"{i}:{items[i]}\")"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t2-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "0:x\n1:y",
         "visibility": "public"
       }
     ]
@@ -412,33 +526,41 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t2-p06",
     "topicId": "m10-t2",
-    "slug": "m10_t2-6",
-    "title": "for Loop: List Practice",
+    "slug": "for-nested",
+    "title": "for Loop: Nested for",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about for Loop and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Use nested for to print 1,2 for two rows.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresForLoop": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Nested loops run inner loop fully each outer step."
+        }
+      ],
+      "editorPlaceholder": "# nested",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "1\n2\n1\n2"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Four lines: 1,2,1,2"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "for _ in range(2):\\n    for n in [1,2]:\\n        print(n)"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t2-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "1\n2\n1\n2",
         "visibility": "public"
       }
     ]
@@ -446,33 +568,41 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t2-p07",
     "topicId": "m10-t2",
-    "slug": "m10_t2-7",
-    "title": "for Loop: Dict Lookup",
+    "slug": "for-else",
+    "title": "for Loop: for Complete",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Loop [1,2,3] printing each — just print all items.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresForLoop": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Complete for loop over a list."
+        }
+      ],
+      "editorPlaceholder": "# for complete",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "1\n2\n3"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print 1, 2, 3"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "for n in [1,2,3]:\\n    print(n)"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t2-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "1\n2\n3",
         "visibility": "public"
       }
     ]
@@ -480,33 +610,49 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t3-p01",
     "topicId": "m10-t3",
-    "slug": "m10_t3-1",
-    "title": "break and continue: Warm-up",
+    "slug": "break-basic",
+    "title": "break and continue: break Early",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to break and continue. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Loop 1-5, break at 3, print numbers before break: 1,2.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresForLoop": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "break"
+        },
+        {
+          "type": "text",
+          "value": " to stop the loop."
+        }
+      ],
+      "editorPlaceholder": "# break",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "1\n2"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print 1 and 2 only"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "for i in range(1,6):\\n    if i==3: break\\n    print(i)"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t3-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "1\n2",
         "visibility": "public"
       }
     ]
@@ -514,33 +660,49 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t3-p02",
     "topicId": "m10-t3",
-    "slug": "m10_t3-2",
-    "title": "break and continue: Output Two Values",
+    "slug": "continue-skip",
+    "title": "break and continue: continue Skip",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to break and continue and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Loop 1-4, skip 2 with continue, print 1,3,4.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresForLoop": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "continue"
+        },
+        {
+          "type": "text",
+          "value": " to skip an iteration."
+        }
+      ],
+      "editorPlaceholder": "# continue",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "1\n3\n4"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Skip 2"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "for i in range(1,5):\\n    if i==2: continue\\n    print(i)"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t3-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "1\n3\n4",
         "visibility": "public"
       }
     ]
@@ -548,33 +710,41 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t3-p03",
     "topicId": "m10-t3",
-    "slug": "m10_t3-3",
-    "title": "break and continue: Simple Loop",
+    "slug": "break-search",
+    "title": "break and continue: Search with break",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on break and continue.",
+    "layout": "challenge",
+    "description": "Find 3 in [1,2,3,4], print \"found\" when found.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresForLoop": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "break when target found."
+        }
+      ],
+      "editorPlaceholder": "# search",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "found"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: found"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "for n in [1,2,3,4]:\\n    if n==3:\\n        print(\"found\")\\n        break"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t3-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "found",
         "visibility": "public"
       }
     ]
@@ -582,33 +752,41 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t3-p04",
     "topicId": "m10-t3",
-    "slug": "m10_t3-4",
-    "title": "break and continue: Condition",
+    "slug": "continue-even",
+    "title": "break and continue: Skip Odds",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Print even numbers 2,4 from range(1,5) using continue.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresForLoop": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Skip odd numbers with continue."
+        }
+      ],
+      "editorPlaceholder": "# skip odds",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "2\n4"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print 2 and 4"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "for i in range(1,5):\\n    if i%2!=0: continue\\n    print(i)"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t3-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "2\n4",
         "visibility": "public"
       }
     ]
@@ -616,33 +794,40 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t3-p05",
     "topicId": "m10-t3",
-    "slug": "m10_t3-5",
-    "title": "break and continue: Function Stub",
-    "difficulty": "medium",
+    "slug": "break-while",
+    "title": "break and continue: break in while",
+    "difficulty": "hard",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Use while with break when n reaches 3.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "break works in while loops too."
+        }
+      ],
+      "editorPlaceholder": "# while break",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "1\n2"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print 1, 2"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "n=0\\nwhile True:\\n    n+=1\\n    if n==3: break\\n    print(n)"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t3-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "1\n2",
         "visibility": "public"
       }
     ]
@@ -650,33 +835,41 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t3-p06",
     "topicId": "m10-t3",
-    "slug": "m10_t3-6",
-    "title": "break and continue: List Practice",
+    "slug": "continue-string",
+    "title": "break and continue: Skip Spaces",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about break and continue and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "For c in \"a b\", skip spaces with continue, print a and b.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresForLoop": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "continue to skip unwanted characters."
+        }
+      ],
+      "editorPlaceholder": "# skip space",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "a\nb"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print a and b"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "for c in \"a b\":\\n    if c==\" \": continue\\n    print(c)"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t3-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "a\nb",
         "visibility": "public"
       }
     ]
@@ -684,33 +877,41 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t3-p07",
     "topicId": "m10-t3",
-    "slug": "m10_t3-7",
-    "title": "break and continue: Dict Lookup",
+    "slug": "break-nested",
+    "title": "break and continue: break Inner Only",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Nested loop, break inner at j=2, print pairs until break.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresForLoop": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "break only exits innermost loop."
+        }
+      ],
+      "editorPlaceholder": "# nested break",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "1\n1\n2"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Use break in inner loop"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "for i in range(1,3):\\n    for j in range(1,4):\\n        if j==3: break\\n        print(j)"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t3-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "1\n1\n2",
         "visibility": "public"
       }
     ]
@@ -718,33 +919,48 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t4-p01",
     "topicId": "m10-t4",
-    "slug": "m10_t4-1",
-    "title": "pass: Warm-up",
+    "slug": "pass-if",
+    "title": "pass: pass in if",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to pass. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Set x=5, if x>0: pass, then print \"ok\".",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "pass"
+        },
+        {
+          "type": "text",
+          "value": " as a placeholder that does nothing."
+        }
+      ],
+      "editorPlaceholder": "# pass",
+      "successDetail": "Correct! pass does nothing but satisfies syntax."
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "ok"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: ok"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "x=5\\nif x>0:\\n    pass\\nprint(\"ok\")"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t4-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "ok",
         "visibility": "public"
       }
     ]
@@ -752,33 +968,40 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t4-p02",
     "topicId": "m10-t4",
-    "slug": "m10_t4-2",
-    "title": "pass: Output Two Values",
+    "slug": "pass-else",
+    "title": "pass: pass in else",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to pass and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Set x=0, if x: print(\"yes\") else: pass, print \"done\".",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "pass in else branch."
+        }
+      ],
+      "editorPlaceholder": "# pass else",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "done"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: done"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "x=0\\nif x:\\n    print(\"yes\")\\nelse:\\n    pass\\nprint(\"done\")"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t4-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "done",
         "visibility": "public"
       }
     ]
@@ -786,33 +1009,41 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t4-p03",
     "topicId": "m10-t4",
-    "slug": "m10_t4-3",
-    "title": "pass: Simple Loop",
+    "slug": "pass-loop",
+    "title": "pass: pass in Loop",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on pass.",
+    "layout": "challenge",
+    "description": "for i in range(3): pass, then print \"finished\".",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresForLoop": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Empty loop body with pass."
+        }
+      ],
+      "editorPlaceholder": "# pass loop",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "finished"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: finished"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "for i in range(3):\\n    pass\\nprint(\"finished\")"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t4-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "finished",
         "visibility": "public"
       }
     ]
@@ -820,33 +1051,41 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t4-p04",
     "topicId": "m10-t4",
-    "slug": "m10_t4-4",
-    "title": "pass: Condition",
+    "slug": "pass-function",
+    "title": "pass: pass in Function",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Define def todo(): pass, call todo(), print \"called\".",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresFunction": "todo",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Stub function with pass."
+        }
+      ],
+      "editorPlaceholder": "# pass fn",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "called"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: called"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def todo():\\n    pass\\ntodo()\\nprint(\"called\")"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t4-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "called",
         "visibility": "public"
       }
     ]
@@ -854,33 +1093,40 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t4-p05",
     "topicId": "m10-t4",
-    "slug": "m10_t4-5",
-    "title": "pass: Function Stub",
-    "difficulty": "medium",
+    "slug": "pass-class-stub",
+    "title": "pass: Future Code Block",
+    "difficulty": "hard",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Set show=False, if show: pass, print \"ready\".",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "pass marks where code will go later."
+        }
+      ],
+      "editorPlaceholder": "# placeholder",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "ready"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: ready"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "show=False\\nif show:\\n    pass\\nprint(\"ready\")"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t4-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "ready",
         "visibility": "public"
       }
     ]
@@ -888,33 +1134,40 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t4-p06",
     "topicId": "m10-t4",
-    "slug": "m10_t4-6",
-    "title": "pass: List Practice",
+    "slug": "pass-try-stub",
+    "title": "pass: Empty except Block",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about pass and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Use try/except with pass in except, print \"safe\".",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "pass in except block as placeholder."
+        }
+      ],
+      "editorPlaceholder": "# try pass",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "safe"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: safe"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "try:\\n    x=1\\nexcept:\\n    pass\\nprint(\"safe\")"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t4-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "safe",
         "visibility": "public"
       }
     ]
@@ -922,33 +1175,40 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t4-p07",
     "topicId": "m10-t4",
-    "slug": "m10_t4-7",
-    "title": "pass: Dict Lookup",
+    "slug": "pass-multiple",
+    "title": "pass: Multiple pass",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Define def a(): pass and def b(): pass, print \"stubs\".",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Multiple stub functions with pass."
+        }
+      ],
+      "editorPlaceholder": "# stubs",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "stubs"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: stubs"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "def a(): pass\\ndef b(): pass\\nprint(\"stubs\")"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t4-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "stubs",
         "visibility": "public"
       }
     ]
@@ -956,33 +1216,50 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t5-p01",
     "topicId": "m10-t5",
-    "slug": "m10_t5-1",
-    "title": "range(): Warm-up",
+    "slug": "range-basic",
+    "title": "range(): range(5)",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to range(). Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Print list(range(5)).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# range(5)",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "range(5) gives 0 through 4."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[0, 1, 2, 3, 4]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "[0, 1, 2, 3, 4]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [0, 1, 2, 3, 4]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(list(range(5)))"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t5-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "[0, 1, 2, 3, 4]",
         "visibility": "public"
       }
     ]
@@ -990,33 +1267,50 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t5-p02",
     "topicId": "m10-t5",
-    "slug": "m10_t5-2",
-    "title": "range(): Output Two Values",
+    "slug": "range-start",
+    "title": "range(): range(2,6)",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to range() and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Print list(range(2,6)).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# range(2,6)",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "range(start, stop) — stop is excluded."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[2, 3, 4, 5]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "[2, 3, 4, 5]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [2, 3, 4, 5]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(list(range(2,6)))"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t5-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "[2, 3, 4, 5]",
         "visibility": "public"
       }
     ]
@@ -1024,33 +1318,50 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t5-p03",
     "topicId": "m10-t5",
-    "slug": "m10_t5-3",
-    "title": "range(): Simple Loop",
+    "slug": "range-step",
+    "title": "range(): range with Step",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on range().",
+    "layout": "challenge",
+    "description": "Print list(range(0,10,2)).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# step",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Third argument is step size."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[0, 2, 4, 6, 8]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "[0, 2, 4, 6, 8]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [0, 2, 4, 6, 8]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(list(range(0,10,2)))"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t5-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "[0, 2, 4, 6, 8]",
         "visibility": "public"
       }
     ]
@@ -1058,33 +1369,41 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t5-p04",
     "topicId": "m10-t5",
-    "slug": "m10_t5-4",
-    "title": "range(): Condition",
+    "slug": "range-for",
+    "title": "range(): for with range",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "for i in range(1,4): print(i).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresForLoop": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Combine range with for."
+        }
+      ],
+      "editorPlaceholder": "# for range",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "1\n2\n3"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print 1,2,3"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "for i in range(1,4):\\n    print(i)"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t5-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "1\n2\n3",
         "visibility": "public"
       }
     ]
@@ -1092,33 +1411,42 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t5-p05",
     "topicId": "m10-t5",
-    "slug": "m10_t5-5",
-    "title": "range(): Function Stub",
-    "difficulty": "medium",
+    "slug": "range-len",
+    "title": "range(): range(len())",
+    "difficulty": "hard",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Set a=[10,20,30], for i in range(len(a)): print(a[i]).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresForLoop": true,
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use range(len(list)) for indexes."
+        }
+      ],
+      "editorPlaceholder": "# range len",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "10\n20\n30"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print 10,20,30"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a=[10,20,30]\\nfor i in range(len(a)):\\n    print(a[i])"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t5-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "10\n20\n30",
         "visibility": "public"
       }
     ]
@@ -1126,33 +1454,50 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t5-p06",
     "topicId": "m10-t5",
-    "slug": "m10_t5-6",
-    "title": "range(): List Practice",
+    "slug": "range-reverse",
+    "title": "range(): Count Down",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about range() and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Print list(range(5,0,-1)).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# down",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Negative step counts down."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[5, 4, 3, 2, 1]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "[5, 4, 3, 2, 1]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [5, 4, 3, 2, 1]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(list(range(5,0,-1)))"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t5-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "[5, 4, 3, 2, 1]",
         "visibility": "public"
       }
     ]
@@ -1160,33 +1505,40 @@ export const module10Practice: PracticeProblem[] = [
   {
     "id": "m10-t5-p07",
     "topicId": "m10-t5",
-    "slug": "m10_t5-7",
-    "title": "range(): Dict Lookup",
+    "slug": "range-sum",
+    "title": "range(): Sum with range",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Sum range(1,6) and print 15.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Sum numbers from range(1,6)."
+        }
+      ],
+      "editorPlaceholder": "# sum range",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "15"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 15"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "total=0\\nfor i in range(1,6):\\n    total+=i\\nprint(total)"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m10-t5-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "15",
         "visibility": "public"
       }
     ]

@@ -4,11 +4,13 @@ import {
   ArrowDownUp,
   ArrowRight,
   Brain,
+  Eraser,
   Lightbulb,
   MapPin,
   Minus,
   Play,
   Plus,
+  RotateCcw,
   Ruler,
   Wrench,
 } from "lucide-react";
@@ -99,6 +101,28 @@ function CodeExercisePanel({
   );
 }
 
+function CodeWindow({
+  filename,
+  children,
+}: {
+  filename: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="overflow-hidden rounded-xl border border-black/15 bg-white/60">
+      <div className="flex items-center gap-1.5 border-b border-black/10 bg-black/[0.03] px-3 py-1.5">
+        <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+        <span className="font-mono text-[11px] text-gray-500">{filename}</span>
+      </div>
+      <pre className="overflow-x-auto bg-transparent px-4 py-3.5 font-mono text-[13.5px] leading-loose">
+        {children}
+      </pre>
+    </div>
+  );
+}
+
 const OPERATIONS = [
   {
     symbol: "+",
@@ -133,18 +157,24 @@ const POP_ROWS = [
 const METHOD_ROWS = [
   { method: "append()", purpose: "Add item to end" },
   { method: "insert()", purpose: "Add item at position" },
+  { method: "extend()", purpose: "Add all items from another list" },
   { method: "remove()", purpose: "Remove first matching value" },
   { method: "pop()", purpose: "Remove and return item" },
   { method: "sort()", purpose: "Sort list in ascending order" },
+  { method: "reverse()", purpose: "Reverse item order in place" },
+  { method: "clear()", purpose: "Remove all items" },
   { method: "len()", purpose: "Count items" },
 ] as const;
 
 const REF_ROWS = [
   { code: 'items.append("x")', result: "Add to end" },
   { code: 'items.insert(0,"x")', result: "Add at index 0" },
+  { code: "items.extend(other)", result: "Merge another list" },
   { code: 'items.remove("x")', result: "Remove first match" },
   { code: "items.pop()", result: "Remove last item" },
   { code: "items.sort()", result: "Sort ascending" },
+  { code: "items.reverse()", result: "Reverse order" },
+  { code: "items.clear()", result: "Empty the list" },
   { code: "len(items)", result: "Count items" },
 ] as const;
 
@@ -258,6 +288,46 @@ export function ListMethodsInfographic() {
               ))}
             </tbody>
           </table>
+        </div>
+      </section>
+
+      <hr className="my-7 border-black/10" />
+
+      {/* extend() */}
+      <section className="mb-8">
+        <SectionLabel variant="teal">
+          <Plus className="h-3 w-3" />
+          extend()
+        </SectionLabel>
+        <h3 className="mb-1.5 text-base font-semibold tracking-tight">
+          Add Multiple Items
+        </h3>
+        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
+          extend() adds every item from another list (or iterable) to the end
+          of the current list.
+        </p>
+
+        <CodeWindow filename="extend.py">
+          <span className="text-gray-800">a = [1, 2]</span>
+          {"\n"}
+          <span className="text-gray-800">b = [3, 4]</span>
+          {"\n"}
+          {"\n"}
+          <span className="text-gray-800">a.extend(b)</span>
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(a)</span>
+          {"\n"}
+          {"\n"}
+          <span className="italic text-[#5a8a5a]"># [1, 2, 3, 4]</span>
+        </CodeWindow>
+
+        <div className="mt-2.5 flex gap-2 rounded-lg bg-black/[0.04] px-3 py-2.5 text-[13px] leading-relaxed text-gray-600">
+          <Lightbulb className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
+          <span>
+            append() adds one item; extend() adds each item from another
+            collection.
+          </span>
         </div>
       </section>
 
@@ -389,6 +459,66 @@ export function ListMethodsInfographic() {
             sort() changes the existing list instead of creating a new one.
           </span>
         </div>
+      </section>
+
+      <hr className="my-7 border-black/10" />
+
+      {/* reverse() */}
+      <section className="mb-8">
+        <SectionLabel variant="purple">
+          <RotateCcw className="h-3 w-3" />
+          reverse()
+        </SectionLabel>
+        <h3 className="mb-3 text-base font-semibold tracking-tight">
+          Reverse Item Order
+        </h3>
+        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
+          reverse() flips the list in place — the first item becomes last and
+          vice versa.
+        </p>
+
+        <CodeWindow filename="reverse.py">
+          <span className="text-gray-800">nums = [1, 2, 3]</span>
+          {"\n"}
+          {"\n"}
+          <span className="text-gray-800">nums.reverse()</span>
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(nums)</span>
+          {"\n"}
+          {"\n"}
+          <span className="italic text-[#5a8a5a]"># [3, 2, 1]</span>
+        </CodeWindow>
+      </section>
+
+      <hr className="my-7 border-black/10" />
+
+      {/* clear() */}
+      <section className="mb-8">
+        <SectionLabel variant="red">
+          <Eraser className="h-3 w-3" />
+          clear()
+        </SectionLabel>
+        <h3 className="mb-3 text-base font-semibold tracking-tight">
+          Remove All Items
+        </h3>
+        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
+          clear() empties the list completely while keeping the same list
+          object.
+        </p>
+
+        <CodeWindow filename="clear.py">
+          <span className="text-gray-800">items = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</span>
+          {"\n"}
+          {"\n"}
+          <span className="text-gray-800">items.clear()</span>
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(items)</span>
+          {"\n"}
+          {"\n"}
+          <span className="italic text-[#5a8a5a]"># []</span>
+        </CodeWindow>
       </section>
 
       <hr className="my-7 border-black/10" />

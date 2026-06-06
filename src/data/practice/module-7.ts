@@ -4,33 +4,43 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t1-p01",
     "topicId": "m7-t1",
-    "slug": "m7_t1-1",
-    "title": "Set Syntax: Warm-up",
+    "slug": "create-set",
+    "title": "Set Syntax: Create a Set",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Set Syntax. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Create s = {1, 2, 3} and print s (order may vary).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "s"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Curly braces create a set (no key:value)."
+        }
+      ],
+      "editorPlaceholder": "# s = {1,2,3}",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "{1, 2, 3}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Create set {1,2,3}"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "s = {1, 2, 3}\\nprint(s)"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t1-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "{1, 2, 3}",
         "visibility": "public"
       }
     ]
@@ -38,33 +48,58 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t1-p02",
     "topicId": "m7-t1",
-    "slug": "m7_t1-2",
-    "title": "Set Syntax: Output Two Values",
+    "slug": "set-func",
+    "title": "Set Syntax: set() Function",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Set Syntax and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Print set([1,2,2,3]).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# set()",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! Sets remove duplicates.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "set()"
+        },
+        {
+          "type": "text",
+          "value": " to remove duplicates."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "{1, 2, 3}",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "{1, 2, 3}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: {1, 2, 3}"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(set([1,2,2,3]))"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t1-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "{1, 2, 3}",
         "visibility": "public"
       }
     ]
@@ -72,33 +107,50 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t1-p03",
     "topicId": "m7-t1",
-    "slug": "m7_t1-3",
-    "title": "Set Syntax: Simple Loop",
-    "difficulty": "medium",
+    "slug": "unique",
+    "title": "Set Syntax: Unique Values",
+    "difficulty": "easy",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Set Syntax.",
+    "layout": "challenge",
+    "description": "Print len({1,1,2,2,3}).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# unique",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Sets only keep unique values."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "3",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "3"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 3"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(len({1,1,2,2,3}))"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t1-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "3",
         "visibility": "public"
       }
     ]
@@ -106,33 +158,51 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t1-p04",
     "topicId": "m7-t1",
-    "slug": "m7_t1-4",
-    "title": "Set Syntax: Condition",
+    "slug": "empty-set",
+    "title": "Set Syntax: Empty Set",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Create s = set(), print len(s).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "s"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "set()"
+        },
+        {
+          "type": "text",
+          "value": " for empty set — not {}."
+        }
+      ],
+      "editorPlaceholder": "# set()",
+      "successDetail": "Correct! {} is a dict, not empty set."
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "0"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 0"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "s = set()\\nprint(len(s))"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t1-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "0",
         "visibility": "public"
       }
     ]
@@ -140,33 +210,58 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t1-p05",
     "topicId": "m7-t1",
-    "slug": "m7_t1-5",
-    "title": "Set Syntax: Function Stub",
+    "slug": "in-set",
+    "title": "Set Syntax: Membership",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print 2 in {1,2,3}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# in set",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Check membership with "
+        },
+        {
+          "type": "code",
+          "value": "in"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(2 in {1,2,3})"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t1-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -174,33 +269,40 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t1-p06",
     "topicId": "m7-t1",
-    "slug": "m7_t1-6",
-    "title": "Set Syntax: List Practice",
+    "slug": "mixed-set",
+    "title": "Set Syntax: Mixed Types",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Set Syntax and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Print {1, \"a\"} — sets can mix types.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Sets can hold different types."
+        }
+      ],
+      "editorPlaceholder": "# mixed set",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "{'a', 1}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Create set with int and str"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({1, \"a\"})"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t1-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "{'a', 1}",
         "visibility": "public"
       }
     ]
@@ -208,33 +310,40 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t1-p07",
     "topicId": "m7-t1",
-    "slug": "m7_t1-7",
-    "title": "Set Syntax: Dict Lookup",
+    "slug": "from-string",
+    "title": "Set Syntax: Set from String",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Print set(\"hello\") — unique letters.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "set(string) gives unique characters."
+        }
+      ],
+      "editorPlaceholder": "# set(\"hello\")",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "{'h', 'e', 'l', 'o'}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Use set on a string"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(set(\"hello\"))"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t1-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "{'h', 'e', 'l', 'o'}",
         "visibility": "public"
       }
     ]
@@ -242,33 +351,51 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t2-p01",
     "topicId": "m7-t2",
-    "slug": "m7_t2-1",
-    "title": "Updating Sets: Warm-up",
+    "slug": "add",
+    "title": "Updating Sets: add()",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Updating Sets. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Set s={1}, s.add(2), print s.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "s"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".add()"
+        },
+        {
+          "type": "text",
+          "value": " to add one item."
+        }
+      ],
+      "editorPlaceholder": "# add",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "{1, 2}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output contains 1 and 2"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "s = {1}\\ns.add(2)\\nprint(s)"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t2-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "{1, 2}",
         "visibility": "public"
       }
     ]
@@ -276,33 +403,51 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t2-p02",
     "topicId": "m7-t2",
-    "slug": "m7_t2-2",
-    "title": "Updating Sets: Output Two Values",
+    "slug": "remove",
+    "title": "Updating Sets: remove()",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Updating Sets and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Set s={1,2,3}, s.remove(2), print s.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "s"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".remove()"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# remove",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "{1, 3}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: {1, 3}"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "s = {1,2,3}\\ns.remove(2)\\nprint(s)"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t2-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "{1, 3}",
         "visibility": "public"
       }
     ]
@@ -310,33 +455,43 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t2-p03",
     "topicId": "m7-t2",
-    "slug": "m7_t2-3",
-    "title": "Updating Sets: Simple Loop",
+    "slug": "discard",
+    "title": "Updating Sets: discard()",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Updating Sets.",
+    "layout": "challenge",
+    "description": "Set s={1,2}, s.discard(3), print s.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "s"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "discard() removes if present, no error if missing."
+        }
+      ],
+      "editorPlaceholder": "# discard",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "{1, 2}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: {1, 2}"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "s = {1,2}\\ns.discard(3)\\nprint(s)"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t2-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "{1, 2}",
         "visibility": "public"
       }
     ]
@@ -344,33 +499,51 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t2-p04",
     "topicId": "m7-t2",
-    "slug": "m7_t2-4",
-    "title": "Updating Sets: Condition",
+    "slug": "update",
+    "title": "Updating Sets: update()",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Set s={1}, s.update({2,3}), print s.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "s"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".update()"
+        },
+        {
+          "type": "text",
+          "value": " to add multiple."
+        }
+      ],
+      "editorPlaceholder": "# update",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "{1, 2, 3}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: {1, 2, 3}"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "s = {1}\\ns.update({2,3})\\nprint(s)"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t2-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "{1, 2, 3}",
         "visibility": "public"
       }
     ]
@@ -378,33 +551,43 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t2-p05",
     "topicId": "m7-t2",
-    "slug": "m7_t2-5",
-    "title": "Updating Sets: Function Stub",
-    "difficulty": "medium",
+    "slug": "pop-set",
+    "title": "Updating Sets: pop()",
+    "difficulty": "hard",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Set s={1,2,3}, print s.pop() — removes arbitrary item.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "s"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "pop() removes and returns any item."
+        }
+      ],
+      "editorPlaceholder": "# pop",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "1"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Print one item from set"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "s = {1,2,3}\\nprint(s.pop())"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t2-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "1",
         "visibility": "public"
       }
     ]
@@ -412,33 +595,43 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t2-p06",
     "topicId": "m7-t2",
-    "slug": "m7_t2-6",
-    "title": "Updating Sets: List Practice",
+    "slug": "clear-set",
+    "title": "Updating Sets: clear()",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Updating Sets and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Set s={1,2}, s.clear(), print s.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "s"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "clear() empties the set."
+        }
+      ],
+      "editorPlaceholder": "# clear",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "set()"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: set()"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "s = {1,2}\\ns.clear()\\nprint(s)"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t2-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "set()",
         "visibility": "public"
       }
     ]
@@ -446,33 +639,43 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t2-p07",
     "topicId": "m7-t2",
-    "slug": "m7_t2-7",
-    "title": "Updating Sets: Dict Lookup",
+    "slug": "add-dup",
+    "title": "Updating Sets: Add Duplicate",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Set s={1,2}, s.add(2), print s.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "s"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Adding duplicate has no effect."
+        }
+      ],
+      "editorPlaceholder": "# add dup",
+      "successDetail": "Correct! Sets ignore duplicates."
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "{1, 2}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: {1, 2}"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "s = {1,2}\\ns.add(2)\\nprint(s)"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t2-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "{1, 2}",
         "visibility": "public"
       }
     ]
@@ -480,33 +683,58 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t3-p01",
     "topicId": "m7-t3",
-    "slug": "m7_t3-1",
-    "title": "Set Operations: Warm-up",
+    "slug": "union",
+    "title": "Set Operations: Union |",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Set Operations. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Print {1,2} | {2,3}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# {1,2} | {2,3}",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! {1,2} | {2,3} = {1, 2, 3}.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "{1,2} | {2,3}"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "{1, 2, 3}",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "{1, 2, 3}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: {1, 2, 3}"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({1,2} | {2,3})"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t3-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "{1, 2, 3}",
         "visibility": "public"
       }
     ]
@@ -514,33 +742,58 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t3-p02",
     "topicId": "m7-t3",
-    "slug": "m7_t3-2",
-    "title": "Set Operations: Output Two Values",
+    "slug": "intersection",
+    "title": "Set Operations: Intersection &",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Set Operations and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Print {1,2,3} & {2,3,4}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# {1,2,3} & {2,3,4}",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! {1,2,3} & {2,3,4} = {2, 3}.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "{1,2,3} & {2,3,4}"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "{2, 3}",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "{2, 3}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: {2, 3}"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({1,2,3} & {2,3,4})"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t3-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "{2, 3}",
         "visibility": "public"
       }
     ]
@@ -548,33 +801,58 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t3-p03",
     "topicId": "m7-t3",
-    "slug": "m7_t3-3",
-    "title": "Set Operations: Simple Loop",
+    "slug": "difference",
+    "title": "Set Operations: Difference -",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Set Operations.",
+    "layout": "challenge",
+    "description": "Print {1,2,3} - {2}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# {1,2,3} - {2}",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! {1,2,3} - {2} = {1, 3}.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "{1,2,3} - {2}"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "{1, 3}",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "{1, 3}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: {1, 3}"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({1,2,3} - {2})"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t3-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "{1, 3}",
         "visibility": "public"
       }
     ]
@@ -582,33 +860,58 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t3-p04",
     "topicId": "m7-t3",
-    "slug": "m7_t3-4",
-    "title": "Set Operations: Condition",
+    "slug": "symmetric",
+    "title": "Set Operations: Symmetric ^",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Print {1,2} ^ {2,3}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# {1,2} ^ {2,3}",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! {1,2} ^ {2,3} = {1, 3}.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "{1,2} ^ {2,3}"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "{1, 3}",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "{1, 3}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: {1, 3}"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({1,2} ^ {2,3})"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t3-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "{1, 3}",
         "visibility": "public"
       }
     ]
@@ -616,33 +919,58 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t3-p05",
     "topicId": "m7-t3",
-    "slug": "m7_t3-5",
-    "title": "Set Operations: Function Stub",
+    "slug": "subset",
+    "title": "Set Operations: Subset <=",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print {1,2} <= {1,2,3}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# {1,2} <= {1,2,3}",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! {1,2} <= {1,2,3} = True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "{1,2} <= {1,2,3}"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({1,2} <= {1,2,3})"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t3-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -650,33 +978,58 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t3-p06",
     "topicId": "m7-t3",
-    "slug": "m7_t3-6",
-    "title": "Set Operations: List Practice",
+    "slug": "superset",
+    "title": "Set Operations: Superset >=",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Set Operations and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Print {1,2,3} >= {1,2}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# {1,2,3} >= {1,2}",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! {1,2,3} >= {1,2} = True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "{1,2,3} >= {1,2}"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({1,2,3} >= {1,2})"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t3-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -684,33 +1037,58 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t3-p07",
     "topicId": "m7-t3",
-    "slug": "m7_t3-7",
-    "title": "Set Operations: Dict Lookup",
+    "slug": "disjoint",
+    "title": "Set Operations: Disjoint isdisjoint",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Print {1,2}.isdisjoint({3,4}).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# {1,2}.isdisjoint({3,4})",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! {1,2}.isdisjoint({3,4}) = True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "{1,2}.isdisjoint({3,4})"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({1,2}.isdisjoint({3,4}))"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t3-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -718,33 +1096,58 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t4-p01",
     "topicId": "m7-t4",
-    "slug": "m7_t4-1",
-    "title": "Set Methods: Warm-up",
+    "slug": "union",
+    "title": "Set Methods: Union |",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Set Methods. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Print {1,2} | {2,3}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# {1,2} | {2,3}",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! {1,2} | {2,3} = {1, 2, 3}.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "{1,2} | {2,3}"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "{1, 2, 3}",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "{1, 2, 3}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: {1, 2, 3}"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({1,2} | {2,3})"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t4-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "{1, 2, 3}",
         "visibility": "public"
       }
     ]
@@ -752,33 +1155,58 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t4-p02",
     "topicId": "m7-t4",
-    "slug": "m7_t4-2",
-    "title": "Set Methods: Output Two Values",
+    "slug": "intersection",
+    "title": "Set Methods: Intersection &",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Set Methods and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Print {1,2,3} & {2,3,4}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# {1,2,3} & {2,3,4}",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! {1,2,3} & {2,3,4} = {2, 3}.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "{1,2,3} & {2,3,4}"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "{2, 3}",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "{2, 3}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: {2, 3}"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({1,2,3} & {2,3,4})"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t4-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "{2, 3}",
         "visibility": "public"
       }
     ]
@@ -786,33 +1214,58 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t4-p03",
     "topicId": "m7-t4",
-    "slug": "m7_t4-3",
-    "title": "Set Methods: Simple Loop",
+    "slug": "difference",
+    "title": "Set Methods: Difference -",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Set Methods.",
+    "layout": "challenge",
+    "description": "Print {1,2,3} - {2}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# {1,2,3} - {2}",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! {1,2,3} - {2} = {1, 3}.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "{1,2,3} - {2}"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "{1, 3}",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "{1, 3}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: {1, 3}"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({1,2,3} - {2})"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t4-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "{1, 3}",
         "visibility": "public"
       }
     ]
@@ -820,33 +1273,58 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t4-p04",
     "topicId": "m7-t4",
-    "slug": "m7_t4-4",
-    "title": "Set Methods: Condition",
+    "slug": "symmetric",
+    "title": "Set Methods: Symmetric ^",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Print {1,2} ^ {2,3}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# {1,2} ^ {2,3}",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! {1,2} ^ {2,3} = {1, 3}.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "{1,2} ^ {2,3}"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "{1, 3}",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "{1, 3}"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: {1, 3}"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({1,2} ^ {2,3})"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t4-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "{1, 3}",
         "visibility": "public"
       }
     ]
@@ -854,33 +1332,58 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t4-p05",
     "topicId": "m7-t4",
-    "slug": "m7_t4-5",
-    "title": "Set Methods: Function Stub",
+    "slug": "subset",
+    "title": "Set Methods: Subset <=",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print {1,2} <= {1,2,3}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# {1,2} <= {1,2,3}",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! {1,2} <= {1,2,3} = True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "{1,2} <= {1,2,3}"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({1,2} <= {1,2,3})"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t4-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -888,33 +1391,58 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t4-p06",
     "topicId": "m7-t4",
-    "slug": "m7_t4-6",
-    "title": "Set Methods: List Practice",
+    "slug": "superset",
+    "title": "Set Methods: Superset >=",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Set Methods and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Print {1,2,3} >= {1,2}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# {1,2,3} >= {1,2}",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! {1,2,3} >= {1,2} = True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "{1,2,3} >= {1,2}"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({1,2,3} >= {1,2})"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t4-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -922,33 +1450,58 @@ export const module7Practice: PracticeProblem[] = [
   {
     "id": "m7-t4-p07",
     "topicId": "m7-t4",
-    "slug": "m7_t4-7",
-    "title": "Set Methods: Dict Lookup",
+    "slug": "disjoint",
+    "title": "Set Methods: Disjoint isdisjoint",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Print {1,2}.isdisjoint({3,4}).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# {1,2}.isdisjoint({3,4})",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! {1,2}.isdisjoint({3,4}) = True.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "{1,2}.isdisjoint({3,4})"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print({1,2}.isdisjoint({3,4}))"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t4-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]

@@ -4,33 +4,58 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t1-p01",
     "topicId": "m4-t1",
-    "slug": "m4_t1-1",
-    "title": "Creating Strings: Warm-up",
+    "slug": "dbl-quotes",
+    "title": "Creating Strings: Double Quotes",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Creating Strings. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Print \"Hello\" using double quotes.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# print(\"Hello\")",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! Double quotes create strings.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "Hello"
+        },
+        {
+          "type": "text",
+          "value": " with double quotes."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "Hello",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "Hello"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: Hello"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(\"Hello\")"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t1-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "Hello",
         "visibility": "public"
       }
     ]
@@ -38,33 +63,50 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t1-p02",
     "topicId": "m4-t1",
-    "slug": "m4_t1-2",
-    "title": "Creating Strings: Output Two Values",
+    "slug": "single-quotes",
+    "title": "Creating Strings: Single Quotes",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Creating Strings and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Print 'Python' using single quotes.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# print('Python')",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! Single quotes work too.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print Python with single quotes."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "Python",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "Python"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: Python"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print('Python')"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t1-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "Python",
         "visibility": "public"
       }
     ]
@@ -72,33 +114,58 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t1-p03",
     "topicId": "m4-t1",
-    "slug": "m4_t1-3",
-    "title": "Creating Strings: Simple Loop",
-    "difficulty": "medium",
+    "slug": "concat",
+    "title": "Creating Strings: Concatenate",
+    "difficulty": "easy",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Creating Strings.",
+    "layout": "challenge",
+    "description": "Print \"Py\" + \"thon\".",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# \"Py\"+\"thon\"",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! + joins strings.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Join "
+        },
+        {
+          "type": "code",
+          "value": "\"Py\" + \"thon\""
+        },
+        {
+          "type": "text",
+          "value": " with +."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "Python",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "Python"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: Python"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(\"Py\" + \"thon\")"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t1-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "Python",
         "visibility": "public"
       }
     ]
@@ -106,33 +173,58 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t1-p04",
     "topicId": "m4-t1",
-    "slug": "m4_t1-4",
-    "title": "Creating Strings: Condition",
-    "difficulty": "medium",
+    "slug": "repeat",
+    "title": "Creating Strings: Repeat String",
+    "difficulty": "easy",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Print \"Ha\" * 3.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# \"Ha\"*3",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! * repeats strings.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "\"Ha\" * 3"
+        },
+        {
+          "type": "text",
+          "value": " to repeat a string."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "HaHaHa",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "HaHaHa"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: HaHaHa"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(\"Ha\" * 3)"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t1-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "HaHaHa",
         "visibility": "public"
       }
     ]
@@ -140,33 +232,49 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t1-p05",
     "topicId": "m4-t1",
-    "slug": "m4_t1-5",
-    "title": "Creating Strings: Function Stub",
+    "slug": "newline",
+    "title": "Creating Strings: Newline Character",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print \"Line1\\nLine2\" (two lines).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# use \\n",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! \\n creates a new line.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "\\n"
+        },
+        {
+          "type": "text",
+          "value": " for a line break inside a string."
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "Line1\nLine2"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: Line1"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(\"Line1\\nLine2\")"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t1-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "Line1\nLine2",
         "visibility": "public"
       }
     ]
@@ -174,33 +282,58 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t1-p06",
     "topicId": "m4-t1",
-    "slug": "m4_t1-6",
-    "title": "Creating Strings: List Practice",
-    "difficulty": "hard",
+    "slug": "len-empty",
+    "title": "Creating Strings: Empty String Length",
+    "difficulty": "medium",
     "order": 6,
-    "description": "Create a list of three items about Creating Strings and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Print len(\"\") — length of empty string.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# len(\"\")",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! Empty string has length 0.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "len(\"\")"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "0",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "0"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 0"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(len(\"\"))"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t1-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "0",
         "visibility": "public"
       }
     ]
@@ -208,33 +341,58 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t1-p07",
     "topicId": "m4-t1",
-    "slug": "m4_t1-7",
-    "title": "Creating Strings: Dict Lookup",
+    "slug": "multi-concat",
+    "title": "Creating Strings: Build a Word",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Print \"Data\" + \" \" + \"Science\".",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# join strings",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! You built a phrase from parts.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Join three strings with + to make "
+        },
+        {
+          "type": "code",
+          "value": "Data Science"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "Data Science",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "Data Science"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: Data Science"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(\"Data\" + \" \" + \"Science\")"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t1-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "Data Science",
         "visibility": "public"
       }
     ]
@@ -242,33 +400,60 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t2-p01",
     "topicId": "m4-t2",
-    "slug": "m4_t2-1",
-    "title": "Formatting Strings: Warm-up",
+    "slug": "fstring-name",
+    "title": "Formatting Strings: f-string Name",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Formatting Strings. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Set name=\"Ana\", print f\"Hello, {name}\".",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "name"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Set "
+        },
+        {
+          "type": "code",
+          "value": "name = \"Ana\""
+        },
+        {
+          "type": "text",
+          "value": ", print "
+        },
+        {
+          "type": "code",
+          "value": "f\"Hello, {name}\""
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# f-string greeting",
+      "successDetail": "Correct! f-strings embed variables."
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "Hello, Ana"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Use f-string",
+      "Output: Hello, Ana"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "name = \"Ana\"\\nprint(f\"Hello, {name}\")"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t2-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "Hello, Ana",
         "visibility": "public"
       }
     ]
@@ -276,33 +461,58 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t2-p02",
     "topicId": "m4-t2",
-    "slug": "m4_t2-2",
-    "title": "Formatting Strings: Output Two Values",
+    "slug": "fstring-math",
+    "title": "Formatting Strings: f-string Math",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Formatting Strings and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Print f\"2 + 3 = {2 + 3}\".",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# f-string math",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! f-strings can include expressions.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use an f-string with an expression inside "
+        },
+        {
+          "type": "code",
+          "value": "{}"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "2 + 3 = 5",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "2 + 3 = 5"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 2 + 3 = 5"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(f\"2 + 3 = {2 + 3}\")"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t2-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "2 + 3 = 5",
         "visibility": "public"
       }
     ]
@@ -310,33 +520,58 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t2-p03",
     "topicId": "m4-t2",
-    "slug": "m4_t2-3",
-    "title": "Formatting Strings: Simple Loop",
+    "slug": "format-method",
+    "title": "Formatting Strings: .format()",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Formatting Strings.",
+    "layout": "challenge",
+    "description": "Print \"Score: {}\".format(90).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# .format()",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! .format() fills in placeholders.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".format()"
+        },
+        {
+          "type": "text",
+          "value": " to insert a value."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "Score: 90",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "Score: 90"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: Score: 90"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(\"Score: {}\".format(90))"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t2-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "Score: 90",
         "visibility": "public"
       }
     ]
@@ -344,33 +579,60 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t2-p04",
     "topicId": "m4-t2",
-    "slug": "m4_t2-4",
-    "title": "Formatting Strings: Condition",
+    "slug": "fstring-two",
+    "title": "Formatting Strings: Two Variables",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Set x=3, y=4, print f\"{x} + {y} = {x+y}\".",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "x",
+        "y"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use f-string with "
+        },
+        {
+          "type": "code",
+          "value": "x"
+        },
+        {
+          "type": "text",
+          "value": " and "
+        },
+        {
+          "type": "code",
+          "value": "y"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# two vars in f-string",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "3 + 4 = 7"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Use f-string with x and y"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "x = 3\\ny = 4\\nprint(f\"{x} + {y} = {x+y}\")"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t2-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "3 + 4 = 7",
         "visibility": "public"
       }
     ]
@@ -378,33 +640,58 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t2-p05",
     "topicId": "m4-t2",
-    "slug": "m4_t2-5",
-    "title": "Formatting Strings: Function Stub",
+    "slug": "format-index",
+    "title": "Formatting Strings: Indexed format",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print \"{1} {0}\".format(\"World\", \"Hello\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# indexed format",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! Index 0 and 1 control order.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use indexed "
+        },
+        {
+          "type": "code",
+          "value": ".format()"
+        },
+        {
+          "type": "text",
+          "value": " placeholders."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "Hello World",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "Hello World"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: Hello World"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(\"{1} {0}\".format(\"World\", \"Hello\"))"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t2-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "Hello World",
         "visibility": "public"
       }
     ]
@@ -412,33 +699,58 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t2-p06",
     "topicId": "m4-t2",
-    "slug": "m4_t2-6",
-    "title": "Formatting Strings: List Practice",
+    "slug": "fstring-float",
+    "title": "Formatting Strings: Format a Float",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Formatting Strings and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Print f\"Pi is {3.14159:.2f}\".",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# format float",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! :.2f rounds to 2 decimals.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ":.2f"
+        },
+        {
+          "type": "text",
+          "value": " to show 2 decimal places."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "Pi is 3.14",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "Pi is 3.14"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: Pi is 3.14"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(f\"Pi is {3.14159:.2f}\")"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t2-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "Pi is 3.14",
         "visibility": "public"
       }
     ]
@@ -446,33 +758,58 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t2-p07",
     "topicId": "m4-t2",
-    "slug": "m4_t2-7",
-    "title": "Formatting Strings: Dict Lookup",
+    "slug": "percent-style",
+    "title": "Formatting Strings: Percent Format",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Print \"Value: %d\" % 42.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# percent format",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! %d inserts an integer.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use old-style "
+        },
+        {
+          "type": "code",
+          "value": "%"
+        },
+        {
+          "type": "text",
+          "value": " formatting."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "Value: 42",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "Value: 42"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: Value: 42"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(\"Value: %d\" % 42)"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t2-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "Value: 42",
         "visibility": "public"
       }
     ]
@@ -480,33 +817,52 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t3-p01",
     "topicId": "m4-t3",
-    "slug": "m4_t3-1",
-    "title": "Indexing Strings: Warm-up",
+    "slug": "first-char",
+    "title": "Indexing Strings: First Character",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Indexing Strings. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Set s=\"Python\", print s[0].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "s"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print the first character with "
+        },
+        {
+          "type": "code",
+          "value": "s[0]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# s[0]",
+      "successDetail": "Correct! Index 0 is the first character."
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "P"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Use index 0",
+      "Output: P"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "s = \"Python\"\\nprint(s[0])"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t3-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "P",
         "visibility": "public"
       }
     ]
@@ -514,33 +870,52 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t3-p02",
     "topicId": "m4-t3",
-    "slug": "m4_t3-2",
-    "title": "Indexing Strings: Output Two Values",
+    "slug": "last-char",
+    "title": "Indexing Strings: Last Character",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Indexing Strings and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Set s=\"Python\", print s[5].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "s"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print the last character with "
+        },
+        {
+          "type": "code",
+          "value": "s[5]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# s[5]",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "n"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Use index 5",
+      "Output: n"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "s = \"Python\"\\nprint(s[5])"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t3-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "n",
         "visibility": "public"
       }
     ]
@@ -548,33 +923,51 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t3-p03",
     "topicId": "m4-t3",
-    "slug": "m4_t3-3",
-    "title": "Indexing Strings: Simple Loop",
-    "difficulty": "medium",
+    "slug": "negative-index",
+    "title": "Indexing Strings: Negative Index",
+    "difficulty": "easy",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Indexing Strings.",
+    "layout": "challenge",
+    "description": "Set s=\"Python\", print s[-1] (last char).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "s"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "s[-1]"
+        },
+        {
+          "type": "text",
+          "value": " to get the last character."
+        }
+      ],
+      "editorPlaceholder": "# s[-1]",
+      "successDetail": "Correct! -1 counts from the end."
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "n"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Use s[-1]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "s = \"Python\"\\nprint(s[-1])"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t3-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "n",
         "visibility": "public"
       }
     ]
@@ -582,33 +975,51 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t3-p04",
     "topicId": "m4-t3",
-    "slug": "m4_t3-4",
-    "title": "Indexing Strings: Condition",
+    "slug": "middle-char",
+    "title": "Indexing Strings: Middle Character",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Set word=\"code\", print word[1].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "word"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print index 1 of "
+        },
+        {
+          "type": "code",
+          "value": "code"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# word[1]",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "o"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: o"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "word = \"code\"\\nprint(word[1])"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t3-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "o",
         "visibility": "public"
       }
     ]
@@ -616,33 +1027,43 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t3-p05",
     "topicId": "m4-t3",
-    "slug": "m4_t3-5",
-    "title": "Indexing Strings: Function Stub",
+    "slug": "index-h",
+    "title": "Indexing Strings: Index in hello",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Set s=\"hello\", print s[2].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "s"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "What letter is at index 2 in hello?"
+        }
+      ],
+      "editorPlaceholder": "# s[2]",
+      "successDetail": "Correct! Index 2 is the third letter."
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "l"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: l"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "s = \"hello\"\\nprint(s[2])"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t3-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "l",
         "visibility": "public"
       }
     ]
@@ -650,33 +1071,44 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t3-p06",
     "topicId": "m4-t3",
-    "slug": "m4_t3-6",
-    "title": "Indexing Strings: List Practice",
+    "slug": "two-indexes",
+    "title": "Indexing Strings: Two Characters",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Indexing Strings and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Set s=\"Python\", print s[0] and s[2] on separate lines.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "s"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print first and third characters on separate lines."
+        }
+      ],
+      "editorPlaceholder": "# two indexes",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "P\nt"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Line 1: P",
+      "Line 2: t"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "s = \"Python\"\\nprint(s[0])\\nprint(s[2])"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t3-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "P\nt",
         "visibility": "public"
       }
     ]
@@ -684,33 +1116,59 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t3-p07",
     "topicId": "m4-t3",
-    "slug": "m4_t3-7",
-    "title": "Indexing Strings: Dict Lookup",
+    "slug": "out-of-range",
+    "title": "Indexing Strings: Index Concept",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Set s=\"Hi\", print s[0] + s[1] using concatenation.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "s"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Build the string from "
+        },
+        {
+          "type": "code",
+          "value": "s[0]"
+        },
+        {
+          "type": "text",
+          "value": " and "
+        },
+        {
+          "type": "code",
+          "value": "s[1]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# concat indexes",
+      "successDetail": "Correct! You combined indexed characters."
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "Hi"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: Hi"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "s = \"Hi\"\\nprint(s[0] + s[1])"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t3-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "Hi",
         "visibility": "public"
       }
     ]
@@ -718,33 +1176,51 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t4-p01",
     "topicId": "m4-t4",
-    "slug": "m4_t4-1",
-    "title": "Slicing Strings: Warm-up",
+    "slug": "slice-start",
+    "title": "Slicing Strings: Slice Start",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Slicing Strings. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Set s=\"Python\", print s[0:2].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "s"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Slice "
+        },
+        {
+          "type": "code",
+          "value": "s[0:2]"
+        },
+        {
+          "type": "text",
+          "value": " gets characters at index 0 and 1."
+        }
+      ],
+      "editorPlaceholder": "# s[0:2]",
+      "successDetail": "Correct! [0:2] means start at 0, stop before 2."
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "Py"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: Py"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "s = \"Python\"\\nprint(s[0:2])"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t4-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "Py",
         "visibility": "public"
       }
     ]
@@ -752,33 +1228,51 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t4-p02",
     "topicId": "m4-t4",
-    "slug": "m4_t4-2",
-    "title": "Slicing Strings: Output Two Values",
+    "slug": "slice-end",
+    "title": "Slicing Strings: Slice to End",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Slicing Strings and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Set s=\"Python\", print s[2:].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "s"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Slice "
+        },
+        {
+          "type": "code",
+          "value": "s[2:]"
+        },
+        {
+          "type": "text",
+          "value": " from index 2 to the end."
+        }
+      ],
+      "editorPlaceholder": "# s[2:]",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "thon"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: thon"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "s = \"Python\"\\nprint(s[2:])"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t4-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "thon",
         "visibility": "public"
       }
     ]
@@ -786,33 +1280,51 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t4-p03",
     "topicId": "m4-t4",
-    "slug": "m4_t4-3",
-    "title": "Slicing Strings: Simple Loop",
+    "slug": "slice-begin",
+    "title": "Slicing Strings: Slice from Start",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Slicing Strings.",
+    "layout": "challenge",
+    "description": "Set s=\"Python\", print s[:3].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "s"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Slice "
+        },
+        {
+          "type": "code",
+          "value": "s[:3]"
+        },
+        {
+          "type": "text",
+          "value": " from start to index 3."
+        }
+      ],
+      "editorPlaceholder": "# s[:3]",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "Pyt"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: Pyt"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "s = \"Python\"\\nprint(s[:3])"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t4-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "Pyt",
         "visibility": "public"
       }
     ]
@@ -820,33 +1332,51 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t4-p04",
     "topicId": "m4-t4",
-    "slug": "m4_t4-4",
-    "title": "Slicing Strings: Condition",
+    "slug": "slice-step",
+    "title": "Slicing Strings: Slice with Step",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Set s=\"Python\", print s[::2].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "s"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Every 2nd character: "
+        },
+        {
+          "type": "code",
+          "value": "s[::2]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# s[::2]",
+      "successDetail": "Correct! ::2 skips every other character."
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "Pto"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: Pto"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "s = \"Python\"\\nprint(s[::2])"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t4-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "Pto",
         "visibility": "public"
       }
     ]
@@ -854,33 +1384,51 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t4-p05",
     "topicId": "m4-t4",
-    "slug": "m4_t4-5",
-    "title": "Slicing Strings: Function Stub",
+    "slug": "reverse",
+    "title": "Slicing Strings: Reverse String",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Set s=\"Python\", print s[::-1].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "s"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Reverse with "
+        },
+        {
+          "type": "code",
+          "value": "s[::-1]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# reverse",
+      "successDetail": "Correct! [::-1] reverses the string."
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "nohtyP"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: nohtyP"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "s = \"Python\"\\nprint(s[::-1])"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t4-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "nohtyP",
         "visibility": "public"
       }
     ]
@@ -888,33 +1436,43 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t4-p06",
     "topicId": "m4-t4",
-    "slug": "m4_t4-6",
-    "title": "Slicing Strings: List Practice",
+    "slug": "slice-word",
+    "title": "Slicing Strings: Slice a Word",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Slicing Strings and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Set w=\"Data\", print w[1:].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "w"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print from index 1 to end of Data."
+        }
+      ],
+      "editorPlaceholder": "# w[1:]",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "ata"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: ata"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "w = \"Data\"\\nprint(w[1:])"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t4-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "ata",
         "visibility": "public"
       }
     ]
@@ -922,33 +1480,51 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t4-p07",
     "topicId": "m4-t4",
-    "slug": "m4_t4-7",
-    "title": "Slicing Strings: Dict Lookup",
+    "slug": "slice-middle",
+    "title": "Slicing Strings: Extract Middle",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Set s=\"hello\", print s[1:4].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "s"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Extract middle characters with "
+        },
+        {
+          "type": "code",
+          "value": "s[1:4]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# s[1:4]",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "ell"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: ell"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "s = \"hello\"\\nprint(s[1:4])"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t4-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "ell",
         "visibility": "public"
       }
     ]
@@ -956,33 +1532,58 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t5-p01",
     "topicId": "m4-t5",
-    "slug": "m4_t5-1",
-    "title": "String Methods: Warm-up",
+    "slug": "upper",
+    "title": "String Methods: upper()",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to String Methods. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Print \"hello\".upper().",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# .upper()",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! upper() makes ALL CAPS.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".upper()"
+        },
+        {
+          "type": "text",
+          "value": " to capitalize."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "HELLO",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "HELLO"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: HELLO"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(\"hello\".upper())"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t5-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "HELLO",
         "visibility": "public"
       }
     ]
@@ -990,33 +1591,58 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t5-p02",
     "topicId": "m4-t5",
-    "slug": "m4_t5-2",
-    "title": "String Methods: Output Two Values",
+    "slug": "lower",
+    "title": "String Methods: lower()",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to String Methods and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Print \"HELLO\".lower().",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# .lower()",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! lower() makes all lowercase.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".lower()"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "hello",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "hello"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: hello"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(\"HELLO\".lower())"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t5-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "hello",
         "visibility": "public"
       }
     ]
@@ -1024,33 +1650,58 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t5-p03",
     "topicId": "m4-t5",
-    "slug": "m4_t5-3",
-    "title": "String Methods: Simple Loop",
-    "difficulty": "medium",
+    "slug": "strip",
+    "title": "String Methods: strip()",
+    "difficulty": "easy",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on String Methods.",
+    "layout": "challenge",
+    "description": "Print \"  hi  \".strip().",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# .strip()",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! strip() trims whitespace.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".strip()"
+        },
+        {
+          "type": "text",
+          "value": " to remove extra spaces."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "hi",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "hi"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: hi"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(\"  hi  \".strip())"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t5-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "hi",
         "visibility": "public"
       }
     ]
@@ -1058,33 +1709,58 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t5-p04",
     "topicId": "m4-t5",
-    "slug": "m4_t5-4",
-    "title": "String Methods: Condition",
+    "slug": "split",
+    "title": "String Methods: split()",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Print \"a,b,c\".split(\",\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# .split()",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! split() returns a list.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".split(\",\")"
+        },
+        {
+          "type": "text",
+          "value": " to split a string."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "['a', 'b', 'c']",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "['a', 'b', 'c']"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: ['a', 'b', 'c']"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(\"a,b,c\".split(\",\"))"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t5-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "['a', 'b', 'c']",
         "visibility": "public"
       }
     ]
@@ -1092,33 +1768,58 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t5-p05",
     "topicId": "m4-t5",
-    "slug": "m4_t5-5",
-    "title": "String Methods: Function Stub",
+    "slug": "join",
+    "title": "String Methods: join()",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print \"-\".join([\"a\",\"b\",\"c\"]).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# .join()",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! join() connects list items.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".join()"
+        },
+        {
+          "type": "text",
+          "value": " to join list items."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "a-b-c",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "a-b-c"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: a-b-c"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(\"-\".join([\"a\", \"b\", \"c\"]))"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t5-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "a-b-c",
         "visibility": "public"
       }
     ]
@@ -1126,33 +1827,58 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t5-p06",
     "topicId": "m4-t5",
-    "slug": "m4_t5-6",
-    "title": "String Methods: List Practice",
-    "difficulty": "hard",
+    "slug": "replace",
+    "title": "String Methods: replace()",
+    "difficulty": "medium",
     "order": 6,
-    "description": "Create a list of three items about String Methods and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Print \"hello\".replace(\"l\",\"L\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# .replace()",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! replace() swaps text.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".replace()"
+        },
+        {
+          "type": "text",
+          "value": " to swap characters."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "heLLo",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "heLLo"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: heLLo"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(\"hello\".replace(\"l\", \"L\"))"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t5-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "heLLo",
         "visibility": "public"
       }
     ]
@@ -1160,33 +1886,58 @@ export const module4Practice: PracticeProblem[] = [
   {
     "id": "m4-t5-p07",
     "topicId": "m4-t5",
-    "slug": "m4_t5-7",
-    "title": "String Methods: Dict Lookup",
+    "slug": "count",
+    "title": "String Methods: count()",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Print \"banana\".count(\"a\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# .count()",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! count() finds how many times a letter appears.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".count(\"a\")"
+        },
+        {
+          "type": "text",
+          "value": " to count occurrences."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "3",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "3"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 3"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(\"banana\".count(\"a\"))"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m4-t5-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "3",
         "visibility": "public"
       }
     ]

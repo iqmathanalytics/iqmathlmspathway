@@ -284,6 +284,31 @@ export const module5Lessons: Record<string, TopicLesson> = {
       },
       {
         type: "practice",
+        practiceLabel: "Extend",
+        ideOnly: true,
+        practicePrompt:
+          "Run the code and use extend() to merge another list.",
+        starterCode:
+          "a = [1, 2]\nb = [3, 4]\n\na.extend(b)\nprint(a)\n\n# [1, 2, 3, 4]",
+      },
+      {
+        type: "practice",
+        practiceLabel: "Reverse",
+        ideOnly: true,
+        practicePrompt: "Run the code and reverse the list with reverse().",
+        starterCode:
+          "nums = [1, 2, 3]\n\nnums.reverse()\nprint(nums)\n\n# [3, 2, 1]",
+      },
+      {
+        type: "practice",
+        practiceLabel: "Clear",
+        ideOnly: true,
+        practicePrompt: "Run the code and empty the list with clear().",
+        starterCode:
+          'items = ["a", "b", "c"]\n\nitems.clear()\nprint(items)\n\n# []',
+      },
+      {
+        type: "practice",
         practiceLabel: "Challenge",
         practicePrompt:
           "Start with [3, 1, 4]. Append 1, sort, then print the list.",
@@ -292,9 +317,9 @@ export const module5Lessons: Record<string, TopicLesson> = {
       },
     ],
     keyTakeaways: [
-      "append() adds to the end; insert() adds at a position.",
+      "append() adds to the end; insert() adds at a position; extend() merges another list.",
       "remove() deletes a value; pop() removes the last (or at index).",
-      "sort() orders the list in place.",
+      "sort() orders the list; reverse() flips order; clear() empties it.",
     ],
   },
   "m5-t6": {

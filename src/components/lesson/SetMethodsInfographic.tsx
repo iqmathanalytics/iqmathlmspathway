@@ -8,6 +8,7 @@ import {
   GitBranch,
   Lightbulb,
   Play,
+  Plus,
   RefreshCw,
   Target,
 } from "lucide-react";
@@ -98,6 +99,28 @@ function CodeExercisePanel({
   );
 }
 
+function CodeWindow({
+  filename,
+  children,
+}: {
+  filename: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="overflow-hidden rounded-xl border border-black/15 bg-white/60">
+      <div className="flex items-center gap-1.5 border-b border-black/10 bg-black/[0.03] px-3 py-1.5">
+        <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+        <span className="font-mono text-[11px] text-gray-500">{filename}</span>
+      </div>
+      <pre className="overflow-x-auto bg-transparent px-4 py-3.5 font-mono text-[13.5px] leading-loose">
+        {children}
+      </pre>
+    </div>
+  );
+}
+
 function OutputBox({ children }: { children: React.ReactNode }) {
   return (
     <div className="mt-2 overflow-hidden rounded-lg border border-black/10 bg-black/[0.03]">
@@ -112,11 +135,11 @@ function OutputBox({ children }: { children: React.ReactNode }) {
 }
 
 const METHOD_ROWS = [
-  {
-    method: "issubset(other)",
-    purpose: "All items of a are in other",
-    example: "False",
-  },
+  { method: "add(item)", purpose: "Add a single item", example: "s.add(4)" },
+  { method: "update(other)", purpose: "Add items from another set", example: "s.update({4,5})" },
+  { method: "remove(item)", purpose: "Remove item (error if missing)", example: "s.remove(2)" },
+  { method: "pop()", purpose: "Remove and return arbitrary item", example: "s.pop()" },
+  { method: "issubset(other)", purpose: "All items of a are in other", example: "False" },
   {
     method: "issuperset(other)",
     purpose: "a contains all of other",
@@ -131,6 +154,10 @@ const METHOD_ROWS = [
 ] as const;
 
 const REF_ROWS = [
+  { code: "s.add(x)", result: "Add one item" },
+  { code: "s.update(other)", result: "Merge another set" },
+  { code: "s.remove(x)", result: "Delete item" },
+  { code: "s.pop()", result: "Remove any item" },
   { code: "a.issubset(b)", result: "Is a inside b?" },
   { code: "a.issuperset(b)", result: "Does a contain b?" },
   { code: "a.isdisjoint(b)", result: "No overlap?" },
@@ -144,9 +171,49 @@ export function SetMethodsInfographic() {
       <header className="mb-8 border-b border-black/10 pb-5">
         <h2 className="text-xl font-semibold tracking-tight">Set Methods</h2>
         <p className="mt-1 text-[13px] text-gray-500">
-          Test relationships between sets and work with unique values
+          Add, remove, and compare items in a set
         </p>
       </header>
+
+      {/* Modifying sets */}
+      <section className="mb-8">
+        <SectionLabel variant="teal">
+          <Plus className="h-3 w-3" />
+          Updating sets
+        </SectionLabel>
+        <h3 className="mb-1.5 text-base font-semibold tracking-tight">
+          add(), update(), remove(), pop()
+        </h3>
+        <p className="mb-3 text-[13.5px] leading-relaxed text-gray-600">
+          These methods change the set directly. Use add() for one item,
+          update() to merge another set, remove() to delete a known item, and
+          pop() to remove any item.
+        </p>
+
+        <CodeWindow filename="modify_set.py">
+          <span className="text-gray-800">s = {`{1, 2, 3}`}</span>
+          {"\n"}
+          {"\n"}
+          <span className="text-gray-800">s.add(4)</span>
+          {"\n"}
+          <span className="text-gray-800">s.update({`{5, 6}`})</span>
+          {"\n"}
+          <span className="text-gray-800">s.remove(2)</span>
+          {"\n"}
+          <span className="text-gray-800">last = s.pop()</span>
+          {"\n"}
+          {"\n"}
+          <span className="font-semibold text-[#8b2070]">print</span>
+          <span className="text-gray-800">(s)</span>
+        </CodeWindow>
+
+        <p className="mt-2.5 text-[13.5px] leading-relaxed text-gray-600">
+          pop() removes an arbitrary element — useful when you do not care
+          which item goes.
+        </p>
+      </section>
+
+      <hr className="my-7 border-black/10" />
 
       {/* Overview */}
       <section className="mb-8">

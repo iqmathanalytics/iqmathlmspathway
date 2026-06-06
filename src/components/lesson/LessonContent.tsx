@@ -54,6 +54,7 @@ import { ListComprehensionInfographic } from "@/components/lesson/ListComprehens
 import { ComprehensionUsesInfographic } from "@/components/lesson/ComprehensionUsesInfographic";
 import { DictionaryComprehensionInfographic } from "@/components/lesson/DictionaryComprehensionInfographic";
 import { FunctionsCreatingInfographic } from "@/components/lesson/FunctionsCreatingInfographic";
+import { FunctionsCallingInfographic } from "@/components/lesson/FunctionsCallingInfographic";
 import { FunctionArgumentsInfographic } from "@/components/lesson/FunctionArgumentsInfographic";
 import { FunctionVariablesInfographic } from "@/components/lesson/FunctionVariablesInfographic";
 import { FunctionRecursionInfographic } from "@/components/lesson/FunctionRecursionInfographic";
@@ -266,6 +267,9 @@ export function LessonContent({
             }
             if (block.infographic === "functions-creating") {
               return <FunctionsCreatingInfographic key={i} />;
+            }
+            if (block.infographic === "functions-calling") {
+              return <FunctionsCallingInfographic key={i} />;
             }
             if (block.infographic === "function-arguments") {
               return <FunctionArgumentsInfographic key={i} />;

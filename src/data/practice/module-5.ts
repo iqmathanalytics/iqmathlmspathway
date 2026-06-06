@@ -4,33 +4,52 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t1-p01",
     "topicId": "m5-t1",
-    "slug": "m5_t1-1",
-    "title": "Creating Lists: Warm-up",
+    "slug": "create-list",
+    "title": "Creating Lists: Create a List",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Creating Lists. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Create nums = [1, 2, 3] and print nums.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "nums"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Create "
+        },
+        {
+          "type": "code",
+          "value": "[1, 2, 3]"
+        },
+        {
+          "type": "text",
+          "value": " and print the whole list."
+        }
+      ],
+      "editorPlaceholder": "# nums = [1,2,3]",
+      "successDetail": "Correct! Square brackets create a list."
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "[1, 2, 3]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: [1, 2, 3]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "nums = [1, 2, 3]\\nprint(nums)"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t1-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "[1, 2, 3]",
         "visibility": "public"
       }
     ]
@@ -38,33 +57,50 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t1-p02",
     "topicId": "m5-t1",
-    "slug": "m5_t1-2",
-    "title": "Creating Lists: Output Two Values",
+    "slug": "empty-list",
+    "title": "Creating Lists: Empty List",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Creating Lists and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Create items = [] and print len(items).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# empty list",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! [] is an empty list.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Create an empty list and print its length."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "0",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "0"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 0"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "items = []\\nprint(len(items))"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t1-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "0",
         "visibility": "public"
       }
     ]
@@ -72,33 +108,43 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t1-p03",
     "topicId": "m5-t1",
-    "slug": "m5_t1-3",
-    "title": "Creating Lists: Simple Loop",
-    "difficulty": "medium",
+    "slug": "mixed-list",
+    "title": "Creating Lists: Mixed Types",
+    "difficulty": "easy",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Creating Lists.",
+    "layout": "challenge",
+    "description": "Create data = [1, \"hi\", True] and print data.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "data"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Lists can hold different types."
+        }
+      ],
+      "editorPlaceholder": "# mixed list",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "[1, 'hi', True]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Create list with int, str, bool"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "data = [1, \"hi\", True]\\nprint(data)"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t1-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "[1, 'hi', True]",
         "visibility": "public"
       }
     ]
@@ -106,33 +152,44 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t1-p04",
     "topicId": "m5-t1",
-    "slug": "m5_t1-4",
-    "title": "Creating Lists: Condition",
+    "slug": "nested-list",
+    "title": "Creating Lists: Nested List",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Create grid = [[1,2],[3,4]] and print grid[0].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "grid"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print the first inner list."
+        }
+      ],
+      "editorPlaceholder": "# nested list",
+      "successDetail": "Correct! Lists can contain other lists."
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "[1, 2]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: [1, 2]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "grid = [[1,2],[3,4]]\\nprint(grid[0])"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t1-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "[1, 2]",
         "visibility": "public"
       }
     ]
@@ -140,33 +197,58 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t1-p05",
     "topicId": "m5-t1",
-    "slug": "m5_t1-5",
-    "title": "Creating Lists: Function Stub",
+    "slug": "list-from-range",
+    "title": "Creating Lists: list from range",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print list(range(1, 4)).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# list(range())",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! list() converts range to a list.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Convert "
+        },
+        {
+          "type": "code",
+          "value": "range(1,4)"
+        },
+        {
+          "type": "text",
+          "value": " to a list."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[1, 2, 3]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "[1, 2, 3]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [1, 2, 3]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(list(range(1, 4)))"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t1-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "[1, 2, 3]",
         "visibility": "public"
       }
     ]
@@ -174,33 +256,58 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t1-p06",
     "topicId": "m5-t1",
-    "slug": "m5_t1-6",
-    "title": "Creating Lists: List Practice",
-    "difficulty": "hard",
+    "slug": "repeat-list",
+    "title": "Creating Lists: Repeat List",
+    "difficulty": "medium",
     "order": 6,
-    "description": "Create a list of three items about Creating Lists and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Print [0] * 3.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# [0]*3",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! * repeats list items.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Repeat a list with "
+        },
+        {
+          "type": "code",
+          "value": "* 3"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[0, 0, 0]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "[0, 0, 0]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [0, 0, 0]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print([0] * 3)"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t1-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "[0, 0, 0]",
         "visibility": "public"
       }
     ]
@@ -208,33 +315,58 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t1-p07",
     "topicId": "m5-t1",
-    "slug": "m5_t1-7",
-    "title": "Creating Lists: Dict Lookup",
+    "slug": "concat-lists",
+    "title": "Creating Lists: Concatenate Lists",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Print [1, 2] + [3, 4].",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# list concat",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! + combines lists.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Join two lists with "
+        },
+        {
+          "type": "code",
+          "value": "+"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[1, 2, 3, 4]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "[1, 2, 3, 4]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [1, 2, 3, 4]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print([1, 2] + [3, 4])"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t1-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "[1, 2, 3, 4]",
         "visibility": "public"
       }
     ]
@@ -242,33 +374,43 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t2-p01",
     "topicId": "m5-t2",
-    "slug": "m5_t2-1",
-    "title": "List Properties: Warm-up",
+    "slug": "ordered",
+    "title": "List Properties: Lists Are Ordered",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to List Properties. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Set a=[3,1,2], print a — order is preserved.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "a"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Lists keep items in the order you add them."
+        }
+      ],
+      "editorPlaceholder": "# ordered list",
+      "successDetail": "Correct! Order matters in lists."
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "[3, 1, 2]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: [3, 1, 2]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [3,1,2]\\nprint(a)"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t2-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "[3, 1, 2]",
         "visibility": "public"
       }
     ]
@@ -276,33 +418,44 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t2-p02",
     "topicId": "m5-t2",
-    "slug": "m5_t2-2",
-    "title": "List Properties: Output Two Values",
+    "slug": "mutable",
+    "title": "List Properties: Lists Are Mutable",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to List Properties and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Set a=[1,2], change a[0]=99, print a.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "a"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Lists can be changed after creation."
+        }
+      ],
+      "editorPlaceholder": "# mutable",
+      "successDetail": "Correct! Lists are mutable."
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "[99, 2]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: [99, 2]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [1,2]\\na[0]=99\\nprint(a)"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t2-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "[99, 2]",
         "visibility": "public"
       }
     ]
@@ -310,33 +463,50 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t2-p03",
     "topicId": "m5-t2",
-    "slug": "m5_t2-3",
-    "title": "List Properties: Simple Loop",
-    "difficulty": "medium",
+    "slug": "duplicates",
+    "title": "List Properties: Allow Duplicates",
+    "difficulty": "easy",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on List Properties.",
+    "layout": "challenge",
+    "description": "Print [1, 1, 2].",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# duplicates",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! Duplicates are allowed.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Lists can contain duplicate values."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[1, 1, 2]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "[1, 1, 2]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [1, 1, 2]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print([1, 1, 2])"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t2-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "[1, 1, 2]",
         "visibility": "public"
       }
     ]
@@ -344,33 +514,51 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t2-p04",
     "topicId": "m5-t2",
-    "slug": "m5_t2-4",
-    "title": "List Properties: Condition",
+    "slug": "len-list",
+    "title": "List Properties: List Length",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Set a=[10,20,30,40], print len(a).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "a"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "len()"
+        },
+        {
+          "type": "text",
+          "value": " to count items."
+        }
+      ],
+      "editorPlaceholder": "# len",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "4"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 4"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [10,20,30,40]\\nprint(len(a))"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t2-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "4",
         "visibility": "public"
       }
     ]
@@ -378,33 +566,50 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t2-p05",
     "topicId": "m5-t2",
-    "slug": "m5_t2-5",
-    "title": "List Properties: Function Stub",
+    "slug": "type-list",
+    "title": "List Properties: List Type",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print type([1,2,3]).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# type",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Check type of a list."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "<class 'list'>",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "<class 'list'>"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: <class 'list'>"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(type([1,2,3]))"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t2-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "<class 'list'>",
         "visibility": "public"
       }
     ]
@@ -412,33 +617,58 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t2-p06",
     "topicId": "m5-t2",
-    "slug": "m5_t2-6",
-    "title": "List Properties: List Practice",
-    "difficulty": "hard",
+    "slug": "in-list",
+    "title": "List Properties: Check Membership",
+    "difficulty": "medium",
     "order": 6,
-    "description": "Create a list of three items about List Properties and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Print 2 in [1,2,3].",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# in list",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "in"
+        },
+        {
+          "type": "text",
+          "value": " to check if item exists."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "True"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print(2 in [1,2,3])"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t2-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ]
@@ -446,33 +676,50 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t2-p07",
     "topicId": "m5-t2",
-    "slug": "m5_t2-7",
-    "title": "List Properties: Dict Lookup",
+    "slug": "mixed-types",
+    "title": "List Properties: Mixed Item Types",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Print [1, \"two\", 3.0].",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# mixed",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Lists can hold different types together."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "[1, 'two', 3.0]",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "[1, 'two', 3.0]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: [1, 'two', 3.0]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print([1, \"two\", 3.0])"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t2-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "[1, 'two', 3.0]",
         "visibility": "public"
       }
     ]
@@ -480,33 +727,52 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t3-p01",
     "topicId": "m5-t3",
-    "slug": "m5_t3-1",
-    "title": "Indexing Lists: Warm-up",
+    "slug": "index-first",
+    "title": "Indexing Lists: First Item",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Indexing Lists. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Set items = [10,20,30], print items[0].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "items"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print first item with "
+        },
+        {
+          "type": "code",
+          "value": "items[0]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# items[0]",
+      "successDetail": "Correct! List indexing starts at 0."
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "10"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 10"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "items = [10,20,30]\\nprint(items[0])"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t3-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "10",
         "visibility": "public"
       }
     ]
@@ -514,33 +780,52 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t3-p02",
     "topicId": "m5-t3",
-    "slug": "m5_t3-2",
-    "title": "Indexing Lists: Output Two Values",
+    "slug": "index-last",
+    "title": "Indexing Lists: Last Item",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Indexing Lists and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Set items = [10,20,30], print items[-1].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "items"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print last item with "
+        },
+        {
+          "type": "code",
+          "value": "items[-1]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# items[-1]",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "30"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 30"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "items = [10,20,30]\\nprint(items[-1])"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t3-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "30",
         "visibility": "public"
       }
     ]
@@ -548,33 +833,44 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t3-p03",
     "topicId": "m5-t3",
-    "slug": "m5_t3-3",
-    "title": "Indexing Lists: Simple Loop",
-    "difficulty": "medium",
+    "slug": "index-middle",
+    "title": "Indexing Lists: Middle Item",
+    "difficulty": "easy",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Indexing Lists.",
+    "layout": "challenge",
+    "description": "Set items = [\"a\",\"middle\",\"c\"], print items[1].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "items"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print the item at index 1."
+        }
+      ],
+      "editorPlaceholder": "# items[1]",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "middle"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: middle"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "items = [\"a\",\"middle\",\"c\"]\\nprint(items[1])"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t3-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "middle",
         "visibility": "public"
       }
     ]
@@ -582,33 +878,44 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t3-p04",
     "topicId": "m5-t3",
-    "slug": "m5_t3-4",
-    "title": "Indexing Lists: Condition",
+    "slug": "index-update-read",
+    "title": "Indexing Lists: Read After Index",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Set nums = [1,2,3], print nums[2].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "nums"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print the third element (index 2)."
+        }
+      ],
+      "editorPlaceholder": "# nums[2]",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "3"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 3"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "nums = [1,2,3]\\nprint(nums[2])"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t3-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "3",
         "visibility": "public"
       }
     ]
@@ -616,33 +923,52 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t3-p05",
     "topicId": "m5-t3",
-    "slug": "m5_t3-5",
-    "title": "Indexing Lists: Function Stub",
+    "slug": "nested-index",
+    "title": "Indexing Lists: Nested Index",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Set m = [[1,2],[3,4]], print m[1][0].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "m"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Access nested list: "
+        },
+        {
+          "type": "code",
+          "value": "m[1][0]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# m[1][0]",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "3"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 3"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "m = [[1,2],[3,4]]\\nprint(m[1][0])"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t3-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "3",
         "visibility": "public"
       }
     ]
@@ -650,33 +976,45 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t3-p06",
     "topicId": "m5-t3",
-    "slug": "m5_t3-6",
-    "title": "Indexing Lists: List Practice",
+    "slug": "two-indexes",
+    "title": "Indexing Lists: Two Indexes",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Indexing Lists and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Set a = [5,10,15], print a[0] and a[2] on separate lines.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "a"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print first and last items on separate lines."
+        }
+      ],
+      "editorPlaceholder": "# two indexes",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "5\n15"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Line 1: 5",
+      "Line 2: 15"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [5,10,15]\\nprint(a[0])\\nprint(a[2])"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t3-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "5\n15",
         "visibility": "public"
       }
     ]
@@ -684,33 +1022,52 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t3-p07",
     "topicId": "m5-t3",
-    "slug": "m5_t3-7",
-    "title": "Indexing Lists: Dict Lookup",
+    "slug": "len-index",
+    "title": "Indexing Lists: Last via len",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Set items = [4,8,12], print items[len(items)-1].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "items"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Get last item using "
+        },
+        {
+          "type": "code",
+          "value": "len(items)-1"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# len for last",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "12"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 12"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "items = [4,8,12]\\nprint(items[len(items)-1])"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t3-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "12",
         "visibility": "public"
       }
     ]
@@ -718,33 +1075,52 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t4-p01",
     "topicId": "m5-t4",
-    "slug": "m5_t4-1",
-    "title": "Slicing Lists: Warm-up",
+    "slug": "slice-basic",
+    "title": "Slicing Lists: Basic Slice",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Slicing Lists. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Set a = [0,1,2,3,4], print a[1:3].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "a"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Slice "
+        },
+        {
+          "type": "code",
+          "value": "a[1:3]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# a[1:3]",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "[1, 2]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: [1, 2]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [0,1,2,3,4]\\nprint(a[1:3])"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t4-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "[1, 2]",
         "visibility": "public"
       }
     ]
@@ -752,33 +1128,52 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t4-p02",
     "topicId": "m5-t4",
-    "slug": "m5_t4-2",
-    "title": "Slicing Lists: Output Two Values",
+    "slug": "slice-start",
+    "title": "Slicing Lists: From Start",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Slicing Lists and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Set a = [0,1,2,3], print a[:2].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "a"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Slice from start: "
+        },
+        {
+          "type": "code",
+          "value": "a[:2]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# a[:2]",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "[0, 1]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: [0, 1]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [0,1,2,3]\\nprint(a[:2])"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t4-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "[0, 1]",
         "visibility": "public"
       }
     ]
@@ -786,33 +1181,52 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t4-p03",
     "topicId": "m5-t4",
-    "slug": "m5_t4-3",
-    "title": "Slicing Lists: Simple Loop",
+    "slug": "slice-end",
+    "title": "Slicing Lists: To End",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Slicing Lists.",
+    "layout": "challenge",
+    "description": "Set a = [0,1,2,3], print a[2:].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "a"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Slice to end: "
+        },
+        {
+          "type": "code",
+          "value": "a[2:]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# a[2:]",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "[2, 3]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: [2, 3]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [0,1,2,3]\\nprint(a[2:])"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t4-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "[2, 3]",
         "visibility": "public"
       }
     ]
@@ -820,33 +1234,52 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t4-p04",
     "topicId": "m5-t4",
-    "slug": "m5_t4-4",
-    "title": "Slicing Lists: Condition",
+    "slug": "slice-step",
+    "title": "Slicing Lists: Step Slice",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Set a = [0,1,2,3,4], print a[::2].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "a"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Every 2nd item: "
+        },
+        {
+          "type": "code",
+          "value": "a[::2]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# a[::2]",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "[0, 2, 4]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: [0, 2, 4]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [0,1,2,3,4]\\nprint(a[::2])"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t4-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "[0, 2, 4]",
         "visibility": "public"
       }
     ]
@@ -854,33 +1287,52 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t4-p05",
     "topicId": "m5-t4",
-    "slug": "m5_t4-5",
-    "title": "Slicing Lists: Function Stub",
+    "slug": "reverse-list",
+    "title": "Slicing Lists: Reverse List",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Set a = [1,2,3], print a[::-1].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "a"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Reverse with "
+        },
+        {
+          "type": "code",
+          "value": "a[::-1]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# reverse",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "[3, 2, 1]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: [3, 2, 1]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [1,2,3]\\nprint(a[::-1])"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t4-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "[3, 2, 1]",
         "visibility": "public"
       }
     ]
@@ -888,33 +1340,52 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t4-p06",
     "topicId": "m5-t4",
-    "slug": "m5_t4-6",
-    "title": "Slicing Lists: List Practice",
+    "slug": "copy-slice",
+    "title": "Slicing Lists: Copy a Slice",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Slicing Lists and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Set a = [10,20,30,40], print a[1:4].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "a"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Extract middle portion with "
+        },
+        {
+          "type": "code",
+          "value": "a[1:4]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# a[1:4]",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "[20, 30, 40]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: [20, 30, 40]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [10,20,30,40]\\nprint(a[1:4])"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t4-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "[20, 30, 40]",
         "visibility": "public"
       }
     ]
@@ -922,33 +1393,52 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t4-p07",
     "topicId": "m5-t4",
-    "slug": "m5_t4-7",
-    "title": "Slicing Lists: Dict Lookup",
+    "slug": "slice-empty",
+    "title": "Slicing Lists: Empty Slice",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Set a = [1,2,3], print a[2:2].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "a"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "When start equals stop, slice is empty: "
+        },
+        {
+          "type": "code",
+          "value": "a[2:2]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# a[2:2]",
+      "successDetail": "Correct! Same index gives empty list."
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "[]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: []"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [1,2,3]\\nprint(a[2:2])"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t4-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "[]",
         "visibility": "public"
       }
     ]
@@ -956,33 +1446,51 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t5-p01",
     "topicId": "m5-t5",
-    "slug": "m5_t5-1",
-    "title": "List Methods: Warm-up",
+    "slug": "append",
+    "title": "List Methods: append()",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to List Methods. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Set a=[1,2], a.append(3), print a.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "a"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".append(3)"
+        },
+        {
+          "type": "text",
+          "value": " to add to end."
+        }
+      ],
+      "editorPlaceholder": "# append",
+      "successDetail": "Correct! append() adds one item."
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "[1, 2, 3]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: [1, 2, 3]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [1,2]\\na.append(3)\\nprint(a)"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t5-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "[1, 2, 3]",
         "visibility": "public"
       }
     ]
@@ -990,33 +1498,51 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t5-p02",
     "topicId": "m5-t5",
-    "slug": "m5_t5-2",
-    "title": "List Methods: Output Two Values",
+    "slug": "pop",
+    "title": "List Methods: pop()",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to List Methods and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Set a=[1,2,3], print a.pop().",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "a"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".pop()"
+        },
+        {
+          "type": "text",
+          "value": " to remove and return last item."
+        }
+      ],
+      "editorPlaceholder": "# pop",
+      "successDetail": "Correct! pop() removes the last item."
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "3"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: 3"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [1,2,3]\\nprint(a.pop())"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t5-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "3",
         "visibility": "public"
       }
     ]
@@ -1024,33 +1550,51 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t5-p03",
     "topicId": "m5-t5",
-    "slug": "m5_t5-3",
-    "title": "List Methods: Simple Loop",
+    "slug": "sort",
+    "title": "List Methods: sort()",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on List Methods.",
+    "layout": "challenge",
+    "description": "Set a=[3,1,2], a.sort(), print a.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "a"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".sort()"
+        },
+        {
+          "type": "text",
+          "value": " to sort in place."
+        }
+      ],
+      "editorPlaceholder": "# sort",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "[1, 2, 3]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: [1, 2, 3]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [3,1,2]\\na.sort()\\nprint(a)"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t5-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "[1, 2, 3]",
         "visibility": "public"
       }
     ]
@@ -1058,33 +1602,58 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t5-p04",
     "topicId": "m5-t5",
-    "slug": "m5_t5-4",
-    "title": "List Methods: Condition",
+    "slug": "count",
+    "title": "List Methods: count()",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Print [1,2,2,3].count(2).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# count",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! count() finds occurrences.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".count(2)"
+        },
+        {
+          "type": "text",
+          "value": " on a list."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "2",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "2"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 2"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print([1,2,2,3].count(2))"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t5-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "2",
         "visibility": "public"
       }
     ]
@@ -1092,33 +1661,58 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t5-p05",
     "topicId": "m5-t5",
-    "slug": "m5_t5-5",
-    "title": "List Methods: Function Stub",
+    "slug": "index-method",
+    "title": "List Methods: index()",
     "difficulty": "medium",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Print [\"a\",\"b\",\"c\"].index(\"b\").",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# index",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! index() returns position.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".index(\"b\")"
+        },
+        {
+          "type": "text",
+          "value": " to find position."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "1",
+          "label": "output"
+        }
+      ]
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "1"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output must be exactly: 1"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "print([\"a\",\"b\",\"c\"].index(\"b\"))"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t5-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "1",
         "visibility": "public"
       }
     ]
@@ -1126,33 +1720,51 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t5-p06",
     "topicId": "m5-t5",
-    "slug": "m5_t5-6",
-    "title": "List Methods: List Practice",
+    "slug": "extend",
+    "title": "List Methods: extend()",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about List Methods and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Set a=[1,2], a.extend([3,4]), print a.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "a"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".extend()"
+        },
+        {
+          "type": "text",
+          "value": " to add multiple items."
+        }
+      ],
+      "editorPlaceholder": "# extend",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "[1, 2, 3, 4]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: [1, 2, 3, 4]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [1,2]\\na.extend([3,4])\\nprint(a)"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t5-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "[1, 2, 3, 4]",
         "visibility": "public"
       }
     ]
@@ -1160,33 +1772,51 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t5-p07",
     "topicId": "m5-t5",
-    "slug": "m5_t5-7",
-    "title": "List Methods: Dict Lookup",
+    "slug": "remove",
+    "title": "List Methods: remove()",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Set a=[1,2,3,2], a.remove(2), print a.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "a"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".remove(2)"
+        },
+        {
+          "type": "text",
+          "value": " to remove first match."
+        }
+      ],
+      "editorPlaceholder": "# remove",
+      "successDetail": "Correct! remove() deletes first occurrence."
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "[1, 3, 2]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: [1, 3, 2]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [1,2,3,2]\\na.remove(2)\\nprint(a)"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t5-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "[1, 3, 2]",
         "visibility": "public"
       }
     ]
@@ -1194,33 +1824,52 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t6-p01",
     "topicId": "m5-t6",
-    "slug": "m5_t6-1",
-    "title": "Modifying Lists: Warm-up",
+    "slug": "change-item",
+    "title": "Modifying Lists: Change Item",
     "difficulty": "easy",
     "order": 1,
-    "description": "Write a short program related to Modifying Lists. Print the word Ready on one line.",
+    "layout": "challenge",
+    "description": "Set a=[1,2,3], set a[0]=10, print a.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "a"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Change index 0 with "
+        },
+        {
+          "type": "code",
+          "value": "a[0] = 10"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# change item",
+      "successDetail": "Correct! Lists are mutable."
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Ready",
-        "explanation": "Your stdout should match exactly."
+        "output": "[10, 2, 3]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: [10, 2, 3]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [1,2,3]\\na[0] = 10\\nprint(a)"
     ],
-    "starterCode": "print(\"Ready\")",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t6-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "Ready",
+        "expectedStdout": "[10, 2, 3]",
         "visibility": "public"
       }
     ]
@@ -1228,33 +1877,51 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t6-p02",
     "topicId": "m5-t6",
-    "slug": "m5_t6-2",
-    "title": "Modifying Lists: Output Two Values",
+    "slug": "insert",
+    "title": "Modifying Lists: insert()",
     "difficulty": "easy",
     "order": 2,
-    "description": "Create two variables relevant to Modifying Lists and print them separated by a comma.",
+    "layout": "challenge",
+    "description": "Set a=[1,3], a.insert(1,2), print a.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "a"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "a.insert(1, 2)"
+        },
+        {
+          "type": "text",
+          "value": " to insert at index 1."
+        }
+      ],
+      "editorPlaceholder": "# insert",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "A,B",
-        "explanation": "Your stdout should match exactly."
+        "output": "[1, 2, 3]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: [1, 2, 3]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [1,3]\\na.insert(1,2)\\nprint(a)"
     ],
-    "starterCode": "a = \"A\"\nb = \"B\"\nprint(a + \",\" + b)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t6-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "A,B",
+        "expectedStdout": "[1, 2, 3]",
         "visibility": "public"
       }
     ]
@@ -1262,33 +1929,52 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t6-p03",
     "topicId": "m5-t6",
-    "slug": "m5_t6-3",
-    "title": "Modifying Lists: Simple Loop",
+    "slug": "del-item",
+    "title": "Modifying Lists: del Statement",
     "difficulty": "medium",
     "order": 3,
-    "description": "Use a for loop to print numbers 1 through 4 for practice on Modifying Lists.",
+    "layout": "challenge",
+    "description": "Set a=[1,2,3], del a[1], print a.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "a"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "del a[1]"
+        },
+        {
+          "type": "text",
+          "value": " to remove index 1."
+        }
+      ],
+      "editorPlaceholder": "# del",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "1",
-        "explanation": "Your stdout should match exactly."
+        "output": "[1, 3]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: [1, 3]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [1,2,3]\\ndel a[1]\\nprint(a)"
     ],
-    "starterCode": "for i in range(1, 5):\n    print(i)",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t6-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "[1, 3]",
         "visibility": "public"
       }
     ]
@@ -1296,33 +1982,51 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t6-p04",
     "topicId": "m5-t6",
-    "slug": "m5_t6-4",
-    "title": "Modifying Lists: Condition",
+    "slug": "clear",
+    "title": "Modifying Lists: clear()",
     "difficulty": "medium",
     "order": 4,
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "layout": "challenge",
+    "description": "Set a=[1,2,3], a.clear(), print a.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "a"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".clear()"
+        },
+        {
+          "type": "text",
+          "value": " to empty the list."
+        }
+      ],
+      "editorPlaceholder": "# clear",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Pass",
-        "explanation": "Your stdout should match exactly."
+        "output": "[]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: []"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [1,2,3]\\na.clear()\\nprint(a)"
     ],
-    "starterCode": "score = 75\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t6-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Pass",
+        "expectedStdout": "[]",
         "visibility": "public"
       }
     ]
@@ -1330,33 +2034,52 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t6-p05",
     "topicId": "m5-t6",
-    "slug": "m5_t6-5",
-    "title": "Modifying Lists: Function Stub",
-    "difficulty": "medium",
+    "slug": "slice-assign",
+    "title": "Modifying Lists: Slice Assignment",
+    "difficulty": "hard",
     "order": 5,
-    "description": "Define greet() that prints Hello and call it once.",
+    "layout": "challenge",
+    "description": "Set a=[0,0,0,0], a[1:3]=[10,20], print a.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "a"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Replace a slice: "
+        },
+        {
+          "type": "code",
+          "value": "a[1:3] = [10, 20]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# slice assign",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Hello",
-        "explanation": "Your stdout should match exactly."
+        "output": "[0, 10, 20, 0]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: [0, 10, 20, 0]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = [0,0,0,0]\\na[1:3] = [10,20]\\nprint(a)"
     ],
-    "starterCode": "def greet():\n    print(\"Hello\")\n\ngreet()",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t6-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "Hello",
+        "expectedStdout": "[0, 10, 20, 0]",
         "visibility": "public"
       }
     ]
@@ -1364,33 +2087,42 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t6-p06",
     "topicId": "m5-t6",
-    "slug": "m5_t6-6",
-    "title": "Modifying Lists: List Practice",
+    "slug": "append-loop",
+    "title": "Modifying Lists: Build with Loop",
     "difficulty": "hard",
     "order": 6,
-    "description": "Create a list of three items about Modifying Lists and print the second item (index 1).",
+    "layout": "challenge",
+    "description": "Build [0,1,2] using a loop and append, print result.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresForLoop": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use a for loop and append to build [0,1,2]."
+        }
+      ],
+      "editorPlaceholder": "# loop + append",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "middle",
-        "explanation": "Your stdout should match exactly."
+        "output": "[0, 1, 2]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Use for loop and append",
+      "Output: [0, 1, 2]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "a = []\\nfor i in range(3):\\n    a.append(i)\\nprint(a)"
     ],
-    "starterCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t6-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "middle",
+        "expectedStdout": "[0, 1, 2]",
         "visibility": "public"
       }
     ]
@@ -1398,33 +2130,52 @@ export const module5Practice: PracticeProblem[] = [
   {
     "id": "m5-t6-p07",
     "topicId": "m5-t6",
-    "slug": "m5_t6-7",
-    "title": "Modifying Lists: Dict Lookup",
+    "slug": "modify-nested",
+    "title": "Modifying Lists: Modify Nested",
     "difficulty": "hard",
     "order": 7,
-    "description": "Create a dict with key topic and print its value using the key topic.",
+    "layout": "challenge",
+    "description": "Set m=[[1,2],[3,4]], set m[0][1]=9, print m.",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "m"
+      ],
+      "requiresListAccess": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Change nested value "
+        },
+        {
+          "type": "code",
+          "value": "m[0][1] = 9"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# nested modify",
+      "successDetail": "Correct!"
+    },
     "examples": [
       {
-        "input": "Run your program",
-        "output": "Python",
-        "explanation": "Your stdout should match exactly."
+        "output": "[[1, 9], [3, 4]]"
       }
     ],
     "constraints": [
-      "Use Python 3 syntax.",
-      "Output must match exactly (including spaces and newlines)."
+      "Output: [[1, 9], [3, 4]]"
     ],
     "hints": [
-      "Read the expected output carefully before coding.",
-      "Use print() for output unless the problem says otherwise.",
-      "Test locally with Run, then use Run public tests."
+      "m = [[1,2],[3,4]]\\nm[0][1] = 9\\nprint(m)"
     ],
-    "starterCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "starterCode": "",
     "publicTests": [
       {
         "id": "m5-t6-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "Python",
+        "expectedStdout": "[[1, 9], [3, 4]]",
         "visibility": "public"
       }
     ]
