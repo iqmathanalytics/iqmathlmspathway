@@ -317,10 +317,10 @@ export const module5Lessons: Record<string, TopicLesson> = {
       },
     ],
     keyTakeaways: [
-      "append() adds one item; insert() adds at an index; extend() merges lists.",
-      "append([3,4]) nests a list; extend([3,4]) adds each element separately.",
-      "remove() deletes by value; pop() removes and returns (last or at index).",
-      "sort(), reverse(), and clear() change the list in place; count() and index() search.",
+      "All 11 list methods: append, clear, copy, count, extend, index, insert, pop, remove, reverse, sort.",
+      "append() adds one item; extend() merges an iterable; copy() returns a separate list.",
+      "remove() deletes by value; pop() removes at a position and returns the item.",
+      "count() and index() search; sort() and reverse() change order in place.",
     ],
   },
   "m5-t6": {
