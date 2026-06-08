@@ -87,7 +87,7 @@ export const module1Quizzes: Record<string, TopicQuiz> = {
         ],
         correctIndex: 1,
         explanation:
-          "PyPath runs Python in your browser so you can practice immediately.",
+          "Introduction to Python runs Python in your browser so you can practice immediately.",
       },
     ],
   },

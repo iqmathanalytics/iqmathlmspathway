@@ -64,7 +64,7 @@ export const module1Lessons: Record<string, TopicLesson> = {
       },
     ],
     keyTakeaways: [
-      "Practice in the browser anytime on PyPath.",
+      "Practice in the browser anytime on this course.",
       "Install Python from python.org when you want it on your PC.",
       "Always choose Python 3 (not Python 2).",
     ],
@@ -72,7 +72,7 @@ export const module1Lessons: Record<string, TopicLesson> = {
   "m1-t4": {
     topicId: "m1-t4",
     intro:
-      "An IDE is where you write, run, and see your code — all in one place. PyPath includes one beside every lesson.",
+      "An IDE is where you write, run, and see your code — all in one place. Introduction to Python includes one beside every lesson.",
     blocks: [
       {
         type: "infographic",
@@ -88,7 +88,7 @@ export const module1Lessons: Record<string, TopicLesson> = {
     ],
     keyTakeaways: [
       "IDE = editor + run + console together.",
-      "PyPath has a built-in IDE on every topic page.",
+      "Every topic page has a built-in IDE.",
       "Desktop IDEs are optional extras for later.",
     ],
   },

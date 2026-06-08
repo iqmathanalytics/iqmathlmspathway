@@ -1,4 +1,4 @@
-# PyPath — Python Learning Platform
+# Introduction to Python — Python Learning Platform
 
 A structured Python learning platform toward **Data Science** — clear lessons, visual diagrams, in-browser IDE, quizzes, and progress tracking.
 

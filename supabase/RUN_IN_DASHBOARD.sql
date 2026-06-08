@@ -134,7 +134,7 @@ insert into public.practice_hidden_tests (problem_id, tests_json) values
   ('m1-t1-p02', '{"tests":[{"expectedStdout":"Alex\nData Science"},{"setup":"# hidden check","expectedStdout":"Alex\nData Science"}]}'::jsonb),
   ('m1-t1-p03', '{"tests":[{"expectedStdout":"1\n2\n3"},{"setup":"# hidden check","expectedStdout":"1\n2\n3"}]}'::jsonb),
   ('m1-t1-p04', '{"tests":[{"expectedStdout":"Python is fun"},{"setup":"# hidden check","expectedStdout":"Python is fun"}]}'::jsonb),
-  ('m1-t1-p05', '{"tests":[{"expectedStdout":"====\nWelcome to PyPath\n===="},{"setup":"# hidden check","expectedStdout":"====\nWelcome to PyPath\n===="}]}'::jsonb),
+  ('m1-t1-p05', '{"tests":[{"expectedStdout":"====\nWelcome to Python\n===="},{"setup":"# hidden check","expectedStdout":"====\nWelcome to Python\n===="}]}'::jsonb),
   ('m1-t1-p06', '{"tests":[{"expectedStdout":"I am Sam learning Python"},{"setup":"# hidden check","expectedStdout":"I am Sam learning Python"}]}'::jsonb),
   ('m1-t1-p07', '{"tests":[{"expectedStdout":"42"},{"setup":"# hidden check","expectedStdout":"42"}]}'::jsonb),
   ('m1-t2-p01', '{"tests":[{"expectedStdout":"Ready"},{"setup":"# hidden check","expectedStdout":"Ready"}]}'::jsonb),

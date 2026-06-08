@@ -86,7 +86,7 @@ export function HomeHero({
                 </div>
                 <span className="ml-2 font-mono text-xs text-gray-500">main.py</span>
                 <span className="ml-auto rounded bg-brand-600/20 px-2 py-0.5 text-[10px] font-medium text-brand-400">
-                  {PLATFORM_NAME} IDE
+                  Python IDE
                 </span>
               </div>
               <div className="space-y-0.5 p-4 font-mono text-[13px] leading-relaxed">

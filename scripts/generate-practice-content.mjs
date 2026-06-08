@@ -555,7 +555,7 @@ const TOPIC_TEMPLATES = {
       ["two-lines", "Two Lines of Output", "easy", "Print Alex on line 1 and Data Science on line 2.", "Alex\nData Science"],
       ["print-numbers", "Print Three Numbers", "easy", "Print 1, 2, and 3 each on its own line.", "1\n2\n3"],
       ["comment-then-print", "Comment and Print", "easy", "Add a comment, then print Python is fun.", "Python is fun"],
-      ["multiple-prints", "Build a Mini Banner", "medium", "Print ====, Welcome to PyPath, ====", "====\nWelcome to PyPath\n===="],
+      ["multiple-prints", "Build a Mini Banner", "medium", "Print ====, Welcome to Python, ====", "====\nWelcome to Python\n===="],
       ["format-intro", "Intro Sentence", "medium", "Create name and topic variables, print intro sentence.", "I am Sam learning Python"],
       ["calc-print", "Print a Sum", "medium", "Print the result of 17 + 25.", "42"],
     ],

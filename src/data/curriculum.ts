@@ -1,6 +1,7 @@
 import type { Module } from "@/lib/types";
 
-export const PLATFORM_NAME = "PyPath";
+export const PLATFORM_NAME = "Introduction to Python";
+export const PLATFORM_LOGO = "/logo/nexperts-logo.png";
 export const PLATFORM_TAGLINE =
   "Structured Python lessons with visuals and hands-on practice — built for future Data Science.";
 

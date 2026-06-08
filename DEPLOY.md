@@ -1,4 +1,4 @@
-# Deploy PyPath to Cloudflare Pages
+# Deploy Introduction to Python to Cloudflare Pages
 
 Repository: [github.com/iqmathanalytics/python-lms](https://github.com/iqmathanalytics/python-lms)
 
@@ -24,7 +24,7 @@ This app uses **Next.js static export** (`out/`) — ideal for Cloudflare Pages.
 
 ## 2. Stripe setup
 
-1. Create product **PyPath Practice Premium** (one-time payment)
+1. Create product **Introduction to Python Practice Premium** (one-time payment)
 2. Copy **Price ID** → `STRIPE_PRICE_ID` in Edge Function secrets
 3. Add webhook endpoint: `https://<project>.supabase.co/functions/v1/stripe-webhook`
 4. Listen for `checkout.session.completed`

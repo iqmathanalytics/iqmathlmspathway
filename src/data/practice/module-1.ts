@@ -303,13 +303,13 @@ export const module1Practice: PracticeProblem[] = [
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Print three lines: ====, Welcome to PyPath, ====",
+    "description": "Print three lines: ====, Welcome to Python, ====",
     "challengeContent": {
       "introSegments": [
         { "type": "text", "value": "Print three lines exactly: " },
         { "type": "code", "value": "====" },
         { "type": "text", "value": ", " },
-        { "type": "code", "value": "Welcome to PyPath" },
+        { "type": "code", "value": "Welcome to Python" },
         { "type": "text", "value": ", " },
         { "type": "code", "value": "====" },
         { "type": "text", "value": "." }
@@ -326,10 +326,10 @@ export const module1Practice: PracticeProblem[] = [
         },
         {
           "id": "line2",
-          "label": "Line 2: Welcome to PyPath",
+          "label": "Line 2: Welcome to Python",
           "kind": "print-value",
           "index": 1,
-          "expected": "Welcome to PyPath"
+          "expected": "Welcome to Python"
         },
         {
           "id": "line3",
@@ -342,7 +342,7 @@ export const module1Practice: PracticeProblem[] = [
           "id": "order",
           "label": "correct order",
           "kind": "print-sequence",
-          "expected": ["====", "Welcome to PyPath", "===="]
+          "expected": ["====", "Welcome to Python", "===="]
         }
       ],
       "emptyMessage": "Write three print() statements to build the banner.",
@@ -351,24 +351,24 @@ export const module1Practice: PracticeProblem[] = [
     },
     "examples": [
       {
-        "output": "====\nWelcome to PyPath\n===="
+        "output": "====\nWelcome to Python\n===="
       }
     ],
     "constraints": [
       "Use exactly three print() statements",
       "Line 1 and line 3 must be exactly ====",
-      "Line 2 must be exactly Welcome to PyPath",
+      "Line 2 must be exactly Welcome to Python",
       "No extra lines or blank lines"
     ],
     "hints": [
-      "Use three print() statements. Example: print(\"====\"), print(\"Welcome to PyPath\"), print(\"====\")"
+      "Use three print() statements. Example: print(\"====\"), print(\"Welcome to Python\"), print(\"====\")"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m1-t1-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "====\nWelcome to PyPath\n====",
+        "expectedStdout": "====\nWelcome to Python\n====",
         "visibility": "public"
       }
     ]

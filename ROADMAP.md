@@ -1,4 +1,4 @@
-# PyPath — Development Roadmap
+# Introduction to Python — Development Roadmap
 
 Learn Python from zero toward Data Science. Work is delivered in **phases** so each step is deep, tested, and beginner-friendly.
 
