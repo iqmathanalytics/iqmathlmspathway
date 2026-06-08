@@ -10,6 +10,7 @@ import {
   type ReactNode,
 } from "react";
 import type { Session, User } from "@supabase/supabase-js";
+import { formatAuthError } from "@/lib/auth-errors";
 import { getSupabase, isSupabaseConfigured } from "@/lib/supabase/client";
 import type { ProfileRow } from "@/lib/types";
 
@@ -93,6 +94,52 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const sb = getSupabase();
       if (!sb) return { error: "Auth is not configured.", needsEmailConfirmation: false };
 
+      const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+      const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+      if (url && anonKey) {
+        try {
+          const res = await fetch(`${url}/functions/v1/register-user`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              apikey: anonKey,
+              Authorization: `Bearer ${anonKey}`,
+            },
+            body: JSON.stringify({
+              email: params.email,
+              password: params.password,
+              fullName: params.fullName,
+              mobile: params.mobile,
+            }),
+          });
+
+          if (res.ok) {
+            const { error: signInError } = await sb.auth.signInWithPassword({
+              email: params.email,
+              password: params.password,
+            });
+            if (signInError) {
+              return {
+                error: formatAuthError(signInError.message),
+                needsEmailConfirmation: false,
+              };
+            }
+            return { error: null, needsEmailConfirmation: false };
+          }
+
+          if (res.status !== 404) {
+            const payload = (await res.json().catch(() => ({}))) as { error?: string };
+            return {
+              error: formatAuthError(payload.error ?? "Registration failed."),
+              needsEmailConfirmation: false,
+            };
+          }
+        } catch {
+          /* fall through to direct signUp if Edge Function unavailable */
+        }
+      }
+
       const { data, error } = await sb.auth.signUp({
         email: params.email,
         password: params.password,
@@ -104,7 +151,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         },
       });
 
-      if (error) return { error: error.message, needsEmailConfirmation: false };
+      if (error) {
+        return {
+          error: formatAuthError(error.message),
+          needsEmailConfirmation: false,
+        };
+      }
 
       const needsEmailConfirmation = !data.session;
       return { error: null, needsEmailConfirmation };
@@ -117,7 +169,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (!sb) return { error: "Auth is not configured." };
 
     const { error } = await sb.auth.signInWithPassword({ email, password });
-    return { error: error?.message ?? null };
+    return { error: error ? formatAuthError(error.message) : null };
   }, []);
 
   const signOut = useCallback(async () => {

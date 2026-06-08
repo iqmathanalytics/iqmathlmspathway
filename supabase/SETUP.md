@@ -26,24 +26,45 @@ In Supabase Dashboard → **SQL Editor** → **New query**, paste and run the fu
 
 This creates profiles, progress tables, RLS policies, and seeds hidden tests for all practice problems.
 
-## 3. Auth settings (recommended for dev)
+## 3. Auth settings (fix “email rate limit exceeded” / 429 on signup)
 
-Dashboard → **Authentication** → **Providers** → Email:
+Supabase’s **built-in email** allows only a few signup/reset emails per hour. Repeated signups hit `429 email rate limit exceeded`.
 
-- Turn **Confirm email** OFF while testing (turn ON for production).
-- Set **Site URL** to `http://localhost:3000` for local dev.
+**Recommended (production):** deploy the `register-user` Edge Function — it creates confirmed accounts **without sending email**:
+
+```bash
+supabase functions deploy register-user
+```
+
+`SUPABASE_SERVICE_ROLE_KEY` is injected automatically when deployed via CLI. After deploy, registration signs users in immediately (no confirmation email).
+
+**Alternative A — Dashboard (quick test):** Authentication → **Providers** → Email → turn **Confirm email** OFF. Signup then returns a session without sending mail.
+
+**Alternative B — Custom SMTP:** Authentication → **SMTP** → connect Resend, SendGrid, or similar. Raises email limits for confirmation/reset flows.
 
 Dashboard → **Authentication** → **URL configuration**:
 
-- Redirect URLs: add `http://localhost:3000/**` and your production URL.
+- **Site URL:** your production URL (and `http://localhost:3000` for local dev).
+- **Redirect URLs:** add `http://localhost:3000/**` and your production URL.
 
 ## 4. Edge Functions
 
-Deploy **grade-submission** for hidden test grading (uses [Judge0 CE](https://ce.judge0.com)):
+Link the project once:
 
 ```bash
 supabase login
 supabase link --project-ref zhieuuzfuazbvsuwzpzv
+```
+
+Deploy **register-user** (signup without email rate limits):
+
+```bash
+supabase functions deploy register-user
+```
+
+Deploy **grade-submission** for hidden test grading (uses [Judge0 CE](https://ce.judge0.com)):
+
+```bash
 supabase functions deploy grade-submission
 ```
 
