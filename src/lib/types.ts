@@ -8,6 +8,8 @@ export interface Topic {
   estimatedMinutes: number;
   /** When false, topic shows as "coming soon" */
   published: boolean;
+  /** Optional unlisted YouTube video ID (e.g. "dQw4w9WgXcQ") for the topic tutorial overlay */
+  videoUrl?: string;
 }
 
 export interface Module {

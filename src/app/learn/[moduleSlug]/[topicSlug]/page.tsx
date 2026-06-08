@@ -11,6 +11,7 @@ import { TopicQuizSection } from "./TopicQuizSection";
 import { TopicLessonHeader } from "@/components/lesson/TopicLessonHeader";
 import { KeyTakeaways } from "@/components/lesson/KeyTakeaways";
 import { TopicPracticeLink } from "@/components/lesson/TopicPracticeLink";
+import { VideoTutorialModal } from "@/components/lesson/VideoTutorialModal";
 
 interface TopicPageProps {
   params: Promise<{ moduleSlug: string; topicSlug: string }>;
@@ -68,11 +69,14 @@ export default async function TopicPage({ params }: TopicPageProps) {
         estimatedMinutes={topic.estimatedMinutes}
       />
 
-      <TopicPracticeLink
-        moduleSlug={module.slug}
-        topicSlug={topic.slug}
-        topicId={topic.id}
-      />
+      <div className="flex flex-wrap items-center gap-3">
+        <TopicPracticeLink
+          moduleSlug={module.slug}
+          topicSlug={topic.slug}
+          topicId={topic.id}
+        />
+        {topic.videoUrl && <VideoTutorialModal videoUrl={topic.videoUrl} />}
+      </div>
 
       <TopicLessonLayout blocks={lesson.blocks} />
 

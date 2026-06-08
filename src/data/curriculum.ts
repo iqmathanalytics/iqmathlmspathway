@@ -22,6 +22,7 @@ export const modules: Module[] = [
         description: "What programming is and how it works.",
         estimatedMinutes: 8,
         published: true,
+        videoUrl: "ECenYderNYI",
       },
       {
         id: "m1-t2",
@@ -30,6 +31,7 @@ export const modules: Module[] = [
         description: "Why Python fits learning programming and data science.",
         estimatedMinutes: 6,
         published: true,
+        videoUrl: "-aya4j7RL8k",
       },
       {
         id: "m1-t3",
@@ -38,6 +40,7 @@ export const modules: Module[] = [
         description: "Install Python step by step on your computer.",
         estimatedMinutes: 12,
         published: true,
+        videoUrl: "DWMNJi6BV1U",
       },
       {
         id: "m1-t4",
@@ -46,6 +49,7 @@ export const modules: Module[] = [
         description: "Tools to write code — including this site's built-in IDE.",
         estimatedMinutes: 8,
         published: true,
+        videoUrl: "lE4fD4P-oNU",
       },
     ],
   },
