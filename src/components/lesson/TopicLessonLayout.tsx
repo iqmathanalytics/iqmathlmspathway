@@ -9,9 +9,13 @@ import { ArrowRight, Pencil } from "lucide-react";
 
 interface TopicLessonLayoutProps {
   blocks: LessonBlock[];
+  /** Content rendered at the top of the left column (breadcrumb, header, buttons) */
+  headerSlot?: React.ReactNode;
+  /** Content rendered at the bottom of the left column (takeaways, quiz, nav) */
+  footerSlot?: React.ReactNode;
 }
 
-export function TopicLessonLayout({ blocks }: TopicLessonLayoutProps) {
+export function TopicLessonLayout({ blocks, headerSlot, footerSlot }: TopicLessonLayoutProps) {
   const ideRef = useRef<HTMLElement>(null);
 
   const practices = useMemo(
@@ -63,18 +67,22 @@ export function TopicLessonLayout({ blocks }: TopicLessonLayoutProps) {
 
   return (
     <LessonPracticeContext.Provider value={practiceContext}>
-      <div className="mt-8 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(340px,42%)] lg:items-start lg:gap-8 xl:gap-10">
+      <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(340px,42%)] lg:items-start lg:gap-8 xl:gap-10">
+        {/* ── Left column: full scrollable page content ── */}
         <div className="min-w-0">
+          {headerSlot}
           <LessonContent
             blocks={blocks}
             practiceMode="sidebar"
             activePracticeIndex={activePractice}
             onSelectPractice={selectPractice}
           />
+          {footerSlot}
         </div>
 
-        <aside ref={ideRef} className="mt-8 lg:mt-0">
-          <div className="lg:sticky lg:top-20">
+        {/* ── Right column: IDE fixed for entire lesson scroll ── */}
+        <aside ref={ideRef} className="mt-6 lg:mt-0">
+          <div className="lg:sticky lg:top-20 lg:max-h-[calc(100vh-5rem)] lg:overflow-y-auto lg:pb-4">
             <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
               <Pencil className="h-4 w-4 text-brand-600" />
               Python IDE
