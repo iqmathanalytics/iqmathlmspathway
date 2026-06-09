@@ -9,9 +9,9 @@ import { ArrowRight, Pencil } from "lucide-react";
 
 interface TopicLessonLayoutProps {
   blocks: LessonBlock[];
-  /** Content rendered at the top of the left column (breadcrumb, header, buttons) */
+  /** Content rendered at the top of the left scroll column (breadcrumb, header, buttons) */
   headerSlot?: React.ReactNode;
-  /** Content rendered at the bottom of the left column (takeaways, quiz, nav) */
+  /** Content rendered at the bottom of the left scroll column (takeaways, quiz, nav) */
   footerSlot?: React.ReactNode;
 }
 
@@ -34,8 +34,9 @@ export function TopicLessonLayout({ blocks, headerSlot, footerSlot }: TopicLesso
   const activeLabel =
     activeBlock?.practiceLabel ?? `Exercise ${activePractice + 1}`;
 
+  // Scroll the right column back to top so the IDE is visible
   const scrollToIde = useCallback(() => {
-    ideRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    if (ideRef.current) ideRef.current.scrollTop = 0;
   }, []);
 
   const selectPractice = useCallback(
@@ -47,10 +48,7 @@ export function TopicLessonLayout({ blocks, headerSlot, footerSlot }: TopicLesso
   );
 
   const nextPractice = useCallback(() => {
-    setActivePractice((current) => {
-      const next = Math.min(current + 1, practices.length - 1);
-      return next;
-    });
+    setActivePractice((current) => Math.min(current + 1, practices.length - 1));
     scrollToIde();
   }, [practices.length, scrollToIde]);
 
@@ -67,22 +65,33 @@ export function TopicLessonLayout({ blocks, headerSlot, footerSlot }: TopicLesso
 
   return (
     <LessonPracticeContext.Provider value={practiceContext}>
-      <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(340px,42%)] lg:items-start lg:gap-8 xl:gap-10">
-        {/* ── Left column: full scrollable page content ── */}
-        <div className="min-w-0">
-          {headerSlot}
+      {/*
+        Desktop: flex-1 fills remaining viewport height after the fixed header.
+        Both columns scroll independently via overflow-y-auto.
+        Mobile: normal block flow, page scrolls as usual.
+      */}
+      <div className="lg:flex-1 lg:min-h-0 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(340px,42%)] lg:overflow-hidden">
+
+        {/* ── Left column: lesson content + footer, independent scroll ── */}
+        <div className="min-w-0 py-6 px-4 sm:px-6 lg:px-8 xl:px-10 lg:overflow-y-auto
+          [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {headerSlot && <div className="mb-6">{headerSlot}</div>}
           <LessonContent
             blocks={blocks}
             practiceMode="sidebar"
             activePracticeIndex={activePractice}
             onSelectPractice={selectPractice}
           />
-          {footerSlot}
+          {footerSlot && <div className="mt-8 pb-10">{footerSlot}</div>}
         </div>
 
-        {/* ── Right column: IDE fixed for entire lesson scroll ── */}
-        <aside ref={ideRef} className="mt-6 lg:mt-0">
-          <div className="lg:sticky lg:top-20 lg:max-h-[calc(100vh-5rem)] lg:overflow-y-auto lg:pb-4">
+        {/* ── Right column: IDE, independent scroll, scrollbar flush at viewport edge ── */}
+        <aside
+          ref={ideRef}
+          className="mt-6 lg:mt-0 lg:overflow-y-auto lg:border-l lg:border-gray-200 lg:pl-6 xl:pl-8
+            [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
             <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
               <Pencil className="h-4 w-4 text-brand-600" />
               Python IDE

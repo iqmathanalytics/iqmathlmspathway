@@ -48,15 +48,19 @@ export default async function TopicPage({ params }: TopicPageProps) {
   const quiz = getQuiz(topic.id);
 
   return (
-    <article className={`${PAGE_CONTAINER} py-10`}>
+    /*
+      Desktop: two independent scroll columns filling the viewport below the navbar.
+      Left column: header → lesson → footer (all scroll together).
+      Right column: IDE (scrolls independently).
+      Mobile: normal single-column page flow.
+    */
+    <article className="w-full lg:flex lg:flex-col lg:h-[calc(100vh-3.5rem)]">
       <TopicLessonLayout
         blocks={lesson.blocks}
         headerSlot={
           <>
             <nav className="text-sm text-gray-500">
-              <Link href="/learn" className="hover:text-brand-700">
-                Path
-              </Link>
+              <Link href="/learn" className="hover:text-brand-700">Path</Link>
               <span className="mx-2">/</span>
               <Link href={`/learn/${module.slug}`} className="hover:text-brand-700">
                 Module {module.id}
@@ -64,7 +68,6 @@ export default async function TopicPage({ params }: TopicPageProps) {
               <span className="mx-2">/</span>
               <span className="text-gray-800">{topic.title}</span>
             </nav>
-
             <TopicLessonHeader
               moduleId={module.id}
               moduleName={module.name}
@@ -72,7 +75,6 @@ export default async function TopicPage({ params }: TopicPageProps) {
               intro={lesson.intro}
               estimatedMinutes={topic.estimatedMinutes}
             />
-
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <TopicPracticeLink
                 moduleSlug={module.slug}
