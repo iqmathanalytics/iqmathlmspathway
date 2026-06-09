@@ -3,13 +3,15 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { BookOpen, LogOut, User } from "lucide-react";
+import { BookOpen, LogOut, Sparkles, User } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
+import { useEntitlements } from "@/hooks/useEntitlements";
 
 /** Auth buttons — client-only to avoid server/client HTML mismatch from session restore. */
 export function AuthNav() {
   const router = useRouter();
   const { user, profile, loading, configured, signOut } = useAuth();
+  const { hasPremium } = useEntitlements();
   const [mounted, setMounted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -29,7 +31,17 @@ export function AuthNav() {
 
   if (configured && user) {
     return (
-      <div className="relative ml-2">
+      <div className="flex items-center gap-2 ml-2">
+        {!hasPremium && (
+          <Link
+            href="/checkout"
+            className="flex items-center gap-1.5 rounded-lg bg-amber-500 px-3 py-2 text-sm font-medium text-white hover:bg-amber-600 transition-colors"
+          >
+            <Sparkles className="h-4 w-4" />
+            <span className="hidden sm:inline">Unlock Premium</span>
+          </Link>
+        )}
+        <div className="relative">
         <button
           type="button"
           onClick={() => setMenuOpen((o) => !o)}
@@ -52,6 +64,7 @@ export function AuthNav() {
             </button>
           </div>
         )}
+        </div>
       </div>
     );
   }
