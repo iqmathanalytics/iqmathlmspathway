@@ -19,10 +19,10 @@ export default async function ModulePage({ params }: ModulePageProps) {
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <Link
-        href="/learn"
+        href="/dashboard"
         className="text-sm font-medium text-brand-700 hover:text-brand-800"
       >
-        ← All modules
+        ← Dashboard
       </Link>
       <div className="mt-4 flex items-start gap-4">
         <span className="text-4xl">{courseModule.icon}</span>

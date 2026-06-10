@@ -42,7 +42,7 @@ export function HomeHero({
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="/learn"
+                href="/dashboard"
                 className="group inline-flex items-center gap-2 rounded-xl bg-gray-900 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-gray-900/20 transition hover:bg-gray-800"
               >
                 <Play className="h-4 w-4" />

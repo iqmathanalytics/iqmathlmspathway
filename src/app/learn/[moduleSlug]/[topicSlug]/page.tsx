@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 import { notFound } from "next/navigation";
-import { getTopic, modules } from "@/data/curriculum";
+import { getTopic, modules, getAdjacentPublishedTopics } from "@/data/curriculum";
 import { getLesson } from "@/data/lessons";
 import { getQuiz } from "@/data/quizzes";
 import { TopicLessonLayout } from "@/components/lesson/TopicLessonLayout";
@@ -46,6 +47,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
   }
 
   const quiz = getQuiz(topic.id);
+  const { next } = getAdjacentPublishedTopics(module.slug, topic.slug);
 
   return (
     /*
@@ -60,7 +62,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
         headerSlot={
           <>
             <nav className="text-sm text-gray-500">
-              <Link href="/learn" className="hover:text-brand-700">Path</Link>
+              <Link href="/dashboard" className="hover:text-brand-700">Dashboard</Link>
               <span className="mx-2">/</span>
               <Link href={`/learn/${module.slug}`} className="hover:text-brand-700">
                 Module {module.id}
@@ -68,13 +70,24 @@ export default async function TopicPage({ params }: TopicPageProps) {
               <span className="mx-2">/</span>
               <span className="text-gray-800">{topic.title}</span>
             </nav>
-            <TopicLessonHeader
-              moduleId={module.id}
-              moduleName={module.name}
-              title={topic.title}
-              intro={lesson.intro}
-              estimatedMinutes={topic.estimatedMinutes}
-            />
+            <div className="flex items-start justify-between gap-4">
+              <TopicLessonHeader
+                moduleId={module.id}
+                moduleName={module.name}
+                title={topic.title}
+                intro={lesson.intro}
+                estimatedMinutes={topic.estimatedMinutes}
+              />
+              {next && (
+                <Link
+                  href={`/learn/${next.module.slug}/${next.topic.slug}`}
+                  className="mt-1 shrink-0 inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs font-medium text-gray-700 hover:border-brand-300 hover:bg-brand-50 hover:text-brand-800 transition-colors"
+                >
+                  Next Topic
+                  <ChevronRight className="h-3.5 w-3.5" />
+                </Link>
+              )}
+            </div>
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <TopicPracticeLink
                 moduleSlug={module.slug}

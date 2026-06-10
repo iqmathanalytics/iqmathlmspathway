@@ -5,6 +5,7 @@ import { ChevronDown, CheckCircle2, Circle, Lock, Clock, ArrowRight } from "luci
 import clsx from "clsx";
 import type { Module } from "@/lib/types";
 import { NavigationLink } from "@/components/ui/NavigationLink";
+import Link from "next/link";
 
 interface DashboardRoadmapProps {
   modules: Module[];
@@ -68,68 +69,66 @@ function ModuleNode({ module, completedTopicIds, defaultOpen = false, isLast }: 
           allLocked ? "opacity-60" : "hover:shadow-md"
         )}
       >
-        {/* Card header — click to expand */}
-        <button
-          type="button"
-          onClick={() => !allLocked && setOpen((o) => !o)}
-          disabled={allLocked}
-          aria-expanded={open}
-          className={clsx(
-            "flex w-full items-start gap-3 p-5 text-left",
-            allLocked ? "cursor-default" : "cursor-pointer"
-          )}
-        >
-          <span className="mt-0.5 text-2xl leading-none" aria-hidden>
-            {module.icon}
-          </span>
-
-          <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">
-                Module {module.id}
-              </span>
-              {allDone && (
-                <span className="flex items-center gap-1 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700">
-                  <CheckCircle2 className="h-3 w-3" /> Complete
-                </span>
-              )}
-              {allLocked && (
-                <span className="flex items-center gap-1 rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-500">
-                  <Lock className="h-3 w-3" /> Coming soon
-                </span>
-              )}
-            </div>
-
-            <h3 className="mt-0.5 font-semibold text-gray-900">{module.name}</h3>
-            <p className="mt-0.5 line-clamp-1 text-sm text-gray-500">{module.description}</p>
-
-            {!allLocked && (
-              <div className="mt-3 flex items-center gap-3">
-                <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-gray-100">
-                  <div
-                    className={clsx(
-                      "h-full rounded-full transition-all",
-                      allDone ? "bg-green-500" : "bg-brand-500"
-                    )}
-                    style={{ width: `${progress}%` }}
-                  />
+        {/* Card header: left side links to module page, chevron toggles topics */}
+        <div className="flex items-start gap-3 p-5">
+          {/* Clickable area → module overview page */}
+          {allLocked ? (
+            <div className="flex min-w-0 flex-1 items-start gap-3">
+              <span className="mt-0.5 text-2xl leading-none" aria-hidden>{module.icon}</span>
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">Module {module.id}</span>
+                  <span className="flex items-center gap-1 rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-500">
+                    <Lock className="h-3 w-3" /> Coming soon
+                  </span>
                 </div>
-                <span className="shrink-0 text-xs text-gray-400">
-                  {completedCount}/{published.length}
-                </span>
+                <h3 className="mt-0.5 font-semibold text-gray-900">{module.name}</h3>
+                <p className="mt-0.5 line-clamp-1 text-sm text-gray-500">{module.description}</p>
               </div>
-            )}
-          </div>
-
-          {!allLocked && (
-            <ChevronDown
-              className={clsx(
-                "mt-1 h-5 w-5 shrink-0 text-gray-400 transition-transform duration-200",
-                open && "rotate-180"
-              )}
-            />
+            </div>
+          ) : (
+            <Link
+              href={`/learn/${module.slug}`}
+              className="flex min-w-0 flex-1 items-start gap-3 hover:opacity-80 transition-opacity"
+            >
+              <span className="mt-0.5 text-2xl leading-none" aria-hidden>{module.icon}</span>
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">Module {module.id}</span>
+                  {allDone && (
+                    <span className="flex items-center gap-1 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700">
+                      <CheckCircle2 className="h-3 w-3" /> Complete
+                    </span>
+                  )}
+                </div>
+                <h3 className="mt-0.5 font-semibold text-gray-900">{module.name}</h3>
+                <p className="mt-0.5 line-clamp-1 text-sm text-gray-500">{module.description}</p>
+                <div className="mt-3 flex items-center gap-3">
+                  <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-gray-100">
+                    <div
+                      className={clsx("h-full rounded-full transition-all", allDone ? "bg-green-500" : "bg-brand-500")}
+                      style={{ width: `${progress}%` }}
+                    />
+                  </div>
+                  <span className="shrink-0 text-xs text-gray-400">{completedCount}/{published.length}</span>
+                </div>
+              </div>
+            </Link>
           )}
-        </button>
+
+          {/* Chevron — only toggles expand/collapse */}
+          {!allLocked && (
+            <button
+              type="button"
+              onClick={() => setOpen((o) => !o)}
+              aria-expanded={open}
+              aria-label={open ? "Collapse topics" : "Expand topics"}
+              className="mt-1 shrink-0 rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors"
+            >
+              <ChevronDown className={clsx("h-5 w-5 transition-transform duration-200", open && "rotate-180")} />
+            </button>
+          )}
+        </div>
 
         {/* Expandable topic list */}
         {open && !allLocked && (

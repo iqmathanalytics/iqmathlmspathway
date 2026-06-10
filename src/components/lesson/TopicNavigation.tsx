@@ -18,7 +18,7 @@ export function TopicNavigation({ module, topic }: TopicNavigationProps) {
       {prev ? (
         <NavigationLink
           href={`/learn/${prev.module.slug}/${prev.topic.slug}`}
-          className="flex items-center gap-1 text-sm font-medium text-brand-700 hover:text-brand-800"
+          className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:border-brand-300 hover:bg-brand-50 hover:text-brand-800 transition-colors"
         >
           <ChevronLeft className="h-4 w-4" />
           {prev.topic.title}
@@ -29,17 +29,18 @@ export function TopicNavigation({ module, topic }: TopicNavigationProps) {
       {next ? (
         <NavigationLink
           href={`/learn/${next.module.slug}/${next.topic.slug}`}
-          className="flex items-center justify-end gap-1 text-sm font-medium text-brand-700 hover:text-brand-800 sm:ml-auto"
+          className="inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700 transition-colors sm:ml-auto"
         >
           {next.topic.title}
           <ChevronRight className="h-4 w-4" />
         </NavigationLink>
       ) : (
         <NavigationLink
-          href={`/learn/${module.slug}`}
-          className="text-sm font-medium text-gray-600 hover:text-gray-900 sm:ml-auto"
+          href="/dashboard"
+          className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors sm:ml-auto"
         >
-          Back to module
+          Back to Dashboard
+          <ChevronRight className="h-4 w-4" />
         </NavigationLink>
       )}
     </nav>
