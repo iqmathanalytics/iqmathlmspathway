@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import Link from "next/link";
 import { modules, getPublishedTopicCount } from "@/data/curriculum";
 import { getTotalPracticeCount } from "@/data/practice/meta";
 import { PAGE_CONTAINER } from "@/lib/layout";
@@ -104,11 +103,6 @@ export default function DashboardPage() {
             />
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link href="/practice" className="text-sm font-medium text-brand-700 hover:underline">
-              Practice problems
-            </Link>
-          </div>
         </>
       )}
     </div>

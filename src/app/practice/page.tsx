@@ -32,8 +32,8 @@ export default function PracticeHubPage() {
       <PracticeHubClient moduleStats={moduleStats} />
       <p className="mt-8 text-sm text-gray-500">
         Prefer reading first?{" "}
-        <Link href="/learn" className="font-medium text-brand-700 hover:underline">
-          Go to Learning Path
+        <Link href="/dashboard" className="font-medium text-brand-700 hover:underline">
+          Go to Dashboard
         </Link>
       </p>
     </div>

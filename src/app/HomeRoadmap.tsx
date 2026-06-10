@@ -26,7 +26,7 @@ export function HomeRoadmap({ modules }: HomeRoadmapProps) {
             </p>
           </div>
           <Link
-            href="/learn"
+            href="/dashboard"
             className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-brand-700 hover:text-brand-800"
           >
             Full curriculum
