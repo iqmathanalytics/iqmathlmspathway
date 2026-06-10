@@ -150,9 +150,14 @@ export function VideoTutorialModal({ videoUrl }: VideoTutorialModalProps) {
             // Disable pointer events on the generated iframe — our overlay handles all clicks
             const iframe = playerContainerRef.current?.querySelector("iframe");
             if (iframe) (iframe as HTMLElement).style.pointerEvents = "none";
-            // Delay reveal so the YouTube title/channel overlay (shown briefly on load)
-            // is gone before we show the player to the user
-            setTimeout(() => setIsReady(true), 1200);
+            // Play in the background behind the black overlay long enough for ALL
+            // YouTube branding to be gone: channel name (~3 s), paid-promotions
+            // notice (~5 s), YouTube watermark. Then seek back to 0 so the user
+            // always sees the video from the very beginning — clean, no branding.
+            setTimeout(() => {
+              playerRef.current?.seekTo(0, true);
+              setIsReady(true);
+            }, 5500);
           },
           onStateChange: (e) => {
             const { PLAYING, PAUSED, ENDED } = window.YT.PlayerState;
@@ -338,11 +343,22 @@ export function VideoTutorialModal({ videoUrl }: VideoTutorialModalProps) {
                 className="absolute inset-0 h-full w-full"
               />
 
-              {/* Loading overlay — covers the YouTube branding flash until player is ready */}
+              {/* Loading overlay — covers YouTube branding flash until player is ready.
+                  Shows the video thumbnail so the wait feels natural. */}
               {!isReady && (
-                <div className="absolute inset-0 z-40 flex flex-col items-center justify-center bg-black">
-                  <div className="h-9 w-9 rounded-full border-2 border-white/20 border-t-white animate-spin mb-3" />
-                  <span className="text-xs text-white/40">Loading video…</span>
+                <div
+                  className="absolute inset-0 z-40 flex flex-col items-center justify-center bg-black"
+                  style={{
+                    backgroundImage: `url(https://img.youtube.com/vi/${videoId}/hqdefault.jpg)`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                >
+                  <div className="absolute inset-0 bg-black/50" />
+                  <div className="relative flex flex-col items-center gap-2">
+                    <div className="h-10 w-10 rounded-full border-2 border-white/30 border-t-white animate-spin" />
+                    <span className="text-xs text-white/60 tracking-wide">Loading video…</span>
+                  </div>
                 </div>
               )}
 
