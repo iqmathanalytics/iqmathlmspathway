@@ -3,6 +3,8 @@ import { Loader2 } from "lucide-react";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { NavigationProvider } from "@/contexts/NavigationContext";
 import { ProgressProvider } from "@/contexts/ProgressContext";
+import { WalkthroughProvider } from "@/contexts/WalkthroughContext";
+import { WalkthroughOverlay } from "@/components/walkthrough/WalkthroughOverlay";
 
 function ProvidersFallback() {
   return (
@@ -17,7 +19,12 @@ export function AppProviders({ children }: { children: ReactNode }) {
     <AuthProvider>
       <Suspense fallback={<ProvidersFallback />}>
         <NavigationProvider>
-          <ProgressProvider>{children}</ProgressProvider>
+          <ProgressProvider>
+            <WalkthroughProvider>
+              {children}
+              <WalkthroughOverlay />
+            </WalkthroughProvider>
+          </ProgressProvider>
         </NavigationProvider>
       </Suspense>
     </AuthProvider>

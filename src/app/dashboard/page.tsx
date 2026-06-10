@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
 import { modules, getPublishedTopicCount } from "@/data/curriculum";
 import { getTotalPracticeCount } from "@/data/practice/meta";
 import { PAGE_CONTAINER } from "@/lib/layout";
@@ -10,6 +10,7 @@ import { getSupabase } from "@/lib/supabase/client";
 import { useEntitlements } from "@/hooks/useEntitlements";
 import { BookOpen, Terminal, CheckCircle2, Lock, Loader2 } from "lucide-react";
 import { DashboardRoadmap } from "@/components/dashboard/DashboardRoadmap";
+import { TourTrigger } from "@/components/walkthrough/TourTrigger";
 
 export default function DashboardPage() {
   const { user, profile } = useAuth();
@@ -57,6 +58,10 @@ export default function DashboardPage() {
 
   return (
     <div className={`${PAGE_CONTAINER} py-10`}>
+      {/* Reads ?tour=1 param set by register page and fires the walkthrough */}
+      <Suspense fallback={null}>
+        <TourTrigger />
+      </Suspense>
       <h1 className="text-3xl font-bold text-gray-900">Your progress</h1>
       <p className="mt-2 text-gray-600">
         Welcome back{profile?.full_name ? `, ${profile.full_name}` : ""}.
@@ -93,10 +98,13 @@ export default function DashboardPage() {
           </div>
 
           <div className="mt-10">
-            <h2 className="text-lg font-semibold text-gray-900">Learning Roadmap</h2>
-            <p className="mt-1 text-sm text-gray-500">
-              Follow modules in order. Click any module to expand its topics.
-            </p>
+            {/* Target only the heading so the spotlight doesn't cover all modules */}
+            <div data-walkthrough="dashboard-roadmap" className="scroll-mt-24">
+              <h2 className="text-lg font-semibold text-gray-900">Learning Roadmap</h2>
+              <p className="mt-1 text-sm text-gray-500">
+                Follow modules in order. Click any module to expand its topics.
+              </p>
+            </div>
             <DashboardRoadmap
               modules={modules}
               completedTopicIds={progress.completedTopics}

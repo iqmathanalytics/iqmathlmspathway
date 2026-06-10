@@ -76,18 +76,21 @@ export function TopicLessonLayout({ blocks, headerSlot, footerSlot }: TopicLesso
         <div className="min-w-0 py-6 px-4 sm:px-6 lg:px-8 xl:px-10 lg:overflow-y-auto
           [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {headerSlot && <div className="mb-6">{headerSlot}</div>}
+          <div data-walkthrough="lesson-content">
           <LessonContent
             blocks={blocks}
             practiceMode="sidebar"
             activePracticeIndex={activePractice}
             onSelectPractice={selectPractice}
           />
+          </div>
           {footerSlot && <div className="mt-8 pb-10">{footerSlot}</div>}
         </div>
 
         {/* ── Right column: IDE, independent scroll, scrollbar flush at viewport edge ── */}
         <aside
           ref={ideRef}
+          data-walkthrough="lesson-ide"
           className="mt-6 lg:mt-0 lg:overflow-y-auto lg:border-l lg:border-gray-200 lg:pl-6 xl:pl-8
             [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >

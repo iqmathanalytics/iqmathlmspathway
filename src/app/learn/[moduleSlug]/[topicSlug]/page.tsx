@@ -81,6 +81,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
               {next && (
                 <Link
                   href={`/learn/${next.module.slug}/${next.topic.slug}`}
+                  data-walkthrough="lesson-next"
                   className="mt-1 shrink-0 inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs font-medium text-gray-700 hover:border-brand-300 hover:bg-brand-50 hover:text-brand-800 transition-colors"
                 >
                   Next Topic
@@ -94,7 +95,11 @@ export default async function TopicPage({ params }: TopicPageProps) {
                 topicSlug={topic.slug}
                 topicId={topic.id}
               />
-              {topic.videoUrl && <VideoTutorialModal videoUrl={topic.videoUrl} />}
+              {topic.videoUrl && (
+                <span data-walkthrough="lesson-video">
+                  <VideoTutorialModal videoUrl={topic.videoUrl} />
+                </span>
+              )}
             </div>
           </>
         }

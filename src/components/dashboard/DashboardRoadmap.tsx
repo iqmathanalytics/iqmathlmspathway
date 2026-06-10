@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronDown, CheckCircle2, Circle, Lock, Clock, ArrowRight } from "lucide-react";
 import clsx from "clsx";
 import type { Module } from "@/lib/types";
 import { NavigationLink } from "@/components/ui/NavigationLink";
 import Link from "next/link";
+import { useWalkthrough } from "@/contexts/WalkthroughContext";
 
 interface DashboardRoadmapProps {
   modules: Module[];
@@ -21,6 +22,13 @@ interface ModuleNodeProps {
 
 function ModuleNode({ module, completedTopicIds, defaultOpen = false, isLast }: ModuleNodeProps) {
   const [open, setOpen] = useState(defaultOpen);
+  const { stepIndex, active } = useWalkthrough();
+
+  // Keep Module 1 open during expand/topic walkthrough steps so the spotlight can target a topic
+  const forceOpen = module.id === 1 && active && (stepIndex === 1 || stepIndex === 2);
+  useEffect(() => {
+    if (forceOpen) setOpen(true);
+  }, [forceOpen]);
 
   const published = module.topics.filter((t) => t.published);
   const allLocked = published.length === 0;
@@ -124,6 +132,7 @@ function ModuleNode({ module, completedTopicIds, defaultOpen = false, isLast }: 
               aria-expanded={open}
               aria-label={open ? "Collapse topics" : "Expand topics"}
               className="mt-1 shrink-0 rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors"
+              data-walkthrough={module.id === 1 ? "dashboard-expand" : undefined}
             >
               <ChevronDown className={clsx("h-5 w-5 transition-transform duration-200", open && "rotate-180")} />
             </button>
@@ -161,6 +170,7 @@ function ModuleNode({ module, completedTopicIds, defaultOpen = false, isLast }: 
                     <NavigationLink
                       href={href}
                       className="group flex items-center gap-3 py-2.5 pl-12 pr-4 text-sm transition-colors hover:bg-brand-50/60"
+                      data-walkthrough={module.id === 1 && ti === 0 ? "dashboard-topic" : undefined}
                     >
                       {isDone ? (
                         <CheckCircle2 className="h-4 w-4 shrink-0 text-green-500" />

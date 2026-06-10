@@ -41,7 +41,7 @@ export default function RegisterPage() {
       return;
     }
 
-    router.push("/learn");
+    router.push("/dashboard?tour=1");
   }
 
   if (success) {
