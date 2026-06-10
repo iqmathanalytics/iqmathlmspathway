@@ -10,6 +10,7 @@ import { useProgress } from "@/contexts/ProgressContext";
 import { getSupabase } from "@/lib/supabase/client";
 import { useEntitlements } from "@/hooks/useEntitlements";
 import { BookOpen, Terminal, CheckCircle2, Lock, Loader2 } from "lucide-react";
+import { DashboardRoadmap } from "@/components/dashboard/DashboardRoadmap";
 
 export default function DashboardPage() {
   const { user, profile } = useAuth();
@@ -92,45 +93,18 @@ export default function DashboardPage() {
             />
           </div>
 
-          {!hasPremium && (
-            <div className="mt-8 rounded-xl border border-brand-200 bg-brand-50 p-6">
-              <h2 className="font-semibold text-gray-900">Unlock premium practice</h2>
-              <p className="mt-1 text-sm text-gray-600">
-                Get access to all premium problems (6+ per topic) with a one-time payment.
-              </p>
-              <Link
-                href="/checkout"
-                className="mt-4 inline-block rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
-              >
-                Unlock now
-              </Link>
-            </div>
-          )}
-
           <div className="mt-10">
-            <h2 className="text-lg font-semibold text-gray-900">By module</h2>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              {modules
-                .filter((m) => m.topics.some((t) => t.published))
-                .map((m) => (
-                  <Link
-                    key={m.id}
-                    href={`/learn/${m.slug}`}
-                    className="rounded-lg border border-gray-200 p-4 hover:border-brand-200"
-                  >
-                    <p className="font-medium text-gray-900">
-                      {m.icon} Module {m.id}
-                    </p>
-                    <p className="text-sm text-gray-500">{m.name}</p>
-                  </Link>
-                ))}
-            </div>
+            <h2 className="text-lg font-semibold text-gray-900">Learning Roadmap</h2>
+            <p className="mt-1 text-sm text-gray-500">
+              Follow modules in order. Click any module to expand its topics.
+            </p>
+            <DashboardRoadmap
+              modules={modules}
+              completedTopicIds={progress.completedTopics}
+            />
           </div>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <Link href="/learn" className="text-sm font-medium text-brand-700 hover:underline">
-              Continue learning
-            </Link>
             <Link href="/practice" className="text-sm font-medium text-brand-700 hover:underline">
               Practice problems
             </Link>

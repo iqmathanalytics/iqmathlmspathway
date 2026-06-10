@@ -4,14 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Home, LayoutDashboard, Route, Terminal } from "lucide-react";
+import { Home, LayoutDashboard, Terminal } from "lucide-react";
 import clsx from "clsx";
 import { PLATFORM_LOGO, PLATFORM_NAME } from "@/data/curriculum";
 import { AuthNav } from "@/components/layout/AuthNav";
 
 const nav = [
   { href: "/", label: "Home", icon: Home },
-  { href: "/learn", label: "Learning Path", icon: Route },
   { href: "/practice", label: "Practice", icon: Terminal },
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
 ];
@@ -26,7 +25,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200/80 bg-white/90 backdrop-blur-md">
-      <div className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="flex h-14 w-full items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2.5 font-semibold text-gray-900">
           <Image
             src={PLATFORM_LOGO}
