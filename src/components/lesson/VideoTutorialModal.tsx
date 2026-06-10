@@ -97,7 +97,6 @@ export function VideoTutorialModal({ videoUrl }: VideoTutorialModalProps) {
   const videoId = extractVideoId(videoUrl);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [isReady, setIsReady] = useState(false);   // hides player until YT branding gone
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -147,17 +146,9 @@ export function VideoTutorialModal({ videoUrl }: VideoTutorialModalProps) {
             setDuration(e.target.getDuration());
             setVolume(e.target.getVolume());
             setIsPlaying(true);
-            // Disable pointer events on the generated iframe — our overlay handles all clicks
+            // Disable pointer events on the iframe — our overlay handles all clicks
             const iframe = playerContainerRef.current?.querySelector("iframe");
             if (iframe) (iframe as HTMLElement).style.pointerEvents = "none";
-            // Play in the background behind the black overlay long enough for ALL
-            // YouTube branding to be gone: channel name (~3 s), paid-promotions
-            // notice (~5 s), YouTube watermark. Then seek back to 0 so the user
-            // always sees the video from the very beginning — clean, no branding.
-            setTimeout(() => {
-              playerRef.current?.seekTo(0, true);
-              setIsReady(true);
-            }, 5500);
           },
           onStateChange: (e) => {
             const { PLAYING, PAUSED, ENDED } = window.YT.PlayerState;
@@ -226,7 +217,6 @@ export function VideoTutorialModal({ videoUrl }: VideoTutorialModalProps) {
   const doClose = useCallback(() => {
     playerRef.current?.pauseVideo();
     setIsOpen(false);
-    setIsReady(false);
     setIsPlaying(false);
     setCurrentTime(0);
     setCaptionsOn(false);
@@ -337,30 +327,22 @@ export function VideoTutorialModal({ videoUrl }: VideoTutorialModalProps) {
               className="group relative w-full overflow-hidden rounded-xl bg-black shadow-2xl"
               style={{ paddingBottom: "56.25%" }}
             >
-              {/* YouTube player mount point */}
+              {/*
+                YouTube player mount point.
+                Intentionally oversized: top:-14% / height:128% makes the iframe
+                128% of the container height, shifted 14% upward. Combined with
+                overflow:hidden on the wrapper, this physically clips the top 14%
+                (where YouTube title, channel name, and "paid promotions" appear)
+                and bottom 14% (YouTube watermark / controls) out of the visible
+                area. Our custom controls bar already covers the bottom strip.
+              */}
               <div
                 ref={playerContainerRef}
-                className="absolute inset-0 h-full w-full"
+                className="absolute left-0 w-full"
+                style={{ top: "-14%", height: "128%" }}
               />
 
-              {/* Loading overlay — covers YouTube branding flash until player is ready.
-                  Shows the video thumbnail so the wait feels natural. */}
-              {!isReady && (
-                <div
-                  className="absolute inset-0 z-40 flex flex-col items-center justify-center bg-black"
-                  style={{
-                    backgroundImage: `url(https://img.youtube.com/vi/${videoId}/hqdefault.jpg)`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
-                >
-                  <div className="absolute inset-0 bg-black/50" />
-                  <div className="relative flex flex-col items-center gap-2">
-                    <div className="h-10 w-10 rounded-full border-2 border-white/30 border-t-white animate-spin" />
-                    <span className="text-xs text-white/60 tracking-wide">Loading video…</span>
-                  </div>
-                </div>
-              )}
+
 
               {/* Close button — top-right corner inside the video */}
               <button
