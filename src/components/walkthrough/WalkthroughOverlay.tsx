@@ -26,7 +26,7 @@ function WelcomeModal() {
           </div>
           <h1 className="text-2xl font-bold">Welcome to Nexperts Academy!</h1>
           <p className="mt-2 text-indigo-200 text-sm leading-relaxed">
-            You've just created your account. Let us show you around in under 2 minutes.
+            You have just created your account. Let us show you around in under 2 minutes.
           </p>
         </div>
 
