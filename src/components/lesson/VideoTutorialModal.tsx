@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import { Play, X } from "lucide-react";
+import "plyr/dist/plyr.css";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function extractVideoId(input: string): string {
@@ -65,10 +66,7 @@ export function VideoTutorialModal({ videoUrl }: VideoTutorialModalProps) {
       }
     };
 
-    Promise.all([
-      import("plyr"),
-      import("plyr/dist/plyr.css"),
-    ]).then(([{ default: Plyr }]) => {
+    import("plyr").then(({ default: Plyr }) => {
       if (destroyed || !embedRef.current) return;
 
       playerRef.current = new Plyr(embedRef.current, {

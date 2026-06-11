@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, BookOpen, Play, Terminal } from "lucide-react";
-import { PLATFORM_NAME, PLATFORM_TAGLINE } from "@/data/curriculum";
+import { PLATFORM_TAGLINE } from "@/data/curriculum";
 
 interface HomeHeroProps {
   liveModules: number;
