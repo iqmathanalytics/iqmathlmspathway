@@ -82,7 +82,7 @@ export const modules: Module[] = [
       { id: "m3-t4", title: "Logical Operators", slug: "logical", description: "and, or, not.", estimatedMinutes: 8, published: true },
       { id: "m3-t5", title: "Identity Operators", slug: "identity", description: "is, is not.", estimatedMinutes: 6, published: true, videoUrl: "SnewA61Z1eM" },
       { id: "m3-t6", title: "Membership Operators", slug: "membership", description: "in, not in.", estimatedMinutes: 6, published: true, videoUrl: "Wsrk3cEHBzI" },
-      { id: "m3-t7", title: "Bitwise Operators", slug: "bitwise", description: "Low-level bit operations.", estimatedMinutes: 10, published: true },
+      { id: "m3-t7", title: "Bitwise Operators", slug: "bitwise", description: "Low-level bit operations.", estimatedMinutes: 10, published: true, videoUrl: "oFyjk7oWWgE" },
     ],
   },
   {
@@ -93,10 +93,10 @@ export const modules: Module[] = [
     icon: "🔤",
     phase: "foundations",
     topics: [
-      { id: "m4-t1", title: "Creating Strings", slug: "creating-strings", description: "Quotes and multiline text.", estimatedMinutes: 8, published: true },
-      { id: "m4-t2", title: "Formatting Strings", slug: "formatting", description: "f-strings and .format().", estimatedMinutes: 10, published: true },
+      { id: "m4-t1", title: "Creating Strings", slug: "creating-strings", description: "Quotes and multiline text.", estimatedMinutes: 8, published: true, videoUrl: "cGA3M5vGfh4" },
+      { id: "m4-t2", title: "Formatting Strings", slug: "formatting", description: "f-strings and .format().", estimatedMinutes: 10, published: true, videoUrl: "Z81fhULiW6k" },
       { id: "m4-t3", title: "Indexing Strings", slug: "indexing", description: "Access single characters.", estimatedMinutes: 8, published: true },
-      { id: "m4-t4", title: "Slicing Strings", slug: "slicing", description: "Cut pieces of text.", estimatedMinutes: 10, published: true },
+      { id: "m4-t4", title: "Slicing Strings", slug: "slicing", description: "Cut pieces of text.", estimatedMinutes: 10, published: true, videoUrl: "dTBRt-XOGyE" },
       { id: "m4-t5", title: "String Methods", slug: "methods", description: "upper(), split(), and more.", estimatedMinutes: 12, published: true },
     ],
   },
