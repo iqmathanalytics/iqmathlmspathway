@@ -94,9 +94,11 @@ export async function syncProgressFromCloud(userId: string): Promise<UserProgres
     .select("topic_id, completed, quiz_score, last_visited_at")
     .eq("user_id", userId);
 
+  const local = loadLocalProgress();
   const progress: UserProgress = {
     completedTopics: [],
     quizScores: {},
+    ideRan: local.ideRan ?? [],
   };
 
   if (!error && data) {
