@@ -141,6 +141,7 @@ export interface TopicLesson {
 export interface UserProgress {
   completedTopics: string[];
   quizScores: Record<string, number>;
+  ideRan: string[];
   lastVisited?: string;
 }
 

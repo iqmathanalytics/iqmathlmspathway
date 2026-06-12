@@ -21,14 +21,16 @@ import {
   setActiveProgressUser,
   syncProgressFromCloud,
 } from "@/lib/progress-service";
+import { markIdeRan as markIdeRanInStorage } from "@/lib/progress";
 
-const emptyProgress: UserProgress = { completedTopics: [], quizScores: {} };
+const emptyProgress: UserProgress = { completedTopics: [], quizScores: {}, ideRan: [] };
 
 interface ProgressContextValue {
   progress: UserProgress;
   ready: boolean;
   userId: string | null;
   refresh: () => Promise<void>;
+  markIdeRan: (topicId: string) => void;
 }
 
 const ProgressContext = createContext<ProgressContextValue>({
@@ -36,6 +38,7 @@ const ProgressContext = createContext<ProgressContextValue>({
   ready: false,
   userId: null,
   refresh: async () => {},
+  markIdeRan: () => {},
 });
 
 export function ProgressProvider({ children }: { children: ReactNode }) {
@@ -95,14 +98,20 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     if (user) await syncForUser(user.id, true);
   }, [user, syncForUser]);
 
+  const markIdeRan = useCallback((topicId: string) => {
+    if (!user) return;
+    markIdeRanInStorage(topicId);
+  }, [user]);
+
   const value = useMemo(
     () => ({
       progress,
       ready,
       userId: user?.id ?? null,
       refresh,
+      markIdeRan,
     }),
-    [progress, ready, user, refresh]
+    [progress, ready, user, refresh, markIdeRan]
   );
 
   return <ProgressContext.Provider value={value}>{children}</ProgressContext.Provider>;

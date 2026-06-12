@@ -17,6 +17,8 @@ interface PythonIDEProps {
   editorHeight?: string;
   consoleMaxHeight?: number;
   filename?: string;
+  /** Called once the first time the user presses Run (used for completion tracking). */
+  onRun?: () => void;
 }
 
 export function PythonIDE({
@@ -24,6 +26,7 @@ export function PythonIDE({
   editorHeight = "240px",
   consoleMaxHeight = 220,
   filename = "main.py",
+  onRun,
 }: PythonIDEProps) {
   const [code, setCode] = useState(initialCode);
   const [cursor, setCursor] = useState({ line: 1, col: 1 });
@@ -36,7 +39,8 @@ export function PythonIDE({
 
   const handleRun = useCallback(() => {
     runCode(code);
-  }, [code, runCode]);
+    onRun?.();
+  }, [code, runCode, onRun]);
 
   function resetCode() {
     setCode(initialCode);
