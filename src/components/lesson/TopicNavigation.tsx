@@ -4,13 +4,15 @@ import { NavigationLink } from "@/components/ui/NavigationLink";
 import type { Module, Topic } from "@/lib/types";
 import { getAdjacentPublishedTopics } from "@/data/curriculum";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { NextTopicButton } from "./NextTopicButton";
 
 interface TopicNavigationProps {
   module: Module;
   topic: Topic;
+  hasQuiz: boolean;
 }
 
-export function TopicNavigation({ module, topic }: TopicNavigationProps) {
+export function TopicNavigation({ module, topic, hasQuiz }: TopicNavigationProps) {
   const { prev, next } = getAdjacentPublishedTopics(module.slug, topic.slug);
 
   return (
@@ -26,14 +28,15 @@ export function TopicNavigation({ module, topic }: TopicNavigationProps) {
       ) : (
         <span />
       )}
+
       {next ? (
-        <NavigationLink
+        <NextTopicButton
+          topicId={topic.id}
+          hasQuiz={hasQuiz}
           href={`/learn/${next.module.slug}/${next.topic.slug}`}
-          className="inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700 transition-colors sm:ml-auto"
-        >
-          {next.topic.title}
-          <ChevronRight className="h-4 w-4" />
-        </NavigationLink>
+          label={next.topic.title}
+          variant="footer"
+        />
       ) : (
         <NavigationLink
           href="/dashboard"

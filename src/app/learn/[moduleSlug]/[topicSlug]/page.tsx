@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import { getTopic, modules, getAdjacentPublishedTopics } from "@/data/curriculum";
 import { getLesson } from "@/data/lessons";
@@ -13,6 +12,7 @@ import { TopicLessonHeader } from "@/components/lesson/TopicLessonHeader";
 import { KeyTakeaways } from "@/components/lesson/KeyTakeaways";
 import { TopicPracticeLink } from "@/components/lesson/TopicPracticeLink";
 import { VideoTutorialModal } from "@/components/lesson/VideoTutorialModal";
+import { NextTopicButton } from "@/components/lesson/NextTopicButton";
 
 interface TopicPageProps {
   params: Promise<{ moduleSlug: string; topicSlug: string }>;
@@ -47,6 +47,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
   }
 
   const quiz = getQuiz(topic.id);
+  const hasQuiz = !!quiz;
   const { next } = getAdjacentPublishedTopics(module.slug, topic.slug);
 
   return (
@@ -59,6 +60,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
     <article className="w-full lg:flex lg:flex-col lg:h-[calc(100vh-3.5rem)]">
       <TopicLessonLayout
         blocks={lesson.blocks}
+        topicId={topic.id}
         headerSlot={
           <>
             <nav className="text-sm text-gray-500">
@@ -79,14 +81,15 @@ export default async function TopicPage({ params }: TopicPageProps) {
                 estimatedMinutes={topic.estimatedMinutes}
               />
               {next && (
-                <Link
-                  href={`/learn/${next.module.slug}/${next.topic.slug}`}
-                  data-walkthrough="lesson-next"
-                  className="mt-1 shrink-0 inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs font-medium text-gray-700 hover:border-brand-300 hover:bg-brand-50 hover:text-brand-800 transition-colors"
-                >
-                  Next Topic
-                  <ChevronRight className="h-3.5 w-3.5" />
-                </Link>
+                <span data-walkthrough="lesson-next">
+                  <NextTopicButton
+                    topicId={topic.id}
+                    hasQuiz={hasQuiz}
+                    href={`/learn/${next.module.slug}/${next.topic.slug}`}
+                    label="Next Topic"
+                    variant="header"
+                  />
+                </span>
               )}
             </div>
             <div className="mt-4 flex flex-wrap items-center gap-3">
@@ -108,9 +111,9 @@ export default async function TopicPage({ params }: TopicPageProps) {
             <KeyTakeaways items={lesson.keyTakeaways} />
             {quiz && <TopicQuizSection quiz={quiz} />}
             <div className="mt-8">
-              <MarkCompleteButton topicId={topic.id} />
+              <MarkCompleteButton topicId={topic.id} hasQuiz={hasQuiz} />
             </div>
-            <TopicNavigation module={module} topic={topic} />
+            <TopicNavigation module={module} topic={topic} hasQuiz={hasQuiz} />
           </>
         }
       />

@@ -6,6 +6,7 @@ const GUEST_KEY = "pypath-progress-guest-v1";
 const defaultProgress: UserProgress = {
   completedTopics: [],
   quizScores: {},
+  ideRan: [],
 };
 
 let activeUserId: string | null = null;
@@ -60,4 +61,22 @@ export function notifyProgressUpdated(): void {
   if (typeof window !== "undefined") {
     window.dispatchEvent(new Event("pypath-progress-updated"));
   }
+}
+
+/** Mark that the user has run code in the IDE for this topic. */
+export function markIdeRan(topicId: string): void {
+  const progress = loadProgress();
+  if (!progress.ideRan) progress.ideRan = [];
+  if (progress.ideRan.includes(topicId)) return;
+  progress.ideRan = [...progress.ideRan, topicId];
+  saveProgress(progress);
+  notifyProgressUpdated();
+}
+
+export function isIdeRan(progress: UserProgress, topicId: string): boolean {
+  return (progress.ideRan ?? []).includes(topicId);
+}
+
+export function isQuizDone(progress: UserProgress, topicId: string): boolean {
+  return progress.quizScores[topicId] !== undefined;
 }

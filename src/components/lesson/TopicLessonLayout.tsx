@@ -6,16 +6,19 @@ import { LessonContent } from "./LessonContent";
 import { PythonIDE } from "@/components/ide/PythonIDE.lazy";
 import { LessonPracticeContext } from "./LessonPracticeContext";
 import { ArrowRight, Pencil } from "lucide-react";
+import { useProgress } from "@/contexts/ProgressContext";
 
 interface TopicLessonLayoutProps {
   blocks: LessonBlock[];
+  topicId?: string;
   /** Content rendered at the top of the left scroll column (breadcrumb, header, buttons) */
   headerSlot?: React.ReactNode;
   /** Content rendered at the bottom of the left scroll column (takeaways, quiz, nav) */
   footerSlot?: React.ReactNode;
 }
 
-export function TopicLessonLayout({ blocks, headerSlot, footerSlot }: TopicLessonLayoutProps) {
+export function TopicLessonLayout({ blocks, topicId, headerSlot, footerSlot }: TopicLessonLayoutProps) {
+  const { markIdeRan } = useProgress();
   const ideRef = useRef<HTMLElement>(null);
 
   const practices = useMemo(
@@ -139,6 +142,7 @@ export function TopicLessonLayout({ blocks, headerSlot, footerSlot }: TopicLesso
               initialCode={activeCode}
               editorHeight="280px"
               consoleMaxHeight={260}
+              onRun={topicId ? () => markIdeRan(topicId) : undefined}
             />
 
             {activeBlock?.practicePrompt && (
