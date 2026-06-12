@@ -63,7 +63,7 @@ export const modules: Module[] = [
     topics: [
       { id: "m2-t1", title: "Input and Output", slug: "input-output", description: "print() and input().", estimatedMinutes: 10, published: true, videoUrl: "LQ4KVY0wYB4" },
       { id: "m2-t2", title: "Comments", slug: "comments", description: "Notes in your code.", estimatedMinutes: 5, published: true, videoUrl: "gvSLwdE4mT0" },
-      { id: "m2-t3", title: "Variables", slug: "variables", description: "Named boxes for data.", estimatedMinutes: 10, published: true },
+      { id: "m2-t3", title: "Variables", slug: "variables", description: "Named boxes for data.", estimatedMinutes: 10, published: true, videoUrl: "ow9JrEQ2ky0" },
       { id: "m2-t4", title: "Data Types", slug: "data-types", description: "int, float, str, bool.", estimatedMinutes: 12, published: true, videoUrl: "7G9rn8nKVS4" },
       { id: "m2-t5", title: "Typecasting", slug: "typecasting", description: "Changing one type to another.", estimatedMinutes: 8, published: true, videoUrl: "1vujw9mIsFk" },
     ],
@@ -78,8 +78,8 @@ export const modules: Module[] = [
     topics: [
       { id: "m3-t1", title: "Arithmetic Operators", slug: "arithmetic", description: "+, -, *, /, and more.", estimatedMinutes: 10, published: true, videoUrl: "hNrv_VfBQy0" },
       { id: "m3-t2", title: "Assignment Operators", slug: "assignment", description: "=, +=, and friends.", estimatedMinutes: 8, published: true, videoUrl: "YWkaIHPjZOU" },
-      { id: "m3-t3", title: "Comparison Operators", slug: "comparison", description: "==, !=, <, >.", estimatedMinutes: 8, published: true },
-      { id: "m3-t4", title: "Logical Operators", slug: "logical", description: "and, or, not.", estimatedMinutes: 8, published: true },
+      { id: "m3-t3", title: "Comparison Operators", slug: "comparison", description: "==, !=, <, >.", estimatedMinutes: 8, published: true, videoUrl: "-TQCHyshRkA" },
+      { id: "m3-t4", title: "Logical Operators", slug: "logical", description: "and, or, not.", estimatedMinutes: 8, published: true, videoUrl: "4DxBPOyx2yA" },
       { id: "m3-t5", title: "Identity Operators", slug: "identity", description: "is, is not.", estimatedMinutes: 6, published: true, videoUrl: "SnewA61Z1eM" },
       { id: "m3-t6", title: "Membership Operators", slug: "membership", description: "in, not in.", estimatedMinutes: 6, published: true, videoUrl: "Wsrk3cEHBzI" },
       { id: "m3-t7", title: "Bitwise Operators", slug: "bitwise", description: "Low-level bit operations.", estimatedMinutes: 10, published: true, videoUrl: "oFyjk7oWWgE" },
@@ -95,9 +95,9 @@ export const modules: Module[] = [
     topics: [
       { id: "m4-t1", title: "Creating Strings", slug: "creating-strings", description: "Quotes and multiline text.", estimatedMinutes: 8, published: true, videoUrl: "cGA3M5vGfh4" },
       { id: "m4-t2", title: "Formatting Strings", slug: "formatting", description: "f-strings and .format().", estimatedMinutes: 10, published: true, videoUrl: "Z81fhULiW6k" },
-      { id: "m4-t3", title: "Indexing Strings", slug: "indexing", description: "Access single characters.", estimatedMinutes: 8, published: true },
+      { id: "m4-t3", title: "Indexing Strings", slug: "indexing", description: "Access single characters.", estimatedMinutes: 8, published: true, videoUrl: "-hce-Zwkf1Y" },
       { id: "m4-t4", title: "Slicing Strings", slug: "slicing", description: "Cut pieces of text.", estimatedMinutes: 10, published: true, videoUrl: "dTBRt-XOGyE" },
-      { id: "m4-t5", title: "String Methods", slug: "methods", description: "upper(), split(), and more.", estimatedMinutes: 12, published: true },
+      { id: "m4-t5", title: "String Methods", slug: "methods", description: "upper(), split(), and more.", estimatedMinutes: 12, published: true, videoUrl: "paECLGMcYTI" },
     ],
   },
   {
@@ -108,8 +108,8 @@ export const modules: Module[] = [
     icon: "📋",
     phase: "foundations",
     topics: [
-      { id: "m5-t1", title: "Creating Lists", slug: "creating-lists", description: "Square brackets [].", estimatedMinutes: 8, published: true },
-      { id: "m5-t2", title: "List Properties", slug: "properties", description: "Ordered, mutable, allow duplicates.", estimatedMinutes: 8, published: true },
+      { id: "m5-t1", title: "Creating Lists", slug: "creating-lists", description: "Square brackets [].", estimatedMinutes: 8, published: true, videoUrl: "s7yYUi1V-Is" },
+      { id: "m5-t2", title: "List Properties", slug: "properties", description: "Ordered, mutable, allow duplicates.", estimatedMinutes: 8, published: true, videoUrl: "RRORk60gz1Q" },
       { id: "m5-t3", title: "Indexing Lists", slug: "indexing", description: "Position starts at 0.", estimatedMinutes: 8, published: true },
       { id: "m5-t4", title: "Slicing Lists", slug: "slicing", description: "Sub-lists.", estimatedMinutes: 10, published: true },
       { id: "m5-t5", title: "List Methods", slug: "methods", description: "append(), pop(), etc.", estimatedMinutes: 12, published: true },
