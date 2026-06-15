@@ -14,6 +14,7 @@ import { module10Practice } from "./module-10";
 import { module11Practice } from "./module-11";
 import { module12Practice } from "./module-12";
 import { module13Practice } from "./module-13";
+import { module14Practice } from "./module-14";
 
 const allProblems: PracticeProblem[] = [
   ...module1Practice,
@@ -29,6 +30,7 @@ const allProblems: PracticeProblem[] = [
   ...module11Practice,
   ...module12Practice,
   ...module13Practice,
+  ...module14Practice,
 ];
 
 export { getPracticeCountByTopic, getTotalPracticeCount } from "./meta";

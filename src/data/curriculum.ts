@@ -226,6 +226,57 @@ export const modules: Module[] = [
       { id: "m13-t1", title: "Lambda Functions", slug: "lambda-functions", description: "lambda x: x * 2", estimatedMinutes: 10, published: true },
     ],
   },
+  {
+    id: 14,
+    name: "Final Project",
+    slug: "final-project",
+    description:
+      "Build a Student Grade Manager that uses every Python concept from Modules 1–13.",
+    icon: "🏆",
+    phase: "foundations",
+    topics: [
+      {
+        id: "m14-t1",
+        title: "Project Overview",
+        slug: "overview",
+        description: "What you will build and how modules connect.",
+        estimatedMinutes: 12,
+        published: true,
+      },
+      {
+        id: "m14-t2",
+        title: "Step 1: Data Model",
+        slug: "data-model",
+        description: "Dict, list, set, and tuple for student grades.",
+        estimatedMinutes: 15,
+        published: true,
+      },
+      {
+        id: "m14-t3",
+        title: "Step 2: Logic & Loops",
+        slug: "logic-and-loops",
+        description: "Averages, pass/fail, and comprehensions.",
+        estimatedMinutes: 18,
+        published: true,
+      },
+      {
+        id: "m14-t4",
+        title: "Step 3: Functions & Report",
+        slug: "functions-and-report",
+        description: "Reusable functions, f-strings, and lambda sorting.",
+        estimatedMinutes: 18,
+        published: true,
+      },
+      {
+        id: "m14-t5",
+        title: "Capstone Build",
+        slug: "capstone",
+        description: "Assemble and extend the complete grade manager.",
+        estimatedMinutes: 25,
+        published: true,
+      },
+    ],
+  },
 ];
 
 export function getModuleBySlug(slug: string): Module | undefined {

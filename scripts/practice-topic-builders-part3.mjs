@@ -315,3 +315,90 @@ export function introTopicTasks(_id, title) {
       { outputOnly: true, requiresDictKey: "topic", introSegments: [seg("text", 'Create dict with key '), seg("code", "topic"), seg("text", ", print its value.")], editorPlaceholder: '# d["topic"]', emptyMessage: "Create dict and print value.", successDetail: "Correct!", constraints: ["Output: Python"], hints: ['d = {"topic":"Python"}\\nprint(d["topic"])'] }),
   ];
 }
+
+// ─── Module 14: Final Project ─────────────────────────────────────────────────
+
+export function finalProjectOverviewTasks(_id, title) {
+  return [
+    task("fp-preview", `${title}: Preview Report`, "easy", 'Print "=== Class Report ===" on one line.', "=== Class Report ===",
+      printChallenge([seg("text", "Preview the capstone report header.")], "=== Class Report ===", "# print header", 'print("=== Class Report ===")', "Correct!")),
+    task("fp-shape", `${title}: Data Shape`, "easy", 'Create students = {"Alice": [85, 92]}, print students["Alice"][0].', "85",
+      { outputOnly: true, requiresDictKey: "Alice", introSegments: [seg("text", "Dict maps names to grade lists.")], editorPlaceholder: "# students dict", hints: ['students = {"Alice": [85, 92]}\\nprint(students["Alice"][0])'], constraints: ["Output: 85"], successDetail: "Correct!" }),
+    task("fp-concepts", `${title}: Module Map`, "medium", 'Print len(["dict","list","set","tuple"]).', "4",
+      printChallenge([seg("text", "Four core collection types in the project.")], "4", "# collections", 'print(len(["dict","list","set","tuple"]))', "Correct!")),
+    task("fp-subjects", `${title}: Subject Set`, "medium", 'Create s = {"Math","Science","Math"}, print len(s).', "2",
+      { outputOnly: true, introSegments: [seg("text", "Sets keep unique subjects only.")], editorPlaceholder: "# set of subjects", hints: ['s = {"Math","Science","Math"}\\nprint(len(s))'], constraints: ["Output: 2"], successDetail: "Correct!" }),
+    task("fp-plan", `${title}: Build Order`, "hard", 'Print "data,logic,functions,capstone" (comma-separated steps).', "data,logic,functions,capstone",
+      printChallenge([seg("text", "Print the four build steps in order.")], "data,logic,functions,capstone", "# steps", 'print("data,logic,functions,capstone")', "Correct!")),
+  ];
+}
+
+export function finalProjectDataTasks(_id, title) {
+  return [
+    task("fp-dict", `${title}: Student Dict`, "easy", 'students = {"Alice": [85], "Bob": [70]}, print len(students).', "2",
+      { outputOnly: true, requiresVariables: ["students"], introSegments: [seg("text", "Main database is a dict of names → grade lists.")], editorPlaceholder: "# students = {}", hints: ['students = {"Alice": [85], "Bob": [70]}\\nprint(len(students))'], constraints: ["Output: 2"], successDetail: "Correct!" }),
+    task("fp-set", `${title}: Subject Set`, "easy", 'subjects = set(); subjects.add("Math"); print "Math" in subjects.', "True",
+      { outputOnly: true, requiresVariables: ["subjects"], introSegments: [seg("text", "Use a set for unique subject names.")], editorPlaceholder: "# subjects = set()", hints: ['subjects = set()\\nsubjects.add("Math")\\nprint("Math" in subjects)'], constraints: ["Output: True"], successDetail: "Correct!" }),
+    task("fp-tuple", `${title}: Grade Record`, "easy", 'record = ("Science", 88); subject, score = record; print score.', "88",
+      { outputOnly: true, requiresVariables: ["record"], introSegments: [seg("text", "Unpack a (subject, score) tuple.")], editorPlaceholder: "# tuple unpack", hints: ['record = ("Science", 88)\\nsubject, score = record\\nprint(score)'], constraints: ["Output: 88"], successDetail: "Correct!" }),
+    task("fp-append", `${title}: Append Grade`, "medium", 'students = {"Alice": [85]}; students["Alice"].append(92); print students["Alice"][-1].', "92",
+      { outputOnly: true, requiresVariables: ["students"], introSegments: [seg("text", "Use "), seg("code", ".append()"), seg("text", " to add a score.")], editorPlaceholder: "# append grade", hints: ['students = {"Alice": [85]}\\nstudents["Alice"].append(92)\\nprint(students["Alice"][-1])'], constraints: ["Output: 92"], successDetail: "Correct!" }),
+    task("fp-add-student", `${title}: Add Student`, "medium", 'students = {}; students["Cara"] = [55, 48]; print students["Cara"][1].', "48",
+      { outputOnly: true, requiresVariables: ["students"], introSegments: [seg("text", "Add a new student key with a grade list.")], editorPlaceholder: "# add Cara", hints: ['students = {}\\nstudents["Cara"] = [55, 48]\\nprint(students["Cara"][1])'], constraints: ["Output: 48"], successDetail: "Correct!" }),
+    task("fp-challenge-data", `${title}: Merge Grades`, "hard", 'students = {"Bob": [70]}; students["Bob"].extend([88, 91]); print sum(students["Bob"]).', "249",
+      { outputOnly: true, requiresVariables: ["students"], introSegments: [seg("text", "Use "), seg("code", ".extend()"), seg("text", " then sum the list.")], editorPlaceholder: "# extend grades", hints: ['students = {"Bob": [70]}\\nstudents["Bob"].extend([88, 91])\\nprint(sum(students["Bob"]))'], constraints: ["Output: 249"], successDetail: "Correct!" }),
+  ];
+}
+
+export function finalProjectLogicTasks(_id, title) {
+  return [
+    task("fp-avg", `${title}: Average Loop`, "easy", "grades = [85, 92, 78]; print sum(grades) / len(grades).", "85.0",
+      { outputOnly: true, requiresVariables: ["grades"], introSegments: [seg("text", "Average = sum / len.")], editorPlaceholder: "# average", hints: ["grades = [85, 92, 78]\\nprint(sum(grades) / len(grades))"], constraints: ["Output: 85.0"], successDetail: "Correct!" }),
+    task("fp-pass", `${title}: Pass or Fail`, "easy", 'avg = 75; print "PASS" if avg >= 60 else "FAIL".', "PASS",
+      { outputOnly: true, requiresIfCondition: true, introSegments: [seg("text", "Compare average to 60.")], editorPlaceholder: "# if avg >= 60", hints: ['avg = 75\\nprint("PASS" if avg >= 60 else "FAIL")'], constraints: ["Output: PASS"], successDetail: "Correct!" }),
+    task("fp-dict-loop", `${title}: Loop Students`, "medium", 'students = {"Alice": [90]}; print list(students.keys())[0].', "Alice",
+      { outputOnly: true, requiresVariables: ["students"], requiresForLoop: false, introSegments: [seg("text", "Access the first student name from the dict.")], editorPlaceholder: "# students.keys()", hints: ['students = {"Alice": [90]}\\nprint(list(students.keys())[0])'], constraints: ["Output: Alice"], successDetail: "Correct!" }),
+    task("fp-comp", `${title}: Passing List`, "medium", 'averages = {"Alice": 85, "Bob": 55}; print [n for n,a in averages.items() if a >= 60][0].', "Alice",
+      { outputOnly: true, requiresVariables: ["averages"], introSegments: [seg("text", "List comprehension filters passing students.")], editorPlaceholder: "# comprehension", hints: ['averages = {"Alice": 85, "Bob": 55}\\nprint([n for n,a in averages.items() if a >= 60][0])'], constraints: ["Output: Alice"], successDetail: "Correct!" }),
+    task("fp-elif", `${title}: Letter Band`, "medium", "avg = 55; print RETAKE if 50 <= avg < 60 else PASS.", "RETAKE",
+      { outputOnly: true, requiresIfCondition: true, introSegments: [seg("text", "Use elif bands for retake vs pass.")], editorPlaceholder: "# elif bands", hints: ['avg = 55\\nif avg >= 60: print("PASS")\\nelif avg >= 50: print("RETAKE")\\nelse: print("FAIL")'], constraints: ["Output: RETAKE"], successDetail: "Correct!" }),
+    task("fp-challenge-logic", `${title}: Class Average`, "hard", 'students = {"A": [80, 90], "B": [70, 70]}; print sum(sum(g) for g in students.values()) / sum(len(g) for g in students.values()).', "77.5",
+      { outputOnly: true, requiresVariables: ["students"], introSegments: [seg("text", "Compute overall class average across all grades.")], editorPlaceholder: "# class average", hints: ['students = {"A": [80, 90], "B": [70, 70]}\\ntotal = sum(sum(g) for g in students.values())\\ncount = sum(len(g) for g in students.values())\\nprint(total / count)'], constraints: ["Output: 77.5"], successDetail: "Correct!" }),
+  ];
+}
+
+export function finalProjectFunctionsTasks(_id, title) {
+  return [
+    task("fp-fn-avg", `${title}: average()`, "easy", "def average(s): return sum(s)/len(s)\nprint average([85, 92, 78]).", "85.0",
+      { outputOnly: true, requiresFunction: "average", introSegments: [seg("text", "Define "), seg("code", "average(scores)"), seg("text", " with return.")], editorPlaceholder: "# def average", hints: ["def average(s):\\n    return sum(s)/len(s)\\nprint(average([85, 92, 78]))"], constraints: ["Output: 85.0"], successDetail: "Correct!" }),
+    task("fp-fn-grade", `${title}: letter_grade()`, "easy", 'def letter_grade(a):\n    if a >= 80: return "B"\n    return "F"\nprint letter_grade(85).', "B",
+      { outputOnly: true, requiresFunction: "letter_grade", introSegments: [seg("text", "Map numeric average to a letter.")], editorPlaceholder: "# def letter_grade", hints: ['def letter_grade(a):\\n    if a >= 80: return "B"\\n    return "F"\\nprint(letter_grade(85))'], constraints: ["Output: B"], successDetail: "Correct!" }),
+    task("fp-fstring", `${title}: Report Line`, "medium", 'name="Alice"; avg=85.333; print f"{name}: avg {avg:.1f}".', "Alice: avg 85.3",
+      { outputOnly: true, introSegments: [seg("text", "Format report lines with f-strings.")], editorPlaceholder: "# f-string", hints: ['name = "Alice"\\navg = 85.333\\nprint(f"{name}: avg {avg:.1f}")'], constraints: ["Output: Alice: avg 85.3"], successDetail: "Correct!" }),
+    task("fp-lambda-sort", `${title}: Top Student`, "medium", 'ranking = [("Alice", 85), ("Bob", 91)]; ranking.sort(key=lambda x: x[1], reverse=True); print ranking[0][0].', "Bob",
+      { outputOnly: true, requiresVariables: ["ranking"], introSegments: [seg("text", "Sort by average with "), seg("code", "key=lambda"), seg("text", ".")], editorPlaceholder: "# lambda sort", hints: ['ranking = [("Alice", 85), ("Bob", 91)]\\nranking.sort(key=lambda x: x[1], reverse=True)\\nprint(ranking[0][0])'], constraints: ["Output: Bob"], successDetail: "Correct!" }),
+    task("fp-status", `${title}: status()`, "medium", 'def status(a): return "PASS" if a >= 60 else "FAIL"\nprint status(72).', "PASS",
+      { outputOnly: true, requiresFunction: "status", introSegments: [seg("text", "Return PASS or FAIL from a function.")], editorPlaceholder: "# def status", hints: ['def status(a):\\n    return "PASS" if a >= 60 else "FAIL"\\nprint(status(72))'], constraints: ["Output: PASS"], successDetail: "Correct!" }),
+    task("fp-challenge-fn", `${title}: Full Line`, "hard", 'def line(n,a): return f"{n}: avg {a:.1f}"\nprint line("Cara", 72.5).', "Cara: avg 72.5",
+      { outputOnly: true, requiresFunction: "line", introSegments: [seg("text", "Combine function + f-string for one report line.")], editorPlaceholder: "# def line", hints: ['def line(n,a):\\n    return f"{n}: avg {a:.1f}"\\nprint(line("Cara", 72.5))'], constraints: ["Output: Cara: avg 72.5"], successDetail: "Correct!" }),
+  ];
+}
+
+export function finalProjectCapstoneTasks(_id, title) {
+  return [
+    task("fp-cap-header", `${title}: Report Header`, "easy", 'print "=== Class Report ==="', "=== Class Report ===",
+      printChallenge([seg("text", "Start the capstone with the report header.")], "=== Class Report ===", "# header", 'print("=== Class Report ===")', "Correct!")),
+    task("fp-cap-avg", `${title}: One Student Line`, "medium", 'def average(s): return sum(s)/len(s)\ngrades=[85,92,78]; print round(average(grades),1).', "85.0",
+      { outputOnly: true, requiresFunction: "average", introSegments: [seg("text", "Compute one student's average.")], editorPlaceholder: "# average + print", hints: ["def average(s): return sum(s)/len(s)\\ngrades = [85,92,78]\\nprint(round(average(grades),1))"], constraints: ["Output: 85.0"], successDetail: "Correct!" }),
+    task("fp-cap-top", `${title}: Find Top`, "medium", 'averages={"Alice":85,"Bob":91}; print max(averages.items(), key=lambda x:x[1])[0].', "Bob",
+      { outputOnly: true, requiresVariables: ["averages"], introSegments: [seg("text", "Use max + lambda to find top student.")], editorPlaceholder: "# max lambda", hints: ['averages = {"Alice": 85, "Bob": 91}\\nprint(max(averages.items(), key=lambda x: x[1])[0])'], constraints: ["Output: Bob"], successDetail: "Correct!" }),
+    task("fp-cap-extend", `${title}: Add Dan`, "medium", 'students={"Alice":[85]}; students["Dan"]=[88,76,94]; print len(students).', "2",
+      { outputOnly: true, requiresVariables: ["students"], introSegments: [seg("text", "Extend the project with a new student.")], editorPlaceholder: "# add Dan", hints: ['students = {"Alice": [85]}\\nstudents["Dan"] = [88, 76, 94]\\nprint(len(students))'], constraints: ["Output: 2"], successDetail: "Correct!" }),
+    task("fp-cap-passing", `${title}: Passing Count`, "hard", 'averages={"Alice":85,"Bob":55,"Cara":72}; print len([a for a in averages.values() if a>=60]).', "2",
+      { outputOnly: true, requiresVariables: ["averages"], introSegments: [seg("text", "Count how many students passed.")], editorPlaceholder: "# passing count", hints: ['averages = {"Alice": 85, "Bob": 55, "Cara": 72}\\nprint(len([a for a in averages.values() if a >= 60]))'], constraints: ["Output: 2"], successDetail: "Correct!" }),
+    task("fp-cap-grade-count", `${title}: Grade Histogram`, "hard", 'def lg(a):\n    if a>=90: return "A"\n    if a>=80: return "B"\n    return "F"\naverages={"Alice":85,"Cara":92}; print sum(1 for v in averages.values() if lg(v)=="B").', "1",
+      { outputOnly: true, requiresFunction: "lg", introSegments: [seg("text", "Count students with grade B using a helper function.")], editorPlaceholder: "# grade count", hints: ['def lg(a):\\n    if a >= 90: return "A"\\n    if a >= 80: return "B"\\n    return "F"\\naverages = {"Alice": 85, "Cara": 92}\\nprint(sum(1 for v in averages.values() if lg(v) == "B"))'], constraints: ["Output: 1"], successDetail: "Correct!" }),
+    task("fp-cap-challenge", `${title}: Mini Capstone`, "hard", 'students={"A":[90],"B":[50]}; print sum(1 for g in students.values() if sum(g)/len(g)>=60).', "1",
+      { outputOnly: true, requiresVariables: ["students"], introSegments: [seg("text", "Count passing students from raw grade lists.")], editorPlaceholder: "# mini capstone", hints: ['students = {"A": [90], "B": [50]}\\nprint(sum(1 for g in students.values() if sum(g)/len(g) >= 60))'], constraints: ["Output: 1"], successDetail: "Correct! You built a mini grade manager." }),
+  ];
+}

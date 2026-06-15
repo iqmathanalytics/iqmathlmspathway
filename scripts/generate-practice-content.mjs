@@ -636,6 +636,11 @@ const CURRICULUM_TOPICS = [
   ["m12-t4", "Variables in Functions"],
   ["m12-t5", "Recursion"],
   ["m13-t1", "Lambda Functions"],
+  ["m14-t1", "Project Overview"],
+  ["m14-t2", "Step 1: Data Model"],
+  ["m14-t3", "Step 2: Logic & Loops"],
+  ["m14-t4", "Step 3: Functions & Report"],
+  ["m14-t5", "Capstone Build"],
 ];
 
 const ENHANCED = {

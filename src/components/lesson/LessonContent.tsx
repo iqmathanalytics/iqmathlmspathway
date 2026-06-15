@@ -59,6 +59,7 @@ import { FunctionArgumentsInfographic } from "@/components/lesson/FunctionArgume
 import { FunctionVariablesInfographic } from "@/components/lesson/FunctionVariablesInfographic";
 import { FunctionRecursionInfographic } from "@/components/lesson/FunctionRecursionInfographic";
 import { LambdaFunctionsInfographic } from "@/components/lesson/LambdaFunctionsInfographic";
+import { FinalProjectInfographic } from "@/components/lesson/FinalProjectInfographic";
 import { Lightbulb, Code2, Pencil } from "lucide-react";
 
 interface LessonContentProps {
@@ -282,6 +283,21 @@ export function LessonContent({
             }
             if (block.infographic === "lambda-functions") {
               return <LambdaFunctionsInfographic key={i} />;
+            }
+            if (block.infographic === "final-project-overview") {
+              return <FinalProjectInfographic key={i} section="overview" />;
+            }
+            if (block.infographic === "final-project-data") {
+              return <FinalProjectInfographic key={i} section="data" />;
+            }
+            if (block.infographic === "final-project-logic") {
+              return <FinalProjectInfographic key={i} section="logic" />;
+            }
+            if (block.infographic === "final-project-functions") {
+              return <FinalProjectInfographic key={i} section="functions" />;
+            }
+            if (block.infographic === "final-project-capstone") {
+              return <FinalProjectInfographic key={i} section="capstone" />;
             }
             return null;
           case "code":

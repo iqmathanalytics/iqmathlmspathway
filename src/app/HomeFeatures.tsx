@@ -12,7 +12,7 @@ const features = [
   {
     icon: GitBranch,
     title: "Structured path",
-    text: "13 modules from setup to functions — ordered for data science next.",
+    text: "14 modules from setup through a final capstone project — ordered for data science next.",
     accent: "from-python-blue/10 to-blue-500/5",
   },
   {

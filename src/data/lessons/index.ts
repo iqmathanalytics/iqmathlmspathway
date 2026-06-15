@@ -12,6 +12,7 @@ import { module10Lessons } from "./module-10";
 import { module11Lessons } from "./module-11";
 import { module12Lessons } from "./module-12";
 import { module13Lessons } from "./module-13";
+import { module14Lessons } from "./module-14";
 
 const allLessons: Record<string, TopicLesson> = {
   ...module1Lessons,
@@ -27,6 +28,7 @@ const allLessons: Record<string, TopicLesson> = {
   ...module11Lessons,
   ...module12Lessons,
   ...module13Lessons,
+  ...module14Lessons,
 };
 
 export function getLesson(topicId: string): TopicLesson | undefined {
