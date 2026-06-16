@@ -1,16 +1,16 @@
 "use client";
 
 import { Suspense, useCallback, useEffect, useState } from "react";
-import { getModulesByCourse, getPublishedTopicCount } from "@/data/curriculum";
+import { getModulesByCourse } from "@/data/curriculum";
 import { courses } from "@/data/courses";
-import { getTotalPracticeCount } from "@/data/practice/meta";
+import { getPracticeCountForTopics } from "@/data/practice/meta";
 import { PAGE_CONTAINER } from "@/lib/layout";
 import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/contexts/ProgressContext";
 import { getSupabase } from "@/lib/supabase/client";
 import { useEntitlements } from "@/hooks/useEntitlements";
 import type { CourseId } from "@/lib/types";
-import { BookOpen, Terminal, CheckCircle2, Lock, Loader2 } from "lucide-react";
+import { BookOpen, Terminal, CheckCircle2, Lock, Loader2, Zap } from "lucide-react";
 import { DashboardRoadmap } from "@/components/dashboard/DashboardRoadmap";
 import { TourTrigger } from "@/components/walkthrough/TourTrigger";
 
@@ -37,24 +37,26 @@ export default function DashboardPage() {
   };
 
   const courseModules = getModulesByCourse(activeCourse);
-  const totalTopics = getPublishedTopicCount();
-  const totalPractice = getTotalPracticeCount();
 
   // Stats scoped to the active course topics
-  const courseTopicIds = new Set(
-    courseModules.flatMap((m) => m.topics.map((t) => t.id))
-  );
-  const lessonCompleted = progress.completedTopics.filter((id) => courseTopicIds.has(id)).length;
+  const courseTopicIds = courseModules.flatMap((m) => m.topics.map((t) => t.id));
+  const courseTopicIdSet = new Set(courseTopicIds);
+
+  const lessonCompleted = progress.completedTopics.filter((id) => courseTopicIdSet.has(id)).length;
   const courseTotal = courseModules.reduce(
     (acc, m) => acc + m.topics.filter((t) => t.published).length,
     0
   );
   const scores = Object.entries(progress.quizScores)
-    .filter(([id]) => courseTopicIds.has(id))
+    .filter(([id]) => courseTopicIdSet.has(id))
     .map(([, v]) => v);
   const quizAvg = scores.length
     ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)
     : 0;
+
+  // Course-scoped practice total (0 for courses without practice problems)
+  const totalPractice = getPracticeCountForTopics(courseTopicIds);
+  const courseHasPractice = totalPractice > 0;
 
   const loadPracticeStats = useCallback(async () => {
     if (!user) return;
@@ -65,8 +67,19 @@ export default function DashboardPage() {
       .select("problem_id")
       .eq("user_id", user.id)
       .eq("status", "solved");
-    setPracticeSolved(rows?.length ?? 0);
-  }, [user]);
+
+    if (!rows) { setPracticeSolved(0); return; }
+
+    // Filter to only problems belonging to the active course
+    // Practice problem IDs have the format "{topicId}-p{N}", e.g. "m1-t1-p01"
+    const courseSolved = rows.filter((r) => {
+      const parts = r.problem_id.split("-");
+      const topicId = parts.slice(0, -1).join("-");
+      return courseTopicIdSet.has(topicId);
+    });
+
+    setPracticeSolved(courseSolved.length);
+  }, [user, activeCourse]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (ready && user) void loadPracticeStats();
@@ -122,22 +135,40 @@ export default function DashboardPage() {
               label="Lessons completed"
               value={`${lessonCompleted} / ${courseTotal}`}
             />
-            <StatCard
-              icon={Terminal}
-              label="Practice solved"
-              value={`${practiceSolved} / ${totalPractice}`}
-            />
+            {courseHasPractice ? (
+              <StatCard
+                icon={Terminal}
+                label="Practice solved"
+                value={`${practiceSolved} / ${totalPractice}`}
+              />
+            ) : (
+              <StatCard
+                icon={Zap}
+                label="Course type"
+                value="Lesson-based"
+                sublabel="No practice problems"
+              />
+            )}
             <StatCard
               icon={CheckCircle2}
               label="Average quiz score"
               value={quizAvg ? `${quizAvg}%` : "—"}
             />
-            <StatCard
-              icon={Lock}
-              label="Practice premium"
-              value={hasPremium ? "Unlocked" : "Locked"}
-              highlight={hasPremium}
-            />
+            {courseHasPractice ? (
+              <StatCard
+                icon={Lock}
+                label="Practice premium"
+                value={hasPremium ? "Unlocked" : "Locked"}
+                highlight={hasPremium}
+              />
+            ) : (
+              <StatCard
+                icon={CheckCircle2}
+                label="Access"
+                value="Full access"
+                highlight
+              />
+            )}
           </div>
 
           <div className="mt-10">
@@ -162,11 +193,13 @@ function StatCard({
   icon: Icon,
   label,
   value,
+  sublabel,
   highlight,
 }: {
   icon: typeof BookOpen;
   label: string;
   value: string;
+  sublabel?: string;
   highlight?: boolean;
 }) {
   return (
@@ -174,6 +207,7 @@ function StatCard({
       <Icon className={`h-5 w-5 ${highlight ? "text-green-600" : "text-brand-600"}`} />
       <p className="mt-3 text-sm text-gray-500">{label}</p>
       <p className="mt-1 text-2xl font-bold text-gray-900">{value}</p>
+      {sublabel && <p className="mt-0.5 text-xs text-gray-400">{sublabel}</p>}
     </div>
   );
 }

@@ -73,3 +73,8 @@ export function getPracticeCountByTopic(topicId: string): number {
 export function getTotalPracticeCount(): number {
   return TOTAL_PRACTICE_COUNT;
 }
+
+/** Sum practice problems for a specific set of topic IDs (used for course-scoped stats). */
+export function getPracticeCountForTopics(topicIds: string[]): number {
+  return topicIds.reduce((sum, id) => sum + (TOPIC_PRACTICE_COUNTS[id] ?? 0), 0);
+}
