@@ -17,12 +17,15 @@ export function HomeRoadmap({ modules }: HomeRoadmapProps) {
       <div className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
+            <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-brand-600">
+              🐍 Python for Data Science
+            </p>
             <h2 className="text-3xl font-bold tracking-tight text-gray-900">
-              Your learning path
+              14-module learning path
             </h2>
             <p className="mt-2 max-w-xl text-gray-600">
               Start with Module 1 and move forward in order. Each module includes
-              lessons, practice, and quizzes.
+              lessons, practice problems, and quizzes.
             </p>
           </div>
           <Link
