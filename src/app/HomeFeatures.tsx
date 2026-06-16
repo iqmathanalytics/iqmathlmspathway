@@ -6,25 +6,25 @@ const features = [
   {
     icon: LayoutPanelLeft,
     title: "Lessons beside the IDE",
-    text: "Read on the left, code on the right. Run Python without leaving the page.",
+    text: "Read on the left, code on the right. Run Python — or test your AI chatbot — without leaving the page.",
     accent: "from-brand-500/10 to-brand-600/5",
   },
   {
     icon: GitBranch,
-    title: "Structured path",
-    text: "14 modules from setup through a final capstone project — ordered for data science next.",
+    title: "Structured courses",
+    text: "Python: 14 modules from basics to a final capstone. Agentic AI: 6 modules from LLMs to multi-agent systems.",
     accent: "from-python-blue/10 to-blue-500/5",
   },
   {
     icon: Code2,
-    title: "Real editor",
-    text: "Syntax highlighting, line numbers, and a scrollable console output panel.",
+    title: "Real coding tools",
+    text: "Python IDE with syntax highlighting and console, plus a live Groq chatbot playground for the AI course.",
     accent: "from-emerald-500/10 to-teal-500/5",
   },
   {
     icon: LineChart,
-    title: "Data Science track",
-    text: "Foundations today. NumPy, Pandas, and visualization libraries coming next.",
+    title: "Track your progress",
+    text: "Quizzes, practice problems, and a personal dashboard that shows exactly where you are in each course.",
     accent: "from-violet-500/10 to-purple-500/5",
   },
 ];
