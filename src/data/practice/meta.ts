@@ -1,5 +1,5 @@
 /** Auto-generated — run npm run generate:practice */
-export const TOTAL_PRACTICE_COUNT = 399;
+export const TOTAL_PRACTICE_COUNT = 429;
 
 export const TOPIC_PRACTICE_COUNTS: Record<string, number> = {
   "m1-t1": 7,
@@ -58,7 +58,12 @@ export const TOPIC_PRACTICE_COUNTS: Record<string, number> = {
   "m12-t3": 7,
   "m12-t4": 7,
   "m12-t5": 7,
-  "m13-t1": 7
+  "m13-t1": 7,
+  "m14-t1": 5,
+  "m14-t2": 6,
+  "m14-t3": 6,
+  "m14-t4": 6,
+  "m14-t5": 7
 };
 
 export function getPracticeCountByTopic(topicId: string): number {

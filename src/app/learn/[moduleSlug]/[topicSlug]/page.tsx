@@ -61,6 +61,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
       <TopicLessonLayout
         blocks={lesson.blocks}
         topicId={topic.id}
+        moduleSlug={module.slug}
         headerSlot={
           <>
             <nav className="text-sm text-gray-500">

@@ -109,7 +109,12 @@ export type LessonInfographic =
   | "function-arguments"
   | "function-variables"
   | "function-recursion"
-  | "lambda-functions";
+  | "lambda-functions"
+  | "final-project-overview"
+  | "final-project-data"
+  | "final-project-logic"
+  | "final-project-functions"
+  | "final-project-capstone";
 
 export interface LessonBlock {
   type:

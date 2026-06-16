@@ -19,6 +19,8 @@ import {
   listCompTasks, compUsesTasks, dictCompTasks, createFunctionTasks,
   callFunctionTasks, functionArgsTasks, functionVarsTasks, recursionTasks,
   lambdaTasks, introTopicTasks,
+  finalProjectOverviewTasks, finalProjectDataTasks, finalProjectLogicTasks,
+  finalProjectFunctionsTasks, finalProjectCapstoneTasks,
 } from "./practice-topic-builders-part3.mjs";
 
 /** Maps every curriculum topic to a concept-aligned task builder. */
@@ -80,6 +82,11 @@ export const TOPIC_BUILDERS = {
   "m12-t4": functionVarsTasks,
   "m12-t5": recursionTasks,
   "m13-t1": lambdaTasks,
+  "m14-t1": finalProjectOverviewTasks,
+  "m14-t2": finalProjectDataTasks,
+  "m14-t3": finalProjectLogicTasks,
+  "m14-t4": finalProjectFunctionsTasks,
+  "m14-t5": finalProjectCapstoneTasks,
 };
 
 export function getTopicTasks(topicId, title) {
