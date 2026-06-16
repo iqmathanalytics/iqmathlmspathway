@@ -116,10 +116,10 @@ const pythonModules: Module[] = [
     topics: [
       { id: "m5-t1", title: "Creating Lists", slug: "creating-lists", description: "Square brackets [].", estimatedMinutes: 8, published: true, videoUrl: "s7yYUi1V-Is" },
       { id: "m5-t2", title: "List Properties", slug: "properties", description: "Ordered, mutable, allow duplicates.", estimatedMinutes: 8, published: true, videoUrl: "RRORk60gz1Q" },
-      { id: "m5-t3", title: "Indexing Lists", slug: "indexing", description: "Position starts at 0.", estimatedMinutes: 8, published: true },
-      { id: "m5-t4", title: "Slicing Lists", slug: "slicing", description: "Sub-lists.", estimatedMinutes: 10, published: true },
-      { id: "m5-t5", title: "List Methods", slug: "methods", description: "append(), pop(), etc.", estimatedMinutes: 12, published: true },
-      { id: "m5-t6", title: "Modifying Lists", slug: "modifying", description: "Change items in place.", estimatedMinutes: 10, published: true },
+      { id: "m5-t3", title: "Indexing Lists", slug: "indexing", description: "Position starts at 0.", estimatedMinutes: 8, published: true, videoUrl: "p5RWLhWz-1o" },
+      { id: "m5-t4", title: "Slicing Lists", slug: "slicing", description: "Sub-lists.", estimatedMinutes: 10, published: true, videoUrl: "uUH81zoQJbc" },
+      { id: "m5-t5", title: "List Methods", slug: "methods", description: "append(), pop(), etc.", estimatedMinutes: 12, published: true, videoUrl: "unwhtg6stbw" },
+      { id: "m5-t6", title: "Modifying Lists", slug: "modifying", description: "Change items in place.", estimatedMinutes: 10, published: true, videoUrl: "ajt49cyCzhM" },
     ],
   },
   {
@@ -131,11 +131,11 @@ const pythonModules: Module[] = [
     course: "python",
     phase: "foundations",
     topics: [
-      { id: "m6-t1", title: "Tuple Syntax", slug: "syntax", description: "Parentheses ().", estimatedMinutes: 8, published: true },
-      { id: "m6-t2", title: "Tuple Properties", slug: "properties", description: "Immutable and ordered.", estimatedMinutes: 8, published: true },
-      { id: "m6-t3", title: "Indexing Tuples", slug: "indexing", description: "Same as lists.", estimatedMinutes: 6, published: true },
-      { id: "m6-t4", title: "Slicing Tuples", slug: "slicing", description: "Get parts of a tuple.", estimatedMinutes: 8, published: true },
-      { id: "m6-t5", title: "Tuple Methods", slug: "methods", description: "count(), index().", estimatedMinutes: 8, published: true },
+      { id: "m6-t1", title: "Tuple Syntax", slug: "syntax", description: "Parentheses ().", estimatedMinutes: 8, published: true, videoUrl: "rtcfGnSeEE0" },
+      { id: "m6-t2", title: "Tuple Properties", slug: "properties", description: "Immutable and ordered.", estimatedMinutes: 8, published: true, videoUrl: "EtNxHEEZ76Y" },
+      { id: "m6-t3", title: "Indexing Tuples", slug: "indexing", description: "Same as lists.", estimatedMinutes: 6, published: true, videoUrl: "gIB07kzU-KE" },
+      { id: "m6-t4", title: "Slicing Tuples", slug: "slicing", description: "Get parts of a tuple.", estimatedMinutes: 8, published: true, videoUrl: "1k5DgALs4YQ" },
+      { id: "m6-t5", title: "Tuple Methods", slug: "methods", description: "count(), index().", estimatedMinutes: 8, published: true, videoUrl: "ERKniznZSx8" },
     ],
   },
   {
