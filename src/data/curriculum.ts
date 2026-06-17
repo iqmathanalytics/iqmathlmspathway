@@ -191,11 +191,11 @@ const pythonModules: Module[] = [
     course: "python",
     phase: "foundations",
     topics: [
-      { id: "m10-t1", title: "while Loop", slug: "while", description: "Repeat while condition is true.", estimatedMinutes: 10, published: true },
+      { id: "m10-t1", title: "while Loop", slug: "while", description: "Repeat while condition is true.", estimatedMinutes: 10, published: true, videoUrl: "IpaInthPjcY" },
       { id: "m10-t2", title: "for Loop", slug: "for", description: "Loop over sequences.", estimatedMinutes: 10, published: true, videoUrl: "EMUPhna7ng8" },
       { id: "m10-t3", title: "break and continue", slug: "break-continue", description: "Control the loop.", estimatedMinutes: 8, published: true, videoUrl: "P0u1pCHCnOM" },
       { id: "m10-t4", title: "pass", slug: "pass", description: "Placeholder — do nothing.", estimatedMinutes: 5, published: true, videoUrl: "LquU3vcO0yU" },
-      { id: "m10-t5", title: "range()", slug: "range", description: "Numbers for looping.", estimatedMinutes: 8, published: true },
+      { id: "m10-t5", title: "range()", slug: "range", description: "Numbers for looping.", estimatedMinutes: 8, published: true, videoUrl: "c0yXq2mJf14" },
     ],
   },
   {
@@ -224,7 +224,7 @@ const pythonModules: Module[] = [
       { id: "m12-t1", title: "Creating Functions", slug: "creating", description: "def my_function():", estimatedMinutes: 10, published: true, videoUrl: "ucEoAjZbuAs" },
       { id: "m12-t2", title: "Calling Functions", slug: "calling", description: "Use what you defined.", estimatedMinutes: 8, published: true, videoUrl: "5CFU_pSzLAw" },
       { id: "m12-t3", title: "Function Arguments", slug: "arguments", description: "Pass data in.", estimatedMinutes: 12, published: true, videoUrl: "rhMS_ruRl4o" },
-      { id: "m12-t4", title: "Variables in Functions", slug: "variables", description: "Local vs global.", estimatedMinutes: 10, published: true },
+      { id: "m12-t4", title: "Variables in Functions", slug: "variables", description: "Local vs global.", estimatedMinutes: 10, published: true, videoUrl: "a1cZJB8IrLQ" },
       { id: "m12-t5", title: "Recursion", slug: "recursion", description: "Functions calling themselves.", estimatedMinutes: 14, published: true, videoUrl: "LfK_0K-VVyQ" },
     ],
   },
