@@ -222,7 +222,7 @@ const pythonModules: Module[] = [
     phase: "foundations",
     topics: [
       { id: "m12-t1", title: "Creating Functions", slug: "creating", description: "def my_function():", estimatedMinutes: 10, published: true, videoUrl: "ucEoAjZbuAs" },
-      { id: "m12-t2", title: "Calling Functions", slug: "calling", description: "Use what you defined.", estimatedMinutes: 8, published: true },
+      { id: "m12-t2", title: "Calling Functions", slug: "calling", description: "Use what you defined.", estimatedMinutes: 8, published: true, videoUrl: "5CFU_pSzLAw" },
       { id: "m12-t3", title: "Function Arguments", slug: "arguments", description: "Pass data in.", estimatedMinutes: 12, published: true, videoUrl: "rhMS_ruRl4o" },
       { id: "m12-t4", title: "Variables in Functions", slug: "variables", description: "Local vs global.", estimatedMinutes: 10, published: true },
       { id: "m12-t5", title: "Recursion", slug: "recursion", description: "Functions calling themselves.", estimatedMinutes: 14, published: true, videoUrl: "LfK_0K-VVyQ" },
