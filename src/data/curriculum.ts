@@ -147,7 +147,7 @@ const pythonModules: Module[] = [
     course: "python",
     phase: "foundations",
     topics: [
-      { id: "m7-t1", title: "Set Syntax", slug: "syntax", description: "Curly braces or set().", estimatedMinutes: 8, published: true },
+      { id: "m7-t1", title: "Set Syntax", slug: "syntax", description: "Curly braces or set().", estimatedMinutes: 8, published: true, videoUrl: "BNXzsB_R1uk" },
       { id: "m7-t2", title: "Updating Sets", slug: "updating", description: "add() and remove().", estimatedMinutes: 8, published: true, videoUrl: "EB-xe9TLtD8" },
       { id: "m7-t3", title: "Set Operations", slug: "operations", description: "union, intersection.", estimatedMinutes: 10, published: true, videoUrl: "X1lPcYDy9gw" },
       { id: "m7-t4", title: "Set Methods", slug: "methods", description: "Built-in helpers.", estimatedMinutes: 8, published: true, videoUrl: "d5IpiePBZsQ" },
@@ -208,7 +208,7 @@ const pythonModules: Module[] = [
     phase: "foundations",
     topics: [
       { id: "m11-t1", title: "List Comprehension Syntax", slug: "list-comprehension", description: "One-line list building.", estimatedMinutes: 12, published: true, videoUrl: "6t4dZYPI6-I" },
-      { id: "m11-t2", title: "Uses of Comprehensions", slug: "uses", description: "When and why to use them.", estimatedMinutes: 10, published: true },
+      { id: "m11-t2", title: "Uses of Comprehensions", slug: "uses", description: "When and why to use them.", estimatedMinutes: 10, published: true, videoUrl: "ijE4DC8KHIU" },
       { id: "m11-t3", title: "Dictionary Comprehensions", slug: "dict-comprehension", description: "Same idea for dicts.", estimatedMinutes: 10, published: true, videoUrl: "ZzD7CzPHO0A" },
     ],
   },
