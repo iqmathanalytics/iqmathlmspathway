@@ -148,9 +148,9 @@ const pythonModules: Module[] = [
     phase: "foundations",
     topics: [
       { id: "m7-t1", title: "Set Syntax", slug: "syntax", description: "Curly braces or set().", estimatedMinutes: 8, published: true },
-      { id: "m7-t2", title: "Updating Sets", slug: "updating", description: "add() and remove().", estimatedMinutes: 8, published: true },
-      { id: "m7-t3", title: "Set Operations", slug: "operations", description: "union, intersection.", estimatedMinutes: 10, published: true },
-      { id: "m7-t4", title: "Set Methods", slug: "methods", description: "Built-in helpers.", estimatedMinutes: 8, published: true },
+      { id: "m7-t2", title: "Updating Sets", slug: "updating", description: "add() and remove().", estimatedMinutes: 8, published: true, videoUrl: "EB-xe9TLtD8" },
+      { id: "m7-t3", title: "Set Operations", slug: "operations", description: "union, intersection.", estimatedMinutes: 10, published: true, videoUrl: "X1lPcYDy9gw" },
+      { id: "m7-t4", title: "Set Methods", slug: "methods", description: "Built-in helpers.", estimatedMinutes: 8, published: true, videoUrl: "d5IpiePBZsQ" },
     ],
   },
   {
@@ -162,10 +162,10 @@ const pythonModules: Module[] = [
     course: "python",
     phase: "foundations",
     topics: [
-      { id: "m8-t1", title: "Dictionary Syntax", slug: "syntax", description: "{key: value}.", estimatedMinutes: 8, published: true },
-      { id: "m8-t2", title: "Keys and Values", slug: "keys-values", description: "What they mean.", estimatedMinutes: 8, published: true },
-      { id: "m8-t3", title: "Accessing Dictionaries", slug: "accessing", description: "[] and .get().", estimatedMinutes: 10, published: true },
-      { id: "m8-t4", title: "Dictionary Methods", slug: "methods", description: "keys(), values(), items().", estimatedMinutes: 10, published: true },
+      { id: "m8-t1", title: "Dictionary Syntax", slug: "syntax", description: "{key: value}.", estimatedMinutes: 8, published: true, videoUrl: "rV0zocr8NXY" },
+      { id: "m8-t2", title: "Keys and Values", slug: "keys-values", description: "What they mean.", estimatedMinutes: 8, published: true, videoUrl: "9_L-3nOtEd4" },
+      { id: "m8-t3", title: "Accessing Dictionaries", slug: "accessing", description: "[] and .get().", estimatedMinutes: 10, published: true, videoUrl: "6WsCykM9N1o" },
+      { id: "m8-t4", title: "Dictionary Methods", slug: "methods", description: "keys(), values(), items().", estimatedMinutes: 10, published: true, videoUrl: "Z97zh4bGE5k" },
     ],
   },
   {
@@ -177,9 +177,9 @@ const pythonModules: Module[] = [
     course: "python",
     phase: "foundations",
     topics: [
-      { id: "m9-t1", title: "if Statement", slug: "if", description: "Run code only when true.", estimatedMinutes: 10, published: true },
-      { id: "m9-t2", title: "if-else", slug: "if-else", description: "Two paths.", estimatedMinutes: 10, published: true },
-      { id: "m9-t3", title: "if-elif-else", slug: "if-elif-else", description: "Many paths.", estimatedMinutes: 12, published: true },
+      { id: "m9-t1", title: "if Statement", slug: "if", description: "Run code only when true.", estimatedMinutes: 10, published: true, videoUrl: "-TOUjA2MDCw" },
+      { id: "m9-t2", title: "if-else", slug: "if-else", description: "Two paths.", estimatedMinutes: 10, published: true, videoUrl: "cgWSo27TjYA" },
+      { id: "m9-t3", title: "if-elif-else", slug: "if-elif-else", description: "Many paths.", estimatedMinutes: 12, published: true, videoUrl: "fnSfibG0YcI" },
     ],
   },
   {
@@ -192,9 +192,9 @@ const pythonModules: Module[] = [
     phase: "foundations",
     topics: [
       { id: "m10-t1", title: "while Loop", slug: "while", description: "Repeat while condition is true.", estimatedMinutes: 10, published: true },
-      { id: "m10-t2", title: "for Loop", slug: "for", description: "Loop over sequences.", estimatedMinutes: 10, published: true },
-      { id: "m10-t3", title: "break and continue", slug: "break-continue", description: "Control the loop.", estimatedMinutes: 8, published: true },
-      { id: "m10-t4", title: "pass", slug: "pass", description: "Placeholder — do nothing.", estimatedMinutes: 5, published: true },
+      { id: "m10-t2", title: "for Loop", slug: "for", description: "Loop over sequences.", estimatedMinutes: 10, published: true, videoUrl: "EMUPhna7ng8" },
+      { id: "m10-t3", title: "break and continue", slug: "break-continue", description: "Control the loop.", estimatedMinutes: 8, published: true, videoUrl: "P0u1pCHCnOM" },
+      { id: "m10-t4", title: "pass", slug: "pass", description: "Placeholder — do nothing.", estimatedMinutes: 5, published: true, videoUrl: "LquU3vcO0yU" },
       { id: "m10-t5", title: "range()", slug: "range", description: "Numbers for looping.", estimatedMinutes: 8, published: true },
     ],
   },
@@ -207,9 +207,9 @@ const pythonModules: Module[] = [
     course: "python",
     phase: "foundations",
     topics: [
-      { id: "m11-t1", title: "List Comprehension Syntax", slug: "list-comprehension", description: "One-line list building.", estimatedMinutes: 12, published: true },
+      { id: "m11-t1", title: "List Comprehension Syntax", slug: "list-comprehension", description: "One-line list building.", estimatedMinutes: 12, published: true, videoUrl: "6t4dZYPI6-I" },
       { id: "m11-t2", title: "Uses of Comprehensions", slug: "uses", description: "When and why to use them.", estimatedMinutes: 10, published: true },
-      { id: "m11-t3", title: "Dictionary Comprehensions", slug: "dict-comprehension", description: "Same idea for dicts.", estimatedMinutes: 10, published: true },
+      { id: "m11-t3", title: "Dictionary Comprehensions", slug: "dict-comprehension", description: "Same idea for dicts.", estimatedMinutes: 10, published: true, videoUrl: "ZzD7CzPHO0A" },
     ],
   },
   {
@@ -221,11 +221,11 @@ const pythonModules: Module[] = [
     course: "python",
     phase: "foundations",
     topics: [
-      { id: "m12-t1", title: "Creating Functions", slug: "creating", description: "def my_function():", estimatedMinutes: 10, published: true },
+      { id: "m12-t1", title: "Creating Functions", slug: "creating", description: "def my_function():", estimatedMinutes: 10, published: true, videoUrl: "ucEoAjZbuAs" },
       { id: "m12-t2", title: "Calling Functions", slug: "calling", description: "Use what you defined.", estimatedMinutes: 8, published: true },
-      { id: "m12-t3", title: "Function Arguments", slug: "arguments", description: "Pass data in.", estimatedMinutes: 12, published: true },
+      { id: "m12-t3", title: "Function Arguments", slug: "arguments", description: "Pass data in.", estimatedMinutes: 12, published: true, videoUrl: "rhMS_ruRl4o" },
       { id: "m12-t4", title: "Variables in Functions", slug: "variables", description: "Local vs global.", estimatedMinutes: 10, published: true },
-      { id: "m12-t5", title: "Recursion", slug: "recursion", description: "Functions calling themselves.", estimatedMinutes: 14, published: true },
+      { id: "m12-t5", title: "Recursion", slug: "recursion", description: "Functions calling themselves.", estimatedMinutes: 14, published: true, videoUrl: "LfK_0K-VVyQ" },
     ],
   },
   {
