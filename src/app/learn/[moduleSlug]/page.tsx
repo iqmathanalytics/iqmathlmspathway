@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getModuleBySlug, modules } from "@/data/curriculum";
+import { getModuleBySlug, getModulesByCourse, modules } from "@/data/curriculum";
 import { ModuleTopicList } from "./ModuleTopicList";
 import { GroqApiKeySetup } from "@/components/ai/GroqApiKeySetup";
 
@@ -16,6 +16,7 @@ export default async function ModulePage({ params }: ModulePageProps) {
   const { moduleSlug } = await params;
   const courseModule = getModuleBySlug(moduleSlug);
   if (!courseModule) notFound();
+  const courseModules = getModulesByCourse(courseModule.course);
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -40,7 +41,7 @@ export default async function ModulePage({ params }: ModulePageProps) {
         </div>
       )}
 
-      <ModuleTopicList courseModule={courseModule} />
+      <ModuleTopicList courseModule={courseModule} courseModules={courseModules} />
     </div>
   );
 }

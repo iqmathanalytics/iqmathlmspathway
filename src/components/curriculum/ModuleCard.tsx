@@ -7,9 +7,10 @@ import { NavigationLink } from "@/components/ui/NavigationLink";
 interface ModuleCardProps {
   module: Module;
   completedTopicIds: string[];
+  unlockedTopicIds: Set<string>;
 }
 
-export function ModuleCard({ module, completedTopicIds }: ModuleCardProps) {
+export function ModuleCard({ module, completedTopicIds, unlockedTopicIds }: ModuleCardProps) {
   const published = module.topics.filter((t) => t.published);
   const allLocked = published.length === 0;
   const completedInModule = published.filter((t) =>
@@ -64,7 +65,8 @@ export function ModuleCard({ module, completedTopicIds }: ModuleCardProps) {
       <ul className="mt-4 space-y-1 border-t border-gray-100 pt-4">
         {module.topics.map((topic) => {
           const isDone = completedTopicIds.includes(topic.id);
-          const href = topic.published
+          const isUnlocked = topic.published && unlockedTopicIds.has(topic.id);
+          const href = isUnlocked
             ? `/learn/${module.slug}/${topic.slug}`
             : undefined;
           return (
@@ -85,6 +87,7 @@ export function ModuleCard({ module, completedTopicIds }: ModuleCardProps) {
                 <span className="flex items-center gap-2 px-2 py-1.5 text-sm text-gray-400">
                   <Lock className="h-3.5 w-3.5" />
                   {topic.title}
+                  {topic.published && <span className="ml-auto text-xs">Locked</span>}
                 </span>
               )}
             </li>

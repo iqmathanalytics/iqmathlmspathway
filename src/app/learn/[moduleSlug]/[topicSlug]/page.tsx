@@ -14,6 +14,7 @@ import { TopicPracticeLink } from "@/components/lesson/TopicPracticeLink";
 import { VideoTutorialModal } from "@/components/lesson/VideoTutorialModal";
 import { NextTopicButton } from "@/components/lesson/NextTopicButton";
 import { GroqApiKeySetup } from "@/components/ai/GroqApiKeySetup";
+import { TopicAccessGate } from "@/components/lesson/TopicAccessGate";
 
 interface TopicPageProps {
   params: Promise<{ moduleSlug: string; topicSlug: string }>;
@@ -49,77 +50,84 @@ export default async function TopicPage({ params }: TopicPageProps) {
 
   const quiz = getQuiz(topic.id);
   const hasQuiz = !!quiz;
-  const { next } = getAdjacentPublishedTopics(module.slug, topic.slug);
+  const { prev, next } = getAdjacentPublishedTopics(module.slug, topic.slug);
 
   return (
-    /*
+    <TopicAccessGate
+      previousTopicId={prev?.topic.id}
+      previousTopicTitle={prev?.topic.title}
+      previousTopicHasQuiz={prev ? !!getQuiz(prev.topic.id) : false}
+      moduleHref={`/learn/${module.slug}`}
+    >
+      {/*
       Desktop: two independent scroll columns filling the viewport below the navbar.
       Left column: header → lesson → footer (all scroll together).
       Right column: IDE (scrolls independently).
       Mobile: normal single-column page flow.
-    */
-    <article className="w-full lg:flex lg:flex-col lg:h-[calc(100vh-3.5rem)]">
-      <TopicLessonLayout
-        blocks={lesson.blocks}
-        topicId={topic.id}
-        moduleSlug={module.slug}
-        headerSlot={
-          <>
-            <nav className="text-sm text-gray-500">
-              <Link href="/dashboard" className="hover:text-brand-700">Dashboard</Link>
-              <span className="mx-2">/</span>
-              <Link href={`/learn/${module.slug}`} className="hover:text-brand-700">
-                Module {module.id}
-              </Link>
-              <span className="mx-2">/</span>
-              <span className="text-gray-800">{topic.title}</span>
-            </nav>
-            <div className="flex items-start justify-between gap-4">
-              <TopicLessonHeader
-                moduleId={module.id}
-                moduleName={module.name}
-                title={topic.title}
-                intro={lesson.intro}
-                estimatedMinutes={topic.estimatedMinutes}
-              />
-              {next && (
-                <span data-walkthrough="lesson-next">
-                  <NextTopicButton
-                    topicId={topic.id}
-                    hasQuiz={hasQuiz}
-                    href={`/learn/${next.module.slug}/${next.topic.slug}`}
-                    label="Next Topic"
-                    variant="header"
-                  />
-                </span>
-              )}
-            </div>
-            <div className="mt-4 flex flex-wrap items-center gap-3">
-              <TopicPracticeLink
-                moduleSlug={module.slug}
-                topicSlug={topic.slug}
-                topicId={topic.id}
-              />
-              {topic.videoUrl && (
-                <span data-walkthrough="lesson-video">
-                  <VideoTutorialModal videoUrl={topic.videoUrl} />
-                </span>
-              )}
-            </div>
-            {module.slug === "groq-api" && <GroqApiKeySetup />}
-          </>
-        }
-        footerSlot={
-          <>
-            <KeyTakeaways items={lesson.keyTakeaways} />
-            {quiz && <TopicQuizSection quiz={quiz} />}
-            <div className="mt-8">
-              <MarkCompleteButton topicId={topic.id} hasQuiz={hasQuiz} />
-            </div>
-            <TopicNavigation module={module} topic={topic} hasQuiz={hasQuiz} />
-          </>
-        }
-      />
-    </article>
+      */}
+      <article className="w-full lg:flex lg:flex-col lg:h-[calc(100vh-3.5rem)]">
+        <TopicLessonLayout
+          blocks={lesson.blocks}
+          topicId={topic.id}
+          moduleSlug={module.slug}
+          headerSlot={
+            <>
+              <nav className="text-sm text-gray-500">
+                <Link href="/dashboard" className="hover:text-brand-700">Dashboard</Link>
+                <span className="mx-2">/</span>
+                <Link href={`/learn/${module.slug}`} className="hover:text-brand-700">
+                  Module {module.id}
+                </Link>
+                <span className="mx-2">/</span>
+                <span className="text-gray-800">{topic.title}</span>
+              </nav>
+              <div className="flex items-start justify-between gap-4">
+                <TopicLessonHeader
+                  moduleId={module.id}
+                  moduleName={module.name}
+                  title={topic.title}
+                  intro={lesson.intro}
+                  estimatedMinutes={topic.estimatedMinutes}
+                />
+                {next && (
+                  <span data-walkthrough="lesson-next">
+                    <NextTopicButton
+                      topicId={topic.id}
+                      hasQuiz={hasQuiz}
+                      href={`/learn/${next.module.slug}/${next.topic.slug}`}
+                      label="Next Topic"
+                      variant="header"
+                    />
+                  </span>
+                )}
+              </div>
+              <div className="mt-4 flex flex-wrap items-center gap-3">
+                <TopicPracticeLink
+                  moduleSlug={module.slug}
+                  topicSlug={topic.slug}
+                  topicId={topic.id}
+                />
+                {topic.videoUrl && (
+                  <span data-walkthrough="lesson-video">
+                    <VideoTutorialModal videoUrl={topic.videoUrl} />
+                  </span>
+                )}
+              </div>
+              {module.slug === "groq-api" && <GroqApiKeySetup />}
+            </>
+          }
+          footerSlot={
+            <>
+              <KeyTakeaways items={lesson.keyTakeaways} />
+              {quiz && <TopicQuizSection quiz={quiz} />}
+              <div className="mt-8">
+                <MarkCompleteButton topicId={topic.id} hasQuiz={hasQuiz} />
+              </div>
+              <TopicNavigation module={module} topic={topic} hasQuiz={hasQuiz} />
+            </>
+          }
+        />
+      </article>
+    </TopicAccessGate>
   );
 }

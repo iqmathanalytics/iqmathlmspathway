@@ -180,7 +180,7 @@ export default function DashboardPage() {
             </div>
             <DashboardRoadmap
               modules={courseModules}
-              completedTopicIds={progress.completedTopics}
+              progress={progress}
             />
           </div>
         </>

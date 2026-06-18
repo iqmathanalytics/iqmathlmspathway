@@ -3,24 +3,33 @@
 import { useState, useEffect } from "react";
 import { ChevronDown, CheckCircle2, Circle, Lock, Clock, ArrowRight } from "lucide-react";
 import clsx from "clsx";
-import type { Module } from "@/lib/types";
+import type { Module, UserProgress } from "@/lib/types";
 import { NavigationLink } from "@/components/ui/NavigationLink";
 import Link from "next/link";
 import { useWalkthrough } from "@/contexts/WalkthroughContext";
+import { getUnlockedTopicIds } from "@/lib/topic-locking";
+import { getQuiz } from "@/data/quizzes";
 
 interface DashboardRoadmapProps {
   modules: Module[];
-  completedTopicIds: string[];
+  progress: UserProgress;
 }
 
 interface ModuleNodeProps {
   module: Module;
   completedTopicIds: string[];
+  unlockedTopicIds: Set<string>;
   defaultOpen?: boolean;
   isLast: boolean;
 }
 
-function ModuleNode({ module, completedTopicIds, defaultOpen = false, isLast }: ModuleNodeProps) {
+function ModuleNode({
+  module,
+  completedTopicIds,
+  unlockedTopicIds,
+  defaultOpen = false,
+  isLast,
+}: ModuleNodeProps) {
   const [open, setOpen] = useState(defaultOpen);
   const { stepIndex, active } = useWalkthrough();
 
@@ -31,7 +40,9 @@ function ModuleNode({ module, completedTopicIds, defaultOpen = false, isLast }: 
   }, [forceOpen]);
 
   const published = module.topics.filter((t) => t.published);
-  const allLocked = published.length === 0;
+  const hasUnlockedTopic = published.some((t) => unlockedTopicIds.has(t.id));
+  const allLocked = published.length === 0 || !hasUnlockedTopic;
+  const comingSoon = published.length === 0;
   const completedCount = published.filter((t) => completedTopicIds.includes(t.id)).length;
   const allDone = published.length > 0 && completedCount === published.length;
   const inProgress = completedCount > 0 && !allDone;
@@ -87,7 +98,7 @@ function ModuleNode({ module, completedTopicIds, defaultOpen = false, isLast }: 
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">Module {module.id}</span>
                   <span className="flex items-center gap-1 rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-500">
-                    <Lock className="h-3 w-3" /> Coming soon
+                    <Lock className="h-3 w-3" /> {comingSoon ? "Coming soon" : "Locked"}
                   </span>
                 </div>
                 <h3 className="mt-0.5 font-semibold text-gray-900">{module.name}</h3>
@@ -147,7 +158,8 @@ function ModuleNode({ module, completedTopicIds, defaultOpen = false, isLast }: 
 
             {module.topics.map((topic, ti) => {
               const isDone = completedTopicIds.includes(topic.id);
-              const href = topic.published
+              const isUnlocked = topic.published && unlockedTopicIds.has(topic.id);
+              const href = isUnlocked
                 ? `/learn/${module.slug}/${topic.slug}`
                 : undefined;
               const isLastTopic = ti === module.topics.length - 1;
@@ -160,7 +172,7 @@ function ModuleNode({ module, completedTopicIds, defaultOpen = false, isLast }: 
                       "absolute left-[2.1rem] top-1/2 z-10 h-2 w-2 -translate-y-1/2 rounded-full border",
                       isDone
                         ? "border-green-500 bg-green-500"
-                        : topic.published
+                        : isUnlocked
                         ? "border-gray-300 bg-white"
                         : "border-dashed border-gray-300 bg-gray-50"
                     )}
@@ -190,7 +202,9 @@ function ModuleNode({ module, completedTopicIds, defaultOpen = false, isLast }: 
                     <span className="flex items-center gap-3 py-2.5 pl-12 pr-4 text-sm text-gray-400">
                       <Lock className="h-3.5 w-3.5 shrink-0" />
                       <span className="flex-1 min-w-0">{topic.title}</span>
-                      <span className="text-xs">Soon</span>
+                      <span className="text-xs">
+                        {topic.published ? "Complete previous topic" : "Soon"}
+                      </span>
                     </span>
                   )}
 
@@ -206,7 +220,10 @@ function ModuleNode({ module, completedTopicIds, defaultOpen = false, isLast }: 
   );
 }
 
-export function DashboardRoadmap({ modules, completedTopicIds }: DashboardRoadmapProps) {
+export function DashboardRoadmap({ modules, progress }: DashboardRoadmapProps) {
+  const completedTopicIds = progress.completedTopics;
+  const unlockedTopicIds = getUnlockedTopicIds(modules, progress, (topicId) => !!getQuiz(topicId));
+
   return (
     <div className="relative mt-4">
       {modules.map((m, i) => (
@@ -214,6 +231,7 @@ export function DashboardRoadmap({ modules, completedTopicIds }: DashboardRoadma
           key={m.slug}
           module={m}
           completedTopicIds={completedTopicIds}
+          unlockedTopicIds={unlockedTopicIds}
           defaultOpen={i === 0}
           isLast={i === modules.length - 1}
         />
