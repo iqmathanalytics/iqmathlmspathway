@@ -110,6 +110,7 @@ export type LessonInfographic =
   | "function-variables"
   | "function-recursion"
   | "lambda-functions"
+  | "agentic-ai-topic"
   | "final-project-overview"
   | "final-project-data"
   | "final-project-logic"

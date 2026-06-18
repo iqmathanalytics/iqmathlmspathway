@@ -13,6 +13,7 @@ import { KeyTakeaways } from "@/components/lesson/KeyTakeaways";
 import { TopicPracticeLink } from "@/components/lesson/TopicPracticeLink";
 import { VideoTutorialModal } from "@/components/lesson/VideoTutorialModal";
 import { NextTopicButton } from "@/components/lesson/NextTopicButton";
+import { GroqApiKeySetup } from "@/components/ai/GroqApiKeySetup";
 
 interface TopicPageProps {
   params: Promise<{ moduleSlug: string; topicSlug: string }>;
@@ -105,6 +106,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
                 </span>
               )}
             </div>
+            {module.slug === "groq-api" && <GroqApiKeySetup />}
           </>
         }
         footerSlot={

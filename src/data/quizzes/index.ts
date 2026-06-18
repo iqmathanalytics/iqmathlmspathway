@@ -13,6 +13,7 @@ import { module11Quizzes } from "./module-11";
 import { module12Quizzes } from "./module-12";
 import { module13Quizzes } from "./module-13";
 import { module14Quizzes } from "./module-14";
+import { agenticAiQuizzes } from "./agentic-ai";
 
 const allQuizzes: Record<string, TopicQuiz> = {
   ...module1Quizzes,
@@ -29,6 +30,7 @@ const allQuizzes: Record<string, TopicQuiz> = {
   ...module12Quizzes,
   ...module13Quizzes,
   ...module14Quizzes,
+  ...agenticAiQuizzes,
 };
 
 export function getQuiz(topicId: string): TopicQuiz | undefined {

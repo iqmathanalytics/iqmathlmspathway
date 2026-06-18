@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getModuleBySlug, modules } from "@/data/curriculum";
 import { ModuleTopicList } from "./ModuleTopicList";
+import { GroqApiKeySetup } from "@/components/ai/GroqApiKeySetup";
 
 interface ModulePageProps {
   params: Promise<{ moduleSlug: string }>;
@@ -32,6 +33,12 @@ export default async function ModulePage({ params }: ModulePageProps) {
           <p className="mt-2 text-gray-600">{courseModule.description}</p>
         </div>
       </div>
+
+      {courseModule.slug === "groq-api" && (
+        <div className="mt-6">
+          <GroqApiKeySetup />
+        </div>
+      )}
 
       <ModuleTopicList courseModule={courseModule} />
     </div>

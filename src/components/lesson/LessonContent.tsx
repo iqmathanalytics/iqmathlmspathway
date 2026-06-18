@@ -59,6 +59,7 @@ import { FunctionArgumentsInfographic } from "@/components/lesson/FunctionArgume
 import { FunctionVariablesInfographic } from "@/components/lesson/FunctionVariablesInfographic";
 import { FunctionRecursionInfographic } from "@/components/lesson/FunctionRecursionInfographic";
 import { LambdaFunctionsInfographic } from "@/components/lesson/LambdaFunctionsInfographic";
+import { AgenticAiTopicInfographic } from "@/components/lesson/AgenticAiTopicInfographic";
 import { FinalProjectInfographic } from "@/components/lesson/FinalProjectInfographic";
 import { Lightbulb, Code2, Pencil } from "lucide-react";
 
@@ -283,6 +284,14 @@ export function LessonContent({
             }
             if (block.infographic === "lambda-functions") {
               return <LambdaFunctionsInfographic key={i} />;
+            }
+            if (block.infographic === "agentic-ai-topic") {
+              return (
+                <AgenticAiTopicInfographic
+                  key={i}
+                  topicId={block.content}
+                />
+              );
             }
             if (block.infographic === "final-project-overview") {
               return <FinalProjectInfographic key={i} section="overview" />;

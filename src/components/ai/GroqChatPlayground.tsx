@@ -2,6 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Bot, Send, Eye, EyeOff, ChevronDown, ChevronUp, Trash2, Loader2, AlertCircle } from "lucide-react";
+import {
+  GROQ_API_KEY_UPDATED_EVENT,
+  readStoredGroqApiKey,
+  saveStoredGroqApiKey,
+} from "@/lib/groq-api-key";
 
 interface Message {
   role: "user" | "assistant";
@@ -12,7 +17,6 @@ interface GroqChatPlaygroundProps {
   defaultSystemPrompt?: string;
 }
 
-const STORAGE_KEY = "groq-playground-api-key";
 const MODELS = [
   { id: "llama3-70b-8192",    label: "LLaMA 3 70B (best)" },
   { id: "llama3-8b-8192",     label: "LLaMA 3 8B (fastest)" },
@@ -32,17 +36,20 @@ export function GroqChatPlayground({ defaultSystemPrompt = "You are a helpful as
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef  = useRef<HTMLTextAreaElement>(null);
 
-  // Persist API key in localStorage
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) setApiKey(saved);
-    } catch { /* ignore */ }
+    const sync = () => setApiKey(readStoredGroqApiKey());
+    sync();
+    window.addEventListener(GROQ_API_KEY_UPDATED_EVENT, sync);
+    window.addEventListener("storage", sync);
+    return () => {
+      window.removeEventListener(GROQ_API_KEY_UPDATED_EVENT, sync);
+      window.removeEventListener("storage", sync);
+    };
   }, []);
 
   const saveApiKey = (val: string) => {
     setApiKey(val);
-    try { localStorage.setItem(STORAGE_KEY, val); } catch { /* ignore */ }
+    saveStoredGroqApiKey(val);
   };
 
   // Auto-scroll to newest message
