@@ -1,11 +1,13 @@
 "use client";
 
-import type { Module } from "@/lib/types";
+import type { Module, UserProgress } from "@/lib/types";
 import { ModuleCard } from "@/components/curriculum/ModuleCard";
 import { ProgressTracker } from "@/components/progress/ProgressTracker";
 import { useProgress } from "@/contexts/ProgressContext";
 import { ClientOnly } from "@/components/ui/ClientOnly";
 import { Loader2 } from "lucide-react";
+import { getUnlockedTopicIds } from "@/lib/topic-locking";
+import { getQuiz } from "@/data/quizzes";
 
 interface LearningPathClientProps {
   modules: Module[];
@@ -13,18 +15,21 @@ interface LearningPathClientProps {
 
 function ModuleGrid({
   modules,
-  completedIds,
+  progress,
 }: {
   modules: Module[];
-  completedIds: string[];
+  progress: UserProgress;
 }) {
+  const unlockedTopicIds = getUnlockedTopicIds(modules, progress, (topicId) => !!getQuiz(topicId));
+
   return (
     <div className="grid gap-6 lg:grid-cols-2">
       {modules.map((module) => (
         <ModuleCard
           key={module.id}
           module={module}
-          completedTopicIds={completedIds}
+          completedTopicIds={progress.completedTopics}
+          unlockedTopicIds={unlockedTopicIds}
         />
       ))}
     </div>
@@ -48,7 +53,7 @@ function LearningPathInner({ modules }: LearningPathClientProps) {
   return (
     <div className="space-y-8">
       <ProgressTracker />
-      <ModuleGrid modules={modules} completedIds={progress.completedTopics} />
+      <ModuleGrid modules={modules} progress={progress} />
     </div>
   );
 }
@@ -59,7 +64,10 @@ export function LearningPathClient({ modules }: LearningPathClientProps) {
       fallback={
         <div className="space-y-8">
           <ProgressTracker />
-          <ModuleGrid modules={modules} completedIds={[]} />
+          <ModuleGrid
+            modules={modules}
+            progress={{ completedTopics: [], quizScores: {}, ideRan: [] }}
+          />
         </div>
       }
     >
