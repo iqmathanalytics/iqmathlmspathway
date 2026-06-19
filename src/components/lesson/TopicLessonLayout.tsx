@@ -76,6 +76,7 @@ export function TopicLessonLayout({
   }, [sequential, topicId, practices.length]);
 
   const [activePractice, setActivePractice] = useState(0);
+  const [practiceReloadKey, setPracticeReloadKey] = useState(0);
 
   useEffect(() => {
     if (hydrated && sequential) setActivePractice(initialPractice);
@@ -86,13 +87,16 @@ export function TopicLessonLayout({
   const activeLabel = activeBlock?.practiceLabel ?? `Exercise ${activePractice + 1}`;
 
   const scrollToIde = useCallback(() => {
-    if (ideRef.current) ideRef.current.scrollTop = 0;
+    if (!ideRef.current) return;
+    ideRef.current.scrollTop = 0;
+    ideRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
   const selectPractice = useCallback(
     (index: number) => {
       if (sequential && topicId && !isExerciseUnlocked(topicId, index)) return;
       setActivePractice(index);
+      setPracticeReloadKey((key) => key + 1);
       scrollToIde();
     },
     [sequential, topicId, scrollToIde]
@@ -104,6 +108,7 @@ export function TopicLessonLayout({
       if (sequential && topicId && !isExerciseUnlocked(topicId, next)) return current;
       return next;
     });
+    setPracticeReloadKey((key) => key + 1);
     scrollToIde();
   }, [practices.length, scrollToIde, sequential, topicId]);
 
@@ -115,6 +120,7 @@ export function TopicLessonLayout({
       notifyFpProgress();
       if (index < practices.length - 1) {
         setActivePractice(index + 1);
+        setPracticeReloadKey((key) => key + 1);
         scrollToIde();
       }
     },
@@ -288,7 +294,7 @@ export function TopicLessonLayout({
               )}
 
               <PythonIDE
-                key={`practice-${activePractice}-${activeCode.slice(0, 32)}`}
+                key={`practice-${activePractice}-${practiceReloadKey}-${activeCode.slice(0, 32)}`}
                 initialCode={activeCode}
                 editorHeight="280px"
                 consoleMaxHeight={260}

@@ -89,7 +89,17 @@ export function buildAgenticAiLesson(topicId: string): TopicLesson {
       },
       {
         type: "code",
+        content: "agentic-ai-code",
+        practiceLabel: `${topicId.replaceAll("-", "_")}.py`,
         code: conceptCode(topicId),
+      },
+      {
+        type: "practice",
+        practiceLabel: "Example code",
+        ideOnly: true,
+        practicePrompt:
+          "Run this example code from the lesson window, then compare the output with the concept.",
+        starterCode: conceptCode(topicId),
       },
       {
         type: "practice",

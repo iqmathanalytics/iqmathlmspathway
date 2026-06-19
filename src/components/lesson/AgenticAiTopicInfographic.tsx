@@ -1,17 +1,20 @@
 "use client";
 
 import {
+  ArrowRight,
   Brain,
   CheckCircle2,
   Code2,
   Lightbulb,
   MessageSquare,
   Network,
+  Play,
   ShieldCheck,
   Sparkles,
   Workflow,
   Zap,
 } from "lucide-react";
+import { useLessonPractice } from "@/components/lesson/LessonPracticeContext";
 
 type TopicInfo = {
   moduleLabel: string;
@@ -317,18 +320,64 @@ const DEFAULT_TOPIC: TopicInfo = {
   icon: "brain",
 };
 
-function MiniCode({ children }: { children: React.ReactNode }) {
+function CodeExercisePanel({
+  filename,
+  children,
+}: {
+  filename: string;
+  children: React.ReactNode;
+}) {
+  const practice = useLessonPractice();
+  const practiceIndex = 0;
+  const isActive = practice?.activeIndex === practiceIndex;
+  const hasNext = practice != null && practiceIndex < practice.total - 1;
+
   return (
-    <div className="overflow-hidden rounded-xl border border-black/10 bg-gray-950">
-      <div className="flex items-center gap-1.5 border-b border-white/10 px-3 py-1.5">
+    <div
+      className={`overflow-hidden rounded-xl border bg-white/80 transition-all ${
+        isActive
+          ? "border-emerald-300 ring-2 ring-emerald-300/70 ring-offset-1"
+          : "border-emerald-200 shadow-sm"
+      }`}
+    >
+      <div className="flex items-center gap-1.5 border-b border-emerald-100 bg-black/[0.03] px-3 py-1.5">
         <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-        <span className="ml-auto font-mono text-[11px] text-gray-400">
-          mental_model.py
+        <span className="ml-1 flex items-center gap-1 font-mono text-[11px] text-gray-500">
+          <Code2 className="h-3 w-3" />
+          {filename}
         </span>
+        <div className="ml-auto flex items-center gap-1">
+          <button
+            type="button"
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={() => practice?.selectPractice(practiceIndex)}
+            className={`inline-flex items-center gap-1 rounded-md px-2 py-1 text-[10px] font-semibold transition-colors ${
+              isActive
+                ? "bg-emerald-600 text-white"
+                : "bg-emerald-600 text-white hover:bg-emerald-700"
+            }`}
+            title={isActive ? "Loaded in IDE" : "Load in IDE"}
+          >
+            <Play className="h-3 w-3" />
+            IDE
+          </button>
+          {isActive && hasNext && (
+            <button
+              type="button"
+              onMouseDown={(e) => e.preventDefault()}
+              onClick={() => practice?.nextPractice()}
+              className="inline-flex items-center gap-1 rounded-md border border-gray-200 bg-white px-2 py-1 text-[10px] font-semibold text-gray-600 transition hover:bg-gray-50"
+              title="Next exercise"
+            >
+              Next
+              <ArrowRight className="h-3 w-3" />
+            </button>
+          )}
+        </div>
       </div>
-      <pre className="whitespace-pre-wrap px-4 py-3 font-mono text-[12.5px] leading-relaxed text-green-200">
+      <pre className="whitespace-pre-wrap px-4 py-3 font-mono text-[12.5px] leading-relaxed text-gray-800">
         {children}
       </pre>
     </div>
@@ -338,6 +387,7 @@ function MiniCode({ children }: { children: React.ReactNode }) {
 export function AgenticAiTopicInfographic({ topicId }: { topicId?: string }) {
   const info = (topicId && TOPICS[topicId]) || DEFAULT_TOPIC;
   const Icon = ICONS[info.icon];
+  const filename = `${(topicId ?? "agentic-ai").replaceAll("-", "_")}.py`;
 
   return (
     <div className="mb-8 overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 via-white to-blue-50 shadow-sm">
@@ -396,7 +446,14 @@ export function AgenticAiTopicInfographic({ topicId }: { topicId?: string }) {
         </div>
 
         <div className="space-y-4">
-          <MiniCode>{`# mental model\nconcept = ${JSON.stringify(info.title)}\npattern = ${JSON.stringify(info.steps.join(" -> "))}\nprint(pattern)`}</MiniCode>
+          <CodeExercisePanel filename={filename}>{`# ${info.title}
+# Click IDE to load this topic's runnable starter code.
+
+concept = ${JSON.stringify(info.title)}
+pattern = ${JSON.stringify(info.steps.join(" -> "))}
+
+print("Concept:", concept)
+print("Pattern:", pattern)`}</CodeExercisePanel>
 
           <div className="rounded-xl border border-emerald-100 bg-emerald-50/70 p-4">
             <div className="mb-1 flex items-center gap-2 text-sm font-semibold text-emerald-900">
