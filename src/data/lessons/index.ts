@@ -14,6 +14,7 @@ import { module12Lessons } from "./module-12";
 import { module13Lessons } from "./module-13";
 import { module14Lessons } from "./module-14";
 import { agenticAiModule1Lessons } from "./agentic-ai-module-1";
+import { agenticAiLangChainLessons } from "./agentic-ai-langchain";
 import { agenticAiModule2Lessons } from "./agentic-ai-module-2";
 import { agenticAiModule3Lessons } from "./agentic-ai-module-3";
 import { agenticAiModule4Lessons } from "./agentic-ai-module-4";
@@ -36,6 +37,7 @@ const allLessons: Record<string, TopicLesson> = {
   ...module13Lessons,
   ...module14Lessons,
   ...agenticAiModule1Lessons,
+  ...agenticAiLangChainLessons,
   ...agenticAiModule2Lessons,
   ...agenticAiModule3Lessons,
   ...agenticAiModule4Lessons,
