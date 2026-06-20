@@ -3,6 +3,7 @@ import {
   AGENTIC_AI_TOPIC_GUIDES,
   DEFAULT_AGENTIC_AI_TOPIC_GUIDE,
 } from "@/data/agentic-ai-topic-guides";
+import { buildAgenticAiExampleCode } from "@/data/agentic-ai-example-code";
 
 function practiceStarter(topicId: string) {
   const guide = AGENTIC_AI_TOPIC_GUIDES[topicId] ?? DEFAULT_AGENTIC_AI_TOPIC_GUIDE;
@@ -29,13 +30,7 @@ print(${JSON.stringify(guide.example)})
 
 function conceptCode(topicId: string) {
   const guide = AGENTIC_AI_TOPIC_GUIDES[topicId] ?? DEFAULT_AGENTIC_AI_TOPIC_GUIDE;
-  return `concept = ${JSON.stringify(guide.title)}
-pattern = ${JSON.stringify(guide.steps)}
-
-for step in pattern:
-    print("->", step)
-
-print("Outcome:", ${JSON.stringify(guide.outcome)})`;
+  return buildAgenticAiExampleCode(topicId, guide);
 }
 
 export function buildAgenticAiLesson(topicId: string): TopicLesson {

@@ -15,6 +15,7 @@ import {
   Zap,
 } from "lucide-react";
 import { useLessonPractice } from "@/components/lesson/LessonPracticeContext";
+import { buildAgenticAiExampleCode } from "@/data/agentic-ai-example-code";
 
 type TopicInfo = {
   moduleLabel: string;
@@ -76,6 +77,56 @@ const TOPICS: Record<string, TopicInfo> = {
     example: "Groq is useful for fast demos; larger frontier models are better for complex reasoning.",
     caution: "Do not pick a provider only by hype. Test your exact task.",
     icon: "brain",
+  },
+  "ai-lc-t1": {
+    moduleLabel: "LangChain Agent Engineering",
+    title: "What LangChain Is",
+    hook: "LangChain is a developer framework for building LLM applications from reusable pieces like models, prompts, tools, and chains.",
+    outcome: "You will understand where LangChain fits before you start writing prompts and agents.",
+    steps: ["Connect model inputs", "Compose app steps", "Return useful outputs"],
+    example: "A support bot can combine a prompt, an LLM call, a document search step, and a final answer.",
+    caution: "A framework does not make an app reliable by itself. You still need clear design and tests.",
+    icon: "agent",
+  },
+  "ai-lc-t2": {
+    moduleLabel: "LangChain Agent Engineering",
+    title: "LangGraph Agent Flow",
+    hook: "LangGraph models agent behavior as a graph, so you can control state, steps, branches, and loops.",
+    outcome: "You will recognize an agent as a controlled workflow instead of a magic black box.",
+    steps: ["Store state", "Run graph nodes", "Choose the next edge"],
+    example: "A graph can route from user question to retrieval, then to answer writing, then to review.",
+    caution: "Unbounded loops can make agents expensive or unsafe. Always limit steps.",
+    icon: "agent",
+  },
+  "ai-lc-t3": {
+    moduleLabel: "LangChain Agent Engineering",
+    title: "Tools and Connections",
+    hook: "Agent tools let a model request real actions such as search, database lookup, or API calls.",
+    outcome: "You will understand how tools expand an agent while your code still validates and executes actions.",
+    steps: ["Describe the tool", "Validate arguments", "Return observations"],
+    example: "A course helper calls search_lessons(query), then uses the returned lesson snippets to answer.",
+    caution: "Never let a model execute sensitive actions without validation, permissions, and logging.",
+    icon: "agent",
+  },
+  "ai-lc-t4": {
+    moduleLabel: "LangChain Agent Engineering",
+    title: "Testing with LangSmith",
+    hook: "LangSmith helps test and inspect agents with traces, datasets, evaluations, and prompt experiments.",
+    outcome: "You will know why agent apps need testing beyond checking one happy-path answer.",
+    steps: ["Create test cases", "Trace each run", "Score behavior"],
+    example: "Run ten support questions, inspect failures, then improve the prompt or retrieval step.",
+    caution: "Manual testing one example is not enough. Agents need repeatable evaluations.",
+    icon: "ship",
+  },
+  "ai-lc-t5": {
+    moduleLabel: "LangChain Agent Engineering",
+    title: "Deploy, Monitor, Govern",
+    hook: "Production agent work includes deployment, monitoring, access control, feedback, and governance.",
+    outcome: "You will understand the full lifecycle of shipping a reliable agent application.",
+    steps: ["Deploy the agent", "Monitor traces", "Improve safely"],
+    example: "After launch, observe slow runs, failed tool calls, and user feedback before making changes.",
+    caution: "Do not ship agents without monitoring. You need visibility when behavior changes.",
+    icon: "ship",
   },
   "ai-m2-t1": {
     moduleLabel: "Prompt Engineering",
@@ -388,6 +439,7 @@ export function AgenticAiTopicInfographic({ topicId }: { topicId?: string }) {
   const info = (topicId && TOPICS[topicId]) || DEFAULT_TOPIC;
   const Icon = ICONS[info.icon];
   const filename = `${(topicId ?? "agentic-ai").replaceAll("-", "_")}.py`;
+  const exampleCode = buildAgenticAiExampleCode(topicId ?? "agentic-ai", info);
 
   return (
     <div className="mb-8 overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 via-white to-blue-50 shadow-sm">
@@ -446,14 +498,7 @@ export function AgenticAiTopicInfographic({ topicId }: { topicId?: string }) {
         </div>
 
         <div className="space-y-4">
-          <CodeExercisePanel filename={filename}>{`# ${info.title}
-# Click IDE to load this topic's runnable starter code.
-
-concept = ${JSON.stringify(info.title)}
-pattern = ${JSON.stringify(info.steps.join(" -> "))}
-
-print("Concept:", concept)
-print("Pattern:", pattern)`}</CodeExercisePanel>
+          <CodeExercisePanel filename={filename}>{exampleCode}</CodeExercisePanel>
 
           <div className="rounded-xl border border-emerald-100 bg-emerald-50/70 p-4">
             <div className="mb-1 flex items-center gap-2 text-sm font-semibold text-emerald-900">

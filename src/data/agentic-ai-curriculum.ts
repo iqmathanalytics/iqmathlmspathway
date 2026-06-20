@@ -18,6 +18,22 @@ export const agenticAiModules: Module[] = [
   },
   {
     id: 2,
+    name: "LangChain Agent Engineering",
+    slug: "langchain-agent-engineering",
+    description: "Learn the LangChain ecosystem for building, testing, deploying, and monitoring agent apps.",
+    icon: "🧭",
+    course: "agentic-ai",
+    phase: "foundations",
+    topics: [
+      { id: "ai-lc-t1", title: "What is LangChain?", slug: "what-is-langchain", description: "Understand LangChain as a framework for building LLM and agent applications.", estimatedMinutes: 8, published: true },
+      { id: "ai-lc-t2", title: "LangGraph Agent Flow", slug: "langgraph-agent-flow", description: "See how agent steps can be modeled as a graph: state, nodes, and edges.", estimatedMinutes: 10, published: true },
+      { id: "ai-lc-t3", title: "Tools and Connections", slug: "tools-and-connections", description: "Learn how agents connect to tools, APIs, and external actions safely.", estimatedMinutes: 10, published: true },
+      { id: "ai-lc-t4", title: "Testing with LangSmith", slug: "testing-with-langsmith", description: "Use datasets, traces, and evaluations to test agent behavior.", estimatedMinutes: 10, published: true },
+      { id: "ai-lc-t5", title: "Deploy, Monitor, Govern", slug: "deploy-monitor-govern", description: "Understand the production lifecycle for reliable agent systems.", estimatedMinutes: 10, published: true },
+    ],
+  },
+  {
+    id: 3,
     name: "Prompt Engineering",
     slug: "prompt-engineering",
     description: "Learn to write prompts that get the best results from any LLM.",
@@ -33,7 +49,7 @@ export const agenticAiModules: Module[] = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     name: "Working with the Groq API",
     slug: "groq-api",
     description: "Set up Groq, make your first API call, and understand how the responses are structured.",
@@ -49,7 +65,7 @@ export const agenticAiModules: Module[] = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     name: "Building a Chatbot",
     slug: "building-a-chatbot",
     description: "Build a full conversational chatbot — with memory, streaming, and live testing.",
@@ -65,7 +81,7 @@ export const agenticAiModules: Module[] = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     name: "Agentic Patterns",
     slug: "agentic-patterns",
     description: "Go beyond chatbots — give your AI the ability to use tools and reason over multiple steps.",
@@ -80,7 +96,7 @@ export const agenticAiModules: Module[] = [
     ],
   },
   {
-    id: 6,
+    id: 7,
     name: "Real-World AI Applications",
     slug: "real-world-ai",
     description: "Apply what you have learned to build applications you can actually ship.",
