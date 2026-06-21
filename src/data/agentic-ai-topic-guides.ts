@@ -112,6 +112,16 @@ export const AGENTIC_AI_TOPIC_GUIDES: Record<string, AgenticAiTopicGuide> = {
     caution: "Tools need descriptions, safe inputs, and guardrails because the model chooses when to call them.",
     icon: "agent",
   },
+  "ai-lc-t7": {
+    moduleLabel: "LangChain",
+    title: "Testing and Monitoring",
+    hook: "LangSmith helps inspect LangChain runs with traces, datasets, evaluations, and monitoring.",
+    outcome: "You will understand why LangChain apps need repeatable tests and production visibility.",
+    steps: ["Create test cases", "Trace each run", "Improve safely"],
+    example: "Run ten support questions, inspect failed tool calls, then improve the prompt or retrieval step.",
+    caution: "Do not ship LangChain agents without monitoring. You need visibility when behavior changes.",
+    icon: "ship",
+  },
   "ai-m2-t1": {
     moduleLabel: "Prompt Engineering",
     title: "Prompt Basics",

@@ -61,7 +61,7 @@ import { FunctionRecursionInfographic } from "@/components/lesson/FunctionRecurs
 import { LambdaFunctionsInfographic } from "@/components/lesson/LambdaFunctionsInfographic";
 import { AgenticAiTopicInfographic } from "@/components/lesson/AgenticAiTopicInfographic";
 import { FinalProjectInfographic } from "@/components/lesson/FinalProjectInfographic";
-import { Lightbulb, Code2, Pencil } from "lucide-react";
+import { ArrowRight, Lightbulb, Code2, Pencil, Play } from "lucide-react";
 
 interface LessonContentProps {
   blocks: LessonBlock[];
@@ -310,6 +310,55 @@ export function LessonContent({
             }
             return null;
           case "code":
+            if (block.content === "agentic-ai-code") {
+              const isActive = activePracticeIndex === 0;
+              return (
+                <div key={i} className="my-5">
+                  <div
+                    className={`overflow-hidden rounded-xl border bg-white/80 transition-all ${
+                      isActive
+                        ? "border-emerald-300 ring-2 ring-emerald-300/70 ring-offset-1"
+                        : "border-emerald-200 shadow-sm"
+                    }`}
+                  >
+                    <div className="flex items-center gap-1.5 border-b border-emerald-100 bg-black/[0.03] px-3 py-1.5">
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+                      <span className="ml-1 flex items-center gap-1 font-mono text-[11px] text-gray-500">
+                        <Code2 className="h-3 w-3" />
+                        {block.practiceLabel ?? "agentic_ai.py"}
+                      </span>
+                      <div className="ml-auto flex items-center gap-1">
+                        <button
+                          type="button"
+                          onMouseDown={(e) => e.preventDefault()}
+                          onClick={() => onSelectPractice?.(0)}
+                          className={`inline-flex items-center gap-1 rounded-md px-2 py-1 text-[10px] font-semibold transition-colors ${
+                            isActive
+                              ? "bg-emerald-600 text-white"
+                              : "bg-emerald-600 text-white hover:bg-emerald-700"
+                          }`}
+                          title={isActive ? "Loaded in IDE" : "Load in IDE"}
+                        >
+                          <Play className="h-3 w-3" />
+                          IDE
+                        </button>
+                        {isActive && (
+                          <span className="hidden items-center gap-1 rounded-md border border-gray-200 bg-white px-2 py-1 text-[10px] font-semibold text-gray-500 sm:inline-flex">
+                            Loaded
+                            <ArrowRight className="h-3 w-3" />
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <pre className="overflow-x-auto whitespace-pre-wrap px-4 py-3 font-mono text-[13px] leading-[1.9] text-gray-800">
+                      {block.code}
+                    </pre>
+                  </div>
+                </div>
+              );
+            }
             return (
               <div key={i} className="my-4">
                 <div className="mb-2 flex items-center gap-2 text-sm font-medium text-gray-700">

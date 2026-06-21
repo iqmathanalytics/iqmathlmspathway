@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { CodeEditor } from "./CodeEditor";
 import { ConsolePanel } from "./ConsolePanel";
-import { usePyodideRunner } from "./usePyodideRunner";
+import { useCodeRunner } from "./useCodeRunner";
 
 interface PythonIDEProps {
   initialCode?: string;
@@ -29,18 +29,19 @@ export function PythonIDE({
   onRun,
 }: PythonIDEProps) {
   const [code, setCode] = useState(initialCode);
+  const [standardInput, setStandardInput] = useState("");
   const [cursor, setCursor] = useState({ line: 1, col: 1 });
-  const { lines, loading, running, error, runCode, clearConsole, stdinActive, stdinDraft, setStdinDraft, submitStdin } =
-    usePyodideRunner();
+  const { lines, loading, running, error, runCode, clearConsole, stdinActive, stdinDraft, setStdinDraft, submitStdin, runnerName, supportsStandardInput } =
+    useCodeRunner();
 
   useEffect(() => {
     setCode(initialCode);
   }, [initialCode]);
 
   const handleRun = useCallback(() => {
-    runCode(code);
+    runCode(code, standardInput);
     onRun?.();
-  }, [code, runCode, onRun]);
+  }, [code, standardInput, runCode, onRun]);
 
   function resetCode() {
     setCode(initialCode);
@@ -124,6 +125,29 @@ export function PythonIDE({
         />
       </div>
 
+      {supportsStandardInput && (
+        <div className="border-b border-gray-800 bg-[#0d1117] px-3 py-2">
+          <label
+            htmlFor="judge0-stdin"
+            className="mb-1 block text-xs font-medium text-gray-300"
+          >
+            Standard input
+          </label>
+          <textarea
+            id="judge0-stdin"
+            value={standardInput}
+            onChange={(event) => setStandardInput(event.target.value)}
+            rows={3}
+            className="w-full resize-y rounded-md border border-gray-700 bg-[#010409] px-3 py-2 font-mono text-xs text-gray-100 outline-none transition-colors placeholder:text-gray-600 focus:border-brand-500"
+            placeholder="Example: Alice"
+            spellCheck={false}
+          />
+          <p className="mt-1 text-[11px] text-gray-500">
+            Used by Judge0 for programs that call input().
+          </p>
+        </div>
+      )}
+
       {/* Console */}
       <ConsolePanel
         lines={lines}
@@ -145,6 +169,7 @@ export function PythonIDE({
             Ln {cursor.line}, Col {cursor.col}
           </span>
           <span>Python 3</span>
+          <span className="hidden sm:inline">Runner: {runnerName}</span>
           <span className="hidden sm:inline">Spaces: 4</span>
         </div>
         <div className="flex items-center gap-2">
