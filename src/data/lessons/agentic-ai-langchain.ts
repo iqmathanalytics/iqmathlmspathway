@@ -7,4 +7,5 @@ export const agenticAiLangChainLessons = buildAgenticAiLessons([
   "ai-lc-t4",
   "ai-lc-t5",
   "ai-lc-t6",
+  "ai-lc-t7",
 ] as const);

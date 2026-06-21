@@ -20,7 +20,7 @@ export const agenticAiModules: Module[] = [
     id: 2,
     name: "LangChain",
     slug: "langchain",
-    description: "Use LangChain's building blocks to compose models, prompts, chains, parsers, and simple agents.",
+    description: "Use LangChain's building blocks to compose models, prompts, chains, parsers, agents, and production checks.",
     icon: "🔗",
     course: "agentic-ai",
     phase: "foundations",
@@ -31,6 +31,7 @@ export const agenticAiModules: Module[] = [
       { id: "ai-lc-t4", title: "Prompt Templates", slug: "prompt-templates", description: "Build reusable prompts with variables and chat message roles.", estimatedMinutes: 10, published: true },
       { id: "ai-lc-t5", title: "LCEL Chains and Output Parsers", slug: "lcel-chains-output-parsers", description: "Compose prompts, models, and parsers with the LangChain pipe pattern.", estimatedMinutes: 12, published: true },
       { id: "ai-lc-t6", title: "Agents and Tools in LangChain", slug: "agents-and-tools", description: "Create a simple agent harness with tools and a system prompt.", estimatedMinutes: 12, published: true },
+      { id: "ai-lc-t7", title: "Testing and Monitoring with LangSmith", slug: "testing-monitoring-langsmith", description: "Use traces, datasets, evaluations, and monitoring to improve LangChain apps.", estimatedMinutes: 12, published: true },
     ],
   },
   {

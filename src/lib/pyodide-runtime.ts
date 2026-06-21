@@ -19,6 +19,17 @@ builtins.input = __py_input
 `;
 
 export interface PyodideRuntime {
+  loadPackage: (
+    packages: string | string[],
+    options?: { messageCallback?: (message: string) => void }
+  ) => Promise<void>;
+  loadPackagesFromImports: (
+    code: string,
+    options?: {
+      messageCallback?: (message: string) => void;
+      errorCallback?: (message: string) => void;
+    }
+  ) => Promise<void>;
   runPythonAsync: (code: string) => Promise<unknown>;
   setStdin: (options: {
     stdin?: () => string | null | undefined;
@@ -38,6 +49,12 @@ export interface PyodideRuntime {
 
 let pyodidePromise: Promise<PyodideRuntime> | null = null;
 let pyodideRunChain: Promise<unknown> = Promise.resolve();
+const loadedPackages = new Set<string>();
+
+const ALIAS_PACKAGE_MAP: Record<string, string> = {
+  pd: "pandas",
+  np: "numpy",
+};
 
 function registerStdinBridge(): void {
   if (typeof globalThis === "undefined") return;
@@ -83,6 +100,57 @@ function needsStdinBridge(code: string, options: PyodideRunOptions): boolean {
     (options.stdinLines?.length ?? 0) > 0 ||
     usesInput(code)
   );
+}
+
+function stripCommentsAndStrings(code: string): string {
+  return code
+    .replace(/("""[\s\S]*?"""|'''[\s\S]*?'''|"[^"\n]*(?:\\.[^"\n]*)*"|'[^'\n]*(?:\\.[^'\n]*)*')/g, "")
+    .replace(/#.*$/gm, "");
+}
+
+function hasImports(code: string): boolean {
+  const cleaned = stripCommentsAndStrings(code);
+  return /^\s*(import|from)\s+/m.test(cleaned);
+}
+
+function detectAliasPackages(code: string): string[] {
+  const cleaned = stripCommentsAndStrings(code);
+  const packages = new Set<string>();
+
+  for (const [alias, packageName] of Object.entries(ALIAS_PACKAGE_MAP)) {
+    if (new RegExp(`\\b${alias}\\.`).test(cleaned)) {
+      packages.add(packageName);
+    }
+  }
+
+  return [...packages].filter((name) => !loadedPackages.has(name));
+}
+
+async function loadRequiredPackages(
+  pyodide: PyodideRuntime,
+  code: string,
+  onStdout?: (chunk: string) => void
+): Promise<void> {
+  if (hasImports(code)) {
+    onStdout?.("Checking Python imports...\n");
+    await pyodide.loadPackagesFromImports(code, {
+      messageCallback: (message) => onStdout?.(`${message}\n`),
+      errorCallback: (message) => onStdout?.(`${message}\n`),
+    });
+  }
+
+  // Pyodide detects real import statements. This fallback helps if a learner
+  // edits out the import but still uses common aliases like pd.DataFrame().
+  const aliasPackages = detectAliasPackages(code);
+  if (aliasPackages.length > 0) {
+    onStdout?.(
+      `Loading Python package${aliasPackages.length > 1 ? "s" : ""}: ${aliasPackages.join(", ")}...\n`
+    );
+    await pyodide.loadPackage(aliasPackages, {
+      messageCallback: (message) => onStdout?.(`${message}\n`),
+    });
+    aliasPackages.forEach((name) => loadedPackages.add(name));
+  }
 }
 
 /** Load Pyodide once from CDN (browser ESM — avoids webpack/node issues). */
@@ -137,6 +205,7 @@ export async function runPythonWithLock(
     const python = withStdin ? `${INPUT_BOOTSTRAP}\n\n${code}` : code;
 
     try {
+      await loadRequiredPackages(pyodide, code, options.onStdout);
       await pyodide.runPythonAsync(python);
     } finally {
       consoleStdin.cancelPending();
