@@ -15,20 +15,12 @@ export function getPublishedTopicEntries(modules: Module[]): TopicPathEntry[] {
 
 export function getUnlockedTopicIds(
   modules: Module[],
-  progress: UserProgress,
-  hasQuiz: (topicId: string) => boolean
+  _progress: UserProgress,
+  _hasQuiz: (topicId: string) => boolean
 ): Set<string> {
-  const unlocked = new Set<string>();
-  const path = getPublishedTopicEntries(modules);
-
-  path.forEach((entry, index) => {
-    const previous = path[index - 1];
-    if (!previous || isTopicProgressionDone(progress, previous.topic.id, hasQuiz(previous.topic.id))) {
-      unlocked.add(entry.topic.id);
-    }
-  });
-
-  return unlocked;
+  // Temporarily unlock all published topics so the team can test any topic from
+  // dashboard/module navigation without completing the previous lesson first.
+  return new Set(getPublishedTopicEntries(modules).map((entry) => entry.topic.id));
 }
 
 export function isTopicUnlocked(
