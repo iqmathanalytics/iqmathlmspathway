@@ -413,6 +413,40 @@ export function LessonContent({
 
             return null;
           }
+          // Right-side signal blocks — rendered invisibly in the left column
+          case "jupyter-notebook":
+            return (
+              <div key={i} className="my-4 flex items-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-4 py-3">
+                <span className="text-xs font-semibold text-violet-700">
+                  Notebook exercise on the right →
+                </span>
+                <span className="text-xs text-violet-500">
+                  Copy the cells into Jupyter or Google Colab to run the real code.
+                </span>
+              </div>
+            );
+          case "setup-checklist":
+            return (
+              <div key={i} className="my-4 flex items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3">
+                <span className="text-xs font-semibold text-emerald-700">
+                  Setup checklist on the right →
+                </span>
+                <span className="text-xs text-emerald-500">
+                  Follow each step and tick it off when done.
+                </span>
+              </div>
+            );
+          case "concept-card":
+            return (
+              <div key={i} className="my-4 flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-3">
+                <span className="text-xs font-semibold text-blue-700">
+                  Concept reference card on the right →
+                </span>
+                <span className="text-xs text-blue-500">
+                  Use it as a quick-look summary while reading.
+                </span>
+              </div>
+            );
           default:
             return null;
         }

@@ -6,6 +6,9 @@ import type { LessonBlock } from "@/lib/types";
 import { LessonContent } from "./LessonContent";
 import { PythonIDE } from "@/components/ide/PythonIDE.lazy";
 import { GroqChatPlayground } from "@/components/ai/GroqChatPlayground";
+import { JupyterNotebookPanel } from "./JupyterNotebookPanel";
+import { SetupChecklistPanel } from "./SetupChecklistPanel";
+import { ConceptSummaryPanel } from "./ConceptSummaryPanel";
 import { LessonPracticeContext } from "./LessonPracticeContext";
 import {
   areAllExercisesComplete,
@@ -44,8 +47,11 @@ export function TopicLessonLayout({
   const { markIdeRan } = useProgress();
   const ideRef = useRef<HTMLElement>(null);
 
-  // Detect if this lesson uses the Groq chatbot playground instead of the Python IDE
-  const groqBlock = useMemo(() => blocks.find((b) => b.type === "groq-playground"), [blocks]);
+  // Detect which right-side panel this lesson needs
+  const groqBlock     = useMemo(() => blocks.find((b) => b.type === "groq-playground"),    [blocks]);
+  const jupyterBlock  = useMemo(() => blocks.find((b) => b.type === "jupyter-notebook"),   [blocks]);
+  const setupBlock    = useMemo(() => blocks.find((b) => b.type === "setup-checklist"),    [blocks]);
+  const conceptBlock  = useMemo(() => blocks.find((b) => b.type === "concept-card"),       [blocks]);
 
   // Detect if this is a Final Project topic with sequential task gating
   const sequential = topicId != null && isFinalProjectTopic(topicId);
@@ -237,12 +243,45 @@ export function TopicLessonLayout({
             [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {groqBlock ? (
-            /* Groq chatbot playground — fills the right column */
+            /* Type D — Groq chatbot playground */
             <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6 h-full flex flex-col min-h-[520px]">
               <GroqChatPlayground defaultSystemPrompt={groqBlock.systemPrompt} />
             </div>
+          ) : jupyterBlock ? (
+            /* Type C / E — Jupyter notebook instructions panel */
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">📓</span>
+                Jupyter Notebook
+              </div>
+              <JupyterNotebookPanel
+                installCmd={jupyterBlock.installCmd ?? "!pip install groq"}
+                cells={jupyterBlock.notebookCells ?? []}
+              />
+            </div>
+          ) : setupBlock ? (
+            /* Type B — Setup checklist panel */
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">✅</span>
+                Setup Guide
+              </div>
+              <SetupChecklistPanel steps={setupBlock.setupSteps ?? []} />
+            </div>
+          ) : conceptBlock ? (
+            /* Type A — Concept summary reference card */
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">🧠</span>
+                Concept Reference
+              </div>
+              <ConceptSummaryPanel
+                summary={conceptBlock.conceptSummary!}
+                title={conceptBlock.content ?? ""}
+              />
+            </div>
           ) : (
-            /* Default: Python IDE (with optional sequential task gating for Final Project) */
+            /* Default — Python IDE (with optional sequential task gating for Final Project) */
             <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
               <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
                 <Pencil className="h-4 w-4 text-brand-600" />

@@ -117,6 +117,29 @@ export type LessonInfographic =
   | "final-project-functions"
   | "final-project-capstone";
 
+export interface SetupStep {
+  title: string;
+  description?: string;
+  commands?: string[];
+  note?: string;
+  link?: { label: string; url: string };
+}
+
+export interface NotebookCell {
+  label?: string;
+  code: string;
+  /** "install" cells use a different background tint */
+  cellType?: "install" | "code";
+}
+
+export interface ConceptSummaryData {
+  hook: string;
+  outcome: string;
+  steps: [string, string, string];
+  example: string;
+  caution: string;
+}
+
 export interface LessonBlock {
   type:
     | "heading"
@@ -128,7 +151,10 @@ export interface LessonBlock {
     | "practice"
     | "visual"
     | "infographic"
-    | "groq-playground";
+    | "groq-playground"
+    | "setup-checklist"
+    | "jupyter-notebook"
+    | "concept-card";
   content?: string;
   items?: string[];
   /** For code blocks */
@@ -146,6 +172,13 @@ export interface LessonBlock {
   infographic?: LessonInfographic;
   /** Default system prompt for the Groq playground (groq-playground block only) */
   systemPrompt?: string;
+  /** For setup-checklist blocks */
+  setupSteps?: SetupStep[];
+  /** For jupyter-notebook blocks */
+  installCmd?: string;
+  notebookCells?: NotebookCell[];
+  /** For concept-card blocks */
+  conceptSummary?: ConceptSummaryData;
 }
 
 export interface DiagramData {
