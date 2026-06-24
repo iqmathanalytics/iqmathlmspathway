@@ -3,11 +3,6 @@ import {
   AGENTIC_AI_TOPIC_GUIDES,
   DEFAULT_AGENTIC_AI_TOPIC_GUIDE,
 } from "@/data/agentic-ai-topic-guides";
-import { buildAgenticAiExampleCode } from "@/data/agentic-ai-example-code";
-import {
-  NOTEBOOK_CELLS,
-  GROQ_INSTALL,
-} from "@/data/agentic-ai-notebook-code";
 
 // ─── helpers ────────────────────────────────────────────────────────────────
 
@@ -43,9 +38,105 @@ function infographic(topicId: string): LessonBlock {
   };
 }
 
+function explainStep(step: string, index: number, topicTitle: string) {
+  const prefix = index === 0 ? "Start here" : index === 1 ? "Then" : "Finally";
+  return `${prefix}: ${step}. In ${topicTitle}, this means you should understand this part before moving to the next idea.`;
+}
+
+function expandedConceptBlocks(topicId: string): LessonBlock[] {
+  const guide = getGuide(topicId);
+  return [
+    { type: "heading", content: "Understand the idea first" },
+    {
+      type: "paragraph",
+      content:
+        `${guide.hook} ${guide.outcome} The important point is not memorizing a tool name. ` +
+        "The important point is understanding what problem this concept solves, when to use it, and what can go wrong if it is used carelessly.",
+    },
+    flowDiagram(topicId),
+    { type: "heading", content: "Step-by-step meaning" },
+    {
+      type: "list",
+      items: guide.steps.map((step, index) => explainStep(step, index, guide.title)),
+    },
+    { type: "heading", content: "How this appears in a real app" },
+    {
+      type: "paragraph",
+      content:
+        `${guide.example} Think of this as the real-world situation where the concept becomes useful. ` +
+        "If you can explain this example in your own words, you understand the lesson well enough to continue.",
+    },
+    { type: "heading", content: "What beginners often miss" },
+    {
+      type: "paragraph",
+      content:
+        "A beginner mistake is treating AI features as magic. In real applications, every AI feature still has inputs, outputs, limits, and failure cases. " +
+        "Good AI developers make those parts visible and testable.",
+    },
+    { type: "tip", content: guide.caution },
+  ];
+}
+
+function setupBlocks(topicId: string): LessonBlock[] {
+  const guide = getGuide(topicId);
+  const steps = SETUP_STEPS[topicId] ?? [];
+  return [
+    ...expandedConceptBlocks(topicId),
+    { type: "heading", content: "Setup steps explained" },
+    {
+      type: "paragraph",
+      content:
+        "Setup lessons are about preparing your local environment. You do not need to run anything inside this website. " +
+        "Read the steps, understand why each one exists, and then repeat them in your own project folder.",
+    },
+    ...steps.flatMap((step, index): LessonBlock[] => [
+      {
+        type: "heading",
+        content: `${index + 1}. ${step.title}`,
+      },
+      {
+        type: "paragraph",
+        content: [step.description, step.note].filter(Boolean).join(" "),
+      },
+      ...(step.commands && step.commands.length > 0
+        ? [
+            {
+              type: "list" as const,
+              items: step.commands.map(
+                (command) => `Command or code to use locally: ${command}`
+              ),
+            },
+          ]
+        : []),
+    ]),
+    { type: "tip", content: guide.caution },
+  ];
+}
+
+function implementationIdeaBlocks(topicId: string): LessonBlock[] {
+  const guide = getGuide(topicId);
+  return [
+    ...expandedConceptBlocks(topicId),
+    { type: "heading", content: "How to think about the implementation" },
+    {
+      type: "paragraph",
+      content:
+        "Instead of memorizing code, focus on the moving parts. Ask: what data enters this step, what decision happens, what output should be produced, and how would I verify it worked?",
+    },
+    {
+      type: "list",
+      items: [
+        `Input: ${guide.steps[0]}. This is the information or setup the app needs first.`,
+        `Process: ${guide.steps[1]}. This is where the app transforms, routes, retrieves, or reasons over information.`,
+        `Output: ${guide.steps[2]}. This is the result the user or the next system step depends on.`,
+        "Check: decide what a correct result should look like before trusting the model output.",
+      ],
+    },
+  ];
+}
+
 // ─── Type A — Concept lesson ─────────────────────────────────────────────────
-// Pure theory topics: visual explanation, no executable code, no practice IDE.
-// Right side shows a ConceptSummaryPanel derived from the concept-card block.
+// Pure theory topics: visual explanation, expanded writing, concept panel.
 
 export function buildConceptLesson(topicId: string): TopicLesson {
   const guide = getGuide(topicId);
@@ -55,15 +146,7 @@ export function buildConceptLesson(topicId: string): TopicLesson {
     intro: guide.hook,
     blocks: [
       infographic(topicId),
-      { type: "heading", content: guide.title },
-      {
-        type: "paragraph",
-        content: `${guide.hook} ${guide.outcome}`,
-      },
-      flowDiagram(topicId),
-      { type: "heading", content: "Where it fits in a real AI app" },
-      { type: "paragraph", content: guide.example },
-      { type: "tip", content: guide.caution },
+      ...expandedConceptBlocks(topicId),
       {
         type: "concept-card",
         conceptSummary: {
@@ -84,8 +167,7 @@ export function buildConceptLesson(topicId: string): TopicLesson {
 }
 
 // ─── Type B — Setup lesson ───────────────────────────────────────────────────
-// Step-by-step install / configuration topics.
-// Right side shows a SetupChecklistPanel.
+// Step-by-step install / configuration topics rendered inline and in panel.
 
 const SETUP_STEPS: Record<string, LessonBlock["setupSteps"]> = {
   "ai-lc-t2": [
@@ -170,12 +252,7 @@ export function buildSetupLesson(topicId: string): TopicLesson {
     intro: guide.hook,
     blocks: [
       infographic(topicId),
-      { type: "heading", content: "What you need before starting" },
-      {
-        type: "paragraph",
-        content: `${guide.hook} ${guide.outcome}`,
-      },
-      { type: "tip", content: guide.caution },
+      ...setupBlocks(topicId),
       {
         type: "setup-checklist",
         setupSteps: steps,
@@ -190,32 +267,26 @@ export function buildSetupLesson(topicId: string): TopicLesson {
 }
 
 // ─── Type C — Code Demo lesson ───────────────────────────────────────────────
-// Concept explanation on the left, Jupyter notebook panel on the right.
+// Concept explanation with implementation code rendered inline and in notebook panel.
 
 export function buildCodeDemoLesson(topicId: string): TopicLesson {
   const guide = getGuide(topicId);
-  const cells = NOTEBOOK_CELLS[topicId] ?? [];
-  const installCell = cells.find((c) => c.cellType === "install");
-  const installCmd = installCell?.code ?? GROQ_INSTALL;
 
   return {
     topicId,
     intro: guide.hook,
     blocks: [
       infographic(topicId),
-      { type: "heading", content: guide.title },
+      ...implementationIdeaBlocks(topicId),
       {
-        type: "paragraph",
-        content: `${guide.hook} ${guide.outcome}`,
-      },
-      flowDiagram(topicId),
-      { type: "heading", content: "How it works" },
-      { type: "paragraph", content: guide.example },
-      { type: "tip", content: guide.caution },
-      {
-        type: "jupyter-notebook",
-        installCmd,
-        notebookCells: cells,
+        type: "concept-card",
+        conceptSummary: {
+          hook: guide.hook,
+          outcome: guide.outcome,
+          steps: guide.steps,
+          example: guide.example,
+          caution: guide.caution,
+        },
       },
     ],
     keyTakeaways: [
@@ -227,8 +298,7 @@ export function buildCodeDemoLesson(topicId: string): TopicLesson {
 }
 
 // ─── Type D — Playground lesson ──────────────────────────────────────────────
-// Live Groq chat panel on the right side. Uses existing GroqChatPlayground.
-
+// Playground topics include written testing guidance and the embedded chat panel.
 const PLAYGROUND_PROMPTS: Record<string, string> = {
   "ai-m4-t3":
     "You are a helpful Python tutor. Give clear, beginner-friendly answers. If a question is off-topic, politely redirect.",
@@ -243,23 +313,18 @@ export function buildPlaygroundLesson(topicId: string): TopicLesson {
     intro: guide.hook,
     blocks: [
       infographic(topicId),
-      { type: "heading", content: guide.title },
-      {
-        type: "paragraph",
-        content: `${guide.hook} ${guide.outcome}`,
-      },
-      { type: "heading", content: "What to try" },
+      ...expandedConceptBlocks(topicId),
+      { type: "heading", content: "How to test this without a built-in playground" },
       {
         type: "list",
         items: [
-          "Ask the bot a beginner Python question.",
-          "Ask a follow-up — does it remember context?",
-          "Give an off-topic prompt and see how it responds.",
-          "Try changing the system prompt to give the bot a different persona.",
-          "Send an ambiguous question and see what assumptions it makes.",
+          "Write down five realistic user messages before testing.",
+          "Include one follow-up question to check whether the chatbot uses history correctly.",
+          "Include one unclear question to see whether the bot asks for clarification.",
+          "Include one off-topic or unsafe request to verify the guardrails.",
+          "Compare responses against your expected behavior, not just whether the model produced text.",
         ],
       },
-      { type: "tip", content: guide.caution },
       {
         type: "groq-playground",
         systemPrompt,
@@ -293,9 +358,6 @@ const PROJECT_INTROS: Record<string, { overview: string; whatYoullBuild: string 
 
 export function buildProjectLesson(topicId: string): TopicLesson {
   const guide = getGuide(topicId);
-  const cells = NOTEBOOK_CELLS[topicId] ?? [];
-  const installCell = cells.find((c) => c.cellType === "install");
-  const installCmd = installCell?.code ?? GROQ_INSTALL;
   const meta = PROJECT_INTROS[topicId];
 
   return {
@@ -309,10 +371,16 @@ export function buildProjectLesson(topicId: string): TopicLesson {
       { type: "paragraph", content: meta?.overview ?? guide.example },
       flowDiagram(topicId),
       { type: "tip", content: guide.caution },
+      ...implementationIdeaBlocks(topicId),
       {
-        type: "jupyter-notebook",
-        installCmd,
-        notebookCells: cells,
+        type: "concept-card",
+        conceptSummary: {
+          hook: guide.hook,
+          outcome: guide.outcome,
+          steps: guide.steps,
+          example: guide.example,
+          caution: guide.caution,
+        },
       },
     ],
     keyTakeaways: [
@@ -387,6 +455,3 @@ export function buildAgenticAiLessons(
     topicIds.map((id) => [id, buildAgenticAiLesson(id)])
   );
 }
-
-// Legacy export kept for any direct imports
-export { buildAgenticAiExampleCode };
