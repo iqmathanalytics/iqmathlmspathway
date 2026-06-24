@@ -1,4 +1,4 @@
-import { getModulesByCourse, getPublishedTopicCount } from "@/data/curriculum";
+import { getModulesByCourse } from "@/data/curriculum";
 import { HomeHero } from "./HomeHero";
 import { HomeCourses } from "./HomeCourses";
 import { HomeFeatures } from "./HomeFeatures";
@@ -7,7 +7,7 @@ import { HomeCTA } from "./HomeCTA";
 
 export default function HomePage() {
   const pythonModules = getModulesByCourse("python");
-  const liveTopics = getPublishedTopicCount();
+  const agenticAiModules = getModulesByCourse("agentic-ai");
 
   return (
     <div className="bg-white">
@@ -20,8 +20,8 @@ export default function HomePage() {
       {/* 3. Platform features — why learn here */}
       <HomeFeatures />
 
-      {/* 4. Python curriculum roadmap — module grid */}
-      <HomeRoadmap modules={pythonModules} />
+      {/* 4. Curriculum roadmap — switchable between Python and Agentic AI */}
+      <HomeRoadmap pythonModules={pythonModules} agenticAiModules={agenticAiModules} />
 
       {/* 5. CTA — start either course */}
       <HomeCTA />

@@ -18,7 +18,7 @@ const COURSE_META: Record<
 > = {
   python: {
     firstTopicHref: "/learn/introduction-and-setup/introduction-to-programming",
-    dashboardHref: "/dashboard",
+    dashboardHref: "/dashboard?course=python",
     gradient: "from-emerald-500/15 via-brand-500/10 to-transparent",
     badgeClass: "bg-emerald-50 text-emerald-700 ring-emerald-200",
     levelLabel: "Beginner friendly",
@@ -31,7 +31,7 @@ const COURSE_META: Record<
   },
   "agentic-ai": {
     firstTopicHref: "/learn/intro-to-ai/what-is-ai",
-    dashboardHref: "/dashboard",
+    dashboardHref: "/dashboard?course=agentic-ai",
     gradient: "from-violet-500/15 via-purple-500/10 to-transparent",
     badgeClass: "bg-violet-50 text-violet-700 ring-violet-200",
     levelLabel: "Some Python helpful",
