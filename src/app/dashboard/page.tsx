@@ -2,7 +2,7 @@
 
 import { Suspense, useCallback, useEffect, useState } from "react";
 import { getModulesByCourse } from "@/data/curriculum";
-import { courses } from "@/data/courses";
+import { courses } from "@/data/courses"; // used for URL param validation
 import { getPracticeCountForTopics } from "@/data/practice/meta";
 import { PAGE_CONTAINER } from "@/lib/layout";
 import { useAuth } from "@/contexts/AuthContext";
@@ -23,18 +23,20 @@ export default function DashboardPage() {
   const [practiceSolved, setPracticeSolved] = useState(0);
   const [activeCourse, setActiveCourse] = useState<CourseId>("python");
 
-  // Restore last active course from localStorage
+  // On mount: honour ?course= URL param first, then fall back to localStorage
   useEffect(() => {
     try {
+      const params = new URLSearchParams(window.location.search);
+      const paramCourse = params.get("course") as CourseId | null;
+      if (paramCourse && courses.some((c) => c.id === paramCourse)) {
+        setActiveCourse(paramCourse);
+        localStorage.setItem(COURSE_STORAGE_KEY, paramCourse);
+        return;
+      }
       const saved = localStorage.getItem(COURSE_STORAGE_KEY) as CourseId | null;
       if (saved && courses.some((c) => c.id === saved)) setActiveCourse(saved);
     } catch { /* ignore */ }
   }, []);
-
-  const switchCourse = (id: CourseId) => {
-    setActiveCourse(id);
-    try { localStorage.setItem(COURSE_STORAGE_KEY, id); } catch { /* ignore */ }
-  };
 
   const courseModules = getModulesByCourse(activeCourse);
 
@@ -103,25 +105,6 @@ export default function DashboardPage() {
       <p className="mt-2 text-gray-600">
         Welcome back{profile?.full_name ? `, ${profile.full_name}` : ""}.
       </p>
-
-      {/* Course switcher tabs */}
-      <div className="mt-6 flex gap-2 flex-wrap">
-        {courses.map((course) => (
-          <button
-            key={course.id}
-            type="button"
-            onClick={() => switchCourse(course.id)}
-            className={`inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-colors ${
-              activeCourse === course.id
-                ? "bg-brand-600 text-white shadow-sm"
-                : "border border-gray-200 bg-white text-gray-600 hover:border-brand-300 hover:text-brand-700"
-            }`}
-          >
-            <span>{course.icon}</span>
-            {course.name}
-          </button>
-        ))}
-      </div>
 
       {loading ? (
         <div className="mt-12 flex justify-center">
