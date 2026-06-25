@@ -1,16 +1,6 @@
 "use client";
 
-import {
-  Brain,
-  CheckCircle2,
-  Lightbulb,
-  MessageSquare,
-  Network,
-  ShieldCheck,
-  Sparkles,
-  Workflow,
-  Zap,
-} from "lucide-react";
+import { Lightbulb } from "lucide-react";
 
 type TopicInfo = {
   moduleLabel: string;
@@ -22,15 +12,6 @@ type TopicInfo = {
   caution: string;
   icon: "brain" | "prompt" | "api" | "chat" | "agent" | "ship";
 };
-
-const ICONS = {
-  brain: Brain,
-  prompt: MessageSquare,
-  api: Zap,
-  chat: MessageSquare,
-  agent: Workflow,
-  ship: Network,
-} as const;
 
 const TOPICS: Record<string, TopicInfo> = {
   "ai-m1-t1": {
@@ -386,107 +367,455 @@ const DEFAULT_TOPIC: TopicInfo = {
   icon: "brain",
 };
 
-export function AgenticAiTopicInfographic({ topicId }: { topicId?: string }) {
-  const info = (topicId && TOPICS[topicId]) || DEFAULT_TOPIC;
-  const Icon = ICONS[info.icon];
+function moduleBadge(info: TopicInfo) {
+  if (info.moduleLabel.includes("AI Foundations")) return "Module 1";
+  if (info.moduleLabel.includes("LangChain")) return "Module 2";
+  if (info.moduleLabel.includes("Prompt")) return "Module 3";
+  if (info.moduleLabel.includes("Groq")) return "Module 4";
+  if (info.moduleLabel.includes("Chatbots")) return "Module 5";
+  if (info.moduleLabel.includes("Agents")) return "Module 6";
+  if (info.moduleLabel.includes("Real Apps")) return "Module 7";
+  return "Agentic AI";
+}
+
+function lessonSubtitle(info: TopicInfo) {
+  const module = info.moduleLabel.toLowerCase();
+  if (module.includes("foundation")) {
+    return "Start with the beginner picture: what the idea means, why it matters, and how to recognize it in simple AI products.";
+  }
+  if (module.includes("langchain")) {
+    return "Learn how this LangChain idea helps turn separate AI parts into a clear application workflow.";
+  }
+  if (module.includes("prompt")) {
+    return "Learn how this prompt idea helps you guide a model before you depend on its answer in an app.";
+  }
+  if (module.includes("groq")) {
+    return "Learn how this Groq idea fits into the request-and-response path of a real LLM application.";
+  }
+  if (module.includes("chatbot")) {
+    return "Learn how this chatbot idea shapes the user experience around each model response.";
+  }
+  if (module.includes("agent")) {
+    return "Learn how this agent idea helps an AI system decide actions while staying controlled and testable.";
+  }
+  return "Learn how this app-building idea moves an AI demo closer to something users can trust.";
+}
+
+function appFit(info: TopicInfo) {
+  const module = info.moduleLabel.toLowerCase();
+  if (module.includes("foundation")) {
+    return "This knowledge helps you decide what AI can and cannot do. Before choosing tools or writing prompts, ask whether the task needs prediction, generation, retrieval, rule-following, or human review.";
+  }
+  if (module.includes("langchain")) {
+    return "LangChain fits where an app needs multiple AI building blocks connected together: prompts, models, parsers, tools, retrievers, and traces. It helps organize the workflow so the app is easier to extend and debug.";
+  }
+  if (module.includes("prompt")) {
+    return "Prompts sit between your app logic and the model. They translate user intent, product rules, and output requirements into instructions the model can follow.";
+  }
+  if (module.includes("groq")) {
+    return "Groq fits behind the app as the model provider. Your application prepares messages, chooses a model, sends the request securely, and handles the response, errors, and usage.";
+  }
+  if (module.includes("chatbot")) {
+    return "Chatbot concepts fit around the model call. The app manages conversation history, response settings, testing, streaming, and user experience so the chat feels useful instead of random.";
+  }
+  if (module.includes("agent")) {
+    return "Agent concepts fit when the model needs to choose actions, call tools, inspect results, and continue toward a goal. The app must still control permissions, step limits, and safety.";
+  }
+  return "This concept fits when you move from a demo to a real AI product. It helps with grounding, evaluation, monitoring, and making the system reliable for users.";
+}
+
+function keyTerms(info: TopicInfo): Array<[string, string]> {
+  const module = info.moduleLabel.toLowerCase();
+  if (module.includes("foundation")) {
+    return [
+      ["input", "Information given to an AI system: text, examples, an image, or a user question."],
+      ["pattern", "Something the model learns from data: repeated words, relationships, or structural regularities."],
+      ["prediction", "The model's best next output based on what it learned and the current context it receives."],
+      ["limitation", "A place where the model can be wrong, biased, outdated, or missing critical context."],
+    ];
+  }
+  if (module.includes("langchain")) {
+    return [
+      ["component", "One reusable part of an LLM app, such as a prompt, model, parser, retriever, or tool."],
+      ["chain", "A sequence where the output of one component becomes the input to the next component."],
+      ["parser", "The part that turns model output into the shape your app needs, such as text or structured data."],
+      ["trace", "A recorded view of what happened during a run, useful for debugging and monitoring."],
+    ];
+  }
+  if (module.includes("prompt")) {
+    return [
+      ["context", "Background information the model needs before answering."],
+      ["task", "The specific job you want the model to perform."],
+      ["constraint", "A rule that limits the answer: length, tone, allowed format, or topics to avoid."],
+      ["example", "A sample input/output pair that shows the model exactly the pattern you expect."],
+    ];
+  }
+  if (module.includes("groq")) {
+    return [
+      ["api key", "A private credential that identifies your app to Groq."],
+      ["model", "The specific LLM you choose for a request."],
+      ["message", "One item in the chat history, usually system, user, or assistant."],
+      ["usage", "Token counts that help you understand cost, context size, and response length."],
+    ];
+  }
+  if (module.includes("chatbot")) {
+    return [
+      ["history", "The messages your app sends so the model can follow the conversation."],
+      ["system prompt", "The instruction that defines the chatbot's role and behavior."],
+      ["turn", "One user message plus the assistant's reply."],
+      ["streaming", "Sending the reply in small chunks so the user sees progress quickly."],
+    ];
+  }
+  if (module.includes("agent")) {
+    return [
+      ["tool", "A function the agent can request, such as search, calculator, or database lookup."],
+      ["observation", "The result returned after a tool runs."],
+      ["loop", "The cycle of deciding, acting, observing, and deciding again."],
+      ["guardrail", "A rule that keeps the agent safe, limited, and testable."],
+    ];
+  }
+  return [
+    ["retrieval", "Finding relevant information before asking the model to answer."],
+    ["grounding", "Forcing the answer to use provided context instead of guessing."],
+    ["evaluation", "Checking whether outputs meet expected quality."],
+    ["monitoring", "Watching real app behavior after users start using it."],
+  ];
+}
+
+function mentalModel(info: TopicInfo) {
+  const module = info.moduleLabel.toLowerCase();
+  if (module.includes("foundation")) {
+    return "Learning AI foundations is like learning road signs before driving. You are not building the engine yet; you are learning what each signal means so later decisions make sense.";
+  }
+  if (module.includes("prompt")) {
+    return "A prompt is like a work order. The clearer the role, task, constraints, and format are, the more predictable the result becomes.";
+  }
+  if (module.includes("chatbot")) {
+    return "A chatbot is like a receptionist with a notebook. If the notebook has the conversation history, follow-up answers make sense.";
+  }
+  if (module.includes("agent")) {
+    return "An agent is like an assistant with approved tools and a checklist: decide, act, observe, and continue only when needed.";
+  }
+  return `${info.title} is easiest to understand as a small system: information enters, one step transforms or decides something, and the result is checked before the app trusts it.`;
+}
+
+function mistakes(info: TopicInfo): string[] {
+  const module = info.moduleLabel.toLowerCase();
+  if (module.includes("foundation")) {
+    return [
+      "Thinking AI understands like a human instead of predicting from learned patterns.",
+      "Forgetting that missing or biased training examples produce wrong behavior.",
+      "Assuming a confident-sounding answer is automatically correct.",
+      "Skipping tests because one demo response looked good.",
+    ];
+  }
+  if (module.includes("prompt")) {
+    return [
+      "Writing a vague prompt and expecting a precise, consistent answer.",
+      "Changing many prompt details at once, then not knowing what improved or broke the result.",
+      "Assuming a confident answer is automatically grounded and correct.",
+      "Skipping tests because one demo response looked good.",
+    ];
+  }
+  return [
+    `Using ${info.title} without knowing what problem it solves.`,
+    "Trusting model output without checking the input, context, and result.",
+    "Skipping tests because one demo response looked good.",
+    "Forgetting to explain the failure cases to users or teammates.",
+  ];
+}
+
+function realWorldExample(info: TopicInfo) {
+  if (info.title === "What AI Is") {
+    return {
+      title: "Spam Filter - Old Way vs AI Way",
+      leftTitle: "Rule-based approach",
+      left: 'Developers manually write keyword lists: block "free money," "click here." Every new spam tactic needs a new rule written by a human.',
+      rightTitle: "AI approach",
+      right: "Train on thousands of labelled emails. The model learns subtle patterns: phrasing, structure, sender context, without anyone writing every rule.",
+    };
+  }
+  if (info.title === "System vs User") {
+    return {
+      title: "System Message vs User Message",
+      leftTitle: "System",
+      left: "Defines the assistant's role, tone, boundaries, and output style before the user asks anything.",
+      rightTitle: "User",
+      right: "Provides the current task or question. It changes every turn while the system behavior stays stable.",
+    };
+  }
+  return {
+    title: "Real App Example",
+    leftTitle: "Without this concept",
+    left: "The app depends on a vague model response and gives the developer very little control over quality.",
+    rightTitle: "With this concept",
+    right: info.example,
+  };
+}
+
+function beginnerExplanation(info: TopicInfo) {
+  const module = info.moduleLabel.toLowerCase();
+  if (module.includes("foundation")) {
+    return `${info.title} is a starting lens for thinking about AI. Instead of memorizing tool names, focus on the simple question: what information goes in, what pattern or decision happens, and what result comes back?`;
+  }
+  if (module.includes("langchain")) {
+    return `${info.title} is about organizing an LLM app into smaller pieces. Each piece has one job, so you can swap, test, and debug the workflow without rewriting everything.`;
+  }
+  if (module.includes("prompt")) {
+    return `${info.title} is about giving the model a clearer job. A good prompt does not just ask a question; it gives direction, boundaries, and a useful response shape.`;
+  }
+  if (module.includes("groq")) {
+    return `${info.title} belongs to the model-call layer. Your app prepares messages, sends them to Groq, receives a response, and handles anything that can fail in between.`;
+  }
+  if (module.includes("chatbot")) {
+    return `${info.title} is about making a conversation feel coherent. The model creates the words, but the app decides what context, memory, and interface the user experiences.`;
+  }
+  if (module.includes("agent")) {
+    return `${info.title} is about controlled action. The model may choose a next step, but the app decides what tools exist, when they can run, and when the loop must stop.`;
+  }
+  return `${info.title} is part of turning an AI idea into a dependable product. The focus is less on one response and more on repeatable behavior over many users and many cases.`;
+}
+
+function learningFlow(info: TopicInfo): Array<[string, string, string]> {
+  const module = info.moduleLabel.toLowerCase();
+  if (module.includes("langchain")) {
+    return [
+      ["STEP 01", "Identify the parts", "List the prompt, model, parser, retriever, memory, or tool that the workflow needs."],
+      ["STEP 02", "Connect the path", "Decide how data should move from one part to the next without mixing responsibilities."],
+      ["STEP 03", "Inspect the run", "Check each intermediate result so problems are visible before the final answer reaches the user."],
+    ];
+  }
+  if (module.includes("prompt")) {
+    return [
+      ["STEP 01", "Set the job", "Tell the model what role it is playing and what task it must complete."],
+      ["STEP 02", "Add boundaries", "Give context, constraints, examples, and output rules so the response is easier to trust."],
+      ["STEP 03", "Compare results", "Test several inputs and improve the prompt based on real differences in output quality."],
+    ];
+  }
+  if (module.includes("groq")) {
+    return [
+      ["STEP 01", "Prepare the request", "Choose the model, create messages, and keep secrets such as API keys out of the page content."],
+      ["STEP 02", "Call the service", "Send the request and wait for the model response while handling loading and error states."],
+      ["STEP 03", "Use the response", "Display, stream, parse, or store only the parts your app actually needs."],
+    ];
+  }
+  if (module.includes("chatbot")) {
+    return [
+      ["STEP 01", "Capture the turn", "Read what the user said and attach only the conversation context that matters."],
+      ["STEP 02", "Shape the reply", "Use instructions, settings, and memory rules to guide how the assistant responds."],
+      ["STEP 03", "Improve the chat", "Test confusing user messages, long conversations, and failures so the interface stays helpful."],
+    ];
+  }
+  if (module.includes("agent")) {
+    return [
+      ["STEP 01", "Define allowed actions", "Give the agent only the tools and permissions it needs for the task."],
+      ["STEP 02", "Run one step at a time", "Let the system decide, act, observe the result, and then choose whether to continue."],
+      ["STEP 03", "Stop safely", "Use limits, checks, and clear success conditions so the agent does not wander."],
+    ];
+  }
+  return [
+    ["STEP 01", "Name the user problem", "Start from the user need, not the AI feature."],
+    ["STEP 02", "Design the AI support", "Decide where the model helps and where normal app logic should stay in control."],
+    ["STEP 03", "Check the result", "Test the output with examples, edge cases, and a clear quality target."],
+  ];
+}
+
+function appScenario(info: TopicInfo) {
+  const module = info.moduleLabel.toLowerCase();
+  if (module.includes("groq")) {
+    return {
+      title: "Support Assistant Request",
+      leftTitle: "App responsibility",
+      left: "Collect the user's question, attach the right instructions, protect the API key, and show loading or error messages clearly.",
+      rightTitle: "Model responsibility",
+      right: "Generate the answer from the messages it receives. The model should not own app security, UI state, or business rules.",
+    };
+  }
+  if (module.includes("chatbot")) {
+    return {
+      title: "Customer Chat Flow",
+      leftTitle: "Conversation layer",
+      left: "Keep the useful history, reset stale context, and decide when the bot should ask a follow-up question.",
+      rightTitle: "Response layer",
+      right: "Generate a helpful reply that matches the assistant's role and the user's current message.",
+    };
+  }
+  return {
+    title: "Small Product Scenario",
+    leftTitle: "Before design",
+    left: "The app sends a raw user request to the model and hopes the answer is useful.",
+    rightTitle: "After design",
+    right: "The app gives the model a clear job, checks the result, and keeps control over what users see.",
+  };
+}
+
+function teachingWarning(info: TopicInfo) {
+  const module = info.moduleLabel.toLowerCase();
+  if (module.includes("groq")) {
+    return "Treat every API call as part of the product, not just a code sample. Plan for missing keys, failed requests, slow responses, and answers that need validation.";
+  }
+  if (module.includes("chatbot")) {
+    return "A chatbot can feel correct because it sounds fluent. Test it with short messages, vague questions, repeated questions, and cases where it should refuse or ask for clarification.";
+  }
+  if (module.includes("agent")) {
+    return "Do not let an agent run without limits. Give it narrow tools, visible logs, step limits, and a clear rule for when human review is needed.";
+  }
+  return "Do not judge this idea from one perfect demo. Try a normal case, an unclear case, and a failure case before trusting the design.";
+}
+
+function AgenticArticle({ info }: { info: TopicInfo }) {
+  const checks = [
+    `I can explain what ${info.title} is in one or two plain sentences.`,
+    `I can point to the input, process, and output in the ${info.title} pattern.`,
+    "I can name one common failure case and how I would notice it.",
+    "I can describe where this idea fits in a real app, not just a lesson.",
+  ];
+  const example = appScenario(info);
+  const flow = learningFlow(info);
 
   return (
-    <div className="mb-8 overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 via-white to-blue-50 shadow-sm">
-      <div className="border-b border-slate-200/80 bg-white/70 px-5 py-4">
-        <div className="flex items-start gap-3">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-700">
-            <Icon className="h-5 w-5" />
+    <article className="mx-auto mb-8 max-w-[720px] px-0 py-2 text-gray-900">
+      <div className="mb-5 flex flex-wrap gap-2">
+        <span className="rounded-full bg-violet-100 px-3 py-1 text-[11px] font-semibold tracking-wide text-violet-800">
+          {moduleBadge(info)}
+        </span>
+        <span className="rounded-full bg-amber-100 px-3 py-1 text-[11px] font-semibold tracking-wide text-amber-800">
+          {info.moduleLabel}
+        </span>
+        <span className="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold tracking-wide text-slate-600">
+          ~10 min
+        </span>
+      </div>
+
+      <h1 className="mb-2 text-[28px] font-bold tracking-[-0.5px] text-slate-900">
+        {info.title}
+      </h1>
+      <p className="mb-8 max-w-xl text-[15px] leading-relaxed text-slate-500">
+        {lessonSubtitle(info)}
+      </p>
+
+      <section className="mb-8 rounded-r-xl border-l-[3px] border-indigo-500 bg-indigo-50 px-[18px] py-3.5">
+        <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[1.2px] text-indigo-700">
+          Core Idea
+        </p>
+        <p className="text-[14.5px] leading-relaxed text-slate-800">
+          {beginnerExplanation(info)}
+        </p>
+      </section>
+
+      <p className="mb-3 text-[10px] font-bold uppercase tracking-[1.2px] text-slate-400">
+        The Pattern
+      </p>
+      <section className="mb-8 grid gap-3 md:grid-cols-3">
+        {flow.map(([num, title, text]) => (
+          <div key={num} className="rounded-xl border border-slate-200 bg-white p-[18px]">
+            <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.8px] text-indigo-500">
+              {num}
+            </p>
+            <h3 className="mb-1.5 text-[13.5px] font-semibold leading-snug text-slate-900">
+              {title}
+            </h3>
+            <p className="text-[12.5px] leading-relaxed text-slate-500">{text}</p>
+          </div>
+        ))}
+      </section>
+
+      <section className="mb-8 flex gap-3.5 rounded-xl border border-slate-200 bg-slate-50 p-[18px]">
+        <div className="mt-0.5 shrink-0 text-xl">🚦</div>
+        <div>
+          <p className="mb-1 text-[10px] font-bold uppercase tracking-[1px] text-slate-400">
+            Mental Model
+          </p>
+          <p className="text-[13.5px] leading-relaxed text-slate-800">
+            {mentalModel(info)}
+          </p>
+        </div>
+      </section>
+
+      <p className="mb-3 text-[10px] font-bold uppercase tracking-[1.2px] text-slate-400">
+        Real-World Example
+      </p>
+      <section className="mb-8 rounded-xl border border-slate-200 bg-slate-50 p-[18px]">
+        <p className="mb-3.5 text-[10px] font-bold uppercase tracking-[1px] text-amber-600">
+          {example.title}
+        </p>
+        <div className="grid gap-4 md:grid-cols-2">
+          <div>
+            <h4 className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+              <span className="h-1.5 w-1.5 rounded-full bg-slate-400" />
+              {example.leftTitle}
+            </h4>
+            <p className="text-[13px] leading-relaxed text-slate-800">
+              {example.left}
+            </p>
           </div>
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-wide text-blue-700">
-              {info.moduleLabel}
-            </p>
-            <h2 className="text-lg font-semibold tracking-tight text-gray-950">
-              {info.title}
-            </h2>
-            <p className="mt-1 text-[13.5px] leading-relaxed text-gray-600">
-              {info.hook}
+            <h4 className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+              <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+              {example.rightTitle}
+            </h4>
+            <p className="text-[13px] leading-relaxed text-slate-800">
+              {example.right}
             </p>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="grid gap-4 p-5 lg:grid-cols-[1.05fr_0.95fr]">
-        <div className="space-y-4">
-          <div className="rounded-xl border border-blue-100 bg-blue-50/60 p-4">
-            <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-blue-900">
-              <Sparkles className="h-4 w-4" />
-              What you will be able to do
-            </div>
-            <p className="text-[13.5px] leading-relaxed text-gray-700">
-              {info.outcome}
-            </p>
+      <h2 className="mb-3 mt-8 text-[17px] font-semibold text-slate-900">Key Terms</h2>
+      <section className="mb-8 grid gap-2.5 md:grid-cols-2">
+        {keyTerms(info).map(([word, text]) => (
+          <div key={word} className="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3">
+            <p className="mb-1 font-mono text-xs font-semibold text-cyan-700">{word}</p>
+            <p className="text-[12.5px] leading-relaxed text-slate-500">{text}</p>
           </div>
+        ))}
+      </section>
 
-          <div className="rounded-xl border border-slate-200 bg-white/80 p-4">
-            <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-gray-900">
-              <Workflow className="h-4 w-4 text-blue-700" />
-              The pattern
-            </div>
-            <div className="grid gap-2 sm:grid-cols-3">
-              {info.steps.map((step, i) => (
-                <div
-                  key={step}
-                  className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2"
-                >
-                  <div className="mb-1 flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-[11px] font-bold text-white">
-                    {i + 1}
-                  </div>
-                  <p className="text-[12.5px] font-medium leading-snug text-gray-700">
-                    {step}
-                  </p>
-                </div>
-              ))}
-            </div>
+      <section className="mb-6 rounded-[10px] border border-green-200 bg-green-50 px-[18px] py-4">
+        <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[1px] text-green-600">
+          Where It Fits in a Real App
+        </p>
+        <p className="text-[13.5px] leading-relaxed text-slate-800">
+          {appFit(info)}
+        </p>
+      </section>
+
+      <section className="mb-6 flex gap-3 rounded-[10px] border border-amber-200 bg-amber-50 px-4 py-3.5">
+        <div className="mt-0.5 shrink-0 text-base">⚠️</div>
+        <p className="text-[13.5px] leading-relaxed text-slate-800">
+          <strong className="text-amber-600">Watch out:</strong> AI does not
+          remove the need for checking. {teachingWarning(info)}
+        </p>
+      </section>
+
+      <h2 className="mb-3 mt-8 text-[17px] font-semibold text-slate-900">Common Mistakes</h2>
+      <section className="mb-8">
+        {mistakes(info).map((mistake) => (
+          <div key={mistake} className="flex gap-2.5 border-b border-slate-100 py-2.5 text-[13.5px] leading-relaxed text-slate-500 last:border-b-0">
+            <span className="shrink-0 font-bold text-red-500">✗</span>
+            {mistake}
           </div>
+        ))}
+      </section>
+
+      <section className="mb-8 rounded-xl border border-slate-200 bg-white p-5">
+        <p className="mb-3.5 text-[10px] font-bold uppercase tracking-[1px] text-green-600">
+          Check Your Understanding
+        </p>
+        <div className="space-y-2.5">
+          {checks.map((check) => (
+            <label key={check} className="flex cursor-pointer select-none items-start gap-2.5">
+              <span className="mt-0.5 flex h-[17px] w-[17px] shrink-0 items-center justify-center rounded border border-slate-300" />
+              <span className="text-[13.5px] leading-relaxed text-slate-500">{check}</span>
+            </label>
+          ))}
         </div>
-
-        <div className="space-y-4">
-          <div className="rounded-xl border border-indigo-100 bg-indigo-50/70 p-4">
-            <div className="mb-1 flex items-center gap-2 text-sm font-semibold text-indigo-950">
-              <Lightbulb className="h-4 w-4" />
-              Plain meaning
-            </div>
-            <p className="text-[13px] leading-relaxed text-gray-700">
-              {info.title} is a building block in an AI application. First
-              understand what information goes in, what decision or
-              transformation happens, and what useful result should come out.
-            </p>
-          </div>
-
-          <div className="rounded-xl border border-emerald-100 bg-emerald-50/70 p-4">
-            <div className="mb-1 flex items-center gap-2 text-sm font-semibold text-emerald-900">
-              <CheckCircle2 className="h-4 w-4" />
-              Example
-            </div>
-            <p className="text-[13px] leading-relaxed text-gray-700">
-              {info.example}
-            </p>
-          </div>
-
-          <div className="rounded-xl border border-amber-200 bg-amber-50/80 p-4">
-            <div className="mb-1 flex items-center gap-2 text-sm font-semibold text-amber-950">
-              <ShieldCheck className="h-4 w-4" />
-              Watch out
-            </div>
-            <p className="text-[13px] leading-relaxed text-gray-700">
-              {info.caution}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="border-t border-slate-200/80 bg-white/70 px-5 py-3">
-        <div className="flex items-center gap-2 text-[12px] font-medium text-gray-600">
-          <Lightbulb className="h-3.5 w-3.5 text-blue-700" />
-          Read the visual first. The lesson below explains the idea step by step.
-        </div>
-      </div>
-    </div>
+      </section>
+    </article>
   );
+}
+
+export function AgenticAiTopicInfographic({ topicId }: { topicId?: string }) {
+  const info = (topicId && TOPICS[topicId]) || DEFAULT_TOPIC;
+  return <AgenticArticle info={info} />;
 }

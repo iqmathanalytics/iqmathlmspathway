@@ -252,8 +252,8 @@ function expandedConceptBlocks(topicId: string): LessonBlock[] {
     {
       type: "paragraph",
       content:
-        `${guide.hook} ${guide.outcome} The important point is not memorizing a tool name. ` +
-        "The important point is understanding what problem this concept solves, when to use it, and what can go wrong if it is used carelessly.",
+        `Before using ${guide.title}, slow down and ask what job it is doing in the application. ` +
+        "Most AI concepts are not isolated facts; they are parts of a flow. A user gives something, the app prepares context, the model or system makes a decision, and the result must be checked before anyone trusts it.",
     },
     { type: "heading", content: "Why this matters" },
     {
@@ -265,28 +265,29 @@ function expandedConceptBlocks(topicId: string): LessonBlock[] {
       type: "paragraph",
       content: mentalModel(topicId),
     },
-    { type: "heading", content: "Simple analogy" },
+    { type: "heading", content: "Beginner translation" },
     {
-      type: "paragraph",
-      content: simpleAnalogy(topicId),
+      type: "list",
+      items: [
+        `What it is: ${guide.title} is one part of an AI app workflow, not the whole app by itself.`,
+        `Why you use it: ${guide.outcome}`,
+        `How to remember it: ${simpleAnalogy(topicId)}`,
+      ],
     },
-    { type: "heading", content: "Key words in this lesson" },
+    { type: "heading", content: "Important words before you continue" },
     {
       type: "list",
       items: vocabulary(topicId),
     },
-    flowDiagram(topicId),
-    { type: "heading", content: "Step-by-step meaning" },
-    {
-      type: "list",
-      items: guide.steps.map((step, index) => explainStep(step, index, guide.title)),
-    },
-    { type: "heading", content: "How this appears in a real app" },
+    { type: "heading", content: "How to read the pattern" },
     {
       type: "paragraph",
       content:
-        `${guide.example} Think of this as the real-world situation where the concept becomes useful. ` +
-        "If you can explain this example in your own words, you understand the lesson well enough to continue.",
+        "The visual pattern above is a shortcut. Read it from left to right: first identify what the app needs, then understand what transformation happens, then check what output the next part of the app receives.",
+    },
+    {
+      type: "list",
+      items: guide.steps.map((step, index) => explainStep(step, index, guide.title)),
     },
     { type: "heading", content: "Where it fits in an AI app" },
     {
