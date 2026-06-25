@@ -27,7 +27,6 @@ export const agenticAiModules: Module[] = [
     topics: [
       { id: "ai-lc-t1", title: "What is LangChain?", slug: "what-is-langchain", description: "Understand LangChain as a framework for composing LLM app building blocks.", estimatedMinutes: 8, published: true },
       { id: "ai-lc-t2", title: "Installing and Setting Up LangChain", slug: "setting-up-langchain", description: "Install LangChain packages and understand provider API key setup.", estimatedMinutes: 10, published: true },
-      { id: "ai-lc-t3", title: "Chat Models and Providers", slug: "chat-models-and-providers", description: "Use one chat model interface across OpenAI, Anthropic, Google, Groq, and more.", estimatedMinutes: 12, published: true },
       { id: "ai-lc-t4", title: "Prompt Templates", slug: "prompt-templates", description: "Build reusable prompts with variables and chat message roles.", estimatedMinutes: 10, published: true },
       { id: "ai-lc-t5", title: "LCEL Chains and Output Parsers", slug: "lcel-chains-output-parsers", description: "Compose prompts, models, and parsers with the LangChain pipe pattern.", estimatedMinutes: 12, published: true },
       { id: "ai-lc-t6", title: "Agents and Tools in LangChain", slug: "agents-and-tools", description: "Create a simple agent harness with tools and a system prompt.", estimatedMinutes: 12, published: true },

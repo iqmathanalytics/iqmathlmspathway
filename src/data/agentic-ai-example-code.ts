@@ -156,25 +156,6 @@ setup_status = {
 print(setup_status)
 `,
 
-  "ai-lc-t3": () => `# Chat Models and Providers
-# Pick one provider while keeping the rest of the app unchanged.
-from langchain_openai import ChatOpenAI
-# from langchain_anthropic import ChatAnthropic
-# from langchain_groq import ChatGroq
-PROVIDERS = {
-    "openai": lambda: ChatOpenAI(model="gpt-3.5-turbo", temperature=0),
-    # "anthropic": lambda: ChatAnthropic(model="claude-3-5-sonnet-latest"),
-    # "groq": lambda: ChatGroq(model="llama-3.1-8b-instant"),
-}
-provider_name = "openai"
-chat_model = PROVIDERS[provider_name]()
-messages = [
-    ("system", "You explain AI concepts simply."),
-    ("human", "Explain why LangChain supports multiple providers."),
-]
-response = chat_model.invoke(messages)
-print(response.content)
-`,
 
   "ai-lc-t4": () => `# Prompt Templates
 # Build reusable prompts with variables and chat roles.
@@ -775,23 +756,6 @@ llm = ChatOpenAI(
 )
 `,
 
-  "ai-lc-t3": `# Chat Models and Providers
-# Concept: keep one app interface while swapping model providers.
-from langchain_openai import ChatOpenAI
-from langchain_anthropic import ChatAnthropic
-from langchain_groq import ChatGroq
-PROVIDERS = {
-    "openai": lambda: ChatOpenAI(model="gpt-3.5-turbo"),
-    "anthropic": lambda: ChatAnthropic(model="claude-3-5-sonnet-latest"),
-    "groq": lambda: ChatGroq(model="llama-3.1-8b-instant"),
-}
-def get_chat_model(provider_name):
-    if provider_name not in PROVIDERS:
-        raise ValueError("Unsupported provider")
-    return PROVIDERS[provider_name]()
-chat_model = get_chat_model("groq")
-response = chat_model.invoke("Explain provider switching in one sentence.")
-`,
 
   "ai-lc-t4": `# Prompt Templates
 # Concept: reusable chat prompt with roles and variables.

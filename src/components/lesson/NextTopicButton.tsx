@@ -9,6 +9,8 @@ import { useState, useEffect, useCallback } from "react";
 interface NextTopicButtonProps {
   topicId: string;
   hasQuiz: boolean;
+  /** When false, IDE run requirement is hidden (e.g. concept/workflow topics with no code exercise) */
+  hasIde?: boolean;
   href: string;
   label: string;
   /** "header" = semi-highlighted button that opens popup; "footer" = solid brand / locked */
@@ -19,19 +21,21 @@ interface NextTopicButtonProps {
 function NextTopicPopup({
   topicId,
   hasQuiz,
+  hasIde = true,
   href,
   label,
   onClose,
 }: {
   topicId: string;
   hasQuiz: boolean;
+  hasIde?: boolean;
   href: string;
   label: string;
   onClose: () => void;
 }) {
   const { progress, ready } = useProgress();
 
-  const ideDone  = ready && isIdeRan(progress, topicId);
+  const ideDone  = !hasIde || (ready && isIdeRan(progress, topicId));
   const quizDone = ready && (!hasQuiz || isQuizDone(progress, topicId));
   const canProceed = ideDone && quizDone;
 
@@ -75,19 +79,21 @@ function NextTopicPopup({
 
         {/* Requirements checklist */}
         <ul className="space-y-3 px-4 py-4">
-          <li className="flex items-start gap-3">
-            {ideDone
-              ? <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-green-500" />
-              : <Circle className="mt-0.5 h-5 w-5 shrink-0 text-gray-300" />}
-            <div>
-              <p className={`text-sm font-medium ${ideDone ? "text-gray-400 line-through" : "text-gray-800"}`}>
-                Run the Python IDE
-              </p>
-              <p className="text-xs text-gray-500">
-                Try the code exercise on the right panel
-              </p>
-            </div>
-          </li>
+          {hasIde && (
+            <li className="flex items-start gap-3">
+              {ideDone
+                ? <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-green-500" />
+                : <Circle className="mt-0.5 h-5 w-5 shrink-0 text-gray-300" />}
+              <div>
+                <p className={`text-sm font-medium ${ideDone ? "text-gray-400 line-through" : "text-gray-800"}`}>
+                  Run the Python IDE
+                </p>
+                <p className="text-xs text-gray-500">
+                  Try the code exercise on the right panel
+                </p>
+              </div>
+            </li>
+          )}
 
           {hasQuiz && (
             <li className="flex items-start gap-3">
@@ -137,6 +143,7 @@ function NextTopicPopup({
 export function NextTopicButton({
   topicId,
   hasQuiz,
+  hasIde = true,
   href,
   label,
   variant = "footer",
@@ -145,7 +152,7 @@ export function NextTopicButton({
   const [popupOpen, setPopupOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
 
-  const ideDone  = ready && isIdeRan(progress, topicId);
+  const ideDone  = !hasIde || (ready && isIdeRan(progress, topicId));
   const quizDone = ready && (!hasQuiz || isQuizDone(progress, topicId));
   const canProceed = ideDone && quizDone;
 
@@ -173,6 +180,7 @@ export function NextTopicButton({
           <NextTopicPopup
             topicId={topicId}
             hasQuiz={hasQuiz}
+            hasIde={hasIde}
             href={href}
             label={label}
             onClose={closePopup}

@@ -72,16 +72,6 @@ export const AGENTIC_AI_TOPIC_GUIDES: Record<string, AgenticAiTopicGuide> = {
     caution: "Never paste real API keys into lessons, frontend code, or Git commits.",
     icon: "api",
   },
-  "ai-lc-t3": {
-    moduleLabel: "LangChain",
-    title: "Chat Models",
-    hook: "LangChain gives chat models a standard interface so provider changes do not rewrite your app logic.",
-    outcome: "You will initialize a chat model and understand why provider portability matters.",
-    steps: ["Pick provider", "Initialize model", "Invoke with messages"],
-    example: "init_chat_model('openai:gpt-5.5') and init_chat_model('anthropic:claude-sonnet-4-6') follow the same pattern.",
-    caution: "Different providers still have different model names, keys, limits, and supported features.",
-    icon: "api",
-  },
   "ai-lc-t4": {
     moduleLabel: "LangChain",
     title: "Prompt Templates",

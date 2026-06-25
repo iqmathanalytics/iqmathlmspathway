@@ -60,6 +60,12 @@ import { FunctionVariablesInfographic } from "@/components/lesson/FunctionVariab
 import { FunctionRecursionInfographic } from "@/components/lesson/FunctionRecursionInfographic";
 import { LambdaFunctionsInfographic } from "@/components/lesson/LambdaFunctionsInfographic";
 import { AgenticAiTopicInfographic } from "@/components/lesson/AgenticAiTopicInfographic";
+import { LangChainIntroBlock } from "@/components/lesson/LangChainIntroBlock";
+import { LangChainSetupGuide } from "@/components/lesson/LangChainSetupGuide";
+import { LangChainPromptsBlock } from "@/components/lesson/LangChainPromptsBlock";
+import { LangChainLCELBlock } from "@/components/lesson/LangChainLCELBlock";
+import { LangChainAgentsBlock } from "@/components/lesson/LangChainAgentsBlock";
+import { LangChainLangSmithBlock } from "@/components/lesson/LangChainLangSmithBlock";
 import { FinalProjectInfographic } from "@/components/lesson/FinalProjectInfographic";
 import { ArrowRight, Lightbulb, Code2, Pencil, Play } from "lucide-react";
 
@@ -413,6 +419,28 @@ export function LessonContent({
 
             return null;
           }
+          // Module 2 — custom visual blocks
+          case "langchain-intro":
+            return <LangChainIntroBlock key={i} />;
+          case "langchain-setup-guide":
+            return <LangChainSetupGuide key={i} />;
+          case "langchain-prompts":
+            return <LangChainPromptsBlock key={i} />;
+          case "langchain-lcel":
+            return <LangChainLCELBlock key={i} />;
+          case "langchain-agents":
+            return <LangChainAgentsBlock key={i} />;
+          case "langchain-langsmith":
+            return <LangChainLangSmithBlock key={i} />;
+          // Right-side / layout signal blocks — no visible left-side content
+          case "langchain-workflow":
+          case "langchain-steps-checklist":
+          case "langchain-prompts-guide":
+          case "langchain-lcel-guide":
+          case "langchain-agents-guide":
+          case "langchain-langsmith-guide":
+          case "single-column":
+            return null;
           // Right-side signal blocks — rendered invisibly in the left column
           case "jupyter-notebook":
             return (
