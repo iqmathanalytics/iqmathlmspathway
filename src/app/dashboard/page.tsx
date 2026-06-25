@@ -38,6 +38,16 @@ export default function DashboardPage() {
     } catch { /* ignore */ }
   }, []);
 
+  function switchCourse(id: CourseId) {
+    setActiveCourse(id);
+    try {
+      localStorage.setItem(COURSE_STORAGE_KEY, id);
+      const url = new URL(window.location.href);
+      url.searchParams.set("course", id);
+      window.history.replaceState(null, "", url.toString());
+    } catch { /* ignore */ }
+  }
+
   const courseModules = getModulesByCourse(activeCourse);
 
   // Stats scoped to the active course topics
@@ -105,6 +115,32 @@ export default function DashboardPage() {
       <p className="mt-2 text-gray-600">
         Welcome back{profile?.full_name ? `, ${profile.full_name}` : ""}.
       </p>
+
+      {/* Course switcher */}
+      <div className="mt-6 flex gap-2 rounded-xl border border-gray-200 bg-gray-50 p-1.5 w-fit">
+        {courses.map((course) => {
+          const isActive = activeCourse === course.id;
+          const isViolet = course.color === "violet";
+          return (
+            <button
+              key={course.id}
+              type="button"
+              onClick={() => switchCourse(course.id as CourseId)}
+              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-all ${
+                isActive
+                  ? isViolet
+                    ? "bg-violet-600 text-white shadow-sm"
+                    : "bg-brand-600 text-white shadow-sm"
+                  : "text-gray-500 hover:text-gray-800 hover:bg-white"
+              }`}
+            >
+              <span className="text-base leading-none">{course.icon}</span>
+              <span className="hidden sm:inline">{course.name}</span>
+              <span className="sm:hidden">{course.id === "python" ? "Python" : "Agentic AI"}</span>
+            </button>
+          );
+        })}
+      </div>
 
       {loading ? (
         <div className="mt-12 flex justify-center">
