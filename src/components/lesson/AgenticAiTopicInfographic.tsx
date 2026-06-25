@@ -1,6 +1,5 @@
 "use client";
 
-import { Lightbulb } from "lucide-react";
 
 type TopicInfo = {
   moduleLabel: string;
@@ -369,54 +368,54 @@ function moduleBadge(info: TopicInfo) {
 }
 
 function lessonSubtitle(info: TopicInfo) {
-  const module = info.moduleLabel.toLowerCase();
-  if (module.includes("foundation")) {
+  const mod = info.moduleLabel.toLowerCase();
+  if (mod.includes("foundation")) {
     return "Start with the beginner picture: what the idea means, why it matters, and how to recognize it in simple AI products.";
   }
-  if (module.includes("langchain")) {
+  if (mod.includes("langchain")) {
     return "Learn how this LangChain idea helps turn separate AI parts into a clear application workflow.";
   }
-  if (module.includes("prompt")) {
+  if (mod.includes("prompt")) {
     return "Learn how this prompt idea helps you guide a model before you depend on its answer in an app.";
   }
-  if (module.includes("groq")) {
+  if (mod.includes("groq")) {
     return "Learn how this Groq idea fits into the request-and-response path of a real LLM application.";
   }
-  if (module.includes("chatbot")) {
+  if (mod.includes("chatbot")) {
     return "Learn how this chatbot idea shapes the user experience around each model response.";
   }
-  if (module.includes("agent")) {
+  if (mod.includes("agent")) {
     return "Learn how this agent idea helps an AI system decide actions while staying controlled and testable.";
   }
   return "Learn how this app-building idea moves an AI demo closer to something users can trust.";
 }
 
 function appFit(info: TopicInfo) {
-  const module = info.moduleLabel.toLowerCase();
-  if (module.includes("foundation")) {
+  const mod = info.moduleLabel.toLowerCase();
+  if (mod.includes("foundation")) {
     return "This knowledge helps you decide what AI can and cannot do. Before choosing tools or writing prompts, ask whether the task needs prediction, generation, retrieval, rule-following, or human review.";
   }
-  if (module.includes("langchain")) {
+  if (mod.includes("langchain")) {
     return "LangChain fits where an app needs multiple AI building blocks connected together: prompts, models, parsers, tools, retrievers, and traces. It helps organize the workflow so the app is easier to extend and debug.";
   }
-  if (module.includes("prompt")) {
+  if (mod.includes("prompt")) {
     return "Prompts sit between your app logic and the model. They translate user intent, product rules, and output requirements into instructions the model can follow.";
   }
-  if (module.includes("groq")) {
+  if (mod.includes("groq")) {
     return "Groq fits behind the app as the model provider. Your application prepares messages, chooses a model, sends the request securely, and handles the response, errors, and usage.";
   }
-  if (module.includes("chatbot")) {
+  if (mod.includes("chatbot")) {
     return "Chatbot concepts fit around the model call. The app manages conversation history, response settings, testing, streaming, and user experience so the chat feels useful instead of random.";
   }
-  if (module.includes("agent")) {
+  if (mod.includes("agent")) {
     return "Agent concepts fit when the model needs to choose actions, call tools, inspect results, and continue toward a goal. The app must still control permissions, step limits, and safety.";
   }
   return "This concept fits when you move from a demo to a real AI product. It helps with grounding, evaluation, monitoring, and making the system reliable for users.";
 }
 
 function keyTerms(info: TopicInfo): Array<[string, string]> {
-  const module = info.moduleLabel.toLowerCase();
-  if (module.includes("foundation")) {
+  const mod = info.moduleLabel.toLowerCase();
+  if (mod.includes("foundation")) {
     return [
       ["input", "Information given to an AI system: text, examples, an image, or a user question."],
       ["pattern", "Something the model learns from data: repeated words, relationships, or structural regularities."],
@@ -424,7 +423,7 @@ function keyTerms(info: TopicInfo): Array<[string, string]> {
       ["limitation", "A place where the model can be wrong, biased, outdated, or missing critical context."],
     ];
   }
-  if (module.includes("langchain")) {
+  if (mod.includes("langchain")) {
     return [
       ["component", "One reusable part of an LLM app, such as a prompt, model, parser, retriever, or tool."],
       ["chain", "A sequence where the output of one component becomes the input to the next component."],
@@ -432,7 +431,7 @@ function keyTerms(info: TopicInfo): Array<[string, string]> {
       ["trace", "A recorded view of what happened during a run, useful for debugging and monitoring."],
     ];
   }
-  if (module.includes("prompt")) {
+  if (mod.includes("prompt")) {
     return [
       ["context", "Background information the model needs before answering."],
       ["task", "The specific job you want the model to perform."],
@@ -440,7 +439,7 @@ function keyTerms(info: TopicInfo): Array<[string, string]> {
       ["example", "A sample input/output pair that shows the model exactly the pattern you expect."],
     ];
   }
-  if (module.includes("groq")) {
+  if (mod.includes("groq")) {
     return [
       ["api key", "A private credential that identifies your app to Groq."],
       ["model", "The specific LLM you choose for a request."],
@@ -448,7 +447,7 @@ function keyTerms(info: TopicInfo): Array<[string, string]> {
       ["usage", "Token counts that help you understand cost, context size, and response length."],
     ];
   }
-  if (module.includes("chatbot")) {
+  if (mod.includes("chatbot")) {
     return [
       ["history", "The messages your app sends so the model can follow the conversation."],
       ["system prompt", "The instruction that defines the chatbot's role and behavior."],
@@ -456,7 +455,7 @@ function keyTerms(info: TopicInfo): Array<[string, string]> {
       ["streaming", "Sending the reply in small chunks so the user sees progress quickly."],
     ];
   }
-  if (module.includes("agent")) {
+  if (mod.includes("agent")) {
     return [
       ["tool", "A function the agent can request, such as search, calculator, or database lookup."],
       ["observation", "The result returned after a tool runs."],
@@ -473,25 +472,25 @@ function keyTerms(info: TopicInfo): Array<[string, string]> {
 }
 
 function mentalModel(info: TopicInfo) {
-  const module = info.moduleLabel.toLowerCase();
-  if (module.includes("foundation")) {
+  const mod = info.moduleLabel.toLowerCase();
+  if (mod.includes("foundation")) {
     return "Learning AI foundations is like learning road signs before driving. You are not building the engine yet; you are learning what each signal means so later decisions make sense.";
   }
-  if (module.includes("prompt")) {
+  if (mod.includes("prompt")) {
     return "A prompt is like a work order. The clearer the role, task, constraints, and format are, the more predictable the result becomes.";
   }
-  if (module.includes("chatbot")) {
+  if (mod.includes("chatbot")) {
     return "A chatbot is like a receptionist with a notebook. If the notebook has the conversation history, follow-up answers make sense.";
   }
-  if (module.includes("agent")) {
+  if (mod.includes("agent")) {
     return "An agent is like an assistant with approved tools and a checklist: decide, act, observe, and continue only when needed.";
   }
   return `${info.title} is easiest to understand as a small system: information enters, one step transforms or decides something, and the result is checked before the app trusts it.`;
 }
 
 function mistakes(info: TopicInfo): string[] {
-  const module = info.moduleLabel.toLowerCase();
-  if (module.includes("foundation")) {
+  const mod = info.moduleLabel.toLowerCase();
+  if (mod.includes("foundation")) {
     return [
       "Thinking AI understands like a human instead of predicting from learned patterns.",
       "Forgetting that missing or biased training examples produce wrong behavior.",
@@ -499,7 +498,7 @@ function mistakes(info: TopicInfo): string[] {
       "Skipping tests because one demo response looked good.",
     ];
   }
-  if (module.includes("prompt")) {
+  if (mod.includes("prompt")) {
     return [
       "Writing a vague prompt and expecting a precise, consistent answer.",
       "Changing many prompt details at once, then not knowing what improved or broke the result.",
@@ -544,59 +543,59 @@ function realWorldExample(info: TopicInfo) {
 }
 
 function beginnerExplanation(info: TopicInfo) {
-  const module = info.moduleLabel.toLowerCase();
-  if (module.includes("foundation")) {
+  const mod = info.moduleLabel.toLowerCase();
+  if (mod.includes("foundation")) {
     return `${info.title} is a starting lens for thinking about AI. Instead of memorizing tool names, focus on the simple question: what information goes in, what pattern or decision happens, and what result comes back?`;
   }
-  if (module.includes("langchain")) {
+  if (mod.includes("langchain")) {
     return `${info.title} is about organizing an LLM app into smaller pieces. Each piece has one job, so you can swap, test, and debug the workflow without rewriting everything.`;
   }
-  if (module.includes("prompt")) {
+  if (mod.includes("prompt")) {
     return `${info.title} is about giving the model a clearer job. A good prompt does not just ask a question; it gives direction, boundaries, and a useful response shape.`;
   }
-  if (module.includes("groq")) {
+  if (mod.includes("groq")) {
     return `${info.title} belongs to the model-call layer. Your app prepares messages, sends them to Groq, receives a response, and handles anything that can fail in between.`;
   }
-  if (module.includes("chatbot")) {
+  if (mod.includes("chatbot")) {
     return `${info.title} is about making a conversation feel coherent. The model creates the words, but the app decides what context, memory, and interface the user experiences.`;
   }
-  if (module.includes("agent")) {
+  if (mod.includes("agent")) {
     return `${info.title} is about controlled action. The model may choose a next step, but the app decides what tools exist, when they can run, and when the loop must stop.`;
   }
   return `${info.title} is part of turning an AI idea into a dependable product. The focus is less on one response and more on repeatable behavior over many users and many cases.`;
 }
 
 function learningFlow(info: TopicInfo): Array<[string, string, string]> {
-  const module = info.moduleLabel.toLowerCase();
-  if (module.includes("langchain")) {
+  const mod = info.moduleLabel.toLowerCase();
+  if (mod.includes("langchain")) {
     return [
       ["STEP 01", "Identify the parts", "List the prompt, model, parser, retriever, memory, or tool that the workflow needs."],
       ["STEP 02", "Connect the path", "Decide how data should move from one part to the next without mixing responsibilities."],
       ["STEP 03", "Inspect the run", "Check each intermediate result so problems are visible before the final answer reaches the user."],
     ];
   }
-  if (module.includes("prompt")) {
+  if (mod.includes("prompt")) {
     return [
       ["STEP 01", "Set the job", "Tell the model what role it is playing and what task it must complete."],
       ["STEP 02", "Add boundaries", "Give context, constraints, examples, and output rules so the response is easier to trust."],
       ["STEP 03", "Compare results", "Test several inputs and improve the prompt based on real differences in output quality."],
     ];
   }
-  if (module.includes("groq")) {
+  if (mod.includes("groq")) {
     return [
       ["STEP 01", "Prepare the request", "Choose the model, create messages, and keep secrets such as API keys out of the page content."],
       ["STEP 02", "Call the service", "Send the request and wait for the model response while handling loading and error states."],
       ["STEP 03", "Use the response", "Display, stream, parse, or store only the parts your app actually needs."],
     ];
   }
-  if (module.includes("chatbot")) {
+  if (mod.includes("chatbot")) {
     return [
       ["STEP 01", "Capture the turn", "Read what the user said and attach only the conversation context that matters."],
       ["STEP 02", "Shape the reply", "Use instructions, settings, and memory rules to guide how the assistant responds."],
       ["STEP 03", "Improve the chat", "Test confusing user messages, long conversations, and failures so the interface stays helpful."],
     ];
   }
-  if (module.includes("agent")) {
+  if (mod.includes("agent")) {
     return [
       ["STEP 01", "Define allowed actions", "Give the agent only the tools and permissions it needs for the task."],
       ["STEP 02", "Run one step at a time", "Let the system decide, act, observe the result, and then choose whether to continue."],
@@ -611,8 +610,8 @@ function learningFlow(info: TopicInfo): Array<[string, string, string]> {
 }
 
 function appScenario(info: TopicInfo) {
-  const module = info.moduleLabel.toLowerCase();
-  if (module.includes("groq")) {
+  const mod = info.moduleLabel.toLowerCase();
+  if (mod.includes("groq")) {
     return {
       title: "Support Assistant Request",
       leftTitle: "App responsibility",
@@ -621,7 +620,7 @@ function appScenario(info: TopicInfo) {
       right: "Generate the answer from the messages it receives. The model should not own app security, UI state, or business rules.",
     };
   }
-  if (module.includes("chatbot")) {
+  if (mod.includes("chatbot")) {
     return {
       title: "Customer Chat Flow",
       leftTitle: "Conversation layer",
@@ -640,14 +639,14 @@ function appScenario(info: TopicInfo) {
 }
 
 function teachingWarning(info: TopicInfo) {
-  const module = info.moduleLabel.toLowerCase();
-  if (module.includes("groq")) {
+  const mod = info.moduleLabel.toLowerCase();
+  if (mod.includes("groq")) {
     return "Treat every API call as part of the product, not just a code sample. Plan for missing keys, failed requests, slow responses, and answers that need validation.";
   }
-  if (module.includes("chatbot")) {
+  if (mod.includes("chatbot")) {
     return "A chatbot can feel correct because it sounds fluent. Test it with short messages, vague questions, repeated questions, and cases where it should refuse or ask for clarification.";
   }
-  if (module.includes("agent")) {
+  if (mod.includes("agent")) {
     return "Do not let an agent run without limits. Give it narrow tools, visible logs, step limits, and a clear rule for when human review is needed.";
   }
   return "Do not judge this idea from one perfect demo. Try a normal case, an unclear case, and a failure case before trusting the design.";

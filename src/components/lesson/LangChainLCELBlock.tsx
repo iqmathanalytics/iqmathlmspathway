@@ -3,9 +3,7 @@
 import {
   GitMerge,
   GitBranch,
-  Zap,
   Radio,
-  Server,
   Layers,
   ChevronRight,
   BookOpen,
