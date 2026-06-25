@@ -12,39 +12,6 @@ client = Groq()`;
 
 export const NOTEBOOK_CELLS: Record<string, NotebookCell[]> = {
 
-  // ── Type C: Chat Models and Providers ──────────────────────────────────
-  "ai-lc-t3": [
-    {
-      label: "Cell 1 — Install",
-      cellType: "install",
-      code: "!pip install langchain langchain-groq",
-    },
-    {
-      label: "Cell 2 — Initialize a chat model",
-      code: `import os
-from langchain.chat_models import init_chat_model
-
-os.environ["GROQ_API_KEY"] = "your-groq-api-key-here"
-
-# LangChain wraps any provider behind one interface
-model = init_chat_model("llama3-8b-8192", model_provider="groq")
-
-response = model.invoke("Explain Python lists in one sentence.")
-print(response.content)`,
-    },
-    {
-      label: "Cell 3 — Swap providers without rewriting logic",
-      code: `# Change only the provider string — the rest stays identical
-# model = init_chat_model("gpt-4o-mini", model_provider="openai")
-# model = init_chat_model("claude-3-haiku-20240307", model_provider="anthropic")
-
-# Both calls look the same regardless of provider
-for question in ["What are Python dicts?", "What is LangChain?"]:
-    response = model.invoke(question)
-    print(f"Q: {question}")
-    print(f"A: {response.content[:120]}\\n")`,
-    },
-  ],
 
   // ── Type C: Prompt Templates ────────────────────────────────────────────
   "ai-lc-t4": [

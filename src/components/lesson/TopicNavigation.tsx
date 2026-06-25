@@ -10,9 +10,10 @@ interface TopicNavigationProps {
   module: Module;
   topic: Topic;
   hasQuiz: boolean;
+  hasIde?: boolean;
 }
 
-export function TopicNavigation({ module, topic, hasQuiz }: TopicNavigationProps) {
+export function TopicNavigation({ module, topic, hasQuiz, hasIde = true }: TopicNavigationProps) {
   const { prev, next } = getAdjacentPublishedTopics(module.slug, topic.slug);
 
   return (
@@ -33,6 +34,7 @@ export function TopicNavigation({ module, topic, hasQuiz }: TopicNavigationProps
         <NextTopicButton
           topicId={topic.id}
           hasQuiz={hasQuiz}
+          hasIde={hasIde}
           href={`/learn/${next.module.slug}/${next.topic.slug}`}
           label={next.topic.title}
           variant="footer"

@@ -154,7 +154,20 @@ export interface LessonBlock {
     | "groq-playground"
     | "setup-checklist"
     | "jupyter-notebook"
-    | "concept-card";
+    | "concept-card"
+    | "langchain-intro"
+    | "langchain-workflow"
+    | "langchain-setup-guide"
+    | "langchain-steps-checklist"
+    | "langchain-prompts"
+    | "langchain-prompts-guide"
+    | "langchain-lcel"
+    | "langchain-lcel-guide"
+    | "langchain-agents"
+    | "langchain-agents-guide"
+    | "langchain-langsmith"
+    | "langchain-langsmith-guide"
+    | "single-column";
   content?: string;
   items?: string[];
   /** For code blocks */

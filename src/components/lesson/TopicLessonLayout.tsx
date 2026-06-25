@@ -9,6 +9,13 @@ import { GroqChatPlayground } from "@/components/ai/GroqChatPlayground";
 import { JupyterNotebookPanel } from "./JupyterNotebookPanel";
 import { SetupChecklistPanel } from "./SetupChecklistPanel";
 import { ConceptSummaryPanel } from "./ConceptSummaryPanel";
+import { LangChainWorkflowPanel } from "./LangChainWorkflowPanel";
+import { LangChainStepsChecklist } from "./LangChainStepsChecklist";
+import { LangChainCopyProvider } from "./LangChainCopyContext";
+import { LangChainPromptsGuide } from "./LangChainPromptsGuide";
+import { LangChainLCELGuide } from "./LangChainLCELGuide";
+import { LangChainAgentsGuide } from "./LangChainAgentsGuide";
+import { LangChainLangSmithGuide } from "./LangChainLangSmithGuide";
 import { LessonPracticeContext } from "./LessonPracticeContext";
 import {
   areAllExercisesComplete,
@@ -51,7 +58,14 @@ export function TopicLessonLayout({
   const groqBlock     = useMemo(() => blocks.find((b) => b.type === "groq-playground"),    [blocks]);
   const jupyterBlock  = useMemo(() => blocks.find((b) => b.type === "jupyter-notebook"),   [blocks]);
   const setupBlock    = useMemo(() => blocks.find((b) => b.type === "setup-checklist"),    [blocks]);
-  const conceptBlock  = useMemo(() => blocks.find((b) => b.type === "concept-card"),       [blocks]);
+  const conceptBlock        = useMemo(() => blocks.find((b) => b.type === "concept-card"),        [blocks]);
+  const langchainWorkflow   = useMemo(() => blocks.find((b) => b.type === "langchain-workflow"),   [blocks]);
+  const singleColumnBlock       = useMemo(() => blocks.find((b) => b.type === "single-column"),             [blocks]);
+  const langchainChecklistBlock = useMemo(() => blocks.find((b) => b.type === "langchain-steps-checklist"), [blocks]);
+  const langchainPromptsGuide   = useMemo(() => blocks.find((b) => b.type === "langchain-prompts-guide"),   [blocks]);
+  const langchainLCELGuide      = useMemo(() => blocks.find((b) => b.type === "langchain-lcel-guide"),      [blocks]);
+  const langchainAgentsGuide    = useMemo(() => blocks.find((b) => b.type === "langchain-agents-guide"),    [blocks]);
+  const langchainLangSmithGuide = useMemo(() => blocks.find((b) => b.type === "langchain-langsmith-guide"), [blocks]);
 
   // Detect if this is a Final Project topic with sequential task gating
   const sequential = topicId != null && isFinalProjectTopic(topicId);
@@ -182,13 +196,24 @@ export function TopicLessonLayout({
     ]
   );
 
-  return (
+  const layoutContent = (
     <LessonPracticeContext.Provider value={practiceContext}>
-      <div className="lg:flex-1 lg:min-h-0 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(340px,42%)] lg:overflow-hidden">
+      {/*
+        Two-column: outer clips overflow, each column scrolls independently.
+        Single-column: outer itself is the scroll container (no right aside).
+      */}
+      <div className={`lg:flex-1 lg:min-h-0 ${
+        singleColumnBlock
+          ? "lg:overflow-y-auto [scrollbar-width:thin]"
+          : "lg:overflow-hidden lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(340px,42%)]"
+      }`}>
 
-        {/* ── Left column: lesson content + footer, independent scroll ── */}
-        <div className="min-w-0 py-6 px-4 sm:px-6 lg:px-8 xl:px-10 lg:overflow-y-auto
-          [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {/* ── Left column ── */}
+        <div className={`min-w-0 py-6 px-4 sm:px-6 lg:px-8 xl:px-10 ${
+          singleColumnBlock
+            ? "max-w-3xl mx-auto"
+            : "lg:overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        }`}>
           {sequential && (
             <div className="mb-4 rounded-xl border border-brand-200 bg-brand-50/60 px-4 py-3">
               <p className="text-xs font-semibold uppercase tracking-wide text-brand-800">
@@ -235,12 +260,12 @@ export function TopicLessonLayout({
           {footerSlot && <div className="mt-8 pb-10">{footerSlot}</div>}
         </div>
 
-        {/* ── Right column: Groq playground OR Python IDE ── */}
+        {/* ── Right column: hidden for single-column topics, otherwise panel/IDE ── */}
         <aside
           ref={ideRef}
           data-walkthrough="lesson-ide"
-          className="mt-6 lg:mt-0 lg:overflow-y-auto lg:border-l lg:border-gray-200 lg:pl-6 xl:pl-8
-            [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className={`mt-6 lg:mt-0 lg:overflow-y-auto lg:border-l lg:border-gray-200 lg:pl-6 xl:pl-8
+            [scrollbar-width:none] [&::-webkit-scrollbar]:hidden${singleColumnBlock ? " hidden lg:hidden" : ""}`}
         >
           {groqBlock ? (
             /* Type D — Groq chatbot playground */
@@ -279,6 +304,60 @@ export function TopicLessonLayout({
                 summary={conceptBlock.conceptSummary!}
                 title={conceptBlock.content ?? ""}
               />
+            </div>
+          ) : langchainWorkflow ? (
+            /* LangChain Module 2 — RAG workflow panel */
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">🔗</span>
+                LangChain Workflow
+              </div>
+              <LangChainWorkflowPanel />
+            </div>
+          ) : langchainChecklistBlock ? (
+            /* LangChain Setup Guide — copy-progress checklist */
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">✅</span>
+                Step Tracker
+              </div>
+              <LangChainStepsChecklist />
+            </div>
+          ) : langchainPromptsGuide ? (
+            /* LangChain Prompt Templates — Jupyter guide + checklist */
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">📓</span>
+                Try in Jupyter
+              </div>
+              <LangChainPromptsGuide />
+            </div>
+          ) : langchainLCELGuide ? (
+            /* LangChain LCEL — Jupyter guide + checklist */
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">📓</span>
+                Try in Jupyter
+              </div>
+              <LangChainLCELGuide />
+            </div>
+          ) : langchainAgentsGuide ? (
+            /* LangChain Agents & Tools — Jupyter guide + checklist */
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">🤖</span>
+                Try in Jupyter
+              </div>
+              <LangChainAgentsGuide />
+            </div>
+          ) : langchainLangSmithGuide ? (
+            /* LangChain LangSmith — Jupyter guide + checklist */
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">🔍</span>
+                Try in Jupyter
+              </div>
+              <LangChainLangSmithGuide />
             </div>
           ) : (
             /* Default — Python IDE (with optional sequential task gating for Final Project) */
@@ -387,4 +466,9 @@ export function TopicLessonLayout({
       </div>
     </LessonPracticeContext.Provider>
   );
+
+  // Wrap with copy-tracking context for the LangChain setup guide
+  return langchainChecklistBlock ? (
+    <LangChainCopyProvider>{layoutContent}</LangChainCopyProvider>
+  ) : layoutContent;
 }

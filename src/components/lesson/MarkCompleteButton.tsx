@@ -10,15 +10,17 @@ import { CheckCircle2, Circle, Lock } from "lucide-react";
 interface MarkCompleteButtonProps {
   topicId: string;
   hasQuiz: boolean;
+  /** When false, IDE run requirement is hidden (topics with no code exercise) */
+  hasIde?: boolean;
 }
 
-export function MarkCompleteButton({ topicId, hasQuiz }: MarkCompleteButtonProps) {
+export function MarkCompleteButton({ topicId, hasQuiz, hasIde = true }: MarkCompleteButtonProps) {
   const { user } = useAuth();
   const { progress, ready } = useProgress();
   const [saving, setSaving] = useState(false);
 
   const done      = ready && progress.completedTopics.includes(topicId);
-  const ideDone   = ready && isIdeRan(progress, topicId);
+  const ideDone   = !hasIde || (ready && isIdeRan(progress, topicId));
   const quizDone  = ready && (!hasQuiz || isQuizDone(progress, topicId));
   const canMark   = ideDone && quizDone;
 
@@ -45,14 +47,16 @@ export function MarkCompleteButton({ topicId, hasQuiz }: MarkCompleteButtonProps
       </p>
 
       <ul className="mb-4 space-y-2">
-        <li className="flex items-center gap-2 text-sm">
-          {ideDone
-            ? <CheckCircle2 className="h-4 w-4 shrink-0 text-green-500" />
-            : <Circle className="h-4 w-4 shrink-0 text-gray-300" />}
-          <span className={ideDone ? "text-gray-600 line-through" : "text-gray-700"}>
-            Run code in the Python IDE at least once
-          </span>
-        </li>
+        {hasIde && (
+          <li className="flex items-center gap-2 text-sm">
+            {ideDone
+              ? <CheckCircle2 className="h-4 w-4 shrink-0 text-green-500" />
+              : <Circle className="h-4 w-4 shrink-0 text-gray-300" />}
+            <span className={ideDone ? "text-gray-600 line-through" : "text-gray-700"}>
+              Run code in the Python IDE at least once
+            </span>
+          </li>
+        )}
         {hasQuiz && (
           <li className="flex items-center gap-2 text-sm">
             {quizDone

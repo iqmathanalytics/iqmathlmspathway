@@ -670,7 +670,6 @@ const TOPIC_TYPES: Record<string, LessonType> = {
   "ai-lc-t2": "setup",
   "ai-m3-t1": "setup",
   // Type C — Code Demo
-  "ai-lc-t3": "code-demo",
   "ai-lc-t4": "code-demo",
   "ai-lc-t5": "code-demo",
   "ai-lc-t6": "code-demo",

@@ -50,6 +50,8 @@ export default async function TopicPage({ params }: TopicPageProps) {
 
   const quiz = getQuiz(topic.id);
   const hasQuiz = !!quiz;
+  // Topics with no "practice" block have no IDE exercise — hide the IDE requirement
+  const hasIde = lesson.blocks.some((b) => b.type === "practice");
   const { prev, next } = getAdjacentPublishedTopics(module.slug, topic.slug);
 
   return (
@@ -94,6 +96,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
                     <NextTopicButton
                       topicId={topic.id}
                       hasQuiz={hasQuiz}
+                      hasIde={hasIde}
                       href={`/learn/${next.module.slug}/${next.topic.slug}`}
                       label="Next Topic"
                       variant="header"
@@ -121,9 +124,9 @@ export default async function TopicPage({ params }: TopicPageProps) {
               <KeyTakeaways items={lesson.keyTakeaways} />
               {quiz && <TopicQuizSection quiz={quiz} />}
               <div className="mt-8">
-                <MarkCompleteButton topicId={topic.id} hasQuiz={hasQuiz} />
+                <MarkCompleteButton topicId={topic.id} hasQuiz={hasQuiz} hasIde={hasIde} />
               </div>
-              <TopicNavigation module={module} topic={topic} hasQuiz={hasQuiz} />
+              <TopicNavigation module={module} topic={topic} hasQuiz={hasQuiz} hasIde={hasIde} />
             </>
           }
         />
