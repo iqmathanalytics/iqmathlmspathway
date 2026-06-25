@@ -1,21 +1,16 @@
 "use client";
 
 import {
-  ArrowRight,
   Brain,
   CheckCircle2,
-  Code2,
   Lightbulb,
   MessageSquare,
   Network,
-  Play,
   ShieldCheck,
   Sparkles,
   Workflow,
   Zap,
 } from "lucide-react";
-import { useLessonPractice } from "@/components/lesson/LessonPracticeContext";
-import { buildAgenticAiExampleCode } from "@/data/agentic-ai-example-code";
 
 type TopicInfo = {
   moduleLabel: string;
@@ -215,7 +210,7 @@ const TOPICS: Record<string, TopicInfo> = {
     outcome: "You will understand the minimum Python code for calling a Groq model.",
     steps: ["Create client", "Send messages", "Extract response text"],
     example: "response.choices[0].message.content is the answer you display.",
-    caution: "The browser IDE may show structure only; real API calls need local setup and a key.",
+    caution: "Real API calls need local setup, installed packages, and a private API key.",
     icon: "api",
   },
   "ai-m3-t3": {
@@ -383,83 +378,17 @@ const TOPICS: Record<string, TopicInfo> = {
 const DEFAULT_TOPIC: TopicInfo = {
   moduleLabel: "Agentic AI",
   title: "Core Concept",
-  hook: "Learn the concept, see the pattern, then practice it in Python.",
-  outcome: "You will connect the idea to real AI application code.",
-  steps: ["Understand the idea", "Study the pattern", "Practice the code"],
-  example: "Use the IDE exercise to turn the concept into a working snippet.",
+  hook: "Learn the concept, see the pattern, then understand where it fits in an AI app.",
+  outcome: "You will connect the idea to a real AI application workflow.",
+  steps: ["Understand the idea", "Study the pattern", "Connect it to an app"],
+  example: "Use the lesson explanation to understand where the concept fits in an AI app.",
   caution: "Keep AI systems testable, observable, and safe.",
   icon: "brain",
 };
 
-function CodeExercisePanel({
-  filename,
-  children,
-}: {
-  filename: string;
-  children: React.ReactNode;
-}) {
-  const practice = useLessonPractice();
-  const practiceIndex = 0;
-  const isActive = practice?.activeIndex === practiceIndex;
-  const hasNext = practice != null && practiceIndex < practice.total - 1;
-
-  return (
-    <div
-      className={`overflow-hidden rounded-xl border bg-white/80 transition-all ${
-        isActive
-          ? "border-emerald-300 ring-2 ring-emerald-300/70 ring-offset-1"
-          : "border-emerald-200 shadow-sm"
-      }`}
-    >
-      <div className="flex items-center gap-1.5 border-b border-emerald-100 bg-black/[0.03] px-3 py-1.5">
-        <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-        <span className="ml-1 flex items-center gap-1 font-mono text-[11px] text-gray-500">
-          <Code2 className="h-3 w-3" />
-          {filename}
-        </span>
-        <div className="ml-auto flex items-center gap-1">
-          <button
-            type="button"
-            onMouseDown={(e) => e.preventDefault()}
-            onClick={() => practice?.selectPractice(practiceIndex)}
-            className={`inline-flex items-center gap-1 rounded-md px-2 py-1 text-[10px] font-semibold transition-colors ${
-              isActive
-                ? "bg-emerald-600 text-white"
-                : "bg-emerald-600 text-white hover:bg-emerald-700"
-            }`}
-            title={isActive ? "Loaded in IDE" : "Load in IDE"}
-          >
-            <Play className="h-3 w-3" />
-            IDE
-          </button>
-          {isActive && hasNext && (
-            <button
-              type="button"
-              onMouseDown={(e) => e.preventDefault()}
-              onClick={() => practice?.nextPractice()}
-              className="inline-flex items-center gap-1 rounded-md border border-gray-200 bg-white px-2 py-1 text-[10px] font-semibold text-gray-600 transition hover:bg-gray-50"
-              title="Next exercise"
-            >
-              Next
-              <ArrowRight className="h-3 w-3" />
-            </button>
-          )}
-        </div>
-      </div>
-      <pre className="whitespace-pre-wrap px-4 py-3 font-mono text-[12.5px] leading-relaxed text-gray-800">
-        {children}
-      </pre>
-    </div>
-  );
-}
-
 export function AgenticAiTopicInfographic({ topicId }: { topicId?: string }) {
   const info = (topicId && TOPICS[topicId]) || DEFAULT_TOPIC;
   const Icon = ICONS[info.icon];
-  const filename = `${(topicId ?? "agentic-ai").replaceAll("-", "_")}.py`;
-  const exampleCode = buildAgenticAiExampleCode(topicId ?? "agentic-ai", info);
 
   return (
     <div className="mb-8 overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 via-white to-blue-50 shadow-sm">
@@ -518,7 +447,17 @@ export function AgenticAiTopicInfographic({ topicId }: { topicId?: string }) {
         </div>
 
         <div className="space-y-4">
-          <CodeExercisePanel filename={filename}>{exampleCode}</CodeExercisePanel>
+          <div className="rounded-xl border border-indigo-100 bg-indigo-50/70 p-4">
+            <div className="mb-1 flex items-center gap-2 text-sm font-semibold text-indigo-950">
+              <Lightbulb className="h-4 w-4" />
+              Plain meaning
+            </div>
+            <p className="text-[13px] leading-relaxed text-gray-700">
+              {info.title} is a building block in an AI application. First
+              understand what information goes in, what decision or
+              transformation happens, and what useful result should come out.
+            </p>
+          </div>
 
           <div className="rounded-xl border border-emerald-100 bg-emerald-50/70 p-4">
             <div className="mb-1 flex items-center gap-2 text-sm font-semibold text-emerald-900">
@@ -545,7 +484,7 @@ export function AgenticAiTopicInfographic({ topicId }: { topicId?: string }) {
       <div className="border-t border-slate-200/80 bg-white/70 px-5 py-3">
         <div className="flex items-center gap-2 text-[12px] font-medium text-gray-600">
           <Lightbulb className="h-3.5 w-3.5 text-blue-700" />
-          Read the visual first, then run the IDE exercise to make it concrete.
+          Read the visual first. The lesson below explains the idea step by step.
         </div>
       </div>
     </div>
