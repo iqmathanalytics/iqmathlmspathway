@@ -651,18 +651,646 @@ export function buildProjectLesson(topicId: string): TopicLesson {
   };
 }
 
+// ─── Type F — What is a Prompt article (ai-m2-t1) ───────────────────────────
+// Custom article-style lesson for the introductory "What is a Prompt?" topic.
+
+export function buildWhatIsPromptLesson(): TopicLesson {
+  return {
+    topicId: "ai-m2-t1",
+    intro: "A prompt is the instruction package you send to the model: context, task, and format.",
+    blocks: [
+      { type: "heading", content: "What is an AI Prompt?" },
+      {
+        type: "paragraph",
+        content:
+          "An artificial intelligence (AI) prompt is a question, command or statement that a person gives to an artificial intelligence model, such as a large language model, to guide it in generating a specific response. The prompt provides the AI with the necessary context or instructions so it can produce output that is relevant to what you are asking or requesting.",
+      },
+      {
+        type: "image",
+        image: "/images/ai-prompt-infographic.png",
+        imageAlt: "AI Prompt diagram showing Improves Accuracy, Enables Complex Tasks, and Enhances User Experience",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Depending on how the prompt is phrased, the AI can generate a variety of outputs, from a single word to a detailed paragraph. It acts as the starting point for the AI's generation process, directing it to create content that matches your intent.",
+      },
+      {
+        type: "paragraph",
+        content:
+          'Prompts can range from simple — "Translate this sentence to French" — to complex, multi-part instructions or scenarios.',
+      },
+      { type: "heading", content: "Importance of AI Prompts" },
+      {
+        type: "list",
+        items: [
+          "Directs Output: The prompt determines what the AI generates, how relevant it is and whether it meets your needs.",
+          "Improves Accuracy: Clear, specific prompts reduce misunderstandings and produce more precise, useful responses.",
+          "Saves Time: Well-crafted prompts minimize trial and error, speeding up workflows and improving productivity.",
+          "Enables Complex Tasks: Good prompts allow you to use AI for sophisticated tasks like summarization, data extraction or creative writing.",
+          "Enhances User Experience: Effective prompts make AI interactions smoother, more intuitive and more valuable.",
+        ],
+      },
+      { type: "heading", content: "Types of AI Prompts" },
+      {
+        type: "list",
+        items: [
+          'Text Generation — Produces written content, summaries or stories. Example: "Summarize this article in three sentences."',
+          'Question Answering — Provides factual or explanatory answers. Example: "What is the capital of Japan?"',
+          'Code Generation — Generates code snippets or scripts. Example: "Write Python code to sort a list."',
+          'Classification — Categorises or labels information. Example: "Classify this review as positive or negative."',
+          'Creative / Generative — Produces poems, stories or images (if supported). Example: "Write a short poem about the ocean."',
+          "Other types include translation, dialogue, and problem-solving — specialized forms or combinations of these.",
+        ],
+      },
+      {
+        type: "tip",
+        content:
+          "Structure your prompt for clarity and refine as needed for better results. For more prompt tuning techniques, search for Prompt Tuning Techniques.",
+      },
+      { type: "heading", content: "Applications" },
+      {
+        type: "list",
+        items: [
+          "Used in chatbots and virtual assistants to generate conversational responses.",
+          "Power RAG systems by guiding retrieval and generating context-aware answers.",
+          "Enable code assistants to generate, debug, and explain code.",
+          "Support content creation for writing, marketing, and storytelling.",
+          "Assist in data analysis by summarizing and classifying large datasets.",
+          "Used in image generation and design tools to create visuals from text.",
+        ],
+      },
+      { type: "heading", content: "Challenges" },
+      {
+        type: "list",
+        items: [
+          "Harmful or Biased Outputs: Poorly designed prompts can lead to offensive or skewed results.",
+          "Data Privacy: Prompts may contain sensitive or personal information.",
+          "Unintended Outputs: Ambiguous prompts can cause irrelevant or misleading answers.",
+          "AI Hallucinations: The model may generate plausible but incorrect information.",
+          "Model Limitations: Different models may interpret the same prompt differently — always fact-check outputs.",
+        ],
+      },
+      { type: "how-to-create-prompts" },
+    ],
+    keyTakeaways: [
+      "A prompt is the instruction you send to an AI model to guide its response.",
+      "Clear, specific prompts improve accuracy, save time, and enable complex tasks.",
+      "Vague prompts create vague answers — be specific about the result you want.",
+    ],
+  };
+}
+
+// ─── Type G — System vs User Prompts article (ai-m2-t2) ─────────────────────
+
+export function buildSystemVsUserLesson(): TopicLesson {
+  return {
+    topicId: "ai-m2-t2",
+    intro: "System prompts set durable, session-wide behavior; user prompts carry the specific per-request task.",
+    blocks: [
+      {
+        type: "heading",
+        content: "What is the difference between a system prompt and a user prompt?",
+      },
+      {
+        type: "paragraph",
+        content:
+          "A system prompt sets durable, session-wide behavior — role, tone, output format, and refusal rules — and runs once at the start of a conversation. A user prompt is the specific message a person sends per request. The system prompt carries higher authority; when the two conflict, models trained on OpenAI's instruction hierarchy favor the system layer. System equals job description, user equals today's task.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "That one-line distinction is the whole game, but it has consequences most people never see until their output quietly degrades. Get the split right and your prompts become reusable, cheaper to run, and far more consistent. Get it wrong and you end up re-typing your persona into every message, fighting your own instructions, and wondering why the model's tone wanders halfway through a session.",
+      },
+      {
+        type: "image",
+        image: "/images/system-vs-user-prompt.png",
+        imageAlt: "System Prompt vs User Prompt comparison diagram",
+      },
+      { type: "heading", content: "What is a system prompt, and what is it for?" },
+      {
+        type: "paragraph",
+        content:
+          "A system prompt is the top-level instruction layer. It persists across the entire conversation, and the model treats it as the standing context for every reply. Think of it as the configuration you set before any work happens.",
+      },
+      {
+        type: "paragraph",
+        content: "Use the system prompt for things that stay constant:",
+      },
+      {
+        type: "list",
+        items: [
+          'Role — who the AI should be. "You are a senior backend engineer with ten years in production systems."',
+          "Voice and tone — how it should write. Direct, warm, severity-tiered, no jargon.",
+          "Format rules — output shape, length caps, required sections, JSON schema.",
+          "Refusal policy — what to decline and how to decline it.",
+          "Domain anchors — the knowledge area to operate in and the assumptions to make.",
+          "Reusable examples — a few-shot pattern you want applied every time.",
+        ],
+      },
+      {
+        type: "paragraph",
+        content:
+          'OpenAI\'s own GPT-5 guidance frames it the same way: the system prompt "provides a strong default foundation," while "the user prompt remains a highly effective lever for steerability." The system layer is your default; the user layer is how you bend it for a single task.',
+      },
+      {
+        type: "tip",
+        content:
+          "The key property is stability. Anything you would want to apply identically across hundreds of requests belongs in the system prompt. If it changes per request, it does not belong there.",
+      },
+      { type: "heading", content: "What is a user prompt, and what is it for?" },
+      {
+        type: "paragraph",
+        content:
+          "A user prompt is the specific message a person sends. It runs per request and carries the part of the interaction that actually varies.",
+      },
+      {
+        type: "paragraph",
+        content: "Use the user prompt for:",
+      },
+      {
+        type: "list",
+        items: [
+          "The actual task or question.",
+          "Per-request context — the data, the diff, the email, the document to operate on.",
+          'Per-request overrides — "make this one longer," "use a table this time."',
+        ],
+      },
+      {
+        type: "paragraph",
+        content:
+          "A clean mental model: system prompt equals job description; user prompt equals today's task. Don't put the job description in every task. Don't put one task in the job description.",
+      },
+      {
+        type: "heading",
+        content: "How does the instruction hierarchy rank system, developer, and user prompts?",
+      },
+      {
+        type: "paragraph",
+        content:
+          "OpenAI now trains models to weight instructions by their source, formalized in the OpenAI Model Spec. The spec defines five authority levels, from highest to lowest.",
+      },
+      {
+        type: "image",
+        image: "/images/instruction-hierarchy.png",
+        imageAlt: "Instruction hierarchy pyramid: Root, System, Developer, User, Guideline",
+      },
+      {
+        type: "list",
+        items: [
+          "Root (Priority 1) — OpenAI Model Spec. Cannot be overridden — catastrophic risk, physical harm, legal violations.",
+          "System (Priority 2) — OpenAI deployment context. Overrides developer and user; subordinate to root.",
+          "Developer (Priority 3) — API customers (you, the app builder). Overrides user; must respect root and system.",
+          "User (Priority 4) — End users. Overrides guideline defaults; defers to all higher levels.",
+          "Guideline (Priority 5) — Default recommendations. Implicitly overridden by context, history, or developer customization.",
+        ],
+      },
+      {
+        type: "paragraph",
+        content:
+          "The crucial nuance most articles get wrong: in the current spec, the message you set as an app builder is technically a developer message, not a system message. You still outrank the end user — which is exactly what you want — but you sit below OpenAI's own system layer and the non-negotiable root rules.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Why does any of this matter? Because higher authority overrides lower. If a user pastes 'Ignore all previous instructions' into their message, a model trained on the hierarchy is biased to keep honoring your developer/system layer instead. The hierarchy is the mechanism that makes your standing rules sticky.",
+      },
+      {
+        type: "heading",
+        content: "Does the instruction hierarchy actually stop prompt injection?",
+      },
+      {
+        type: "paragraph",
+        content:
+          "It helps. It does not solve the problem. In benchmark testing, undefended models are highly vulnerable: roughly 73.2% of prompt-injection attacks succeed on average. Layering defenses brings that down dramatically — content filtering alone cuts success to around 41%, adding hierarchical guardrails pushes it to about 23%, and a complete defense framework reaches 8.7% overall attack success, an 88.1% reduction from baseline.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Read those numbers carefully. Even the strongest stacks leave a residual attack surface. None reach zero. The instruction hierarchy is one layer in a defense-in-depth strategy, not the wall itself.",
+      },
+      {
+        type: "list",
+        items: [
+          "Never put secrets in any prompt layer. Determined users can extract system and developer prompts. Keep API keys and confidential data in environment variables.",
+          "Treat tool output as untrusted. Tool returns may be attacker-controlled (a poisoned web page, a malicious document). Validate before acting on them.",
+          "Add output validation. Schema checks, allow-lists, and human review for high-stakes actions catch what the hierarchy misses.",
+          "Use least privilege. If an agent can't delete data, an injection telling it to delete data fails by construction.",
+        ],
+      },
+      { type: "system-vs-user-guide" },
+    ],
+    keyTakeaways: [
+      "System prompts set stable, session-wide behavior; user prompts carry the per-request task.",
+      "The instruction hierarchy ranks Root > System > Developer > User > Guideline — higher authority wins.",
+      "Never store secrets in any prompt layer, and treat tool outputs as untrusted input.",
+    ],
+  };
+}
+
+// ─── Type H — Few-Shot Prompting article (ai-m2-t3) ──────────────────────────
+
+export function buildFewShotLesson(): TopicLesson {
+  return {
+    topicId: "ai-m2-t3",
+    intro: "Few-shot prompting guides a model by giving it a small number of examples directly in the prompt.",
+    blocks: [
+      { type: "heading", content: "Few-Shot Prompting" },
+      {
+        type: "paragraph",
+        content:
+          "Few-shot prompting is a technique in AI where a model is given a small number of examples within the prompt to guide its response. By learning from these examples, the model can better understand the task and generate more accurate and relevant outputs without additional training.",
+      },
+      {
+        type: "list",
+        items: [
+          "Allows models to learn task patterns from a few input-output examples without retraining.",
+          "Uses in-context learning, where examples are included directly in the prompt.",
+          "Applied in tasks such as classification, translation, summarization and code generation.",
+        ],
+      },
+      {
+        type: "image",
+        image: "/images/few-shot-comparison.png",
+        imageAlt: "Zero-shot vs One-shot vs Few-shot prompting comparison",
+      },
+      { type: "heading", content: "How Few-Shot Prompting Works" },
+      {
+        type: "paragraph",
+        content:
+          "Few-shot prompting guides a large language model (LLM) by providing a small number of examples directly within the prompt. These examples demonstrate the desired task, enabling the model to generalize and produce accurate outputs without explicit training.",
+      },
+      {
+        type: "image",
+        image: "/images/few-shot-flow.png",
+        imageAlt: "Few-shot prompting 6-step flow: User Query → Example Source → Retrieve Examples → Build Prompt → Model Processes → Output Generated",
+      },
+      { type: "heading", content: "1. User Query Initialization" },
+      {
+        type: "paragraph",
+        content:
+          "The process starts when the model receives a user query, which serves as the input for the task. This query establishes the context and defines what the model needs to do — such as classification, translation or sentiment analysis.",
+      },
+      { type: "heading", content: "2. Example Source — Static or Dynamic" },
+      {
+        type: "paragraph",
+        content:
+          "Few-shot prompting uses examples to guide the model, which can either be predefined or dynamically retrieved based on the query.",
+      },
+      {
+        type: "list",
+        items: [
+          "Static Examples: Manually written examples included directly in the prompt to demonstrate the task clearly.",
+          "Dynamic Examples: Fetched from a vector store using semantic similarity, ensuring examples closely match the query context.",
+        ],
+      },
+      { type: "heading", content: "3. Retrieval of Relevant Examples" },
+      {
+        type: "paragraph",
+        content:
+          "If dynamic retrieval is used, the system performs semantic matching to find the most relevant examples:",
+      },
+      {
+        type: "list",
+        items: [
+          "The query is converted into embeddings.",
+          "Similar examples are searched in the vector store.",
+          "Top-k most relevant examples are selected.",
+        ],
+      },
+      { type: "heading", content: "4. Prompt Construction" },
+      {
+        type: "paragraph",
+        content:
+          'The system builds a well-structured prompt by combining examples and the user query. For example — classify sentiment: Sentence: "I love this product" → Sentiment: Positive. Sentence: "This is the worst experience" → Sentiment: Negative. Sentence: "This app is really easy to use" → Sentiment:',
+      },
+      { type: "heading", content: "5. Model Processing" },
+      {
+        type: "list",
+        items: [
+          "Pre-trained Knowledge: The model uses patterns learned during training.",
+          "In-Context Learning: It learns from examples in the prompt without updating its parameters.",
+          "Pattern Application: The model identifies relationships in examples and applies them to the user query.",
+        ],
+      },
+      { type: "heading", content: "6. Output Generation" },
+      {
+        type: "paragraph",
+        content:
+          "The model produces the response by applying the patterns learned from the examples to the user query. The output is generated in the expected format, completing the task such as classification, translation or text generation.",
+      },
+      { type: "heading", content: "Strategies" },
+      {
+        type: "list",
+        items: [
+          "Use clear, relevant examples aligned with the task.",
+          "Include diverse examples to improve generalization.",
+          "Keep input-output format consistent.",
+          "Use a few high-quality examples to avoid noise.",
+          "Tailor examples to the specific task or domain.",
+          "Test and refine prompts regularly.",
+          "Avoid overfitting by testing on new inputs.",
+        ],
+      },
+      { type: "heading", content: "Advantages" },
+      {
+        type: "list",
+        items: [
+          "Requires minimal training data.",
+          "Enables faster task learning.",
+          "Adapts to multiple tasks easily.",
+          "Reduces data and processing costs.",
+          "Useful where large datasets are unavailable.",
+        ],
+      },
+      { type: "heading", content: "Limitations" },
+      {
+        type: "list",
+        items: [
+          "May give inaccurate results in some cases.",
+          "Can introduce bias from limited examples.",
+          "Risk of overfitting to given samples.",
+          "Less effective for complex tasks.",
+        ],
+      },
+      {
+        type: "tip",
+        content:
+          "Bad examples teach bad behavior. Keep examples consistent in format, coverage, and label quality.",
+      },
+      { type: "few-shot-guide" },
+    ],
+    keyTakeaways: [
+      "Few-shot prompting shows the model input-output examples in the prompt to guide behavior without retraining.",
+      "Pattern: Show input/output pairs → add the new input → ask for matching output.",
+      "Bad examples teach bad behavior. Keep examples consistent.",
+    ],
+  };
+}
+
+// ─── Type I — Chain-of-Thought Prompting article (ai-m2-t4) ─────────────────
+
+export function buildChainOfThoughtLesson(): TopicLesson {
+  return {
+    topicId: "ai-m2-t4",
+    intro: "Chain-of-Thought prompting asks the model to show its reasoning step by step before giving a final answer.",
+    blocks: [
+      { type: "heading", content: "Chain-of-Thought Prompting" },
+      {
+        type: "paragraph",
+        content:
+          "Chain of Thought (CoT) prompting is a technique where the model generates step-by-step intermediate explanations before arriving at an answer. This helps improve accuracy and makes the output clearer and more reliable.",
+      },
+      {
+        type: "list",
+        items: [
+          "Helps models reason through multi-step problems.",
+          "Produces more transparent and interpretable outputs.",
+          "Especially useful in math, logic and multi-stage decision making.",
+        ],
+      },
+      {
+        type: "image",
+        image: "/images/cot-vs-standard.png",
+        imageAlt: "Standard prompting vs Chain-of-Thought prompting comparison",
+      },
+      {
+        type: "paragraph",
+        content:
+          "For example, instead of directly answering 'What is 57 × 43?', a Chain-of-Thought model first works through intermediate steps: multiply 50 by 43, multiply 7 by 43, then add the two results together.",
+      },
+      { type: "heading", content: "How Chain-of-Thought Works" },
+      {
+        type: "paragraph",
+        content:
+          "CoT solves problems through structured, step-by-step reasoning instead of directly generating an answer. The model interprets the input, breaks it into logical steps and produces the final output after reasoning. This process can be refined or repeated to improve accuracy.",
+      },
+      {
+        type: "image",
+        image: "/images/cot-workflow.png",
+        imageAlt: "Chain-of-Thought workflow: Input Problem → Decompose → Reason Step by Step → Synthesize → Final Answer",
+      },
+      { type: "heading", content: "Importance of Chain-of-Thought" },
+      { type: "heading", content: "1. Structured Reasoning" },
+      {
+        type: "list",
+        items: [
+          "Breaks complex problems into smaller, manageable steps.",
+          "Encourages logical flow in problem solving.",
+          "Reduces confusion in multi-step tasks.",
+        ],
+      },
+      { type: "heading", content: "2. Improved Transparency" },
+      {
+        type: "list",
+        items: [
+          "Makes the reasoning process visible to users.",
+          "Helps in understanding how the final answer is derived.",
+          "Increases trust in model outputs.",
+        ],
+      },
+      { type: "heading", content: "3. Higher Accuracy" },
+      {
+        type: "list",
+        items: [
+          "Minimizes errors by avoiding skipped steps.",
+          "Ensures better handling of complex reasoning tasks.",
+          "Produces more consistent and reliable results.",
+        ],
+      },
+      { type: "heading", content: "4. Versatility Across Tasks" },
+      {
+        type: "list",
+        items: [
+          "Effective for math, logical reasoning and decision-making problems.",
+          "Useful in NLP tasks like question answering and summarization.",
+          "Helps generate more coherent and context-aware responses.",
+        ],
+      },
+      { type: "heading", content: "Applications" },
+      { type: "heading", content: "1. Math Problem Solving" },
+      {
+        type: "paragraph",
+        content:
+          'Example: "What is 39 × 21?" With CoT: Step 1 — Multiply 30 by 21 = 630. Step 2 — Multiply 9 by 21 = 189. Step 3 — Add 630 + 189 = 819.',
+      },
+      { type: "heading", content: "2. Commonsense Reasoning" },
+      {
+        type: "paragraph",
+        content:
+          'Example: "If John is taller than Sarah and Sarah is taller than Tom, who is the shortest?" With CoT: John > Sarah > Tom. Therefore, Tom is the shortest.',
+      },
+      { type: "heading", content: "3. Logical Puzzles and Games" },
+      {
+        type: "paragraph",
+        content:
+          "CoT helps solve puzzles or games that require exploring different possibilities. It is particularly useful for tasks where understanding the process is as important as the answer.",
+      },
+      { type: "heading", content: "4. Story Generation" },
+      {
+        type: "paragraph",
+        content:
+          "CoT can guide the AI through the logical progression of a plot, ensuring coherence and consistency throughout a generated story.",
+      },
+      { type: "heading", content: "Advantages" },
+      {
+        type: "list",
+        items: [
+          "By focusing on intermediate steps, the model makes fewer mistakes and provides more accurate results.",
+          "Transparency helps users understand the reasoning behind the model's output.",
+          "Enhances the model's ability to tackle tasks that require multi-step reasoning, mathematical operations and logical deduction.",
+        ],
+      },
+      { type: "heading", content: "Limitations" },
+      {
+        type: "list",
+        items: [
+          "Can be expensive and time-consuming because the model generates multiple reasoning steps.",
+          "Requires high-quality training data with both answers and reasoning steps.",
+          "In complex tasks, the model may struggle to maintain coherent reasoning across many steps.",
+        ],
+      },
+      {
+        type: "tip",
+        content:
+          'The simplest CoT trigger is the phrase "Let\'s think step by step." Adding it to any prompt costs nothing and often catches calculation or logic errors that a direct-answer prompt misses.',
+      },
+      { type: "cot-guide" },
+    ],
+    keyTakeaways: [
+      "Chain-of-Thought prompting forces the model to reason through intermediate steps before concluding.",
+      'The zero-shot trigger "Let\'s think step by step" works on most reasoning tasks without any examples.',
+      "CoT improves accuracy but increases token usage — use it when correctness matters more than speed.",
+    ],
+  };
+}
+
+// ─── Type J — Prompt Engineering Best Practices article (ai-m2-t5) ──────────
+
+export function buildBestPracticesLesson(): TopicLesson {
+  return {
+    topicId: "ai-m2-t5",
+    intro: "Prompt engineering is the practice of designing and refining inputs to guide LLMs toward accurate, relevant and high-quality outputs.",
+    blocks: [
+      { type: "heading", content: "Prompt Engineering Best Practices for AI Models" },
+      {
+        type: "paragraph",
+        content:
+          "Prompt engineering is the practice of designing and refining inputs to guide large language models (LLMs) toward accurate, relevant and high-quality outputs. For developers, researchers and AI professionals, it is an important skill for getting reliable and useful results from AI systems.",
+      },
+      {
+        type: "list",
+        items: [
+          "Improves accuracy and relevance of outputs.",
+          "Ensures useful and reliable AI responses.",
+          "Becomes more important as AI capabilities grow.",
+        ],
+      },
+      {
+        type: "image",
+        image: "/images/prompt-best-practices-grid.png",
+        imageAlt: "20 Prompt Engineering Best Practices overview grid",
+      },
+      { type: "heading", content: "Best Practices for Prompt Engineering" },
+      { type: "heading", content: "1. Be Clear and Specific" },
+      { type: "paragraph", content: 'Action: Clearly define your request with precision. Benefit: Reduces ambiguity. Example: "List three key benefits of renewable energy for businesses."' },
+      { type: "heading", content: "2. Specify Response Format" },
+      { type: "paragraph", content: 'Action: Indicate the desired structure — list, bullet points, essay, etc. Benefit: Ensures the AI delivers the response in the preferred format. Example: "Summarize the latest trends in AI technology in 100 words, using bullet points."' },
+      { type: "heading", content: "3. Provide Context" },
+      { type: "paragraph", content: 'Action: Include relevant background or situational context. Benefit: Produces a more accurate and relevant response. Example: "As a financial analyst, explain the investment options for beginners with examples."' },
+      { type: "heading", content: "4. Structure Step-by-Step Instructions" },
+      { type: "paragraph", content: 'Action: Break down complex tasks into clear, sequential steps. Benefit: Helps the AI produce logical, organized instructions. Example: "Explain how to boil pasta, step by step, including cooking time."' },
+      { type: "heading", content: "5. Set Output Constraints" },
+      { type: "paragraph", content: 'Action: Define word limits, tone or complexity for the response. Benefit: Ensures the response aligns with your needs. Example: "Explain AI in 150 words in a friendly tone for beginners."' },
+      { type: "heading", content: "6. Experiment and Iterate" },
+      {
+        type: "image",
+        image: "/images/prompt-engineering-cycle.png",
+        imageAlt: "Prompt engineering cycle: Write → Test → Identify Gaps → Refine → Repeat",
+      },
+      { type: "paragraph", content: 'Action: Adjust your prompt based on previous responses. Benefit: Refining over time improves accuracy and relevance. Example: Instead of "best practices for time management?", try "top 5 time management strategies for busy professionals?"' },
+      { type: "heading", content: "7. Use Clear Action Verbs" },
+      { type: "paragraph", content: 'Action: Start prompts with specific action verbs such as "describe", "analyze" or "compare". Benefit: Action verbs guide the AI\'s approach. Example: "Describe the process of photosynthesis in plants."' },
+      { type: "heading", content: "8. Ask for Multiple Perspectives or Solutions" },
+      { type: "paragraph", content: 'Action: Request answers from different viewpoints. Benefit: Encourages a more comprehensive and diverse response. Example: "Provide solutions for improving urban transportation from the perspectives of an environmentalist, a city planner and a commuter."' },
+      { type: "heading", content: "9. Refine With Clarifying Questions" },
+      { type: "paragraph", content: 'Action: Follow up with additional questions for more detail. Benefit: Helps fine-tune the AI\'s output. Instead of "benefits of a plant-based diet?", try "Can you explain the environmental benefits in more detail?"' },
+      { type: "heading", content: "10. Test Different Wordings for Better Results" },
+      { type: "paragraph", content: 'Action: Experiment with rewording prompts. Benefit: Different wordings can encourage more targeted or creative responses. Instead of "How can I improve my writing?", try "What are some effective strategies to improve clarity and coherence in writing?"' },
+      { type: "heading", content: "11. Use Conditional Prompts for Focused Answers" },
+      { type: "paragraph", content: 'Action: Use "if-then" conditional statements. Benefit: Makes the response more focused and context-specific. Example: "If I wanted to improve my diet, how would I incorporate more protein?"' },
+      { type: "heading", content: "12. Request for Examples or Case Studies" },
+      { type: "paragraph", content: 'Action: Ask for real-world examples or case studies. Benefit: Examples make abstract ideas more tangible. Example: "Explain the benefits of automation in healthcare and provide a real-world case study."' },
+      { type: "heading", content: "13–20. More Best Practices" },
+      {
+        type: "list",
+        items: [
+          "13. Be Transparent About Your Expectations — state desired detail, length and tone up front.",
+          "14. Use Time Frames or Historical Context — specify the period to get historically accurate answers.",
+          "15. Balance Open-Ended and Closed-Ended Questions — closed for concise, open for broader insights.",
+          "16. Clarify the Target Audience — specify who the response is for (child, expert, general public).",
+          "17. Use Creative or Scenario-Based Prompts — hypothetical scenarios spark creative ideas.",
+          "18. Incorporate Metrics and Data — include specific data points for analytical tasks.",
+          "19. Utilize Tone and Voice for Personalization — specify formal, informal or humorous tone.",
+          "20. Request Sources or Citations — ask for citations when discussing factual content.",
+        ],
+      },
+      { type: "heading", content: "Avoiding Bias and Ambiguity" },
+      {
+        type: "list",
+        items: [
+          'Use Neutral Language: Avoid biased or assumptive wording. Instead of "Why is this generation lazy?", ask "What challenges does the younger generation face?"',
+          "Follow Ethical Guidelines: Promote fairness, inclusivity and transparency. Ensure prompts encourage balanced perspectives.",
+          "Test for Bias: Regularly review AI responses to detect and address any unintended bias.",
+        ],
+      },
+      { type: "heading", content: "Tools & Resources for Prompt Optimization" },
+      {
+        type: "list",
+        items: [
+          "OpenAI Playground: Test and refine prompts in real-time based on immediate feedback.",
+          "PromptBase: Explore and use optimized, pre-designed prompts to save time.",
+          "PromptChainer: Chain multiple prompts together for more structured workflows.",
+          "Helicone: Track and analyze prompt performance based on data-driven insights.",
+          "Agenta: Collaborate with a team to test, iterate and improve prompts.",
+        ],
+      },
+      {
+        type: "tip",
+        content:
+          "One giant prompt is hard to debug. Build prompts in small pieces — change one thing at a time and compare outputs before moving on.",
+      },
+      { type: "best-practices-guide" },
+    ],
+    keyTakeaways: [
+      "Clear, specific prompts with explicit format and context instructions produce consistently better outputs.",
+      "Prompt engineering is iterative — write, test, identify gaps, refine and repeat.",
+      "One giant prompt is hard to debug. Build prompts in small, testable pieces.",
+    ],
+  };
+}
+
 // ─── Batch helpers ───────────────────────────────────────────────────────────
 
-type LessonType = "concept" | "setup" | "code-demo" | "playground" | "project";
+type LessonType = "concept" | "setup" | "code-demo" | "playground" | "project" | "what-is-prompt" | "system-vs-user" | "few-shot" | "cot" | "best-practices";
 
 const TOPIC_TYPES: Record<string, LessonType> = {
+  // Type F — What is a Prompt article
+  "ai-m2-t1": "what-is-prompt",
+  // Type G — System vs User Prompts article
+  "ai-m2-t2": "system-vs-user",
+  // Type H — Few-Shot Prompting article
+  "ai-m2-t3": "few-shot",
+  // Type I — Chain-of-Thought article
+  "ai-m2-t4": "cot",
+  // Type J — Prompt Engineering Best Practices article
+  "ai-m2-t5": "best-practices",
   // Type A — Concept
   "ai-m1-t1": "concept",
   "ai-m1-t2": "concept",
   "ai-m1-t3": "concept",
   "ai-m1-t4": "concept",
   "ai-lc-t1": "concept",
-  "ai-m2-t1": "concept",
   "ai-m3-t4": "concept",
   "ai-m5-t1": "concept",
   "ai-m5-t4": "concept",
@@ -675,10 +1303,6 @@ const TOPIC_TYPES: Record<string, LessonType> = {
   "ai-lc-t5": "code-demo",
   "ai-lc-t6": "code-demo",
   "ai-lc-t7": "code-demo",
-  "ai-m2-t2": "code-demo",
-  "ai-m2-t3": "code-demo",
-  "ai-m2-t4": "code-demo",
-  "ai-m2-t5": "code-demo",
   "ai-m3-t2": "code-demo",
   "ai-m3-t3": "code-demo",
   "ai-m3-t5": "code-demo",
@@ -699,11 +1323,16 @@ const TOPIC_TYPES: Record<string, LessonType> = {
 export function buildAgenticAiLesson(topicId: string): TopicLesson {
   const type = TOPIC_TYPES[topicId] ?? "concept";
   switch (type) {
-    case "setup":      return buildSetupLesson(topicId);
-    case "code-demo":  return buildCodeDemoLesson(topicId);
-    case "playground": return buildPlaygroundLesson(topicId);
-    case "project":    return buildProjectLesson(topicId);
-    default:           return buildConceptLesson(topicId);
+    case "what-is-prompt": return buildWhatIsPromptLesson();
+    case "system-vs-user": return buildSystemVsUserLesson();
+    case "few-shot":       return buildFewShotLesson();
+    case "cot":            return buildChainOfThoughtLesson();
+    case "best-practices": return buildBestPracticesLesson();
+    case "setup":          return buildSetupLesson(topicId);
+    case "code-demo":      return buildCodeDemoLesson(topicId);
+    case "playground":     return buildPlaygroundLesson(topicId);
+    case "project":        return buildProjectLesson(topicId);
+    default:               return buildConceptLesson(topicId);
   }
 }
 

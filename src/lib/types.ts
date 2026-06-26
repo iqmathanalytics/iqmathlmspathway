@@ -167,9 +167,18 @@ export interface LessonBlock {
     | "langchain-agents-guide"
     | "langchain-langsmith"
     | "langchain-langsmith-guide"
-    | "single-column";
+    | "single-column"
+    | "image"
+    | "how-to-create-prompts"
+    | "system-vs-user-guide"
+    | "few-shot-guide"
+    | "cot-guide"
+    | "best-practices-guide";
   content?: string;
   items?: string[];
+  /** For image blocks */
+  image?: string;
+  imageAlt?: string;
   /** For code blocks */
   code?: string;
   /** For diagram: ascii or mermaid-like description rendered as visual */
