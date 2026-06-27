@@ -181,7 +181,11 @@ export interface LessonBlock {
     | "system-vs-user-guide"
     | "few-shot-guide"
     | "cot-guide"
-    | "best-practices-guide";
+    | "best-practices-guide"
+    | "chat-memory-guide"
+    | "qa-bot-guide"
+    | "testing-chatbot-guide"
+    | "response-quality-guide";
   content?: string;
   items?: string[];
   /** For image blocks */

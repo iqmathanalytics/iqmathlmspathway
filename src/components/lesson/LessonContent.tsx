@@ -556,6 +556,34 @@ export function LessonContent({
                 </span>
               </div>
             );
+          case "chat-memory-guide":
+            return (
+              <div key={i} className="my-4 flex items-center gap-2 rounded-xl border border-teal-200 bg-teal-50 px-4 py-3">
+                <span className="text-xs font-semibold text-teal-700">Try the memory exercises on the right →</span>
+                <span className="text-xs text-teal-500">Complete each exercise in any AI chatbot, then tick it off.</span>
+              </div>
+            );
+          case "qa-bot-guide":
+            return (
+              <div key={i} className="my-4 flex items-center gap-2 rounded-xl border border-indigo-200 bg-indigo-50 px-4 py-3">
+                <span className="text-xs font-semibold text-indigo-700">Build steps on the right →</span>
+                <span className="text-xs text-indigo-500">Copy each code block to mark the step as complete.</span>
+              </div>
+            );
+          case "testing-chatbot-guide":
+            return (
+              <div key={i} className="my-4 flex items-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-4 py-3">
+                <span className="text-xs font-semibold text-violet-700">Test scenarios checklist on the right →</span>
+                <span className="text-xs text-violet-500">Use the Groq Playground to run each test, then tick it off.</span>
+              </div>
+            );
+          case "response-quality-guide":
+            return (
+              <div key={i} className="my-4 flex items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3">
+                <span className="text-xs font-semibold text-emerald-700">Try in Jupyter on the right →</span>
+                <span className="text-xs text-emerald-500">Copy each code cell to mark the step as complete.</span>
+              </div>
+            );
           default:
             return null;
         }
