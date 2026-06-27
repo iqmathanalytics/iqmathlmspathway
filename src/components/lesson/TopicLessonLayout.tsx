@@ -285,7 +285,21 @@ export function TopicLessonLayout({
           className={`mt-6 lg:mt-0 lg:overflow-y-auto lg:border-l lg:border-gray-200 lg:pl-6 xl:pl-8
             [scrollbar-width:none] [&::-webkit-scrollbar]:hidden${singleColumnBlock ? " hidden lg:hidden" : ""}`}
         >
-          {groqBlock ? (
+          {groqBlock && testingChatbotBlock ? (
+            /* Testing — playground top + test checklist below */
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6 flex flex-col gap-4 min-h-[520px]">
+              <div className="flex-1 min-h-[380px]">
+                <GroqChatPlayground defaultSystemPrompt={groqBlock.systemPrompt} />
+              </div>
+              <div>
+                <div className="mb-3 flex items-center gap-2 text-sm font-medium text-gray-700">
+                  <span className="text-base">✅</span>
+                  Test Checklist
+                </div>
+                <TestingChatbotPanel />
+              </div>
+            </div>
+          ) : groqBlock ? (
             /* Type D — Groq chatbot playground */
             <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6 h-full flex flex-col min-h-[520px]">
               <GroqChatPlayground defaultSystemPrompt={groqBlock.systemPrompt} />
@@ -437,20 +451,6 @@ export function TopicLessonLayout({
                 Build Your ChatBot
               </div>
               <QABotPanel />
-            </div>
-          ) : groqBlock && testingChatbotBlock ? (
-            /* Testing — playground top + test checklist below */
-            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6 flex flex-col gap-4 min-h-[520px]">
-              <div className="flex-1 min-h-[380px]">
-                <GroqChatPlayground defaultSystemPrompt={groqBlock.systemPrompt} />
-              </div>
-              <div>
-                <div className="mb-3 flex items-center gap-2 text-sm font-medium text-gray-700">
-                  <span className="text-base">✅</span>
-                  Test Checklist
-                </div>
-                <TestingChatbotPanel />
-              </div>
             </div>
           ) : responseQualityBlock ? (
             <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
