@@ -62,6 +62,10 @@ import { LambdaFunctionsInfographic } from "@/components/lesson/LambdaFunctionsI
 import { AgenticAiTopicInfographic } from "@/components/lesson/AgenticAiTopicInfographic";
 import { LangChainIntroBlock } from "@/components/lesson/LangChainIntroBlock";
 import { LangChainSetupGuide } from "@/components/lesson/LangChainSetupGuide";
+import { RagBasicsGuide } from "@/components/lesson/RagBasicsGuide";
+import { DocumentQaGuide } from "@/components/lesson/DocumentQaGuide";
+import { MultiAgentGuide } from "@/components/lesson/MultiAgentGuide";
+import { NextStepsGuide } from "@/components/lesson/NextStepsGuide";
 import { LangChainPromptsBlock } from "@/components/lesson/LangChainPromptsBlock";
 import { LangChainLCELBlock } from "@/components/lesson/LangChainLCELBlock";
 import { LangChainAgentsBlock } from "@/components/lesson/LangChainAgentsBlock";
@@ -424,6 +428,14 @@ export function LessonContent({
             return <LangChainIntroBlock key={i} />;
           case "langchain-setup-guide":
             return <LangChainSetupGuide key={i} />;
+          case "rag-basics-guide":
+            return <RagBasicsGuide key={i} />;
+          case "document-qa-guide":
+            return <DocumentQaGuide key={i} />;
+          case "multi-agent-guide":
+            return <MultiAgentGuide key={i} />;
+          case "next-steps-guide":
+            return <NextStepsGuide key={i} />;
           case "langchain-prompts":
             return <LangChainPromptsBlock key={i} />;
           case "langchain-lcel":
@@ -435,6 +447,10 @@ export function LessonContent({
           // Right-side / layout signal blocks — no visible left-side content
           case "langchain-workflow":
           case "langchain-steps-checklist":
+          case "rag-basics-steps-checklist":
+          case "document-qa-steps-checklist":
+          case "multi-agent-steps-checklist":
+          case "next-steps-steps-checklist":
           case "langchain-prompts-guide":
           case "langchain-lcel-guide":
           case "langchain-agents-guide":

@@ -11,6 +11,10 @@ import { SetupChecklistPanel } from "./SetupChecklistPanel";
 import { ConceptSummaryPanel } from "./ConceptSummaryPanel";
 import { LangChainWorkflowPanel } from "./LangChainWorkflowPanel";
 import { LangChainStepsChecklist } from "./LangChainStepsChecklist";
+import { RagBasicsStepsChecklist } from "./RagBasicsStepsChecklist";
+import { DocumentQaStepsChecklist } from "./DocumentQaStepsChecklist";
+import { MultiAgentStepsChecklist } from "./MultiAgentStepsChecklist";
+import { NextStepsStepsChecklist } from "./NextStepsStepsChecklist";
 import { LangChainCopyProvider } from "./LangChainCopyContext";
 import { LangChainPromptsGuide } from "./LangChainPromptsGuide";
 import { LangChainLCELGuide } from "./LangChainLCELGuide";
@@ -67,6 +71,10 @@ export function TopicLessonLayout({
   const langchainWorkflow   = useMemo(() => blocks.find((b) => b.type === "langchain-workflow"),   [blocks]);
   const singleColumnBlock       = useMemo(() => blocks.find((b) => b.type === "single-column"),             [blocks]);
   const langchainChecklistBlock = useMemo(() => blocks.find((b) => b.type === "langchain-steps-checklist"), [blocks]);
+  const ragBasicsChecklistBlock = useMemo(() => blocks.find((b) => b.type === "rag-basics-steps-checklist"), [blocks]);
+  const documentQaChecklistBlock = useMemo(() => blocks.find((b) => b.type === "document-qa-steps-checklist"), [blocks]);
+  const multiAgentChecklistBlock = useMemo(() => blocks.find((b) => b.type === "multi-agent-steps-checklist"), [blocks]);
+  const nextStepsChecklistBlock = useMemo(() => blocks.find((b) => b.type === "next-steps-steps-checklist"), [blocks]);
   const langchainPromptsGuide   = useMemo(() => blocks.find((b) => b.type === "langchain-prompts-guide"),   [blocks]);
   const langchainLCELGuide      = useMemo(() => blocks.find((b) => b.type === "langchain-lcel-guide"),      [blocks]);
   const langchainAgentsGuide    = useMemo(() => blocks.find((b) => b.type === "langchain-agents-guide"),    [blocks]);
@@ -333,6 +341,42 @@ export function TopicLessonLayout({
               </div>
               <LangChainStepsChecklist />
             </div>
+          ) : ragBasicsChecklistBlock ? (
+            /* RAG Basics Guide — copy-progress checklist */
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">✅</span>
+                Step Tracker
+              </div>
+              <RagBasicsStepsChecklist />
+            </div>
+          ) : documentQaChecklistBlock ? (
+            /* Document Q&A Guide — copy-progress checklist */
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">✅</span>
+                Step Tracker
+              </div>
+              <DocumentQaStepsChecklist />
+            </div>
+          ) : multiAgentChecklistBlock ? (
+            /* Multi-Agent Guide — copy-progress checklist */
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">✅</span>
+                Step Tracker
+              </div>
+              <MultiAgentStepsChecklist />
+            </div>
+          ) : nextStepsChecklistBlock ? (
+            /* Next Steps Guide — copy-progress checklist */
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">✅</span>
+                Step Tracker
+              </div>
+              <NextStepsStepsChecklist />
+            </div>
           ) : langchainPromptsGuide ? (
             /* LangChain Prompt Templates — Jupyter guide + checklist */
             <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
@@ -522,8 +566,8 @@ export function TopicLessonLayout({
     </LessonPracticeContext.Provider>
   );
 
-  // Wrap with copy-tracking context for the LangChain setup guide
-  return langchainChecklistBlock ? (
+  // Wrap with copy-tracking context for the LangChain setup guide / RAG Basics guide / Document Q&A guide / Multi-Agent guide / Next Steps guide
+  return (langchainChecklistBlock || ragBasicsChecklistBlock || documentQaChecklistBlock || multiAgentChecklistBlock || nextStepsChecklistBlock) ? (
     <LangChainCopyProvider>{layoutContent}</LangChainCopyProvider>
   ) : layoutContent;
 }
