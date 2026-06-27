@@ -16,6 +16,11 @@ import { LangChainPromptsGuide } from "./LangChainPromptsGuide";
 import { LangChainLCELGuide } from "./LangChainLCELGuide";
 import { LangChainAgentsGuide } from "./LangChainAgentsGuide";
 import { LangChainLangSmithGuide } from "./LangChainLangSmithGuide";
+import { HowToCreatePromptsPanel } from "./HowToCreatePromptsPanel";
+import { SystemVsUserGuidePanel } from "./SystemVsUserGuidePanel";
+import { FewShotPromptsPanel } from "./FewShotPromptsPanel";
+import { ChainOfThoughtPanel } from "./ChainOfThoughtPanel";
+import { BestPracticesPanel } from "./BestPracticesPanel";
 import { LessonPracticeContext } from "./LessonPracticeContext";
 import {
   areAllExercisesComplete,
@@ -66,6 +71,11 @@ export function TopicLessonLayout({
   const langchainLCELGuide      = useMemo(() => blocks.find((b) => b.type === "langchain-lcel-guide"),      [blocks]);
   const langchainAgentsGuide    = useMemo(() => blocks.find((b) => b.type === "langchain-agents-guide"),    [blocks]);
   const langchainLangSmithGuide = useMemo(() => blocks.find((b) => b.type === "langchain-langsmith-guide"), [blocks]);
+  const howToCreatePromptsBlock = useMemo(() => blocks.find((b) => b.type === "how-to-create-prompts"), [blocks]);
+  const systemVsUserGuideBlock  = useMemo(() => blocks.find((b) => b.type === "system-vs-user-guide"),  [blocks]);
+  const fewShotGuideBlock       = useMemo(() => blocks.find((b) => b.type === "few-shot-guide"),        [blocks]);
+  const cotGuideBlock           = useMemo(() => blocks.find((b) => b.type === "cot-guide"),             [blocks]);
+  const bestPracticesBlock      = useMemo(() => blocks.find((b) => b.type === "best-practices-guide"),  [blocks]);
 
   // Detect if this is a Final Project topic with sequential task gating
   const sequential = topicId != null && isFinalProjectTopic(topicId);
@@ -358,6 +368,51 @@ export function TopicLessonLayout({
                 Try in Jupyter
               </div>
               <LangChainLangSmithGuide />
+            </div>
+          ) : howToCreatePromptsBlock ? (
+            /* Prompt Engineering — How to Create Prompts checklist */
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">✍️</span>
+                Try These Prompts
+              </div>
+              <HowToCreatePromptsPanel />
+            </div>
+          ) : systemVsUserGuideBlock ? (
+            /* Prompt Engineering — System vs User decision guide */
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">🗂️</span>
+                What Goes Where?
+              </div>
+              <SystemVsUserGuidePanel />
+            </div>
+          ) : fewShotGuideBlock ? (
+            /* Prompt Engineering — Few-Shot practice panel */
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">🧪</span>
+                Try It: Few-Shot
+              </div>
+              <FewShotPromptsPanel />
+            </div>
+          ) : cotGuideBlock ? (
+            /* Prompt Engineering — Chain-of-Thought practice panel */
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">🔗</span>
+                Try It: Chain-of-Thought
+              </div>
+              <ChainOfThoughtPanel />
+            </div>
+          ) : bestPracticesBlock ? (
+            /* Prompt Engineering — Best Practices copy-to-try panel */
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">📋</span>
+                Try These Prompts
+              </div>
+              <BestPracticesPanel />
             </div>
           ) : (
             /* Default — Python IDE (with optional sequential task gating for Final Project) */

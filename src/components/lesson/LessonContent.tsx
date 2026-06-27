@@ -475,6 +475,71 @@ export function LessonContent({
                 </span>
               </div>
             );
+          case "image":
+            return block.image ? (
+              <div key={i} className="my-6">
+                <img
+                  src={block.image}
+                  alt={block.imageAlt ?? ""}
+                  className="w-full rounded-xl border border-gray-200 object-contain"
+                />
+              </div>
+            ) : null;
+          case "how-to-create-prompts":
+            return (
+              <div key={i} className="my-4 flex items-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-4 py-3">
+                <span className="text-xs font-semibold text-violet-700">
+                  How to Create AI Prompts on the right →
+                </span>
+                <span className="text-xs text-violet-500">
+                  Work through each step and tick it off when practised.
+                </span>
+              </div>
+            );
+          case "system-vs-user-guide":
+            return (
+              <div key={i} className="my-4 flex items-center gap-2 rounded-xl border border-indigo-200 bg-indigo-50 px-4 py-3">
+                <span className="text-xs font-semibold text-indigo-700">
+                  System vs User Prompt Guide on the right →
+                </span>
+                <span className="text-xs text-indigo-500">
+                  Review each instruction type and mark it when understood.
+                </span>
+              </div>
+            );
+          case "few-shot-guide":
+            return (
+              <div key={i} className="my-4 flex items-center gap-2 rounded-xl border border-purple-200 bg-purple-50 px-4 py-3">
+                <span className="text-xs font-semibold text-purple-700">
+                  Few-Shot practice exercises on the right →
+                </span>
+                <span className="text-xs text-purple-500">
+                  Work through each step and complete the exercise.
+                </span>
+              </div>
+            );
+          case "cot-guide":
+            return (
+              <div key={i} className="my-4 flex items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3">
+                <span className="text-xs font-semibold text-emerald-700">
+                  Chain-of-Thought exercises on the right →
+                </span>
+                <span className="text-xs text-emerald-500">
+                  Try each task and expand for hints and example answers.
+                </span>
+              </div>
+            );
+          case "best-practices-guide":
+            return (
+              <div key={i} className="my-4 flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-3">
+                <span className="text-xs font-semibold text-blue-700">
+                  Try these prompts on the right →
+                </span>
+                <span className="text-xs text-blue-500">
+                  Copy each example prompt, paste it into an AI tool and tick it off.
+                </span>
+              </div>
+            );
           default:
             return null;
         }
