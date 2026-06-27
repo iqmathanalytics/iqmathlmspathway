@@ -1270,9 +1270,171 @@ export function buildBestPracticesLesson(): TopicLesson {
   };
 }
 
+// ─── Chat History and Memory (ai-m4-t1) ──────────────────────────────────────
+
+function buildChatHistoryLesson(): TopicLesson {
+  return {
+    topicId: "ai-m4-t1",
+    intro: "AI models have no built-in memory — they are stateless by design. The 'memory' you experience in ChatGPT or Claude is an illusion created by prompt engineering: the application quietly appends the full conversation history to every new request.",
+    blocks: [
+      { type: "heading", content: "Conversation History: How AI Appears to Remember" },
+      { type: "paragraph", content: "Consumer conversational AI services like ChatGPT and Bing Chat use a trick to make the AI agent seem to remember the context of the conversation. The trick is that the foundation model is given the whole chat history at each turn — not just the latest prompt — but the user does not see this. An AI model cannot learn and has no memory of previous interactions if the user leaves and comes back, but the application is using prompt engineering to add this 'memory'." },
+      { type: "image", image: "/images/chat-history-flow.png", imageAlt: "How chat history is passed at each turn to give AI contextual memory" },
+      { type: "heading", content: "Seeing Context in Action" },
+      { type: "paragraph", content: "Try this experiment yourself. Open any AI chatbot and send: 'How many neutrons are in a hydrogen nucleus?' Without clearing the chat, follow up with: 'What about the isotopes?' Even though you never mentioned hydrogen again, the AI will describe deuterium and tritium — because the full prior exchange was sent back in the same request." },
+      { type: "tip", content: "Now clear the chat and send 'What about the isotopes?' on its own. Without context the model gives a generic answer about isotopes in general. The key here is that sending previous prompts back provides the model with grounding and produces a more valuable answer." },
+      { type: "heading", content: "Types of AI Memory" },
+      { type: "image", image: "/images/memory-types.png", imageAlt: "Four types of AI memory: Buffer, Summary, Entity, and Vector memory" },
+      { type: "list", items: [
+        "Buffer Memory — keeps the last N messages verbatim. Simple and accurate, but the context window fills up quickly.",
+        "Summary Memory — periodically condenses older turns into a compact paragraph, saving tokens but potentially losing nuance.",
+        "Entity Memory — tracks specific facts (names, dates, preferences) in a structured store and injects only the relevant facts.",
+        "Vector Memory — stores all past exchanges as embeddings and retrieves the most semantically relevant chunks at query time.",
+      ]},
+      { type: "heading", content: "Why the Context Window is Your Limiting Factor" },
+      { type: "paragraph", content: "Every LLM has a fixed context window — the maximum number of tokens it can process in one call. Once a long conversation exceeds this limit, the application must decide what to drop — usually the oldest messages — which can cause the model to lose important early context." },
+      { type: "tip", content: "Treat conversation history as untrusted user input. Validate and sanitise it before injecting into prompts. Never store passwords, API keys, or personal identifiers in the history buffer." },
+      { type: "chat-memory-guide" },
+    ],
+    keyTakeaways: [
+      "LLMs are stateless — 'memory' is achieved by re-sending the full conversation history on every turn.",
+      "Choose your memory strategy based on context length, cost and accuracy: buffer, summary, entity or vector.",
+      "Context windows are finite — once full, old messages are dropped silently.",
+      "Treat conversation history as untrusted user input; validate it before injecting it into prompts.",
+    ],
+  };
+}
+
+// ─── QnA ChatBot (ai-m4-t2) ──────────────────────────────────────────────────
+
+function buildQABotLesson(): TopicLesson {
+  return {
+    topicId: "ai-m4-t2",
+    intro: "In this tutorial you will build a fully working question-and-answer chatbot powered by Google's Gemini Pro model and served through a Python Flask web application.",
+    blocks: [
+      { type: "heading", content: "What We Are Building" },
+      { type: "paragraph", content: "A chatbot is a computer program designed to simulate human conversation. Gemini is a multimodal AI model built by Google DeepMind — it can generate text, analyse images, audio and video. We will use Gemini Pro, accessible for free via the Google AI Studio API, to power a Flask web application." },
+      { type: "image", image: "/images/gemini-chatbot-ui.png", imageAlt: "Screenshot of the finished QnA ChatBot web interface" },
+      { type: "heading", content: "Step 1 — Get a Gemini API Key" },
+      { type: "list", items: ["Navigate to Google AI Studio at aistudio.google.com.", "Click Get API key in the top-left panel.", "Click Create API key in new project.", "Copy the generated key — you will paste it into main.js later."] },
+      { type: "tip", content: "Never commit your API key to version control. Store it in an environment variable (GEMINI_API_KEY) or a .env file listed in .gitignore." },
+      { type: "heading", content: "Step 2 — File Structure" },
+      { type: "paragraph", content: "Flask expects HTML templates in a templates/ folder and static assets (JS, CSS, images) in a static/ folder, both beside app.py at the project root." },
+      { type: "image", image: "/images/flask-project-structure.png", imageAlt: "Flask project file structure: app.py, templates/index.html, static/main.js" },
+      { type: "heading", content: "Step 3 — The Flask Backend (app.py)" },
+      { type: "paragraph", content: "The backend is minimal — its only job is to serve the HTML template. All AI communication happens directly in the browser via the Gemini JavaScript SDK. The Flask app creates a single route at / that renders index.html." },
+      { type: "heading", content: "Step 4 — The Chat Interface (index.html)" },
+      { type: "paragraph", content: "The HTML file builds the visual chat UI. It imports Tailwind CSS for styling and Showdown.js to convert Markdown responses from Gemini into HTML. An importmap tells the browser where to load the @google/generative-ai ESM package from." },
+      { type: "heading", content: "Step 5 — The Chat Logic (main.js)" },
+      { type: "list", items: [
+        "chatGemini(message) — appends the user message to the UI, sends it to Gemini with chat.sendMessage(), converts the Markdown response to HTML, then appends the AI reply.",
+        "addMessage(msg, direction) — creates a styled div for user messages (right, blue) or AI replies (left, green).",
+      ]},
+      { type: "tip", content: "startChat() returns a ChatSession object. Every call to chat.sendMessage() automatically includes the full conversation history — the same memory technique from the Chat History lesson." },
+      { type: "heading", content: "Step 6 — Run and Test" },
+      { type: "paragraph", content: "With all three files saved, run python app.py. Flask will print a local URL — open it in your browser and send your first message." },
+      { type: "qa-bot-guide" },
+    ],
+    keyTakeaways: [
+      "Flask serves the HTML shell; all Gemini API calls happen in the browser via the JavaScript SDK.",
+      "startChat() creates a stateful session — each sendMessage() call automatically carries the full conversation history.",
+      "Showdown.js converts Gemini's Markdown responses to styled HTML for a polished UI.",
+      "Never hardcode API keys in source files — use environment variables or a .env file kept out of version control.",
+    ],
+  };
+}
+
+// ─── Testing Your Chatbot (ai-m4-t3) ─────────────────────────────────────────
+
+function buildTestingChatbotLesson(): TopicLesson {
+  return {
+    topicId: "ai-m4-t3",
+    intro: "Building a chatbot is only half the job. Testing it systematically — before users find the bugs — is what separates a reliable AI product from an embarrassing one. This lesson gives you a practical testing framework you can apply to any chatbot you build.",
+    blocks: [
+      { type: "heading", content: "Why Chatbot Testing is Different" },
+      { type: "paragraph", content: "Traditional software testing is deterministic: given the same input you always get the same output. Chatbot testing is probabilistic — the same prompt can produce different responses across runs, models, and system prompt changes. You evaluate responses against a rubric: does the tone match the persona? Is the answer factually plausible? Does it stay on-topic?" },
+      { type: "image", image: "/images/chatbot-testing-workflow.png", imageAlt: "Five-step chatbot testing workflow" },
+      { type: "heading", content: "The 5-Step Testing Workflow" },
+      { type: "list", items: [
+        "Plan Tests — define your test categories before writing any prompts. At minimum: happy path, context retention, edge cases, guardrails, persona consistency.",
+        "Write Test Cases — for each category, write at least two specific prompts and the expected response behaviour. Write expected outputs before running tests.",
+        "Run Tests — send each prompt using the live playground, using the same model and system prompt you intend to ship.",
+        "Evaluate Responses — compare actual responses against your rubric. Note failures, tone drift, and missing refusals.",
+        "Iterate and Fix — adjust the system prompt to address failures. Re-run the full suite after each change.",
+      ]},
+      { type: "heading", content: "The 6 Test Categories" },
+      { type: "image", image: "/images/chatbot-test-categories.png", imageAlt: "Six chatbot test categories" },
+      { type: "list", items: [
+        "Happy Path — normal well-formed questions the bot is designed to answer.",
+        "Context Retention — multi-turn conversations where later messages refer to earlier ones.",
+        "Edge Cases — vague or ambiguous inputs; a good bot asks for clarification.",
+        "Guardrails — adversarial inputs: prompt-injection attempts, off-topic or harmful requests.",
+        "Persona Consistency — verify tone, expertise level and name remain consistent throughout.",
+        "Performance — response length, latency, and cost per message.",
+      ]},
+      { type: "tip", content: "The most common testing mistake is writing prompts you already know will work. Deliberately try to break the bot. Your users will do all of these things." },
+      { type: "heading", content: "Iterating on the System Prompt" },
+      { type: "paragraph", content: "When tests fail the fix is almost always a system prompt change. Common fixes: add an explicit refusal instruction, strengthen the persona, add few-shot examples, constrain output format. Version your system prompts — keep a changelog so you can roll back if a new version breaks a passing test." },
+      { type: "groq-playground", systemPrompt: "You are a helpful Python tutor. Give clear, beginner-friendly answers. If a question is off-topic, politely redirect the user back to Python topics." },
+      { type: "testing-chatbot-guide" },
+    ],
+    keyTakeaways: [
+      "Chatbot testing is probabilistic — evaluate against a rubric, not a deterministic assertion.",
+      "Cover all 6 categories: happy path, context retention, edge cases, guardrails, persona, performance.",
+      "Write expected outputs before running tests to avoid confirmation bias.",
+      "Version your system prompts so you can roll back when a change breaks a passing test.",
+    ],
+  };
+}
+
+// ─── Improving Response Quality (ai-m4-t5) ───────────────────────────────────
+
+function buildResponseQualityLesson(): TopicLesson {
+  return {
+    topicId: "ai-m4-t5",
+    intro: "Getting a chatbot to reply is easy. Getting it to reply well — with the right tone, the right length, and the right level of creativity — requires understanding and tuning the generation parameters that control how a language model samples its output.",
+    blocks: [
+      { type: "heading", content: "What Are Generation Parameters?" },
+      { type: "paragraph", content: "When a language model generates text, it samples from a probability distribution over its vocabulary. Generation parameters are the knobs that control that sampling process — how wide the distribution is, how many tokens to generate, and how strongly to penalise repeated words. Tuning these parameters is one of the fastest ways to improve LLM output quality without changing the model or the prompt." },
+      { type: "image", image: "/images/llm-quality-parameters.png", imageAlt: "The four key LLM response quality parameters: temperature, max_tokens, top_p, frequency_penalty" },
+      { type: "heading", content: "Temperature — Controlling Creativity" },
+      { type: "paragraph", content: "Temperature scales the probability distribution before sampling. Temperature 0 makes the model always pick the most likely token — deterministic, identical output every run. Above 1 it flattens the distribution, making low-probability tokens more likely, producing creative but sometimes incoherent output." },
+      { type: "image", image: "/images/temperature-effect.png", imageAlt: "Same prompt at temperatures 0.0, 0.7, and 1.5 showing deterministic, balanced, and creative outputs" },
+      { type: "list", items: [
+        "temperature=0 — fully deterministic. Best for factual Q&A, classification, structured extraction.",
+        "temperature=0.3–0.5 — focused but not robotic. Good default for support bots and tutors.",
+        "temperature=0.7–0.9 — balanced. The classic chatbot setting.",
+        "temperature=1.2+ — highly creative. Use for brainstorming and creative writing only.",
+      ]},
+      { type: "heading", content: "Max Tokens — Controlling Length" },
+      { type: "paragraph", content: "max_tokens sets the upper bound on how many tokens the model can generate. One token is roughly 0.75 English words. Always set an explicit max_tokens rather than leaving it at the API default, which is often very large." },
+      { type: "tip", content: "Set max_tokens to roughly 1.5× the expected response length. Too low causes truncated mid-sentence responses; too high wastes money and may encourage padding." },
+      { type: "heading", content: "Top-P (Nucleus Sampling)" },
+      { type: "paragraph", content: "Top-P selects from the smallest set of tokens whose cumulative probability exceeds P. With top_p=0.9, the model only considers tokens that together account for 90% of the probability mass. Most practitioners tune either temperature or top_p, not both simultaneously." },
+      { type: "heading", content: "Frequency Penalty — Reducing Repetition" },
+      { type: "paragraph", content: "Frequency penalty subtracts a scaled penalty from a token's logit proportional to how many times it has already appeared. Values between 0.3 and 0.8 noticeably improve vocabulary variety without making text feel artificially constrained." },
+      { type: "heading", content: "Quick Reference — Use-Case Presets" },
+      { type: "list", items: [
+        "Factual Q&A → temperature=0, max_tokens=256, top_p=1, frequency_penalty=0",
+        "Conversational assistant → temperature=0.5, max_tokens=512, top_p=0.9, frequency_penalty=0.3",
+        "Creative writing → temperature=1.1, max_tokens=1024, top_p=0.95, frequency_penalty=0.5",
+        "Code generator → temperature=0.2, max_tokens=800, top_p=1, frequency_penalty=0",
+        "Summarization → temperature=0.3, max_tokens=300, top_p=1, frequency_penalty=0.2",
+      ]},
+      { type: "response-quality-guide" },
+    ],
+    keyTakeaways: [
+      "Temperature controls randomness — 0 is deterministic, >1 is creative; 0.4–0.7 suits most chatbots.",
+      "Always set max_tokens explicitly to control cost and prevent runaway responses.",
+      "Tune either temperature or top_p, not both — they serve a similar purpose.",
+      "frequency_penalty reduces repetition; values of 0.3–0.8 are practical.",
+    ],
+  };
+}
+
 // ─── Batch helpers ───────────────────────────────────────────────────────────
 
-type LessonType = "concept" | "setup" | "code-demo" | "playground" | "project" | "what-is-prompt" | "system-vs-user" | "few-shot" | "cot" | "best-practices";
+type LessonType = "concept" | "setup" | "code-demo" | "playground" | "project" | "what-is-prompt" | "system-vs-user" | "few-shot" | "cot" | "best-practices" | "chat-history" | "qa-bot" | "testing-chatbot" | "response-quality";
 
 const TOPIC_TYPES: Record<string, LessonType> = {
   // Type F — What is a Prompt article
@@ -1306,16 +1468,19 @@ const TOPIC_TYPES: Record<string, LessonType> = {
   "ai-m3-t2": "code-demo",
   "ai-m3-t3": "code-demo",
   "ai-m3-t5": "code-demo",
-  "ai-m4-t1": "code-demo",
-  "ai-m4-t2": "code-demo",
   "ai-m4-t4": "code-demo",
-  "ai-m4-t5": "code-demo",
   "ai-m5-t2": "code-demo",
   "ai-m5-t3": "code-demo",
   "ai-m6-t1": "code-demo",
   "ai-m6-t3": "code-demo",
-  // Type D — Playground
-  "ai-m4-t3": "playground",
+  // Type K — Chat History and Memory
+  "ai-m4-t1": "chat-history",
+  // Type L — QnA ChatBot build guide
+  "ai-m4-t2": "qa-bot",
+  // Type M — Testing Your Chatbot
+  "ai-m4-t3": "testing-chatbot",
+  // Type N — Improving Response Quality
+  "ai-m4-t5": "response-quality",
   // Type E — Project
   "ai-m6-t2": "project",
 };
@@ -1327,10 +1492,14 @@ export function buildAgenticAiLesson(topicId: string): TopicLesson {
     case "system-vs-user": return buildSystemVsUserLesson();
     case "few-shot":       return buildFewShotLesson();
     case "cot":            return buildChainOfThoughtLesson();
-    case "best-practices": return buildBestPracticesLesson();
-    case "setup":          return buildSetupLesson(topicId);
-    case "code-demo":      return buildCodeDemoLesson(topicId);
-    case "playground":     return buildPlaygroundLesson(topicId);
+    case "best-practices":   return buildBestPracticesLesson();
+    case "chat-history":     return buildChatHistoryLesson();
+    case "qa-bot":           return buildQABotLesson();
+    case "testing-chatbot":  return buildTestingChatbotLesson();
+    case "response-quality": return buildResponseQualityLesson();
+    case "setup":            return buildSetupLesson(topicId);
+    case "code-demo":        return buildCodeDemoLesson(topicId);
+    case "playground":       return buildPlaygroundLesson(topicId);
     case "project":        return buildProjectLesson(topicId);
     default:               return buildConceptLesson(topicId);
   }
