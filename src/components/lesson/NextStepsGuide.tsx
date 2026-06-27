@@ -228,7 +228,7 @@ export function NextStepsGuide() {
               <div className="rounded-xl border border-slate-100 p-4">
                 <h4 className="font-bold text-sm text-slate-800">Grounding</h4>
                 <p className="mt-1 text-[12.5px] leading-relaxed text-gray-500">
-                  Forcing the LLM's generated response to rely strictly on the provided context instead of guessing or using old weights.
+                  Forcing the LLM&apos;s generated response to rely strictly on the provided context instead of guessing or using old weights.
                 </p>
               </div>
               <div className="rounded-xl border border-slate-100 p-4">

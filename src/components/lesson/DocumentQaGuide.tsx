@@ -340,7 +340,7 @@ export function DocumentQaGuide() {
               <div className="grid gap-4 sm:grid-cols-3 text-[13px] text-teal-900">
                 <div className="rounded-lg border border-teal-200/50 bg-white p-3">
                   <p className="font-bold">1. Query Input</p>
-                  <p className="mt-1 text-slate-500 font-normal">Customer asks: "How do I return an item?"</p>
+                  <p className="mt-1 text-slate-500 font-normal">Customer asks: &quot;How do I return an item?&quot;</p>
                 </div>
                 <div className="rounded-lg border border-teal-200/50 bg-white p-3">
                   <p className="font-bold">2. Document Retrieval</p>
@@ -424,7 +424,7 @@ export function DocumentQaGuide() {
                 </h4>
                 <ul className="space-y-2 text-[12.5px] text-gray-600">
                   <li><strong>Computation Load:</strong> Loading models (embeddings + generator) requires adequate memory.</li>
-                  <li><strong>Ambiguity:</strong> Vague queries like "Where is it?" might match irrelevant vector indexes.</li>
+                  <li><strong>Ambiguity:</strong> Vague queries like &quot;Where is it?&quot; might match irrelevant vector indexes.</li>
                   <li><strong>Length Control:</strong> Generator models can output verbose sentences unless strict prompt constraints are used.</li>
                   <li><strong>Retrieval Precision:</strong> Bad matches in similarity indexes lead directly to bad generation.</li>
                 </ul>

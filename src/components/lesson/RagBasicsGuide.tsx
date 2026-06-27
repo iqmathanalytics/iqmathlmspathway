@@ -287,7 +287,7 @@ export function RagBasicsGuide() {
             <div className="rounded-xl border border-indigo-100 bg-indigo-50/30 p-5">
               <h4 className="font-bold text-sm text-indigo-950">A Practical Example: Documentation Search</h4>
               <p className="mt-1.5 text-[13px] leading-relaxed text-indigo-900">
-                Consider a coding tutorial platform like GeeksforGeeks. Instead of relying on a model's general knowledge which might suggest outdated library methods, a RAG system will:
+                Consider a coding tutorial platform like GeeksforGeeks. Instead of relying on a model&apos;s general knowledge which might suggest outdated library methods, a RAG system will:
               </p>
               <ul className="mt-3 list-inside list-disc space-y-1 text-[13px] text-indigo-900 font-medium">
                 <li>Search relevant articles matching the query.</li>
