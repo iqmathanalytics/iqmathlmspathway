@@ -60,6 +60,12 @@ import { FunctionVariablesInfographic } from "@/components/lesson/FunctionVariab
 import { FunctionRecursionInfographic } from "@/components/lesson/FunctionRecursionInfographic";
 import { LambdaFunctionsInfographic } from "@/components/lesson/LambdaFunctionsInfographic";
 import { AgenticAiTopicInfographic } from "@/components/lesson/AgenticAiTopicInfographic";
+import { ArtificialIntelligenceIntroBlock } from "@/components/lesson/ArtificialIntelligenceIntroBlock";
+import { LargeLanguageModelIntroBlock } from "@/components/lesson/LargeLanguageModelIntroBlock";
+import { LlmOrchestrationBlock } from "@/components/lesson/LlmOrchestrationBlock";
+import { TopLlmModelsBlock } from "@/components/lesson/TopLlmModelsBlock";
+import { GroqApiKeyGuideBlock } from "@/components/lesson/GroqApiKeyGuideBlock";
+import { GroqDocsLessonBlock } from "@/components/lesson/GroqDocsLessonBlock";
 import { LangChainIntroBlock } from "@/components/lesson/LangChainIntroBlock";
 import { LangChainSetupGuide } from "@/components/lesson/LangChainSetupGuide";
 import { RagBasicsGuide } from "@/components/lesson/RagBasicsGuide";
@@ -423,6 +429,23 @@ export function LessonContent({
 
             return null;
           }
+          // Module 1 — custom visual blocks
+          case "ai-intro":
+            return <ArtificialIntelligenceIntroBlock key={i} />;
+          case "llm-intro":
+            return <LargeLanguageModelIntroBlock key={i} />;
+          case "llm-orchestration":
+            return <LlmOrchestrationBlock key={i} />;
+          case "top-llm-models":
+            return <TopLlmModelsBlock key={i} />;
+          // Module 4 — Groq API custom visual blocks
+          case "groq-api-key-guide":
+            return <GroqApiKeyGuideBlock key={i} />;
+          case "groq-docs-lesson":
+            return <GroqDocsLessonBlock key={i} topicId={block.content} />;
+          case "groq-api-key-checklist":
+          case "groq-docs-reference":
+            return null;
           // Module 2 — custom visual blocks
           case "langchain-intro":
             return <LangChainIntroBlock key={i} />;

@@ -372,6 +372,39 @@ except json.JSONDecodeError:
 
   // ── Groq API module ─────────────────────────────────────────────────────
 
+  "ai-m3-t1": [
+    {
+      label: "Cell 1 — Install",
+      cellType: "install",
+      code: GROQ_INSTALL,
+    },
+    {
+      label: "Cell 2 — Store the key for this notebook",
+      code: `import os
+
+# Replace with your real key only in your private notebook or local environment.
+os.environ["GROQ_API_KEY"] = "your-groq-api-key-here"
+
+print("Groq API key configured:", bool(os.environ.get("GROQ_API_KEY")))`,
+    },
+    {
+      label: "Cell 3 — Create a Groq client",
+      code: `from groq import Groq
+
+client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+print("Groq client ready")`,
+    },
+    {
+      label: "Cell 4 — Keep keys out of source code",
+      code: `# Recommended for real projects:
+# 1. Save GROQ_API_KEY in a .env file or system environment variable.
+# 2. Add .env to .gitignore.
+# 3. Never paste keys into frontend code or public repositories.
+
+print("Store secrets outside your source code.")`,
+    },
+  ],
+
   "ai-m3-t2": [
     {
       label: "Cell 1 — Install",
@@ -447,6 +480,44 @@ print("Total tokens:", response.usage.total_tokens)`,
     return "[Unexpected finish reason]"
 
 print(safe_reply(response))`,
+    },
+  ],
+
+  "ai-m3-t4": [
+    {
+      label: "Cell 1 — Install",
+      cellType: "install",
+      code: GROQ_INSTALL,
+    },
+    {
+      label: "Cell 2 — Compare model choices",
+      code: `${API_KEY_SETUP}
+
+candidate_models = [
+    "llama3-8b-8192",
+    "llama3-70b-8192",
+]
+
+prompt = "Explain recursion to a beginner in 3 bullets."
+
+for model in candidate_models:
+    response = client.chat.completions.create(
+        model=model,
+        messages=[{"role": "user", "content": prompt}],
+        max_tokens=120,
+    )
+    print("\\nMODEL:", model)
+    print(response.choices[0].message.content)`,
+    },
+    {
+      label: "Cell 3 — Create a simple model scorecard",
+      code: `model_scorecard = [
+    {"model": "llama3-8b-8192", "best_for": "fast classroom demos", "watch": "less depth"},
+    {"model": "llama3-70b-8192", "best_for": "stronger reasoning", "watch": "higher latency"},
+]
+
+for item in model_scorecard:
+    print(f"{item['model']}: best for {item['best_for']} — watch {item['watch']}")`,
     },
   ],
 

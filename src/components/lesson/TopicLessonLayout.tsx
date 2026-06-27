@@ -20,6 +20,8 @@ import { LangChainPromptsGuide } from "./LangChainPromptsGuide";
 import { LangChainLCELGuide } from "./LangChainLCELGuide";
 import { LangChainAgentsGuide } from "./LangChainAgentsGuide";
 import { LangChainLangSmithGuide } from "./LangChainLangSmithGuide";
+import { GroqApiKeyChecklist } from "./GroqApiKeyChecklist";
+import { GroqDocsReferencePanel } from "./GroqDocsReferencePanel";
 import { HowToCreatePromptsPanel } from "./HowToCreatePromptsPanel";
 import { SystemVsUserGuidePanel } from "./SystemVsUserGuidePanel";
 import { FewShotPromptsPanel } from "./FewShotPromptsPanel";
@@ -83,6 +85,8 @@ export function TopicLessonLayout({
   const langchainLCELGuide      = useMemo(() => blocks.find((b) => b.type === "langchain-lcel-guide"),      [blocks]);
   const langchainAgentsGuide    = useMemo(() => blocks.find((b) => b.type === "langchain-agents-guide"),    [blocks]);
   const langchainLangSmithGuide = useMemo(() => blocks.find((b) => b.type === "langchain-langsmith-guide"), [blocks]);
+  const groqApiKeyChecklist     = useMemo(() => blocks.find((b) => b.type === "groq-api-key-checklist"),    [blocks]);
+  const groqDocsReference       = useMemo(() => blocks.find((b) => b.type === "groq-docs-reference"),       [blocks]);
   const howToCreatePromptsBlock = useMemo(() => blocks.find((b) => b.type === "how-to-create-prompts"), [blocks]);
   const systemVsUserGuideBlock  = useMemo(() => blocks.find((b) => b.type === "system-vs-user-guide"),  [blocks]);
   const fewShotGuideBlock       = useMemo(() => blocks.find((b) => b.type === "few-shot-guide"),        [blocks]);
@@ -435,6 +439,24 @@ export function TopicLessonLayout({
               </div>
               <LangChainLangSmithGuide />
             </div>
+          ) : groqApiKeyChecklist ? (
+            /* Groq API Key — copy-progress checklist */
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">⚡</span>
+                Step Tracker
+              </div>
+              <GroqApiKeyChecklist />
+            </div>
+          ) : groqDocsReference ? (
+            /* Groq Docs — copy-progress checklist */
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">⚡</span>
+                Step Tracker
+              </div>
+              <GroqDocsReferencePanel topicId={groqDocsReference.content} />
+            </div>
           ) : howToCreatePromptsBlock ? (
             /* Prompt Engineering — How to Create Prompts checklist */
             <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
@@ -612,8 +634,16 @@ export function TopicLessonLayout({
     </LessonPracticeContext.Provider>
   );
 
-  // Wrap with copy-tracking context for the LangChain setup guide / RAG Basics guide / Document Q&A guide / Multi-Agent guide / Next Steps guide
-  return (langchainChecklistBlock || ragBasicsChecklistBlock || documentQaChecklistBlock || multiAgentChecklistBlock || nextStepsChecklistBlock) ? (
+  // Wrap with copy-tracking context for copy-progress guide lessons
+  return (
+    langchainChecklistBlock ||
+    ragBasicsChecklistBlock ||
+    documentQaChecklistBlock ||
+    multiAgentChecklistBlock ||
+    nextStepsChecklistBlock ||
+    groqApiKeyChecklist ||
+    groqDocsReference
+  ) ? (
     <LangChainCopyProvider>{layoutContent}</LangChainCopyProvider>
   ) : layoutContent;
 }

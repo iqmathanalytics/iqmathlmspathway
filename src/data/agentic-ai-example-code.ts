@@ -58,20 +58,16 @@ print("Next token chosen:", best_token)
 print("Generated sentence:", prompt, best_token)
 `,
 
-  "ai-m1-t3": () => `# How LLMs Work
-# Tokenize input, choose next tokens, then decode a response.
+  "ai-m1-t3": () => `# LLM Orchestration
+# Route a request through prompt, retrieval, model, memory, and monitoring steps.
 
-tokens = "Explain Python lists".split()
-generated = []
+workflow = ["prompt template", "retrieval", "model call", "memory update", "monitoring"]
 
-next_tokens = ["Lists", "store", "multiple", "values."]
-for token in next_tokens:
-    generated.append(token)
-    print("Partial response:", " ".join(generated))
+for step in workflow:
+    print("Running:", step)
 
 print()
-print("Input tokens:", tokens)
-print("Final answer:", " ".join(generated))
+print("Orchestration keeps multi-step LLM apps organized.")
 `,
 
   "ai-m1-t4": () => `# LLM Providers
@@ -680,22 +676,18 @@ next_token = sample_next_token(token_probabilities, temperature=0.7)
 completion = f"{prompt} {next_token}"
 `,
 
-  "ai-m1-t3": `# How LLMs Work
-# Concept: tokenize input, keep context, generate tokens one by one.
-class TinyLanguageModel:
-    def tokenize(self, text):
-        return text.split()
-    def score_next_tokens(self, tokens):
-        return {"Lists": 0.45, "They": 0.25, "A": 0.10}
-    def generate(self, prompt, max_tokens=4):
-        context = self.tokenize(prompt)
-        output = []
-        for _ in range(max_tokens):
-            scores = self.score_next_tokens(context + output)
-            output.append(max(scores, key=scores.get))
-        return " ".join(output)
-model = TinyLanguageModel()
-response = model.generate("Explain Python lists")
+  "ai-m1-t3": `# LLM Orchestration
+# Concept: coordinate prompt, retrieval, model call, memory, and monitoring.
+class TinyOrchestrator:
+    def run(self, user_question):
+        prompt = f"Answer clearly: {user_question}"
+        context = "Retrieved policy context"
+        response = f"{prompt} using {context}"
+        print("Model response:", response)
+        print("Memory updated")
+        print("Latency logged")
+orchestrator = TinyOrchestrator()
+orchestrator.run("What is our refund policy?")
 `,
 
   "ai-m1-t4": `# LLM Providers

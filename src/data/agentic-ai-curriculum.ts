@@ -12,7 +12,7 @@ export const agenticAiModules: Module[] = [
     topics: [
       { id: "ai-m1-t1", title: "What is Artificial Intelligence?", slug: "what-is-ai", description: "A plain-English overview of AI and where it is today.", estimatedMinutes: 8, published: true },
       { id: "ai-m1-t2", title: "What is a Large Language Model?", slug: "what-is-llm", description: "How LLMs differ from traditional software.", estimatedMinutes: 10, published: true },
-      { id: "ai-m1-t3", title: "How LLMs Work", slug: "how-llms-work", description: "Tokens, context windows, training and inference — simply explained.", estimatedMinutes: 12, published: true },
+      { id: "ai-m1-t3", title: "What is LLM Orchestration?", slug: "how-llms-work", description: "Coordinate prompts, models, tools, memory, retrieval, and monitoring in LLM apps.", estimatedMinutes: 12, published: true },
       { id: "ai-m1-t4", title: "LLM Providers Overview", slug: "llm-providers", description: "OpenAI, Anthropic, Google, Groq — what makes each different.", estimatedMinutes: 8, published: true },
     ],
   },
@@ -58,11 +58,11 @@ export const agenticAiModules: Module[] = [
     course: "agentic-ai",
     phase: "building",
     topics: [
-      { id: "ai-m3-t1", title: "Getting Your Groq API Key", slug: "groq-api-key", description: "Create a free Groq account and generate an API key.", estimatedMinutes: 6, published: true },
-      { id: "ai-m3-t2", title: "Your First API Call", slug: "first-api-call", description: "Send a message to an LLM from Python using the Groq SDK.", estimatedMinutes: 12, published: true },
-      { id: "ai-m3-t3", title: "Understanding API Responses", slug: "api-responses", description: "What the JSON response means and how to extract the text.", estimatedMinutes: 10, published: true },
-      { id: "ai-m3-t4", title: "Choosing a Model", slug: "choosing-a-model", description: "LLaMA, Mixtral, Gemma — speed vs capability trade-offs.", estimatedMinutes: 8, published: true },
-      { id: "ai-m3-t5", title: "Handling Errors and Rate Limits", slug: "errors-and-rate-limits", description: "Graceful retries and best practices for production use.", estimatedMinutes: 10, published: true },
+      { id: "ai-m3-t1", title: "How to Get a GROQ API Key", slug: "groq-api-key", description: "Create a free Groq account and generate an API key securely.", estimatedMinutes: 6, published: true },
+      { id: "ai-m3-t2", title: "Your First Groq API Call", slug: "first-api-call", description: "Use Groq's OpenAI-compatible endpoint and Responses API from Python.", estimatedMinutes: 12, published: true },
+      { id: "ai-m3-t3", title: "Understanding Groq API Responses", slug: "api-responses", description: "Extract response.output_text and prepare responses for real app workflows.", estimatedMinutes: 10, published: true },
+      { id: "ai-m3-t4", title: "Choosing a Groq Model", slug: "choosing-a-model", description: "Compare latency, reasoning, features, and model fit for your use case.", estimatedMinutes: 8, published: true },
+      { id: "ai-m3-t5", title: "Groq Production Readiness", slug: "errors-and-rate-limits", description: "Handle rate limits, errors, latency, security, and monitoring before shipping.", estimatedMinutes: 10, published: true },
     ],
   },
   {
