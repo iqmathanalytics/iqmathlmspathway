@@ -70,6 +70,10 @@ import { LangChainPromptsBlock } from "@/components/lesson/LangChainPromptsBlock
 import { LangChainLCELBlock } from "@/components/lesson/LangChainLCELBlock";
 import { LangChainAgentsBlock } from "@/components/lesson/LangChainAgentsBlock";
 import { LangChainLangSmithBlock } from "@/components/lesson/LangChainLangSmithBlock";
+import { AgentsInAiGuide } from "@/components/lesson/AgentsInAiGuide";
+import { FunctionCallingGuide } from "@/components/lesson/FunctionCallingGuide";
+import { BuildingAiAgentsGuide } from "@/components/lesson/BuildingAiAgentsGuide";
+import { ReActPatternGuide } from "@/components/lesson/ReActPatternGuide";
 import { FinalProjectInfographic } from "@/components/lesson/FinalProjectInfographic";
 import { ArrowRight, Lightbulb, Code2, Pencil, Play } from "lucide-react";
 
@@ -444,6 +448,14 @@ export function LessonContent({
             return <LangChainAgentsBlock key={i} />;
           case "langchain-langsmith":
             return <LangChainLangSmithBlock key={i} />;
+          case "agents-in-ai":
+            return <AgentsInAiGuide key={i} />;
+          case "function-calling":
+            return <FunctionCallingGuide key={i} />;
+          case "building-ai-agents":
+            return <BuildingAiAgentsGuide key={i} />;
+          case "react-pattern":
+            return <ReActPatternGuide key={i} />;
           // Right-side / layout signal blocks — no visible left-side content
           case "langchain-workflow":
           case "langchain-steps-checklist":
@@ -455,6 +467,10 @@ export function LessonContent({
           case "langchain-lcel-guide":
           case "langchain-agents-guide":
           case "langchain-langsmith-guide":
+          case "agents-in-ai-types":
+          case "function-calling-panel":
+          case "agent-workflow-patterns":
+          case "react-workflow-panel":
           case "single-column":
             return null;
           // Right-side signal blocks — rendered invisibly in the left column

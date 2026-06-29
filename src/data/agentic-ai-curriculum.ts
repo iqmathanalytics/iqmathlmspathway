@@ -93,7 +93,7 @@ export const agenticAiModules: Module[] = [
       { id: "ai-m5-t1", title: "What Are AI Agents?", slug: "what-are-agents", description: "How agents differ from simple chatbots.", estimatedMinutes: 10, published: true },
       { id: "ai-m5-t2", title: "Tool Calling / Function Calling", slug: "tool-calling", description: "Let the model call your Python functions on demand.", estimatedMinutes: 14, published: true },
       { id: "ai-m5-t3", title: "Building a Simple Agent", slug: "simple-agent", description: "Combine tool calling with a loop to make a working agent.", estimatedMinutes: 16, published: true },
-      { id: "ai-m5-t4", title: "The ReAct Pattern", slug: "react-pattern", description: "Reason → Act → Observe — the standard agent loop explained.", estimatedMinutes: 12, published: true },
+      { id: "ai-m5-t4", title: "The ReACT Pattern", slug: "react-pattern", description: "Reason → Act → Observe — the standard agent loop explained.", estimatedMinutes: 12, published: true },
     ],
   },
   {

@@ -29,6 +29,10 @@ import { ChatMemoryPanel } from "./ChatMemoryPanel";
 import { QABotPanel } from "./QABotPanel";
 import { TestingChatbotPanel } from "./TestingChatbotPanel";
 import { ResponseQualityPanel } from "./ResponseQualityPanel";
+import { AgentsInAiTypesPanel } from "./AgentsInAiTypesPanel";
+import { FunctionCallingPanel } from "./FunctionCallingPanel";
+import { AgentWorkflowPatternsPanel } from "./AgentWorkflowPatternsPanel";
+import { ReActWorkflowPanel } from "./ReActWorkflowPanel";
 import { LessonPracticeContext } from "./LessonPracticeContext";
 import {
   areAllExercisesComplete,
@@ -92,6 +96,10 @@ export function TopicLessonLayout({
   const qaBotBlock              = useMemo(() => blocks.find((b) => b.type === "qa-bot-guide"),          [blocks]);
   const testingChatbotBlock     = useMemo(() => blocks.find((b) => b.type === "testing-chatbot-guide"), [blocks]);
   const responseQualityBlock    = useMemo(() => blocks.find((b) => b.type === "response-quality-guide"),[blocks]);
+  const agentsInAiTypesBlock    = useMemo(() => blocks.find((b) => b.type === "agents-in-ai-types"),    [blocks]);
+  const functionCallingBlock     = useMemo(() => blocks.find((b) => b.type === "function-calling-panel"), [blocks]);
+  const agentWorkflowPatternsBlock = useMemo(() => blocks.find((b) => b.type === "agent-workflow-patterns"), [blocks]);
+  const reactWorkflowBlock       = useMemo(() => blocks.find((b) => b.type === "react-workflow-panel"), [blocks]);
 
   // Detect if this is a Final Project topic with sequential task gating
   const sequential = topicId != null && isFinalProjectTopic(topicId);
@@ -503,6 +511,38 @@ export function TopicLessonLayout({
                 Try in Jupyter
               </div>
               <ResponseQualityPanel />
+            </div>
+          ) : agentsInAiTypesBlock ? (
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">🦾</span>
+                Types of Agents
+              </div>
+              <AgentsInAiTypesPanel />
+            </div>
+          ) : functionCallingBlock ? (
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">🛠️</span>
+                Function Calling
+              </div>
+              <FunctionCallingPanel />
+            </div>
+          ) : agentWorkflowPatternsBlock ? (
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">🧩</span>
+                Workflow Patterns
+              </div>
+              <AgentWorkflowPatternsPanel />
+            </div>
+          ) : reactWorkflowBlock ? (
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+                <span className="text-base">🔁</span>
+                ReACT Workflow
+              </div>
+              <ReActWorkflowPanel />
             </div>
           ) : (
             /* Default — Python IDE (with optional sequential task gating for Final Project) */

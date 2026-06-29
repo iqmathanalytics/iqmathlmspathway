@@ -294,8 +294,8 @@ export const AGENTIC_AI_TOPIC_GUIDES: Record<string, AgenticAiTopicGuide> = {
   },
   "ai-m5-t4": {
     moduleLabel: "Agents",
-    title: "ReAct Pattern",
-    hook: "ReAct alternates reasoning, acting, and observing until the task is solved.",
+    title: "ReACT Pattern",
+    hook: "ReACT alternates reasoning, acting, and observing until the task is solved.",
     outcome: "You will understand the standard agent control loop.",
     steps: ["Reason", "Act with a tool", "Observe result"],
     example: "Need current data → search → read result → answer.",
