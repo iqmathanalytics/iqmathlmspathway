@@ -193,7 +193,15 @@ export interface LessonBlock {
     | "chat-memory-guide"
     | "qa-bot-guide"
     | "testing-chatbot-guide"
-    | "response-quality-guide";
+    | "response-quality-guide"
+    | "agents-in-ai"
+    | "agents-in-ai-types"
+    | "function-calling"
+    | "function-calling-panel"
+    | "building-ai-agents"
+    | "agent-workflow-patterns"
+    | "react-pattern"
+    | "react-workflow-panel";
   content?: string;
   items?: string[];
   /** For image blocks */

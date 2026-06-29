@@ -549,8 +549,8 @@ def simple_agent(question, max_steps=3):
 print(simple_agent("What is 12 * 8?"))
 `,
 
-  "ai-m5-t4": () => `# ReAct Pattern
-# ReAct alternates Reason, Act, Observe until it can answer.
+  "ai-m5-t4": () => `# ReACT Pattern
+# ReACT alternates Reason, Act, Observe until it can answer.
 def search_docs(query):
     return "The Agentic AI course moves from LLM basics to tools, agents, and real apps."
 react_trace = []
@@ -1115,7 +1115,7 @@ def simple_agent(question, max_steps=3):
 result = simple_agent("What is 12 * 8?")
 `,
 
-  "ai-m5-t4": `# ReAct Pattern
+  "ai-m5-t4": `# ReACT Pattern
 # Concept: represent Reason, Act, Observe, Answer as an explicit trace.
 def search_docs(query):
     return "The course moves from LLM basics to tools, agents, and real apps."
