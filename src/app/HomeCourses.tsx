@@ -39,7 +39,7 @@ const COURSE_META: Record<
     prereq: "Python for Data Science",
     featureHighlights: [
       "Live Groq API chatbot playground — test your bot in the browser",
-      "7 modules from LLM basics to LangChain and multi-agent systems",
+      "8 modules from LLM basics to a customer support agent final project",
       "Hands-on exercises with real API calls",
     ],
   },

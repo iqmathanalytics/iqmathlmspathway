@@ -12,7 +12,7 @@ const features = [
   {
     icon: GitBranch,
     title: "Structured courses",
-    text: "Python: 14 modules from basics to a final capstone. Agentic AI: 7 modules from LLMs to deployable agent systems.",
+    text: "Python: 14 modules from basics to a final capstone. Agentic AI: 8 modules from LLMs to a customer support agent project.",
     accent: "from-python-blue/10 to-blue-500/5",
   },
   {

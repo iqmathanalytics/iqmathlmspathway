@@ -20,6 +20,7 @@ import { agenticAiModule3Lessons } from "./agentic-ai-module-3";
 import { agenticAiModule4Lessons } from "./agentic-ai-module-4";
 import { agenticAiModule5Lessons } from "./agentic-ai-module-5";
 import { agenticAiModule6Lessons } from "./agentic-ai-module-6";
+import { agenticAiModule7Lessons } from "./agentic-ai-module-7";
 
 const allLessons: Record<string, TopicLesson> = {
   ...module1Lessons,
@@ -43,6 +44,7 @@ const allLessons: Record<string, TopicLesson> = {
   ...agenticAiModule4Lessons,
   ...agenticAiModule5Lessons,
   ...agenticAiModule6Lessons,
+  ...agenticAiModule7Lessons,
 };
 
 export function getLesson(topicId: string): TopicLesson | undefined {

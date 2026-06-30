@@ -125,4 +125,22 @@ export const agenticAiModules: Module[] = [
       { id: "ai-m6-t4", title: "Next Steps and Resources", slug: "next-steps", description: "Where to go after this course — frameworks, projects and communities.", estimatedMinutes: 8, published: true },
     ],
   },
+  {
+    id: 8,
+    name: "Final Project: Customer Support Agent",
+    slug: "customer-support-agent-project",
+    description: "Build a practical support agent with knowledge, tools, memory, safety rules, and test conversations.",
+    icon: "AI",
+    iconImage: "/images/logos/agentic-ai-m8-final-project.svg",
+    iconAlt: "Customer support agent final project module logo",
+    course: "agentic-ai",
+    phase: "project",
+    topics: [
+      { id: "ai-m7-t1", title: "Project Overview", slug: "project-overview", description: "Understand the final agent architecture, milestones, and expected outcome.", estimatedMinutes: 12, published: true },
+      { id: "ai-m7-t2", title: "Step 1: Support Knowledge Base", slug: "support-knowledge-base", description: "Create policies, order records, FAQs, and support boundaries for grounded answers.", estimatedMinutes: 14, published: true },
+      { id: "ai-m7-t3", title: "Step 2: Tools and Function Calling", slug: "tools-function-calling", description: "Add safe mock tools for order lookup, policy search, ticket creation, and escalation.", estimatedMinutes: 16, published: true },
+      { id: "ai-m7-t4", title: "Step 3: Agent Loop and Memory", slug: "agent-loop-memory", description: "Combine request routing, chat memory, tool execution, and response generation.", estimatedMinutes: 18, published: true },
+      { id: "ai-m7-t5", title: "Step 4: Testing and Final Build", slug: "testing-final-build", description: "Run test conversations and assemble the complete customer support agent.", estimatedMinutes: 20, published: true },
+    ],
+  },
 ];
