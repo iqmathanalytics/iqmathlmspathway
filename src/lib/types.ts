@@ -205,7 +205,9 @@ export interface LessonBlock {
     | "building-ai-agents"
     | "agent-workflow-patterns"
     | "react-pattern"
-    | "react-workflow-panel";
+    | "react-workflow-panel"
+    | "customer-support-project"
+    | "customer-support-project-panel";
   content?: string;
   items?: string[];
   /** For image blocks */
