@@ -17,6 +17,8 @@ interface NextTopicButtonProps {
   variant?: "header" | "footer";
 }
 
+const TEMPORARILY_DISABLE_TOPIC_LOCK = true;
+
 // ── Popup shown when header button is clicked ─────────────────────────────────
 function NextTopicPopup({
   topicId,
@@ -37,7 +39,7 @@ function NextTopicPopup({
 
   const ideDone  = !hasIde || (ready && isIdeRan(progress, topicId));
   const quizDone = ready && (!hasQuiz || isQuizDone(progress, topicId));
-  const canProceed = ideDone && quizDone;
+  const canProceed = TEMPORARILY_DISABLE_TOPIC_LOCK || (ideDone && quizDone);
 
   // Close on Escape
   useEffect(() => {
@@ -154,7 +156,7 @@ export function NextTopicButton({
 
   const ideDone  = !hasIde || (ready && isIdeRan(progress, topicId));
   const quizDone = ready && (!hasQuiz || isQuizDone(progress, topicId));
-  const canProceed = ideDone && quizDone;
+  const canProceed = TEMPORARILY_DISABLE_TOPIC_LOCK || (ideDone && quizDone);
 
   const closePopup = useCallback(() => setPopupOpen(false), []);
 

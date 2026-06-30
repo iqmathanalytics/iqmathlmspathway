@@ -14,6 +14,8 @@ interface MarkCompleteButtonProps {
   hasIde?: boolean;
 }
 
+const TEMPORARILY_DISABLE_TOPIC_LOCK = true;
+
 export function MarkCompleteButton({ topicId, hasQuiz, hasIde = true }: MarkCompleteButtonProps) {
   const { user } = useAuth();
   const { progress, ready } = useProgress();
@@ -22,7 +24,7 @@ export function MarkCompleteButton({ topicId, hasQuiz, hasIde = true }: MarkComp
   const done      = ready && progress.completedTopics.includes(topicId);
   const ideDone   = !hasIde || (ready && isIdeRan(progress, topicId));
   const quizDone  = ready && (!hasQuiz || isQuizDone(progress, topicId));
-  const canMark   = ideDone && quizDone;
+  const canMark   = TEMPORARILY_DISABLE_TOPIC_LOCK || (ideDone && quizDone);
 
   async function handleClick() {
     if (!user || !canMark) return;
