@@ -22,7 +22,7 @@ export const courses: Course[] = [
     description:
       "Learn how LLMs work, master prompt engineering, and build your own chatbots and AI agents using the Groq API — testing everything live inside the platform.",
     icon: "AI",
-    iconImage: "/images/logos/agentic-ai-course.png",
+    iconImage: "/images/logos/agentic-ai-course.svg",
     iconAlt: "Agentic AI logo",
     level: "intermediate",
     color: "violet",

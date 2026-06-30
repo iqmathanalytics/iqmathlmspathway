@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="Agentic AI logo">
+  <defs>
+    <linearGradient id="agentic-core" x1="68" y1="42" x2="194" y2="214" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8b5cf6"/>
+      <stop offset="0.52" stop-color="#6d28d9"/>
+      <stop offset="1" stop-color="#312e81"/>
+    </linearGradient>
+    <linearGradient id="agentic-signal" x1="42" y1="214" x2="209" y2="39" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#facc15"/>
+      <stop offset="0.48" stop-color="#fb923c"/>
+      <stop offset="1" stop-color="#f97316"/>
+    </linearGradient>
+    <linearGradient id="agentic-node" x1="83" y1="74" x2="175" y2="181" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#38bdf8"/>
+    </linearGradient>
+  </defs>
+
+  <path
+    d="M128 28c48 0 88 34 98 79 3 14-8 26-22 25l-27-2c-9-1-16-7-19-16-5-14-17-24-31-24-18 0-33 15-33 34 0 9 4 18 10 24l18 18c8 8 8 21 0 29l-17 17c-8 8-21 8-29 0l-18-18a99 99 0 0 1 70-166z"
+    fill="url(#agentic-core)"
+  />
+  <path
+    d="M32 207c34-6 65-20 90-42 22-19 38-45 46-74 4-14 22-18 31-7l14 16c7 8 8 19 2 28-18 31-45 56-77 73-28 15-60 23-94 22-12 0-17-14-12-16z"
+    fill="url(#agentic-signal)"
+  />
+  <path
+    d="M67 85 128 47l61 38v73l-61 38-61-38V85z"
+    fill="none"
+    stroke="url(#agentic-node)"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="13"
+    opacity="0.92"
+  />
+  <path
+    d="M91 151 128 74l37 77M106 126h44"
+    fill="none"
+    stroke="#ffffff"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="15"
+  />
+  <circle cx="67" cy="85" r="18" fill="url(#agentic-signal)"/>
+  <circle cx="189" cy="85" r="18" fill="url(#agentic-signal)"/>
+  <circle cx="128" cy="196" r="18" fill="url(#agentic-signal)"/>
+  <circle cx="128" cy="128" r="22" fill="#ffffff"/>
+  <circle cx="128" cy="128" r="10" fill="#6d28d9"/>
+</svg>
