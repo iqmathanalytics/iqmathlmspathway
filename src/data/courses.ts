@@ -8,7 +8,9 @@ export const courses: Course[] = [
     tagline: "Learn Python from scratch — structured lessons with hands-on practice.",
     description:
       "Start from zero and build a solid Python foundation. Covers syntax, data structures, functions, and the tools used in data science.",
-    icon: "🐍",
+    icon: "PY",
+    iconImage: "/images/logos/python-course.png",
+    iconAlt: "Python logo",
     level: "beginner",
     color: "brand",
   },
@@ -19,7 +21,9 @@ export const courses: Course[] = [
     tagline: "Build real AI chatbots and agents using LLMs and the Groq API.",
     description:
       "Learn how LLMs work, master prompt engineering, and build your own chatbots and AI agents using the Groq API — testing everything live inside the platform.",
-    icon: "🤖",
+    icon: "AI",
+    iconImage: "/images/logos/agentic-ai-course.png",
+    iconAlt: "Agentic AI logo",
     level: "intermediate",
     color: "violet",
   },

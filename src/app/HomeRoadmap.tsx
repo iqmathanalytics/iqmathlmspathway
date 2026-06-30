@@ -4,6 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import type { Module } from "@/lib/types";
+import { courses } from "@/data/courses";
+import { IconImage } from "@/components/ui/IconImage";
 
 interface HomeRoadmapProps {
   pythonModules: Module[];
@@ -11,8 +13,8 @@ interface HomeRoadmapProps {
 }
 
 const TABS = [
-  { id: "python",     label: "🐍 Python for Data Science", color: "brand" },
-  { id: "agentic-ai", label: "🤖 Agentic AI",             color: "violet" },
+  { id: "python",     label: "Python for Data Science", color: "brand" },
+  { id: "agentic-ai", label: "Agentic AI",               color: "violet" },
 ] as const;
 
 type TabId = (typeof TABS)[number]["id"];
@@ -28,6 +30,7 @@ export function HomeRoadmap({ pythonModules, agenticAiModules }: HomeRoadmapProp
     active === "python" ? "/dashboard" : "/dashboard?course=agentic-ai";
 
   const isViolet = active === "agentic-ai";
+  const activeCourse = courses.find((course) => course.id === active);
 
   return (
     <section className="border-y border-gray-200/80 bg-gray-50">
@@ -40,7 +43,7 @@ export function HomeRoadmap({ pythonModules, agenticAiModules }: HomeRoadmapProp
               key={tab.id}
               type="button"
               onClick={() => setActive(tab.id)}
-              className={`rounded-xl px-5 py-2 text-sm font-semibold transition-colors ${
+              className={`inline-flex items-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition-colors ${
                 active === tab.id
                   ? tab.id === "agentic-ai"
                     ? "bg-violet-600 text-white shadow-sm"
@@ -48,6 +51,13 @@ export function HomeRoadmap({ pythonModules, agenticAiModules }: HomeRoadmapProp
                   : "border border-gray-200 bg-white text-gray-600 hover:border-gray-300 hover:text-gray-900"
               }`}
             >
+              <IconImage
+                src={courses.find((course) => course.id === tab.id)?.iconImage}
+                alt={`${tab.label} logo`}
+                fallback={courses.find((course) => course.id === tab.id)?.icon ?? ""}
+                className="h-5 w-5"
+                fallbackClassName="text-base leading-none"
+              />
               {tab.label}
             </button>
           ))}
@@ -57,10 +67,19 @@ export function HomeRoadmap({ pythonModules, agenticAiModules }: HomeRoadmapProp
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className={`mb-2 text-sm font-semibold uppercase tracking-wide ${isViolet ? "text-violet-600" : "text-brand-600"}`}>
-              {active === "python" ? "🐍 Python for Data Science" : "🤖 Agentic AI"}
+              <span className="inline-flex items-center gap-2">
+                <IconImage
+                  src={activeCourse?.iconImage}
+                  alt={activeCourse?.iconAlt ?? `${activeCourse?.name ?? "Course"} logo`}
+                  fallback={activeCourse?.icon ?? ""}
+                  className="h-5 w-5"
+                  fallbackClassName="text-base leading-none"
+                />
+                {active === "python" ? "Python for Data Science" : "Agentic AI"}
+              </span>
             </p>
             <h2 className="text-3xl font-bold tracking-tight text-gray-900">
-              {active === "python" ? "14-module learning path" : "6-module learning path"}
+              {modules.length}-module learning path
             </h2>
             <p className="mt-2 max-w-xl text-gray-600">
               {active === "python"
@@ -91,7 +110,13 @@ export function HomeRoadmap({ pythonModules, agenticAiModules }: HomeRoadmapProp
                 }`}
               >
                 <div className="flex items-start justify-between gap-2">
-                  <span className="text-3xl" aria-hidden>{m.icon}</span>
+                  <IconImage
+                    src={m.iconImage}
+                    alt={m.iconAlt ?? `${m.name} logo`}
+                    fallback={m.icon}
+                    className="h-12 w-12 rounded-xl bg-gray-50 p-1"
+                    fallbackClassName="text-3xl"
+                  />
                   <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-0.5 text-xs font-medium text-green-700">
                     <CheckCircle2 className="h-3 w-3" />
                     Live
@@ -117,7 +142,12 @@ export function HomeRoadmap({ pythonModules, agenticAiModules }: HomeRoadmapProp
               <ul className="mt-3 space-y-2 text-sm text-gray-500">
                 {upcoming.slice(0, 4).map((m) => (
                   <li key={m.slug} className="flex items-center gap-2">
-                    <span>{m.icon}</span>
+                    <IconImage
+                      src={m.iconImage}
+                      alt={m.iconAlt ?? `${m.name} logo`}
+                      fallback={m.icon}
+                      className="h-6 w-6 rounded-md bg-gray-50 p-0.5"
+                    />
                     <span className="line-clamp-1">{m.id}. {m.name}</span>
                   </li>
                 ))}

@@ -3,6 +3,7 @@ import type { Module } from "@/lib/types";
 import { Lock, CheckCircle2, Circle } from "lucide-react";
 import clsx from "clsx";
 import { NavigationLink } from "@/components/ui/NavigationLink";
+import { IconImage } from "@/components/ui/IconImage";
 
 interface ModuleCardProps {
   module: Module;
@@ -29,9 +30,13 @@ export function ModuleCard({ module, completedTopicIds, unlockedTopicIds }: Modu
       )}
     >
       <div className="flex items-start gap-3">
-        <span className="text-3xl" aria-hidden>
-          {module.icon}
-        </span>
+        <IconImage
+          src={module.iconImage}
+          alt={module.iconAlt ?? `${module.name} logo`}
+          fallback={module.icon}
+          className="h-11 w-11 rounded-xl bg-gray-50 p-1"
+          fallbackClassName="text-3xl"
+        />
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2">
             <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">

@@ -1,7 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Bot, Terminal } from "lucide-react";
+import { ArrowRight, Terminal } from "lucide-react";
+import { courses } from "@/data/courses";
+import { IconImage } from "@/components/ui/IconImage";
+
+const pythonCourse = courses.find((course) => course.id === "python");
+const agenticAiCourse = courses.find((course) => course.id === "agentic-ai");
 
 export function HomeHero() {
   return (
@@ -35,7 +40,12 @@ export function HomeHero() {
                 href="/learn/introduction-and-setup/introduction-to-programming"
                 className="group inline-flex items-center gap-2 rounded-xl bg-gray-900 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-gray-900/20 transition hover:bg-gray-800"
               >
-                <span>🐍</span>
+                <IconImage
+                  src={pythonCourse?.iconImage}
+                  alt={pythonCourse?.iconAlt ?? "Python logo"}
+                  fallback={pythonCourse?.icon ?? ""}
+                  className="h-5 w-5"
+                />
                 Start Python
                 <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
               </Link>
@@ -43,7 +53,12 @@ export function HomeHero() {
                 href="/learn/intro-to-ai/what-is-ai"
                 className="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-6 py-3.5 text-sm font-semibold text-gray-800 shadow-sm transition hover:border-violet-300 hover:bg-violet-50 hover:text-violet-800"
               >
-                <Bot className="h-4 w-4" />
+                <IconImage
+                  src={agenticAiCourse?.iconImage}
+                  alt={agenticAiCourse?.iconAlt ?? "Agentic AI logo"}
+                  fallback={agenticAiCourse?.icon ?? ""}
+                  className="h-5 w-5"
+                />
                 Start Agentic AI
               </Link>
             </div>
@@ -61,7 +76,15 @@ export function HomeHero() {
                 </div>
                 <span className="ml-2 font-mono text-xs text-gray-500">python_course.py</span>
                 <span className="ml-auto rounded bg-brand-600/20 px-2 py-0.5 text-[10px] font-medium text-brand-400">
-                  🐍 Python IDE
+                  <span className="inline-flex items-center gap-1">
+                    <IconImage
+                      src={pythonCourse?.iconImage}
+                      alt={pythonCourse?.iconAlt ?? "Python logo"}
+                      fallback={pythonCourse?.icon ?? ""}
+                      className="h-3.5 w-3.5"
+                    />
+                    Python IDE
+                  </span>
                 </span>
               </div>
               <div className="space-y-0.5 p-4 font-mono text-[13px] leading-relaxed">
@@ -108,7 +131,15 @@ export function HomeHero() {
             <div className="overflow-hidden rounded-2xl border border-violet-800/60 bg-[#0d0d1a] shadow-xl ring-1 ring-white/10">
               <div className="flex items-center gap-2 border-b border-violet-900/60 bg-[#12102a] px-4 py-2.5">
                 <span className="ml-auto rounded bg-violet-600/30 px-2 py-0.5 text-[10px] font-medium text-violet-300">
-                  🤖 Groq Chatbot Playground
+                  <span className="inline-flex items-center gap-1">
+                    <IconImage
+                      src={agenticAiCourse?.iconImage}
+                      alt={agenticAiCourse?.iconAlt ?? "Agentic AI logo"}
+                      fallback={agenticAiCourse?.icon ?? ""}
+                      className="h-3.5 w-3.5"
+                    />
+                    Groq Chatbot Playground
+                  </span>
                 </span>
               </div>
               <div className="space-y-2 p-4 font-mono text-[13px]">
@@ -118,7 +149,12 @@ export function HomeHero() {
                   </span>
                 </div>
                 <div className="flex justify-start gap-2">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-violet-800 text-[10px]">🤖</span>
+                  <IconImage
+                    src={agenticAiCourse?.iconImage}
+                    alt={agenticAiCourse?.iconAlt ?? "Agentic AI logo"}
+                    fallback={agenticAiCourse?.icon ?? ""}
+                    className="flex h-5 w-5 shrink-0 rounded-full bg-violet-800 p-0.5"
+                  />
                   <span className="max-w-[75%] rounded-2xl rounded-bl-sm bg-[#1e1b3a] px-3 py-1.5 text-xs text-gray-200">
                     Prompt engineering is the skill of writing clear instructions that get the best responses from an LLM…
                   </span>

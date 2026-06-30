@@ -1,5 +1,10 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { courses } from "@/data/courses";
+import { IconImage } from "@/components/ui/IconImage";
+
+const pythonCourse = courses.find((course) => course.id === "python");
+const agenticAiCourse = courses.find((course) => course.id === "agentic-ai");
 
 export function HomeCTA() {
   return (
@@ -19,14 +24,26 @@ export function HomeCTA() {
               href="/learn/introduction-and-setup/introduction-to-programming"
               className="inline-flex items-center gap-2 rounded-xl bg-white px-7 py-3.5 text-sm font-semibold text-gray-900 shadow-lg transition hover:bg-gray-100"
             >
-              🐍 Begin Python — Module 1
+              <IconImage
+                src={pythonCourse?.iconImage}
+                alt={pythonCourse?.iconAlt ?? "Python logo"}
+                fallback={pythonCourse?.icon ?? ""}
+                className="h-5 w-5"
+              />
+              Begin Python — Module 1
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/learn/intro-to-ai/what-is-ai"
               className="inline-flex items-center gap-2 rounded-xl border border-violet-500/60 bg-violet-600/20 px-7 py-3.5 text-sm font-semibold text-violet-200 shadow-lg transition hover:bg-violet-600/30"
             >
-              🤖 Begin Agentic AI — Module 1
+              <IconImage
+                src={agenticAiCourse?.iconImage}
+                alt={agenticAiCourse?.iconAlt ?? "Agentic AI logo"}
+                fallback={agenticAiCourse?.icon ?? ""}
+                className="h-5 w-5"
+              />
+              Begin Agentic AI — Module 1
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

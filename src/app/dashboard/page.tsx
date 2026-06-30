@@ -13,6 +13,7 @@ import type { CourseId } from "@/lib/types";
 import { BookOpen, Terminal, CheckCircle2, Lock, Loader2, Zap } from "lucide-react";
 import { DashboardRoadmap } from "@/components/dashboard/DashboardRoadmap";
 import { TourTrigger } from "@/components/walkthrough/TourTrigger";
+import { IconImage } from "@/components/ui/IconImage";
 
 const COURSE_STORAGE_KEY = "last-active-course";
 
@@ -134,7 +135,14 @@ export default function DashboardPage() {
                   : "text-gray-500 hover:text-gray-800 hover:bg-white"
               }`}
             >
-              <span className="text-base leading-none">{course.icon}</span>
+              <IconImage
+                src={course.iconImage}
+                alt={course.iconAlt ?? `${course.name} logo`}
+                fallback={course.icon}
+                className="h-5 w-5"
+                imageClassName="h-full w-full object-contain"
+                fallbackClassName="text-base leading-none"
+              />
               <span className="hidden sm:inline">{course.name}</span>
               <span className="sm:hidden">{course.id === "python" ? "Python" : "Agentic AI"}</span>
             </button>

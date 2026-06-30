@@ -14,7 +14,9 @@ const pythonModules: Module[] = [
     course: "python",
     description:
       "What is programming, why Python, and how to set up your development environment.",
-    icon: "🐣",
+    icon: "PY",
+    iconImage: "/images/logos/python-m1-introduction-and-setup.svg",
+    iconAlt: "Python setup module logo",
     phase: "foundations",
     topics: [
       {
@@ -60,7 +62,9 @@ const pythonModules: Module[] = [
     name: "Python Basic Syntax and Data Types",
     slug: "basic-syntax-and-data-types",
     description: "Your first lines of Python: print, variables, and data types.",
-    icon: "✏️",
+    icon: "PY",
+    iconImage: "/images/logos/python-m2-basic-syntax-and-data-types.svg",
+    iconAlt: "Python syntax module logo",
     course: "python",
     phase: "foundations",
     topics: [
@@ -76,7 +80,9 @@ const pythonModules: Module[] = [
     name: "Operators in Python",
     slug: "operators",
     description: "Math and logic symbols Python understands.",
-    icon: "➕",
+    icon: "PY",
+    iconImage: "/images/logos/python-m3-operators.svg",
+    iconAlt: "Python operators module logo",
     course: "python",
     phase: "foundations",
     topics: [
@@ -94,7 +100,9 @@ const pythonModules: Module[] = [
     name: "Strings in Python",
     slug: "strings",
     description: "Text data: create, slice, and format strings.",
-    icon: "🔤",
+    icon: "PY",
+    iconImage: "/images/logos/python-m4-strings.svg",
+    iconAlt: "Python strings module logo",
     course: "python",
     phase: "foundations",
     topics: [
@@ -110,7 +118,9 @@ const pythonModules: Module[] = [
     name: "Lists in Python",
     slug: "lists",
     description: "Ordered, changeable collections.",
-    icon: "📋",
+    icon: "PY",
+    iconImage: "/images/logos/python-m5-lists.svg",
+    iconAlt: "Python lists module logo",
     course: "python",
     phase: "foundations",
     topics: [
@@ -127,7 +137,9 @@ const pythonModules: Module[] = [
     name: "Tuples in Python",
     slug: "tuples",
     description: "Ordered, unchangeable collections.",
-    icon: "📦",
+    icon: "PY",
+    iconImage: "/images/logos/python-m6-tuples.svg",
+    iconAlt: "Python tuples module logo",
     course: "python",
     phase: "foundations",
     topics: [
@@ -143,7 +155,9 @@ const pythonModules: Module[] = [
     name: "Sets in Python",
     slug: "sets",
     description: "Unique unordered collections.",
-    icon: "🎯",
+    icon: "PY",
+    iconImage: "/images/logos/python-m7-sets.svg",
+    iconAlt: "Python sets module logo",
     course: "python",
     phase: "foundations",
     topics: [
@@ -158,7 +172,9 @@ const pythonModules: Module[] = [
     name: "Dictionaries in Python",
     slug: "dictionaries",
     description: "Key-value pairs — like a real dictionary.",
-    icon: "📖",
+    icon: "PY",
+    iconImage: "/images/logos/python-m8-dictionaries.svg",
+    iconAlt: "Python dictionaries module logo",
     course: "python",
     phase: "foundations",
     topics: [
@@ -173,7 +189,9 @@ const pythonModules: Module[] = [
     name: "Python Conditional Statements",
     slug: "conditionals",
     description: "Make decisions with if / elif / else.",
-    icon: "🔀",
+    icon: "PY",
+    iconImage: "/images/logos/python-m9-conditionals.svg",
+    iconAlt: "Python conditionals module logo",
     course: "python",
     phase: "foundations",
     topics: [
@@ -187,7 +205,9 @@ const pythonModules: Module[] = [
     name: "Loops in Python",
     slug: "loops",
     description: "Repeat work with while and for.",
-    icon: "🔁",
+    icon: "PY",
+    iconImage: "/images/logos/python-m10-loops.svg",
+    iconAlt: "Python loops module logo",
     course: "python",
     phase: "foundations",
     topics: [
@@ -203,7 +223,9 @@ const pythonModules: Module[] = [
     name: "List and Dictionary Comprehensions",
     slug: "comprehensions",
     description: "Short, powerful ways to build lists and dicts.",
-    icon: "⚡",
+    icon: "PY",
+    iconImage: "/images/logos/python-m11-comprehensions.svg",
+    iconAlt: "Python comprehensions module logo",
     course: "python",
     phase: "foundations",
     topics: [
@@ -217,7 +239,9 @@ const pythonModules: Module[] = [
     name: "Functions in Python",
     slug: "functions",
     description: "Reusable blocks of code.",
-    icon: "🧩",
+    icon: "PY",
+    iconImage: "/images/logos/python-m12-functions.svg",
+    iconAlt: "Python functions module logo",
     course: "python",
     phase: "foundations",
     topics: [
@@ -233,7 +257,9 @@ const pythonModules: Module[] = [
     name: "Anonymous Functions",
     slug: "lambda",
     description: "Small one-line functions with lambda.",
-    icon: "👻",
+    icon: "PY",
+    iconImage: "/images/logos/python-m13-lambda.svg",
+    iconAlt: "Python lambda module logo",
     course: "python",
     phase: "foundations",
     topics: [
@@ -246,7 +272,9 @@ const pythonModules: Module[] = [
     slug: "final-project",
     description:
       "Build a Student Grade Manager that uses every Python concept from Modules 1–13.",
-    icon: "🏆",
+    icon: "PY",
+    iconImage: "/images/logos/python-m14-final-project.svg",
+    iconAlt: "Python final project module logo",
     course: "python",
     phase: "foundations",
     topics: [

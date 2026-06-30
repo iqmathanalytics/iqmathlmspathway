@@ -9,6 +9,8 @@ export interface Course {
   tagline: string;
   description: string;
   icon: string;
+  iconImage?: string;
+  iconAlt?: string;
   level: "beginner" | "intermediate" | "advanced";
   /** Tailwind color token used for theming course cards/badges */
   color: string;
@@ -32,6 +34,8 @@ export interface Module {
   slug: string;
   description: string;
   icon: string;
+  iconImage?: string;
+  iconAlt?: string;
   topics: Topic[];
   course: CourseId;
   /** Track phase within the course */

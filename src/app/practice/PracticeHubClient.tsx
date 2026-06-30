@@ -6,6 +6,7 @@ import { Terminal, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { getSupabase, isSupabaseConfigured } from "@/lib/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
+import { IconImage } from "@/components/ui/IconImage";
 
 interface ModuleStat {
   module: Module;
@@ -46,7 +47,13 @@ export function PracticeHubClient({ moduleStats }: PracticeHubClientProps) {
             className="group rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-shadow hover:border-brand-200 hover:shadow-md"
           >
             <div className="flex items-start justify-between">
-              <span className="text-2xl">{module.icon}</span>
+              <IconImage
+                src={module.iconImage}
+                alt={module.iconAlt ?? `${module.name} logo`}
+                fallback={module.icon}
+                className="h-10 w-10 rounded-xl bg-gray-50 p-1"
+                fallbackClassName="text-2xl"
+              />
               <ChevronRight className="h-5 w-5 text-gray-300 group-hover:text-brand-600" />
             </div>
             <h2 className="mt-3 font-semibold text-gray-900">{module.name}</h2>

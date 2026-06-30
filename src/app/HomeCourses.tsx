@@ -3,6 +3,7 @@ import { ArrowRight, BookOpen, Clock, Layers } from "lucide-react";
 import { courses } from "@/data/courses";
 import { getModulesByCourse } from "@/data/curriculum";
 import type { CourseId } from "@/lib/types";
+import { IconImage } from "@/components/ui/IconImage";
 
 const COURSE_META: Record<
   CourseId,
@@ -80,7 +81,13 @@ export function HomeCourses() {
                 <div className="relative p-8">
                   {/* Header */}
                   <div className="flex items-start justify-between gap-4">
-                    <span className="text-5xl" aria-hidden>{course.icon}</span>
+                    <IconImage
+                      src={course.iconImage}
+                      alt={course.iconAlt ?? `${course.name} logo`}
+                      fallback={course.icon}
+                      className="h-16 w-16 rounded-2xl bg-white/80 p-1.5"
+                      fallbackClassName="text-5xl"
+                    />
                     <span
                       className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ring-1 ring-inset ${meta.badgeClass}`}
                     >

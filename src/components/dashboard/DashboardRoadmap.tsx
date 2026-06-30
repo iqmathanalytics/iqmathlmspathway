@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useWalkthrough } from "@/contexts/WalkthroughContext";
 import { getUnlockedTopicIds } from "@/lib/topic-locking";
 import { getQuiz } from "@/data/quizzes";
+import { IconImage } from "@/components/ui/IconImage";
 
 interface DashboardRoadmapProps {
   modules: Module[];
@@ -93,7 +94,13 @@ function ModuleNode({
           {/* Clickable area → module overview page */}
           {allLocked ? (
             <div className="flex min-w-0 flex-1 items-start gap-3">
-              <span className="mt-0.5 text-2xl leading-none" aria-hidden>{module.icon}</span>
+              <IconImage
+                src={module.iconImage}
+                alt={module.iconAlt ?? `${module.name} logo`}
+                fallback={module.icon}
+                className="mt-0.5 h-10 w-10 rounded-xl bg-gray-50 p-1"
+                fallbackClassName="text-2xl leading-none"
+              />
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">Module {module.id}</span>
@@ -110,7 +117,13 @@ function ModuleNode({
               href={`/learn/${module.slug}`}
               className="flex min-w-0 flex-1 items-start gap-3 hover:opacity-80 transition-opacity"
             >
-              <span className="mt-0.5 text-2xl leading-none" aria-hidden>{module.icon}</span>
+              <IconImage
+                src={module.iconImage}
+                alt={module.iconAlt ?? `${module.name} logo`}
+                fallback={module.icon}
+                className="mt-0.5 h-10 w-10 rounded-xl bg-gray-50 p-1"
+                fallbackClassName="text-2xl leading-none"
+              />
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">Module {module.id}</span>
