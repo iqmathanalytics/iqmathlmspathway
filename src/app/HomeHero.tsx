@@ -1,166 +1,116 @@
-"use client";
-
-import Link from "next/link";
-import { ArrowRight, Terminal } from "lucide-react";
+import { CheckCircle2, Sparkles } from "lucide-react";
 import { courses } from "@/data/courses";
+import { getModulesByCourse } from "@/data/curriculum";
 import { IconImage } from "@/components/ui/IconImage";
+import { StarfieldBackground } from "@/components/ui/StarfieldBackground";
 
 const pythonCourse = courses.find((course) => course.id === "python");
 const agenticAiCourse = courses.find((course) => course.id === "agentic-ai");
 
+const pythonModules = getModulesByCourse("python").length;
+const agenticModules = getModulesByCourse("agentic-ai").length;
+const totalLessons =
+  getModulesByCourse("python").reduce((acc, m) => acc + m.topics.filter((t) => t.published).length, 0) +
+  getModulesByCourse("agentic-ai").reduce((acc, m) => acc + m.topics.filter((t) => t.published).length, 0);
+
+const outcomes = [
+  {
+    title: "Python Foundation",
+    text: "Start with syntax, data types, control flow, functions, and browser-based practice.",
+    iconImage: pythonCourse?.iconImage,
+    iconAlt: pythonCourse?.iconAlt ?? "Python logo",
+    fallback: pythonCourse?.icon ?? "PY",
+  },
+  {
+    title: "Agentic AI Skills",
+    text: "Move into LLMs, Groq API calls, prompt engineering, LangChain, RAG, and agents.",
+    iconImage: agenticAiCourse?.iconImage,
+    iconAlt: agenticAiCourse?.iconAlt ?? "Agentic AI logo",
+    fallback: agenticAiCourse?.icon ?? "AI",
+  },
+  {
+    title: "Guided Progress",
+    text: "Use quizzes, checkpoints, and dashboards to know exactly what to learn next.",
+    iconImage: undefined,
+    iconAlt: "Progress tracking",
+    fallback: "✓",
+  },
+];
+
 export function HomeHero() {
   return (
     <section className="relative overflow-hidden border-b border-gray-200/80">
-      {/* Background */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(34,197,94,0.15),transparent)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:48px_48px]" />
+      <StarfieldBackground />
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_80%_60%_at_15%_10%,rgba(34,197,94,0.18),transparent_55%),radial-gradient(ellipse_70%_55%_at_85%_20%,rgba(139,92,246,0.2),transparent_55%)]" />
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <div>
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-200/80 bg-white/80 px-3 py-1 text-sm font-medium text-brand-800 shadow-sm backdrop-blur-sm">
-              <span className="flex h-2 w-2 rounded-full bg-brand-500" />
-              2 courses · Python &amp; Agentic AI
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+        <div className="mx-auto max-w-5xl text-center">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-sm font-medium text-emerald-100 shadow-sm backdrop-blur">
+            <Sparkles className="h-4 w-4 text-emerald-300" />
+            Learn Python. Build AI apps.
+          </div>
+
+          <h1 className="mx-auto max-w-4xl text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-[3.75rem] lg:leading-[1.08]">
+            From first line of Python to{" "}
+            <span className="bg-gradient-to-r from-emerald-300 via-cyan-200 to-violet-300 bg-clip-text text-transparent">
+              real AI agents
+            </span>
+          </h1>
+
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+            Interactive lessons, a browser Python IDE, AI playgrounds, quizzes,
+            and progress tracking in one clean learning experience.
+          </p>
+
+          <div className="mx-auto mt-10 grid max-w-5xl gap-4 text-left sm:grid-cols-3">
+            {outcomes.map((item) => (
+              <div
+                key={item.title}
+                className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.07] p-5 backdrop-blur"
+              >
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/10">
+                  <IconImage
+                    src={item.iconImage}
+                    alt={item.iconAlt}
+                    fallback={item.fallback}
+                    className="h-7 w-7"
+                    fallbackClassName="text-sm font-bold text-white"
+                  />
+                </div>
+                <p className="font-semibold text-white">{item.title}</p>
+                <p className="mt-2 text-sm leading-6 text-slate-400">{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mx-auto mt-8 grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-3">
+            <div className="rounded-2xl border border-white/10 bg-white/10 px-4 py-4 text-center backdrop-blur">
+              <p className="text-2xl font-bold text-white">{pythonModules + agenticModules}+</p>
+              <p className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-400">Modules</p>
             </div>
-
-            <h1 className="text-balance text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-[3.25rem] lg:leading-[1.1]">
-              Learn to code and{" "}
-              <span className="bg-gradient-to-r from-brand-600 via-emerald-600 to-violet-600 bg-clip-text text-transparent">
-                build AI — together
-              </span>
-            </h1>
-
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-gray-600">
-              Structured lessons with a built-in coding environment, quizzes, and progress tracking.
-              Start with Python fundamentals, then move to building real AI chatbots and agents.
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="/learn/introduction-and-setup/introduction-to-programming"
-                className="group inline-flex items-center gap-2 rounded-xl bg-gray-900 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-gray-900/20 transition hover:bg-gray-800"
-              >
-                <IconImage
-                  src={pythonCourse?.iconImage}
-                  alt={pythonCourse?.iconAlt ?? "Python logo"}
-                  fallback={pythonCourse?.icon ?? ""}
-                  className="h-5 w-5"
-                />
-                Start Python
-                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-              </Link>
-              <Link
-                href="/learn/intro-to-ai/what-is-ai"
-                className="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-6 py-3.5 text-sm font-semibold text-gray-800 shadow-sm transition hover:border-violet-300 hover:bg-violet-50 hover:text-violet-800"
-              >
-                <IconImage
-                  src={agenticAiCourse?.iconImage}
-                  alt={agenticAiCourse?.iconAlt ?? "Agentic AI logo"}
-                  fallback={agenticAiCourse?.icon ?? ""}
-                  className="h-5 w-5"
-                />
-                Start Agentic AI
-              </Link>
+            <div className="rounded-2xl border border-white/10 bg-white/10 px-4 py-4 text-center backdrop-blur">
+              <p className="text-2xl font-bold text-white">{totalLessons}+</p>
+              <p className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-400">Lessons</p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/10 px-4 py-4 text-center backdrop-blur">
+              <p className="text-2xl font-bold text-white">2</p>
+              <p className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-400">Tracks</p>
             </div>
           </div>
 
-          {/* Dual preview cards */}
-          <div className="relative mx-auto w-full max-w-lg lg:max-w-none space-y-4">
-            {/* Python IDE preview */}
-            <div className="relative overflow-hidden rounded-2xl border border-gray-700/80 bg-[#0d1117] shadow-xl ring-1 ring-white/10">
-              <div className="flex items-center gap-2 border-b border-gray-800 bg-[#161b22] px-4 py-2.5">
-                <div className="flex gap-1.5">
-                  <span className="h-3 w-3 rounded-full bg-red-500/90" />
-                  <span className="h-3 w-3 rounded-full bg-yellow-500/90" />
-                  <span className="h-3 w-3 rounded-full bg-green-500/90" />
-                </div>
-                <span className="ml-2 font-mono text-xs text-gray-500">python_course.py</span>
-                <span className="ml-auto rounded bg-brand-600/20 px-2 py-0.5 text-[10px] font-medium text-brand-400">
-                  <span className="inline-flex items-center gap-1">
-                    <IconImage
-                      src={pythonCourse?.iconImage}
-                      alt={pythonCourse?.iconAlt ?? "Python logo"}
-                      fallback={pythonCourse?.icon ?? ""}
-                      className="h-3.5 w-3.5"
-                    />
-                    Python IDE
-                  </span>
-                </span>
-              </div>
-              <div className="space-y-0.5 p-4 font-mono text-[13px] leading-relaxed">
-                <p className="text-gray-500"># Module 1: Your first program</p>
-                <p>
-                  <span className="text-purple-400">print</span>
-                  <span className="text-gray-300">(</span>
-                  <span className="text-emerald-400">&quot;Hello, Data Science!&quot;</span>
-                  <span className="text-gray-300">)</span>
-                </p>
-                <p>
-                  <span className="text-purple-400">for</span>
-                  <span className="text-gray-300"> i </span>
-                  <span className="text-purple-400">in</span>
-                  <span className="text-gray-300"> </span>
-                  <span className="text-purple-400">range</span>
-                  <span className="text-gray-300">(</span>
-                  <span className="text-amber-300">3</span>
-                  <span className="text-gray-300">):</span>
-                </p>
-                <p className="text-gray-300">
-                  {"    "}
-                  <span className="text-purple-400">print</span>
-                  <span className="text-gray-300">(</span>
-                  <span className="text-emerald-400">f&quot;Step </span>
-                  <span className="text-gray-300">{"{i + 1}}"}</span>
-                  <span className="text-emerald-400">&quot;</span>
-                  <span className="text-gray-300">)</span>
-                </p>
-              </div>
-              <div className="border-t border-gray-800 bg-[#010409]">
-                <div className="flex items-center gap-2 border-b border-gray-800/80 px-3 py-1.5 text-[11px] text-gray-500">
-                  <Terminal className="h-3 w-3" />
-                  Console
-                </div>
-                <div className="space-y-0.5 p-3 font-mono text-xs">
-                  <p className="text-emerald-400/90">› Hello, Data Science!</p>
-                  <p className="text-emerald-400/90">› Step 1  Step 2  Step 3</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Groq AI preview */}
-            <div className="overflow-hidden rounded-2xl border border-violet-800/60 bg-[#0d0d1a] shadow-xl ring-1 ring-white/10">
-              <div className="flex items-center gap-2 border-b border-violet-900/60 bg-[#12102a] px-4 py-2.5">
-                <span className="ml-auto rounded bg-violet-600/30 px-2 py-0.5 text-[10px] font-medium text-violet-300">
-                  <span className="inline-flex items-center gap-1">
-                    <IconImage
-                      src={agenticAiCourse?.iconImage}
-                      alt={agenticAiCourse?.iconAlt ?? "Agentic AI logo"}
-                      fallback={agenticAiCourse?.icon ?? ""}
-                      className="h-3.5 w-3.5"
-                    />
-                    Groq Chatbot Playground
-                  </span>
-                </span>
-              </div>
-              <div className="space-y-2 p-4 font-mono text-[13px]">
-                <div className="flex justify-end">
-                  <span className="max-w-[75%] rounded-2xl rounded-br-sm bg-violet-600 px-3 py-1.5 text-xs text-white">
-                    What is prompt engineering?
-                  </span>
-                </div>
-                <div className="flex justify-start gap-2">
-                  <IconImage
-                    src={agenticAiCourse?.iconImage}
-                    alt={agenticAiCourse?.iconAlt ?? "Agentic AI logo"}
-                    fallback={agenticAiCourse?.icon ?? ""}
-                    className="flex h-5 w-5 shrink-0 rounded-full bg-violet-800 p-0.5"
-                  />
-                  <span className="max-w-[75%] rounded-2xl rounded-bl-sm bg-[#1e1b3a] px-3 py-1.5 text-xs text-gray-200">
-                    Prompt engineering is the skill of writing clear instructions that get the best responses from an LLM…
-                  </span>
-                </div>
-              </div>
-            </div>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-slate-400">
+            <span className="inline-flex items-center gap-1.5">
+              <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+              Browser IDE
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+              Groq API lessons
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+              Progress tracking
+            </span>
           </div>
         </div>
       </div>

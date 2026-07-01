@@ -1,63 +1,61 @@
 "use client";
 
-import { Code2, GitBranch, LayoutPanelLeft, LineChart } from "lucide-react";
+import { Code2, GitBranch, LayoutPanelLeft, LineChart, ShieldCheck, Sparkles } from "lucide-react";
+import { HoverCornerCard } from "@/components/ui/HoverCornerCard";
 
 const features = [
   {
     icon: LayoutPanelLeft,
-    title: "Lessons beside the IDE",
-    text: "Read on the left, code on the right. Run Python — or test your AI chatbot — without leaving the page.",
-    accent: "from-brand-500/10 to-brand-600/5",
+    title: "Lessons + IDE",
+    text: "Read the lesson and run code side by side without switching tools.",
   },
   {
     icon: GitBranch,
     title: "Structured courses",
-    text: "Python: 14 modules from basics to a final capstone. Agentic AI: 8 modules from LLMs to a customer support agent project.",
-    accent: "from-python-blue/10 to-blue-500/5",
+    text: "Python: 14 modules from basics to capstone. Agentic AI: 8 modules from LLMs to a customer support agent project.",
   },
   {
     icon: Code2,
-    title: "Real coding tools",
-    text: "Python IDE with syntax highlighting and console, plus a live Groq chatbot playground for the AI course.",
-    accent: "from-emerald-500/10 to-teal-500/5",
+    title: "Real tools",
+    text: "Use a Python IDE, console, notebooks, and Groq playgrounds.",
   },
   {
     icon: LineChart,
-    title: "Track your progress",
-    text: "Quizzes, practice problems, and a personal dashboard that shows exactly where you are in each course.",
-    accent: "from-violet-500/10 to-purple-500/5",
+    title: "Progress tracking",
+    text: "See your lessons, quizzes, and practice progress in one dashboard.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Checkpoints",
+    text: "Use quizzes and practice tasks to confirm what you understand.",
+  },
+  {
+    icon: Sparkles,
+    title: "AI projects",
+    text: "Build prompts, Groq API calls, LangChain workflows, RAG, and agents.",
   },
 ];
 
 export function HomeFeatures() {
   return (
-    <section className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-      <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Built for learning by doing
-        </h2>
-        <p className="mt-3 text-gray-600">
-          Read, run code, take quizzes, and track progress — all in one place.
+    <section id="features" className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+        <div className="max-w-2xl">
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-brand-700">
+            Why learners stay engaged
+          </p>
+          <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            Everything needed to learn, practice, and build in one flow
+          </h2>
+        </div>
+        <p className="max-w-2xl text-lg leading-8 text-gray-600 lg:justify-self-end">
+          Focused lessons connect directly to live tools, so every concept can be practiced immediately.
         </p>
       </div>
 
-      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((f) => (
-          <div
-            key={f.title}
-            className="group relative overflow-hidden rounded-2xl border border-gray-200/80 bg-white p-6 shadow-sm transition hover:border-gray-300 hover:shadow-md"
-          >
-            <div
-              className={`absolute inset-0 bg-gradient-to-br ${f.accent} opacity-0 transition group-hover:opacity-100`}
-            />
-            <div className="relative">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gray-900 text-white shadow-sm">
-                <f.icon className="h-5 w-5" />
-              </div>
-              <h3 className="mt-4 font-semibold text-gray-900">{f.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-gray-600">{f.text}</p>
-            </div>
-          </div>
+          <HoverCornerCard key={f.title} title={f.title} text={f.text} icon={f.icon} />
         ))}
       </div>
     </section>

@@ -1,0 +1,82 @@
+/* From Uiverse.io by eslam-hany — adapted for landing page cards */
+.hover-corner-card {
+  position: relative;
+  width: 100%;
+  max-width: 220px;
+  height: 260px;
+  margin-inline: auto;
+  background: #22c55e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  color: white;
+  overflow: hidden;
+}
+
+.hover-corner-card::before,
+.hover-corner-card::after {
+  position: absolute;
+  content: "";
+  width: 20%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  font-weight: bold;
+  background-color: #bbf7d0;
+  transition: all 0.5s;
+  z-index: 2;
+}
+
+.hover-corner-card::before {
+  top: 0;
+  right: 0;
+  border-radius: 0 12px 0 100%;
+}
+
+.hover-corner-card::after {
+  bottom: 0;
+  left: 0;
+  border-radius: 0 100% 0 12px;
+}
+
+.hover-corner-card:hover::before,
+.hover-corner-card:hover::after {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  transition: all 0.5s;
+}
+
+.hover-corner-card:hover::after {
+  content: attr(data-hover-text);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.5;
+  padding: 1rem;
+  text-align: center;
+  color: #14532d;
+  background-color: #dcfce7;
+}
+
+.hover-corner-card-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  transition: opacity 0.35s;
+}
+
+.hover-corner-card:hover .hover-corner-card-content {
+  opacity: 0;
+}

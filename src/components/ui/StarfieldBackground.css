@@ -1,0 +1,30 @@
+.starfield-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  overflow: hidden;
+  z-index: 0;
+}
+
+.starfield-layer {
+  position: absolute;
+  inset: 0;
+  animation: animStar linear infinite;
+}
+
+.starfield-dot {
+  position: absolute;
+  left: 0;
+  background: transparent;
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}

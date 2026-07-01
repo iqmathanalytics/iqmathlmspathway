@@ -11,6 +11,7 @@ const COURSE_META: Record<
     firstTopicHref: string;
     dashboardHref: string;
     gradient: string;
+    glow: string;
     badgeClass: string;
     levelLabel: string;
     prereq: string | null;
@@ -20,45 +21,51 @@ const COURSE_META: Record<
   python: {
     firstTopicHref: "/learn/introduction-and-setup/introduction-to-programming",
     dashboardHref: "/dashboard?course=python",
-    gradient: "from-emerald-500/15 via-brand-500/10 to-transparent",
+    gradient: "from-emerald-500/20 via-brand-500/10 to-transparent",
+    glow: "shadow-emerald-100/70",
     badgeClass: "bg-emerald-50 text-emerald-700 ring-emerald-200",
     levelLabel: "Beginner friendly",
     prereq: null,
     featureHighlights: [
-      "Built-in Python IDE — run code in your browser",
+      "Run Python in your browser",
       "14 modules from syntax to a final capstone project",
-      "Quizzes and practice problems per topic",
+      "Practice with quizzes and exercises",
     ],
   },
   "agentic-ai": {
     firstTopicHref: "/learn/intro-to-ai/what-is-ai",
     dashboardHref: "/dashboard?course=agentic-ai",
-    gradient: "from-violet-500/15 via-purple-500/10 to-transparent",
+    gradient: "from-violet-500/20 via-purple-500/10 to-transparent",
+    glow: "shadow-violet-100/70",
     badgeClass: "bg-violet-50 text-violet-700 ring-violet-200",
     levelLabel: "Some Python helpful",
     prereq: "Python for Data Science",
     featureHighlights: [
-      "Live Groq API chatbot playground — test your bot in the browser",
-      "8 modules from LLM basics to a customer support agent final project",
-      "Hands-on exercises with real API calls",
+      "Test AI chatbots in the browser",
+      "8 modules from LLM basics to a customer support agent project",
+      "Practice with real Groq API workflows",
     ],
   },
 };
 
 export function HomeCourses() {
   return (
-    <section className="border-y border-gray-200/80 bg-gray-50/60">
-      <div className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Choose your course
+    <section id="courses" className="relative overflow-hidden border-y border-gray-200/80 bg-gray-50/80">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white to-transparent" />
+      <div className="relative mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-violet-700">
+            Pick your path
+          </p>
+          <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            Two connected learning tracks
           </h2>
-          <p className="mt-3 text-gray-600">
-            Structured lessons, a built-in coding environment, and project-based learning — for Python and AI.
+          <p className="mt-4 text-lg leading-8 text-gray-600">
+            Start with Python fundamentals, then progress into LLMs, Groq, LangChain, RAG, and agent workflows.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+        <div className="mt-12 grid items-stretch gap-6 lg:grid-cols-2">
           {courses.map((course) => {
             const meta = COURSE_META[course.id];
             const courseModules = getModulesByCourse(course.id);
@@ -71,22 +78,21 @@ export function HomeCourses() {
             return (
               <div
                 key={course.id}
-                className="group relative overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm transition hover:shadow-lg hover:border-gray-300"
+                className={`group relative flex h-full overflow-hidden rounded-[2rem] border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-gray-300 hover:shadow-2xl ${meta.glow}`}
               >
-                {/* Gradient background */}
                 <div
-                  className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${meta.gradient} opacity-0 transition group-hover:opacity-100`}
+                  className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${meta.gradient} opacity-100 transition`}
                 />
+                <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/70 blur-3xl" />
 
-                <div className="relative p-8">
-                  {/* Header */}
+                <div className="relative flex w-full flex-col p-7 sm:p-8 lg:p-9">
                   <div className="flex items-start justify-between gap-4">
                     <IconImage
                       src={course.iconImage}
                       alt={course.iconAlt ?? `${course.name} logo`}
                       fallback={course.icon}
-                      className="h-16 w-16 rounded-2xl bg-white/80 p-1.5"
-                      fallbackClassName="text-5xl"
+                      className="h-16 w-16 rounded-3xl bg-white p-1.5 shadow-sm ring-1 ring-gray-200/70"
+                      fallbackClassName="text-sm font-bold"
                     />
                     <span
                       className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ring-1 ring-inset ${meta.badgeClass}`}
@@ -95,28 +101,25 @@ export function HomeCourses() {
                     </span>
                   </div>
 
-                  {/* Title & tagline */}
-                  <h3 className="mt-5 text-xl font-bold text-gray-900">{course.name}</h3>
-                  <p className="mt-2 text-gray-600 leading-relaxed">{course.description}</p>
+                  <h3 className="mt-6 text-2xl font-bold text-gray-900">{course.name}</h3>
+                  <p className="mt-2 min-h-[4.5rem] text-gray-600 leading-relaxed">{course.description}</p>
 
-                  {/* Stats */}
-                  <div className="mt-5 flex items-center gap-5 text-sm text-gray-500">
-                    <span className="flex items-center gap-1.5">
-                      <Layers className="h-4 w-4" />
+                  <div className="mt-5 grid gap-2 text-sm text-gray-500 sm:grid-cols-3">
+                    <span className="flex items-center gap-1.5 rounded-xl bg-white/70 px-3 py-2 ring-1 ring-gray-200/60">
+                      <Layers className="h-4 w-4 shrink-0" />
                       {totalModules} modules
                     </span>
-                    <span className="flex items-center gap-1.5">
-                      <BookOpen className="h-4 w-4" />
-                      {liveTopics} lessons live
+                    <span className="flex items-center gap-1.5 rounded-xl bg-white/70 px-3 py-2 ring-1 ring-gray-200/60">
+                      <BookOpen className="h-4 w-4 shrink-0" />
+                      {liveTopics} lessons
                     </span>
-                    <span className="flex items-center gap-1.5">
-                      <Clock className="h-4 w-4" />
+                    <span className="flex items-center gap-1.5 rounded-xl bg-white/70 px-3 py-2 ring-1 ring-gray-200/60">
+                      <Clock className="h-4 w-4 shrink-0" />
                       Self-paced
                     </span>
                   </div>
 
-                  {/* Highlights */}
-                  <ul className="mt-6 space-y-2">
+                  <ul className="mt-6 flex-1 space-y-2">
                     {meta.featureHighlights.map((h) => (
                       <li key={h} className="flex items-start gap-2 text-sm text-gray-700">
                         <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-gray-900 text-white text-[9px] font-bold">✓</span>
@@ -125,27 +128,25 @@ export function HomeCourses() {
                     ))}
                   </ul>
 
-                  {/* Prereq note */}
                   {meta.prereq && (
                     <p className="mt-4 text-xs text-gray-400">
                       Recommended first: <span className="font-medium text-gray-600">{meta.prereq}</span>
                     </p>
                   )}
 
-                  {/* CTA */}
-                  <div className="mt-8 flex flex-wrap gap-3">
+                  <div className="mt-8 grid gap-3 sm:grid-cols-2">
                     <Link
                       href={meta.firstTopicHref}
-                      className="inline-flex items-center gap-2 rounded-xl bg-gray-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-gray-700"
+                      className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gray-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-gray-700"
                     >
                       Start Lesson 1
                       <ArrowRight className="h-4 w-4" />
                     </Link>
                     <Link
                       href={meta.dashboardHref}
-                      className="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 transition hover:border-gray-300 hover:bg-gray-50"
+                      className="inline-flex items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-5 py-3 text-sm font-semibold text-gray-700 transition hover:border-gray-300 hover:bg-gray-50"
                     >
-                      View roadmap
+                      View dashboard
                     </Link>
                   </div>
                 </div>
