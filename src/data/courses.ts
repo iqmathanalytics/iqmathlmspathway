@@ -27,6 +27,19 @@ export const courses: Course[] = [
     level: "intermediate",
     color: "violet",
   },
+  {
+    id: "sql",
+    name: "SQL & Databases",
+    slug: "sql",
+    tagline: "Master SQL from database fundamentals through CTEs — with a live in-browser IDE.",
+    description:
+      "Learn relational databases, every category of SQL command, and progressive query skills from SELECT through joins, aggregates, subqueries, and common table expressions.",
+    icon: "SQL",
+    iconImage: "/images/logos/sql-course.svg",
+    iconAlt: "SQL and Databases logo",
+    level: "beginner",
+    color: "sky",
+  },
 ];
 
 export function getCourse(id: string): Course | undefined {

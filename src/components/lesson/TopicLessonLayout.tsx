@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import type { LessonBlock } from "@/lib/types";
+import type { CourseId, LessonBlock } from "@/lib/types";
 import { LessonContent } from "./LessonContent";
 import { PythonIDE } from "@/components/ide/PythonIDE.lazy";
+import { SqlIDE } from "@/components/ide/SqlIDE.lazy";
 import { GroqChatPlayground } from "@/components/ai/GroqChatPlayground";
 import { JupyterNotebookPanel } from "./JupyterNotebookPanel";
 import { SetupChecklistPanel } from "./SetupChecklistPanel";
@@ -48,12 +49,14 @@ import {
   markExerciseComplete,
 } from "@/lib/final-project-progress";
 import { ArrowRight, CheckCircle2, Lock, Pencil } from "lucide-react";
+import { getSqlDatabaseForModule } from "@/lib/sql-runtime";
 import { useProgress } from "@/contexts/ProgressContext";
 
 interface TopicLessonLayoutProps {
   blocks: LessonBlock[];
   topicId?: string;
   moduleSlug?: string;
+  courseId?: CourseId;
   /** Content rendered at the top of the left scroll column (breadcrumb, header, buttons) */
   headerSlot?: React.ReactNode;
   /** Content rendered at the bottom of the left scroll column (takeaways, quiz, nav) */
@@ -68,6 +71,7 @@ export function TopicLessonLayout({
   blocks,
   topicId,
   moduleSlug,
+  courseId = "python",
   headerSlot,
   footerSlot,
 }: TopicLessonLayoutProps) {
@@ -142,8 +146,17 @@ export function TopicLessonLayout({
     if (hydrated && sequential) setActivePractice(initialPractice);
   }, [hydrated, sequential, initialPractice]);
 
+  const isSqlCourse = courseId === "sql";
+  const sqlDatabaseId = getSqlDatabaseForModule(moduleSlug);
+  const defaultSqlCode =
+    sqlDatabaseId === "northwind"
+      ? "SELECT CustomerID, CompanyName FROM Customers LIMIT 5;"
+      : "SELECT * FROM employees LIMIT 5;";
+
   const activeBlock = practices[activePractice]?.block;
-  const activeCode = activeBlock?.starterCode ?? 'print("Hello, Python!")';
+  const activeCode =
+    activeBlock?.starterCode ??
+    (courseId === "sql" ? defaultSqlCode : 'print("Hello, Python!")');
   const activeLabel = activeBlock?.practiceLabel ?? `Exercise ${activePractice + 1}`;
 
   const scrollToIde = useCallback(() => {
@@ -580,8 +593,8 @@ export function TopicLessonLayout({
             /* Default — Python IDE (with optional sequential task gating for Final Project) */
             <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
               <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
-                <Pencil className="h-4 w-4 text-brand-600" />
-                Python IDE
+                <Pencil className={`h-4 w-4 ${isSqlCourse ? "text-sky-600" : "text-brand-600"}`} />
+                {isSqlCourse ? "SQL IDE" : "Python IDE"}
               </div>
 
               {practices.length > 0 && (
@@ -628,13 +641,24 @@ export function TopicLessonLayout({
                 </div>
               )}
 
-              <PythonIDE
-                key={`practice-${activePractice}-${practiceReloadKey}-${activeCode.slice(0, 32)}`}
-                initialCode={activeCode}
-                editorHeight="280px"
-                consoleMaxHeight={260}
-                onRun={topicId ? () => markIdeRan(topicId) : undefined}
-              />
+              {isSqlCourse ? (
+                <SqlIDE
+                  key={`practice-${activePractice}-${practiceReloadKey}-${activeCode.slice(0, 32)}`}
+                  initialCode={activeCode}
+                  editorHeight="280px"
+                  consoleMaxHeight={260}
+                  databaseId={sqlDatabaseId}
+                  onRun={topicId ? () => markIdeRan(topicId) : undefined}
+                />
+              ) : (
+                <PythonIDE
+                  key={`practice-${activePractice}-${practiceReloadKey}-${activeCode.slice(0, 32)}`}
+                  initialCode={activeCode}
+                  editorHeight="280px"
+                  consoleMaxHeight={260}
+                  onRun={topicId ? () => markIdeRan(topicId) : undefined}
+                />
+              )}
 
               {activeBlock?.practicePrompt && (
                 <p className="mt-3 hidden text-sm text-gray-700 lg:block">
@@ -644,7 +668,11 @@ export function TopicLessonLayout({
 
               <div className="mt-3 hidden flex-wrap items-center gap-2 lg:flex">
                 <p className="text-xs text-gray-500">
-                  {sequential ? "Run your code, then continue when ready." : "Press Ctrl+Enter to run."}
+                  {sequential
+                    ? "Run your code, then continue when ready."
+                    : isSqlCourse
+                      ? "Press Ctrl+Enter to run SQL. Use Reset DB to undo DDL/DML experiments."
+                      : "Press Ctrl+Enter to run."}
                 </p>
                 {sequential && !checkComplete(activePractice) && (
                   <button

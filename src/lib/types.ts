@@ -1,6 +1,6 @@
 export type TopicStatus = "not_started" | "in_progress" | "completed";
 
-export type CourseId = "python" | "agentic-ai";
+export type CourseId = "python" | "agentic-ai" | "sql";
 
 export interface Course {
   id: CourseId;
@@ -119,7 +119,57 @@ export type LessonInfographic =
   | "final-project-data"
   | "final-project-logic"
   | "final-project-functions"
-  | "final-project-capstone";
+  | "final-project-capstone"
+  | "sql-intro-databases"
+  | "sql-relational-model"
+  | "sql-intro-sql"
+  | "sql-data-types"
+  | "sql-command-categories"
+  | "sql-ddl"
+  | "sql-dml"
+  | "sql-dql-dcl-tcl"
+  | "sql-select-statement"
+  | "sql-column-aliases"
+  | "sql-distinct-limit"
+  | "sql-null-handling"
+  | "sql-where-clause"
+  | "sql-comparison-logical"
+  | "sql-in-between-like"
+  | "sql-order-by"
+  | "sql-why-joins"
+  | "sql-inner-join"
+  | "sql-left-right-join"
+  | "sql-full-cross-self-join"
+  | "sql-aggregates-intro"
+  | "sql-count-min-max"
+  | "sql-sum-avg"
+  | "sql-group-by-basics"
+  | "sql-group-by-multiple"
+  | "sql-having"
+  | "sql-functions-intro"
+  | "sql-string-functions"
+  | "sql-numeric-functions"
+  | "sql-date-time-functions"
+  | "sql-case-expressions"
+  | "sql-coalesce-nullif"
+  | "sql-subqueries-intro"
+  | "sql-subqueries-where"
+  | "sql-scalar-subqueries"
+  | "sql-subqueries-from"
+  | "sql-correlated-subqueries"
+  | "sql-exists-not-exists"
+  | "sql-views-intro"
+  | "sql-creating-views"
+  | "sql-set-operations-intro"
+  | "sql-union-union-all"
+  | "sql-intersect"
+  | "sql-except"
+  | "sql-ctes-intro"
+  | "sql-ctes-vs-subqueries"
+  | "sql-multiple-ctes"
+  | "sql-ctes-joins-aggregates"
+  | "sql-recursive-ctes-intro"
+  | "sql-recursive-employee-hierarchy";
 
 export interface SetupStep {
   title: string;

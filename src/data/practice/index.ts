@@ -15,6 +15,15 @@ import { module11Practice } from "./module-11";
 import { module12Practice } from "./module-12";
 import { module13Practice } from "./module-13";
 import { module14Practice } from "./module-14";
+import { sqlModule1Practice } from "./sql-module-1";
+import { sqlModule2Practice } from "./sql-module-2";
+import { sqlModule3Practice } from "./sql-module-3";
+import { sqlModule4Practice } from "./sql-module-4";
+import { sqlModule5Practice } from "./sql-module-5";
+import { sqlModule6Practice } from "./sql-module-6";
+import { sqlModule7Practice } from "./sql-module-7";
+import { sqlModule8Practice } from "./sql-module-8";
+import { sqlModule9Practice } from "./sql-module-9";
 
 const allProblems: PracticeProblem[] = [
   ...module1Practice,
@@ -31,6 +40,15 @@ const allProblems: PracticeProblem[] = [
   ...module12Practice,
   ...module13Practice,
   ...module14Practice,
+  ...sqlModule1Practice,
+  ...sqlModule2Practice,
+  ...sqlModule3Practice,
+  ...sqlModule4Practice,
+  ...sqlModule5Practice,
+  ...sqlModule6Practice,
+  ...sqlModule7Practice,
+  ...sqlModule8Practice,
+  ...sqlModule9Practice,
 ];
 
 export { getPracticeCountByTopic, getTotalPracticeCount } from "./meta";

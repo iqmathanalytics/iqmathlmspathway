@@ -46,6 +46,20 @@ const COURSE_META: Record<
       "Practice with real Groq API workflows",
     ],
   },
+  sql: {
+    firstTopicHref: "/learn/sql-foundations/introduction-to-databases",
+    dashboardHref: "/dashboard?course=sql",
+    gradient: "from-sky-500/20 via-cyan-500/10 to-transparent",
+    glow: "shadow-sky-100/70",
+    badgeClass: "bg-sky-50 text-sky-700 ring-sky-200",
+    levelLabel: "Beginner friendly",
+    prereq: null,
+    featureHighlights: [
+      "Run SQL in your browser with SQLite",
+      "9 modules from database basics through CTEs",
+      "Practice on Northwind — the classic sample business database",
+    ],
+  },
 };
 
 export function HomeCourses() {
@@ -58,14 +72,14 @@ export function HomeCourses() {
             Pick your path
           </p>
           <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Two connected learning tracks
+            Three learning tracks
           </h2>
           <p className="mt-4 text-lg leading-8 text-gray-600">
-            Start with Python fundamentals, then progress into LLMs, Groq, LangChain, RAG, and agent workflows.
+            Start with Python fundamentals, master SQL and databases, then progress into LLMs, Groq, LangChain, RAG, and agent workflows.
           </p>
         </div>
 
-        <div className="mt-12 grid items-stretch gap-6 lg:grid-cols-2">
+        <div className="mt-12 grid items-stretch gap-6 lg:grid-cols-3">
           {courses.map((course) => {
             const meta = COURSE_META[course.id];
             const courseModules = getModulesByCourse(course.id);

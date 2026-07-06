@@ -72,6 +72,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
           blocks={lesson.blocks}
           topicId={topic.id}
           moduleSlug={module.slug}
+          courseId={module.course}
           headerSlot={
             <>
               <nav className="text-sm text-gray-500">

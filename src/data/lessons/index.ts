@@ -21,6 +21,15 @@ import { agenticAiModule4Lessons } from "./agentic-ai-module-4";
 import { agenticAiModule5Lessons } from "./agentic-ai-module-5";
 import { agenticAiModule6Lessons } from "./agentic-ai-module-6";
 import { agenticAiModule7Lessons } from "./agentic-ai-module-7";
+import { sqlModule1Lessons } from "./sql-module-1";
+import { sqlModule2Lessons } from "./sql-module-2";
+import { sqlModule3Lessons } from "./sql-module-3";
+import { sqlModule4Lessons } from "./sql-module-4";
+import { sqlModule5Lessons } from "./sql-module-5";
+import { sqlModule6Lessons } from "./sql-module-6";
+import { sqlModule7Lessons } from "./sql-module-7";
+import { sqlModule8Lessons } from "./sql-module-8";
+import { sqlModule9Lessons } from "./sql-module-9";
 
 const allLessons: Record<string, TopicLesson> = {
   ...module1Lessons,
@@ -45,6 +54,15 @@ const allLessons: Record<string, TopicLesson> = {
   ...agenticAiModule5Lessons,
   ...agenticAiModule6Lessons,
   ...agenticAiModule7Lessons,
+  ...sqlModule1Lessons,
+  ...sqlModule2Lessons,
+  ...sqlModule3Lessons,
+  ...sqlModule4Lessons,
+  ...sqlModule5Lessons,
+  ...sqlModule6Lessons,
+  ...sqlModule7Lessons,
+  ...sqlModule8Lessons,
+  ...sqlModule9Lessons,
 };
 
 export function getLesson(topicId: string): TopicLesson | undefined {

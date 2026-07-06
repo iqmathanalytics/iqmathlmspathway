@@ -1,5 +1,6 @@
 import type { Module, CourseId } from "@/lib/types";
 import { agenticAiModules } from "./agentic-ai-curriculum";
+import { sqlModules } from "./sql-curriculum";
 
 export const PLATFORM_NAME = "Introduction to Python";
 export const PLATFORM_LOGO = "/logo/nexperts-logo.png";
@@ -323,7 +324,7 @@ const pythonModules: Module[] = [
 ];
 
 /** All modules across all courses — the single source of truth for routing. */
-export const modules: Module[] = [...pythonModules, ...agenticAiModules];
+export const modules: Module[] = [...pythonModules, ...agenticAiModules, ...sqlModules];
 
 // ── Course-aware helpers ───────────────────────────────────────────────────────
 

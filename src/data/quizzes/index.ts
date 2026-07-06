@@ -14,6 +14,15 @@ import { module12Quizzes } from "./module-12";
 import { module13Quizzes } from "./module-13";
 import { module14Quizzes } from "./module-14";
 import { agenticAiQuizzes } from "./agentic-ai";
+import { sqlModule1Quizzes } from "./sql-module-1";
+import { sqlModule2Quizzes } from "./sql-module-2";
+import { sqlModule3Quizzes } from "./sql-module-3";
+import { sqlModule4Quizzes } from "./sql-module-4";
+import { sqlModule5Quizzes } from "./sql-module-5";
+import { sqlModule6Quizzes } from "./sql-module-6";
+import { sqlModule7Quizzes } from "./sql-module-7";
+import { sqlModule8Quizzes } from "./sql-module-8";
+import { sqlModule9Quizzes } from "./sql-module-9";
 
 const allQuizzes: Record<string, TopicQuiz> = {
   ...module1Quizzes,
@@ -31,6 +40,15 @@ const allQuizzes: Record<string, TopicQuiz> = {
   ...module13Quizzes,
   ...module14Quizzes,
   ...agenticAiQuizzes,
+  ...sqlModule1Quizzes,
+  ...sqlModule2Quizzes,
+  ...sqlModule3Quizzes,
+  ...sqlModule4Quizzes,
+  ...sqlModule5Quizzes,
+  ...sqlModule6Quizzes,
+  ...sqlModule7Quizzes,
+  ...sqlModule8Quizzes,
+  ...sqlModule9Quizzes,
 };
 
 export function getQuiz(topicId: string): TopicQuiz | undefined {

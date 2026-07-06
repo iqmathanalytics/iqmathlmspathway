@@ -121,7 +121,18 @@ export default function DashboardPage() {
       <div className="mt-6 flex gap-2 rounded-xl border border-gray-200 bg-gray-50 p-1.5 w-fit">
         {courses.map((course) => {
           const isActive = activeCourse === course.id;
-          const isViolet = course.color === "violet";
+          const activeClass =
+            course.color === "violet"
+              ? "bg-violet-600 text-white shadow-sm"
+              : course.color === "sky"
+                ? "bg-sky-600 text-white shadow-sm"
+                : "bg-brand-600 text-white shadow-sm";
+          const shortLabel =
+            course.id === "python"
+              ? "Python"
+              : course.id === "sql"
+                ? "SQL"
+                : "Agentic AI";
           return (
             <button
               key={course.id}
@@ -129,9 +140,7 @@ export default function DashboardPage() {
               onClick={() => switchCourse(course.id as CourseId)}
               className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-all ${
                 isActive
-                  ? isViolet
-                    ? "bg-violet-600 text-white shadow-sm"
-                    : "bg-brand-600 text-white shadow-sm"
+                  ? activeClass
                   : "text-gray-500 hover:text-gray-800 hover:bg-white"
               }`}
             >
@@ -144,7 +153,7 @@ export default function DashboardPage() {
                 fallbackClassName="text-base leading-none"
               />
               <span className="hidden sm:inline">{course.name}</span>
-              <span className="sm:hidden">{course.id === "python" ? "Python" : "Agentic AI"}</span>
+              <span className="sm:hidden">{shortLabel}</span>
             </button>
           );
         })}

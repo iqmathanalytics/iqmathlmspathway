@@ -82,6 +82,7 @@ import { BuildingAiAgentsGuide } from "@/components/lesson/BuildingAiAgentsGuide
 import { ReActPatternGuide } from "@/components/lesson/ReActPatternGuide";
 import { CustomerSupportProjectGuide } from "@/components/lesson/CustomerSupportProjectGuide";
 import { FinalProjectInfographic } from "@/components/lesson/FinalProjectInfographic";
+import { SqlTopicInfographic } from "@/components/lesson/SqlTopicInfographic";
 import { ArrowRight, Lightbulb, Code2, Pencil, Play } from "lucide-react";
 
 interface LessonContentProps {
@@ -328,6 +329,156 @@ export function LessonContent({
             }
             if (block.infographic === "final-project-capstone") {
               return <FinalProjectInfographic key={i} section="capstone" />;
+            }
+            if (block.infographic === "sql-intro-databases") {
+              return <SqlTopicInfographic key={i} variant="sql-intro-databases" />;
+            }
+            if (block.infographic === "sql-relational-model") {
+              return <SqlTopicInfographic key={i} variant="sql-relational-model" />;
+            }
+            if (block.infographic === "sql-intro-sql") {
+              return <SqlTopicInfographic key={i} variant="sql-intro-sql" />;
+            }
+            if (block.infographic === "sql-data-types") {
+              return <SqlTopicInfographic key={i} variant="sql-data-types" />;
+            }
+            if (block.infographic === "sql-command-categories") {
+              return <SqlTopicInfographic key={i} variant="sql-command-categories" />;
+            }
+            if (block.infographic === "sql-ddl") {
+              return <SqlTopicInfographic key={i} variant="sql-ddl" />;
+            }
+            if (block.infographic === "sql-dml") {
+              return <SqlTopicInfographic key={i} variant="sql-dml" />;
+            }
+            if (block.infographic === "sql-dql-dcl-tcl") {
+              return <SqlTopicInfographic key={i} variant="sql-dql-dcl-tcl" />;
+            }
+            if (block.infographic === "sql-select-statement") {
+              return <SqlTopicInfographic key={i} variant="sql-select-statement" />;
+            }
+            if (block.infographic === "sql-column-aliases") {
+              return <SqlTopicInfographic key={i} variant="sql-column-aliases" />;
+            }
+            if (block.infographic === "sql-distinct-limit") {
+              return <SqlTopicInfographic key={i} variant="sql-distinct-limit" />;
+            }
+            if (block.infographic === "sql-null-handling") {
+              return <SqlTopicInfographic key={i} variant="sql-null-handling" />;
+            }
+            if (block.infographic === "sql-where-clause") {
+              return <SqlTopicInfographic key={i} variant="sql-where-clause" />;
+            }
+            if (block.infographic === "sql-comparison-logical") {
+              return <SqlTopicInfographic key={i} variant="sql-comparison-logical" />;
+            }
+            if (block.infographic === "sql-in-between-like") {
+              return <SqlTopicInfographic key={i} variant="sql-in-between-like" />;
+            }
+            if (block.infographic === "sql-order-by") {
+              return <SqlTopicInfographic key={i} variant="sql-order-by" />;
+            }
+            if (block.infographic === "sql-why-joins") {
+              return <SqlTopicInfographic key={i} variant="sql-why-joins" />;
+            }
+            if (block.infographic === "sql-inner-join") {
+              return <SqlTopicInfographic key={i} variant="sql-inner-join" />;
+            }
+            if (block.infographic === "sql-left-right-join") {
+              return <SqlTopicInfographic key={i} variant="sql-left-right-join" />;
+            }
+            if (block.infographic === "sql-full-cross-self-join") {
+              return <SqlTopicInfographic key={i} variant="sql-full-cross-self-join" />;
+            }
+            if (block.infographic === "sql-aggregates-intro") {
+              return <SqlTopicInfographic key={i} variant="sql-aggregates-intro" />;
+            }
+            if (block.infographic === "sql-count-min-max") {
+              return <SqlTopicInfographic key={i} variant="sql-count-min-max" />;
+            }
+            if (block.infographic === "sql-sum-avg") {
+              return <SqlTopicInfographic key={i} variant="sql-sum-avg" />;
+            }
+            if (block.infographic === "sql-group-by-basics") {
+              return <SqlTopicInfographic key={i} variant="sql-group-by-basics" />;
+            }
+            if (block.infographic === "sql-group-by-multiple") {
+              return <SqlTopicInfographic key={i} variant="sql-group-by-multiple" />;
+            }
+            if (block.infographic === "sql-having") {
+              return <SqlTopicInfographic key={i} variant="sql-having" />;
+            }
+            if (block.infographic === "sql-functions-intro") {
+              return <SqlTopicInfographic key={i} variant="sql-functions-intro" />;
+            }
+            if (block.infographic === "sql-string-functions") {
+              return <SqlTopicInfographic key={i} variant="sql-string-functions" />;
+            }
+            if (block.infographic === "sql-numeric-functions") {
+              return <SqlTopicInfographic key={i} variant="sql-numeric-functions" />;
+            }
+            if (block.infographic === "sql-date-time-functions") {
+              return <SqlTopicInfographic key={i} variant="sql-date-time-functions" />;
+            }
+            if (block.infographic === "sql-case-expressions") {
+              return <SqlTopicInfographic key={i} variant="sql-case-expressions" />;
+            }
+            if (block.infographic === "sql-coalesce-nullif") {
+              return <SqlTopicInfographic key={i} variant="sql-coalesce-nullif" />;
+            }
+            if (block.infographic === "sql-subqueries-intro") {
+              return <SqlTopicInfographic key={i} variant="sql-subqueries-intro" />;
+            }
+            if (block.infographic === "sql-subqueries-where") {
+              return <SqlTopicInfographic key={i} variant="sql-subqueries-where" />;
+            }
+            if (block.infographic === "sql-scalar-subqueries") {
+              return <SqlTopicInfographic key={i} variant="sql-scalar-subqueries" />;
+            }
+            if (block.infographic === "sql-subqueries-from") {
+              return <SqlTopicInfographic key={i} variant="sql-subqueries-from" />;
+            }
+            if (block.infographic === "sql-correlated-subqueries") {
+              return <SqlTopicInfographic key={i} variant="sql-correlated-subqueries" />;
+            }
+            if (block.infographic === "sql-exists-not-exists") {
+              return <SqlTopicInfographic key={i} variant="sql-exists-not-exists" />;
+            }
+            if (block.infographic === "sql-views-intro") {
+              return <SqlTopicInfographic key={i} variant="sql-views-intro" />;
+            }
+            if (block.infographic === "sql-creating-views") {
+              return <SqlTopicInfographic key={i} variant="sql-creating-views" />;
+            }
+            if (block.infographic === "sql-set-operations-intro") {
+              return <SqlTopicInfographic key={i} variant="sql-set-operations-intro" />;
+            }
+            if (block.infographic === "sql-union-union-all") {
+              return <SqlTopicInfographic key={i} variant="sql-union-union-all" />;
+            }
+            if (block.infographic === "sql-intersect") {
+              return <SqlTopicInfographic key={i} variant="sql-intersect" />;
+            }
+            if (block.infographic === "sql-except") {
+              return <SqlTopicInfographic key={i} variant="sql-except" />;
+            }
+            if (block.infographic === "sql-ctes-intro") {
+              return <SqlTopicInfographic key={i} variant="sql-ctes-intro" />;
+            }
+            if (block.infographic === "sql-ctes-vs-subqueries") {
+              return <SqlTopicInfographic key={i} variant="sql-ctes-vs-subqueries" />;
+            }
+            if (block.infographic === "sql-multiple-ctes") {
+              return <SqlTopicInfographic key={i} variant="sql-multiple-ctes" />;
+            }
+            if (block.infographic === "sql-ctes-joins-aggregates") {
+              return <SqlTopicInfographic key={i} variant="sql-ctes-joins-aggregates" />;
+            }
+            if (block.infographic === "sql-recursive-ctes-intro") {
+              return <SqlTopicInfographic key={i} variant="sql-recursive-ctes-intro" />;
+            }
+            if (block.infographic === "sql-recursive-employee-hierarchy") {
+              return <SqlTopicInfographic key={i} variant="sql-recursive-employee-hierarchy" />;
             }
             return null;
           case "code":
