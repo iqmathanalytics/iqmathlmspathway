@@ -51,6 +51,18 @@ export const sqlModule2Quizzes: Record<string, TopicQuiz> = {
         correctIndex: 2,
         explanation: "SQLite uses || for string concatenation: FirstName || ' ' || LastName.",
       },
+      {
+        id: "q3",
+        question: "ROUND(UnitPrice * 1.18, 2) in SELECT will…",
+        options: [
+          "Permanently change UnitPrice in the table",
+          "Return a calculated value only in the query result",
+          "Delete rows with decimal prices",
+          "Fail because arithmetic is not allowed in SELECT",
+        ],
+        correctIndex: 1,
+        explanation: "Expressions in SELECT compute output columns without modifying stored data.",
+      },
     ],
   },
   "sql-m2-t3": {
@@ -80,6 +92,18 @@ export const sqlModule2Quizzes: Record<string, TopicQuiz> = {
         ],
         correctIndex: 1,
         explanation: "ORDER BY DESC sorts highest first; LIMIT 3 keeps only three rows.",
+      },
+      {
+        id: "q3",
+        question: "LIMIT without ORDER BY typically returns…",
+        options: [
+          "The alphabetically first rows",
+          "An arbitrary slice of rows — order is undefined",
+          "Only NULL rows",
+          "An error in SQLite",
+        ],
+        correctIndex: 1,
+        explanation: "Always pair LIMIT with ORDER BY when you need top-N or bottom-N results.",
       },
     ],
   },

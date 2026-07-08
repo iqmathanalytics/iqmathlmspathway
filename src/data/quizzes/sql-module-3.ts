@@ -29,6 +29,18 @@ export const sqlModule3Quizzes: Record<string, TopicQuiz> = {
         correctIndex: 1,
         explanation: "String literals must be wrapped in single quotes.",
       },
+      {
+        id: "q3",
+        question: "WHERE UnitPrice > 50 keeps products…",
+        options: [
+          "Priced exactly 50",
+          "Priced above 50",
+          "With stock above 50",
+          "Whose name contains '50'",
+        ],
+        correctIndex: 1,
+        explanation: "> is strict greater-than; 50 itself is excluded.",
+      },
     ],
   },
   "sql-m3-t2": {
@@ -127,6 +139,18 @@ export const sqlModule3Quizzes: Record<string, TopicQuiz> = {
         ],
         correctIndex: 2,
         explanation: "SELECT → FROM → WHERE → ORDER BY → LIMIT is the standard order.",
+      },
+      {
+        id: "q3",
+        question: "ORDER BY Country, CompanyName sorts…",
+        options: [
+          "Only by CompanyName",
+          "By Country first; CompanyName breaks ties within each country",
+          "By the sum of both columns",
+          "Randomly within each country",
+        ],
+        correctIndex: 1,
+        explanation: "Multiple ORDER BY columns are applied left to right.",
       },
     ],
   },

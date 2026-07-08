@@ -6,6 +6,8 @@ import type { CourseId, LessonBlock } from "@/lib/types";
 import { LessonContent } from "./LessonContent";
 import { PythonIDE } from "@/components/ide/PythonIDE.lazy";
 import { SqlIDE } from "@/components/ide/SqlIDE.lazy";
+import { SqlTableDetailsButton } from "@/components/ide/SqlTableDetailsButton";
+import { SqlSchemaModelButton } from "@/components/ide/SqlSchemaModelButton";
 import { GroqChatPlayground } from "@/components/ai/GroqChatPlayground";
 import { JupyterNotebookPanel } from "./JupyterNotebookPanel";
 import { SetupChecklistPanel } from "./SetupChecklistPanel";
@@ -592,10 +594,21 @@ export function TopicLessonLayout({
           ) : (
             /* Default — Python IDE (with optional sequential task gating for Final Project) */
             <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
-              <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
+              <div className="mb-3 flex items-center gap-2 text-sm font-medium text-gray-700">
                 <Pencil className={`h-4 w-4 ${isSqlCourse ? "text-sky-600" : "text-brand-600"}`} />
                 {isSqlCourse ? "SQL IDE" : "Python IDE"}
               </div>
+
+              {isSqlCourse && topicId && (
+                <div className="mb-3 flex gap-2">
+                  <SqlTableDetailsButton
+                    topicId={topicId}
+                    moduleSlug={moduleSlug}
+                    variant="panel"
+                  />
+                  <SqlSchemaModelButton moduleSlug={moduleSlug} variant="panel" />
+                </div>
+              )}
 
               {practices.length > 0 && (
                 <div className="mb-3 rounded-xl border border-brand-200 bg-brand-50/50 px-3 py-2.5">

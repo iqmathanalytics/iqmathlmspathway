@@ -131,3 +131,60 @@ export function formatSqlResults(results: SqlRunResult[]): string {
 
   return lines.join("\n").trimEnd();
 }
+
+/** Quote table names that contain spaces (e.g. Order Details). */
+export function quoteSqliteTable(tableName: string): string {
+  if (/[^a-zA-Z0-9_]/.test(tableName)) {
+    return `[${tableName.replace(/]/g, "]]")}]`;
+  }
+  return tableName;
+}
+
+export interface SqlColumnMeta {
+  name: string;
+  type: string;
+  notNull: boolean;
+  primaryKey: boolean;
+}
+
+export interface SqlTableIntrospection {
+  columns: SqlColumnMeta[];
+  sampleColumns: string[];
+  sampleRows: unknown[][];
+  rowCount: number;
+}
+
+export function introspectTable(
+  db: Database,
+  tableName: string,
+  sampleLimit = 5
+): SqlTableIntrospection {
+  const quoted = quoteSqliteTable(tableName);
+  const infoResult = db.exec(`PRAGMA table_info(${quoted})`);
+  const infoRows = infoResult[0]?.values ?? [];
+
+  const columns: SqlColumnMeta[] = infoRows.map((row) => ({
+    name: String(row[1]),
+    type: String(row[2]),
+    notNull: Number(row[3]) === 1,
+    primaryKey: Number(row[5]) === 1,
+  }));
+
+  let sampleColumns: string[] = [];
+  let sampleRows: unknown[][] = [];
+  let rowCount = 0;
+
+  try {
+    const countResult = db.exec(`SELECT COUNT(*) FROM ${quoted}`);
+    rowCount = Number(countResult[0]?.values[0]?.[0] ?? 0);
+    const sampleResult = db.exec(`SELECT * FROM ${quoted} LIMIT ${sampleLimit}`);
+    if (sampleResult[0]) {
+      sampleColumns = sampleResult[0].columns;
+      sampleRows = sampleResult[0].values;
+    }
+  } catch {
+    /* table may be empty or virtual */
+  }
+
+  return { columns, sampleColumns, sampleRows, rowCount };
+}

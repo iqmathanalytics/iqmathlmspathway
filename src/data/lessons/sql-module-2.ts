@@ -4,105 +4,190 @@ export const sqlModule2Lessons: Record<string, TopicLesson> = {
   "sql-m2-t1": {
     topicId: "sql-m2-t1",
     intro:
-      "SELECT is how you read data from a database. Starting here, every exercise uses the Northwind sample database — the same classic dataset used in SQL courses worldwide.",
+      "SELECT is the heartbeat of SQL — every report, dashboard, and API read starts here. From Module 2 onward you work with Northwind Traders, a fictional import/export company with customers, products, orders, and employees. Your job is to ask precise questions and let the database answer.",
     blocks: [
       { type: "infographic", infographic: "sql-select-statement" },
       {
+        type: "heading",
+        content: "Anatomy of a SELECT",
+      },
+      {
+        type: "list",
+        items: [
+          "SELECT — which columns (or expressions) appear in the result",
+          "FROM — which table supplies the rows",
+          "Optional clauses (WHERE, ORDER BY, LIMIT) refine the output — covered in this module and the next",
+        ],
+      },
+      {
+        type: "tip",
+        content:
+          "Use View table details in the SQL IDE panel to inspect Northwind schemas and sample rows before writing queries.",
+      },
+      {
         type: "practice",
-        practiceLabel: "Explore Northwind tables",
+        practiceLabel: "Map the database",
         practicePrompt:
-          "List all user tables in the Northwind database. You should see Customers, Products, Orders, and more.",
+          "List every user table in Northwind. You should see Customers, Products, Orders, Order Details, and more — this is your map for the rest of the course.",
         starterCode: `SELECT name
 FROM sqlite_master
 WHERE type = 'table'
+  AND name NOT LIKE 'sqlite_%'
 ORDER BY name;`,
       },
       {
         type: "practice",
-        practiceLabel: "Preview customers",
-        practicePrompt: "Select CustomerID, CompanyName, and Country for the first 10 customers.",
-        starterCode: `SELECT CustomerID, CompanyName, Country
+        practiceLabel: "Customer directory",
+        practicePrompt:
+          "Pull CustomerID, CompanyName, ContactName, and Country for 12 customers. Name columns explicitly — avoid SELECT * in production.",
+        starterCode: `SELECT
+  CustomerID,
+  CompanyName,
+  ContactName,
+  Country
 FROM Customers
-LIMIT 10;`,
+LIMIT 12;`,
       },
       {
         type: "practice",
-        practiceLabel: "Product catalog",
-        practicePrompt: "Show ProductName and UnitPrice for all products (preview with LIMIT 15).",
-        starterCode: `SELECT ProductName, UnitPrice
+        practiceLabel: "Product price list",
+        practicePrompt:
+          "Show ProductID, ProductName, UnitPrice, and UnitsInStock. Order by price descending to see premium items first.",
+        starterCode: `SELECT
+  ProductID,
+  ProductName,
+  UnitPrice,
+  UnitsInStock
 FROM Products
+ORDER BY UnitPrice DESC
 LIMIT 15;`,
+      },
+      {
+        type: "practice",
+        practiceLabel: "Row counts",
+        practicePrompt:
+          "How large is each core table? Count rows in Customers, Products, and Orders — useful before writing heavy queries.",
+        starterCode: `SELECT 'Customers' AS entity, COUNT(*) AS row_count FROM Customers
+UNION ALL
+SELECT 'Products', COUNT(*) FROM Products
+UNION ALL
+SELECT 'Orders', COUNT(*) FROM Orders;`,
       },
     ],
     keyTakeaways: [
-      "SELECT … FROM … is the fundamental pattern for reading data.",
-      "Module 2+ uses the Northwind database (Customers, Products, Orders, etc.).",
-      "Prefer listing columns explicitly instead of SELECT * in real projects.",
+      "SELECT … FROM … reads rows from one table.",
+      "Northwind models a real business: customers order products via order headers and line items.",
+      "List columns by name; use the table details panel to learn schemas quickly.",
     ],
   },
   "sql-m2-t2": {
     topicId: "sql-m2-t2",
     intro:
-      "Rename columns with AS and build calculated fields — tax-inclusive prices, full names, and custom labels for reports.",
+      "Raw column names are not always presentation-ready. Aliases rename output for reports, and expressions compute new values — tax-inclusive prices, full names, margins — without changing stored data.",
     blocks: [
       { type: "infographic", infographic: "sql-column-aliases" },
       {
+        type: "heading",
+        content: "Expressions in SELECT",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Anything you put in the SELECT list is evaluated per row. Arithmetic works on numbers; || concatenates text in SQLite. ROUND() keeps currency readable. The AS keyword labels the result column — aliases exist only in the query output.",
+      },
+      {
         type: "practice",
-        practiceLabel: "Price with tax",
-        practicePrompt: "Show each product name, unit price, and price with 18% GST as PriceWithGST.",
+        practiceLabel: "GST-inclusive pricing",
+        practicePrompt:
+          "For each product, show name, base price, and PriceWithGST at 18%. Round to 2 decimal places.",
         starterCode: `SELECT
   ProductName,
   UnitPrice,
   ROUND(UnitPrice * 1.18, 2) AS PriceWithGST
 FROM Products
-LIMIT 10;`,
+ORDER BY UnitPrice DESC
+LIMIT 12;`,
       },
       {
         type: "practice",
-        practiceLabel: "Employee full names",
-        practicePrompt: "Concatenate FirstName and LastName into a column called FullName.",
+        practiceLabel: "Employee roster",
+        practicePrompt:
+          "Build FullName from FirstName and LastName. Include Title and City — this is how HR exports look.",
         starterCode: `SELECT
+  EmployeeID,
   FirstName || ' ' || LastName AS FullName,
   Title,
-  City
-FROM Employees;`,
+  City,
+  Country
+FROM Employees
+ORDER BY LastName, FirstName;`,
       },
       {
         type: "practice",
-        practiceLabel: "Order freight in dollars",
-        practicePrompt: "From Orders, show OrderID, CustomerID, and Freight rounded to 2 decimals.",
+        practiceLabel: "Order freight summary",
+        practicePrompt:
+          "From Orders, show OrderID, CustomerID, OrderDate, and Freight rounded to 2 decimals as FreightUSD.",
         starterCode: `SELECT
   OrderID,
   CustomerID,
-  ROUND(Freight, 2) AS FreightAmount
+  OrderDate,
+  ROUND(Freight, 2) AS FreightUSD
 FROM Orders
+ORDER BY OrderDate DESC
+LIMIT 15;`,
+      },
+      {
+        type: "practice",
+        practiceLabel: "Stock value estimate",
+        practicePrompt:
+          "Estimate inventory value per product: UnitsInStock * UnitPrice as StockValue. Show top 10 by value.",
+        starterCode: `SELECT
+  ProductName,
+  UnitsInStock,
+  UnitPrice,
+  ROUND(UnitsInStock * UnitPrice, 2) AS StockValue
+FROM Products
+WHERE UnitsInStock > 0
+ORDER BY StockValue DESC
 LIMIT 10;`,
       },
     ],
     keyTakeaways: [
-      "AS renames a column in the result set.",
-      "You can use arithmetic (+, -, *, /) and string concatenation (||) in SELECT.",
-      "ROUND() controls decimal precision for display.",
+      "AS renames a column in the result — the underlying table is unchanged.",
+      "Use || for string concatenation and ROUND for display precision in SQLite.",
+      "Calculated columns are ideal for reports without altering schema.",
     ],
   },
   "sql-m2-t3": {
     topicId: "sql-m2-t3",
     intro:
-      "DISTINCT finds unique values; LIMIT controls how many rows you get back. Together they are essential for exploration and top-N reports.",
+      "DISTINCT collapses duplicate rows — essential for unique country lists or category sets. LIMIT caps result size; combined with ORDER BY it powers every “top N” report in analytics.",
     blocks: [
       { type: "infographic", infographic: "sql-distinct-limit" },
       {
+        type: "heading",
+        content: "Top-N pattern",
+      },
+      {
+        type: "paragraph",
+        content:
+          "The recipe is always ORDER BY metric DESC (or ASC) then LIMIT n. Without ORDER BY, LIMIT returns an arbitrary slice — never use it alone for “top” or “bottom” lists.",
+      },
+      {
         type: "practice",
-        practiceLabel: "Countries we serve",
-        practicePrompt: "List every distinct country where we have customers, sorted alphabetically.",
+        practiceLabel: "Markets we serve",
+        practicePrompt:
+          "List every distinct customer country, sorted A→Z. How many unique markets does Northwind sell into?",
         starterCode: `SELECT DISTINCT Country
 FROM Customers
+WHERE Country IS NOT NULL
 ORDER BY Country;`,
       },
       {
         type: "practice",
-        practiceLabel: "Top 5 products by price",
-        practicePrompt: "Show the 5 most expensive products by UnitPrice (highest first).",
+        practiceLabel: "Top 5 premium products",
+        practicePrompt:
+          "The five most expensive products by UnitPrice. Include ProductName and price.",
         starterCode: `SELECT ProductName, UnitPrice
 FROM Products
 ORDER BY UnitPrice DESC
@@ -110,60 +195,100 @@ LIMIT 5;`,
       },
       {
         type: "practice",
-        practiceLabel: "Distinct categories in use",
+        practiceLabel: "Cheapest in-stock items",
         practicePrompt:
-          "Find distinct CategoryID values used by products. (You will JOIN to Categories in a later module.)",
-        starterCode: `SELECT DISTINCT CategoryID
+          "Five cheapest products that still have UnitsInStock > 0 — ORDER BY ascending.",
+        starterCode: `SELECT ProductName, UnitPrice, UnitsInStock
 FROM Products
-ORDER BY CategoryID;`,
+WHERE UnitsInStock > 0
+ORDER BY UnitPrice ASC
+LIMIT 5;`,
+      },
+      {
+        type: "practice",
+        practiceLabel: "Distinct supplier countries",
+        practicePrompt:
+          "Which countries do our suppliers operate from? Use DISTINCT on Suppliers.Country.",
+        starterCode: `SELECT DISTINCT Country
+FROM Suppliers
+WHERE Country IS NOT NULL
+ORDER BY Country;`,
       },
     ],
     keyTakeaways: [
-      "DISTINCT removes duplicate rows from the result.",
-      "LIMIT n returns at most n rows — pair with ORDER BY for top-N queries.",
-      "ORDER BY DESC sorts highest-to-lowest; ASC is the default.",
+      "DISTINCT removes duplicate combinations of selected columns.",
+      "ORDER BY + LIMIT implements top-N and bottom-N queries.",
+      "Filter with WHERE before DISTINCT when you need to exclude NULLs or subsets.",
     ],
   },
   "sql-m2-t4": {
     topicId: "sql-m2-t4",
     intro:
-      "NULL represents missing data. Northwind customers often have no Region — learn to filter and replace NULLs correctly.",
+      "NULL is not zero and not an empty string — it means “unknown” or “not applicable.” Mishandling NULL breaks filters, joins, and aggregates. Northwind’s optional Region and Fax columns are perfect practice ground.",
     blocks: [
       { type: "infographic", infographic: "sql-null-handling" },
       {
-        type: "practice",
-        practiceLabel: "Customers missing a region",
-        practicePrompt: "Find customers where Region IS NULL. Show CompanyName and Country.",
-        starterCode: `SELECT CompanyName, Country, Region
-FROM Customers
-WHERE Region IS NULL
-LIMIT 15;`,
+        type: "heading",
+        content: "Three rules of NULL",
+      },
+      {
+        type: "list",
+        items: [
+          "Comparisons with = or <> to NULL are always unknown — use IS NULL / IS NOT NULL",
+          "COALESCE(value, fallback) replaces NULL for display",
+          "COUNT(column) ignores NULLs; COUNT(*) counts all rows",
+        ],
       },
       {
         type: "practice",
-        practiceLabel: "Replace NULL with a label",
-        practicePrompt: "Use COALESCE to show 'Not specified' when Region is NULL.",
+        practiceLabel: "Missing region",
+        practicePrompt:
+          "Find customers with no Region (IS NULL). Show CompanyName, Country, and Region.",
+        starterCode: `SELECT CompanyName, Country, Region
+FROM Customers
+WHERE Region IS NULL
+ORDER BY Country, CompanyName
+LIMIT 20;`,
+      },
+      {
+        type: "practice",
+        practiceLabel: "Friendly region labels",
+        practicePrompt:
+          "Use COALESCE(Region, 'Not specified') so reports never show blank regions.",
         starterCode: `SELECT
   CompanyName,
   Country,
   COALESCE(Region, 'Not specified') AS Region
 FROM Customers
-LIMIT 15;`,
+ORDER BY Country, CompanyName
+LIMIT 20;`,
       },
       {
         type: "practice",
-        practiceLabel: "Products with no reorder level",
+        practiceLabel: "Products without reorder level",
         practicePrompt:
-          "Some products have NULL ReorderLevel. List ProductName and UnitsInStock where ReorderLevel IS NULL.",
-        starterCode: `SELECT ProductName, UnitsInStock, ReorderLevel
+          "List products where ReorderLevel IS NULL — inventory policy was never set.",
+        starterCode: `SELECT ProductName, UnitsInStock, ReorderLevel, Discontinued
 FROM Products
-WHERE ReorderLevel IS NULL;`,
+WHERE ReorderLevel IS NULL
+ORDER BY ProductName;`,
+      },
+      {
+        type: "practice",
+        practiceLabel: "NULL-safe contact check",
+        practicePrompt:
+          "Customers missing a Fax number. Use IS NULL — empty string would need a different filter.",
+        starterCode: `SELECT CompanyName, Phone, Fax
+FROM Customers
+WHERE Fax IS NULL
+ORDER BY CompanyName
+LIMIT 15;`,
       },
     ],
     keyTakeaways: [
-      "Use IS NULL / IS NOT NULL — never = NULL.",
-      "COALESCE returns the first non-NULL argument.",
-      "NULL behaves differently in comparisons and aggregates.",
+      "Never write WHERE col = NULL — always IS NULL or IS NOT NULL.",
+      "COALESCE provides human-readable defaults in SELECT lists.",
+      "NULL propagates through expressions unless you handle it explicitly.",
     ],
   },
 };

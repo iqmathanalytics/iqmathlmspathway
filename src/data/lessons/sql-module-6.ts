@@ -4,190 +4,322 @@ export const sqlModule6Lessons: Record<string, TopicLesson> = {
   "sql-m6-t1": {
     topicId: "sql-m6-t1",
     intro:
-      "SQL functions transform data as you query it — formatting text, rounding numbers, parsing dates. They work row-by-row, unlike aggregates that summarize groups.",
+      "Scalar functions transform individual values row-by-row — uppercase a name, round a price, extract a year from a date. Aggregates summarize groups; functions polish each cell. Together they power every report column you ship to stakeholders.",
     blocks: [
       { type: "infographic", infographic: "sql-functions-intro" },
       {
-        type: "practice",
-        practiceLabel: "Uppercase countries",
-        practicePrompt: "Use UPPER() on Country and list distinct uppercase country names.",
-        starterCode: `SELECT DISTINCT UPPER(Country) AS CountryUpper
-FROM Customers
-ORDER BY CountryUpper;`,
+        type: "heading",
+        content: "Where functions live",
+      },
+      {
+        type: "list",
+        items: [
+          "SELECT — format output columns",
+          "WHERE — compare transformed values (UPPER(email) = 'X')",
+          "ORDER BY — sort by computed fields",
+          "GROUP BY — bucket on expressions (strftime year, price band)",
+        ],
       },
       {
         type: "practice",
-        practiceLabel: "Combine function + aggregate",
-        practicePrompt: "Average price per category with rounded result (join Categories + Products).",
+        practiceLabel: "Normalize country names",
+        practicePrompt:
+          "Distinct uppercase countries — useful before deduplicating messy text imports.",
+        starterCode: `SELECT DISTINCT UPPER(TRIM(Country)) AS CountryNormalized
+FROM Customers
+WHERE Country IS NOT NULL
+ORDER BY CountryNormalized;`,
+      },
+      {
+        type: "practice",
+        practiceLabel: "Functions + aggregates",
+        practicePrompt:
+          "Average price per category, rounded — join Categories to Products, GROUP BY name.",
         starterCode: `SELECT
   c.CategoryName,
+  COUNT(p.ProductID) AS ProductCount,
   ROUND(AVG(p.UnitPrice), 2) AS AvgPrice
 FROM Categories c
 INNER JOIN Products p ON c.CategoryID = p.CategoryID
 GROUP BY c.CategoryName
 ORDER BY AvgPrice DESC;`,
       },
+      {
+        type: "practice",
+        practiceLabel: "Function in ORDER BY",
+        practicePrompt:
+          "List customers sorted by LENGTH(CompanyName) descending — longest names first.",
+        starterCode: `SELECT CompanyName, Country, LENGTH(CompanyName) AS NameLength
+FROM Customers
+ORDER BY LENGTH(CompanyName) DESC
+LIMIT 15;`,
+      },
+      {
+        type: "practice",
+        practiceLabel: "Function in WHERE",
+        practicePrompt:
+          "Find products whose name starts with 'Ch' using UPPER and LIKE together.",
+        starterCode: `SELECT ProductName, UnitPrice
+FROM Products
+WHERE UPPER(ProductName) LIKE 'CH%'
+ORDER BY ProductName;`,
+      },
     ],
     keyTakeaways: [
-      "Scalar functions transform one value at a time.",
-      "Functions can appear in SELECT, WHERE, ORDER BY, and GROUP BY.",
-      "Functions combine naturally with JOINs and aggregates.",
+      "Scalar functions operate per row; aggregates collapse groups.",
+      "Functions never modify stored data — only the query result.",
+      "Nest functions: ROUND(AVG(...)) is common in analytics.",
     ],
   },
   "sql-m6-t2": {
     topicId: "sql-m6-t2",
     intro:
-      "String functions clean and reshape text — uppercase for comparison, trim whitespace, extract substrings, and concatenate names.",
+      "Dirty text breaks joins and filters — extra spaces, inconsistent casing, cryptic codes. String functions clean and reshape text inside SQL so exports arrive presentation-ready.",
     blocks: [
       { type: "infographic", infographic: "sql-string-functions" },
       {
+        type: "heading",
+        content: "SQLite string toolkit",
+      },
+      {
+        type: "list",
+        items: [
+          "UPPER / LOWER — case normalization",
+          "TRIM — remove leading/trailing whitespace",
+          "SUBSTR — extract part of a string (1-based index)",
+          "LENGTH — character count",
+          "|| — concatenate",
+        ],
+      },
+      {
         type: "practice",
-        practiceLabel: "Format company names",
-        practicePrompt: "Show CompanyName in upper and lower case side by side.",
+        practiceLabel: "Company name formatting",
+        practicePrompt:
+          "Show original, UPPER, and LOWER forms side by side for 12 customers.",
         starterCode: `SELECT
   CompanyName,
   UPPER(CompanyName) AS UpperName,
   LOWER(CompanyName) AS LowerName
 FROM Customers
-LIMIT 10;`,
+ORDER BY CompanyName
+LIMIT 12;`,
       },
       {
         type: "practice",
-        practiceLabel: "Substring and length",
-        practicePrompt: "First 6 characters of each ProductName and the full name length.",
+        practiceLabel: "Product code prefix",
+        practicePrompt:
+          "First 8 characters of ProductName as SKU prefix plus full LENGTH.",
         starterCode: `SELECT
   ProductName,
-  SUBSTR(ProductName, 1, 6) AS Prefix,
+  SUBSTR(ProductName, 1, 8) AS SkuPrefix,
   LENGTH(ProductName) AS NameLength
 FROM Products
-LIMIT 15;`,
+ORDER BY NameLength DESC
+LIMIT 20;`,
       },
       {
         type: "practice",
-        practiceLabel: "Employee full names",
-        practicePrompt: "Build FullName with || and TRIM any extra spaces.",
+        practiceLabel: "Employee directory export",
+        practicePrompt:
+          "Build FullName with || and TRIM. Include Title and uppercase City.",
         starterCode: `SELECT
   TRIM(FirstName || ' ' || LastName) AS FullName,
-  Title
-FROM Employees;`,
+  Title,
+  UPPER(City) AS CityUpper
+FROM Employees
+ORDER BY LastName, FirstName;`,
+      },
+      {
+        type: "practice",
+        practiceLabel: "Contact title cleanup",
+        practicePrompt:
+          "Customers whose ContactTitle contains 'Manager' (case-insensitive via UPPER).",
+        starterCode: `SELECT
+  CompanyName,
+  ContactName,
+  ContactTitle
+FROM Customers
+WHERE UPPER(ContactTitle) LIKE '%MANAGER%'
+ORDER BY CompanyName
+LIMIT 20;`,
       },
     ],
     keyTakeaways: [
-      "UPPER/LOWER normalize text for comparisons.",
-      "SUBSTR extracts part of a string; LENGTH counts characters.",
-      "SQLite uses || to concatenate strings.",
+      "Normalize case before comparing or grouping text.",
+      "SUBSTR and LENGTH help parse fixed-width codes.",
+      "SQLite concatenates with || — TRIM avoids double-space glitches.",
     ],
   },
   "sql-m6-t3": {
     topicId: "sql-m6-t3",
     intro:
-      "Numeric functions round decimals, measure distance from a target, and cast between types — essential for reports and pricing logic.",
+      "Financial SQL leans on numeric functions — ROUND for currency, ABS for variance, CAST when types must align. Small formatting choices prevent embarrassing penny drift in executive decks.",
     blocks: [
       { type: "infographic", infographic: "sql-numeric-functions" },
       {
         type: "practice",
-        practiceLabel: "Round prices",
-        practicePrompt: "Show UnitPrice rounded to 0 and 2 decimal places.",
+        practiceLabel: "Price display formats",
+        practicePrompt:
+          "Show UnitPrice rounded to whole dollars and to 2 decimal places.",
         starterCode: `SELECT
   ProductName,
   UnitPrice,
   ROUND(UnitPrice, 0) AS WholeDollars,
   ROUND(UnitPrice, 2) AS TwoDecimals
 FROM Products
+ORDER BY UnitPrice DESC
+LIMIT 15;`,
+      },
+      {
+        type: "practice",
+        practiceLabel: "GST pricing column",
+        practicePrompt:
+          "Compute 18% GST on UnitPrice as PriceWithGST, rounded to 2 decimals.",
+        starterCode: `SELECT
+  ProductName,
+  UnitPrice,
+  ROUND(UnitPrice * 1.18, 2) AS PriceWithGST,
+  ROUND(UnitPrice * 0.18, 2) AS GstAmount
+FROM Products
+WHERE Discontinued = 0
+ORDER BY UnitPrice DESC
 LIMIT 12;`,
       },
       {
         type: "practice",
-        practiceLabel: "Price with tax",
-        practicePrompt: "Compute 18% GST on UnitPrice, rounded to 2 decimals.",
-        starterCode: `SELECT
-  ProductName,
-  UnitPrice,
-  ROUND(UnitPrice * 1.18, 2) AS PriceWithGST
-FROM Products
-ORDER BY UnitPrice DESC
-LIMIT 10;`,
-      },
-      {
-        type: "practice",
-        practiceLabel: "Distance from target price",
-        practicePrompt: "Use ABS to show how far each product's price is from $25.",
+        practiceLabel: "Distance from target",
+        practicePrompt:
+          "How far is each product's price from a $25 target? Use ABS.",
         starterCode: `SELECT
   ProductName,
   UnitPrice,
   ROUND(ABS(UnitPrice - 25), 2) AS DistanceFrom25
 FROM Products
 ORDER BY DistanceFrom25
+LIMIT 20;`,
+      },
+      {
+        type: "practice",
+        practiceLabel: "Line discount impact",
+        practicePrompt:
+          "On [Order Details], show line total before and after Discount.",
+        starterCode: `SELECT
+  OrderID,
+  ProductID,
+  Quantity,
+  UnitPrice,
+  ROUND(Quantity * UnitPrice, 2) AS GrossLine,
+  ROUND(Quantity * UnitPrice * (1 - Discount), 2) AS NetLine
+FROM [Order Details]
+ORDER BY GrossLine DESC
 LIMIT 15;`,
       },
     ],
     keyTakeaways: [
-      "ROUND(value, decimals) controls precision.",
-      "ABS returns the absolute (positive) difference.",
-      "CAST converts between numeric types when needed.",
+      "ROUND(value, n) controls decimal precision in reports.",
+      "ABS measures magnitude of difference — great for tolerance checks.",
+      "Combine arithmetic and ROUND in one SELECT expression.",
     ],
   },
   "sql-m6-t4": {
     topicId: "sql-m6-t4",
     intro:
-      "Dates drive business questions — orders per month, shipping delays, year-over-year trends. SQLite's date functions extract and manipulate date text.",
+      "Time-series questions — orders per month, shipping delays, hire anniversaries — depend on date functions. SQLite stores Northwind dates as ISO text; strftime and julianday extract and compare them.",
     blocks: [
       { type: "infographic", infographic: "sql-date-time-functions" },
       {
+        type: "heading",
+        content: "SQLite date helpers",
+      },
+      {
+        type: "list",
+        items: [
+          "strftime('%Y', date) — four-digit year",
+          "strftime('%m', date) — month number",
+          "strftime('%Y-%m', date) — year-month bucket",
+          "julianday(a) - julianday(b) — day difference",
+        ],
+      },
+      {
         type: "practice",
-        practiceLabel: "Extract year and month",
-        practicePrompt: "From Orders, show OrderID, OrderDate, year, and month using strftime.",
+        practiceLabel: "Decompose order dates",
+        practicePrompt:
+          "Show OrderID, OrderDate, year, month, and day-of-week name.",
         starterCode: `SELECT
   OrderID,
   OrderDate,
   strftime('%Y', OrderDate) AS OrderYear,
-  strftime('%m', OrderDate) AS OrderMonth
+  strftime('%m', OrderDate) AS OrderMonth,
+  strftime('%w', OrderDate) AS DayOfWeek
 FROM Orders
+WHERE OrderDate IS NOT NULL
+ORDER BY OrderDate DESC
 LIMIT 15;`,
       },
       {
         type: "practice",
-        practiceLabel: "Orders by month name",
-        practicePrompt: "Use strftime('%Y-%m', OrderDate) to group orders by month (first 12 groups).",
+        practiceLabel: "Monthly order volume",
+        practicePrompt:
+          "Count orders per year-month. Sort chronologically.",
         starterCode: `SELECT
   strftime('%Y-%m', OrderDate) AS YearMonth,
-  COUNT(*) AS OrderCount
+  COUNT(*) AS OrderCount,
+  ROUND(SUM(Freight), 2) AS MonthFreight
 FROM Orders
+WHERE OrderDate IS NOT NULL
 GROUP BY YearMonth
-ORDER BY YearMonth
-LIMIT 12;`,
+ORDER BY YearMonth;`,
       },
       {
         type: "practice",
-        practiceLabel: "Required vs shipped",
-        practicePrompt: "Show days between RequiredDate and ShippedDate for shipped orders.",
+        practiceLabel: "Shipping delay days",
+        practicePrompt:
+          "Days between RequiredDate and ShippedDate (negative = early).",
         starterCode: `SELECT
   OrderID,
   RequiredDate,
   ShippedDate,
-  julianday(ShippedDate) - julianday(RequiredDate) AS DaysLate
+  ROUND(julianday(ShippedDate) - julianday(RequiredDate), 1) AS DaysFromRequired
 FROM Orders
 WHERE ShippedDate IS NOT NULL
-LIMIT 15;`,
+  AND RequiredDate IS NOT NULL
+ORDER BY DaysFromRequired DESC
+LIMIT 20;`,
+      },
+      {
+        type: "practice",
+        practiceLabel: "Employee tenure",
+        practicePrompt:
+          "Years since HireDate (approximate) using julianday and / 365.25.",
+        starterCode: `SELECT
+  FirstName || ' ' || LastName AS Employee,
+  HireDate,
+  ROUND((julianday('now') - julianday(HireDate)) / 365.25, 1) AS YearsEmployed
+FROM Employees
+WHERE HireDate IS NOT NULL
+ORDER BY YearsEmployed DESC;`,
       },
     ],
     keyTakeaways: [
-      "strftime formats and extracts date parts in SQLite.",
-      "Dates are often stored as ISO text: YYYY-MM-DD.",
-      "julianday() helps compute differences between dates.",
+      "strftime formats and extracts parts of date strings.",
+      "GROUP BY strftime('%Y-%m', ...) builds monthly reports.",
+      "julianday differences measure elapsed days between dates.",
     ],
   },
   "sql-m6-t5": {
     topicId: "sql-m6-t5",
     intro:
-      "CASE expressions let you bucket data, label statuses, and implement business rules directly in SQL without post-processing.",
+      "CASE is SQL's switch statement — bucket prices into tiers, flag stockouts, classify freight. It keeps business rules visible in the query instead of hidden in application code.",
     blocks: [
       { type: "infographic", infographic: "sql-case-expressions" },
       {
         type: "practice",
-        practiceLabel: "Price bands",
-        practicePrompt: "Label each product Budget / Mid-range / Premium based on UnitPrice.",
-        starterCode: `SELECT ProductName, UnitPrice,
+        practiceLabel: "Product price bands",
+        practicePrompt:
+          "Label each product Budget / Mid-range / Premium based on UnitPrice thresholds.",
+        starterCode: `SELECT
+  ProductName,
+  UnitPrice,
   CASE
     WHEN UnitPrice < 10 THEN 'Budget'
     WHEN UnitPrice < 50 THEN 'Mid-range'
@@ -195,82 +327,123 @@ LIMIT 15;`,
   END AS PriceBand
 FROM Products
 ORDER BY UnitPrice
-LIMIT 20;`,
+LIMIT 25;`,
       },
       {
         type: "practice",
-        practiceLabel: "Stock status",
-        practicePrompt: "Use CASE on UnitsInStock: 'Out of stock' if 0, 'Low' if under 10, else 'OK'.",
-        starterCode: `SELECT ProductName, UnitsInStock,
+        practiceLabel: "Inventory health",
+        practicePrompt:
+          "Stock status: Out of stock (0), Low (<10), OK otherwise.",
+        starterCode: `SELECT
+  ProductName,
+  UnitsInStock,
   CASE
     WHEN UnitsInStock = 0 THEN 'Out of stock'
     WHEN UnitsInStock < 10 THEN 'Low'
     ELSE 'OK'
   END AS StockStatus
 FROM Products
-LIMIT 20;`,
+WHERE Discontinued = 0
+ORDER BY UnitsInStock;`,
       },
       {
         type: "practice",
-        practiceLabel: "Freight tier",
-        practicePrompt: "Classify Orders freight as Small / Medium / Large.",
-        starterCode: `SELECT OrderID, Freight,
+        practiceLabel: "Freight size class",
+        practicePrompt:
+          "Classify order freight as Small / Medium / Large.",
+        starterCode: `SELECT
+  OrderID,
+  Freight,
   CASE
     WHEN Freight < 10 THEN 'Small'
     WHEN Freight < 50 THEN 'Medium'
     ELSE 'Large'
   END AS FreightTier
 FROM Orders
-LIMIT 15;`,
+ORDER BY Freight DESC
+LIMIT 20;`,
+      },
+      {
+        type: "practice",
+        practiceLabel: "CASE in aggregation",
+        practicePrompt:
+          "Count products per price band in one query using CASE inside SUM.",
+        starterCode: `SELECT
+  SUM(CASE WHEN UnitPrice < 10 THEN 1 ELSE 0 END) AS BudgetCount,
+  SUM(CASE WHEN UnitPrice >= 10 AND UnitPrice < 50 THEN 1 ELSE 0 END) AS MidCount,
+  SUM(CASE WHEN UnitPrice >= 50 THEN 1 ELSE 0 END) AS PremiumCount
+FROM Products
+WHERE Discontinued = 0;`,
       },
     ],
     keyTakeaways: [
-      "CASE WHEN … THEN … ELSE … END handles multiple conditions.",
-      "Simple CASE compares one expression to several values.",
-      "CASE works in SELECT, ORDER BY, and aggregates.",
+      "Searched CASE: CASE WHEN condition THEN result … END",
+      "CASE works inside aggregates for pivot-style counts.",
+      "ORDER BY can use CASE for custom sort sequences.",
     ],
   },
   "sql-m6-t6": {
     topicId: "sql-m6-t6",
     intro:
-      "COALESCE and NULLIF clean up missing data — default labels for NULL regions, and turning sentinel values into real NULLs.",
+      "NULL breaks concatenation and skews averages. COALESCE supplies fallback values for display; NULLIF turns sentinel values (like 0) into real NULLs for cleaner analytics.",
     blocks: [
       { type: "infographic", infographic: "sql-coalesce-nullif" },
       {
         type: "practice",
-        practiceLabel: "Region fallback",
-        practicePrompt: "Replace NULL Region with 'Not specified' using COALESCE.",
-        starterCode: `SELECT CompanyName, Country,
+        practiceLabel: "Region display fix",
+        practicePrompt:
+          "Replace NULL Region with 'Not specified' for customer reports.",
+        starterCode: `SELECT
+  CompanyName,
+  Country,
   COALESCE(Region, 'Not specified') AS Region
 FROM Customers
-LIMIT 15;`,
+ORDER BY Country, CompanyName
+LIMIT 20;`,
       },
       {
         type: "practice",
-        practiceLabel: "Contact fallback chain",
-        practicePrompt: "Use COALESCE(Fax, Phone, 'No phone/fax') as backup contact.",
-        starterCode: `SELECT CompanyName,
+        practiceLabel: "Best contact channel",
+        practicePrompt:
+          "COALESCE chain: prefer Fax, then Phone, else a default message.",
+        starterCode: `SELECT
+  CompanyName,
   Phone,
   Fax,
-  COALESCE(Fax, Phone, 'No phone/fax') AS BestContact
+  COALESCE(Fax, Phone, 'No phone/fax on file') AS BestContact
 FROM Customers
-LIMIT 15;`,
+LIMIT 20;`,
       },
       {
         type: "practice",
-        practiceLabel: "NULLIF for zero stock",
-        practicePrompt: "Use NULLIF so zero UnitsInStock becomes NULL in a column called StockOrNull.",
-        starterCode: `SELECT ProductName, UnitsInStock,
+        practiceLabel: "NULLIF zero stock",
+        practicePrompt:
+          "NULLIF turns zero UnitsInStock into NULL in column StockOrNull.",
+        starterCode: `SELECT
+  ProductName,
+  UnitsInStock,
   NULLIF(UnitsInStock, 0) AS StockOrNull
 FROM Products
 WHERE Discontinued = 0
+ORDER BY UnitsInStock DESC
 LIMIT 20;`,
+      },
+      {
+        type: "practice",
+        practiceLabel: "AVG with NULLIF",
+        practicePrompt:
+          "Average stock ignoring zero-stock items using NULLIF inside AVG.",
+        starterCode: `SELECT
+  ROUND(AVG(NULLIF(UnitsInStock, 0)), 2) AS AvgStockExcludingZero,
+  ROUND(AVG(UnitsInStock), 2) AS AvgStockIncludingZero
+FROM Products
+WHERE Discontinued = 0;`,
       },
     ],
     keyTakeaways: [
-      "COALESCE returns the first non-NULL argument.",
-      "IFNULL(a, b) in SQLite is a two-argument COALESCE.",
-      "NULLIF(a, b) returns NULL when a equals b.",
+      "COALESCE returns the first non-NULL argument in the list.",
+      "IFNULL(x, y) is SQLite shorthand for two-argument COALESCE.",
+      "NULLIF(a, b) returns NULL when a equals b — useful for excluding sentinels.",
     ],
   },
 };

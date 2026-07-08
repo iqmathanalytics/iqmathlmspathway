@@ -15,6 +15,7 @@ import { VideoTutorialModal } from "@/components/lesson/VideoTutorialModal";
 import { NextTopicButton } from "@/components/lesson/NextTopicButton";
 import { GroqApiKeySetup } from "@/components/ai/GroqApiKeySetup";
 import { TopicAccessGate } from "@/components/lesson/TopicAccessGate";
+import { TopicPageShell } from "@/components/lesson/TopicPageShell";
 
 interface TopicPageProps {
   params: Promise<{ moduleSlug: string; topicSlug: string }>;
@@ -67,7 +68,8 @@ export default async function TopicPage({ params }: TopicPageProps) {
       Right column: IDE (scrolls independently).
       Mobile: normal single-column page flow.
       */}
-      <article className="w-full lg:flex lg:flex-col lg:h-[calc(100vh-3.5rem)]">
+      <TopicPageShell courseId={module.course} module={module} topic={topic}>
+      <article className="w-full lg:flex lg:flex-1 lg:flex-col lg:min-h-0 lg:overflow-hidden">
         <TopicLessonLayout
           blocks={lesson.blocks}
           topicId={topic.id}
@@ -132,6 +134,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
           }
         />
       </article>
+      </TopicPageShell>
     </TopicAccessGate>
   );
 }
