@@ -1,0 +1,6 @@
+promo_id,product_id,promo_name,start_date,end_date,discount_pct,region_scope
+PR01,P08,Shampoo Weekend Cut,2026-01-10,2026-02-28,15,All
+PR02,P07,Handwash Bundle,2026-02-01,2026-02-20,10,West
+PR03,P01,Milk Morning Deal,2026-01-15,2026-02-15,5,South
+PR04,P12,Cola Fest,2026-02-05,2026-02-25,12,North
+PR05,P09,Atta Family Pack,2026-01-20,2026-02-10,8,East

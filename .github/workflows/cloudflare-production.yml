@@ -36,14 +36,14 @@ jobs:
         env:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
-          NEXT_PUBLIC_STRIPE_PRICE_LABEL: ${{ secrets.NEXT_PUBLIC_STRIPE_PRICE_LABEL }}
+          NEXT_PUBLIC_RAZORPAY_PRICE_LABEL: ${{ secrets.NEXT_PUBLIC_RAZORPAY_PRICE_LABEL }}
 
       - name: Publish to Cloudflare Pages (production)
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: python-lms
+          projectName: iqmathlmspathway
           directory: out
           branch: main
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}

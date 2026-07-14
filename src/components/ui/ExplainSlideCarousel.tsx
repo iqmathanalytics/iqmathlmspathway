@@ -53,7 +53,7 @@ export function ExplainSlideCarousel({
 
   return (
     <div className={`relative ${className}`.trim()}>
-      <div className="relative overflow-hidden rounded-3xl border border-gray-200/80 bg-gradient-to-br from-white via-brand-50/40 to-violet-50/30 p-6 shadow-sm sm:p-8 lg:p-10">
+      <div className="relative overflow-hidden rounded-3xl border border-gray-200/80 bg-gradient-to-br from-white via-brand-50/40 to-accent-50/30 p-6 shadow-sm sm:p-8 lg:p-10">
         <div key={slide.id} className="transition-opacity duration-500">
           {slide.eyebrow ? (
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-brand-700">{slide.eyebrow}</p>

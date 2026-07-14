@@ -9,17 +9,31 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Primary: IQmath logo blue (#0F75BD)
         brand: {
-          50: "#f0fdf4",
-          100: "#dcfce7",
-          200: "#bbf7d0",
-          300: "#86efac",
-          400: "#4ade80",
-          500: "#22c55e",
-          600: "#16a34a",
-          700: "#15803d",
-          800: "#166534",
-          900: "#14532d",
+          50: "#eef7fc",
+          100: "#d5ebf7",
+          200: "#aed7ef",
+          300: "#7cbce0",
+          400: "#469ccb",
+          500: "#0F75BD",
+          600: "#0d66a6",
+          700: "#0b558a",
+          800: "#0a4671",
+          900: "#083a5c",
+        },
+        // Accent: IQmath logo lime (#8CC63E)
+        accent: {
+          50: "#f5fbeb",
+          100: "#e8f6d0",
+          200: "#d2eda7",
+          300: "#b5e076",
+          400: "#9fd14f",
+          500: "#8CC63E",
+          600: "#6fa32c",
+          700: "#557d24",
+          800: "#456420",
+          900: "#3a541d",
         },
         python: {
           blue: "#3776ab",

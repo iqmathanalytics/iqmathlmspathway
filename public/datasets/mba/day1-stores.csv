@@ -1,0 +1,9 @@
+store_id,store_name,region,city,store_format,sq_ft
+S01,FreshBasket Andheri,West,Mumbai,Supermarket,8200
+S02,FreshBasket Bandra,West,Mumbai,Supermarket,9100
+S03,FreshBasket Koramangala,South,Bengaluru,Supermarket,7800
+S04,FreshBasket Indiranagar,South,Bengaluru,Express,4200
+S05,FreshBasket Connaught,North,Delhi,Supermarket,10200
+S06,FreshBasket Saket,North,Delhi,Express,3900
+S07,FreshBasket Salt Lake,East,Kolkata,Supermarket,7600
+S08,FreshBasket Park Street,East,Kolkata,Express,4100

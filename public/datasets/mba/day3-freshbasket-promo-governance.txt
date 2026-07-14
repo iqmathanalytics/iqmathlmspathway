@@ -1,0 +1,55 @@
+FRESHBASKET SUPERMARKET — CATEGORY & PROMO GOVERNANCE BRIEF
+Document ID: FB-CAT-PROMO-2026-02 | Training brief
+
+═══════════════════════════════════════════════════════════════
+1. PURPOSE
+═══════════════════════════════════════════════════════════════
+Rules for launching or changing promotional offers so shelf tags,
+app banners, and till prices match — protecting margin and customer trust.
+
+═══════════════════════════════════════════════════════════════
+2. PROMO TYPES ALLOWED
+═══════════════════════════════════════════════════════════════
+A) Temporary price cut (max 14 days unless Category Head extends)
+B) Bundle / multi-buy (e.g., 2 for ₹100)
+C) Weekend cut (Friday 00:00 to Sunday 23:59 local store time)
+D) App-only offer (must be enforced at till via barcode / offer code)
+
+Flash “lightning” style promises below cost require Finance + Category dual sign-off.
+
+═══════════════════════════════════════════════════════════════
+3. APPROVAL LADDER
+═══════════════════════════════════════════════════════════════
+Depth 0–5% off list: Category Manager
+Depth 6–12% off list: Category Head
+Depth >12% or private-label launch promo: Category Head + Finance Partner
+Any national campaign creative that mentions a % off: Marketing + Category Joint approval
+
+═══════════════════════════════════════════════════════════════
+4. MANDATORY CONTROLS BEFORE GO-LIVE
+═══════════════════════════════════════════════════════════════
+1) Shelf tag template checked against till price in POS test store
+2) Offer start/end dates entered in promo calendar
+3) Store briefing note sent 24 hours before go-live
+4) “If till price ≠ tag price, do not argue — call Duty Manager” instruction posted
+
+═══════════════════════════════════════════════════════════════
+5. HARD STOPS (DO NOT LAUNCH)
+═══════════════════════════════════════════════════════════════
+• Promo that cannot be scanned / applied at till
+• Promo overlapping another active deep cut on same SKU without stock cover
+• Claims of “lowest price in city” without documented competitor check date
+• Permanent price reduction disguised as a “weekend cut”
+
+═══════════════════════════════════════════════════════════════
+6. PRIVATE-LABEL MILK PILOT NOTES
+═══════════════════════════════════════════════════════════════
+FreshBasket Farm Dairy Milk 1L pilot clusters: West (Mumbai) and South (Bengaluru).
+Guardrail: do not fund national awareness ads until 4 weeks of on-shelf availability ≥ 95%
+on Sundays in pilot stores (measurement owner: Supply + Store Ops).
+
+═══════════════════════════════════════════════════════════════
+7. ESCALATION
+═══════════════════════════════════════════════════════════════
+Customer “fake discount” complaints → Store Ops logs ticket + Marketing reviews creative
+within 48 hours. Repeat till mismatches in same store → Area Manager audit within 7 days.

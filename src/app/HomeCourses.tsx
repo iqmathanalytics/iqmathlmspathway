@@ -60,6 +60,20 @@ const COURSE_META: Record<
       "Practice on Northwind — the classic sample business database",
     ],
   },
+  "mba-ai": {
+    firstTopicHref: "/learn/mba-day1-foundations/program-roadmap",
+    dashboardHref: "/dashboard?course=mba-ai",
+    gradient: "from-brand-500/20 via-accent-500/10 to-transparent",
+    glow: "shadow-brand-100/70",
+    badgeClass: "bg-brand-50 text-brand-800 ring-brand-200",
+    levelLabel: "MBA / executive friendly",
+    prereq: null,
+    featureHighlights: [
+      "4-day business pathway — open one day at a time",
+      "ChatGPT hands-on labs for marketing, finance, HR, and ops",
+      "Downloadable supermarket dataset with guided analysis",
+    ],
+  },
 };
 
 export function HomeCourses() {
@@ -72,14 +86,15 @@ export function HomeCourses() {
             Pick your path
           </p>
           <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Three learning tracks
+            Learning tracks
           </h2>
           <p className="mt-4 text-lg leading-8 text-gray-600">
-            Start with Python fundamentals, master SQL and databases, then progress into LLMs, Groq, LangChain, RAG, and agent workflows.
+            Choose Python foundations, SQL, Agentic AI, or the MBA business analytics pathway — then learn day by day
+            with hands-on practice.
           </p>
         </div>
 
-        <div className="mt-12 grid items-stretch gap-6 lg:grid-cols-3">
+        <div className="mt-12 grid items-stretch gap-6 lg:grid-cols-2 xl:grid-cols-2">
           {courses.map((course) => {
             const meta = COURSE_META[course.id];
             const courseModules = getModulesByCourse(course.id);

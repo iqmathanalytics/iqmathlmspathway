@@ -1,9 +1,11 @@
 import type { Module, CourseId } from "@/lib/types";
 import { agenticAiModules } from "./agentic-ai-curriculum";
 import { sqlModules } from "./sql-curriculum";
+import { mbaAiModules } from "./mba-ai-curriculum";
 
-export const PLATFORM_NAME = "Introduction to Python";
-export const PLATFORM_LOGO = "/logo/nexperts-logo.png";
+export const PLATFORM_BRAND = "IQmath Technologies";
+export const PLATFORM_NAME = "IQmath Technologies";
+export const PLATFORM_LOGO = "/logo/iqmath-logo.png";
 export const PLATFORM_TAGLINE =
   "Structured Python lessons with visuals and hands-on practice — built for future Data Science.";
 
@@ -324,7 +326,12 @@ const pythonModules: Module[] = [
 ];
 
 /** All modules across all courses — the single source of truth for routing. */
-export const modules: Module[] = [...pythonModules, ...agenticAiModules, ...sqlModules];
+export const modules: Module[] = [
+  ...pythonModules,
+  ...agenticAiModules,
+  ...sqlModules,
+  ...mbaAiModules,
+];
 
 // ── Course-aware helpers ───────────────────────────────────────────────────────
 

@@ -20,12 +20,12 @@ function WelcomeModal() {
       {/* Card */}
       <div className="relative w-full max-w-lg rounded-3xl bg-white shadow-2xl overflow-hidden">
         {/* Top gradient banner */}
-        <div className="bg-gradient-to-br from-indigo-600 to-indigo-800 px-8 pt-10 pb-8 text-white">
+        <div className="bg-gradient-to-br from-brand-600 to-brand-800 px-8 pt-10 pb-8 text-white">
           <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/20">
-            <Rocket className="h-7 w-7 text-white" />
+            <Rocket className="h-7 w-7 text-accent-300" />
           </div>
-          <h1 className="text-2xl font-bold">Welcome to Nexperts Academy!</h1>
-          <p className="mt-2 text-indigo-200 text-sm leading-relaxed">
+          <h1 className="text-2xl font-bold">Welcome to IQmath Technologies!</h1>
+          <p className="mt-2 text-brand-100 text-sm leading-relaxed">
             You have just created your account. Let us show you around in under 2 minutes.
           </p>
         </div>
@@ -38,8 +38,8 @@ function WelcomeModal() {
             { icon: ArrowRight, text: "Quizzes and video tutorials for every topic" },
           ].map(({ icon: Icon, text }) => (
             <div key={text} className="flex items-center gap-3 text-sm text-gray-700">
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-indigo-50">
-                <Icon className="h-4 w-4 text-indigo-600" />
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-50">
+                <Icon className="h-4 w-4 text-brand-600" />
               </span>
               {text}
             </div>
@@ -56,7 +56,7 @@ function WelcomeModal() {
           </button>
           <button
             onClick={beginTour}
-            className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-indigo-700 transition-colors shadow-sm"
+            className="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-brand-700 transition-colors shadow-sm"
           >
             Start Walkthrough
             <ArrowRight className="h-4 w-4" />
@@ -209,7 +209,7 @@ export function WalkthroughOverlay() {
           {Array.from({ length: total }).map((_, i) => (
             <div
               key={i}
-              className={`h-1 flex-1 rounded-full transition-colors ${i <= stepIndex ? "bg-indigo-500" : "bg-gray-200"}`}
+              className={`h-1 flex-1 rounded-full transition-colors ${i <= stepIndex ? "bg-brand-500" : "bg-gray-200"}`}
             />
           ))}
         </div>
@@ -223,7 +223,7 @@ export function WalkthroughOverlay() {
           </button>
           <button
             onClick={next}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-indigo-600 px-4 py-2 text-xs font-semibold text-white hover:bg-indigo-700 transition-colors"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-4 py-2 text-xs font-semibold text-white hover:bg-brand-700 transition-colors"
           >
             {stepIndex === total - 1 ? "Done" : "Next"}
             <ArrowRight className="h-3.5 w-3.5" />

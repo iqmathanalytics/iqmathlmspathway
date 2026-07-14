@@ -24,20 +24,18 @@ export function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-200/80 bg-white/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-brand-100/80 bg-white/90 backdrop-blur-md">
       <div className="flex h-14 w-full items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2.5 font-semibold text-gray-900">
           <Image
             src={PLATFORM_LOGO}
             alt={PLATFORM_NAME}
-            width={140}
-            height={40}
-            className="h-8 w-auto"
+            width={180}
+            height={48}
+            className="h-9 w-auto"
             priority
           />
-          <span className="hidden text-sm font-semibold tracking-tight sm:inline lg:text-base">
-            {PLATFORM_NAME}
-          </span>
+          <span className="sr-only">{PLATFORM_NAME}</span>
         </Link>
         <nav className="flex items-center gap-1">
           {nav.map(({ href, label, icon: Icon }) => {
@@ -50,7 +48,7 @@ export function Header() {
                   "flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                   isActive
                     ? "bg-brand-50 text-brand-800"
-                    : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                    : "text-gray-600 hover:bg-brand-50/60 hover:text-brand-900"
                 )}
               >
                 <Icon className="h-4 w-4" />

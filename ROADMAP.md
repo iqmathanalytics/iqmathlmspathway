@@ -67,7 +67,7 @@ Learn Python from zero toward Data Science. Work is delivered in **phases** so e
 | Cloud lesson + practice progress | Done |
 | Practice workspace + public tests | Done |
 | Hidden test grading (Edge Function + Piston) | Done |
-| Stripe one-time premium unlock | Done |
+| Razorpay one-time premium unlock (INR) | Done |
 | 399 practice problems (all modules) | Done |
 | Dashboard | Done |
 

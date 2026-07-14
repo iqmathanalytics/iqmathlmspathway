@@ -354,11 +354,11 @@ export function TopicLessonLayout({
               />
             </div>
           ) : setupBlock ? (
-            /* Type B — Setup checklist panel */
+            /* Activity / hands-on checklist panel (MBA labs + general setup) */
             <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
               <div className="mb-3 hidden items-center gap-2 text-sm font-medium text-gray-700 lg:flex">
                 <span className="text-base">✅</span>
-                Setup Guide
+                Hands-on Labs
               </div>
               <SetupChecklistPanel steps={setupBlock.setupSteps ?? []} />
             </div>
@@ -591,8 +591,8 @@ export function TopicLessonLayout({
               </div>
               <CustomerSupportProjectPanel section={customerSupportProjectBlock.content} />
             </div>
-          ) : (
-            /* Default — Python IDE (with optional sequential task gating for Final Project) */
+          ) : practices.length > 0 ? (
+            /* Default IDE only when the lesson has practice exercises */
             <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
               <div className="mb-3 flex items-center gap-2 text-sm font-medium text-gray-700">
                 <Pencil className={`h-4 w-4 ${isSqlCourse ? "text-sky-600" : "text-brand-600"}`} />
@@ -717,6 +717,15 @@ export function TopicLessonLayout({
                     <ArrowRight className="h-3.5 w-3.5" />
                   </button>
                 )}
+              </div>
+            </div>
+          ) : (
+            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
+              <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-gray-50 via-white to-brand-50/30 p-5 shadow-sm">
+                <p className="text-sm font-semibold text-gray-900">Reading topic</p>
+                <p className="mt-2 text-sm leading-relaxed text-gray-600">
+                  Focus on the lesson on the left. Hands-on labs appear on topics that need practice.
+                </p>
               </div>
             </div>
           )}

@@ -1,6 +1,6 @@
-# Introduction to Python — Python Learning Platform
+# IQmath Technologies — Python Learning Platform
 
-A structured Python learning platform toward **Data Science** — clear lessons, visual diagrams, in-browser IDE, quizzes, and progress tracking.
+A structured Python learning platform by **IQmath Technologies** toward **Data Science** — clear lessons, visual diagrams, in-browser IDE, quizzes, and progress tracking.
 
 ## Quick start
 
@@ -56,10 +56,10 @@ See [DEPLOY.md](./DEPLOY.md) for GitHub + Cloudflare setup. Build output is the 
 - **Cloud progress** — lessons, quizzes, and practice sync when signed in
 - **399 practice problems** — 6–7 per topic across all 13 modules
 - **Practice workspace** — dedicated code space with public tests + hidden submit grading
-- **Freemium** — first 5 problems per topic free; Stripe one-time unlock for all premium
+- **Freemium** — first 5 problems per topic free; Razorpay one-time unlock (INR) for all premium
 - **Dashboard** — `/dashboard` for lesson and practice stats
 
-Configure `.env.local` from [`.env.example`](./.env.example). See [DEPLOY.md](./DEPLOY.md) for Supabase + Stripe setup.
+Configure `.env.local` from [`.env.example`](./.env.example). See [DEPLOY.md](./DEPLOY.md) for Supabase + Razorpay setup.
 
 - **Python IDE** — run code in the browser via [Pyodide](https://pyodide.org/)
 - **Quizzes** — after each topic

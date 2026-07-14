@@ -30,6 +30,10 @@ import { sqlModule6Lessons } from "./sql-module-6";
 import { sqlModule7Lessons } from "./sql-module-7";
 import { sqlModule8Lessons } from "./sql-module-8";
 import { sqlModule9Lessons } from "./sql-module-9";
+import { mbaAiDay1Lessons } from "./mba-ai-day1";
+import { mbaAiDay2Lessons } from "./mba-ai-day2";
+import { mbaAiDay3Lessons } from "./mba-ai-day3";
+import { mbaAiDay4Lessons } from "./mba-ai-day4";
 
 const allLessons: Record<string, TopicLesson> = {
   ...module1Lessons,
@@ -63,6 +67,10 @@ const allLessons: Record<string, TopicLesson> = {
   ...sqlModule7Lessons,
   ...sqlModule8Lessons,
   ...sqlModule9Lessons,
+  ...mbaAiDay1Lessons,
+  ...mbaAiDay2Lessons,
+  ...mbaAiDay3Lessons,
+  ...mbaAiDay4Lessons,
 };
 
 export function getLesson(topicId: string): TopicLesson | undefined {

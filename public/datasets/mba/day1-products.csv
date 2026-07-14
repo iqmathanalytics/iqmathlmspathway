@@ -1,0 +1,13 @@
+product_id,product_name,category,brand,unit_price,unit_cost,shelf_life_days
+P01,Full Cream Milk 1L,Dairy,FarmFresh,58,46,5
+P02,Curd 400g,Dairy,FarmFresh,42,30,7
+P03,Butter 100g,Dairy,FarmFresh,62,48,30
+P04,Tomatoes 1kg,Fresh Produce,LocalGrow,45,25,4
+P05,Bananas 1kg,Fresh Produce,LocalGrow,60,35,5
+P06,Onions 1kg,Fresh Produce,LocalGrow,35,20,14
+P07,Handwash 250ml,Personal Care,CleanCare,88,55,365
+P08,Herbal Shampoo 200ml,Personal Care,CleanCare,161,120,365
+P09,Atta 5kg,Grocery,HomeMill,280,210,180
+P10,Toor Dal 1kg,Grocery,HomeMill,165,125,240
+P11,Green Tea 100g,Beverages,Leaf&Co,199,120,365
+P12,Cola 750ml,Beverages,Spark,55,32,180

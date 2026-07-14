@@ -41,18 +41,18 @@ export function HomeHero() {
   return (
     <section className="relative overflow-hidden border-b border-gray-200/80">
       <StarfieldBackground />
-      <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_80%_60%_at_15%_10%,rgba(34,197,94,0.18),transparent_55%),radial-gradient(ellipse_70%_55%_at_85%_20%,rgba(139,92,246,0.2),transparent_55%)]" />
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_80%_60%_at_15%_10%,rgba(15,117,189,0.28),transparent_55%),radial-gradient(ellipse_70%_55%_at_85%_20%,rgba(140,198,62,0.22),transparent_55%)]" />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <div className="mx-auto max-w-5xl text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-sm font-medium text-emerald-100 shadow-sm backdrop-blur">
-            <Sparkles className="h-4 w-4 text-emerald-300" />
-            Learn Python. Build AI apps.
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-sm font-medium text-sky-100 shadow-sm backdrop-blur">
+            <Sparkles className="h-4 w-4 text-accent-300" />
+            IQmath Technologies · Learn Python. Build AI apps.
           </div>
 
           <h1 className="mx-auto max-w-4xl text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-[3.75rem] lg:leading-[1.08]">
             From first line of Python to{" "}
-            <span className="bg-gradient-to-r from-emerald-300 via-cyan-200 to-violet-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-sky-300 via-white to-accent-300 bg-clip-text text-transparent">
               real AI agents
             </span>
           </h1>
@@ -100,15 +100,15 @@ export function HomeHero() {
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-slate-400">
             <span className="inline-flex items-center gap-1.5">
-              <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+              <CheckCircle2 className="h-4 w-4 text-accent-400" />
               Browser IDE
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+              <CheckCircle2 className="h-4 w-4 text-accent-400" />
               Groq API lessons
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+              <CheckCircle2 className="h-4 w-4 text-accent-400" />
               Progress tracking
             </span>
           </div>

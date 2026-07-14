@@ -1,6 +1,6 @@
 export type TopicStatus = "not_started" | "in_progress" | "completed";
 
-export type CourseId = "python" | "agentic-ai" | "sql";
+export type CourseId = "python" | "agentic-ai" | "sql" | "mba-ai";
 
 export interface Course {
   id: CourseId;
@@ -450,6 +450,8 @@ export interface EntitlementRow {
   user_id: string;
   product: string;
   stripe_payment_intent: string | null;
+  razorpay_payment_id: string | null;
+  razorpay_order_id: string | null;
   purchased_at: string;
 }
 

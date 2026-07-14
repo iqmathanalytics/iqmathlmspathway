@@ -1,0 +1,281 @@
+order_id,order_date,store_id,store_name,region,category,product_name,units_sold,unit_price,unit_cost,revenue,cost,profit,promo_flag
+FB10001,2026-02-01,S01,FreshBasket Andheri,West,Dairy,Full Cream Milk 1L,1,58,46,58,46,12,No
+FB10002,2026-02-03,S02,FreshBasket Bandra,West,Fresh Produce,Tomatoes 1kg,9,45,25,405,225,180,No
+FB10003,2026-01-14,S07,FreshBasket Salt Lake,East,Dairy,Curd 400g,8,42,30,336,240,96,No
+FB10004,2026-02-04,S02,FreshBasket Bandra,West,Personal Care,Handwash 250ml,12,88,55,1056,660,396,No
+FB10005,2026-02-01,S03,FreshBasket Koramangala,South,Dairy,Curd 400g,2,42,30,84,60,24,No
+FB10006,2026-02-13,S08,FreshBasket Park Street,East,Dairy,Butter 100g,4,62,48,248,192,56,No
+FB10007,2026-02-14,S02,FreshBasket Bandra,West,Fresh Produce,Bananas 1kg,10,60,35,600,350,250,No
+FB10008,2026-02-06,S05,FreshBasket Connaught,North,Personal Care,Herbal Shampoo 200ml,11,161,120,1771,1320,451,Yes
+FB10009,2026-01-28,S02,FreshBasket Bandra,West,Personal Care,Herbal Shampoo 200ml,10,161,120,1610,1200,410,Yes
+FB10010,2026-02-27,S07,FreshBasket Salt Lake,East,Personal Care,Handwash 250ml,1,88,55,88,55,33,No
+FB10011,2026-01-17,S06,FreshBasket Saket,North,Fresh Produce,Onions 1kg,12,35,20,420,240,180,No
+FB10012,2026-01-05,S01,FreshBasket Andheri,West,Dairy,Butter 100g,7,62,48,434,336,98,No
+FB10013,2026-02-24,S02,FreshBasket Bandra,West,Fresh Produce,Onions 1kg,2,35,20,70,40,30,No
+FB10014,2026-01-16,S08,FreshBasket Park Street,East,Fresh Produce,Tomatoes 1kg,3,45,25,135,75,60,No
+FB10015,2026-02-23,S07,FreshBasket Salt Lake,East,Dairy,Butter 100g,3,62,48,186,144,42,No
+FB10016,2026-02-28,S01,FreshBasket Andheri,West,Beverages,Orange Juice 1L,7,120,85,840,595,245,No
+FB10017,2026-01-15,S04,FreshBasket Indiranagar,South,Dairy,Full Cream Milk 1L,7,58,46,406,322,84,No
+FB10018,2026-01-09,S03,FreshBasket Koramangala,South,Fresh Produce,Apples 1kg,5,180,130,900,650,250,No
+FB10019,2026-02-06,S01,FreshBasket Andheri,West,Fresh Produce,Onions 1kg,3,35,20,105,60,45,No
+FB10020,2026-01-19,S06,FreshBasket Saket,North,Beverages,Orange Juice 1L,1,120,85,120,85,35,No
+FB10021,2026-02-28,S08,FreshBasket Park Street,East,Grocery,Atta 5kg,5,260,210,1300,1050,250,No
+FB10022,2026-01-05,S05,FreshBasket Connaught,North,Grocery,Atta 5kg,1,260,210,260,210,50,No
+FB10023,2026-02-25,S04,FreshBasket Indiranagar,South,Fresh Produce,Bananas 1kg,11,60,35,660,385,275,No
+FB10024,2026-01-07,S02,FreshBasket Bandra,West,Fresh Produce,Onions 1kg,3,35,20,105,60,45,No
+FB10025,2026-01-05,S02,FreshBasket Bandra,West,Grocery,Basmati Rice 1kg,2,145,110,290,220,70,No
+FB10026,2026-02-05,S02,FreshBasket Bandra,West,Beverages,Orange Juice 1L,8,120,85,960,680,280,No
+FB10027,2026-02-24,S07,FreshBasket Salt Lake,East,Dairy,Butter 100g,2,62,48,124,96,28,No
+FB10028,2026-01-20,S01,FreshBasket Andheri,West,Dairy,Butter 100g,3,62,48,186,144,42,No
+FB10029,2026-02-01,S08,FreshBasket Park Street,East,Grocery,Toor Dal 1kg,2,168,130,336,260,76,No
+FB10030,2026-02-08,S07,FreshBasket Salt Lake,East,Dairy,Curd 400g,10,42,30,420,300,120,No
+FB10031,2026-02-06,S08,FreshBasket Park Street,East,Dairy,Butter 100g,2,62,48,124,96,28,No
+FB10032,2026-01-01,S02,FreshBasket Bandra,West,Dairy,Butter 100g,9,62,48,558,432,126,No
+FB10033,2026-01-14,S08,FreshBasket Park Street,East,Fresh Produce,Bananas 1kg,6,60,35,360,210,150,No
+FB10034,2026-02-13,S08,FreshBasket Park Street,East,Dairy,Paneer 200g,5,95,70,475,350,125,No
+FB10035,2026-01-27,S03,FreshBasket Koramangala,South,Grocery,Basmati Rice 1kg,1,145,110,145,110,35,No
+FB10036,2026-01-08,S06,FreshBasket Saket,North,Fresh Produce,Tomatoes 1kg,5,45,25,225,125,100,No
+FB10037,2026-02-15,S02,FreshBasket Bandra,West,Dairy,Paneer 200g,7,95,70,665,490,175,No
+FB10038,2026-02-22,S04,FreshBasket Indiranagar,South,Fresh Produce,Onions 1kg,10,35,20,350,200,150,No
+FB10039,2026-02-05,S07,FreshBasket Salt Lake,East,Personal Care,Toothpaste 150g,12,81,62,972,744,228,Yes
+FB10040,2026-01-12,S01,FreshBasket Andheri,West,Dairy,Full Cream Milk 1L,9,58,46,522,414,108,No
+FB10041,2026-02-02,S01,FreshBasket Andheri,West,Fresh Produce,Onions 1kg,1,35,20,35,20,15,No
+FB10042,2026-02-05,S08,FreshBasket Park Street,East,Personal Care,Handwash 250ml,5,75,55,375,275,100,Yes
+FB10043,2026-01-25,S08,FreshBasket Park Street,East,Fresh Produce,Onions 1kg,4,35,20,140,80,60,No
+FB10044,2026-01-14,S03,FreshBasket Koramangala,South,Grocery,Sunflower Oil 1L,2,155,125,310,250,60,No
+FB10045,2026-01-01,S07,FreshBasket Salt Lake,East,Dairy,Full Cream Milk 1L,2,58,46,116,92,24,No
+FB10046,2026-02-19,S06,FreshBasket Saket,North,Grocery,Toor Dal 1kg,11,168,130,1848,1430,418,No
+FB10047,2026-02-06,S04,FreshBasket Indiranagar,South,Dairy,Paneer 200g,1,95,70,95,70,25,No
+FB10048,2026-01-13,S06,FreshBasket Saket,North,Grocery,Atta 5kg,2,260,210,520,420,100,No
+FB10049,2026-01-12,S07,FreshBasket Salt Lake,East,Personal Care,Herbal Shampoo 200ml,5,161,120,805,600,205,Yes
+FB10050,2026-01-07,S04,FreshBasket Indiranagar,South,Dairy,Full Cream Milk 1L,2,58,46,116,92,24,No
+FB10051,2026-01-05,S02,FreshBasket Bandra,West,Beverages,Green Tea 25 bags,7,165,105,1155,735,420,No
+FB10052,2026-01-10,S01,FreshBasket Andheri,West,Dairy,Paneer 200g,9,95,70,855,630,225,No
+FB10053,2026-01-04,S02,FreshBasket Bandra,West,Dairy,Curd 400g,8,42,30,336,240,96,No
+FB10054,2026-01-24,S02,FreshBasket Bandra,West,Grocery,Toor Dal 1kg,2,168,130,336,260,76,No
+FB10055,2026-01-23,S04,FreshBasket Indiranagar,South,Grocery,Sunflower Oil 1L,4,155,125,620,500,120,No
+FB10056,2026-01-06,S08,FreshBasket Park Street,East,Grocery,Basmati Rice 1kg,12,145,110,1740,1320,420,No
+FB10057,2026-02-03,S03,FreshBasket Koramangala,South,Dairy,Paneer 200g,5,95,70,475,350,125,No
+FB10058,2026-02-15,S08,FreshBasket Park Street,East,Beverages,Green Tea 25 bags,3,165,105,495,315,180,No
+FB10059,2026-01-06,S04,FreshBasket Indiranagar,South,Personal Care,Herbal Shampoo 200ml,8,161,120,1288,960,328,Yes
+FB10060,2026-02-01,S08,FreshBasket Park Street,East,Grocery,Basmati Rice 1kg,3,145,110,435,330,105,No
+FB10061,2026-02-10,S04,FreshBasket Indiranagar,South,Fresh Produce,Tomatoes 1kg,4,45,25,180,100,80,No
+FB10062,2026-01-06,S07,FreshBasket Salt Lake,East,Dairy,Curd 400g,10,42,30,420,300,120,No
+FB10063,2026-02-11,S07,FreshBasket Salt Lake,East,Grocery,Atta 5kg,10,260,210,2600,2100,500,No
+FB10064,2026-01-23,S02,FreshBasket Bandra,West,Beverages,Green Tea 25 bags,1,165,105,165,105,60,No
+FB10065,2026-01-21,S05,FreshBasket Connaught,North,Beverages,Cola 750ml,8,40,28,320,224,96,No
+FB10066,2026-01-26,S05,FreshBasket Connaught,North,Grocery,Atta 5kg,2,260,210,520,420,100,No
+FB10067,2026-02-11,S02,FreshBasket Bandra,West,Fresh Produce,Tomatoes 1kg,2,45,25,90,50,40,No
+FB10068,2026-02-17,S01,FreshBasket Andheri,West,Dairy,Full Cream Milk 1L,6,58,46,348,276,72,No
+FB10069,2026-01-08,S02,FreshBasket Bandra,West,Fresh Produce,Tomatoes 1kg,3,45,25,135,75,60,No
+FB10070,2026-02-19,S08,FreshBasket Park Street,East,Fresh Produce,Bananas 1kg,7,60,35,420,245,175,No
+FB10071,2026-01-09,S02,FreshBasket Bandra,West,Beverages,Orange Juice 1L,4,120,85,480,340,140,No
+FB10072,2026-01-11,S03,FreshBasket Koramangala,South,Dairy,Butter 100g,8,62,48,496,384,112,No
+FB10073,2026-01-25,S05,FreshBasket Connaught,North,Personal Care,Toothpaste 150g,2,95,62,190,124,66,No
+FB10074,2026-01-11,S07,FreshBasket Salt Lake,East,Beverages,Green Tea 25 bags,6,165,105,990,630,360,No
+FB10075,2026-01-06,S05,FreshBasket Connaught,North,Fresh Produce,Bananas 1kg,8,60,35,480,280,200,No
+FB10076,2026-01-05,S01,FreshBasket Andheri,West,Grocery,Basmati Rice 1kg,5,145,110,725,550,175,No
+FB10077,2026-01-14,S02,FreshBasket Bandra,West,Fresh Produce,Apples 1kg,3,180,130,540,390,150,No
+FB10078,2026-02-02,S02,FreshBasket Bandra,West,Dairy,Butter 100g,11,62,48,682,528,154,No
+FB10079,2026-02-03,S02,FreshBasket Bandra,West,Dairy,Paneer 200g,8,95,70,760,560,200,No
+FB10080,2026-01-28,S04,FreshBasket Indiranagar,South,Dairy,Curd 400g,8,42,30,336,240,96,No
+FB10081,2026-01-02,S04,FreshBasket Indiranagar,South,Dairy,Butter 100g,6,62,48,372,288,84,No
+FB10082,2026-01-20,S08,FreshBasket Park Street,East,Personal Care,Herbal Shampoo 200ml,7,189,120,1323,840,483,No
+FB10083,2026-02-02,S05,FreshBasket Connaught,North,Fresh Produce,Apples 1kg,10,180,130,1800,1300,500,No
+FB10084,2026-02-25,S03,FreshBasket Koramangala,South,Dairy,Paneer 200g,8,95,70,760,560,200,No
+FB10085,2026-01-16,S01,FreshBasket Andheri,West,Grocery,Sunflower Oil 1L,7,155,125,1085,875,210,No
+FB10086,2026-01-08,S01,FreshBasket Andheri,West,Personal Care,Herbal Shampoo 200ml,6,161,120,966,720,246,Yes
+FB10087,2026-02-04,S03,FreshBasket Koramangala,South,Dairy,Full Cream Milk 1L,5,58,46,290,230,60,No
+FB10088,2026-02-24,S02,FreshBasket Bandra,West,Grocery,Toor Dal 1kg,5,168,130,840,650,190,No
+FB10089,2026-02-26,S02,FreshBasket Bandra,West,Dairy,Curd 400g,12,42,30,504,360,144,No
+FB10090,2026-02-22,S06,FreshBasket Saket,North,Personal Care,Toothpaste 150g,3,81,62,243,186,57,Yes
+FB10091,2026-02-10,S05,FreshBasket Connaught,North,Fresh Produce,Bananas 1kg,7,60,35,420,245,175,No
+FB10092,2026-01-26,S01,FreshBasket Andheri,West,Grocery,Basmati Rice 1kg,5,145,110,725,550,175,No
+FB10093,2026-01-03,S02,FreshBasket Bandra,West,Fresh Produce,Onions 1kg,7,35,20,245,140,105,No
+FB10094,2026-01-05,S07,FreshBasket Salt Lake,East,Dairy,Paneer 200g,6,95,70,570,420,150,No
+FB10095,2026-02-23,S05,FreshBasket Connaught,North,Beverages,Orange Juice 1L,8,120,85,960,680,280,No
+FB10096,2026-02-03,S06,FreshBasket Saket,North,Grocery,Toor Dal 1kg,8,168,130,1344,1040,304,No
+FB10097,2026-01-01,S08,FreshBasket Park Street,East,Fresh Produce,Onions 1kg,9,35,20,315,180,135,No
+FB10098,2026-01-12,S02,FreshBasket Bandra,West,Fresh Produce,Onions 1kg,5,35,20,175,100,75,No
+FB10099,2026-02-15,S08,FreshBasket Park Street,East,Dairy,Full Cream Milk 1L,5,58,46,290,230,60,No
+FB10100,2026-01-12,S06,FreshBasket Saket,North,Fresh Produce,Bananas 1kg,12,60,35,720,420,300,No
+FB10101,2026-01-19,S04,FreshBasket Indiranagar,South,Beverages,Green Tea 25 bags,11,165,105,1815,1155,660,No
+FB10102,2026-01-15,S03,FreshBasket Koramangala,South,Dairy,Butter 100g,3,62,48,186,144,42,No
+FB10103,2026-02-16,S04,FreshBasket Indiranagar,South,Personal Care,Handwash 250ml,9,88,55,792,495,297,No
+FB10104,2026-02-25,S01,FreshBasket Andheri,West,Dairy,Curd 400g,10,42,30,420,300,120,No
+FB10105,2026-02-27,S01,FreshBasket Andheri,West,Personal Care,Toothpaste 150g,10,81,62,810,620,190,Yes
+FB10106,2026-02-13,S03,FreshBasket Koramangala,South,Dairy,Curd 400g,5,42,30,210,150,60,No
+FB10107,2026-02-27,S04,FreshBasket Indiranagar,South,Beverages,Cola 750ml,9,40,28,360,252,108,No
+FB10108,2026-01-16,S01,FreshBasket Andheri,West,Dairy,Paneer 200g,6,95,70,570,420,150,No
+FB10109,2026-01-24,S03,FreshBasket Koramangala,South,Beverages,Orange Juice 1L,11,120,85,1320,935,385,No
+FB10110,2026-02-05,S03,FreshBasket Koramangala,South,Beverages,Green Tea 25 bags,8,165,105,1320,840,480,No
+FB10111,2026-01-21,S02,FreshBasket Bandra,West,Grocery,Toor Dal 1kg,10,168,130,1680,1300,380,No
+FB10112,2026-01-12,S07,FreshBasket Salt Lake,East,Personal Care,Herbal Shampoo 200ml,2,189,120,378,240,138,No
+FB10113,2026-01-09,S04,FreshBasket Indiranagar,South,Beverages,Orange Juice 1L,1,120,85,120,85,35,No
+FB10114,2026-02-20,S03,FreshBasket Koramangala,South,Personal Care,Handwash 250ml,11,88,55,968,605,363,No
+FB10115,2026-01-01,S04,FreshBasket Indiranagar,South,Personal Care,Handwash 250ml,1,75,55,75,55,20,Yes
+FB10116,2026-02-15,S01,FreshBasket Andheri,West,Dairy,Curd 400g,4,42,30,168,120,48,No
+FB10117,2026-01-08,S06,FreshBasket Saket,North,Grocery,Toor Dal 1kg,3,168,130,504,390,114,No
+FB10118,2026-01-27,S02,FreshBasket Bandra,West,Dairy,Curd 400g,5,42,30,210,150,60,No
+FB10119,2026-02-24,S05,FreshBasket Connaught,North,Dairy,Full Cream Milk 1L,7,58,46,406,322,84,No
+FB10120,2026-01-26,S02,FreshBasket Bandra,West,Grocery,Atta 5kg,7,260,210,1820,1470,350,No
+FB10121,2026-01-20,S02,FreshBasket Bandra,West,Beverages,Green Tea 25 bags,2,165,105,330,210,120,No
+FB10122,2026-01-26,S04,FreshBasket Indiranagar,South,Dairy,Curd 400g,2,42,30,84,60,24,No
+FB10123,2026-02-06,S08,FreshBasket Park Street,East,Grocery,Toor Dal 1kg,11,168,130,1848,1430,418,No
+FB10124,2026-01-17,S08,FreshBasket Park Street,East,Dairy,Curd 400g,1,42,30,42,30,12,No
+FB10125,2026-02-16,S01,FreshBasket Andheri,West,Personal Care,Handwash 250ml,6,75,55,450,330,120,Yes
+FB10126,2026-02-17,S04,FreshBasket Indiranagar,South,Fresh Produce,Onions 1kg,3,35,20,105,60,45,No
+FB10127,2026-01-05,S03,FreshBasket Koramangala,South,Dairy,Paneer 200g,3,95,70,285,210,75,No
+FB10128,2026-01-16,S02,FreshBasket Bandra,West,Beverages,Orange Juice 1L,4,120,85,480,340,140,No
+FB10129,2026-01-21,S05,FreshBasket Connaught,North,Grocery,Toor Dal 1kg,3,168,130,504,390,114,No
+FB10130,2026-02-27,S04,FreshBasket Indiranagar,South,Grocery,Toor Dal 1kg,5,168,130,840,650,190,No
+FB10131,2026-02-22,S01,FreshBasket Andheri,West,Grocery,Toor Dal 1kg,9,168,130,1512,1170,342,No
+FB10132,2026-02-26,S01,FreshBasket Andheri,West,Personal Care,Toothpaste 150g,9,95,62,855,558,297,No
+FB10133,2026-02-08,S05,FreshBasket Connaught,North,Personal Care,Handwash 250ml,7,75,55,525,385,140,Yes
+FB10134,2026-01-26,S06,FreshBasket Saket,North,Beverages,Green Tea 25 bags,7,165,105,1155,735,420,No
+FB10135,2026-02-04,S05,FreshBasket Connaught,North,Dairy,Curd 400g,2,42,30,84,60,24,No
+FB10136,2026-02-18,S04,FreshBasket Indiranagar,South,Grocery,Sunflower Oil 1L,11,155,125,1705,1375,330,No
+FB10137,2026-02-02,S01,FreshBasket Andheri,West,Grocery,Toor Dal 1kg,9,168,130,1512,1170,342,No
+FB10138,2026-01-15,S03,FreshBasket Koramangala,South,Fresh Produce,Apples 1kg,9,180,130,1620,1170,450,No
+FB10139,2026-02-06,S07,FreshBasket Salt Lake,East,Fresh Produce,Onions 1kg,11,35,20,385,220,165,No
+FB10140,2026-01-21,S05,FreshBasket Connaught,North,Fresh Produce,Onions 1kg,6,35,20,210,120,90,No
+FB10141,2026-02-03,S08,FreshBasket Park Street,East,Dairy,Paneer 200g,3,95,70,285,210,75,No
+FB10142,2026-01-19,S02,FreshBasket Bandra,West,Personal Care,Handwash 250ml,2,75,55,150,110,40,Yes
+FB10143,2026-01-03,S05,FreshBasket Connaught,North,Fresh Produce,Bananas 1kg,12,60,35,720,420,300,No
+FB10144,2026-02-09,S04,FreshBasket Indiranagar,South,Fresh Produce,Onions 1kg,2,35,20,70,40,30,No
+FB10145,2026-01-09,S07,FreshBasket Salt Lake,East,Fresh Produce,Tomatoes 1kg,6,45,25,270,150,120,No
+FB10146,2026-02-11,S08,FreshBasket Park Street,East,Grocery,Sunflower Oil 1L,12,155,125,1860,1500,360,No
+FB10147,2026-01-23,S03,FreshBasket Koramangala,South,Beverages,Cola 750ml,5,40,28,200,140,60,No
+FB10148,2026-02-10,S06,FreshBasket Saket,North,Grocery,Toor Dal 1kg,4,168,130,672,520,152,No
+FB10149,2026-01-18,S02,FreshBasket Bandra,West,Grocery,Sunflower Oil 1L,10,155,125,1550,1250,300,No
+FB10150,2026-01-17,S07,FreshBasket Salt Lake,East,Grocery,Atta 5kg,3,260,210,780,630,150,No
+FB10151,2026-01-12,S02,FreshBasket Bandra,West,Personal Care,Handwash 250ml,6,75,55,450,330,120,Yes
+FB10152,2026-01-25,S01,FreshBasket Andheri,West,Beverages,Green Tea 25 bags,11,165,105,1815,1155,660,No
+FB10153,2026-01-02,S04,FreshBasket Indiranagar,South,Dairy,Butter 100g,3,62,48,186,144,42,No
+FB10154,2026-02-08,S05,FreshBasket Connaught,North,Grocery,Toor Dal 1kg,8,168,130,1344,1040,304,No
+FB10155,2026-02-27,S08,FreshBasket Park Street,East,Personal Care,Toothpaste 150g,5,95,62,475,310,165,No
+FB10156,2026-01-27,S06,FreshBasket Saket,North,Dairy,Butter 100g,1,62,48,62,48,14,No
+FB10157,2026-01-16,S05,FreshBasket Connaught,North,Personal Care,Toothpaste 150g,11,95,62,1045,682,363,No
+FB10158,2026-01-12,S06,FreshBasket Saket,North,Fresh Produce,Onions 1kg,3,35,20,105,60,45,No
+FB10159,2026-01-14,S07,FreshBasket Salt Lake,East,Dairy,Paneer 200g,5,95,70,475,350,125,No
+FB10160,2026-01-18,S02,FreshBasket Bandra,West,Dairy,Paneer 200g,3,95,70,285,210,75,No
+FB10161,2026-02-01,S02,FreshBasket Bandra,West,Personal Care,Toothpaste 150g,6,81,62,486,372,114,Yes
+FB10162,2026-01-27,S07,FreshBasket Salt Lake,East,Dairy,Butter 100g,10,62,48,620,480,140,No
+FB10163,2026-02-28,S07,FreshBasket Salt Lake,East,Fresh Produce,Apples 1kg,9,180,130,1620,1170,450,No
+FB10164,2026-01-25,S08,FreshBasket Park Street,East,Dairy,Butter 100g,11,62,48,682,528,154,No
+FB10165,2026-02-14,S01,FreshBasket Andheri,West,Dairy,Paneer 200g,3,95,70,285,210,75,No
+FB10166,2026-02-25,S06,FreshBasket Saket,North,Grocery,Atta 5kg,7,260,210,1820,1470,350,No
+FB10167,2026-01-17,S04,FreshBasket Indiranagar,South,Beverages,Cola 750ml,4,40,28,160,112,48,No
+FB10168,2026-01-23,S03,FreshBasket Koramangala,South,Dairy,Curd 400g,10,42,30,420,300,120,No
+FB10169,2026-01-24,S05,FreshBasket Connaught,North,Fresh Produce,Apples 1kg,8,180,130,1440,1040,400,No
+FB10170,2026-01-04,S06,FreshBasket Saket,North,Grocery,Sunflower Oil 1L,11,155,125,1705,1375,330,No
+FB10171,2026-02-08,S03,FreshBasket Koramangala,South,Beverages,Green Tea 25 bags,11,165,105,1815,1155,660,No
+FB10172,2026-02-11,S05,FreshBasket Connaught,North,Grocery,Basmati Rice 1kg,10,145,110,1450,1100,350,No
+FB10173,2026-02-02,S03,FreshBasket Koramangala,South,Personal Care,Toothpaste 150g,10,95,62,950,620,330,No
+FB10174,2026-01-19,S04,FreshBasket Indiranagar,South,Grocery,Basmati Rice 1kg,8,145,110,1160,880,280,No
+FB10175,2026-02-04,S07,FreshBasket Salt Lake,East,Personal Care,Toothpaste 150g,8,81,62,648,496,152,Yes
+FB10176,2026-01-20,S02,FreshBasket Bandra,West,Beverages,Orange Juice 1L,1,120,85,120,85,35,No
+FB10177,2026-02-05,S04,FreshBasket Indiranagar,South,Grocery,Toor Dal 1kg,5,168,130,840,650,190,No
+FB10178,2026-02-14,S02,FreshBasket Bandra,West,Fresh Produce,Onions 1kg,4,35,20,140,80,60,No
+FB10179,2026-01-04,S01,FreshBasket Andheri,West,Dairy,Butter 100g,6,62,48,372,288,84,No
+FB10180,2026-01-23,S05,FreshBasket Connaught,North,Grocery,Atta 5kg,12,260,210,3120,2520,600,No
+FB10181,2026-01-01,S01,FreshBasket Andheri,West,Personal Care,Handwash 250ml,8,88,55,704,440,264,No
+FB10182,2026-01-14,S08,FreshBasket Park Street,East,Grocery,Toor Dal 1kg,9,168,130,1512,1170,342,No
+FB10183,2026-02-11,S02,FreshBasket Bandra,West,Grocery,Atta 5kg,12,260,210,3120,2520,600,No
+FB10184,2026-02-19,S06,FreshBasket Saket,North,Dairy,Curd 400g,2,42,30,84,60,24,No
+FB10185,2026-01-19,S01,FreshBasket Andheri,West,Grocery,Sunflower Oil 1L,7,155,125,1085,875,210,No
+FB10186,2026-02-20,S07,FreshBasket Salt Lake,East,Grocery,Sunflower Oil 1L,5,155,125,775,625,150,No
+FB10187,2026-01-25,S01,FreshBasket Andheri,West,Beverages,Cola 750ml,11,40,28,440,308,132,No
+FB10188,2026-02-11,S03,FreshBasket Koramangala,South,Fresh Produce,Onions 1kg,11,35,20,385,220,165,No
+FB10189,2026-01-01,S03,FreshBasket Koramangala,South,Dairy,Curd 400g,9,42,30,378,270,108,No
+FB10190,2026-02-02,S04,FreshBasket Indiranagar,South,Fresh Produce,Bananas 1kg,2,60,35,120,70,50,No
+FB10191,2026-01-19,S04,FreshBasket Indiranagar,South,Personal Care,Herbal Shampoo 200ml,6,189,120,1134,720,414,No
+FB10192,2026-02-28,S03,FreshBasket Koramangala,South,Beverages,Orange Juice 1L,11,120,85,1320,935,385,No
+FB10193,2026-01-02,S04,FreshBasket Indiranagar,South,Fresh Produce,Onions 1kg,11,35,20,385,220,165,No
+FB10194,2026-01-14,S04,FreshBasket Indiranagar,South,Dairy,Full Cream Milk 1L,9,58,46,522,414,108,No
+FB10195,2026-01-23,S02,FreshBasket Bandra,West,Beverages,Orange Juice 1L,10,120,85,1200,850,350,No
+FB10196,2026-01-15,S08,FreshBasket Park Street,East,Personal Care,Handwash 250ml,9,75,55,675,495,180,Yes
+FB10197,2026-01-22,S03,FreshBasket Koramangala,South,Beverages,Cola 750ml,5,40,28,200,140,60,No
+FB10198,2026-01-01,S05,FreshBasket Connaught,North,Dairy,Full Cream Milk 1L,3,58,46,174,138,36,No
+FB10199,2026-01-09,S07,FreshBasket Salt Lake,East,Dairy,Paneer 200g,3,95,70,285,210,75,No
+FB10200,2026-01-28,S04,FreshBasket Indiranagar,South,Fresh Produce,Tomatoes 1kg,7,45,25,315,175,140,No
+FB10201,2026-01-02,S07,FreshBasket Salt Lake,East,Dairy,Full Cream Milk 1L,5,58,46,290,230,60,No
+FB10202,2026-01-15,S07,FreshBasket Salt Lake,East,Grocery,Atta 5kg,2,260,210,520,420,100,No
+FB10203,2026-01-06,S06,FreshBasket Saket,North,Grocery,Toor Dal 1kg,4,168,130,672,520,152,No
+FB10204,2026-01-14,S03,FreshBasket Koramangala,South,Grocery,Sunflower Oil 1L,4,155,125,620,500,120,No
+FB10205,2026-01-26,S03,FreshBasket Koramangala,South,Grocery,Atta 5kg,5,260,210,1300,1050,250,No
+FB10206,2026-02-01,S07,FreshBasket Salt Lake,East,Fresh Produce,Apples 1kg,12,180,130,2160,1560,600,No
+FB10207,2026-02-16,S03,FreshBasket Koramangala,South,Grocery,Toor Dal 1kg,1,168,130,168,130,38,No
+FB10208,2026-02-01,S05,FreshBasket Connaught,North,Beverages,Cola 750ml,12,40,28,480,336,144,No
+FB10209,2026-02-10,S03,FreshBasket Koramangala,South,Dairy,Curd 400g,9,42,30,378,270,108,No
+FB10210,2026-01-13,S05,FreshBasket Connaught,North,Fresh Produce,Onions 1kg,11,35,20,385,220,165,No
+FB10211,2026-01-11,S07,FreshBasket Salt Lake,East,Grocery,Atta 5kg,1,260,210,260,210,50,No
+FB10212,2026-01-18,S07,FreshBasket Salt Lake,East,Beverages,Cola 750ml,9,40,28,360,252,108,No
+FB10213,2026-01-08,S05,FreshBasket Connaught,North,Beverages,Cola 750ml,6,40,28,240,168,72,No
+FB10214,2026-02-22,S03,FreshBasket Koramangala,South,Dairy,Butter 100g,7,62,48,434,336,98,No
+FB10215,2026-01-21,S05,FreshBasket Connaught,North,Beverages,Cola 750ml,7,40,28,280,196,84,No
+FB10216,2026-02-12,S03,FreshBasket Koramangala,South,Dairy,Curd 400g,1,42,30,42,30,12,No
+FB10217,2026-01-19,S02,FreshBasket Bandra,West,Personal Care,Handwash 250ml,9,75,55,675,495,180,Yes
+FB10218,2026-02-26,S02,FreshBasket Bandra,West,Fresh Produce,Apples 1kg,8,180,130,1440,1040,400,No
+FB10219,2026-02-18,S01,FreshBasket Andheri,West,Grocery,Atta 5kg,6,260,210,1560,1260,300,No
+FB10220,2026-02-10,S02,FreshBasket Bandra,West,Grocery,Sunflower Oil 1L,9,155,125,1395,1125,270,No
+FB10221,2026-01-14,S03,FreshBasket Koramangala,South,Dairy,Curd 400g,4,42,30,168,120,48,No
+FB10222,2026-01-25,S06,FreshBasket Saket,North,Personal Care,Handwash 250ml,2,75,55,150,110,40,Yes
+FB10223,2026-01-03,S05,FreshBasket Connaught,North,Beverages,Green Tea 25 bags,11,165,105,1815,1155,660,No
+FB10224,2026-02-15,S06,FreshBasket Saket,North,Personal Care,Handwash 250ml,7,75,55,525,385,140,Yes
+FB10225,2026-01-20,S08,FreshBasket Park Street,East,Personal Care,Toothpaste 150g,11,95,62,1045,682,363,No
+FB10226,2026-02-16,S03,FreshBasket Koramangala,South,Grocery,Toor Dal 1kg,11,168,130,1848,1430,418,No
+FB10227,2026-02-05,S02,FreshBasket Bandra,West,Beverages,Cola 750ml,3,40,28,120,84,36,No
+FB10228,2026-01-27,S08,FreshBasket Park Street,East,Fresh Produce,Apples 1kg,6,180,130,1080,780,300,No
+FB10229,2026-02-10,S07,FreshBasket Salt Lake,East,Beverages,Cola 750ml,11,40,28,440,308,132,No
+FB10230,2026-01-27,S08,FreshBasket Park Street,East,Beverages,Orange Juice 1L,8,120,85,960,680,280,No
+FB10231,2026-01-24,S07,FreshBasket Salt Lake,East,Dairy,Curd 400g,12,42,30,504,360,144,No
+FB10232,2026-01-20,S07,FreshBasket Salt Lake,East,Grocery,Toor Dal 1kg,2,168,130,336,260,76,No
+FB10233,2026-01-09,S01,FreshBasket Andheri,West,Dairy,Full Cream Milk 1L,12,58,46,696,552,144,No
+FB10234,2026-01-01,S08,FreshBasket Park Street,East,Personal Care,Herbal Shampoo 200ml,4,161,120,644,480,164,Yes
+FB10235,2026-02-07,S03,FreshBasket Koramangala,South,Grocery,Sunflower Oil 1L,8,155,125,1240,1000,240,No
+FB10236,2026-02-24,S04,FreshBasket Indiranagar,South,Personal Care,Herbal Shampoo 200ml,12,161,120,1932,1440,492,Yes
+FB10237,2026-01-17,S07,FreshBasket Salt Lake,East,Grocery,Toor Dal 1kg,9,168,130,1512,1170,342,No
+FB10238,2026-01-20,S01,FreshBasket Andheri,West,Dairy,Curd 400g,2,42,30,84,60,24,No
+FB10239,2026-02-09,S05,FreshBasket Connaught,North,Grocery,Toor Dal 1kg,11,168,130,1848,1430,418,No
+FB10240,2026-01-11,S03,FreshBasket Koramangala,South,Dairy,Paneer 200g,2,95,70,190,140,50,No
+FB10241,2026-02-05,S03,FreshBasket Koramangala,South,Personal Care,Toothpaste 150g,9,95,62,855,558,297,No
+FB10242,2026-02-27,S02,FreshBasket Bandra,West,Personal Care,Herbal Shampoo 200ml,5,161,120,805,600,205,Yes
+FB10243,2026-02-03,S04,FreshBasket Indiranagar,South,Fresh Produce,Apples 1kg,8,180,130,1440,1040,400,No
+FB10244,2026-02-11,S03,FreshBasket Koramangala,South,Grocery,Toor Dal 1kg,7,168,130,1176,910,266,No
+FB10245,2026-02-28,S08,FreshBasket Park Street,East,Personal Care,Handwash 250ml,3,75,55,225,165,60,Yes
+FB10246,2026-02-20,S01,FreshBasket Andheri,West,Grocery,Toor Dal 1kg,1,168,130,168,130,38,No
+FB10247,2026-01-18,S04,FreshBasket Indiranagar,South,Beverages,Orange Juice 1L,6,120,85,720,510,210,No
+FB10248,2026-01-26,S02,FreshBasket Bandra,West,Personal Care,Toothpaste 150g,8,95,62,760,496,264,No
+FB10249,2026-01-02,S03,FreshBasket Koramangala,South,Personal Care,Toothpaste 150g,5,81,62,405,310,95,Yes
+FB10250,2026-02-26,S01,FreshBasket Andheri,West,Dairy,Full Cream Milk 1L,4,58,46,232,184,48,No
+FB10251,2026-01-27,S06,FreshBasket Saket,North,Fresh Produce,Apples 1kg,6,180,130,1080,780,300,No
+FB10252,2026-01-28,S05,FreshBasket Connaught,North,Dairy,Paneer 200g,1,95,70,95,70,25,No
+FB10253,2026-01-10,S05,FreshBasket Connaught,North,Dairy,Curd 400g,10,42,30,420,300,120,No
+FB10254,2026-02-15,S06,FreshBasket Saket,North,Fresh Produce,Apples 1kg,11,180,130,1980,1430,550,No
+FB10255,2026-01-03,S02,FreshBasket Bandra,West,Grocery,Toor Dal 1kg,7,168,130,1176,910,266,No
+FB10256,2026-02-19,S04,FreshBasket Indiranagar,South,Personal Care,Herbal Shampoo 200ml,9,161,120,1449,1080,369,Yes
+FB10257,2026-01-23,S07,FreshBasket Salt Lake,East,Grocery,Atta 5kg,1,260,210,260,210,50,No
+FB10258,2026-01-15,S06,FreshBasket Saket,North,Dairy,Paneer 200g,1,95,70,95,70,25,No
+FB10259,2026-02-01,S04,FreshBasket Indiranagar,South,Fresh Produce,Apples 1kg,9,180,130,1620,1170,450,No
+FB10260,2026-01-28,S04,FreshBasket Indiranagar,South,Fresh Produce,Tomatoes 1kg,4,45,25,180,100,80,No
+FB10261,2026-01-13,S03,FreshBasket Koramangala,South,Dairy,Butter 100g,2,62,48,124,96,28,No
+FB10262,2026-01-24,S07,FreshBasket Salt Lake,East,Fresh Produce,Apples 1kg,8,180,130,1440,1040,400,No
+FB10263,2026-01-23,S05,FreshBasket Connaught,North,Fresh Produce,Bananas 1kg,11,60,35,660,385,275,No
+FB10264,2026-01-02,S03,FreshBasket Koramangala,South,Dairy,Full Cream Milk 1L,8,58,46,464,368,96,No
+FB10265,2026-01-06,S07,FreshBasket Salt Lake,East,Fresh Produce,Bananas 1kg,4,60,35,240,140,100,No
+FB10266,2026-01-12,S06,FreshBasket Saket,North,Dairy,Full Cream Milk 1L,8,58,46,464,368,96,No
+FB10267,2026-02-14,S05,FreshBasket Connaught,North,Grocery,Toor Dal 1kg,10,168,130,1680,1300,380,No
+FB10268,2026-02-24,S03,FreshBasket Koramangala,South,Dairy,Curd 400g,4,42,30,168,120,48,No
+FB10269,2026-01-03,S01,FreshBasket Andheri,West,Grocery,Atta 5kg,6,260,210,1560,1260,300,No
+FB10270,2026-01-06,S05,FreshBasket Connaught,North,Grocery,Basmati Rice 1kg,12,145,110,1740,1320,420,No
+FB10271,2026-01-02,S07,FreshBasket Salt Lake,East,Dairy,Paneer 200g,11,95,70,1045,770,275,No
+FB10272,2026-02-14,S04,FreshBasket Indiranagar,South,Dairy,Butter 100g,3,62,48,186,144,42,No
+FB10273,2026-01-02,S08,FreshBasket Park Street,East,Dairy,Butter 100g,5,62,48,310,240,70,No
+FB10274,2026-02-05,S01,FreshBasket Andheri,West,Grocery,Basmati Rice 1kg,12,145,110,1740,1320,420,No
+FB10275,2026-01-15,S03,FreshBasket Koramangala,South,Grocery,Sunflower Oil 1L,10,155,125,1550,1250,300,No
+FB10276,2026-01-27,S02,FreshBasket Bandra,West,Beverages,Green Tea 25 bags,6,165,105,990,630,360,No
+FB10277,2026-01-04,S05,FreshBasket Connaught,North,Fresh Produce,Apples 1kg,7,180,130,1260,910,350,No
+FB10278,2026-01-07,S01,FreshBasket Andheri,West,Personal Care,Herbal Shampoo 200ml,7,161,120,1127,840,287,Yes
+FB10279,2026-02-27,S01,FreshBasket Andheri,West,Beverages,Cola 750ml,6,40,28,240,168,72,No
+FB10280,2026-02-10,S04,FreshBasket Indiranagar,South,Fresh Produce,Apples 1kg,2,180,130,360,260,100,No

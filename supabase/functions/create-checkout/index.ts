@@ -3,6 +3,21 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+/** Amount in paise (₹1 = 100 paise). Default ₹999. */
+function getAmountPaise(): number {
+  const fromPaise = Deno.env.get("RAZORPAY_AMOUNT_PAISE");
+  if (fromPaise) {
+    const n = Number.parseInt(fromPaise, 10);
+    if (Number.isFinite(n) && n > 0) return n;
+  }
+  const fromInr = Deno.env.get("RAZORPAY_AMOUNT_INR");
+  if (fromInr) {
+    const n = Number.parseFloat(fromInr);
+    if (Number.isFinite(n) && n > 0) return Math.round(n * 100);
+  }
+  return 99900;
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
@@ -17,12 +32,10 @@ Deno.serve(async (req) => {
       });
     }
 
-    const stripeKey = Deno.env.get("STRIPE_SECRET_KEY");
-    const priceId = Deno.env.get("STRIPE_PRICE_ID");
-    const siteUrl = Deno.env.get("SITE_URL") ?? "http://localhost:3000";
-
-    if (!stripeKey || !priceId) {
-      return new Response(JSON.stringify({ error: "Stripe not configured" }), {
+    const keyId = Deno.env.get("RAZORPAY_KEY_ID");
+    const keySecret = Deno.env.get("RAZORPAY_KEY_SECRET");
+    if (!keyId || !keySecret) {
+      return new Response(JSON.stringify({ error: "Razorpay not configured" }), {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
@@ -43,36 +56,54 @@ Deno.serve(async (req) => {
       });
     }
 
-    const params = new URLSearchParams();
-    params.set("mode", "payment");
-    params.set("success_url", `${siteUrl}/checkout/success`);
-    params.set("cancel_url", `${siteUrl}/checkout/cancel`);
-    params.set("client_reference_id", userData.user.id);
-    params.set("line_items[0][price]", priceId);
-    params.set("line_items[0][quantity]", "1");
-    params.set("metadata[user_id]", userData.user.id);
-    params.set("metadata[product]", "practice_premium");
+    const amount = getAmountPaise();
+    const receipt = `iq_${userData.user.id.replace(/-/g, "").slice(0, 20)}_${Date.now().toString(36)}`.slice(0, 40);
 
-    const stripeRes = await fetch("https://api.stripe.com/v1/checkout/sessions", {
+    const orderRes = await fetch("https://api.razorpay.com/v1/orders", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${stripeKey}`,
-        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: `Basic ${btoa(`${keyId}:${keySecret}`)}`,
+        "Content-Type": "application/json",
       },
-      body: params.toString(),
+      body: JSON.stringify({
+        amount,
+        currency: "INR",
+        receipt,
+        notes: {
+          user_id: userData.user.id,
+          product: "practice_premium",
+        },
+      }),
     });
 
-    const session = await stripeRes.json();
-    if (!stripeRes.ok) {
-      return new Response(JSON.stringify({ error: session.error?.message ?? "Stripe error" }), {
-        status: 500,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+    const order = await orderRes.json();
+    if (!orderRes.ok) {
+      return new Response(
+        JSON.stringify({
+          error: order?.error?.description ?? order?.error?.reason ?? "Razorpay order failed",
+        }),
+        {
+          status: 500,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        }
+      );
     }
 
-    return new Response(JSON.stringify({ url: session.url }), {
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    return new Response(
+      JSON.stringify({
+        keyId,
+        orderId: order.id,
+        amount: order.amount,
+        currency: order.currency ?? "INR",
+        product: "practice_premium",
+        name: "IQmath Technologies",
+        description: "Practice Premium — one-time unlock",
+        prefill: {
+          email: userData.user.email ?? "",
+        },
+      }),
+      { headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
   } catch (e) {
     return new Response(
       JSON.stringify({ error: e instanceof Error ? e.message : "Server error" }),

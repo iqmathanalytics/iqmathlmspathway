@@ -54,10 +54,10 @@ export function SetupChecklistPanel({ steps }: SetupChecklistPanelProps) {
       <div className="flex items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3">
         <CheckSquare className="h-4 w-4 shrink-0 text-emerald-600" />
         <div className="flex-1">
-          <p className="text-sm font-semibold text-emerald-900">Setup Checklist</p>
+          <p className="text-sm font-semibold text-emerald-900">Activity Checklist</p>
           <p className="text-xs text-emerald-600">
             {allDone
-              ? "All steps complete — you are ready to code!"
+              ? "All hands-on steps complete — great work!"
               : `${checked.size} of ${steps.length} steps done`}
           </p>
         </div>
@@ -107,7 +107,7 @@ export function SetupChecklistPanel({ steps }: SetupChecklistPanelProps) {
                   <div className="flex items-center justify-between border-b border-gray-800 bg-[#161b22] px-3 py-1.5">
                     <span className="flex items-center gap-1.5 text-xs text-gray-400">
                       <Terminal className="h-3 w-3" />
-                      Terminal / Notebook
+                      Copyable prompt
                     </span>
                     <CopyButton text={step.commands.join("\n")} />
                   </div>
@@ -146,9 +146,9 @@ export function SetupChecklistPanel({ steps }: SetupChecklistPanelProps) {
       {/* Done message */}
       {allDone && (
         <div className="rounded-xl border-2 border-emerald-300 bg-emerald-50 px-4 py-3 text-center">
-          <p className="text-sm font-semibold text-emerald-900">Setup complete!</p>
+          <p className="text-sm font-semibold text-emerald-900">Hands-on complete!</p>
           <p className="mt-0.5 text-xs text-emerald-700">
-            Move to the next topic to start writing real code.
+            Save your outputs in Lab Notes, then continue to the next topic.
           </p>
         </div>
       )}

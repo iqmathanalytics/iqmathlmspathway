@@ -64,6 +64,14 @@ const ACCENT: Record<
     badge: "bg-sky-100 text-sky-800",
     progress: "bg-sky-500",
   },
+  "mba-ai": {
+    moduleActive: "bg-brand-50/80 text-brand-900",
+    topicActive: "bg-brand-50 text-brand-900 border-brand-500 shadow-sm",
+    topicHover: "hover:bg-brand-50/60 hover:text-brand-900",
+    ring: "ring-brand-200",
+    badge: "bg-brand-100 text-brand-800",
+    progress: "bg-brand-500",
+  },
 };
 
 function ModuleSection({

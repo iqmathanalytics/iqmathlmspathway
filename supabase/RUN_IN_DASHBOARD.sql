@@ -107,12 +107,14 @@ create table if not exists public.practice_hidden_tests (
 alter table public.practice_hidden_tests enable row level security;
 -- No policies: anon/authenticated cannot read
 
--- Entitlements (Stripe one-time unlock)
+-- Entitlements (Razorpay / legacy Stripe one-time unlock)
 create table if not exists public.entitlements (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users (id) on delete cascade,
   product text not null default 'practice_premium',
   stripe_payment_intent text,
+  razorpay_payment_id text,
+  razorpay_order_id text,
   purchased_at timestamptz not null default now(),
   unique (user_id, product)
 );

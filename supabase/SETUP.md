@@ -1,6 +1,6 @@
 # Supabase project setup
 
-Project: [zhieuuzfuazbvsuwzpzv](https://supabase.com/dashboard/project/zhieuuzfuazbvsuwzpzv)
+Project: [vbeewvtfytaxesfpoqpx](https://supabase.com/dashboard/project/vbeewvtfytaxesfpoqpx)
 
 ## 1. Local env (done)
 
@@ -53,7 +53,7 @@ Link the project once:
 
 ```bash
 supabase login
-supabase link --project-ref zhieuuzfuazbvsuwzpzv
+supabase link --project-ref vbeewvtfytaxesfpoqpx
 ```
 
 Deploy **register-user** (signup without email rate limits):
@@ -68,20 +68,21 @@ Deploy **grade-submission** for hidden test grading (uses [Judge0 CE](https://ce
 supabase functions deploy grade-submission
 ```
 
-Deploy Stripe functions when you have Stripe keys:
+Deploy Razorpay functions when you have Razorpay keys:
 
 ```bash
 supabase functions deploy create-checkout
-supabase functions deploy stripe-webhook
+supabase functions deploy verify-payment
+supabase functions deploy razorpay-webhook
 ```
 
 Set secrets in Dashboard → **Edge Functions** → secrets, or:
 
 ```bash
-supabase secrets set SITE_URL=http://localhost:3000 STRIPE_SECRET_KEY=... STRIPE_PRICE_ID=... STRIPE_WEBHOOK_SECRET=... SUPABASE_SERVICE_ROLE_KEY=...
+supabase secrets set SITE_URL=http://localhost:3000 RAZORPAY_KEY_ID=... RAZORPAY_KEY_SECRET=... RAZORPAY_WEBHOOK_SECRET=... RAZORPAY_AMOUNT_INR=999 SUPABASE_SERVICE_ROLE_KEY=...
 ```
 
-**Without Stripe:** free practice (problems 1–5) and auth/progress work after step 2. Premium problems stay locked until payment is wired.
+**Without Razorpay:** free practice (problems 1–5) and auth/progress work after step 2. Premium problems stay locked until payment is wired.
 
 ## 5. Cloudflare Pages
 

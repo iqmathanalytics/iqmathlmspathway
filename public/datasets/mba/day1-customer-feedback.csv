@@ -1,0 +1,11 @@
+feedback_id,store_id,feedback_date,channel,rating,theme,comment
+F01,S01,2026-02-02,App,2,Stockout,Milk empty by noon on Sunday
+F02,S03,2026-02-09,In-store,3,Queue,Billing slow after 6pm
+F03,S02,2026-01-28,App,5,Freshness,Produce quality better than last month
+F04,S05,2026-02-14,Social,2,Promo confusion,Shampoo offer not applied at till
+F05,S07,2026-02-18,App,4,Assortment,Good dal variety
+F06,S04,2026-02-21,In-store,1,Stockout,Tomatoes and bananas missing peak Sunday
+F07,S06,2026-01-22,App,3,Price,Atta feels expensive vs kirana
+F08,S08,2026-02-11,Social,4,Staff,Helpful staff on Park Street
+F09,S03,2026-02-25,App,2,Queue,Waited 18 minutes Sunday evening
+F10,S01,2026-02-27,In-store,3,Promo confusion,Handwash discount unclear

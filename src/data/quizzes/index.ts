@@ -23,6 +23,10 @@ import { sqlModule6Quizzes } from "./sql-module-6";
 import { sqlModule7Quizzes } from "./sql-module-7";
 import { sqlModule8Quizzes } from "./sql-module-8";
 import { sqlModule9Quizzes } from "./sql-module-9";
+import { mbaAiDay1Quizzes } from "./mba-ai-day1";
+import { mbaAiDay2Quizzes } from "./mba-ai-day2";
+import { mbaAiDay3Quizzes } from "./mba-ai-day3";
+import { mbaAiDay4Quizzes } from "./mba-ai-day4";
 
 const allQuizzes: Record<string, TopicQuiz> = {
   ...module1Quizzes,
@@ -49,6 +53,10 @@ const allQuizzes: Record<string, TopicQuiz> = {
   ...sqlModule7Quizzes,
   ...sqlModule8Quizzes,
   ...sqlModule9Quizzes,
+  ...mbaAiDay1Quizzes,
+  ...mbaAiDay2Quizzes,
+  ...mbaAiDay3Quizzes,
+  ...mbaAiDay4Quizzes,
 };
 
 export function getQuiz(topicId: string): TopicQuiz | undefined {

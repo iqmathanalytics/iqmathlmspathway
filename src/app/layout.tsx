@@ -4,11 +4,12 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { AppProviders } from "@/components/providers/AppProviders";
-import { PLATFORM_LOGO, PLATFORM_NAME, PLATFORM_TAGLINE } from "@/data/curriculum";
+import { PLATFORM_BRAND, PLATFORM_LOGO, PLATFORM_NAME, PLATFORM_TAGLINE } from "@/data/curriculum";
 
 export const metadata: Metadata = {
   title: `${PLATFORM_NAME} — Learn Python for Data Science`,
   description: PLATFORM_TAGLINE,
+  applicationName: PLATFORM_BRAND,
   icons: {
     icon: PLATFORM_LOGO,
   },

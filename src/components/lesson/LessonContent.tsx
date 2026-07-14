@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import type { LessonBlock } from "@/lib/types";
 import { FlowDiagram } from "@/components/visual/FlowDiagram";
 import { IntroProgrammingInfographic } from "@/components/lesson/IntroProgrammingInfographic";
@@ -85,6 +86,29 @@ import { FinalProjectInfographic } from "@/components/lesson/FinalProjectInfogra
 import { SqlTopicInfographic } from "@/components/lesson/SqlTopicInfographic";
 import { ArrowRight, Lightbulb, Code2, Pencil, Play } from "lucide-react";
 
+/** Turn bare http(s) URLs into clickable links (used for dataset download lists). */
+function linkifyText(text: string): ReactNode {
+  const parts = text.split(/(https?:\/\/[^\s]+)/g);
+  return parts.map((part, i) => {
+    if (!/^https?:\/\//.test(part)) return part;
+    const href = part.replace(/[),.;]+$/, "");
+    const trailing = part.slice(href.length);
+    return (
+      <span key={i}>
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="break-all font-medium text-sky-800 underline decoration-sky-300 underline-offset-2 hover:text-sky-950"
+        >
+          {href}
+        </a>
+        {trailing}
+      </span>
+    );
+  });
+}
+
 interface LessonContentProps {
   blocks: LessonBlock[];
   /** When sidebar, practice blocks show prompts only (IDE is beside content) */
@@ -117,7 +141,7 @@ export function LessonContent({
             return (
               <ul key={i}>
                 {block.items?.map((item) => (
-                  <li key={item}>{item}</li>
+                  <li key={item}>{linkifyText(item)}</li>
                 ))}
               </ul>
             );
@@ -128,7 +152,9 @@ export function LessonContent({
                 className="my-4 flex gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-amber-950"
               >
                 <Lightbulb className="mt-0.5 h-5 w-5 shrink-0 text-amber-600" />
-                <p className="text-sm leading-relaxed">{block.content}</p>
+                <p className="whitespace-pre-wrap text-sm leading-relaxed">
+                  {linkifyText(block.content ?? "")}
+                </p>
               </div>
             );
           case "visual":
@@ -667,10 +693,10 @@ export function LessonContent({
             return (
               <div key={i} className="my-4 flex items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3">
                 <span className="text-xs font-semibold text-emerald-700">
-                  Setup checklist on the right →
+                  Hands-on checklist on the right →
                 </span>
                 <span className="text-xs text-emerald-500">
-                  Follow each step and tick it off when done.
+                  Copy prompts, complete each lab step, and tick it off when done.
                 </span>
               </div>
             );

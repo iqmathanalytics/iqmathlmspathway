@@ -1,0 +1,21 @@
+competitor,city_cluster,category,product,pack_size,price_inr,offer_flag,offer_text,rating_app,delivery_promise
+FreshBasket,West-Mumbai,Dairy,Full Cream Milk,1L,58,No,,4.2,Store pickup / same-day
+BigBasket,West-Mumbai,Dairy,Full Cream Milk,1L,55,Yes,5% off 2 packs,4.3,90 min slot
+Blinkit,West-Mumbai,Dairy,Full Cream Milk,1L,53,Yes,Lightning deal,4.1,10-15 min
+JioMart,West-Mumbai,Dairy,Full Cream Milk,1L,54,No,,4.0,Same day
+FreshBasket,West-Mumbai,Personal Care,Herbal Shampoo,200ml,161,Yes,Weekend cut 10%,4.0,Store
+BigBasket,West-Mumbai,Personal Care,Herbal Shampoo,200ml,149,Yes,Buy 1 Get 5%,4.2,90 min
+Blinkit,West-Mumbai,Personal Care,Herbal Shampoo,200ml,155,No,,4.0,10-15 min
+JioMart,West-Mumbai,Personal Care,Herbal Shampoo,200ml,152,Yes,App-only 8% off,3.9,Same day
+FreshBasket,South-Bengaluru,Fresh Produce,Tomatoes,1kg,45,No,,4.1,Store
+BigBasket,South-Bengaluru,Fresh Produce,Tomatoes,1kg,42,Yes,Farm fresh cut,4.2,90 min
+Blinkit,South-Bengaluru,Fresh Produce,Tomatoes,1kg,48,No,,3.8,10-15 min
+JioMart,South-Bengaluru,Fresh Produce,Tomatoes,1kg,44,No,,3.9,Same day
+FreshBasket,South-Bengaluru,Grocery,Atta,5kg,280,No,,4.3,Store
+BigBasket,South-Bengaluru,Grocery,Atta,5kg,269,Yes,Subscribe and save,4.4,Next day
+Blinkit,South-Bengaluru,Grocery,Atta,5kg,275,No,,4.0,10-15 min
+JioMart,South-Bengaluru,Grocery,Atta,5kg,272,Yes,Wallet cashback,4.1,Same day
+FreshBasket,North-Delhi,Beverages,Cola,750ml,55,Yes,2 for 100,4.0,Store
+BigBasket,North-Delhi,Beverages,Cola,750ml,52,Yes,Combo save,4.1,90 min
+Blinkit,North-Delhi,Beverages,Cola,750ml,50,Yes,Lightning,4.0,10-15 min
+JioMart,North-Delhi,Beverages,Cola,750ml,53,No,,3.8,Same day

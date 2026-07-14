@@ -1,0 +1,21 @@
+FRESHBASKET — CUSTOMER FEEDBACK DIGEST (TRAINING EXTRACT)
+Document ID: FB-CX-DIGEST-2026-02 | Compiled from app + Google themes
+
+Top positive themes:
+1) Produce freshness (Bandra, Park Street morning shoppers)
+2) Helpful staff recovery after billing mistakes (Salt Lake examples)
+
+Top negative themes:
+1) Sunday / evening queues (Koramangala, Indiranagar)
+2) Dairy empty on peak Sunday (Andheri, Connaught)
+3) Promo not applied at till / “fake discount” perception (Connaught, Saket, Indiranagar)
+4) Price gap vs app competitors on cola and atta (mentioned, fewer tickets)
+
+Function routing suggested by CX lead:
+Queue → Store Ops / HR roster
+Stockout → Supply + Store Ops
+Promo trust → Marketing + Store Ops
+Price perception → Category
+
+Open question for leadership:
+Should brand campaigns wait until stockout and till-mismatch tickets drop for 2 consecutive weeks?
