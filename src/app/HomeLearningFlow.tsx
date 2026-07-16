@@ -6,25 +6,25 @@ const steps = [
     icon: BookOpenCheck,
     label: "01",
     title: "Learn the concept",
-    text: "Start each topic with a clear explanation, examples, visuals, and short checkpoints.",
+    text: "Clear explanations, visuals, and business framing — from Python basics to MBA decision labs.",
   },
   {
     icon: Code2,
     label: "02",
     title: "Practice immediately",
-    text: "Run Python, copy notebook cells, or test AI prompts directly from the lesson flow.",
+    text: "Run code in-browser, copy ChatGPT prompts, upload datasets, or paste Colab cells with Groq.",
   },
   {
     icon: GraduationCap,
     label: "03",
     title: "Check understanding",
-    text: "Use quizzes and guided practice to confirm the skill before moving forward.",
+    text: "Quizzes and activity checklists confirm the skill before you move to the next topic.",
   },
   {
     icon: Rocket,
     label: "04",
-    title: "Build projects",
-    text: "Apply what you learned to chatbots, API workflows, RAG systems, and final projects.",
+    title: "Ship real outcomes",
+    text: "Capstones include RAG knowledge desks, multi-agent consulting packs, SQL projects, and AI agents.",
   },
 ];
 
@@ -44,7 +44,8 @@ export function HomeLearningFlow() {
               Learn in a simple loop: read, run, check, build
             </h2>
             <p className="mt-4 max-w-xl text-lg leading-8 text-slate-300">
-              Every section is designed to move learners from understanding to hands-on confidence.
+              The same loop works across coding tracks and the MBA pathway — so managers and
+              builders share one practice habit.
             </p>
           </div>
 

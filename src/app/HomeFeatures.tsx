@@ -1,38 +1,38 @@
 "use client";
 
-import { Code2, GitBranch, LayoutPanelLeft, LineChart, ShieldCheck, Sparkles } from "lucide-react";
+import { Code2, Database, GitBranch, LayoutPanelLeft, LineChart, Sparkles } from "lucide-react";
 import { HoverCornerCard } from "@/components/ui/HoverCornerCard";
 
 const features = [
   {
     icon: LayoutPanelLeft,
-    title: "Lessons + IDE",
-    text: "Read the lesson and run code side by side without switching tools.",
+    title: "Lessons + live tools",
+    text: "Read beside a Python IDE, SQL console, Groq playground, or Colab cell guide — no tool-switching.",
   },
   {
     icon: GitBranch,
-    title: "Structured courses",
-    text: "Python: 14 modules from basics to capstone. Agentic AI: 8 modules from LLMs to a customer support agent project.",
+    title: "Four structured tracks",
+    text: "Python (14 modules), SQL (9), Agentic AI (8), and a 4-day MBA business pathway with published Days 1–4.",
   },
   {
     icon: Code2,
-    title: "Real tools",
-    text: "Use a Python IDE, console, notebooks, and Groq playgrounds.",
+    title: "Real practice surfaces",
+    text: "Browser IDEs, ChatGPT copy-ready labs, notebook cells for Colab, and downloadable business datasets.",
+  },
+  {
+    icon: Database,
+    title: "Grounded RAG & data",
+    text: "MBA Day 3 uses real company PDFs; Day 4 agents run on Olist ecommerce and IBM HR attrition files.",
   },
   {
     icon: LineChart,
-    title: "Progress tracking",
-    text: "See your lessons, quizzes, and practice progress in one dashboard.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Checkpoints",
-    text: "Use quizzes and practice tasks to confirm what you understand.",
+    title: "Progress that sticks",
+    text: "Quizzes, checklists, and dashboards sync when you sign in — pick up exactly where you left off.",
   },
   {
     icon: Sparkles,
-    title: "AI projects",
-    text: "Build prompts, Groq API calls, LangChain workflows, RAG, and agents.",
+    title: "From prompts to agents",
+    text: "Build chatbots, RAG knowledge desks, tool-using agents, and multi-agent consulting workflows.",
   },
 ];
 
@@ -45,11 +45,12 @@ export function HomeFeatures() {
             Why learners stay engaged
           </p>
           <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Everything needed to learn, practice, and build in one flow
+            Code, data, and AI business skills in one platform
           </h2>
         </div>
         <p className="max-w-2xl text-lg leading-8 text-gray-600 lg:justify-self-end">
-          Focused lessons connect directly to live tools, so every concept can be practiced immediately.
+          Whether you are starting Python, mastering SQL, shipping agents, or running an MBA
+          analytics sprint — every concept connects to a hands-on lab.
         </p>
       </div>
 

@@ -7,7 +7,7 @@ export const PLATFORM_BRAND = "IQmath Technologies";
 export const PLATFORM_NAME = "IQmath Technologies";
 export const PLATFORM_LOGO = "/logo/iqmath-logo.png";
 export const PLATFORM_TAGLINE =
-  "Structured Python lessons with visuals and hands-on practice — built for future Data Science.";
+  "Four tracks — Python, SQL, Agentic AI, and MBA business analytics — with browser labs, Colab, real datasets, and progress that sticks.";
 
 const pythonModules: Module[] = [
   {

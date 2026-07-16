@@ -69,9 +69,9 @@ const COURSE_META: Record<
     levelLabel: "MBA / executive friendly",
     prereq: null,
     featureHighlights: [
-      "4-day business pathway — open one day at a time",
-      "ChatGPT hands-on labs for marketing, finance, HR, and ops",
-      "Downloadable supermarket dataset with guided analysis",
+      "Day 1–2: business analytics + market intelligence with ChatGPT labs",
+      "Day 3: document RAG on real company PDFs + Groq Colab desk",
+      "Day 4: multi-agent Colab systems on Olist & IBM HR datasets",
     ],
   },
 };
@@ -89,8 +89,8 @@ export function HomeCourses() {
             Learning tracks
           </h2>
           <p className="mt-4 text-lg leading-8 text-gray-600">
-            Choose Python foundations, SQL, Agentic AI, or the MBA business analytics pathway — then learn day by day
-            with hands-on practice.
+            Four tracks: Python for Data Science, SQL & Databases, Agentic AI engineering,
+            and MBA: AI for Business Analytics — each with live practice built in.
           </p>
         </div>
 

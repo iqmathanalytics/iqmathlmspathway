@@ -1,6 +1,13 @@
 "use client";
 
-import { Bot, BrainCircuit, DatabaseZap, FileCode2, LineChart, MessageSquareText } from "lucide-react";
+import {
+  Bot,
+  BrainCircuit,
+  BriefcaseBusiness,
+  DatabaseZap,
+  FileCode2,
+  LineChart,
+} from "lucide-react";
 import { ExplainSlideCarousel, type ExplainSlide } from "@/components/ui/ExplainSlideCarousel";
 
 const outcomes: ExplainSlide[] = [
@@ -10,76 +17,76 @@ const outcomes: ExplainSlide[] = [
     icon: FileCode2,
     title: "Python programs",
     description:
-      "You will go from your first script to reusable functions and structured programs. Lessons cover variables, conditionals, loops, collections, and modules with runnable examples in every topic.",
+      "Go from your first script to reusable functions and structured programs — variables, control flow, collections, and modules with a browser IDE in every topic.",
     bullets: [
       "Practice syntax directly in the browser IDE",
-      "Build small scripts before the capstone project",
+      "Build small scripts before the Python capstone",
       "Learn patterns used in real Python codebases",
     ],
   },
   {
-    id: "data-foundations",
+    id: "sql-databases",
     eyebrow: "Outcome 2",
     icon: LineChart,
-    title: "Data-ready foundations",
+    title: "SQL & databases",
     description:
-      "Strengthen the Python skills that data workflows depend on: cleaning data with loops and comprehensions, working with structured collections, and thinking in steps that scale to notebooks and analytics.",
+      "Query live SQLite databases in the browser — SELECT through joins, aggregates, subqueries, and CTEs on Northwind-style business data.",
     bullets: [
-      "Connect basics to data-oriented exercises",
-      "Prepare for pandas-style thinking later",
-      "Practice readable, maintainable data scripts",
-    ],
-  },
-  {
-    id: "prompt-workflows",
-    eyebrow: "Outcome 3",
-    icon: MessageSquareText,
-    title: "Prompt workflows",
-    description:
-      "Learn how to shape model behavior with system prompts, compare outputs side by side, and iterate until responses are reliable. This is the foundation before wiring prompts into apps.",
-    bullets: [
-      "Test prompts in guided lesson flows",
-      "Understand roles, context, and constraints",
-      "Improve quality through structured iteration",
+      "Run SQL without installing a database server",
+      "Progress from basics to advanced query patterns",
+      "Practice on realistic sample business tables",
     ],
   },
   {
     id: "ai-chatbots",
-    eyebrow: "Outcome 4",
+    eyebrow: "Outcome 3",
     icon: Bot,
-    title: "AI chatbots",
+    title: "AI chatbots & APIs",
     description:
-      "Build conversational experiences with the Groq API: send messages, handle responses, manage conversation state, and refine answers as you learn what makes chatbots feel useful instead of generic.",
+      "Shape prompts, call Groq, manage conversation state, and refine answers until chatbots feel useful — then wire them into apps.",
     bullets: [
-      "Call Groq from lesson notebooks and examples",
-      "Design multi-turn conversation flows",
-      "Debug and improve real API responses",
+      "Prompt engineering with live playgrounds",
+      "Groq API workflows in lesson notebooks",
+      "Multi-turn chat and response quality habits",
     ],
   },
   {
     id: "rag-systems",
-    eyebrow: "Outcome 5",
+    eyebrow: "Outcome 4",
     icon: DatabaseZap,
-    title: "RAG systems",
+    title: "RAG knowledge desks",
     description:
-      "Combine document retrieval with generation so models answer from your content. Lessons walk through chunking concepts, retrieval steps, and when RAG is the right architecture choice.",
+      "Ground answers in company documents. MBA Day 3 walks from short policy extracts to real PDFs (ITC, HUL, DMart) and a Groq Colab RAG pipeline.",
     bullets: [
-      "Ground answers in uploaded or sample documents",
-      "See retrieval and generation as separate steps",
-      "Build toward production-style RAG patterns",
+      "Retrieve → read → answer with source discipline",
+      "Work large annual reports with section anchors",
+      "Build a mini knowledge assistant in Colab",
     ],
   },
   {
     id: "agent-patterns",
-    eyebrow: "Outcome 6",
+    eyebrow: "Outcome 5",
     icon: BrainCircuit,
-    title: "Agent patterns",
+    title: "Multi-agent systems",
     description:
-      "Move beyond single prompts into agents that plan, call tools, and coordinate tasks. You will study patterns used in modern AI apps and apply them in the customer support agent capstone.",
+      "Move beyond single prompts into agents that plan, call tools, and collaborate — Agentic AI engineering plus MBA Day 4 Colab swarms.",
     bullets: [
-      "Tool use and function calling fundamentals",
-      "Reasoning loops and task decomposition",
-      "Capstone: customer support agent project",
+      "Tool use, memory, and plan–act–observe loops",
+      "Specialist agents with CEO / orchestrator arbitration",
+      "Consulting-firm and board-pack capstones",
+    ],
+  },
+  {
+    id: "mba-business",
+    eyebrow: "Outcome 6",
+    icon: BriefcaseBusiness,
+    title: "MBA business analytics",
+    description:
+      "A day-wise executive pathway: FreshBasket analytics, market intelligence from reviews and competitors, then enterprise RAG and agentic decision systems.",
+    bullets: [
+      "ChatGPT labs for marketing, finance, HR, and ops",
+      "Downloadable supermarket and market datasets",
+      "Real-world Olist & IBM HR data for Day 4 agents",
     ],
   },
 ];
@@ -94,10 +101,10 @@ export function HomeProjectOutcomes() {
             What you will build
           </p>
           <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Practical outcomes, not just course completion
+            Practical outcomes across code, data, and business AI
           </h2>
           <p className="mt-4 text-lg leading-8 text-gray-600">
-            Use the arrows below to explore each skill you will develop on this platform.
+            Use the arrows to explore skills from Python and SQL through RAG desks and multi-agent consulting packs.
           </p>
         </div>
 

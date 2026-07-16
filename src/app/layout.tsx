@@ -7,7 +7,7 @@ import { AppProviders } from "@/components/providers/AppProviders";
 import { PLATFORM_BRAND, PLATFORM_LOGO, PLATFORM_NAME, PLATFORM_TAGLINE } from "@/data/curriculum";
 
 export const metadata: Metadata = {
-  title: `${PLATFORM_NAME} — Learn Python for Data Science`,
+  title: `${PLATFORM_NAME} — Python, SQL, Agentic AI & MBA Analytics`,
   description: PLATFORM_TAGLINE,
   applicationName: PLATFORM_BRAND,
   icons: {
