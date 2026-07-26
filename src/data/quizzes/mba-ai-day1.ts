@@ -3,14 +3,14 @@ import type { TopicQuiz } from "@/lib/types";
 export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
   "mba-d1-h1-t1": {
     topicId: "mba-d1-h1-t1",
-    title: "Quick check: Program roadmap & kickoff labs",
+    title: "Quick check: Program roadmap",
     questions: [
       {
         id: "q1",
-        question: "In this program, Generative AI should be treated mainly as…",
+        question: "In this program, which role should Generative AI mainly play?",
         options: [
           "The final decision maker with no human review",
-          "A junior consultant while you remain the engagement manager",
+          "A drafting assistant while you remain responsible for judgment",
           "A replacement for finance controls and audits",
           "Only a drawing tool for logos",
         ],
@@ -20,42 +20,42 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q2",
-        question: "Which sequence correctly matches the 4-day journey?",
+        question: "What is the main Day 1 practice focus?",
         options: [
-          "Agents → Coding syntax → Tax filing → Hardware",
-          "Foundations → Market Intelligence → Enterprise Knowledge → Agentic AI",
-          "Only Market Intelligence for all four days",
-          "Day 1 capstone, then three days of rest",
+          "Writing only Python agents with no Excel",
+          "25 Excel questions on real datasets, then ChatGPT summaries in Google Docs",
+          "Power BI dashboards only",
+          "Skipping all data work",
         ],
         correctIndex: 1,
         explanation:
-          "Day 1 foundations, Day 2 market intelligence, Day 3 enterprise knowledge/RAG mindset, Day 4 agentic AI + capstone.",
+          "Theory topics are for reading; Excel labs are where you analyse and then use ChatGPT on your outputs.",
       },
       {
         id: "q3",
-        question: "Why create “AI Lab Notes” on Day 1 Topic 1?",
+        question: "Why keep a Google Doc (Lab Notes) on Day 1?",
         options: [
           "Because AI outputs are useless forever",
-          "To capture prompts/outputs as a reusable portfolio across all four days",
+          "To capture Excel findings and ChatGPT summaries as portfolio evidence",
           "Only for printing a certificate",
           "It replaces attendance",
         ],
         correctIndex: 1,
         explanation:
-          "Lab Notes become your evidence trail and make later projects faster.",
+          "Your Doc becomes the evidence trail across labs and later days.",
       },
       {
         id: "q4",
-        question: "FreshBasket SuperMarket is introduced early so that…",
+        question: "Why do theory topics use FreshBasket examples?",
         options: [
-          "Only to memorise a fictional brand for fun",
-          "One retail story can carry analytics, prompting, and data labs consistently",
+          "Replace the Excel datasets",
+          "Teach analytics concepts with one clear retail story before the Excel labs",
           "So you avoid all business examples",
           "Finance concepts are never discussed",
         ],
         correctIndex: 1,
         explanation:
-          "A single running case (declining sales) makes Day 1 concepts stick across topics.",
+          "Teaching examples can use FreshBasket; practice uses real Superstore and other public datasets.",
       },
     ],
   },
@@ -65,7 +65,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
     questions: [
       {
         id: "q1",
-        question: "Analytics creates the most organisational value when…",
+        question: "When does analytics create the most organisational value?",
         options: [
           "Charts look colourful",
           "A managerial decision changes because of the evidence",
@@ -91,7 +91,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q3",
-        question: "The correct analytics value chain is…",
+        question: "What is the correct analytics value chain?",
         options: [
           "Decision → Insight → Data → Information",
           "Data → Information → Insight → Decision",
@@ -104,7 +104,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q4",
-        question: "In this pathway, the Business Analyst’s role with Generative AI is to…",
+        question: "In this pathway, what is the Business Analyst’s role with Generative AI?",
         options: [
           "Accept every fluent AI claim without checking evidence",
           "Own problem framing and judgment while using AI to accelerate drafts",
@@ -123,28 +123,28 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
     questions: [
       {
         id: "q1",
-        question: "“Dairy sales fell 8% MoM; South stores weakest” is mainly…",
+        question: "Which analytics type best matches: “Dairy sales fell 8% MoM; South stores weakest”?",
         options: ["Prescriptive", "Descriptive", "A legal opinion", "Deep learning training"],
         correctIndex: 1,
         explanation: "Summarising what happened is descriptive analytics.",
       },
       {
         id: "q2",
-        question: "Testing whether Sunday stockouts caused the sales drop is mainly…",
+        question: "Which analytics type best matches testing whether Sunday stockouts caused the sales drop?",
         options: ["Descriptive reporting only", "Diagnostic analytics", "Logo redesign", "Payroll processing"],
         correctIndex: 1,
         explanation: "Explaining why something happened is diagnostic analytics.",
       },
       {
         id: "q3",
-        question: "“If stockouts continue, dairy may fall another 5–7% next month” is mainly…",
+        question: "Which analytics type best matches: “If stockouts continue, dairy may fall another 5–7% next month”?",
         options: ["Prescriptive only", "Predictive (scenario/outlook)", "A warehouse blueprint", "HR policy drafting"],
         correctIndex: 1,
         explanation: "Estimating what might happen next is predictive analytics.",
       },
       {
         id: "q4",
-        question: "“Restock Sundays; run a targeted weekend offer; review in 14 days” is mainly…",
+        question: "Which analytics type best matches: “Restock Sundays; run a targeted weekend offer; review in 14 days”?",
         options: ["Descriptive", "Prescriptive", "A database backup", "A branding colour test"],
         correctIndex: 1,
         explanation: "Recommending owned actions is prescriptive analytics.",
@@ -170,7 +170,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
     questions: [
       {
         id: "q1",
-        question: "A strong departmental analytics question should always connect to…",
+        question: "What should a strong departmental analytics question always connect to?",
         options: [
           "A decision owner and a KPI",
           "A random hashtag",
@@ -183,7 +183,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q2",
-        question: "When Marketing, Finance, and Supply Chain disagree on declining sales, BA should first…",
+        question: "When Marketing, Finance, and Supply Chain disagree on declining sales, what should BA do first?",
         options: [
           "Pick the loudest department",
           "Establish shared facts and a common scorecard before debating solutions",
@@ -209,7 +209,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q4",
-        question: "A customer complaint about “items missing on Sunday shelves” should primarily route to…",
+        question: "Where should a customer complaint about “items missing on Sunday shelves” primarily route?",
         options: [
           "Only the branding agency",
           "Operations / Supply Chain with Stores in support",
@@ -241,7 +241,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
     questions: [
       {
         id: "q1",
-        question: "Machine Learning is best described for business leaders as…",
+        question: "How is Machine Learning best described for business leaders?",
         options: [
           "Systems that learn patterns from historical data",
           "Only robots that walk in warehouses",
@@ -254,7 +254,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q2",
-        question: "Detecting empty shelves from store camera images is closest to…",
+        question: "Detecting empty shelves from store camera images is closest to which AI category?",
         options: [
           "Only payroll processing",
           "A deep learning / computer-vision style use case",
@@ -267,7 +267,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q3",
-        question: "Large Language Models primarily power…",
+        question: "What do Large Language Models primarily power?",
         options: [
           "Only factory motors",
           "Text assistants that draft, summarise, and dialogue (like ChatGPT)",
@@ -280,7 +280,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q4",
-        question: "A safe professional attitude toward Generative AI is…",
+        question: "Which attitude toward Generative AI is professionally safest?",
         options: [
           "Accept every fluent answer as audit-ready truth",
           "Treat outputs as drafts that need verification and judgment",
@@ -293,7 +293,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q5",
-        question: "Before approving an AI pilot, a leader should clarify…",
+        question: "Before approving an AI pilot, what should a leader clarify?",
         options: [
           "Only the logo redesign budget",
           "Decision improved, data owner, risk if wrong, and success KPI",
@@ -312,7 +312,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
     questions: [
       {
         id: "q1",
-        question: "An AI HR Recruiter should still leave final hiring decisions to…",
+        question: "Who should make final hiring decisions when an AI HR Recruiter is used?",
         options: [
           "A random chatbot",
           "Human managers accountable for fairness",
@@ -325,7 +325,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q2",
-        question: "Every useful AI role card should include…",
+        question: "What should every useful AI role card include?",
         options: [
           "Only the logo colour",
           "Goal, inputs, outputs, risks, human approval rule, and a KPI",
@@ -338,7 +338,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q3",
-        question: "An AI Financial Analyst is especially risky without human controls because…",
+        question: "Why is an AI Financial Analyst especially risky without human controls?",
         options: [
           "Finance numbers can affect boards, audits, and compliance",
           "Finance is unrelated to business",
@@ -351,7 +351,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q4",
-        question: "When Marketing, Finance, and Ops AI drafts conflict, the human leader should…",
+        question: "When Marketing, Finance, and Ops AI drafts conflict, what should the human leader do?",
         options: [
           "Automatically accept the longest draft",
           "Establish shared facts, then sequence a plan that manages trade-offs",
@@ -364,7 +364,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q5",
-        question: "Which best matches the “AI junior / human manager” model?",
+        question: "Which best matches the AI-as-assistant working rule?",
         options: [
           "AI makes irreversible decisions; humans only watch",
           "AI drafts and prepares options; humans set goals, verify, and own outcomes",
@@ -373,7 +373,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
         ],
         correctIndex: 1,
         explanation:
-          "AI amplifies work; humans retain goal-setting, verification, and accountability.",
+          "AI accelerates drafting; humans retain goal-setting, verification, and accountability.",
       },
     ],
   },
@@ -396,7 +396,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q2",
-        question: "Asking “what would you NOT do yet” helps because…",
+        question: "Why does asking “what would you NOT do yet” help?",
         options: [
           "It trains AI (and you) to avoid reckless recommendations",
           "It deletes the spreadsheet",
@@ -409,7 +409,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q3",
-        question: "In the UrbanSpice demo, revenue roughly flat while profit falls suggests you investigate…",
+        question: "In the UrbanSpice demo, revenue roughly flat while profit falls suggests you investigate what?",
         options: [
           "Only logo redesign",
           "Cost, mix, discounts, wastage, and labour — not only marketing spend",
@@ -435,7 +435,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q5",
-        question: "The main bridge from UrbanSpice to FreshBasket is…",
+        question: "What is the main bridge from UrbanSpice to FreshBasket?",
         options: [
           "They sell identical menus",
           "Same analyst method: hypotheses → data → owners → NOT-YET → decision",
@@ -448,58 +448,281 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
     ],
   },
-  "mba-d1-h1-t8": {
-    topicId: "mba-d1-h1-t8",
-    title: "Quick check: Multi-table final lab",
+  "mba-d1-lab-t1": {
+    topicId: "mba-d1-lab-t1",
+    title: "Quick check: Superstore Excel lab",
     questions: [
       {
         id: "q1",
-        question: "sales.store_id should link to…",
+        question: "What should you do before asking ChatGPT for Superstore insights?",
         options: [
-          "stores.store_id",
-          "feedback.rating only",
-          "A random product name",
-          "Nothing — keys are optional",
-        ],
-        correctIndex: 0,
-        explanation: "Foreign keys connect sales lines to store master data.",
-      },
-      {
-        id: "q2",
-        question: "Before asking AI for a CEO brief you should…",
-        options: [
-          "Build and verify KPI totals in Sheets/Excel yourself",
-          "Let AI invent revenue first",
-          "Delete the products table",
-          "Skip region lookups forever",
+          "Build formulas, pivots, and charts in Excel first",
+          "Only paste the raw 10,000-row file with “find insights”",
+          "Skip cleaning dates and margins",
+          "Invent region totals without a pivot",
         ],
         correctIndex: 0,
         explanation:
-          "Narrative polish is optional; verified numbers come first.",
+          "ChatGPT summarises your Excel evidence — it does not replace the analysis.",
+      },
+      {
+        id: "q2",
+        question: "How is Profit Margin best created in Excel?",
+        options: [
+          "A helper formula such as Profit ÷ Sales",
+          "A random text label",
+          "Deleting the Profit column",
+          "Only a pie chart with no numbers",
+        ],
+        correctIndex: 0,
+        explanation: "Formulas create reusable fields for pivots and KPIs.",
       },
       {
         id: "q3",
-        question: "If ChatGPT’s profit total disagrees with Excel…",
+        question: "What does a good Region × Category cut use?",
         options: [
-          "Trust the spreadsheet until you find the mismatch",
-          "Always trust AI because it is faster",
-          "Invent a round number",
-          "Delete both files",
+          "A PivotTable (and usually a chart)",
+          "One cell typed by hand with no filter",
+          "AI guessing without your pivot",
+          "Hiding the Category column forever",
         ],
         correctIndex: 0,
-        explanation: "Verification is the managerial edge.",
+        explanation: "Pivots are the standard Excel tool for categorical cuts.",
       },
       {
         id: "q4",
-        question: "Which set is the Day 1 multi-table pack?",
+        question: "Where should the ChatGPT Superstore summary go?",
         options: [
-          "Stores, products, sales transactions, promotions, customer feedback",
-          "Only one flat CSV with no keys",
-          "Payroll PDFs from another industry",
-          "Logo image files only",
+          "Google Doc under Day 1 → Superstore",
+          "Nowhere — delete it after reading",
+          "Only in a private chat with no record",
+          "In the Returns sheet as a formula",
         ],
         correctIndex: 0,
-        explanation: "Five related tables support join-based analysis.",
+        explanation: "Lab evidence lives in your Day 1 Google Doc.",
+      },
+    ],
+  },
+  "mba-d1-lab-t2": {
+    topicId: "mba-d1-lab-t2",
+    title: "Quick check: Online Retail Excel lab",
+    questions: [
+      {
+        id: "q1",
+        question: "How is line revenue on invoice data usually calculated?",
+        options: [
+          "Quantity × UnitPrice",
+          "CustomerID ÷ Country",
+          "StockCode only",
+          "InvoiceDate as text",
+        ],
+        correctIndex: 0,
+        explanation: "LineRevenue is the core transactional formula.",
+      },
+      {
+        id: "q2",
+        question: "How can you often recognise cancelled invoices in Online Retail data?",
+        options: [
+          "Start with “C” or show negative quantities",
+          "Have no InvoiceNo ever",
+          "Are always blank Description only",
+          "Cannot be flagged in Excel",
+        ],
+        correctIndex: 0,
+        explanation: "Flag returns before celebrating gross revenue.",
+      },
+      {
+        id: "q3",
+        question: "How are monthly revenue trends best shown in Excel?",
+        options: [
+          "A PivotTable by month plus a line chart",
+          "A single AVERAGE of UnitPrice only",
+          "Deleting InvoiceDate",
+          "Asking ChatGPT without Excel",
+        ],
+        correctIndex: 0,
+        explanation: "Pivot + line chart communicates seasonality clearly.",
+      },
+    ],
+  },
+  "mba-d1-lab-t3": {
+    topicId: "mba-d1-lab-t3",
+    title: "Quick check: Telco Churn Excel lab",
+    questions: [
+      {
+        id: "q1",
+        question: "Why does a ChurnFlag of 1/0 help in Excel analysis?",
+        options: [
+          "Pivot Average of ChurnFlag equals churn rate",
+          "Excel cannot count Yes/No another way",
+          "It deletes stayers automatically",
+          "It replaces MonthlyCharges",
+        ],
+        correctIndex: 0,
+        explanation: "0/1 flags make rates easy in PivotTables.",
+      },
+      {
+        id: "q2",
+        question: "What is TenureBand an example of?",
+        options: [
+          "Turning a numeric field into categories with IF/IFS formulas",
+          "A Power BI-only feature unavailable in Excel",
+          "Deleting tenure",
+          "A ChatGPT hallucination requirement",
+        ],
+        correctIndex: 0,
+        explanation: "Banding is a classic Excel formula technique.",
+      },
+      {
+        id: "q3",
+        question: "What should ChatGPT do in this Telco lab?",
+        options: [
+          "Summarise your pivots/charts into a retention brief",
+          "Invent churn rates you never calculated",
+          "Replace Contract with random text",
+          "Ignore PaymentMethod findings",
+        ],
+        correctIndex: 0,
+        explanation: "AI narrative follows Excel evidence.",
+      },
+    ],
+  },
+  "mba-d1-lab-t4": {
+    topicId: "mba-d1-lab-t4",
+    title: "Quick check: HR Attrition Excel lab",
+    questions: [
+      {
+        id: "q1",
+        question: "How is attrition by JobRole typically built in Excel?",
+        options: [
+          "A PivotTable and a ranking chart",
+          "Only a pie of EmployeeNumber",
+          "Deleting Department",
+          "No formulas ever",
+        ],
+        correctIndex: 0,
+        explanation: "Role-level pivots surface where people leave.",
+      },
+      {
+        id: "q2",
+        question: "What Excel approach compares OverTime Yes vs No attrition?",
+        options: [
+          "Pivot churn/attrition rate by OverTime plus a compare chart",
+          "Hiding OverTime",
+          "Average of EmployeeCount only",
+          "AI inventing overtime hours",
+        ],
+        correctIndex: 0,
+        explanation: "OverTime is a high-signal categorical cut.",
+      },
+    ],
+  },
+  "mba-d1-lab-t5": {
+    topicId: "mba-d1-lab-t5",
+    title: "Quick check: Hotel Bookings & Day 1 wrap",
+    questions: [
+      {
+        id: "q1",
+        question: "How do you calculate cancellation rate when is_canceled is 0/1?",
+        options: [
+          "The average of is_canceled",
+          "Always equal to ADR",
+          "Impossible in Excel",
+          "lead_time ÷ adults",
+        ],
+        correctIndex: 0,
+        explanation: "Average of a binary field is the rate.",
+      },
+      {
+        id: "q2",
+        question: "Which Excel techniques does LeadBand analysis mix?",
+        options: [
+          "IFS/IF formulas, a PivotTable, and a chart",
+          "Only ChatGPT with no Excel",
+          "Deleting lead_time",
+          "A single SUM of hotel names",
+        ],
+        correctIndex: 0,
+        explanation: "Day 1 labs deliberately mix formulas, pivots, and charts.",
+      },
+      {
+        id: "q3",
+        question: "What should the Day 1 wrap prompt use as input?",
+        options: [
+          "Use short bullets from all five Excel labs you actually completed",
+          "Invent five datasets you never opened",
+          "Skip the Google Doc",
+          "Replace Excel with only screenshots of websites",
+        ],
+        correctIndex: 0,
+        explanation: "Synthesis is grounded in your lab evidence pack.",
+      },
+    ],
+  },
+  "mba-d1-lab-t6": {
+    topicId: "mba-d1-lab-t6",
+    title: "Quick check: Retail Power Pivot final project",
+    questions: [
+      {
+        id: "q1",
+        question: "In this final project, which table is the main sales-line fact for Net Sales?",
+        options: [
+          "order_items",
+          "brands only",
+          "stocks only",
+          "categories only",
+        ],
+        correctIndex: 0,
+        explanation:
+          "Net Sales is calculated at order_items grain: quantity × list_price × (1 − discount).",
+      },
+      {
+        id: "q2",
+        question: "What is the correct Power Pivot relationship direction for products and order_items?",
+        options: [
+          "products[product_id] → order_items[product_id] (one product, many line items)",
+          "order_items → products as many-to-many with no keys",
+          "brands → stocks only",
+          "No relationship is needed if you use VLOOKUP everywhere",
+        ],
+        correctIndex: 0,
+        explanation: "Product is the dimension; order_items is the fact.",
+      },
+      {
+        id: "q3",
+        question: "How should Net Sales be defined in DAX for this model?",
+        options: [
+          "SUMX of quantity × list_price × (1 − discount) on order_items",
+          "SUM of stocks[quantity] only",
+          "COUNT of brand_name",
+          "AVERAGE of zip_code",
+        ],
+        correctIndex: 0,
+        explanation: "Line net sales applies discount at the item level.",
+      },
+      {
+        id: "q4",
+        question: "Why keep Inventory Units separate from Net Sales pivots?",
+        options: [
+          "stocks is inventory quantity, not revenue — mixing them confuses the dashboard story",
+          "Inventory is always equal to Net Sales",
+          "Power Pivot cannot store stocks",
+          "Stores have no stock rows",
+        ],
+        correctIndex: 0,
+        explanation: "Inventory and sales answer different questions.",
+      },
+      {
+        id: "q5",
+        question: "What belongs on the final Dashboard sheet?",
+        options: [
+          "KPI strip, key charts/pivots, and slicers connected to the Data Model",
+          "Only the raw CSV text with no visuals",
+          "A single cell with the word Dashboard",
+          "Passwords for the ERP system",
+        ],
+        correctIndex: 0,
+        explanation: "An executive dashboard combines KPIs, visuals, and interactive filters.",
       },
     ],
   },
@@ -509,7 +732,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
     questions: [
       {
         id: "q1",
-        question: "Generative AI mainly responds by…",
+        question: "How does Generative AI mainly respond to a prompt?",
         options: [
           "Logging into your company’s ERP automatically",
           "Following the role, facts, deliverable shape, and constraints in your brief",
@@ -535,7 +758,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q3",
-        question: "A reliable warning sign in an AI answer is…",
+        question: "Which of these is a reliable warning sign in an AI answer?",
         options: [
           "It asks what data is still missing",
           "It invents precise numbers you never provided",
@@ -567,7 +790,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
     questions: [
       {
         id: "q1",
-        question: "The five blocks of the business prompt framework are…",
+        question: "What are the five blocks of the business prompt framework?",
         options: [
           "Fonts · Colours · Emojis · Hashtags · GIFs",
           "Role · Context · Goal · Format · Constraints",
@@ -580,7 +803,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q2",
-        question: "Changing only the Role while keeping facts fixed mainly affects…",
+        question: "What does changing only the Role (while keeping facts fixed) mainly affect?",
         options: [
           "Which lens and trade-offs AI emphasises",
           "Whether the CSV file deletes itself",
@@ -606,7 +829,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q4",
-        question: "“Help with promotions” is a weak Goal because…",
+        question: "Why is “Help with promotions” a weak Goal?",
         options: [
           "It names a clear Friday decision and owners",
           "It does not specify the decision or deliverable needed",
@@ -625,7 +848,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
     questions: [
       {
         id: "q1",
-        question: "A strong Marketing campaign prompt should mainly produce…",
+        question: "What should a strong Marketing campaign prompt mainly produce?",
         options: [
           "Only random taglines with no KPIs",
           "A usable brief: objective, offer options, channels, KPIs, and do-nots",
@@ -638,7 +861,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q2",
-        question: "In an HR policy prompt, the most important Constraint is often…",
+        question: "In an HR policy prompt, what is often the most important Constraint?",
         options: [
           "Invent detailed labour-law sections confidently",
           "Do not invent legal clauses — mark items to verify with counsel",
@@ -651,7 +874,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q3",
-        question: "A useful SWOT cell should…",
+        question: "What should a useful SWOT cell do?",
         options: [
           "Use only buzzwords with no evidence labels",
           "Tag bullets as Evidence / Assumption / Unknown",
@@ -664,7 +887,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q4",
-        question: "A strong strategy prompt forces…",
+        question: "What does a strong strategy prompt force the model to produce?",
         options: [
           "One vague vision paragraph with no trade-offs",
           "Multiple options with risks, 90-day moves, and a NOT-YET list",
@@ -683,7 +906,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
     questions: [
       {
         id: "q1",
-        question: "The prompt improvement loop starts by…",
+        question: "How does the prompt improvement loop start?",
         options: [
           "Drafting the vague ask, then scoring which R-C-G-F-C blocks are missing",
           "Deleting ChatGPT forever",
@@ -696,7 +919,7 @@ export const mbaAiDay1Quizzes: Record<string, TopicQuiz> = {
       },
       {
         id: "q2",
-        question: "A prompt is usually not ready for decisions if it lacks…",
+        question: "What does a prompt usually lack if it is not ready for decisions?",
         options: [
           "Constraints (what not to invent / not to recommend yet)",
           "At least twelve hashtags",

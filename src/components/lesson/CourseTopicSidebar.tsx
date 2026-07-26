@@ -133,7 +133,7 @@ function ModuleSection({
           </span>
         )}
         <span className="min-w-0 flex-1">
-          <span className="block truncate text-sm font-semibold leading-tight">
+          <span className="block text-sm font-semibold leading-snug">
             {mod.name}
           </span>
           <span className="mt-0.5 flex items-center gap-2 text-[11px] text-gray-500">
@@ -292,7 +292,7 @@ export function CourseTopicSidebar({
             <p className={clsx("text-[11px] font-semibold uppercase tracking-wide", accent.badge, "inline-flex rounded-full px-2 py-0.5")}>
               Course
             </p>
-            <h2 className="mt-1 truncate text-base font-bold text-gray-900">
+            <h2 className="mt-1 text-base font-bold leading-snug text-gray-900">
               {course?.name ?? "Course"}
             </h2>
           </div>

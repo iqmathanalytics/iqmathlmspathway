@@ -44,9 +44,9 @@ export const courses: Course[] = [
     id: "mba-ai",
     name: "MBA: AI for Business Analytics",
     slug: "mba-ai",
-    tagline: "4 days: analytics → market intel → RAG knowledge desks → multi-agent Colab systems.",
+    tagline: "4 days: Excel + ChatGPT → Power BI & prompts → LangChain chatbots → RAG.",
     description:
-      "Day-wise MBA pathway — FreshBasket analytics labs, competitor and review intelligence, grounded RAG on real PDFs, then Groq agents on Olist and IBM HR data.",
+      "Day-wise pathway — Excel analysis and Power Pivot, Power BI dashboards with prompt engineering, Groq/LangChain chatbots with tools, then RAG over company docs and AI-powered data analysis.",
     icon: "MBA",
     iconImage: "/images/logos/mba-ai-course.svg",
     iconAlt: "MBA AI for Business Analytics logo",

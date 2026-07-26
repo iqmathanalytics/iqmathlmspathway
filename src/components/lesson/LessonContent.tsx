@@ -86,11 +86,13 @@ import { FinalProjectInfographic } from "@/components/lesson/FinalProjectInfogra
 import { SqlTopicInfographic } from "@/components/lesson/SqlTopicInfographic";
 import { ArrowRight, Lightbulb, Code2, Pencil, Play } from "lucide-react";
 
-/** Turn bare http(s) URLs into clickable links (used for dataset download lists). */
+/** Turn bare http(s) URLs and /datasets/ paths into clickable links. */
 function linkifyText(text: string): ReactNode {
-  const parts = text.split(/(https?:\/\/[^\s]+)/g);
+  const parts = text.split(/(https?:\/\/[^\s]+|\/datasets\/[^\s]+)/g);
   return parts.map((part, i) => {
-    if (!/^https?:\/\//.test(part)) return part;
+    const isHttp = /^https?:\/\//.test(part);
+    const isDataset = /^\/datasets\//.test(part);
+    if (!isHttp && !isDataset) return part;
     const href = part.replace(/[),.;]+$/, "");
     const trailing = part.slice(href.length);
     return (
@@ -100,6 +102,7 @@ function linkifyText(text: string): ReactNode {
           target="_blank"
           rel="noopener noreferrer"
           className="break-all font-medium text-sky-800 underline decoration-sky-300 underline-offset-2 hover:text-sky-950"
+          download={isDataset ? true : undefined}
         >
           {href}
         </a>

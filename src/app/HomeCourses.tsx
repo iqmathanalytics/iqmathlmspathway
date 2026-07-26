@@ -69,9 +69,9 @@ const COURSE_META: Record<
     levelLabel: "MBA / executive friendly",
     prereq: null,
     featureHighlights: [
-      "Day 1–2: business analytics + market intelligence with ChatGPT labs",
-      "Day 3: document RAG on real company PDFs + Groq Colab desk",
-      "Day 4: multi-agent Colab systems on Olist & IBM HR datasets",
+      "Day 1: Excel labs + Power Pivot retail dashboard",
+      "Day 2: Power BI labs + prompt tasks + Financial Sample capstone",
+      "Day 3–4: Streaming tool agents, then RAG knowledge desks + LLM analysis",
     ],
   },
 };

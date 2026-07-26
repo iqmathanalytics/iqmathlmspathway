@@ -87,15 +87,17 @@ export default async function TopicPage({ params }: TopicPageProps) {
                 <span className="text-gray-800">{topic.title}</span>
               </nav>
               <div className="flex items-start justify-between gap-4">
-                <TopicLessonHeader
-                  moduleId={module.id}
-                  moduleName={module.name}
-                  title={topic.title}
-                  intro={lesson.intro}
-                  estimatedMinutes={topic.estimatedMinutes}
-                />
+                <div className="min-w-0 flex-1">
+                  <TopicLessonHeader
+                    moduleId={module.id}
+                    moduleName={module.name}
+                    title={topic.title}
+                    intro={lesson.intro}
+                    estimatedMinutes={topic.estimatedMinutes}
+                  />
+                </div>
                 {next && (
-                  <span data-walkthrough="lesson-next">
+                  <span data-walkthrough="lesson-next" className="shrink-0">
                     <NextTopicButton
                       topicId={topic.id}
                       hasQuiz={hasQuiz}

@@ -30,7 +30,7 @@ export function HomeCTA() {
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-300">
             Open Python or SQL for foundations, Agentic AI for builders, or the MBA pathway for
-            analytics, RAG, and multi-agent Colab systems — practice is already in the lesson.
+            analytics, LangChain chatbots, and RAG Colab labs — practice is already in the lesson.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-slate-300">
             {promises.map((promise) => (

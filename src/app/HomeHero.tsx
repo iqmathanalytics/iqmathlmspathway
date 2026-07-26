@@ -34,14 +34,14 @@ const outcomes = [
   },
   {
     title: "AI systems",
-    text: "Prompting, Groq APIs, LangChain, RAG knowledge desks, and multi-agent workflows.",
+    text: "Prompting, Groq APIs, LangChain chatbots with tools, and multi-agent workflows.",
     iconImage: agenticAiCourse?.iconImage,
     iconAlt: agenticAiCourse?.iconAlt ?? "Agentic AI logo",
     fallback: agenticAiCourse?.icon ?? "AI",
   },
   {
     title: "Business pathway",
-    text: "4-day MBA track: analytics, market intelligence, document RAG, and Colab agents.",
+    text: "4-day MBA track: analytics, Power BI & prompts, LangChain chatbots, and Colab RAG.",
     iconImage: mbaCourse?.iconImage,
     iconAlt: mbaCourse?.iconAlt ?? "MBA AI logo",
     fallback: mbaCourse?.icon ?? "MBA",
@@ -122,7 +122,7 @@ export function HomeHero() {
             </span>
             <span className="inline-flex items-center gap-1.5">
               <CheckCircle2 className="h-4 w-4 text-accent-400" />
-              RAG + Colab agents
+              LangChain chatbots + RAG
             </span>
             <span className="inline-flex items-center gap-1.5">
               <CheckCircle2 className="h-4 w-4 text-accent-400" />

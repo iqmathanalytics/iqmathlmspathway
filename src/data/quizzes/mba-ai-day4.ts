@@ -3,259 +3,479 @@ import type { TopicQuiz } from "@/lib/types";
 export const mbaAiDay4Quizzes: Record<string, TopicQuiz> = {
   "mba-d4-t1": {
     topicId: "mba-d4-t1",
-    title: "Quick check: Agentic AI + real data",
+    title: "Quick check: RAG big picture",
     questions: [
       {
         id: "q1",
-        question: "Before Day 4 agents run, students should\u2026",
+        question: "What does RAG stand for in LLM applications?",
         options: [
-          "Download Olist from Kaggle and set PATH_* to uploaded Colab files",
-          "Use only invented course CSVs",
-          "Skip uploads forever",
-          "Hardcode fake store counts"
+          "Retrieval-Augmented Generation",
+          "Random Automatic Guessing",
+          "Relational Analytics Gateway",
+          "Remote API Graphing",
         ],
         correctIndex: 0,
-        explanation: "Real Olist files + explicit paths are required.",
+        explanation: "Retrieve relevant passages, then generate an answer from them.",
       },
       {
         id: "q2",
-        question: "Chatbot vs agent in this lab\u2026",
+        question: "What is the correct high-level RAG order?",
         options: [
-          "Agent plans and executes using uploaded evidence",
-          "Chatbot completes the board pack alone",
-          "Neither needs data",
-          "Agents ban Groq"
+          "Query → Retrieve → Augment → Generate",
+          "Generate → Delete files → Retrieve",
+          "Train a new LLM → Ignore documents",
+          "Export Excel → Disable the API key",
         ],
         correctIndex: 0,
-        explanation: "Agents complete work on your tables.",
+        explanation: "Find evidence first, then prompt, then answer.",
       },
       {
         id: "q3",
-        question: "If PATH_ORDERS is missing, the notebook should\u2026",
+        question: "Why can an unaided LLM invent company leave rules?",
         options: [
-          "Fail clearly so you fix the path/upload",
-          "Silently invent orders",
-          "Skip to Day 5",
-          "Delete Groq"
+          "Those private policies are not in its reliable knowledge without your documents",
+          "LLMs always open the company ERP automatically",
+          "Temperature 0 deletes all policies",
+          "Colab forbids policy questions",
         ],
         correctIndex: 0,
-        explanation: "Missing paths must be obvious.",
-      }
+        explanation: "Company-specific facts need your files.",
+      },
+      {
+        id: "q4",
+        question: "If retrieved context does not contain the answer, what should a grounded desk do?",
+        options: [
+          "Say the fact is not in the document / sources",
+          "Invent the most impressive number",
+          "Change company policy silently",
+          "Ignore the question without saying so",
+        ],
+        correctIndex: 0,
+        explanation: "Refusal beats confident fiction.",
+      },
     ],
   },
 
   "mba-d4-t2": {
     topicId: "mba-d4-t2",
-    title: "Quick check: Designing agents",
+    title: "Quick check: Grounding vs unaided chat",
     questions: [
       {
         id: "q1",
-        question: "Marketing tools in Day 4 should read\u2026",
+        question: "What is the difference between an unaided answer and a grounded answer?",
         options: [
-          "Your uploaded Olist reviews/items/products paths",
-          "Random Wikipedia only",
-          "Synthetic day4-freshbasket CSVs",
-          "Nothing"
+          "Grounded answers are constrained to provided document text; unaided answers are not",
+          "Unaided answers never use a system message",
+          "Grounded answers disable the API key",
+          "There is no difference",
         ],
         correctIndex: 0,
-        explanation: "Tools wrap real uploads.",
+        explanation: "Evidence in the prompt changes reliability.",
       },
       {
         id: "q2",
-        question: "A strong agent blueprint includes\u2026",
+        question: "Why paste a policy extract into the prompt for a leave question?",
         options: [
-          "Goal, tools, memory, output",
-          "Only a colour theme",
-          "Only emojis",
-          "Only temperature=2"
+          "So the model can cite the company’s own wording instead of guessing",
+          "So Yahoo Finance returns HR rules",
+          "So Colab installs FAISS automatically",
+          "So temperature becomes invalid",
         ],
         correctIndex: 0,
-        explanation: "Design the operating model.",
+        explanation: "The extract is the evidence.",
       },
       {
         id: "q3",
-        question: "Campaign packs must\u2026",
+        question: "What is a good system instruction for grounded Q&A?",
         options: [
-          "Label File-supported vs Judgment",
-          "Invent Kaggle rankings",
-          "Hide review scores",
-          "Ignore tools"
+          "Answer only using the extract; if missing, say it is not in the document",
+          "Always invent a confident number",
+          "Ignore the extract and browse the open web only",
+          "Delete the user question",
         ],
         correctIndex: 0,
-        explanation: "Evidence discipline stays.",
-      }
+        explanation: "Explicit refusal rules reduce hallucination.",
+      },
     ],
   },
 
   "mba-d4-t3": {
     topicId: "mba-d4-t3",
-    title: "Quick check: Multi-agent",
+    title: "Quick check: Chunking",
     questions: [
       {
         id: "q1",
-        question: "The launch swarm category should come from\u2026",
+        question: "Why split long documents into chunks for RAG?",
         options: [
-          "Frequencies in your uploaded Olist products/items",
-          "A made-up category not in the file",
-          "Twitter rumours only",
-          "HR attrition alone"
+          "Retrieval can score smaller passages and fit evidence into the prompt",
+          "Chunks delete the need for an API key",
+          "Chunks train a new LLM overnight",
+          "Chunks convert PDFs into Excel automatically",
         ],
         correctIndex: 0,
-        explanation: "Focus category is data-derived.",
+        explanation: "Chunking makes retrieval practical.",
       },
       {
         id: "q2",
-        question: "CEOAgent exists to\u2026",
+        question: "What does chunk overlap help with?",
         options: [
-          "Arbitrate specialist tensions into a decision",
-          "Delete Finance outputs",
-          "Avoid CX",
-          "Skip evidence"
+          "Keeping sentences/ideas that would otherwise be cut at boundaries",
+          "Encrypting the API key",
+          "Increasing GPU count in Colab",
+          "Removing all stop words forever",
         ],
         correctIndex: 0,
-        explanation: "Orchestration is the point.",
+        explanation: "Overlap preserves context across splits.",
       },
       {
         id: "q3",
-        question: "Multi-agent value is mainly\u2026",
+        question: "What is a risk of making chunks extremely large?",
         options: [
-          "Visible trade-offs across functions",
-          "One fake happy essay",
-          "No data needed",
-          "Hiding risks"
+          "They may waste context and mix unrelated topics in one retrieval hit",
+          "FAISS refuses to start",
+          "Groq bans large chunks by law",
+          "Pandas cannot open CSVs anymore",
         ],
         correctIndex: 0,
-        explanation: "Debate then decide.",
-      }
+        explanation: "Chunk size is a precision vs context trade-off.",
+      },
     ],
   },
 
   "mba-d4-t4": {
     topicId: "mba-d4-t4",
-    title: "Quick check: Agent loop",
+    title: "Quick check: TF-IDF retrieval",
     questions: [
       {
         id: "q1",
-        question: "The classroom loop is\u2026",
+        question: "In a mini RAG pipeline, what does TF-IDF retrieval do?",
         options: [
-          "Plan \u2192 tool on PATH_* files \u2192 observe \u2192 memory \u2192 action pack",
-          "Guess \u2192 invent \u2192 ship",
-          "Only print logos",
-          "Skip reviews"
+          "Ranks document chunks by relevance to the question using term statistics",
+          "Trains a diffusion image model",
+          "Deletes unused PDF pages",
+          "Creates Power BI relationships",
         ],
         correctIndex: 0,
-        explanation: "Tools hit real files.",
+        explanation: "TF-IDF is a classic sparse retriever.",
       },
       {
         id: "q2",
-        question: "late_delivery_sample needs\u2026",
+        question: "Why show a RETRIEVED panel before the final answer?",
         options: [
-          "Timestamp columns from your Olist orders upload",
-          "Invented ETAs",
-          "IBM HR only",
-          "No CSV"
+          "So you can audit which passages the answer was allowed to use",
+          "So the API key rotates",
+          "So temperature must be 2.0",
+          "So Colab exports PowerPoint",
         ],
         correctIndex: 0,
-        explanation: "Orders path must be real.",
+        explanation: "Receipts build trust and debugging skill.",
       },
       {
         id: "q3",
-        question: "Memory helps\u2026",
+        question: "What should the LLM receive as evidence in grounded RAG?",
         options: [
-          "Audit observations from tool calls",
-          "Increase silent invention",
-          "Delete plans",
-          "Hide scores"
+          "Only the top retrieved chunks (not inventing outside them)",
+          "The entire internet without retrieval",
+          "Only the API key string",
+          "Only empty strings",
         ],
         correctIndex: 0,
-        explanation: "Auditability.",
-      }
+        explanation: "Augment the prompt with retrieved context.",
+      },
+      {
+        id: "q4",
+        question: "Cosine similarity between TF-IDF vectors is used to…",
+        options: [
+          "Score how close a question is to each chunk",
+          "Encrypt PDFs",
+          "Compute Excel pivot totals",
+          "Replace Groq entirely",
+        ],
+        correctIndex: 0,
+        explanation: "Similarity ranking selects top-k chunks.",
+      },
     ],
   },
 
   "mba-d4-t5": {
     topicId: "mba-d4-t5",
-    title: "Quick check: Consulting firm",
+    title: "Quick check: Embeddings & FAISS",
     questions: [
       {
         id: "q1",
-        question: "PeopleAgent HR claims require\u2026",
+        question: "What does an embedding model produce for a text chunk?",
         options: [
-          "IBM HR attrition CSV downloaded and PATH_HR set",
-          "Invented headcount",
-          "Olist only always",
-          "No file"
+          "A numeric vector that represents meaning for similarity search",
+          "A Power BI .pbix file",
+          "A Groq API key",
+          "A SQL foreign key",
         ],
         correctIndex: 0,
-        explanation: "Second real source.",
+        explanation: "Vectors enable semantic nearest-neighbor search.",
       },
       {
         id: "q2",
-        question: "Where do you download IBM HR from?",
+        question: "What is FAISS commonly used for in RAG?",
         options: [
-          "Kaggle: pavansubhasht/ibm-hr-analytics-attrition-dataset",
-          "A random private Drive with no source",
-          "Course fake CSV",
-          "Nowhere"
+          "Fast similarity search over embedding vectors",
+          "Training Excel macros",
+          "Hosting email servers",
+          "Replacing pandas groupby",
         ],
         correctIndex: 0,
-        explanation: "Official Kaggle dataset page.",
+        explanation: "FAISS is a vector index/library for nearest neighbors.",
       },
       {
         id: "q3",
-        question: "Quality gate checks\u2026",
+        question: "How can vector retrieval beat pure keyword TF-IDF?",
         options: [
-          "Grounding of the partner pack",
-          "Font choice only",
-          "Groq logo colour",
-          "Upload speed only"
+          "It can match paraphrases with similar meaning even when wording differs",
+          "It never needs an embedding model",
+          "It works only offline with zero compute",
+          "It invents missing policy text",
         ],
         correctIndex: 0,
-        explanation: "Governance before client send.",
-      }
+        explanation: "Semantic similarity helps messy wording.",
+      },
+      {
+        id: "q4",
+        question: "After FAISS returns chunks, what should the LLM still obey?",
+        options: [
+          "Answer only from those chunks or say not in document",
+          "Ignore chunks and browse privately stored HRIS data",
+          "Always invent page numbers",
+          "Disable the system message",
+        ],
+        correctIndex: 0,
+        explanation: "Retrieval does not remove grounding discipline.",
+      },
     ],
   },
 
   "mba-d4-t6": {
     topicId: "mba-d4-t6",
-    title: "Quick check: Capstone platform",
+    title: "Quick check: PDF RAG",
     questions: [
       {
         id: "q1",
-        question: "Capstone demo readiness includes\u2026",
+        question: "Why keep page metadata when loading PDFs into a vector store?",
         options: [
-          "PATH_ORDERS/PATH_REVIEWS exist + agents ran + board pack saved",
-          "Only Cell 1",
-          "Synthetic day4 CSV present",
-          "No uploads"
+          "So answers can cite which page the evidence came from",
+          "So FAISS encrypts the PDF",
+          "So Groq bills less",
+          "So pandas can open images",
         ],
         correctIndex: 0,
-        explanation: "Paths are part of the scorecard.",
+        explanation: "Page citations make answers auditable.",
       },
       {
         id: "q2",
-        question: "Primary marketplace dataset source is\u2026",
+        question: "What is a good first PDF for learning RAG pipelines?",
         options: [
-          "Kaggle Olist Brazilian E-Commerce",
-          "A made-up FreshBasket weekly sales CSV from the repo",
-          "A blank notebook",
-          "Unrelated weather API"
+          "A short public policy PDF that loads quickly and still feels real",
+          "A corrupted empty file with no text",
+          "A password you cannot open",
+          "A video file renamed to .pdf",
         ],
         correctIndex: 0,
-        explanation: "olistbr/brazilian-ecommerce.",
+        explanation: "Short real PDFs teach the loop without huge wait times.",
       },
       {
         id: "q3",
-        question: "Board packs should\u2026",
+        question: "If a PDF never mentions a topic you asked about, what should happen?",
         options: [
-          "Justify recommendations using uploaded columns",
-          "Ignore review_score",
-          "Hide assumptions",
-          "Skip the markdown export"
+          "The desk should say NOT IN DOCUMENT (or equivalent)",
+          "The model should invent a plausible clause",
+          "FAISS should delete the PDF",
+          "The API key should be printed",
         ],
         correctIndex: 0,
-        explanation: "Viva-ready evidence.",
-      }
+        explanation: "Silence in sources must surface as refusal.",
+      },
+    ],
+  },
+
+  "mba-d4-t7": {
+    topicId: "mba-d4-t7",
+    title: "Quick check: Multi-document RAG",
+    questions: [
+      {
+        id: "q1",
+        question: "Why store source_file (or similar) in chunk metadata?",
+        options: [
+          "So answers can tag which document provided the evidence",
+          "So embeddings become unnecessary",
+          "So temperature is fixed to 2.0",
+          "So Colab needs no network",
+        ],
+        correctIndex: 0,
+        explanation: "Multi-doc desks need provenance.",
+      },
+      {
+        id: "q2",
+        question: "What is a practical reason to index a mid-size quarterly PDF before a 270+ page annual report?",
+        options: [
+          "Faster iteration while learning; large ARs are a stretch once the pipeline works",
+          "Annual reports cannot be chunked",
+          "FAISS rejects annual reports by design",
+          "Groq cannot read numbers from long PDFs ever",
+        ],
+        correctIndex: 0,
+        explanation: "Pedagogy and runtime: ladder difficulty.",
+      },
+      {
+        id: "q3",
+        question: "In multi-doc Q&A, what should the prompt require?",
+        options: [
+          "Cite which source file (and page if available) supports the answer",
+          "Hide all sources from the user",
+          "Merge all PDFs into one unlabeled blob with no metadata",
+          "Always answer from memory only",
+        ],
+        correctIndex: 0,
+        explanation: "Tagged sources make multi-document retrieval auditable and controllable.",
+      },
+    ],
+  },
+
+  "mba-d4-t8": {
+    topicId: "mba-d4-t8",
+    title: "Quick check: LLM data analysis",
+    questions: [
+      {
+        id: "q1",
+        question: "In AI-powered spreadsheet analysis, what should compute the KPI numbers?",
+        options: [
+          "Pandas / code on the CSV — then the LLM narrates those numbers",
+          "The LLM alone, with no table shown",
+          "A random number generator",
+          "Yahoo Finance only",
+        ],
+        correctIndex: 0,
+        explanation: "Numbers first in code; narrative second.",
+      },
+      {
+        id: "q2",
+        question: "Why pass a KPI block into the LLM prompt?",
+        options: [
+          "So insights stay tied to calculated evidence",
+          "So the API key is optional",
+          "So FAISS builds itself from Excel",
+          "So chunk overlap becomes zero",
+        ],
+        correctIndex: 0,
+        explanation: "The KPI block is the numeric context.",
+      },
+      {
+        id: "q3",
+        question: "What should the model not do when drafting an insight brief?",
+        options: [
+          "Invent sales or profit figures that are not in the KPI block",
+          "Suggest next analyses as questions",
+          "List risks based on the KPIs",
+          "Keep the brief short",
+        ],
+        correctIndex: 0,
+        explanation: "No hallucinated metrics.",
+      },
+    ],
+  },
+
+  "mba-d4-t9": {
+    topicId: "mba-d4-t9",
+    title: "Quick check: Summarization & insights",
+    questions: [
+      {
+        id: "q1",
+        question: "What makes an executive summary useful?",
+        options: [
+          "Clear structure (snapshot, risks, asks) grounded in the source",
+          "Maximum buzzwords with no decisions",
+          "Invented KPIs to sound impressive",
+          "Hiding uncertainty always",
+        ],
+        correctIndex: 0,
+        explanation: "Structure + faithfulness beats fluff.",
+      },
+      {
+        id: "q2",
+        question: "Why include a “NOT IN SOURCE” section in a one-pager prompt?",
+        options: [
+          "It forces the model to surface what it refused to invent",
+          "It deletes the source text",
+          "It raises temperature automatically",
+          "It installs sentence-transformers",
+        ],
+        correctIndex: 0,
+        explanation: "Explicit refusal listing improves honesty.",
+      },
+      {
+        id: "q3",
+        question: "Summarization from a long report should primarily…",
+        options: [
+          "Compress faithful points leaders need for decisions",
+          "Replace the need for retrieval forever",
+          "Ignore the source and write a new strategy",
+          "Output only emojis",
+        ],
+        correctIndex: 0,
+        explanation: "Summaries serve decisions, not creativity contests.",
+      },
+    ],
+  },
+
+  "mba-d4-t10": {
+    topicId: "mba-d4-t10",
+    title: "Quick check: Knowledge desk discipline",
+    questions: [
+      {
+        id: "q1",
+        question: "What combination makes a strong document + data intelligence desk?",
+        options: [
+          "Grounded RAG over company docs/PDFs plus KPI-based LLM analysis",
+          "Only unaided chat with no files",
+          "Only PowerPoint themes",
+          "Only deleting retrieval traces",
+        ],
+        correctIndex: 0,
+        explanation: "Documents and numbers both need evidence.",
+      },
+      {
+        id: "q2",
+        question: "Why ask a trap question that is not in any source?",
+        options: [
+          "To verify the desk refuses instead of inventing policy",
+          "To unlock unlimited Groq credits",
+          "To rebuild FAISS faster",
+          "To disable pandas",
+        ],
+        correctIndex: 0,
+        explanation: "Refusal is a graded behavior.",
+      },
+      {
+        id: "q3",
+        question: "What belongs in an evidence pack after a knowledge-desk demo?",
+        options: [
+          "Retrieved chunks, grounded answers, KPI board, and insight memo",
+          "Only the API key screenshot",
+          "Only a blank notebook",
+          "Only temperature=2.0 logs",
+        ],
+        correctIndex: 0,
+        explanation: "Receipts are the deliverable.",
+      },
+      {
+        id: "q4",
+        question: "Can public web search replace internal policy RAG?",
+        options: [
+          "No — internal policies are often not on the public web and need your documents",
+          "Yes — Wikipedia always has every company’s leave rules",
+          "Yes — DuckDuckGo stores HRIS passwords",
+          "Yes — FAISS deletes the need for files",
+        ],
+        correctIndex: 0,
+        explanation: "Internal knowledge requires your corpus.",
+      },
     ],
   },
 };

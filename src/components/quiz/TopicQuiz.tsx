@@ -62,15 +62,17 @@ export function TopicQuiz({ quiz, onComplete }: TopicQuizProps) {
   }
 
   return (
-    <section className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-      <div className="mb-4 flex items-center gap-2 text-brand-700">
-        <HelpCircle className="h-5 w-5" />
-        <h3 className="font-semibold">{quiz.title}</h3>
+    <section className="w-full min-w-0 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+      <div className="mb-4 flex items-start gap-2 text-brand-700">
+        <HelpCircle className="mt-0.5 h-5 w-5 shrink-0" />
+        <h3 className="min-w-0 break-words font-semibold leading-snug">{quiz.title}</h3>
       </div>
       <p className="mb-1 text-xs text-gray-500">
         Question {current + 1} of {quiz.questions.length}
       </p>
-      <p className="mb-4 text-lg font-medium text-gray-900">{question.question}</p>
+      <p className="mb-4 break-words text-lg font-medium leading-snug text-gray-900">
+        {question.question}
+      </p>
       <ul className="space-y-2">
         {question.options.map((opt, i) => {
           let style = "border-gray-200 hover:border-brand-300 hover:bg-brand-50/50";
@@ -86,23 +88,25 @@ export function TopicQuiz({ quiz, onComplete }: TopicQuizProps) {
             style = "border-brand-500 bg-brand-50";
           }
           return (
-            <li key={opt}>
+            <li key={`${i}-${opt.slice(0, 24)}`} className="min-w-0">
               <button
                 type="button"
                 onClick={() => handleSelect(i)}
                 disabled={showResult}
                 className={clsx(
-                  "flex w-full items-center gap-2 rounded-lg border-2 px-4 py-3 text-left text-sm transition-colors",
+                  "flex w-full min-w-0 items-start gap-2 rounded-lg border-2 px-4 py-3 text-left text-sm transition-colors",
                   style
                 )}
               >
                 {showResult && i === question.correctIndex && (
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-green-600" />
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />
                 )}
                 {showResult && i === selected && i !== question.correctIndex && (
-                  <XCircle className="h-4 w-4 shrink-0 text-red-500" />
+                  <XCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />
                 )}
-                <span>{opt}</span>
+                <span className="min-w-0 flex-1 whitespace-normal break-words leading-snug">
+                  {opt}
+                </span>
               </button>
             </li>
           );
@@ -110,7 +114,7 @@ export function TopicQuiz({ quiz, onComplete }: TopicQuizProps) {
       </ul>
       {showResult && (
         <>
-          <div className="mt-4 rounded-lg bg-gray-50 p-3 text-sm text-gray-700">
+          <div className="mt-4 break-words rounded-lg bg-gray-50 p-3 text-sm leading-relaxed text-gray-700">
             <strong>Explanation:</strong> {question.explanation}
           </div>
           <button

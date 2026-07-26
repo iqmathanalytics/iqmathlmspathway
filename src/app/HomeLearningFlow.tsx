@@ -24,7 +24,7 @@ const steps = [
     icon: Rocket,
     label: "04",
     title: "Ship real outcomes",
-    text: "Capstones include RAG knowledge desks, multi-agent consulting packs, SQL projects, and AI agents.",
+    text: "Capstones include LangChain chatbots with tools, RAG knowledge desks, SQL projects, and AI agents.",
   },
 ];
 

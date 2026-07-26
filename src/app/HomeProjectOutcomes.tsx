@@ -54,26 +54,26 @@ const outcomes: ExplainSlide[] = [
     id: "rag-systems",
     eyebrow: "Outcome 4",
     icon: DatabaseZap,
-    title: "RAG knowledge desks",
+    title: "API chatbots with tools",
     description:
-      "Ground answers in company documents. MBA Day 3 walks from short policy extracts to real PDFs (ITC, HUL, DMart) and a Groq Colab RAG pipeline.",
+      "Build Colab chatbots with Groq and LangChain. MBA Day 3 moves from first API calls through memory, function calling, Yahoo Finance, and a multi-tool business analyst capstone.",
     bullets: [
-      "Retrieve → read → answer with source discipline",
-      "Work large annual reports with section anchors",
-      "Build a mini knowledge assistant in Colab",
+      "Raw API loops → ChatGroq and LCEL chains",
+      "Conversation memory and @tool function calling",
+      "Yahoo Finance + calculator + FAQ in one chatbot",
     ],
   },
   {
     id: "agent-patterns",
     eyebrow: "Outcome 5",
     icon: BrainCircuit,
-    title: "Multi-agent systems",
+    title: "RAG knowledge desks",
     description:
-      "Move beyond single prompts into agents that plan, call tools, and collaborate — Agentic AI engineering plus MBA Day 4 Colab swarms.",
+      "Ground answers in company documents. MBA Day 4 walks from FreshBasket extracts to real PDFs (ITC, HUL, DMart), FAISS retrieval, and LLM data-insight memos.",
     bullets: [
-      "Tool use, memory, and plan–act–observe loops",
-      "Specialist agents with CEO / orchestrator arbitration",
-      "Consulting-firm and board-pack capstones",
+      "Retrieve → read → answer with source discipline",
+      "TF-IDF mini RAG then FAISS vector stores",
+      "PDF Q&A, summarization, and CSV insight briefs",
     ],
   },
   {
@@ -82,11 +82,11 @@ const outcomes: ExplainSlide[] = [
     icon: BriefcaseBusiness,
     title: "MBA business analytics",
     description:
-      "A day-wise executive pathway: FreshBasket analytics, market intelligence from reviews and competitors, then enterprise RAG and agentic decision systems.",
+      "A day-wise executive pathway: Excel and Power Pivot analytics, Power BI dashboards with prompt engineering, LangChain chatbots, then RAG and AI data analysis.",
     bullets: [
       "ChatGPT labs for marketing, finance, HR, and ops",
       "Downloadable supermarket and market datasets",
-      "Real-world Olist & IBM HR data for Day 4 agents",
+      "FreshBasket texts + real filings for Day 4 RAG",
     ],
   },
 ];
@@ -104,7 +104,7 @@ export function HomeProjectOutcomes() {
             Practical outcomes across code, data, and business AI
           </h2>
           <p className="mt-4 text-lg leading-8 text-gray-600">
-            Use the arrows to explore skills from Python and SQL through RAG desks and multi-agent consulting packs.
+            Use the arrows to explore skills from Python and SQL through LangChain chatbots and RAG knowledge desks.
           </p>
         </div>
 

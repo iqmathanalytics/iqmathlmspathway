@@ -266,7 +266,7 @@ export function TopicLessonLayout({
         {/* ── Left column ── */}
         <div className={`min-w-0 py-6 px-4 sm:px-6 lg:px-8 xl:px-10 ${
           singleColumnBlock
-            ? "max-w-3xl mx-auto"
+            ? "w-full"
             : "lg:overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         }`}>
           {sequential && (

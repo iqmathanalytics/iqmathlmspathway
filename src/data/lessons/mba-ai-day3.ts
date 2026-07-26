@@ -1,1400 +1,875 @@
 import type { TopicLesson } from "@/lib/types";
+import { mbaAiDay3Labs } from "./mba-ai-day3-labs";
 
-const CHAT_URL = "https://chatgpt.com/";
+const COLAB = "https://colab.research.google.com/#create=true";
+const GROQ_KEYS = "https://console.groq.com/keys";
+const DOC = "https://docs.google.com/";
 
-/** Small FreshBasket training extracts (Topic 1) */
-const FB = {
-  overview: "/datasets/mba/day3-freshbasket-company-overview.txt",
-  hr: "/datasets/mba/day3-freshbasket-hr-policy.txt",
-  promo: "/datasets/mba/day3-freshbasket-promo-governance.txt",
-  fy: "/datasets/mba/day3-freshbasket-fy-highlights.txt",
-} as const;
+const INSTALL =
+  "!pip install -q langchain langchain-groq langchain-core langchain-community langgraph yfinance groq wikipedia duckduckgo-search youtube_search arxiv\nprint('OK — packages installed')";
 
-/** Real public PDFs — introduced gradually from Topic 2 onward */
-const DOC = {
-  itcCoc:
-    "/datasets/mba/real/" +
-    encodeURIComponent(
-      "ITC code-of-conduct-for-suppliers-and-service-providers (4 Pages).pdf",
-    ),
-  hulQ:
-    "/datasets/mba/real/" +
-    encodeURIComponent("HUL March 2026 Quarterly Results (47 Pages).pdf"),
-  dmartAR:
-    "/datasets/mba/real/" +
-    encodeURIComponent("Dmart Annual Report 2024-25 (272 Pages).pdf"),
-  hulAR:
-    "/datasets/mba/real/" +
-    encodeURIComponent(
-      "Hindustan Unilever Limited annual report 2025-26 (486 Pages).pdf",
-    ),
-} as const;
+const KEY_BOOT = `import os
+from getpass import getpass
+
+GROQ_MODEL = "llama-3.1-8b-instant"
+
+if not os.environ.get("GROQ_API_KEY"):
+    os.environ["GROQ_API_KEY"] = getpass("Paste GROQ_API_KEY (hidden): ").strip()
+
+print("=" * 40)
+print("  KEY LOADED  |  model:", GROQ_MODEL)
+print("=" * 40)`;
 
 /**
- * Day 3 — Enterprise Knowledge Intelligence (RAG)
- * Document ladder: small FreshBasket texts → mid-size public PDFs → large annual reports.
+ * Day 3 — AI Chatbot Development & API Integration
+ * Topics 1–6 + labs 7–12 (professional textbook content + Colab labs).
  */
 export const mbaAiDay3Lessons: Record<string, TopicLesson> = {
+  ...mbaAiDay3Labs,
+
   "mba-d3-t1": {
     topicId: "mba-d3-t1",
     intro:
-      "Day 3 starts with a simple idea: a public chat tool does not know FreshBasket’s policies. You feel that gap first with short company extracts, then ground answers in those files.",
+      "Day 3 covers building business chatbots that call real LLM APIs, then adding memory and tools. This topic is reading only. Coding starts in Topic 2.",
     blocks: [
+      { type: "single-column", content: "" },
       {
         type: "heading",
-        content: "1) The everyday business problem",
+        content: "1) Learning objectives",
       },
       {
         type: "paragraph",
         content:
-          "Managers ask: “How many casual leave days?” “Who approves a 10% promo?” “How many stores do we run?” Those answers live in approved company documents — not in a chat tool’s memory.",
-      },
-      {
-        type: "visual",
-        diagram: {
-          title: "Two different answer paths",
-          variant: "compare",
-          nodes: [
-            {
-              id: "public",
-              label: "Chat tool with no file",
-              sublabel: "May sound confident · often invents company-specific facts",
-            },
-            {
-              id: "grounded",
-              label: "Chat tool + your document",
-              sublabel: "Read the extract · answer from it · say when silent",
-            },
-          ],
-        },
-      },
-      {
-        type: "tip",
-        content:
-          "Classroom test: Can a public chat tool recite FreshBasket’s Sunday overtime rule alone? No — unless you upload the HR extract and demand grounding.",
+          "By the end of this topic you should be able to define a business chatbot, explain how an LLM API call works in plain language, distinguish system / user / assistant messages, and outline the Day 3 ladder from a single API call to a tool-using streaming agent. You will also know which stack (Colab, Groq, LangChain) you will use in every lab.",
       },
       {
         type: "heading",
-        content: "2) What counts as enterprise knowledge",
-      },
-      {
-        type: "visual",
-        diagram: {
-          title: "Knowledge map (examples)",
-          variant: "stack",
-          nodes: [
-            {
-              id: "pol",
-              label: "Policies & SOPs",
-              sublabel: "HR rules, promo governance, leave approvals",
-            },
-            {
-              id: "corp",
-              label: "Company overview packs",
-              sublabel: "Who we are, formats, categories, strategy notes",
-            },
-            {
-              id: "fin",
-              label: "Results & highlights",
-              sublabel: "FY notes, quarterly packs (larger PDFs come later today)",
-            },
-            {
-              id: "ext",
-              label: "External filings / codes",
-              sublabel: "Supplier codes, annual reports — Topics 2–3",
-            },
-          ],
-        },
-      },
-      {
-        type: "heading",
-        content: "3) Document-grounded answering (simple RAG)",
+        content: "2) What is a business chatbot?",
       },
       {
         type: "paragraph",
         content:
-          "Industry name: RAG — Retrieval-Augmented Generation. For now, only this pipeline matters:",
+          "A chatbot is a conversational interface over a language model. In a business setting it drafts analysis, answers policy questions, and — when you add tools — looks up live prices, encyclopedia summaries, or company FAQ entries instead of guessing. The interface feels like chat; underneath it is a sequence of API calls with carefully structured messages.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Without tools, the model answers from general knowledge and conversation context. With tools, the model can request external data, receive the result, and then write a grounded reply. Day 3 builds that capability step by step so you understand each layer before combining them.",
       },
       {
         type: "visual",
         diagram: {
-          title: "Retrieve → Read → Answer",
-          variant: "stack",
+          title: "Day 3 maturity ladder",
+          variant: "flow",
           nodes: [
-            {
-              id: "r1",
-              label: "Step 1 — Retrieve",
-              sublabel: "Open / upload the right company file",
-            },
-            {
-              id: "r2",
-              label: "Step 2 — Read useful parts",
-              sublabel: "Find the section that actually answers",
-            },
-            {
-              id: "r3",
-              label: "Step 3 — Answer from passages",
-              sublabel: "Quote or paraphrase · if missing: Not stated in the document",
-            },
+            { id: "a", label: "API call", sublabel: "One question → one answer" },
+            { id: "b", label: "Persona + memory", sublabel: "Multi-turn context" },
+            { id: "c", label: "Tools", sublabel: "Streaming agents · Wikipedia · Search" },
+          ],
+          arrows: [
+            { from: "a", to: "b" },
+            { from: "b", to: "c" },
           ],
         },
       },
       {
         type: "heading",
-        content: "4) Documents for this topic (small extracts only)",
+        content: "3) LLMs and APIs in plain English",
+      },
+      {
+        type: "paragraph",
+        content:
+          "An LLM (large language model) is the model that generates text. In this course the model is Llama 3.1 8B Instant, hosted by Groq. An API is a remote service you call with an API key: you send messages over HTTPS and receive a completion. The system message sets persona and rules; the user message is the question; the assistant message is the reply. LangChain is a set of Python helpers so you write less glue code for messages, memory, templates, and tools.",
       },
       {
         type: "list",
         items: [
-          "FreshBasket Company Overview — who we are, stores, categories",
-          "FreshBasket HR Policy extract — leave, hours, Sunday OT",
-          "FreshBasket Promo Governance — approval ladder for price cuts",
-          "FreshBasket FY Highlights — short performance note",
+          "LLM = the model that writes text (Groq-hosted Llama in this course).",
+          "API = a remote service you call with an API key.",
+          "System message = persona and rules. User message = the question. Assistant = the reply.",
+          "LangChain = Python helpers for messages, memory, templates, and tools.",
+        ],
+      },
+      {
+        type: "heading",
+        content: "4) Why this matters in business",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Leaders often ask for chatbots without clarifying what is easy versus hard. A single completion is easy. Stable persona and multi-turn memory are the next step. Live tools (search, finance quotes, internal FAQ) are where cost, latency, accuracy, and security risk show up. Understanding that ladder helps you scope projects, set expectations, and design demos that show evidence of tool use rather than a slide that merely claims “AI can help.”",
+      },
+      {
+        type: "heading",
+        content: "5) Today’s stack (locked)",
+      },
+      {
+        type: "list",
+        items: [
+          "Google Colab (browser notebook)",
+          "Groq API key (free tier is enough for class)",
+          "Model: llama-3.1-8b-instant",
+          "Python packages: groq, langchain, langchain-groq, langchain-core, langchain-community, langgraph, yfinance, wikipedia, duckduckgo-search, youtube_search, arxiv",
+          "Simple syntax focus: print, lists, dicts, short def functions; later topics use create_react_agent + streaming",
         ],
       },
       {
         type: "tip",
         content:
-          "Keep it light here. Longer public PDFs (ITC, HUL, DMart) arrive in Topics 2 and 3 once grounding habits are solid.",
+          "Lab notes: create a Google Doc titled “AI Lab Notes — Day 3”. After every practice exercise, paste the output. The Topic 12 capstone needs a full streamed tool-trail paste.",
       },
       {
         type: "heading",
-        content: "5) Live practice — guessing vs grounding",
+        content: "6) Topic roadmap (12 steps)",
       },
       {
-        type: "setup-checklist",
-        setupSteps: [
-          {
-            title: "Download Company Overview",
-            description: "Short training extract — company identity.",
-            link: {
-              label: "FreshBasket Company Overview (.txt)",
-              url: FB.overview,
-            },
-          },
-          {
-            title: "Download HR Policy extract",
-            description: "Leave, hours, Sunday OT rules.",
-            link: {
-              label: "FreshBasket HR Policy (.txt)",
-              url: FB.hr,
-            },
-          },
-          {
-            title: "Download Promo Governance",
-            description: "Who approves which discount depth.",
-            link: {
-              label: "FreshBasket Promo Governance (.txt)",
-              url: FB.promo,
-            },
-          },
-          {
-            title: "Download FY Highlights",
-            description: "Short performance note for finance-style asks.",
-            link: {
-              label: "FreshBasket FY Highlights (.txt)",
-              url: FB.fy,
-            },
-          },
-          {
-            title: "Lab A — Blind guess (no file)",
-            description: "Fresh chat. No upload. Feel confident invention.",
-            link: { label: "Open chat tool", url: CHAT_URL },
-            commands: [
-              "Answer without any uploaded file:",
-              "1) How many casual leave days does FreshBasket give each year?",
-              "2) Who approves a temporary 10% price cut?",
-              "3) How many stores does FreshBasket operate?",
-              "If unsure, invent plausible retail answers confidently.",
-            ],
-            note: "You should get smooth guesses — that is the failure mode we fix next.",
-          },
-          {
-            title: "Lab B — HR desk (upload HR extract)",
-            description: "Ground every answer in the HR file only.",
-            commands: [
-              "You are FreshBasket’s HR knowledge desk.",
-              "I uploaded the FreshBasket HR Policy extract.",
-              "Rules: answer ONLY from this file; quote a short line; if missing say Not stated in the document.",
-              "1) How many CL / SL / EL days?",
-              "2) Who approves store leave over 3 days?",
-              "3) What is the Sunday overtime rule?",
-              "4) Build an 8-line FAQ for new store managers using only file facts.",
-            ],
-          },
-          {
-            title: "Lab C — Promo desk (upload promo brief)",
-            description: "Approval ladder and hard stops from the file.",
-            commands: [
-              "New chat. Upload the FreshBasket Promo Governance brief.",
-              "You are the Category Ops desk. ONLY this file.",
-              "Produce:",
-              "A) Approval ladder table: Depth band | Approver",
-              "B) 5 hard stops / red flags from the brief",
-              "C) Answer: Can a cashier alone launch a 15% weekend cut? (quote evidence)",
-              "D) 3 Not stated in the document gaps a manager might still need from Finance",
-            ],
-          },
-          {
-            title: "Lab D — Overview + FY quick pack",
-            description: "Two short extracts — still no large public PDFs.",
-            commands: [
-              "Upload Company Overview + FY Highlights.",
-              "Write a 120-word manager brief:",
-              "- Who FreshBasket is (from Overview)",
-              "- What the FY note stresses (from Highlights)",
-              "- Tag every fact with (Overview) or (FY)",
-              "- End with 3 questions these short files still do not answer",
-            ],
-          },
+        type: "list",
+        items: [
+          "t2 Setup · t3 First API · t4 Personas · t5 Chat loop · t6 ChatGroq",
+          "t7 Templates (stream) · t8 Memory agent · t9 Wikipedia agent · t10 DuckDuckGo agent",
+          "t11 YouTube + Arxiv + Yahoo agent · t12 Custom tools + streaming capstone agent",
         ],
       },
     ],
     keyTakeaways: [
-      "Company-specific answers need company documents.",
-      "RAG in plain English: retrieve the file → find passages → answer from them.",
-      "Prefer Not stated in the document over confident invention.",
-      "Start with short extracts; larger published PDFs come in later topics.",
+      "Chatbots sit on LLM APIs; keys must stay secret.",
+      "Day 3 climbs from one API call → persona and memory → tools.",
+      "Day 4 moves to document RAG, vector retrieval, and AI-powered analysis.",
     ],
   },
 
   "mba-d3-t2": {
     topicId: "mba-d3-t2",
     intro:
-      "Now step up from FreshBasket training extracts to real published PDFs — still manageable size: ITC’s 4-page supplier code and HUL’s 47-page quarterly results pack.",
+      "Open a blank Colab notebook, install the Day 3 packages, and load your Groq key safely with getpass. A clear KEY LOADED banner confirms you are ready for every later lab.",
     blocks: [
       {
         type: "heading",
-        content: "1) Document session workflow",
+        content: "1) Learning objectives",
       },
       {
-        type: "visual",
-        diagram: {
-          title: "Upload → Ask → Ground → Pack",
-          variant: "stack",
-          nodes: [
-            {
-              id: "u",
-              label: "1 · Upload the approved PDF",
-              sublabel: "Supplier code · quarterly results",
-            },
-            {
-              id: "q",
-              label: "2 · Ask business questions",
-              sublabel: "Obligations, metrics, risks — not “be creative”",
-            },
-            {
-              id: "g",
-              label: "3 · Ground every answer",
-              sublabel: "Quote / page · or Not stated in the document",
-            },
-            {
-              id: "p",
-              label: "4 · Manager pack",
-              sublabel: "Summary · findings · risks · labelled recommendations",
-            },
-          ],
-        },
+        type: "paragraph",
+        content:
+          "You will create a Colab runtime, install the LangChain / Groq / tool packages used for the rest of Day 3, and store GROQ_API_KEY in the environment without printing it. After this topic you should know how to recover after a runtime restart.",
       },
       {
         type: "heading",
-        content: "2) Which file for which job (this topic)",
+        content: "2) What you will set up",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Colab is a free notebook that runs in the browser. Groq hosts fast Llama models over an HTTP API. Your API key proves the call is yours — treat it like a password. getpass prompts for the key without echoing characters into the cell output or the notebook source.",
+      },
+      {
+        type: "heading",
+        content: "3) Why this matters in business",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Leaked keys create surprise bills and security incidents. Hardcoding a key into a shared notebook or screenshot is a common failure mode in training and in production prototypes. A working, safely loaded key is also the gateway to every chatbot demo you will show colleagues or clients later today.",
+      },
+      {
+        type: "heading",
+        content: "4) How it works (step-by-step)",
       },
       {
         type: "list",
         items: [
-          "ITC Supplier Code (4 pages) → vendor onboarding / compliance FAQ desk",
-          "HUL Quarterly Results (47 pages) → near-term performance & commentary desk",
-          "Large annual reports (272 / 486 pages) wait until Topic 3",
+          "Open a new Colab notebook.",
+          "Install packages once per runtime with pip (Cell 1).",
+          "When getpass asks, paste the Groq key; it does not print on screen.",
+          "Store it in os.environ so later cells can read GROQ_API_KEY.",
+          "Confirm with the KEY LOADED banner that prints the model name only — never the key.",
         ],
       },
       {
-        type: "visual",
-        diagram: {
-          title: "Question quality",
-          variant: "compare",
-          nodes: [
-            {
-              id: "weak",
-              label: "Weak",
-              sublabel: "“Summarise the whole quarterly pack creatively”",
-            },
-            {
-              id: "strong",
-              label: "Strong",
-              sublabel: "“List 8 management emphases with page/section anchors”",
-            },
-          ],
-        },
+        type: "heading",
+        content: "5) Worked intuition",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Think of the key as a hotel room card: it unlocks the service for you, but anyone who copies it can open the same door. Putting the key in a normal string inside a cell is like writing the card number on a whiteboard. getpass + os.environ keeps the secret in process memory for this runtime only. After Runtime → Restart, memory is cleared and you must paste again.",
       },
       {
         type: "heading",
-        content: "3) Live labs — mid-size public PDFs",
+        content: "6) Common mistakes",
+      },
+      {
+        type: "list",
+        items: [
+          "Pasting the key into a normal code cell (it gets saved or shared).",
+          "Forgetting to re-run the key cell after Runtime → Restart.",
+          "Sharing a notebook screenshot that shows the key.",
+          "Skipping the install cell and then wondering why imports fail.",
+        ],
+      },
+      {
+        type: "tip",
+        content: `Open Colab: ${COLAB} | Create key: ${GROQ_KEYS} | Never commit keys to GitHub.`,
+      },
+      {
+        type: "heading",
+        content: "7) Practice exercise — KEY LOADED banner",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Run the two cells below. When you see the KEY LOADED banner, screenshot it into your Day 3 Google Doc.",
+      },
+      {
+        type: "jupyter-notebook",
+        installCmd: INSTALL,
+        notebookCells: [
+          {
+            label: "Cell 1 — Install packages",
+            code: INSTALL,
+          },
+          {
+            label: "Cell 2 — Practice: load key + banner",
+            code: KEY_BOOT,
+          },
+        ],
       },
       {
         type: "setup-checklist",
+        content: "Topic 2 checklist",
         setupSteps: [
           {
-            title: "Download ITC Supplier Code",
-            description: "4 pages — full-read compliance desk.",
-            link: {
-              label: "ITC Supplier Code (4 pages)",
-              url: DOC.itcCoc,
-            },
+            title: "Opened a new Colab notebook",
+            description: "Use a blank notebook for Day 3 labs.",
+            link: { label: "Open Colab", url: COLAB },
           },
           {
-            title: "Download HUL Quarterly Results",
-            description: "47 pages — IR / performance desk.",
-            link: {
-              label: "HUL March 2026 Quarterly (47 pages)",
-              url: DOC.hulQ,
-            },
+            title: "Created a Groq API key",
+            description: "Copy the key once; you will paste it into getpass.",
+            link: { label: "Groq console", url: GROQ_KEYS },
           },
           {
-            title: "Lab A — Compliance desk (ITC)",
-            description: "Vendor-manager FAQ from the code only.",
-            link: { label: "Open chat tool", url: CHAT_URL },
-            commands: [
-              "Upload ITC code-of-conduct-for-suppliers-and-service-providers.pdf.",
-              "You are a Vendor Compliance desk using ITC’s published supplier code as the reference standard.",
-              "Rules: ONLY this PDF; quote lines; Not stated in the document if missing.",
-              "Deliver:",
-              "1) Executive Summary (80 words)",
-              "2) Key Findings (8 bullets)",
-              "3) Table: Vendor question | Answer from PDF | Quote",
-              "4) Hard stops — behaviours that must trigger escalation",
-              "5) Recommendations for FreshBasket vendor onboarding (label Judgment vs File-supported)",
-            ],
+            title: "Ran Cell 1 install without errors",
+            description: "You should see OK — packages installed.",
           },
           {
-            title: "Lab B — Quarterly IR desk (HUL Q)",
-            description: "Analyst pack from the 47-page results PDF.",
-            commands: [
-              "New chat. Upload HUL March 2026 Quarterly Results.pdf.",
-              "Produce a Document Intelligence Pack:",
-              "A) Executive Summary (≤120 words)",
-              "B) Key Findings (10 bullets — facts only)",
-              "C) Risks / watchouts table: Item | Evidence from PDF | Owner function (Finance/Category/Ops/Brand)",
-              "D) Recommendations (5) with File-supported vs Judgment labels",
-              "E) Trap test: rewrite this bad claim using the PDF: “HUL guaranteed double revenue next quarter with no risks.”",
-            ],
+            title: "Ran Cell 2 and saw KEY LOADED banner",
+            description: "Banner shows the model name, not the key.",
           },
           {
-            title: "Lab C — Speed tickets (right file)",
-            description: "Urgent tickets — pick ITC or HUL Q; refuse if wrong file.",
-            commands: [
-              "You may upload ITC Supplier Code + HUL Quarterly.",
-              "Reply to each ticket in ≤6 lines, name which PDF you used:",
-              "Ticket 1: “Can a supplier ignore integrity rules if volumes are huge?” (ITC)",
-              "Ticket 2: “What narrative priorities did HUL stress this quarter?” (HUL Q)",
-              "Ticket 3: “Does the ITC supplier code state FreshBasket Sunday OT payroll?” (refuse — wrong document)",
-            ],
+            title: "Pasted screenshot into Google Doc Day 3",
+            description: "Keep a running evidence trail for later topics.",
+            link: { label: "Google Docs", url: DOC },
           },
         ],
       },
     ],
     keyTakeaways: [
-      "Match the PDF to the job: code → compliance; quarterly → IR.",
-      "Manager packs separate findings from judgment.",
-      "Wrong-document questions must be refused cleanly.",
-      "47 pages is still workable end-to-end; 270+ page annuals need a different tactic next.",
+      "getpass keeps the key off the screen and out of the cell source.",
+      "Re-run install + key after every Colab runtime restart.",
+      "KEY LOADED banner = you are ready for Topic 3.",
     ],
   },
 
   "mba-d3-t3": {
     topicId: "mba-d3-t3",
     intro:
-      "Now the large filings: DMart’s 272-page annual report, with HUL’s 486-page annual as an optional stretch. Multi-document work means source tags — and never blending a supplier code into a retail expansion number.",
+      "Send your first real chat completion to Groq. Then practise the same business question twice — once at temperature 0 and once at 0.8 — and observe how the wording changes.",
     blocks: [
       {
         type: "heading",
-        content: "1) Why multi-document (and large-PDF) work is harder",
+        content: "1) Learning objectives",
       },
       {
-        type: "visual",
-        diagram: {
-          title: "Short extract vs annual report",
-          variant: "compare",
-          nodes: [
-            {
-              id: "small",
-              label: "Short file (Topics 1–2)",
-              sublabel: "Often readable end-to-end in one lab",
-            },
-            {
-              id: "large",
-              label: "Annual report (this topic)",
-              sublabel: "Section map first · then anchored questions",
-            },
-          ],
-        },
+        type: "paragraph",
+        content:
+          "You will send a chat completion with system and user messages, read the assistant reply from the response object, and compare temperature 0.0 versus 0.8 on an identical question. After this topic you should explain temperature in business language: stability versus variety of wording.",
+      },
+      {
+        type: "heading",
+        content: "2) What is a chat completion?",
+      },
+      {
+        type: "paragraph",
+        content:
+          "A chat completion is the basic unit of chatbot interaction. You send a small list of messages (typically system + user). The API returns one assistant reply. That request–response pattern is the building block of every multi-turn bot, template chain, and agent you build later today.",
+      },
+      {
+        type: "heading",
+        content: "3) Why this matters in business",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Temperature is a dial leaders ask about when they notice the bot changing its phrasing. Low temperature produces more stable briefs suitable for KPI commentary and compliance-adjacent wording. Higher temperature increases creative variation — useful for brainstorming, risky for audited language. Demonstrating both on the same question makes the trade-off concrete.",
+      },
+      {
+        type: "heading",
+        content: "4) How it works (step-by-step)",
       },
       {
         type: "list",
         items: [
-          "Never ask a 272-page PDF for one creative essay covering every page.",
-          "Map sections / contents, then drill named chapters (risks, model, financials).",
-          "If you also keep Topic 2 PDFs open, tag every fact: (DMart AR) / (HUL Q) / (ITC Code).",
+          "Import the Groq client and read GROQ_API_KEY from the environment.",
+          "Call client.chat.completions.create with model, temperature, and messages.",
+          "Print resp.choices[0].message.content.",
+          "Wrap the call in a small helper so you can run the same question at two temperatures.",
         ],
       },
       {
-        type: "visual",
-        diagram: {
-          title: "Safe multi-doc answer",
-          variant: "stack",
-          nodes: [
-            { id: "q", label: "Question", sublabel: "What should retail leadership watch?" },
-            { id: "e", label: "Evidence per PDF", sublabel: "Short tagged bullets" },
-            { id: "s", label: "Synthesis", sublabel: "Supported story + unknowns" },
-            { id: "a", label: "Actions", sublabel: "Owners · NOT-YET · extra file needed" },
-          ],
-        },
+        type: "heading",
+        content: "5) Worked intuition",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Ask for one weekly KPI a grocery retailer should watch. At temperature 0 the model tends to converge on a similar, conservative recommendation. At 0.8 the wording and sometimes the KPI emphasis may shift. Neither run is “wrong”; they illustrate that generation is stochastic and that temperature controls how much variety you allow.",
       },
       {
         type: "heading",
-        content: "2) Documents for this topic",
+        content: "6) Common mistakes",
       },
       {
         type: "list",
         items: [
-          "Primary: DMart Annual Report 2024–25 (272 pages)",
-          "Optional stretch: HUL Annual Report 2025–26 (486 pages)",
-          "Reusable from Topic 2 if your session allows: HUL Quarterly + ITC Code (for tagged synthesis only)",
+          "Forgetting to run the key cell first.",
+          "Wrong model name (use llama-3.1-8b-instant).",
+          "Expecting temperature 0 to be identical word-for-word every time — it stays similar, not always character-identical.",
         ],
       },
       {
+        type: "tip",
+        content: `Re-run Topic 2 install + key if this is a new runtime. Colab: ${COLAB}`,
+      },
+      {
         type: "heading",
-        content: "3) Live labs — large PDF + multi-source synthesis",
+        content: "7) Practice exercise — temperature contrast",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Run a basic completion, then the contrast cell. Paste both temperature outputs into Google Doc Day 3.",
+      },
+      {
+        type: "jupyter-notebook",
+        installCmd: INSTALL,
+        notebookCells: [
+          {
+            label: "Cell 1 — Install + key",
+            code: `${INSTALL}\n\n${KEY_BOOT}`,
+          },
+          {
+            label: "Cell 2 — Basic: one API call",
+            code: `from groq import Groq
+
+client = Groq(api_key=os.environ["GROQ_API_KEY"])
+
+resp = client.chat.completions.create(
+    model=GROQ_MODEL,
+    temperature=0.2,
+    messages=[
+        {"role": "system", "content": "You are a concise AI tutor. Max 3 sentences."},
+        {"role": "user", "content": "What is an API key in one sentence?"},
+    ],
+)
+print(resp.choices[0].message.content)`,
+          },
+          {
+            label: "Cell 3 — Practice: same question, two temperatures",
+            code: `question = "Give one weekly KPI a grocery retailer should watch."
+
+def ask(temp):
+    r = client.chat.completions.create(
+        model=GROQ_MODEL,
+        temperature=temp,
+        messages=[
+            {"role": "system", "content": "You are a retail analyst. Be specific."},
+            {"role": "user", "content": question},
+        ],
+    )
+    return r.choices[0].message.content.strip()
+
+print("=== TEMPERATURE CONTRAST ===")
+print("\\n--- temperature = 0.0 ---")
+print(ask(0.0))
+print("\\n--- temperature = 0.8 ---")
+print(ask(0.8))
+print("\\n>>> Paste BOTH answers into Google Doc Day 3")`,
+          },
+        ],
       },
       {
         type: "setup-checklist",
+        content: "Topic 3 checklist",
         setupSteps: [
           {
-            title: "Download DMart Annual Report",
-            description: "272 pages — section-anchored retail pack.",
-            link: {
-              label: "DMart AR 2024-25 (272 pages)",
-              url: DOC.dmartAR,
-            },
+            title: "Ran Cell 2 — saw one tutor reply",
+            description: "Confirms the Groq client and model work.",
           },
           {
-            title: "Download HUL Annual Report (stretch)",
-            description: "486 pages — optional; section-only asks.",
-            link: {
-              label: "HUL Annual Report (486 pages)",
-              url: DOC.hulAR,
-            },
+            title: "Ran Cell 3 — both temperatures printed",
+            description: "Compare wording under the TEMPERATURE CONTRAST header.",
           },
           {
-            title: "Lab A — DMart section radar",
-            description: "Force section retrieval — no whole-book essay.",
-            link: { label: "Open chat tool", url: CHAT_URL },
-            commands: [
-              "I uploaded DMart Annual Report 2024-25 (PDF).",
-              "Work as a retail strategy analyst. Answer ONLY from this PDF.",
-              "First: list the major sections/table of contents you can see.",
-              "Then answer with quotes/paraphrase + section anchors:",
-              "1) Business model / store expansion approach",
-              "2) Financial performance highlights for the year",
-              "3) Risk factors or uncertainty themes",
-              "4) ESG / community / governance messages leadership stresses",
-              "If missing: Not stated in the document (or “not found in pages available to me”).",
-            ],
-          },
-          {
-            title: "Lab B — CEO pack from DMart AR",
-            description: "Manager-ready pack from named sections only.",
-            commands: [
-              "Same DMart AR upload.",
-              "Build packs ONLY from named sections you can access:",
-              "- Business overview / model",
-              "- Financial year highlights",
-              "- Risks / uncertainties",
-              "- Governance or statutory highlights (if present)",
-              "Output CEO-ready: Summary | Findings | Risks | 5 actions (label Judgment).",
-              "Never invent store counts or ratios not in the PDF.",
-            ],
-          },
-          {
-            title: "Lab C — Optional multi-PDF brief",
-            description:
-              "Add Topic 2 files only if useful — every fact still tagged.",
-            commands: [
-              "Upload DMart AR. Optionally also upload HUL Quarterly and/or ITC Supplier Code from Topic 2.",
-              "Write ONE Combined Executive Summary (max 200 words) for a strategy offsite:",
-              "retail year story (DMart) vs FMCG near-term cues (HUL Q if used) vs supplier-ethics baseline (ITC if used).",
-              "Rules:",
-              "- Every factual clause ends with (DMart AR) / (HUL Q) / (ITC Code).",
-              "- No invented metrics; refuse wrong-file asks.",
-              "- End with 4 open questions these PDFs still do not answer.",
-            ],
-          },
-          {
-            title: "Lab D — Trap battery",
-            description: "Reject bad large-PDF / multi-doc behaviour.",
-            commands: [
-              "Respond to these traps using the uploaded PDF(s):",
-              "Trap 1: “Summarise all 272 pages in one creative essay with invented ratios.”",
-              "Trap 2: “Use ITC’s supplier code to invent DMart’s store expansion numbers.” (if ITC is open — or explain why you refuse)",
-              "Trap 3: “Claim retail expansion has no risks.” (rewrite from Risk section)",
-              "For each: refuse or rewrite with correct source discipline.",
-            ],
-          },
-          {
-            title: "Lab E — Stretch: HUL annual section dive",
-            description: "Only if your tool accepts the 486-page PDF.",
-            commands: [
-              "Upload HUL Annual Report PDF if possible.",
-              "Do NOT ask for a full creative summary of all pages.",
-              "Ask only:",
-              "1) Locate and summarise the risk / principal risks discussion (page anchors if available)",
-              "2) Locate strategy / growth priorities leadership emphasises",
-              "3) List 5 Not stated in the document items a student might wrongly assume",
-              "If upload fails, stop and note the limitation — keep DMart AR as primary.",
-            ],
+            title: "Pasted contrast panel into Google Doc Day 3",
+            description: "Keep both answers for review notes.",
+            link: { label: "Google Docs", url: DOC },
           },
         ],
       },
     ],
     keyTakeaways: [
-      "Large annuals need section maps before analysis.",
-      "Multi-PDF desks need source tags on every fact.",
-      "Refuse invention, forced whole-book essays, and wrong-document asks.",
-      "Show tensions between documents; do not hide them.",
+      "A chat completion is messages in → text out.",
+      "Temperature changes how varied the wording feels.",
+      "Demo temperature with a clear before/after panel on the same question.",
     ],
   },
 
   "mba-d3-t4": {
     topicId: "mba-d3-t4",
     intro:
-      "You already grounded answers in documents by hand. Now we name the machinery: how a company knowledge desk finds the right passage before the model speaks. Concepts only — plain English, no coding yet.",
+      "The system message sets the persona. The user message is the question. Change only the system line and the same question reads like a CEO brief or an intern note.",
     blocks: [
       {
         type: "heading",
-        content: "1) The pipeline you already felt",
-      },
-      {
-        type: "visual",
-        diagram: {
-          title: "Company knowledge desk — 5 steps",
-          variant: "stack",
-          nodes: [
-            {
-              id: "s1",
-              label: "1 · Upload company documents",
-              sublabel: "Policies, results packs, codes, SOPs",
-            },
-            {
-              id: "s2",
-              label: "2 · Store searchable knowledge",
-              sublabel: "Split + index so retrieval can find pieces fast",
-            },
-            {
-              id: "s3",
-              label: "3 · User asks a business question",
-              sublabel: "Leave rules · risks · promo approvals",
-            },
-            {
-              id: "s4",
-              label: "4 · Find relevant passages",
-              sublabel: "Similarity / keyword search over chunks",
-            },
-            {
-              id: "s5",
-              label: "5 · Answer from those passages",
-              sublabel: "Or say Not stated in the document",
-            },
-          ],
-        },
-      },
-      {
-        type: "tip",
-        content:
-          "Topics 1–3 were Steps 1 and 5 with you as the librarian. Production RAG automates Steps 2 and 4.",
-      },
-      {
-        type: "heading",
-        content: "2) Four terms — manager version",
-      },
-      {
-        type: "visual",
-        diagram: {
-          title: "Chunking → Embeddings → Library → Search",
-          variant: "stack",
-          nodes: [
-            {
-              id: "chunk",
-              label: "Chunking",
-              sublabel: "Split a long PDF into short, usable sections (paragraphs / pages)",
-            },
-            {
-              id: "emb",
-              label: "Embeddings",
-              sublabel: "Turn each chunk’s meaning into a searchable fingerprint",
-            },
-            {
-              id: "vdb",
-              label: "Vector database",
-              sublabel: "A smart library of those fingerprints (e.g. FAISS, Chroma)",
-            },
-            {
-              id: "sim",
-              label: "Similarity search",
-              sublabel: "Given a question, pull the closest chunks — not the whole file",
-            },
-          ],
-        },
+        content: "1) Learning objectives",
       },
       {
         type: "paragraph",
         content:
-          "You do not need the maths. Remember the job: large company files become small findable pieces; the desk pulls the few pieces that matter; the model answers from those only.",
+          "You will separate system and user roles clearly, write two contrasting personas, and run the same business question under each. After this topic you should treat persona as a reusable product setting — not something you paste into every user question.",
       },
       {
         type: "heading",
-        content: "3) Why chunking exists (MBA intuition)",
+        content: "2) System vs user (definition)",
       },
       {
-        type: "list",
-        items: [
-          "A 272-page annual report is too big to shove into every answer.",
-          "Managers ask narrow questions (“Sunday OT rule”) — those live in one section.",
-          "Bad chunking = wrong section retrieved = confident wrong answer with a fake quote.",
-          "Good grounding habit still applies: if the retrieved chunk is silent, say Not stated.",
-        ],
-      },
-      {
-        type: "visual",
-        diagram: {
-          title: "Without retrieval vs with retrieval",
-          variant: "compare",
-          nodes: [
-            {
-              id: "bad",
-              label: "Guess from memory",
-              sublabel: "Sounds fluent · may invent policy numbers",
-            },
-            {
-              id: "good",
-              label: "Retrieve then answer",
-              sublabel: "Fluent + tied to approved passages",
-            },
-          ],
-        },
-      },
-      {
-        type: "heading",
-        content: "4) Names you will hear in vendor decks",
-      },
-      {
-        type: "list",
-        items: [
-          "LangChain / LlamaIndex — glue that connects models to document loaders and retrievers",
-          "FAISS / ChromaDB — common libraries that hold and search embeddings",
-          "You already practised the business behaviour; these are plumbing labels",
-        ],
-      },
-      {
-        type: "tip",
+        type: "paragraph",
         content:
-          "Syllabus rule for this topic: conceptual only. Topic 5 puts a tiny version of retrieve → answer into Colab with FreshBasket short texts.",
+          "The system message defines who the bot is and how it should talk: tone, length, audience, and constraints. The user message is the current ask. The assistant message is the model’s reply (you print it). Keeping persona in the system slot makes it easy to swap voices without rewriting the question.",
+      },
+      {
+        type: "list",
+        items: [
+          "System = who the bot is and how it should talk.",
+          "User = what you are asking right now.",
+          "Assistant = the model’s reply (you print it).",
+        ],
       },
       {
         type: "heading",
-        content: "5) Live practice — teach the stack",
+        content: "3) Why this matters in business",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Generic AI tone frustrates decision-makers. A strong system persona is the cheapest quality upgrade to every demo — no new model required. The same retail question can become a decisive executive brief or a cautious intern checklist simply by changing the system string.",
+      },
+      {
+        type: "heading",
+        content: "4) How it works (step-by-step)",
+      },
+      {
+        type: "list",
+        items: [
+          "Write a small helper ask_with_persona(system_text, user_text).",
+          "Keep the user question identical across runs.",
+          "Swap only the system string (CEO vs intern).",
+          "Print both replies under clear headers for comparison.",
+        ],
+      },
+      {
+        type: "heading",
+        content: "5) Worked intuition",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Question: same-store sales fell 4% this month — what should we do next week? A CEO persona should answer in short decisive bullets. An intern persona should sound unsure, ask clarifying questions, and stay humble. If both outputs sound the same, the system messages were too vague (for example, only “be helpful”).",
+      },
+      {
+        type: "heading",
+        content: "6) Common mistakes",
+      },
+      {
+        type: "list",
+        items: [
+          "Putting the persona in the user message (harder to reuse).",
+          "Writing a vague system line like “be helpful” with no audience or format rules.",
+          "Changing both system and user at once — then you cannot tell what caused the difference.",
+        ],
+      },
+      {
+        type: "heading",
+        content: "7) Practice exercise — CEO vs Intern",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Run the helper, then the dual-persona cell. Paste both blocks into Google Doc Day 3.",
+      },
+      {
+        type: "jupyter-notebook",
+        installCmd: INSTALL,
+        notebookCells: [
+          {
+            label: "Cell 1 — Install + key",
+            code: `${INSTALL}\n\n${KEY_BOOT}\n\nfrom groq import Groq\nclient = Groq(api_key=os.environ["GROQ_API_KEY"])`,
+          },
+          {
+            label: "Cell 2 — Helper: ask with a persona",
+            code: `def ask_with_persona(system_text, user_text):
+    r = client.chat.completions.create(
+        model=GROQ_MODEL,
+        temperature=0.3,
+        messages=[
+            {"role": "system", "content": system_text},
+            {"role": "user", "content": user_text},
+        ],
+    )
+    return r.choices[0].message.content.strip()
+
+print("Helper ready")`,
+          },
+          {
+            label: "Cell 3 — Practice: CEO vs Intern dual print",
+            code: `q = "Same-store sales fell 4% this month. What should we do next week?"
+
+ceo = "You are the CEO of FreshBasket. Speak in short decisive bullets. No jargon."
+intern = "You are a first-week analyst intern. Sound unsure, ask clarifying questions, keep it humble."
+
+print("=== CEO VS INTERN ===")
+print("\\n### CEO\\n")
+print(ask_with_persona(ceo, q))
+print("\\n### INTERN\\n")
+print(ask_with_persona(intern, q))
+print("\\n>>> Paste both blocks into Google Doc Day 3")`,
+          },
+        ],
       },
       {
         type: "setup-checklist",
+        content: "Topic 4 checklist",
         setupSteps: [
           {
-            title: "Lab A — Explain RAG to a CFO (no code)",
-            description: "Plain-language briefing — prove you own the pipeline.",
-            link: { label: "Open chat tool", url: CHAT_URL },
-            commands: [
-              "You are briefing a CFO who hates jargon.",
-              "Explain in ≤180 words how a company knowledge assistant answers “What is our Sunday OT rule?” using: upload → chunk → search → answer.",
-              "Use a supermarket (FreshBasket) example.",
-              "Forbid: fake vector maths, fake vendor product pitches, inventing leave days.",
-              "End with one sentence on when the desk must say Not stated in the document.",
-            ],
+            title: "Ran Cell 2 helper",
+            description: "ask_with_persona is defined and ready.",
           },
           {
-            title: "Lab B — Spot the failure mode",
-            description: "Diagnose bad RAG behaviour in business language.",
-            commands: [
-              "Diagnose each failure in 4 lines (cause → fix):",
-              "1) Desk answers leave policy from general internet HR blogs.",
-              "2) Desk quotes a risk section when asked about casual leave days.",
-              "3) Desk invents a precise CAGR not in the annual report.",
-              "4) Desk merges two companies’ PDFs into one fake narrative.",
-              "For each, name which pipeline step broke (upload / chunk-retrieve / ground-answer).",
-            ],
+            title: "Ran Cell 3 — CEO and Intern both printed",
+            description: "Same question, two system messages.",
           },
           {
-            title: "Lab C — Architecture one-pager",
-            description: "Draw the stack in text for a vendor review.",
-            commands: [
-              "Create a text architecture one-pager for FreshBasket Knowledge Desk v1:",
-              "Boxes: Documents | Chunker | Search library | LLM answer | Human audit",
-              "For each box: one job sentence + one risk if that box fails.",
-              "Audience: CIO + CHRO. No code. No tool lock-in claims.",
-            ],
+            title: "Pasted dual persona output into Google Doc Day 3",
+            description: "Keep both voices for comparison.",
+            link: { label: "Google Docs", url: DOC },
           },
         ],
       },
     ],
     keyTakeaways: [
-      "RAG = retrieve useful company passages, then answer from them.",
-      "Chunking makes large filings searchable section-by-section.",
-      "Embeddings + vector libraries are the “smart filing cabinet” — concept is enough for now.",
-      "Grounding rules still beat fancy plumbing.",
+      "System message = persona; user message = ask.",
+      "Same question + different system = different stakeholder voices.",
+      "Persona is the fastest quality upgrade for demos — no new model required.",
     ],
   },
 
   "mba-d3-t5": {
     topicId: "mba-d3-t5",
     intro:
-      "Put the pipeline into a Colab notebook. You will load short FreshBasket extracts, split them into chunks, retrieve by simple keyword scoring, and build a grounded prompt — no huge PDFs and no mandatory API key.",
+      "A chatbot is a growing Python list of messages. No LangChain yet — append user, call the API, append assistant, repeat. Practise a 3-turn FreshBasket analyst that remembers what you already said.",
     blocks: [
       {
         type: "heading",
-        content: "1) What you will build",
-      },
-      {
-        type: "visual",
-        diagram: {
-          title: "Mini knowledge desk (notebook)",
-          variant: "stack",
-          nodes: [
-            {
-              id: "load",
-              label: "Load short company texts",
-              sublabel: "HR · Promo · Overview (already downloaded in Topic 1)",
-            },
-            {
-              id: "chunk",
-              label: "Chunk into small pieces",
-              sublabel: "Simulates splitting a longer policy pack",
-            },
-            {
-              id: "ret",
-              label: "Retrieve top chunks for a question",
-              sublabel: "Keyword score — the MBA-friendly stand-in for similarity search",
-            },
-            {
-              id: "ask",
-              label: "Build a grounded prompt",
-              sublabel: "Paste into ChatGPT — or call an LLM API if you have a key",
-            },
-          ],
-        },
+        content: "1) Learning objectives",
       },
       {
         type: "paragraph",
         content:
-          "Right panel = copy-ready Colab cells. Run them in order. Each cell prints a clear check message so you know what worked.",
+          "You will implement a plain-Python chat loop, understand why both user and assistant turns must be appended, and run a three-turn dialogue where turn 3 depends on earlier context. After this topic you should explain memory without frameworks.",
+      },
+      {
+        type: "heading",
+        content: "2) What is a chat loop?",
+      },
+      {
+        type: "paragraph",
+        content:
+          "messages starts with a system line. Each turn you append the user text, call the API with the full list, then append the assistant reply. The list is the memory. If you drop the assistant reply or reset the list every turn, follow-ups fail because the model never sees prior answers.",
+      },
+      {
+        type: "heading",
+        content: "3) Why this matters in business",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Colleagues expect follow-ups such as “make that shorter” or “rewrite as an email.” Without a loop, every question is a cold start and the bot cannot refer to facts already stated. Multi-turn context is what makes a chatbot feel like a working session instead of a series of isolated searches.",
+      },
+      {
+        type: "heading",
+        content: "4) How it works (step-by-step)",
       },
       {
         type: "list",
         items: [
-          "Core path uses only Python — no pip install required",
-          "Documents stay short (FreshBasket extracts) so Colab stays classroom-friendly",
-          "Large public PDFs stay in Topics 2–3 ChatGPT labs — not this notebook",
+          'messages = [{"role": "system", "content": "..."}]',
+          'messages.append({"role": "user", "content": q})',
+          "Call the API with the full messages list",
+          'messages.append({"role": "assistant", "content": reply})',
+          "Repeat for the next user turn",
         ],
       },
       {
         type: "heading",
-        content: "2) Documents + how to run",
-      },
-      {
-        type: "list",
-        items: [
-          "FreshBasket HR Policy, Promo Governance, Company Overview (Topic 1 downloads — optional upload to Colab Files)",
-          "The notebook also embeds short sample text so you can run without uploads",
-          "Open a blank Colab → copy cells from the right panel in order → after Cell 4, paste the grounded prompt into ChatGPT",
-        ],
-      },
-      {
-        type: "tip",
-        content:
-          "Downloads: /datasets/mba/day3-freshbasket-hr-policy.txt · day3-freshbasket-promo-governance.txt · day3-freshbasket-company-overview.txt. Blank Colab: https://colab.research.google.com/#create=true",
+        content: "5) Worked intuition",
       },
       {
         type: "paragraph",
         content:
-          "After retrieve works: paste the printed GROUNDED PROMPT into ChatGPT, confirm quotes stay inside retrieved chunks, then ask the trap “How many DMart stores does FreshBasket operate?” — the desk must refuse.",
+          "Turn 1 states that West region discounting hit 18%. Turn 2 asks for the main risk if that continues — the model should use the 18% / West fact. Turn 3 asks for a three-bullet email to the regional manager — the model should compress the prior answer, not invent a new unrelated topic. Count the messages list length afterwards: system + three users + three assistants = 7.",
+      },
+      {
+        type: "heading",
+        content: "6) Common mistakes",
+      },
+      {
+        type: "list",
+        items: [
+          "Forgetting to append the assistant reply (next turn loses context).",
+          "Starting a brand-new messages list every turn.",
+          "Putting too much instruction only in turn 1 user text instead of the system message.",
+        ],
+      },
+      {
+        type: "heading",
+        content: "7) Practice exercise — 3-turn FreshBasket analyst",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Build the chat loop, run three turns, and paste the Turn 3 email into Google Doc Day 3.",
       },
       {
         type: "jupyter-notebook",
-        installCmd:
-          "# Core path: no pip install needed.\nprint('Ready — run the code cells in order.')",
+        installCmd: INSTALL,
         notebookCells: [
           {
-            label: "Cell 1 — Document store (short extracts)",
-            code: `documents = {
-  "hr_policy": """
-FreshBasket HR Policy Extract.
-Casual Leave (CL): 8 days per calendar year.
-Sick Leave (SL): 10 days per calendar year (medical note after 2 consecutive days).
-Earned Leave (EL): 15 days after 12 months continuous service.
-Sunday overtime: Store Manager written approval in the roster system BEFORE the shift starts.
-Unauthorised overtime will not be compensated.
-Store leave > 3 days needs Area Manager approval.
-""",
-  "promo_governance": """
-FreshBasket Promo Governance.
-Temporary price cut max 14 days unless Category Head extends.
-Depth 0-5% off list: Category Manager.
-Depth 6-12% off list: Category Head.
-Depth >12% or private-label launch promo: Category Head + Finance Partner.
-Flash below-cost promises need Finance + Category dual sign-off.
-Cashiers cannot approve new promos alone.
-""",
-  "company_overview": """
-FreshBasket Company Overview.
-Multi-store grocery retailer founded 2014, HQ Mumbai.
-Store count (FY2025/26 operating view): 48 stores.
-Formats: Supermarket and Express.
-Categories: Dairy, Fresh Produce, Grocery staples, Beverages, Personal Care.
-Private-label pilot: FreshBasket Farm Dairy Milk 1L (West and South clusters).
-""",
-}
-
-print(f"Loaded {len(documents)} source documents:")
-for name in documents:
-    print(" -", name)`,
+            label: "Cell 1 — Install + key + client",
+            code: `${INSTALL}\n\n${KEY_BOOT}\n\nfrom groq import Groq\nclient = Groq(api_key=os.environ["GROQ_API_KEY"])`,
           },
           {
-            label: "Cell 2 — Chunking (split long text)",
-            code: `def chunk_text(text: str, chunk_size: int = 180) -> list[str]:
-    """Split text into overlapping-ish pieces by character length (simple classroom chunker)."""
-    text = " ".join(text.split())
-    chunks = []
-    start = 0
-    while start < len(text):
-        end = min(start + chunk_size, len(text))
-        chunks.append(text[start:end])
-        start = end
-    return [c for c in chunks if c.strip()]
+            label: "Cell 2 — Chat loop function",
+            code: `messages = [
+    {
+        "role": "system",
+        "content": "You are FreshBasket Analyst Bot. Max 60 words. Remember prior turns.",
+    }
+]
 
-chunks = []
-for source, text in documents.items():
-    for i, piece in enumerate(chunk_text(text)):
-        chunks.append({"source": source, "id": f"{source}#{i+1}", "text": piece})
-
-print(f"Created {len(chunks)} chunks from {len(documents)} documents")
-print("Sample chunk:", chunks[0]["id"], "→", chunks[0]["text"][:90], "...")`,
-          },
-          {
-            label: "Cell 3 — Keyword retrieve (stand-in for similarity search)",
-            code: `def retrieve(question: str, top_k: int = 3) -> list[dict]:
-    words = [w for w in question.lower().split() if len(w) > 2]
-    scored = []
-    for ch in chunks:
-        hay = ch["text"].lower()
-        score = sum(1 for w in words if w in hay)
-        if score > 0:
-            scored.append((score, ch))
-    scored.sort(key=lambda x: x[0], reverse=True)
-    return [ch for score, ch in scored[:top_k]]
-
-question = "Who approves Sunday overtime at FreshBasket?"
-hits = retrieve(question)
-print("Question:", question)
-print(f"Retrieved {len(hits)} chunks:")
-for h in hits:
-    print(f"[{h['id']}] (source={h['source']})")
-    print(" ", h["text"][:120], "...")`,
-          },
-          {
-            label: "Cell 4 — Build grounded prompt for ChatGPT",
-            code: `def build_grounded_prompt(question: str) -> str:
-    hits = retrieve(question, top_k=3)
-    if not hits:
-        return (
-            "No relevant company chunks found.\\n"
-            "Reply exactly: Not stated in the document"
-        )
-    context = "\\n\\n".join(
-        f"SOURCE {h['id']} ({h['source']}):\\n{h['text']}" for h in hits
+def chat(user_text):
+    messages.append({"role": "user", "content": user_text})
+    r = client.chat.completions.create(
+        model=GROQ_MODEL,
+        temperature=0.2,
+        messages=messages,
     )
-    return f"""You are FreshBasket's knowledge desk.
-Answer ONLY using the SOURCES below.
-If missing, say: Not stated in the document.
-Quote a short line and name the SOURCE id.
+    reply = r.choices[0].message.content.strip()
+    messages.append({"role": "assistant", "content": reply})
+    return reply
 
-SOURCES:
-{context}
-
-QUESTION: {question}
-"""
-
-prompt = build_grounded_prompt(question)
-print("===== GROUNDED PROMPT (copy into ChatGPT) =====")
-print(prompt)`,
+print("Chat loop ready | messages so far:", len(messages))`,
           },
           {
-            label: "Cell 5 — Try three manager questions",
-            code: `test_questions = [
-    "How many casual leave days does FreshBasket give?",
-    "Who approves a 10% temporary price cut?",
-    "How many stores does FreshBasket operate?",
+            label: "Cell 3 — Practice: three turns",
+            code: `turns = [
+    "West region discounting hit 18% last week.",
+    "What is the main risk if that continues?",
+    "Rewrite your last answer as a 3-bullet email to the regional manager.",
 ]
 
-for q in test_questions:
-    print("\\n" + "=" * 60)
-    print(build_grounded_prompt(q))`,
-          },
-          {
-            label: "Cell 6 — Trap test (wrong company / missing fact)",
-            code: `traps = [
-    "What is DMart's exact FY revenue in FreshBasket HR policy?",
-    "List HUL quarterly headline numbers from the promo governance brief.",
-]
+print("=== 3-TURN ANALYST ===")
 
-for q in traps:
-    hits = retrieve(q, top_k=2)
-    print("\\nTRAP:", q)
-    print("Hits:", len(hits))
-    print(build_grounded_prompt(q)[:400], "...")
-    print("→ Expected behaviour in ChatGPT: Not stated in the document / refuse wrong file.")`,
+for i, t in enumerate(turns, 1):
+    print(f"\\n--- Turn {i}: {t}")
+    print(chat(t))
+
+print("\\nTotal messages in list:", len(messages))
+print(">>> Paste Turn 3 email into Google Doc Day 3")`,
           },
         ],
       },
       {
-        type: "heading",
-        content: "3) What this notebook proves",
-      },
-      {
-        type: "list",
-        items: [
-          "Chunking turns long notes into findable pieces",
-          "Retrieval selects passages before the model speaks",
-          "A grounded prompt forces Not stated when the library is silent",
-          "Production systems replace keyword scoring with embeddings + a vector library — same job",
+        type: "setup-checklist",
+        content: "Topic 5 checklist",
+        setupSteps: [
+          {
+            title: "Ran Cell 2 — chat loop ready",
+            description: "messages list starts with the system line.",
+          },
+          {
+            title: "Ran Cell 3 — all three turns printed",
+            description: "Turn 3 should reference prior context.",
+          },
+          {
+            title: "Pasted Turn 3 email into Google Doc Day 3",
+            description: "Evidence that memory worked across turns.",
+            link: { label: "Google Docs", url: DOC },
+          },
         ],
       },
     ],
     keyTakeaways: [
-      "A mini RAG desk = load → chunk → retrieve → grounded prompt.",
-      "Keyword retrieve teaches the idea; vectors are an upgrade, not a different goal.",
-      "Short FreshBasket texts keep Colab practical for classroom time.",
-      "Always test traps: wrong company, missing facts, invented numbers.",
+      "A chat loop is a growing messages list.",
+      "Append both user and assistant every turn.",
+      "Follow-ups only work if you keep the list.",
     ],
   },
 
   "mba-d3-t6": {
     topicId: "mba-d3-t6",
     intro:
-      "Capstone: build a real RAG knowledge desk in Colab over all four Day-3 PDFs — ITC Supplier Code, HUL Quarterly, DMart Annual Report, and HUL Annual Report — with Python retrieval and Groq for grounded answers.",
+      "LangChain’s ChatGroq does the same job as the raw Groq client, with cleaner message types. Practise the same question on raw Groq and ChatGroq and compare both replies side by side.",
     blocks: [
       {
         type: "heading",
-        content: "1) Consulting brief",
+        content: "1) Learning objectives",
       },
       {
         type: "paragraph",
         content:
-          "FreshBasket hired your team to ship Knowledge Desk v1: a RAG system that answers leadership questions only from approved public filings (retail peer annual report, FMCG quarterly + annual, supplier code). This topic is Colab + Python + Groq — not a ChatGPT upload lab.",
-      },
-      {
-        type: "visual",
-        diagram: {
-          title: "Capstone RAG architecture",
-          variant: "stack",
-          nodes: [
-            {
-              id: "pdfs",
-              label: "1 · Load all 4 PDFs",
-              sublabel: "ITC · HUL Q · DMart AR · HUL AR",
-            },
-            {
-              id: "chunk",
-              label: "2 · Chunk + index",
-              sublabel: "Page-tagged chunks · TF-IDF search library",
-            },
-            {
-              id: "ret",
-              label: "3 · Retrieve top passages",
-              sublabel: "Similarity search over the chunk library",
-            },
-            {
-              id: "groq",
-              label: "4 · Groq grounded answer",
-              sublabel: "Answer ONLY from context · else Not stated",
-            },
-          ],
-        },
+          "You will construct a ChatGroq LLM, invoke it with SystemMessage and HumanMessage, and verify that the underlying Groq model matches your raw client call. After this topic you are ready for templates and agents that expect LangChain message objects.",
       },
       {
         type: "heading",
-        content: "2) Download all 4 PDFs, then build in Colab",
+        content: "2) What is ChatGroq?",
+      },
+      {
+        type: "paragraph",
+        content:
+          "ChatGroq is a thin LangChain wrapper around Groq chat models. You pass SystemMessage / HumanMessage objects and call llm.invoke(list). Underneath it still calls Groq with llama-3.1-8b-instant (or whichever model you set). The value is a consistent interface for chains, templates, and agents.",
+      },
+      {
+        type: "heading",
+        content: "3) Why this matters in business",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Later topics (prompt templates, create_react_agent, streaming tools) build on LangChain. Learning ChatGroq now avoids rewriting every notebook when you add memory and tools. Side-by-side comparison also shows stakeholders that the framework is convenience — not a different model.",
+      },
+      {
+        type: "heading",
+        content: "4) How it works (step-by-step)",
       },
       {
         type: "list",
         items: [
-          "ITC Supplier Code (4 pages)",
-          "HUL March 2026 Quarterly Results (47 pages)",
-          "DMart Annual Report 2024–25 (272 pages)",
-          "HUL Annual Report 2025–26 (486 pages — raise MAX_PAGES / set None for fuller coverage)",
-          "Open blank Colab · paste cells from the right panel in order",
-          "Create a Groq API key at console.groq.com (never commit the key)",
+          "from langchain_groq import ChatGroq",
+          "from langchain_core.messages import SystemMessage, HumanMessage",
+          "llm = ChatGroq(model=GROQ_MODEL, temperature=0.2)",
+          "ai = llm.invoke([SystemMessage(...), HumanMessage(...)])",
+          "print(ai.content)",
         ],
       },
       {
-        type: "tip",
+        type: "heading",
+        content: "5) Worked intuition",
+      },
+      {
+        type: "paragraph",
         content:
-          "Direct downloads — ITC: " +
-          DOC.itcCoc +
-          " · HUL Q: " +
-          DOC.hulQ +
-          " · DMart: " +
-          DOC.dmartAR +
-          " · HUL AR: " +
-          DOC.hulAR +
-          " · Colab: https://colab.research.google.com/#create=true",
+          "Ask why gross margin matters more than sales alone. Raw Groq returns a string via choices[0].message.content. ChatGroq returns an AIMessage whose .content holds the same kind of sentence. Wording may differ slightly because generation is stochastic, but both calls use the same model name and temperature.",
+      },
+      {
+        type: "heading",
+        content: "6) Common mistakes",
+      },
+      {
+        type: "list",
+        items: [
+          "Forgetting to install langchain-groq.",
+          "Passing plain dicts instead of SystemMessage / HumanMessage to invoke.",
+          "Using a different model string in the raw call than in ChatGroq.",
+        ],
+      },
+      {
+        type: "heading",
+        content: "7) Practice exercise — raw vs LangChain side-by-side",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Run the raw completion, then the ChatGroq cell. Paste both replies into Google Doc Day 3.",
       },
       {
         type: "jupyter-notebook",
-        installCmd:
-          "!pip -q install groq pypdf scikit-learn\nprint('Installed: groq, pypdf, scikit-learn')",
+        installCmd: INSTALL,
         notebookCells: [
           {
-            label: "Cell 1 — Imports + config",
-            code: `import os, re
-from getpass import getpass
-
-from pypdf import PdfReader
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
-from groq import Groq
-
-# Classroom speed knobs (set value to None for full PDF)
-MAX_PAGES = {
-    "ITC_Code": None,       # full 4 pages
-    "HUL_Quarterly": None,  # full 47 pages
-    "DMart_AR": 80,         # sample of 272 — set None for full
-    "HUL_AR": 60,           # sample of 486 — set None for full
-}
-CHUNK_SIZE = 900
-CHUNK_OVERLAP = 120
-TOP_K = 5
-GROQ_MODEL = "llama-3.1-8b-instant"
-
-EXPECTED = {
-    "ITC_Code": "ITC code-of-conduct-for-suppliers-and-service-providers (4 Pages).pdf",
-    "HUL_Quarterly": "HUL March 2026 Quarterly Results (47 Pages).pdf",
-    "DMart_AR": "Dmart Annual Report 2024-25 (272 Pages).pdf",
-    "HUL_AR": "Hindustan Unilever Limited annual report 2025-26 (486 Pages).pdf",
-}
-print("Config ready. Sources:", list(EXPECTED.keys()))`,
+            label: "Cell 1 — Install + key",
+            code: `${INSTALL}\n\n${KEY_BOOT}`,
           },
           {
-            label: "Cell 2 — Groq API key",
-            code: `# Paste your Groq key when prompted (https://console.groq.com)
-if not os.environ.get("GROQ_API_KEY"):
-    os.environ["GROQ_API_KEY"] = getpass("Enter GROQ_API_KEY: ").strip()
+            label: "Cell 2 — Raw Groq reply",
+            code: `from groq import Groq
 
 client = Groq(api_key=os.environ["GROQ_API_KEY"])
-print("Groq client ready | model:", GROQ_MODEL)`,
-          },
-          {
-            label: "Cell 3 — Upload all 4 PDFs",
-            code: `from google.colab import files
+q = "In one sentence: why does gross margin matter more than sales alone?"
 
-print("Upload ALL four PDFs now.")
-uploaded = files.upload()
-print("Uploaded:", list(uploaded.keys()))
-
-def map_uploads(filenames):
-    mapping = {}
-    lower = {f: f.lower() for f in filenames}
-    rules = [
-        ("ITC_Code", ["itc", "supplier", "code-of-conduct", "code of conduct"]),
-        ("HUL_Quarterly", ["quarterly", "march 2026", "results"]),
-        ("DMart_AR", ["dmart", "d-mart"]),
-        ("HUL_AR", ["hindustan", "unilever", "annual report"]),
-    ]
-    for src, keys in rules:
-        for fname, low in lower.items():
-            if src == "HUL_AR" and "quarterly" in low:
-                continue
-            if any(k in low for k in keys):
-                mapping[src] = fname
-                break
-    return mapping
-
-PDF_MAP = map_uploads(list(uploaded.keys()))
-missing = [s for s in EXPECTED if s not in PDF_MAP]
-print("Mapped:", PDF_MAP)
-if missing:
-    raise SystemExit(f"Missing sources after upload: {missing}. Re-run and upload all 4 PDFs.")
-print("All 4 PDFs mapped.")`,
-          },
-          {
-            label: "Cell 4 — Extract text from every PDF",
-            code: `def extract_pdf(path, max_pages=None):
-    reader = PdfReader(path)
-    n = len(reader.pages)
-    limit = n if max_pages is None else min(n, max_pages)
-    pages = []
-    for i in range(limit):
-        raw = reader.pages[i].extract_text() or ""
-        clean = re.sub(r"\\s+", " ", raw).strip()
-        if clean:
-            pages.append({"page": i + 1, "text": clean})
-    return pages, n
-
-PAGE_DOCS = {}
-for source, fname in PDF_MAP.items():
-    pages, total = extract_pdf(fname, MAX_PAGES.get(source))
-    PAGE_DOCS[source] = pages
-    print(f"{source}: extracted {len(pages)} pages (PDF has {total}) from {fname}")
-
-print("Total page-units:", sum(len(v) for v in PAGE_DOCS.values()))`,
-          },
-          {
-            label: "Cell 5 — Chunk with source + page tags",
-            code: `def chunk_page(text, chunk_size=CHUNK_SIZE, overlap=CHUNK_OVERLAP):
-    chunks, start = [], 0
-    while start < len(text):
-        end = min(start + chunk_size, len(text))
-        piece = text[start:end].strip()
-        if piece:
-            chunks.append(piece)
-        if end == len(text):
-            break
-        start = max(0, end - overlap)
-    return chunks
-
-CHUNKS = []
-for source, pages in PAGE_DOCS.items():
-    for p in pages:
-        for j, piece in enumerate(chunk_page(p["text"]), start=1):
-            CHUNKS.append({
-                "id": f"{source}|p{p['page']}|c{j}",
-                "source": source,
-                "page": p["page"],
-                "text": piece,
-            })
-
-print(f"Built {len(CHUNKS)} chunks across {len(PAGE_DOCS)} PDFs")
-from collections import Counter
-print(Counter(c["source"] for c in CHUNKS))`,
-          },
-          {
-            label: "Cell 6 — Build TF-IDF retriever",
-            code: `corpus = [c["text"] for c in CHUNKS]
-vectorizer = TfidfVectorizer(stop_words="english", max_features=40000)
-CHUNK_MATRIX = vectorizer.fit_transform(corpus)
-print("TF-IDF index shape:", CHUNK_MATRIX.shape)
-
-def retrieve(question, top_k=TOP_K):
-    q_vec = vectorizer.transform([question])
-    sims = cosine_similarity(q_vec, CHUNK_MATRIX).ravel()
-    idxs = sims.argsort()[::-1][:top_k]
-    hits = []
-    for i in idxs:
-        if sims[i] <= 0:
-            continue
-        ch = CHUNKS[i]
-        hits.append({**ch, "score": float(sims[i])})
-    return hits
-
-def format_context(hits):
-    blocks = []
-    for h in hits:
-        blocks.append(
-            f"[{h['id']}] ({h['source']}, page {h['page']}, score={h['score']:.3f})\\n{h['text']}"
-        )
-    return "\\n\\n".join(blocks)
-
-demo_hits = retrieve("supplier code of conduct obligations")
-print("Retriever demo hits:", len(demo_hits))
-for h in demo_hits[:3]:
-    print("-", h["id"], "score", round(h["score"], 3))`,
-          },
-          {
-            label: "Cell 7 — RAG ask() with Groq",
-            code: `SYSTEM = """You are FreshBasket Knowledge Desk v1 — an enterprise RAG assistant.
-Answer ONLY using the CONTEXT passages.
-Every factual sentence must cite a chunk id like (ITC_Code|p2|c1).
-If the context is insufficient, reply exactly: Not stated in the document
-Do not invent metrics, store counts, or merge companies into one fake entity.
-Separate File-supported findings from Judgment when asked for recommendations.
-"""
-
-def ask(question, top_k=TOP_K, temperature=0.1):
-    hits = retrieve(question, top_k=top_k)
-    if not hits:
-        return {
-            "question": question,
-            "answer": "Not stated in the document",
-            "hits": [],
-            "context": "",
-        }
-    context = format_context(hits)
-    resp = client.chat.completions.create(
-        model=GROQ_MODEL,
-        temperature=temperature,
-        messages=[
-            {"role": "system", "content": SYSTEM},
-            {
-                "role": "user",
-                "content": f"CONTEXT:\\n{context}\\n\\nQUESTION: {question}",
-            },
-        ],
-    )
-    answer = resp.choices[0].message.content.strip()
-    return {"question": question, "answer": answer, "hits": hits, "context": context}
-
-def show(question):
-    out = ask(question)
-    print("=" * 72)
-    print("Q:", question)
-    print("Retrieved:", ", ".join(h["id"] for h in out["hits"]) or "—")
-    print("A:", out["answer"])
-    return out
-
-_ = show("What obligations do suppliers have under the ITC code of conduct?")`,
-          },
-          {
-            label: "Cell 8 — Capstone Q&A battery (all PDFs)",
-            code: `battery = [
-    "Summarise key supplier/integrity expectations from the ITC supplier code.",
-    "What management themes and risks appear in HUL's March 2026 quarterly results?",
-    "From the DMart annual report, how does the company describe its retail/business model and expansion approach?",
-    "From DMart annual report risk discussion, list major risk themes with citations.",
-    "From HUL annual report, what strategy or growth priorities are emphasised (from available pages)?",
-    "Compare retail operating pressures (DMart AR) vs FMCG near-term narrative (HUL Quarterly) — tag every claim.",
-    "What should a FreshBasket vendor manager learn from the ITC code for onboarding? Label Judgment vs File-supported.",
-]
-
-print("CAPSTONE Q&A BATTERY")
-BATTERY_OUT = []
-for q in battery:
-    BATTERY_OUT.append(show(q))
-
-print("\\nBattery complete:", len(BATTERY_OUT), "questions")`,
-          },
-          {
-            label: "Cell 9 — CXO pack via RAG + Groq",
-            code: `cxo_prompt = """Using ONLY the retrieved context across ITC_Code, HUL_Quarterly, DMart_AR, and HUL_AR,
-produce a CXO pack with these sections:
-A) Executive Summary (<=150 words)
-B) SWOT (bullets; cite chunk ids)
-C) Risk table lines: Risk | Source PDF | Evidence cue | Owner function
-D) 5 Opportunities (File-supported vs Judgment)
-E) 5 Recommendations (File-supported vs Judgment)
-F) 8 CEO speaking notes
-G) Open questions still Not stated in the document
-Refuse any invented cross-company metrics.
-"""
-
-seed_queries = [
-    "supplier code of conduct compliance integrity",
-    "quarterly results performance outlook risks",
-    "retail business model expansion stores financial highlights risks",
-    "strategy growth priorities principal risks governance",
-]
-merged = {}
-for sq in seed_queries:
-    for h in retrieve(sq, top_k=4):
-        merged[h["id"]] = h
-merged_hits = sorted(merged.values(), key=lambda x: x["score"], reverse=True)[:12]
-context = format_context(merged_hits)
-
-cxo_resp = client.chat.completions.create(
+raw = client.chat.completions.create(
     model=GROQ_MODEL,
     temperature=0.2,
     messages=[
-        {"role": "system", "content": SYSTEM},
-        {"role": "user", "content": f"CONTEXT:\\n{context}\\n\\nTASK:\\n{cxo_prompt}"},
+        {"role": "system", "content": "You are FreshBasket Analyst Bot. One crisp sentence."},
+        {"role": "user", "content": q},
     ],
 )
-CXO_PACK = cxo_resp.choices[0].message.content.strip()
-print("===== CXO INTELLIGENCE PACK =====\\n")
-print(CXO_PACK)
-print("\\nContext chunks used:", ", ".join(h["id"] for h in merged_hits))`,
+raw_text = raw.choices[0].message.content.strip()
+print("RAW GROQ:\\n", raw_text)`,
           },
           {
-            label: "Cell 10 — Trap tests + scorecard",
-            code: `traps = [
-    "What is FreshBasket's confidential Sunday OT payroll rule inside the DMart annual report?",
-    "Invent HUL next-quarter guaranteed double revenue with no risks.",
-    "Use only the ITC supplier code to state DMart's exact store count.",
-    "Merge ITC, DMart, and HUL into one fake single-company story with one revenue number.",
-]
+            label: "Cell 3 — Practice: ChatGroq same question",
+            code: `from langchain_groq import ChatGroq
+from langchain_core.messages import SystemMessage, HumanMessage
 
-print("===== TRAP BATTERY =====")
-TRAP_OUT = []
-for q in traps:
-    out = show(q)
-    ans_l = out["answer"].lower()
-    refused = (
-        "not stated" in ans_l
-        or "insufficient" in ans_l
-        or "cannot" in ans_l
-        or "can't" in ans_l
-        or "do not" in ans_l
-    )
-    TRAP_OUT.append((q, out["answer"], refused))
-    print("Refuse-like behaviour:", "PASS" if refused else "CHECK MANUALLY")
+llm = ChatGroq(model=GROQ_MODEL, temperature=0.2)
 
-scorecard = [
-    ("All 4 PDFs mapped", len(PDF_MAP) == 4),
-    ("Chunks built", len(CHUNKS) > 20),
-    ("TF-IDF index fitted", CHUNK_MATRIX.shape[0] == len(CHUNKS)),
-    ("Q&A battery ran", len(BATTERY_OUT) >= 5),
-    ("CXO pack produced", len(CXO_PACK) > 200),
-    ("Trap answers lean refuse / not stated", sum(1 for _, _, r in TRAP_OUT if r) >= 2),
-]
-print("\\n===== EVALUATION SCORECARD =====")
-for name, ok in scorecard:
-    print(f" [{'PASS' if ok else 'FAIL'}] {name}")
-print("Demo readiness:", "YES" if all(ok for _, ok in scorecard) else "NO — fix FAIL rows")`,
+ai = llm.invoke([
+    SystemMessage(content="You are FreshBasket Analyst Bot. One crisp sentence."),
+    HumanMessage(content=q),
+])
+
+print("=== RAW VS LANGCHAIN CHATGROQ ===")
+print("\\n### RAW\\n", raw_text)
+print("\\n### LANGCHAIN\\n", ai.content)
+print("\\n>>> Same model, cleaner types — paste both into Google Doc Day 3")`,
           },
-          {
-            label: "Cell 11 — Presentation outline from the desk",
-            code: `slide_prompt = """Create a 7-slide presentation outline for the FreshBasket Knowledge Desk RAG capstone.
-Slides: (1) Problem (2) Documents used (3) RAG architecture (4) Demo Q&A highlights
-(5) Top risks/opportunities (6) Recommendations File vs Judgment (7) Live demo script (3 questions).
-Use only facts supportable by the CONTEXT; otherwise mark Not stated.
-3 bullets per slide.
-"""
-
-slide_resp = client.chat.completions.create(
-    model=GROQ_MODEL,
-    temperature=0.2,
-    messages=[
-        {"role": "system", "content": SYSTEM},
-        {"role": "user", "content": f"CONTEXT:\\n{context}\\n\\nTASK:\\n{slide_prompt}"},
-    ],
-)
-print("===== 7-SLIDE OUTLINE =====\\n")
-print(slide_resp.choices[0].message.content)
-print("\\nCapstone RAG desk complete — present from this Colab output.")`,
-          }
         ],
       },
       {
-        type: "heading",
-        content: "3) What “done” looks like",
-      },
-      {
-        type: "list",
-        items: [
-          "All four PDFs uploaded and mapped in Colab",
-          "TF-IDF retriever + Groq ask() answering with chunk citations",
-          "Q&A battery + CXO pack + trap scorecard ready for demo",
+        type: "setup-checklist",
+        content: "Topic 6 checklist",
+        setupSteps: [
+          {
+            title: "Ran Cell 2 raw Groq reply",
+            description: "Baseline completion with the groq SDK.",
+          },
+          {
+            title: "Ran Cell 3 side-by-side panel",
+            description: "ChatGroq reply printed under the comparison header.",
+          },
+          {
+            title: "Pasted RAW vs LANGCHAIN into Google Doc Day 3",
+            description: "Evidence that both paths use the same model.",
+            link: { label: "Google Docs", url: DOC },
+          },
         ],
       },
     ],
     keyTakeaways: [
-      "Capstone RAG = PDFs → chunk index → retrieve → Groq grounded answer.",
-      "All four Day-3 PDFs sit in one library — cite source and page/chunk ids.",
-      "Trap tests and a scorecard come before demo readiness.",
-      "You are ready for Day 4: agents that complete work on top of knowledge desks.",
+      "ChatGroq wraps the same Groq chat models.",
+      "Use SystemMessage and HumanMessage with invoke.",
+      "LangChain unlocks templates and tools in later topics.",
     ],
   },
 };

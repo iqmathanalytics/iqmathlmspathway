@@ -22,7 +22,7 @@ const features = [
   {
     icon: Database,
     title: "Grounded RAG & data",
-    text: "MBA Day 3 uses real company PDFs; Day 4 agents run on Olist ecommerce and IBM HR attrition files.",
+    text: "MBA Day 4 uses FreshBasket extracts and real company PDFs for RAG; Day 3 builds LangChain chatbots with live tools.",
   },
   {
     icon: LineChart,
@@ -32,7 +32,7 @@ const features = [
   {
     icon: Sparkles,
     title: "From prompts to agents",
-    text: "Build chatbots, RAG knowledge desks, tool-using agents, and multi-agent consulting workflows.",
+    text: "Build chatbots with tools, LangChain workflows, RAG knowledge desks, and grounded document Q&A.",
   },
 ];
 
