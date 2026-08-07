@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getTopic, modules, getAdjacentPublishedTopics } from "@/data/curriculum";
 import { getLesson } from "@/data/lessons";
 import { getQuiz } from "@/data/quizzes";
+import { getAddOnVideoSection } from "@/data/mba-add-on-videos";
 import { TopicLessonLayout } from "@/components/lesson/TopicLessonLayout";
 import { PAGE_CONTAINER } from "@/lib/layout";
 import { TopicNavigation } from "@/components/lesson/TopicNavigation";
@@ -16,6 +17,7 @@ import { NextTopicButton } from "@/components/lesson/NextTopicButton";
 import { GroqApiKeySetup } from "@/components/ai/GroqApiKeySetup";
 import { TopicAccessGate } from "@/components/lesson/TopicAccessGate";
 import { TopicPageShell } from "@/components/lesson/TopicPageShell";
+import { AddOnVideoSectionView } from "@/components/lesson/AddOnVideoSectionView";
 
 interface TopicPageProps {
   params: Promise<{ moduleSlug: string; topicSlug: string }>;
@@ -36,6 +38,24 @@ export default async function TopicPage({ params }: TopicPageProps) {
 
   const { module, topic } = result;
   if (!topic.published) notFound();
+
+  // MBA Add On — video modules (Excel / Power BI): subtopic list → click plays video
+  if (module.slug === "mba-add-on") {
+    const section = getAddOnVideoSection(topic.slug);
+    if (!section) notFound();
+
+    return (
+      <TopicPageShell courseId={module.course} module={module} topic={topic}>
+        <div className="w-full lg:flex-1 lg:overflow-y-auto">
+          <AddOnVideoSectionView
+            module={module}
+            sectionTopic={topic}
+            section={section}
+          />
+        </div>
+      </TopicPageShell>
+    );
+  }
 
   const lesson = getLesson(topic.id);
   if (!lesson) {

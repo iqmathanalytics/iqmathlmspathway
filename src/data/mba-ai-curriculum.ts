@@ -497,4 +497,34 @@ export const mbaAiModules: Module[] = [
       },
     ],
   },
+  {
+    id: 5,
+    name: "Add On",
+    slug: "mba-add-on",
+    course: "mba-ai",
+    description:
+      "Video-based Excel and Power BI add-ons — open a section, click a topic, and watch.",
+    icon: "AO",
+    iconImage: "/images/logos/mba-ai-course.svg",
+    iconAlt: "MBA Add On logo",
+    phase: "add-on",
+    topics: [
+      {
+        id: "mba-addon-excel",
+        title: "Excel",
+        slug: "excel",
+        description: "Video lessons for Excel — click a topic name to play.",
+        estimatedMinutes: 45,
+        published: true,
+      },
+      {
+        id: "mba-addon-power-bi",
+        title: "Power BI",
+        slug: "power-bi",
+        description: "Video lessons for Power BI — click a topic name to play.",
+        estimatedMinutes: 45,
+        published: true,
+      },
+    ],
+  },
 ];

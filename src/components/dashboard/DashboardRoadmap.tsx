@@ -103,7 +103,9 @@ function ModuleNode({
               />
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">Module {module.id}</span>
+                  <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">
+                    {module.phase === "add-on" ? "Add On" : `Module ${module.id}`}
+                  </span>
                   <span className="flex items-center gap-1 rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-500">
                     <Lock className="h-3 w-3" /> {comingSoon ? "Coming soon" : "Locked"}
                   </span>
@@ -126,7 +128,9 @@ function ModuleNode({
               />
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">Module {module.id}</span>
+                  <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">
+                    {module.phase === "add-on" ? "Add On" : `Module ${module.id}`}
+                  </span>
                   {allDone && (
                     <span className="flex items-center gap-1 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700">
                       <CheckCircle2 className="h-3 w-3" /> Complete

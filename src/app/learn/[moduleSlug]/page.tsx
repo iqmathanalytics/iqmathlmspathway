@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getModuleBySlug, getModulesByCourse, modules } from "@/data/curriculum";
 import { ModuleTopicList } from "./ModuleTopicList";
+import { AddOnModuleSections } from "./AddOnModuleSections";
 import { GroqApiKeySetup } from "@/components/ai/GroqApiKeySetup";
 import { IconImage } from "@/components/ui/IconImage";
 
@@ -18,6 +19,7 @@ export default async function ModulePage({ params }: ModulePageProps) {
   const courseModule = getModuleBySlug(moduleSlug);
   if (!courseModule) notFound();
   const courseModules = getModulesByCourse(courseModule.course);
+  const isAddOn = courseModule.slug === "mba-add-on";
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -36,7 +38,9 @@ export default async function ModulePage({ params }: ModulePageProps) {
           fallbackClassName="text-4xl"
         />
         <div>
-          <p className="text-sm font-semibold text-brand-600">Module {courseModule.id}</p>
+          <p className="text-sm font-semibold text-brand-600">
+            {isAddOn ? "Add On" : `Module ${courseModule.id}`}
+          </p>
           <h1 className="text-2xl font-bold text-gray-900">{courseModule.name}</h1>
           <p className="mt-2 text-gray-600">{courseModule.description}</p>
         </div>
@@ -48,7 +52,11 @@ export default async function ModulePage({ params }: ModulePageProps) {
         </div>
       )}
 
-      <ModuleTopicList courseModule={courseModule} courseModules={courseModules} />
+      {isAddOn ? (
+        <AddOnModuleSections courseModule={courseModule} />
+      ) : (
+        <ModuleTopicList courseModule={courseModule} courseModules={courseModules} />
+      )}
     </div>
   );
 }
