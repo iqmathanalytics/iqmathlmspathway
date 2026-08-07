@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { AppProviders } from "@/components/providers/AppProviders";
+import { ChunkErrorRecovery } from "@/components/providers/ChunkErrorRecovery";
 import { PLATFORM_BRAND, PLATFORM_LOGO, PLATFORM_NAME, PLATFORM_TAGLINE } from "@/data/curriculum";
 
 export const metadata: Metadata = {
@@ -26,11 +27,12 @@ export default function RootLayout({
         className="flex min-h-screen flex-col font-sans antialiased"
         suppressHydrationWarning
       >
+        {/* beforeInteractive avoids unused gtag preload warnings from delayed afterInteractive */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-NXM93KNGZ8"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="beforeInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -38,6 +40,7 @@ export default function RootLayout({
             gtag('config', 'G-NXM93KNGZ8');
           `}
         </Script>
+        <ChunkErrorRecovery />
         <AppProviders>
           <Header />
           <main className="flex-1">{children}</main>
