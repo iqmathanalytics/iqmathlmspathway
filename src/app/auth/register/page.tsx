@@ -9,6 +9,8 @@ import { DEPARTMENT_OPTIONS } from "@/data/departments";
 import { PAGE_CONTAINER } from "@/lib/layout";
 import { cleanMobile, isValidMobile } from "@/lib/mobile";
 
+const OTHER_COLLEGE = "__other__";
+
 const inputClass =
   "mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500";
 
@@ -19,12 +21,15 @@ export default function RegisterPage() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
-  const [collegeId, setCollegeId] = useState("");
+  const [collegeSelect, setCollegeSelect] = useState("");
+  const [customCollegeName, setCustomCollegeName] = useState("");
   const [department, setDepartment] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const isOtherCollege = collegeSelect === OTHER_COLLEGE;
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -39,7 +44,20 @@ export default function RegisterPage() {
       setError("Enter your department.");
       return;
     }
-    if (colleges.length > 0 && !collegeId) {
+
+    let collegeId: string | null = null;
+    let collegeName: string | null = null;
+
+    if (isOtherCollege) {
+      const name = customCollegeName.trim();
+      if (name.length < 2) {
+        setError("Enter your college name.");
+        return;
+      }
+      collegeName = name;
+    } else if (collegeSelect) {
+      collegeId = collegeSelect;
+    } else if (colleges.length > 0) {
       setError("Select your college.");
       return;
     }
@@ -50,7 +68,8 @@ export default function RegisterPage() {
       password,
       fullName,
       mobile: mobileClean,
-      collegeId: collegeId || null,
+      collegeId,
+      collegeName,
       department: department.trim(),
     });
     setLoading(false);
@@ -139,18 +158,17 @@ export default function RegisterPage() {
           <div>
             <label className="block text-sm font-medium text-gray-700">College</label>
             <select
-              required={colleges.length > 0}
-              value={collegeId}
-              onChange={(e) => setCollegeId(e.target.value)}
+              required
+              value={collegeSelect}
+              onChange={(e) => {
+                setCollegeSelect(e.target.value);
+                if (e.target.value !== OTHER_COLLEGE) setCustomCollegeName("");
+              }}
               className={inputClass}
               disabled={collegesLoading}
             >
               <option value="">
-                {collegesLoading
-                  ? "Loading colleges…"
-                  : colleges.length === 0
-                    ? "No colleges listed yet — admin will assign"
-                    : "Select college"}
+                {collegesLoading ? "Loading colleges…" : "Select college"}
               </option>
               {colleges.map((c) => (
                 <option key={c.id} value={c.id}>
@@ -158,7 +176,19 @@ export default function RegisterPage() {
                   {c.city ? ` (${c.city})` : ""}
                 </option>
               ))}
+              <option value={OTHER_COLLEGE}>Others</option>
             </select>
+            {isOtherCollege && (
+              <input
+                type="text"
+                required
+                value={customCollegeName}
+                onChange={(e) => setCustomCollegeName(e.target.value)}
+                placeholder="Enter your college name"
+                className={`${inputClass} mt-2`}
+                autoComplete="organization"
+              />
+            )}
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">Department</label>

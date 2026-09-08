@@ -21,6 +21,8 @@ interface SignUpParams {
   fullName: string;
   mobile: string;
   collegeId: string | null;
+  /** When set (Others on register), Edge Function creates/reuses a colleges row. */
+  collegeName?: string | null;
   department: string;
 }
 
@@ -124,6 +126,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    const customCollegeName = params.collegeName?.trim() || "";
     const metadata = {
       full_name: params.fullName,
       mobile: params.mobile,
@@ -146,6 +149,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             fullName: params.fullName,
             mobile: params.mobile,
             collegeId: params.collegeId,
+            collegeName: customCollegeName || null,
             department: params.department,
           }),
         });
@@ -175,6 +179,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       } catch {
         /* fall through to direct signUp if Edge Function unavailable */
       }
+    }
+
+    // New colleges require the Edge Function (service role); cannot insert via anon RLS.
+    if (customCollegeName && !params.collegeId) {
+      return {
+        error: "Registration service required to add a new college. Please try again later.",
+        needsEmailConfirmation: false,
+      };
     }
 
     const { data, error } = await sb.auth.signUp({

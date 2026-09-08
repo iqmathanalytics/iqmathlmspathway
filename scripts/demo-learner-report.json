@@ -1,0 +1,95 @@
+{
+  "generatedAt": "2026-09-08T06:19:30.834Z",
+  "demoAccount": {
+    "email": "demo.learner@iqmath.test",
+    "password": "Demo@12345",
+    "fullName": "Demo Learner"
+  },
+  "courses": {
+    "published": [
+      {
+        "id": "python",
+        "name": "Python"
+      }
+    ],
+    "unpublished": [
+      {
+        "id": "agentic-ai",
+        "name": "Agentic AI"
+      },
+      {
+        "id": "sql",
+        "name": "SQL"
+      },
+      {
+        "id": "mba-ai",
+        "name": "MBA AI"
+      }
+    ]
+  },
+  "account": {
+    "createdNew": false,
+    "ok": true,
+    "userId": "13a6e74e-ace9-4363-a126-0f0a5f506536",
+    "email": "demo.learner@iqmath.test",
+    "password": "Demo@12345"
+  },
+  "enrollments": [
+    "python"
+  ],
+  "content": {
+    "python": {
+      "modules": 18,
+      "topics": 90,
+      "lessonsPresent": 90,
+      "quizzesValid": 90,
+      "topicsWithoutQuiz": 0,
+      "quizQuestions": 324,
+      "curriculumPracticeProblems": 625
+    }
+  },
+  "practiceValidation": {
+    "curriculum": {
+      "total": 625,
+      "passed": 625,
+      "failed": 0,
+      "noSolutionCode": 625
+    },
+    "basics": {
+      "total": 154,
+      "passed": 154,
+      "failed": 0
+    },
+    "algorithms": {
+      "total": 77,
+      "passed": 77,
+      "failed": 0
+    }
+  },
+  "lessonProgressMode": "legacy-columns",
+  "progressWritten": {
+    "lessonsUpserted": 90,
+    "practiceUpserted": 856,
+    "verified": {
+      "lessonsCompleted": 90,
+      "quizzesAttempted": 90,
+      "practiceSolved": 856
+    }
+  },
+  "issueSummary": {
+    "errors": 0,
+    "warnings": 2
+  },
+  "issues": [
+    {
+      "area": "progress:lessons",
+      "severity": "warn",
+      "message": "DB missing ide_ran/quiz_attempted columns — wrote completed + quiz_score only. Run supabase/migrations/006_lesson_progress_flags.sql"
+    },
+    {
+      "area": "practice:curriculum",
+      "severity": "warn",
+      "message": "625 curriculum practice problems have no solutionCode (cannot auto-grade official answers). Demo progress still marked solved."
+    }
+  ]
+}
