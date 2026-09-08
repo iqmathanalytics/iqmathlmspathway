@@ -5,6 +5,7 @@ import { NavigationProvider } from "@/contexts/NavigationContext";
 import { ProgressProvider } from "@/contexts/ProgressContext";
 import { WalkthroughProvider } from "@/contexts/WalkthroughContext";
 import { WalkthroughOverlay } from "@/components/walkthrough/WalkthroughOverlay";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 function ProvidersFallback() {
   return (
@@ -16,17 +17,21 @@ function ProvidersFallback() {
 
 export function AppProviders({ children }: { children: ReactNode }) {
   return (
-    <AuthProvider>
-      <Suspense fallback={<ProvidersFallback />}>
-        <NavigationProvider>
-          <ProgressProvider>
-            <WalkthroughProvider>
-              {children}
-              <WalkthroughOverlay />
-            </WalkthroughProvider>
-          </ProgressProvider>
-        </NavigationProvider>
-      </Suspense>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <Suspense fallback={<ProvidersFallback />}>
+          <NavigationProvider>
+            <ProgressProvider>
+              <WalkthroughProvider>
+                <div className="flex min-h-dvh w-full flex-1 flex-col bg-[var(--background)] text-[var(--foreground)]">
+                  {children}
+                </div>
+                <WalkthroughOverlay />
+              </WalkthroughProvider>
+            </ProgressProvider>
+          </NavigationProvider>
+        </Suspense>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }

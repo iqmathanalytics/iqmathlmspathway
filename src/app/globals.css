@@ -5,10 +5,27 @@
 :root {
   --background: #f7fafc;
   --foreground: #0f172a;
+  --surface: #ffffff;
+  --surface-muted: #f1f5f9;
+  --border: #e2e8f0;
   --brand: #0f75bd;
   --brand-dark: #0b558a;
   --accent: #8cc63e;
   --accent-dark: #6fa32c;
+  color-scheme: light;
+}
+
+html.dark {
+  --background: #0b1220;
+  --foreground: #e8eef7;
+  --surface: #111827;
+  --surface-muted: #1e293b;
+  --border: #334155;
+  --brand: #3b9fd9;
+  --brand-dark: #7cbce0;
+  --accent: #9fd14f;
+  --accent-dark: #8cc63e;
+  color-scheme: dark;
 }
 
 html {
@@ -23,6 +40,112 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.55s ease-out both;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.4s ease-out both;
+  }
+
+  .hover-lift {
+    @apply transition duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md;
+  }
+
+  .practice-studio-shell {
+    background:
+      radial-gradient(120% 80% at 0% 0%, rgba(15, 117, 189, 0.1), transparent 55%),
+      radial-gradient(90% 70% at 100% 0%, rgba(140, 198, 62, 0.12), transparent 50%),
+      #ffffff;
+  }
+
+  .practice-btn-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .practice-btn-shine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-120%);
+    background: linear-gradient(
+      105deg,
+      transparent 35%,
+      rgba(255, 255, 255, 0.35) 50%,
+      transparent 65%
+    );
+    transition: transform 0.55s ease;
+  }
+
+  .practice-btn-shine:hover::after {
+    transform: translateX(120%);
+  }
+
+  .practice-tab-content {
+    animation: practice-panel-in 0.35s ease-out both;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes practice-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes practice-pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(15, 117, 189, 0.35);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(15, 117, 189, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(15, 117, 189, 0);
+  }
+}
+
+.practice-run-active {
+  animation: practice-pulse-ring 1.4s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .animate-fade-in,
+  .hover-lift,
+  .practice-tab-content,
+  .practice-run-active,
+  .practice-btn-shine::after {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
   }
 }
 
@@ -49,24 +172,125 @@ body {
 /* IDE console scrollbar */
 .ide-console-scroll {
   scrollbar-gutter: stable;
-  scrollbar-width: thin;
-  scrollbar-color: #484f58 #0d1117;
+  scrollbar-width: auto;
+  scrollbar-color: #8b949e #161b22;
 }
 
 .ide-console-scroll::-webkit-scrollbar {
-  width: 10px;
+  width: 12px;
+  height: 12px;
 }
 
 .ide-console-scroll::-webkit-scrollbar-track {
-  background: #0d1117;
+  background: #161b22;
 }
 
 .ide-console-scroll::-webkit-scrollbar-thumb {
-  background: #484f58;
-  border-radius: 5px;
-  border: 2px solid #0d1117;
+  background: #6e7681;
+  border-radius: 6px;
+  border: 2px solid #161b22;
 }
 
 .ide-console-scroll::-webkit-scrollbar-thumb:hover {
-  background: #6e7681;
+  background: #8b949e;
+}
+
+/* Light practice console scrollbar */
+.ide-console-scroll-light {
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: #94a3b8 #eef5fb;
+}
+
+.ide-console-scroll-light::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.ide-console-scroll-light::-webkit-scrollbar-track {
+  background: #eef5fb;
+}
+
+.ide-console-scroll-light::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 6px;
+  border: 2px solid #eef5fb;
+}
+
+.ide-console-scroll-light::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Site-wide dark remaps for common light-only utility classes */
+html.dark .bg-white {
+  background-color: #111827;
+}
+html.dark .bg-gray-50 {
+  background-color: #1e293b;
+}
+html.dark .bg-gray-100 {
+  background-color: #334155;
+}
+html.dark .text-gray-900 {
+  color: #f1f5f9;
+}
+html.dark .text-gray-800 {
+  color: #e2e8f0;
+}
+html.dark .text-gray-700 {
+  color: #cbd5e1;
+}
+html.dark .text-gray-600 {
+  color: #94a3b8;
+}
+html.dark .text-gray-500 {
+  color: #94a3b8;
+}
+html.dark .text-gray-400 {
+  color: #64748b;
+}
+html.dark .border-gray-200 {
+  border-color: #334155;
+}
+html.dark .border-gray-100 {
+  border-color: #1e293b;
+}
+html.dark .border-gray-300 {
+  border-color: #475569;
+}
+html.dark .hover\:bg-gray-50:hover {
+  background-color: #1e293b;
+}
+html.dark .hover\:bg-gray-100:hover {
+  background-color: #334155;
+}
+html.dark .hover\:bg-white:hover {
+  background-color: #1e293b;
+}
+html.dark .shadow-sm {
+  --tw-shadow-color: rgb(0 0 0 / 0.35);
+}
+html.dark .lesson-prose h2 {
+  color: #f1f5f9;
+}
+html.dark .lesson-prose h3 {
+  color: #e2e8f0;
+}
+html.dark .lesson-prose p,
+html.dark .lesson-prose ul,
+html.dark .lesson-prose ol {
+  color: #cbd5e1;
+}
+html.dark .lesson-prose code:not(pre code) {
+  background-color: #1e293b;
+  color: #7dd3fc;
+}
+
+html.dark .practice-studio-shell {
+  background:
+    radial-gradient(120% 80% at 0% 0%, rgba(15, 117, 189, 0.18), transparent 55%),
+    radial-gradient(90% 70% at 100% 0%, rgba(140, 198, 62, 0.12), transparent 50%),
+    #0f172a;
+  border-color: #334155;
+  box-shadow: 0 18px 50px -28px rgba(0, 0, 0, 0.65);
 }

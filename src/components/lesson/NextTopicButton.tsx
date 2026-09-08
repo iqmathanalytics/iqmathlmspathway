@@ -17,7 +17,7 @@ interface NextTopicButtonProps {
   variant?: "header" | "footer";
 }
 
-const TEMPORARILY_DISABLE_TOPIC_LOCK = true;
+const TEMPORARILY_DISABLE_TOPIC_LOCK = false;
 
 // ── Popup shown when header button is clicked ─────────────────────────────────
 function NextTopicPopup({

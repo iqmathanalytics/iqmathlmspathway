@@ -123,8 +123,12 @@ export function PracticeWorkspaceEditor({
 
       const grade = await submitForGrading(problem.id, code, session.access_token);
       if (grade.passed) {
-        await markSolved(problem.id, code);
-        setSubmitMessage("All tests passed — problem solved!");
+        const save = await markSolved(problem.id, code);
+        if (save.error) {
+          setSubmitMessage(`Tests passed, but progress was not saved: ${save.error}`);
+        } else {
+          setSubmitMessage("All tests passed — problem solved!");
+        }
       } else {
         setSubmitMessage(
           grade.message ??

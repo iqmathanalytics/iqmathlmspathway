@@ -580,9 +580,10 @@ function defaultTemplate(topicId, title) {
 
 const CURRICULUM_TOPICS = [
   ["m1-t1", "Introduction to Programming"],
-  ["m1-t2", "Choosing Python"],
+  ["m1-t2", "Why Python for Data Science"],
   ["m1-t3", "Setting up Python Environment"],
   ["m1-t4", "Python IDEs"],
+  ["m1-t5", "Introduction to Jupyter Notebooks"],
   ["m2-t1", "Input and Output"],
   ["m2-t2", "Comments"],
   ["m2-t3", "Variables"],
@@ -619,6 +620,7 @@ const CURRICULUM_TOPICS = [
   ["m8-t2", "Keys and Values"],
   ["m8-t3", "Accessing Dictionaries"],
   ["m8-t4", "Dictionary Methods"],
+  ["m8-t5", "Nested Dictionaries"],
   ["m9-t1", "if Statement"],
   ["m9-t2", "if-else"],
   ["m9-t3", "if-elif-else"],
@@ -635,12 +637,38 @@ const CURRICULUM_TOPICS = [
   ["m12-t3", "Function Arguments"],
   ["m12-t4", "Variables in Functions"],
   ["m12-t5", "Recursion"],
-  ["m13-t1", "Lambda Functions"],
-  ["m14-t1", "Project Overview"],
-  ["m14-t2", "Step 1: Data Model"],
-  ["m14-t3", "Step 2: Logic & Loops"],
-  ["m14-t4", "Step 3: Functions & Report"],
-  ["m14-t5", "Capstone Build"],
+  ["m12-t6", "Lambda Functions"],
+  ["m13-t1", "Reading and Writing Files"],
+  ["m13-t2", "Working with File Paths"],
+  ["m13-t3", "try-except-finally"],
+  ["m13-t4", "Raising Custom Exceptions"],
+  ["m13-t5", "Working with APIs"],
+  ["m14-t1", "Introduction to NumPy Arrays"],
+  ["m14-t2", "Array Creation and Properties"],
+  ["m14-t3", "Indexing and Slicing Arrays"],
+  ["m14-t4", "Array Operations and Broadcasting"],
+  ["m14-t5", "Statistical Functions in NumPy"],
+  ["m15-t1", "Series and DataFrames"],
+  ["m15-t2", "Reading and Writing Data"],
+  ["m15-t3", "Indexing Filtering and Selecting"],
+  ["m15-t4", "Data Cleaning"],
+  ["m15-t5", "GroupBy Merging and Joining"],
+  ["m15-t6", "Pivot Tables"],
+  ["m16-t1", "Introduction to Matplotlib"],
+  ["m16-t2", "Line Bar Scatter and Histogram"],
+  ["m16-t3", "Customizing Plots"],
+  ["m16-t4", "Introduction to Seaborn"],
+  ["m16-t5", "Statistical and Categorical Plots"],
+  ["m17-t1", "Descriptive Statistics"],
+  ["m17-t2", "Data Distributions"],
+  ["m17-t3", "Correlation and Covariance"],
+  ["m17-t4", "Outlier Detection"],
+  ["m17-t5", "Performing EDA on a Real Dataset"],
+  ["m18-t1", "Project Overview"],
+  ["m18-t2", "Step 1 Data Model"],
+  ["m18-t3", "Step 2 Logic and Loops"],
+  ["m18-t4", "Step 3 Functions and Report"],
+  ["m18-t5", "Capstone Build"],
 ];
 
 const ENHANCED = {
@@ -780,19 +808,18 @@ export const module${mod}Practice: PracticeProblem[] = ${JSON.stringify(problems
   fs.writeFileSync(path.join(practiceDir, `module-${mod}.ts`), content);
 }
 
+const sqlModuleIds = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const pythonModuleIds = Object.keys(byModule).sort((a, b) => Number(a) - Number(b));
+
 const indexContent = `import type { PracticeProblem } from "@/lib/types";
 import { modules } from "@/data/curriculum";
 import { getPracticeCountByTopic } from "./meta";
-${Object.keys(byModule)
-  .sort((a, b) => Number(a) - Number(b))
-  .map((m) => `import { module${m}Practice } from "./module-${m}";`)
-  .join("\n")}
+${pythonModuleIds.map((m) => `import { module${m}Practice } from "./module-${m}";`).join("\n")}
+${sqlModuleIds.map((m) => `import { sqlModule${m}Practice } from "./sql-module-${m}";`).join("\n")}
 
 const allProblems: PracticeProblem[] = [
-${Object.keys(byModule)
-  .sort((a, b) => Number(a) - Number(b))
-  .map((m) => `  ...module${m}Practice,`)
-  .join("\n")}
+${pythonModuleIds.map((m) => `  ...module${m}Practice,`).join("\n")}
+${sqlModuleIds.map((m) => `  ...sqlModule${m}Practice,`).join("\n")}
 ];
 
 export { getPracticeCountByTopic, getTotalPracticeCount } from "./meta";
@@ -862,6 +889,10 @@ export function getPracticeCountByTopic(topicId: string): number {
 
 export function getTotalPracticeCount(): number {
   return TOTAL_PRACTICE_COUNT;
+}
+
+export function getPracticeCountForTopics(topicIds: string[]): number {
+  return topicIds.reduce((sum, id) => sum + (TOPIC_PRACTICE_COUNTS[id] ?? 0), 0);
 }
 `;
 fs.writeFileSync(path.join(practiceDir, "meta.ts"), metaContent);

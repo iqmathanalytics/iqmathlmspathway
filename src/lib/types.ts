@@ -424,6 +424,11 @@ export interface PracticeProblem {
   hints: string[];
   starterCode: string;
   publicTests: PracticeTest[];
+  /** Standalone coding-practice topic, e.g. "Arrays & Lists" */
+  category?: string;
+  categoryLabel?: string;
+  approach?: string;
+  solutionCode?: string;
 }
 
 export interface LessonProgressRow {
@@ -455,9 +460,37 @@ export interface EntitlementRow {
   purchased_at: string;
 }
 
+export type UserRole = "student" | "admin";
+
 export interface ProfileRow {
   id: string;
   full_name: string;
+  email: string;
   mobile: string;
+  college_id: string | null;
+  department: string;
+  role: UserRole;
+  is_active: boolean;
   created_at: string;
+}
+
+export interface CollegeRow {
+  id: string;
+  name: string;
+  code: string;
+  city: string;
+  archived: boolean;
+  created_at: string;
+}
+
+export interface EnrollmentRow {
+  user_id: string;
+  course_id: CourseId;
+  assigned_at: string;
+}
+
+export interface CourseSettingsRow {
+  course_id: CourseId;
+  published: boolean;
+  updated_at: string;
 }

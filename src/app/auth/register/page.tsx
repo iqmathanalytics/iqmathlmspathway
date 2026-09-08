@@ -4,14 +4,23 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
+import { useColleges } from "@/hooks/useColleges";
+import { DEPARTMENT_OPTIONS } from "@/data/departments";
 import { PAGE_CONTAINER } from "@/lib/layout";
+import { cleanMobile, isValidMobile } from "@/lib/mobile";
+
+const inputClass =
+  "mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500";
 
 export default function RegisterPage() {
   const { signUp, configured } = useAuth();
+  const { colleges, loading: collegesLoading } = useColleges();
   const router = useRouter();
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
+  const [collegeId, setCollegeId] = useState("");
+  const [department, setDepartment] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
@@ -21,14 +30,29 @@ export default function RegisterPage() {
     e.preventDefault();
     setError(null);
 
-    const mobileClean = mobile.replace(/\s/g, "");
-    if (mobileClean.length < 8) {
+    const mobileClean = cleanMobile(mobile);
+    if (!isValidMobile(mobileClean)) {
       setError("Enter a valid mobile number.");
+      return;
+    }
+    if (!department.trim()) {
+      setError("Enter your department.");
+      return;
+    }
+    if (colleges.length > 0 && !collegeId) {
+      setError("Select your college.");
       return;
     }
 
     setLoading(true);
-    const result = await signUp({ email, password, fullName, mobile: mobileClean });
+    const result = await signUp({
+      email,
+      password,
+      fullName,
+      mobile: mobileClean,
+      collegeId: collegeId || null,
+      department: department.trim(),
+    });
     setLoading(false);
 
     if (result.error) {
@@ -83,9 +107,10 @@ export default function RegisterPage() {
             <input
               type="text"
               required
+              autoComplete="name"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
+              className={inputClass}
             />
           </div>
           <div>
@@ -93,9 +118,10 @@ export default function RegisterPage() {
             <input
               type="email"
               required
+              autoComplete="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
+              className={inputClass}
             />
           </div>
           <div>
@@ -103,11 +129,53 @@ export default function RegisterPage() {
             <input
               type="tel"
               required
+              autoComplete="tel"
               placeholder="+91 98765 43210"
               value={mobile}
               onChange={(e) => setMobile(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
+              className={inputClass}
             />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">College</label>
+            <select
+              required={colleges.length > 0}
+              value={collegeId}
+              onChange={(e) => setCollegeId(e.target.value)}
+              className={inputClass}
+              disabled={collegesLoading}
+            >
+              <option value="">
+                {collegesLoading
+                  ? "Loading colleges…"
+                  : colleges.length === 0
+                    ? "No colleges listed yet — admin will assign"
+                    : "Select college"}
+              </option>
+              {colleges.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.name}
+                  {c.city ? ` (${c.city})` : ""}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Department</label>
+            <input
+              type="text"
+              required
+              list="department-options"
+              value={department}
+              onChange={(e) => setDepartment(e.target.value)}
+              placeholder="e.g. MBA, Data Science"
+              className={inputClass}
+            />
+            <datalist id="department-options">
+              {DEPARTMENT_OPTIONS.map((d) => (
+                <option key={d} value={d} />
+              ))}
+            </datalist>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">Password</label>
@@ -115,9 +183,10 @@ export default function RegisterPage() {
               type="password"
               required
               minLength={8}
+              autoComplete="new-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
+              className={inputClass}
             />
             <p className="mt-1 text-xs text-gray-500">At least 8 characters</p>
           </div>

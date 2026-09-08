@@ -29,6 +29,7 @@ export const TOPIC_BUILDERS = {
   "m1-t2": introTopicTasks,
   "m1-t3": introTopicTasks,
   "m1-t4": introTopicTasks,
+  "m1-t5": introTopicTasks,
   "m2-t1": null, // ENHANCED in generator
   "m2-t2": commentsTasks,
   "m2-t3": null, // ENHANCED in generator
@@ -65,6 +66,7 @@ export const TOPIC_BUILDERS = {
   "m8-t2": dictKeysValuesTasks,
   "m8-t3": dictAccessTasks,
   "m8-t4": dictMethodTasks,
+  "m8-t5": dictMethodTasks, // nested dicts — reuse for now
   "m9-t1": ifStatementTasks,
   "m9-t2": ifElseTasks,
   "m9-t3": ifElifElseTasks,
@@ -81,12 +83,13 @@ export const TOPIC_BUILDERS = {
   "m12-t3": functionArgsTasks,
   "m12-t4": functionVarsTasks,
   "m12-t5": recursionTasks,
-  "m13-t1": lambdaTasks,
-  "m14-t1": finalProjectOverviewTasks,
-  "m14-t2": finalProjectDataTasks,
-  "m14-t3": finalProjectLogicTasks,
-  "m14-t4": finalProjectFunctionsTasks,
-  "m14-t5": finalProjectCapstoneTasks,
+  "m12-t6": lambdaTasks,
+  // m13–m17: unmapped → defaultTemplate fallback
+  "m18-t1": finalProjectOverviewTasks,
+  "m18-t2": finalProjectDataTasks,
+  "m18-t3": finalProjectLogicTasks,
+  "m18-t4": finalProjectFunctionsTasks,
+  "m18-t5": finalProjectCapstoneTasks,
 };
 
 export function getTopicTasks(topicId, title) {

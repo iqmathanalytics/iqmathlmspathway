@@ -10,14 +10,6 @@ function nextId() {
   return `judge0-line-${lineId}`;
 }
 
-function nowTime() {
-  return new Date().toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-  });
-}
-
 type Judge0RunResponse = {
   stdout?: string | null;
   stderr?: string | null;
@@ -43,10 +35,9 @@ type NormalizedJudge0RunResponse = {
   error?: string;
 };
 
-const JUDGE0_API_URL =
-  (
-    process.env.NEXT_PUBLIC_JUDGE0_API_URL ?? "https://ce.judge0.com"
-  ).replace(/\/$/, "");
+const JUDGE0_API_URL = (
+  process.env.NEXT_PUBLIC_JUDGE0_API_URL ?? "https://ce.judge0.com"
+).replace(/\/$/, "");
 const JUDGE0_LANGUAGE_ID = Number(
   process.env.NEXT_PUBLIC_JUDGE0_PYTHON_LANGUAGE_ID ?? 109
 );
@@ -89,42 +80,27 @@ function normalizeJudge0Response(
   };
 }
 
+/**
+ * Lesson IDE runner: try Judge0 first, fall back to in-browser Pyodide on
+ * transport/API failure so Run never becomes permanently stuck.
+ */
 export function useCodeRunner() {
   const pyodide = usePyodideRunner();
-  const [judge0Configured] = useState(true);
+  const [activeRunner, setActiveRunner] = useState<"judge0" | "pyodide">("judge0");
   const [judge0Lines, setJudge0Lines] = useState<ConsoleLine[]>([]);
   const [judge0Running, setJudge0Running] = useState(false);
-  const [judge0Error, setJudge0Error] = useState<string | null>(null);
+  const [statusError, setStatusError] = useState<string | null>(null);
 
   const clearConsole = useCallback(() => {
-    if (judge0Configured) {
-      setJudge0Lines([]);
-      setJudge0Error(null);
-      return;
-    }
+    setJudge0Lines([]);
+    setStatusError(null);
     pyodide.clearConsole();
-  }, [judge0Configured, pyodide]);
+  }, [pyodide]);
 
   const runWithJudge0 = useCallback(async (code: string, stdin = "") => {
     setJudge0Running(true);
-    setJudge0Error(null);
-    setJudge0Lines((prev) => [
-      ...prev,
-      {
-        id: nextId(),
-        kind: "divider",
-        text: "▶ Run on Judge0",
-        time: nowTime(),
-      },
-      {
-        id: nextId(),
-        kind: "info",
-        text: `Executing in Judge0 sandbox...${
-          stdin ? "\nstdin:\n" + stdin + "\n" : "\n"
-        }`,
-        time: nowTime(),
-      },
-    ]);
+    setStatusError(null);
+    setJudge0Lines([]);
 
     try {
       const res = await fetch(
@@ -159,22 +135,23 @@ export function useCodeRunner() {
       if (data.message) {
         next.push({ id: nextId(), kind: "error", text: data.message });
       }
-      next.push({
-        id: nextId(),
-        kind: "info",
-        text: `Judge0 status: ${data.status}${
-          data.time ? ` | time ${data.time}s` : ""
-        }${data.memory ? ` | memory ${data.memory} KB` : ""}\n`,
-        time: nowTime(),
-      });
-      setJudge0Lines((prev) => [...prev, ...next]);
+      const accepted = data.status === "Accepted";
+      if (!accepted && data.status && next.length === 0) {
+        next.push({ id: nextId(), kind: "error", text: data.status });
+      }
+      setJudge0Lines(next);
+      setActiveRunner("judge0");
+      return true;
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
-      setJudge0Error(message);
-      setJudge0Lines((prev) => [
-        ...prev,
-        { id: nextId(), kind: "error", text: message, time: nowTime() },
+      setJudge0Lines([
+        {
+          id: nextId(),
+          kind: "error",
+          text: `Judge0 unavailable (${message}). Running with in-browser Python…`,
+        },
       ]);
+      return false;
     } finally {
       setJudge0Running(false);
     }
@@ -182,30 +159,24 @@ export function useCodeRunner() {
 
   const runCode = useCallback(
     (code: string, stdin = "") => {
-      if (judge0Configured) {
-        void runWithJudge0(code, stdin);
-        return;
-      }
-      pyodide.runCode(code);
+      void (async () => {
+        const ok = await runWithJudge0(code, stdin);
+        if (ok) return;
+        setActiveRunner("pyodide");
+        // Do not leave a sticky error that disables Run — console already explains.
+        setStatusError(null);
+        pyodide.runCode(code);
+      })();
     },
-    [judge0Configured, pyodide, runWithJudge0]
+    [pyodide, runWithJudge0]
   );
 
-  if (judge0Configured) {
+  if (activeRunner === "judge0" || judge0Running) {
     return {
-      lines: judge0Lines.length
-        ? judge0Lines
-        : [
-            {
-              id: "judge0-ready",
-              kind: "info" as const,
-              text: "Judge0 sandbox ready. Press Run to execute code server-side.\n",
-              time: nowTime(),
-            },
-          ],
+      lines: judge0Lines,
       loading: false,
       running: judge0Running,
-      error: judge0Error,
+      error: statusError,
       runCode,
       clearConsole,
       stdinActive: false,
@@ -218,10 +189,20 @@ export function useCodeRunner() {
   }
 
   return {
-    ...pyodide,
+    lines:
+      judge0Lines.length > 0
+        ? [...judge0Lines, ...pyodide.lines]
+        : pyodide.lines,
+    loading: pyodide.loading,
+    running: pyodide.running,
+    error: statusError ?? pyodide.error,
     runCode,
     clearConsole,
+    stdinActive: pyodide.stdinActive,
+    stdinDraft: pyodide.stdinDraft,
+    setStdinDraft: pyodide.setStdinDraft,
+    submitStdin: pyodide.submitStdin,
     runnerName: "Pyodide",
-    supportsStandardInput: false,
+    supportsStandardInput: true,
   };
 }

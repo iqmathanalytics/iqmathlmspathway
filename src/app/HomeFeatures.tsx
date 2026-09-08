@@ -12,7 +12,7 @@ const features = [
   {
     icon: GitBranch,
     title: "Four structured tracks",
-    text: "Python (14 modules), SQL (9), Agentic AI (8), and a 4-day MBA business pathway with published Days 1–4.",
+    text: "Python (18 modules), SQL (9), Agentic AI (8), and a 4-day MBA business pathway with published Days 1–4.",
   },
   {
     icon: Code2,

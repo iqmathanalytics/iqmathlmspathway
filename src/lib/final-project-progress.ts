@@ -1,26 +1,59 @@
-import { modules } from "@/data/curriculum";
-import { module14Lessons } from "@/data/lessons/module-14";
+/**
+ * Final-project progress helpers — intentionally free of heavy lesson/curriculum imports
+ * so topic layouts don't pull module-18 + full curriculum into every page.
+ */
 
 const STORAGE_KEY = "python-lms-fp-exercises";
 
 export const FINAL_PROJECT_TOPIC_IDS = [
-  "m14-t1",
-  "m14-t2",
-  "m14-t3",
-  "m14-t4",
-  "m14-t5",
+  "m18-t1",
+  "m18-t2",
+  "m18-t3",
+  "m18-t4",
+  "m18-t5",
 ] as const;
 
 export type FinalProjectTopicId = (typeof FINAL_PROJECT_TOPIC_IDS)[number];
+
+/** Static metadata — keep in sync with curriculum capstone + module-18 practice counts. */
+const FINAL_PROJECT_META: Record<
+  FinalProjectTopicId,
+  { slug: string; title: string; exerciseCount: number }
+> = {
+  "m18-t1": {
+    slug: "overview",
+    title: "Project Overview & Problem Statement",
+    exerciseCount: 1,
+  },
+  "m18-t2": {
+    slug: "data-model",
+    title: "Step 1: Data Model",
+    exerciseCount: 1,
+  },
+  "m18-t3": {
+    slug: "logic-and-loops",
+    title: "Step 2: Logic & Loops",
+    exerciseCount: 1,
+  },
+  "m18-t4": {
+    slug: "functions-and-report",
+    title: "Step 3: Functions & Report",
+    exerciseCount: 1,
+  },
+  "m18-t5": {
+    slug: "capstone",
+    title: "Capstone Build",
+    exerciseCount: 1,
+  },
+};
 
 export function isFinalProjectTopic(topicId: string): topicId is FinalProjectTopicId {
   return (FINAL_PROJECT_TOPIC_IDS as readonly string[]).includes(topicId);
 }
 
 export function getFinalProjectExerciseCount(topicId: string): number {
-  const lesson = module14Lessons[topicId];
-  if (!lesson) return 0;
-  return lesson.blocks.filter((b) => b.type === "practice").length;
+  if (!isFinalProjectTopic(topicId)) return 0;
+  return FINAL_PROJECT_META[topicId].exerciseCount;
 }
 
 function readAll(): Record<string, number[]> {
@@ -101,17 +134,19 @@ export function isFinalProjectTopicUnlocked(topicId: string): boolean {
 }
 
 export function getNextFinalProjectTopic(topicId: string) {
-  const mod = modules.find((m) => m.slug === "final-project");
-  if (!mod) return null;
-  const idx = mod.topics.findIndex((t) => t.id === topicId);
-  if (idx === -1 || idx >= mod.topics.length - 1) return null;
-  return mod.topics[idx + 1];
+  if (!isFinalProjectTopic(topicId)) return null;
+  const idx = FINAL_PROJECT_TOPIC_IDS.indexOf(topicId);
+  if (idx < 0 || idx >= FINAL_PROJECT_TOPIC_IDS.length - 1) return null;
+  const nextId = FINAL_PROJECT_TOPIC_IDS[idx + 1];
+  const meta = FINAL_PROJECT_META[nextId];
+  return { id: nextId, slug: meta.slug, title: meta.title };
 }
 
 export function getPrevFinalProjectTopic(topicId: string) {
-  const mod = modules.find((m) => m.slug === "final-project");
-  if (!mod) return null;
-  const idx = mod.topics.findIndex((t) => t.id === topicId);
+  if (!isFinalProjectTopic(topicId)) return null;
+  const idx = FINAL_PROJECT_TOPIC_IDS.indexOf(topicId);
   if (idx <= 0) return null;
-  return mod.topics[idx - 1];
+  const prevId = FINAL_PROJECT_TOPIC_IDS[idx - 1];
+  const meta = FINAL_PROJECT_META[prevId];
+  return { id: prevId, slug: meta.slug, title: meta.title };
 }

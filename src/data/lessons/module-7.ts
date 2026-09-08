@@ -3,313 +3,102 @@ import type { TopicLesson } from "@/lib/types";
 export const module7Lessons: Record<string, TopicLesson> = {
   "m7-t1": {
     topicId: "m7-t1",
-    intro:
-      "A set holds unique values with no guaranteed order. Use sets when you care about membership and uniqueness, not position.",
+    intro: "Sets store unique, unordered items using curly braces or set().",
     blocks: [
       {
         type: "infographic",
         infographic: "set-syntax",
       },
+      { type: "heading", content: "Explanation" },
+      { type: "paragraph", content: "Sets are created with curly braces `{}` or `set()`. Duplicate values are automatically removed. Note: `{}` alone creates an empty dict, not a set — use `set()` for an empty set." },
+      { type: "heading", content: "Example Code" },
+      { type: "code", code: "s1 = {1, 2, 3, 2, 1}\nprint(s1)          # {1, 2, 3}\ns2 = set()\nprint(type(s2))    # <class 'set'>" },
+      { type: "heading", content: "Practice" },
       {
         type: "practice",
-        practiceLabel: "Create",
-        ideOnly: true,
-        practicePrompt:
-          "Run the code and see how sets remove duplicate values automatically.",
-        starterCode:
-          'colors = {"red", "green", "blue"}\n\nnums = {1, 2, 2, 3, 3}\n\nprint(colors)\nprint(nums)',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Empty",
-        ideOnly: true,
-        practicePrompt: "Run the code and create an empty set with set().",
-        starterCode: "empty = set()\n\nprint(empty)",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Dict trap",
-        ideOnly: true,
-        practicePrompt:
-          "Run the code and see why {} creates a dict, not an empty set.",
-        starterCode: 'empty = {}\n\nprint(type(empty))\n\n# dict',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Convert",
-        ideOnly: true,
-        practicePrompt:
-          "Run the code and convert a list to a set to remove duplicates.",
-        starterCode:
-          "numbers = [1, 2, 2, 3]\n\nunique_numbers = set(numbers)\n\nprint(unique_numbers)",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Valid",
-        ideOnly: true,
-        practicePrompt:
-          "Run the code — set elements must be immutable (lists are not allowed).",
-        starterCode:
-          'valid = {1, "Python", (1, 2)}\n\n# invalid = {[1, 2]}',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Practice",
-        ideOnly: true,
-        practicePrompt:
-          "Run the code and remove duplicates from a list using set().",
-        starterCode:
-          "values = [10, 20, 20, 30, 30]\n\nunique_values = set(values)\n\nprint(unique_values)",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Challenge",
-        practicePrompt:
-          "Create a set from [10, 20, 10, 30]. Print the set and its length.",
-        starterCode:
-          "values = set([10, 20, 10, 30])\nprint(values)\nprint(len(values))",
+        practicePrompt: "Create a set from the list `[5,5,6,7,7,8]` and print the unique values.",
+        starterCode: "# TODO: Create a set from the list [1,2,2,3,3,3,4] and print it",
       },
     ],
     keyTakeaways: [
-      "Sets use {} or set() — never {} for an empty set.",
-      "Duplicates are removed automatically.",
-      "Sets are unordered; do not rely on display order.",
+      "Sets hold unique items; duplicates are dropped.",
+      "Use set() for an empty set — {} creates a dict.",
+      "Sets are unordered; do not rely on position.",
     ],
   },
   "m7-t2": {
     topicId: "m7-t2",
-    intro:
-      "Sets are mutable: you can add and remove items. The collection still enforces uniqueness.",
+    intro: "Update sets with add, update, remove, and discard.",
     blocks: [
       {
         type: "infographic",
         infographic: "set-updating",
       },
+      { type: "heading", content: "Explanation" },
+      { type: "paragraph", content: "Add elements with `.add()` (single) or `.update()` (multiple). Remove with `.remove()` (errors if missing) or `.discard()` (safe)." },
+      { type: "heading", content: "Example Code" },
+      { type: "code", code: "s = {1, 2, 3}\ns.add(4)\ns.update([5, 6])\ns.discard(1)\nprint(s)   # {2,3,4,5,6}" },
+      { type: "heading", content: "Practice" },
       {
         type: "practice",
-        practiceLabel: "Add",
-        ideOnly: true,
-        practicePrompt:
-          "Run the code and use add() to insert items without duplicates.",
-        starterCode:
-          'tags = {"python", "data"}\n\ntags.add("ml")\ntags.add("python")\n\nprint(tags)',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Remove",
-        ideOnly: true,
-        practicePrompt: "Run the code and remove an item with remove().",
-        starterCode:
-          'tags = {"python", "data", "ml"}\n\ntags.remove("data")\n\nprint(tags)',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Discard",
-        ideOnly: true,
-        practicePrompt:
-          "Run the code and see how discard() safely handles missing items.",
-        starterCode:
-          'tags = {"python", "ml"}\n\ntags.discard("data")\n\nprint(tags)',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Pop",
-        ideOnly: true,
-        practicePrompt:
-          "Run the code and see pop() remove an arbitrary item from the set.",
-        starterCode:
-          'tags = {"python", "data", "ml"}\n\nitem = tags.pop()\n\nprint(item)\nprint(tags)',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Clear",
-        ideOnly: true,
-        practicePrompt: "Run the code and clear all items from the set.",
-        starterCode:
-          'tags = {"python", "data", "ml"}\n\ntags.clear()\n\nprint(tags)',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Skills",
-        ideOnly: true,
-        practicePrompt:
-          'Add "ml" and remove "sql" from skills = {"python", "sql"}.',
-        starterCode:
-          'skills = {"python", "sql"}\n\nskills.add("ml")\nskills.remove("sql")\n\nprint(skills)',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Challenge",
-        practicePrompt:
-          "Start with skills = set(). Add three skills, remove one with discard, print the set.",
-        starterCode:
-          'skills = set()\nskills.add("pandas")\nskills.add("sql")\nskills.add("stats")\nskills.discard("sql")\nprint(skills)',
+        practicePrompt: "Given `s = {1,2,3}`, add `4`, then remove `2`, and print the final set.",
+        starterCode: "# TODO: Start with {10,20}, add 30, update with [40,50], remove 10",
       },
     ],
     keyTakeaways: [
-      "add() inserts one value.",
-      "remove() errors if missing; discard() does not.",
-      "clear() removes all items.",
+      "add inserts one item; update merges iterables.",
+      "remove raises KeyError if missing; discard does not.",
+      "Updating a set mutates it in place.",
     ],
   },
   "m7-t3": {
     topicId: "m7-t3",
-    intro:
-      "Set operations compare two sets: union (all items), intersection (shared items), and difference (items in one but not the other).",
+    intro: "Set operations include union, intersection, difference, and symmetric difference.",
     blocks: [
       {
         type: "infographic",
         infographic: "set-operations",
       },
+      { type: "heading", content: "Explanation" },
+      { type: "paragraph", content: "Sets support mathematical operations: `|` union, `&` intersection, `-` difference, `^` symmetric difference." },
+      { type: "heading", content: "Example Code" },
+      { type: "code", code: "a = {1, 2, 3}\nb = {2, 3, 4}\nprint(a | b)   # {1,2,3,4}\nprint(a & b)   # {2,3}\nprint(a - b)   # {1}\nprint(a ^ b)   # {1,4}" },
+      { type: "heading", content: "Practice" },
       {
         type: "practice",
-        practiceLabel: "Basic",
-        ideOnly: true,
-        practicePrompt:
-          "Run the code and try union, intersection, and difference operators.",
-        starterCode:
-          "a = {1, 2, 3, 4}\nb = {3, 4, 5, 6}\n\nprint(a | b)\nprint(a & b)\nprint(a - b)",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Union",
-        ideOnly: true,
-        practicePrompt: "Run the code and combine both sets with union (|).",
-        starterCode:
-          "a = {1, 2, 3, 4}\nb = {3, 4, 5, 6}\n\nprint(a | b)",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Intersection",
-        ideOnly: true,
-        practicePrompt:
-          "Run the code and find items present in both sets with &.",
-        starterCode:
-          "a = {1, 2, 3, 4}\nb = {3, 4, 5, 6}\n\nprint(a & b)",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Difference",
-        ideOnly: true,
-        practicePrompt:
-          "Run the code and find items only in set A with difference (-).",
-        starterCode:
-          "a = {1, 2, 3, 4}\nb = {3, 4, 5, 6}\n\nprint(a - b)",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Methods",
-        ideOnly: true,
-        practicePrompt:
-          "Run the code and try union(), intersection(), and difference() methods.",
-        starterCode:
-          "a = {1, 2, 3, 4}\nb = {3, 4, 5, 6}\n\nprint(a.union(b))\nprint(a.intersection(b))\nprint(a.difference(b))",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Practice",
-        ideOnly: true,
-        practicePrompt:
-          "Find union, intersection, and difference (x - y) for the two sets.",
-        starterCode:
-          "x = {10, 20, 30}\ny = {20, 30, 40}\n\nprint(x | y)\nprint(x & y)\nprint(x - y)",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Challenge",
-        practicePrompt:
-          "Given enrolled = {101, 102, 103} and passed = {102, 104}, print union, intersection, and who enrolled but did not pass.",
-        starterCode:
-          "enrolled = {101, 102, 103}\npassed = {102, 104}\nprint(enrolled | passed)\nprint(enrolled & passed)\nprint(enrolled - passed)",
+        practicePrompt: "Given `a = {1,2,3}`, `b = {3,4,5}`, print the union and intersection.",
+        starterCode: "# TODO: Given a={1,2,3,4}, b={3,4,5,6}, compute union, intersection, difference, symmetric difference",
       },
     ],
     keyTakeaways: [
-      "| or union() — combine both sets.",
-      "& or intersection() — only shared items.",
-      "- or difference() — in first set but not second.",
+      "|, &, -, ^ (or union/intersection/difference methods) combine sets.",
+      "Operations return new sets unless you use update variants.",
+      "Set algebra is powerful for unique-item problems.",
     ],
   },
   "m7-t4": {
     topicId: "m7-t4",
-    intro:
-      "Sets include helpful methods for testing relationships and copying. These are common in data cleaning and validation.",
+    intro: "Set methods like issubset and isdisjoint compare relationships between sets.",
     blocks: [
       {
         type: "infographic",
         infographic: "set-methods",
       },
+      { type: "heading", content: "Explanation" },
+      { type: "paragraph", content: "Additional methods: `.issubset()`, `.issuperset()`, `.isdisjoint()`, `.clear()`, `.copy()`." },
+      { type: "heading", content: "Example Code" },
+      { type: "code", code: "a = {1, 2}\nb = {1, 2, 3}\nprint(a.issubset(b))     # True\nprint(b.issuperset(a))   # True\nprint(a.isdisjoint({5,6})) # True" },
+      { type: "heading", content: "Practice" },
       {
         type: "practice",
-        practiceLabel: "Relationships",
-        ideOnly: true,
-        practicePrompt:
-          "Run the code and test issubset, issuperset, and isdisjoint.",
-        starterCode:
-          "a = {1, 2, 3}\nb = {2, 3, 4}\n\nprint(a.issubset(b))      # False\nprint(a.issuperset({1, 2}))  # True\nprint(a.isdisjoint({5, 6}))  # True",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Modify",
-        ideOnly: true,
-        practicePrompt:
-          "Run the code and use add(), update(), remove(), and pop() on a set.",
-        starterCode:
-          "s = {1, 2, 3}\n\ns.add(4)\ns.update({5, 6})\ns.remove(2)\ns.pop()\n\nprint(s)",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Subset",
-        ideOnly: true,
-        practicePrompt: "Run the code and check whether a is a subset of b.",
-        starterCode:
-          "a = {1, 2, 3}\nb = {2, 3, 4}\n\nprint(a.issubset(b))",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Superset",
-        ideOnly: true,
-        practicePrompt:
-          "Run the code and check whether a is a superset of {1, 2}.",
-        starterCode: "a = {1, 2, 3}\n\nprint(a.issuperset({1, 2}))",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Disjoint",
-        ideOnly: true,
-        practicePrompt:
-          "Run the code and check whether a shares no items with {5, 6}.",
-        starterCode: "a = {1, 2, 3}\n\nprint(a.isdisjoint({5, 6}))",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Copy",
-        ideOnly: true,
-        practicePrompt: "Run the code and copy a set with copy().",
-        starterCode:
-          "original = {1, 2, 3}\nduplicate = original.copy()\n\nprint(duplicate)",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Dedupe",
-        ideOnly: true,
-        practicePrompt:
-          "Run the code and remove duplicates from a list using set().",
-        starterCode:
-          "items = [1, 2, 2, 3, 3, 3]\n\nunique = list(set(items))\n\nprint(unique)",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Challenge",
-        practicePrompt:
-          'Check whether required = {"id", "name"} is a subset of columns = {"id", "name", "age"}. Print the result.',
-        starterCode:
-          'required = {"id", "name"}\ncolumns = {"id", "name", "age"}\nprint(required.issubset(columns))',
+        practicePrompt: "Given `a = {1,2}`, `b = {1,2,3,4}`, check if `a` is a subset of `b`, and if `a` and `{9,10}` are disjoint.",
+        starterCode: "# TODO: Check if {2,3} is a subset of {1,2,3,4} and if they're disjoint",
       },
     ],
     keyTakeaways: [
-      "add(), update(), remove(), and pop() change set contents.",
-      "issubset, issuperset, isdisjoint test relationships between sets.",
-      "Sets help remove duplicates quickly.",
+      "issubset / issuperset compare containment.",
+      "isdisjoint is True when sets share no items.",
+      "These methods return booleans for clear checks.",
     ],
   },
 };

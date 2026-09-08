@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import { ConditionalFooter } from "@/components/layout/ConditionalFooter";
 import { AppProviders } from "@/components/providers/AppProviders";
 import { ChunkErrorRecovery } from "@/components/providers/ChunkErrorRecovery";
-import { PLATFORM_BRAND, PLATFORM_LOGO, PLATFORM_NAME, PLATFORM_TAGLINE } from "@/data/curriculum";
+import { PLATFORM_BRAND, PLATFORM_LOGO, PLATFORM_NAME, PLATFORM_TAGLINE } from "@/data/platform";
 
 export const metadata: Metadata = {
   title: `${PLATFORM_NAME} — Python, SQL, Agentic AI & MBA Analytics`,
@@ -23,14 +23,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className="flex min-h-screen flex-col font-sans antialiased"
+        className="flex min-h-dvh flex-col font-sans antialiased"
         suppressHydrationWarning
       >
         <ChunkErrorRecovery />
         <AppProviders>
           <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <main className="flex min-h-0 flex-1 flex-col">{children}</main>
+          <ConditionalFooter />
         </AppProviders>
       </body>
     </html>

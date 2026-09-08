@@ -26,7 +26,12 @@ function LoginForm() {
       setError(result.error);
       return;
     }
-    router.push(next);
+    const defaultNext = next === "/learn" || next === "/dashboard" || next === "/";
+    if (next.startsWith("/admin")) {
+      router.push("/admin/login");
+      return;
+    }
+    router.push(defaultNext ? "/dashboard" : next);
   }
 
   return (
@@ -49,6 +54,7 @@ function LoginForm() {
             <input
               type="email"
               required
+              autoComplete="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
@@ -60,6 +66,7 @@ function LoginForm() {
               type="password"
               required
               minLength={8}
+              autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"

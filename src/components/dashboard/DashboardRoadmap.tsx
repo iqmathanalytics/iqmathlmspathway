@@ -8,7 +8,7 @@ import { NavigationLink } from "@/components/ui/NavigationLink";
 import Link from "next/link";
 import { useWalkthrough } from "@/contexts/WalkthroughContext";
 import { getUnlockedTopicIds } from "@/lib/topic-locking";
-import { getQuiz } from "@/data/quizzes";
+import { hasQuiz } from "@/data/quizzes/meta";
 import { IconImage } from "@/components/ui/IconImage";
 
 interface DashboardRoadmapProps {
@@ -239,7 +239,7 @@ function ModuleNode({
 
 export function DashboardRoadmap({ modules, progress }: DashboardRoadmapProps) {
   const completedTopicIds = progress.completedTopics;
-  const unlockedTopicIds = getUnlockedTopicIds(modules, progress, (topicId) => !!getQuiz(topicId));
+  const unlockedTopicIds = getUnlockedTopicIds(modules, progress, hasQuiz);
 
   return (
     <div className="relative mt-4">

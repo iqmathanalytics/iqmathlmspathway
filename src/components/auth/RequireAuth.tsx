@@ -3,11 +3,8 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
+import { isAccountDisabled } from "@/lib/admin";
 import { Loader2 } from "lucide-react";
-
-interface RequireAuthProps {
-  children: ReactNode;
-}
 
 function AuthSpinner() {
   return (
@@ -17,8 +14,8 @@ function AuthSpinner() {
   );
 }
 
-export function RequireAuth({ children }: RequireAuthProps) {
-  const { user, loading, configured } = useAuth();
+export function RequireAuth({ children }: { children: ReactNode }) {
+  const { user, profile, loading, profileLoading, configured, signOut } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -37,7 +34,7 @@ export function RequireAuth({ children }: RequireAuthProps) {
     }
   }, [user, loading, configured, router, pathname, searchParams, mounted]);
 
-  if (!mounted || loading) {
+  if (!mounted || loading || (user && profileLoading)) {
     return <AuthSpinner />;
   }
 
@@ -56,6 +53,24 @@ export function RequireAuth({ children }: RequireAuthProps) {
 
   if (!user) {
     return <AuthSpinner />;
+  }
+
+  if (isAccountDisabled(profile)) {
+    return (
+      <div className="mx-auto max-w-lg px-4 py-20 text-center">
+        <h1 className="text-xl font-semibold text-gray-900">Account disabled</h1>
+        <p className="mt-3 text-sm text-gray-600">
+          This account is inactive. Contact your administrator if you need access.
+        </p>
+        <button
+          type="button"
+          onClick={() => void signOut().then(() => router.push("/auth/login"))}
+          className="mt-6 rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700"
+        >
+          Sign out
+        </button>
+      </div>
+    );
   }
 
   return <>{children}</>;

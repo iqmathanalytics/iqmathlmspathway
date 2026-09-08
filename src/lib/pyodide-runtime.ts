@@ -8,7 +8,7 @@ from pyodide.ffi import run_sync
 from js import __py_console_stdin
 
 def __py_input(prompt=""):
-    if prompt:
+    if prompt and not getattr(builtins, "__py_quiet_input", False):
         print(prompt, end="", flush=True)
     result = run_sync(__py_console_stdin())
     if result is None:
@@ -68,20 +68,28 @@ function registerStdinBridge(): void {
 /** Arrow methods keep the correct \`this\` for Pyodide stream callbacks. */
 class PyodideStreamBridge {
   private readonly decoder = new TextDecoder();
+  private readonly errDecoder = new TextDecoder();
   onStdout?: (chunk: string) => void;
   onStderr?: (chunk: string) => void;
 
   writeStdout = (buffer: Uint8Array): number => {
-    const chunk = this.decoder.decode(buffer);
-    this.onStdout?.(chunk);
+    const chunk = this.decoder.decode(buffer, { stream: true });
+    if (chunk) this.onStdout?.(chunk);
     return buffer.length;
   };
 
   writeStderr = (buffer: Uint8Array): number => {
-    const chunk = this.decoder.decode(buffer);
-    this.onStderr?.(chunk);
+    const chunk = this.errDecoder.decode(buffer, { stream: true });
+    if (chunk) this.onStderr?.(chunk);
     return buffer.length;
   };
+
+  flush() {
+    const outTail = this.decoder.decode();
+    if (outTail) this.onStdout?.(outTail);
+    const errTail = this.errDecoder.decode();
+    if (errTail) this.onStderr?.(errTail);
+  }
 
   apply(pyodide: PyodideRuntime): void {
     pyodide.setStdin({ stdin: () => null });
@@ -128,27 +136,23 @@ function detectAliasPackages(code: string): string[] {
 
 async function loadRequiredPackages(
   pyodide: PyodideRuntime,
-  code: string,
-  onStdout?: (chunk: string) => void
+  code: string
 ): Promise<void> {
+  // Fast path: no imports / aliases → skip package resolution entirely.
+  if (!hasImports(code) && detectAliasPackages(code).length === 0) {
+    return;
+  }
+
+  // Keep package-load chatter out of program stdout so tests/console stay output-only.
   if (hasImports(code)) {
-    onStdout?.("Checking Python imports...\n");
-    await pyodide.loadPackagesFromImports(code, {
-      messageCallback: (message) => onStdout?.(`${message}\n`),
-      errorCallback: (message) => onStdout?.(`${message}\n`),
-    });
+    await pyodide.loadPackagesFromImports(code);
   }
 
   // Pyodide detects real import statements. This fallback helps if a learner
   // edits out the import but still uses common aliases like pd.DataFrame().
   const aliasPackages = detectAliasPackages(code);
   if (aliasPackages.length > 0) {
-    onStdout?.(
-      `Loading Python package${aliasPackages.length > 1 ? "s" : ""}: ${aliasPackages.join(", ")}...\n`
-    );
-    await pyodide.loadPackage(aliasPackages, {
-      messageCallback: (message) => onStdout?.(`${message}\n`),
-    });
+    await pyodide.loadPackage(aliasPackages);
     aliasPackages.forEach((name) => loadedPackages.add(name));
   }
 }
@@ -202,12 +206,16 @@ export async function runPythonWithLock(
     consoleStdin.onInputRequested = options.onStdinRequest;
 
     const withStdin = needsStdinBridge(code, options);
-    const python = withStdin ? `${INPUT_BOOTSTRAP}\n\n${code}` : code;
+    const quietInput = (options.stdinLines?.length ?? 0) > 0;
+    const python = withStdin
+      ? `${INPUT_BOOTSTRAP}\nbuiltins.__py_quiet_input = ${quietInput ? "True" : "False"}\n\n${code}`
+      : code;
 
     try {
-      await loadRequiredPackages(pyodide, code, options.onStdout);
+      await loadRequiredPackages(pyodide, code);
       await pyodide.runPythonAsync(python);
     } finally {
+      bridge.flush();
       consoleStdin.cancelPending();
       consoleStdin.onInputRequested = undefined;
     }

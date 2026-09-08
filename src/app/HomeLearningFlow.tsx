@@ -31,7 +31,7 @@ const steps = [
 export function HomeLearningFlow() {
   return (
     <section id="learning-flow" className="relative overflow-hidden border-y border-gray-200/80">
-      <StarfieldBackground />
+        <StarfieldBackground animated={false} />
       <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_80%_60%_at_15%_10%,rgba(34,197,94,0.18),transparent_55%),radial-gradient(ellipse_70%_55%_at_85%_20%,rgba(139,92,246,0.2),transparent_55%)]" />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
@@ -53,7 +53,7 @@ export function HomeLearningFlow() {
             {steps.map((step) => (
               <div
                 key={step.title}
-                className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-sm backdrop-blur"
+                className="hover-lift relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-sm backdrop-blur"
               >
                 <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-emerald-400/10 blur-2xl" />
                 <div className="relative">

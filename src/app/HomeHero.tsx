@@ -1,4 +1,5 @@
-import { CheckCircle2, Sparkles } from "lucide-react";
+import { CheckCircle2, Sparkles, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { courses } from "@/data/courses";
 import { getModulesByCourse } from "@/data/curriculum";
 import { IconImage } from "@/components/ui/IconImage";
@@ -61,23 +62,53 @@ export function HomeHero() {
             IQmath Technologies · Python · SQL · Agentic AI · MBA Analytics
           </div>
 
-          <h1 className="mx-auto max-w-4xl text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-[3.75rem] lg:leading-[1.08]">
+          <h1 className="animate-fade-up mx-auto max-w-4xl text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-[3.75rem] lg:leading-[1.08]">
             Learn to code, query data, and{" "}
             <span className="bg-gradient-to-r from-sky-300 via-white to-accent-300 bg-clip-text text-transparent">
               ship AI for business
             </span>
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+          <p className="animate-fade-up mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-300" style={{ animationDelay: "80ms" }}>
             Four learning tracks in one platform — browser IDEs, ChatGPT and Colab
             labs, real datasets and PDFs, quizzes, and progress that stays with you.
           </p>
+
+          <div className="animate-fade-up mx-auto mt-8 flex max-w-2xl flex-wrap items-center justify-center gap-3" style={{ animationDelay: "140ms" }}>
+            <Link
+              href="/learn/introduction-and-setup/introduction-to-programming"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-brand-900 shadow-lg transition hover:-translate-y-0.5 hover:bg-brand-50"
+            >
+              <IconImage
+                src={pythonCourse?.iconImage}
+                alt={pythonCourse?.iconAlt ?? "Python logo"}
+                fallback={pythonCourse?.icon ?? "PY"}
+                className="h-5 w-5"
+              />
+              Start Python
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link
+              href="/practice/python"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-white/15"
+            >
+              Practice problems
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link
+              href="/learn/sql-foundations/introduction-to-databases"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-white/15"
+            >
+              SQL track
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
 
           <div className="mx-auto mt-10 grid max-w-5xl gap-4 text-left sm:grid-cols-3">
             {outcomes.map((item) => (
               <div
                 key={item.title}
-                className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.07] p-5 backdrop-blur"
+                className="hover-lift flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.07] p-5 backdrop-blur"
               >
                 <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/10">
                   <IconImage

@@ -30,31 +30,25 @@ See [DEPLOY.md](./DEPLOY.md) for GitHub + Cloudflare setup. Build output is the 
 3. Hard-refresh: **Ctrl+Shift+R** (or use an Incognito window)
 4. Confirm the address bar is `http://localhost:3000` with no extra path
 
-## What's included (Phase 1)
+## What's included — Python for Data Science (18 modules)
 
 - **Home page** — overview and roadmap
-- **Learning path** — all 13 modules listed (Module 1 live)
-- **Module 1** — Introduction & Environment (4 topics)
-- **Module 2** — Basic syntax, I/O, variables, types, typecasting (5 topics)
-- **Module 3** — Operators (7 topics)
-- **Module 4** — Strings (5 topics)
-- **Module 5** — Lists (6 topics)
-- **Module 6** — Tuples (5 topics)
-- **Module 7** — Sets (4 topics)
-- **Module 8** — Dictionaries (4 topics)
-- **Module 9** — Conditionals (3 topics)
-- **Module 10** — Loops (5 topics)
-- **Module 11** — Comprehensions (3 topics)
-- **Module 12** — Functions (5 topics)
-- **Module 13** — Lambda (1 topic)
+- **Learning path** — 18 modules from foundations through data science tools to capstone
+- **Modules 1–12** — Programming setup, syntax, operators, strings, lists, tuples, sets, dicts, conditionals, loops, comprehensions, functions & lambda
+- **Module 13** — File handling & exception handling
+- **Module 14** — NumPy for numerical computing
+- **Module 15** — Pandas for data manipulation
+- **Module 16** — Data visualization (Matplotlib & Seaborn)
+- **Module 17** — Statistics & exploratory data analysis (EDA)
+- **Module 18** — Capstone project (retail sales analysis)
 
-**Foundations track complete** — 57 topics across 13 modules.
+**Full track** — 90 topics across 18 modules, with explanations, example/practice code, and a 10-question quiz at the end of each module.
 
 ## Phase 5 — Accounts, practice, premium
 
 - **Register / login** — Name, email, mobile, password (Supabase Auth)
 - **Cloud progress** — lessons, quizzes, and practice sync when signed in
-- **399 practice problems** — 6–7 per topic across all 13 modules
+- **625+ practice problems** — ~7 per topic across the Python track
 - **Practice workspace** — dedicated code space with public tests + hidden submit grading
 - **Freemium** — first 5 problems per topic free; Razorpay one-time unlock (INR) for all premium
 - **Dashboard** — `/dashboard` for lesson and practice stats

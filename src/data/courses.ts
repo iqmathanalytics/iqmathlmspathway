@@ -1,13 +1,13 @@
-import type { Course } from "@/lib/types";
+import type { Course, CourseId } from "@/lib/types";
 
 export const courses: Course[] = [
   {
     id: "python",
     name: "Python for Data Science",
     slug: "python",
-    tagline: "Learn Python from scratch — structured lessons with hands-on practice.",
+    tagline: "18 modules from Python basics through NumPy, Pandas, visualization, EDA, and a capstone.",
     description:
-      "Start from zero and build a solid Python foundation. Covers syntax, data structures, functions, and the tools used in data science.",
+      "Start from zero and build toward data science. Covers syntax, data structures, functions, files, NumPy, Pandas, visualization, statistics & EDA, then a full capstone project.",
     icon: "PY",
     iconImage: "/images/logos/python-course.png",
     iconAlt: "Python logo",
@@ -57,4 +57,19 @@ export const courses: Course[] = [
 
 export function getCourse(id: string): Course | undefined {
   return courses.find((c) => c.id === id);
+}
+
+export const ALL_COURSE_IDS: CourseId[] = courses.map((c) => c.id);
+
+export function courseShortName(id: CourseId): string {
+  switch (id) {
+    case "python":
+      return "Python";
+    case "agentic-ai":
+      return "Agentic AI";
+    case "sql":
+      return "SQL";
+    case "mba-ai":
+      return "MBA AI";
+  }
 }

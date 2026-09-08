@@ -83,7 +83,7 @@ export function HomeRoadmap({ pythonModules, agenticAiModules }: HomeRoadmapProp
             </h2>
             <p className="mt-2 max-w-xl text-gray-600">
               {active === "python"
-                ? "Start with Module 1 and move forward in order. Each module includes lessons, practice problems, and quizzes."
+                ? "Start with Module 1 and move forward in order. Each module includes lessons and quizzes."
                 : "Learn how LLMs work, build chatbots, and create AI agents — from fundamentals to real-world applications."}
             </p>
           </div>

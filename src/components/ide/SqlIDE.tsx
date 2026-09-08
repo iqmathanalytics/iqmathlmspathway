@@ -19,6 +19,8 @@ interface SqlIDEProps {
   editorHeight?: string;
   consoleMaxHeight?: number;
   databaseId?: SqlDatabaseId;
+  /** Fill parent height (lesson sidebar IDE). */
+  fill?: boolean;
   onRun?: () => void;
 }
 
@@ -32,6 +34,7 @@ export function SqlIDE({
   editorHeight = "200px",
   consoleMaxHeight = 280,
   databaseId = "learning",
+  fill = false,
   onRun,
 }: SqlIDEProps) {
   const [code, setCode] = useState(initialCode);
@@ -80,9 +83,15 @@ export function SqlIDE({
           : "text-slate-400";
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-slate-700/80 bg-[#0a0f16] shadow-2xl shadow-black/30 ring-1 ring-sky-500/10">
+    <div
+      className={
+        fill
+          ? "flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-slate-700/80 bg-[#0a0f16] shadow-2xl shadow-black/30 ring-1 ring-sky-500/10"
+          : "overflow-hidden rounded-2xl border border-slate-700/80 bg-[#0a0f16] shadow-2xl shadow-black/30 ring-1 ring-sky-500/10"
+      }
+    >
       {/* Toolbar */}
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-700/80 bg-gradient-to-r from-[#111827] to-[#0f172a] px-3 py-2.5">
+      <div className="flex shrink-0 flex-wrap items-center justify-between gap-2 border-b border-slate-700/80 bg-gradient-to-r from-[#111827] to-[#0f172a] px-3 py-2.5">
         <div className="flex items-center gap-2.5">
           <div className="flex gap-1.5" aria-hidden>
             <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
@@ -137,8 +146,8 @@ export function SqlIDE({
       </div>
 
       {/* Editor section */}
-      <div className="border-b border-slate-800/80">
-        <div className="flex items-center justify-between bg-[#0d1117] px-3 py-1.5">
+      <div className={fill ? "flex min-h-0 flex-[1.2] flex-col border-b border-slate-800/80" : "border-b border-slate-800/80"}>
+        <div className="flex shrink-0 items-center justify-between bg-[#0d1117] px-3 py-1.5">
           <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
             <Code2 className="h-3.5 w-3.5 text-sky-500/80" />
             Query
@@ -147,27 +156,32 @@ export function SqlIDE({
             Ln {cursor.line}, Col {cursor.col}
           </span>
         </div>
-        <SqlCodeEditor
-          value={code}
-          onChange={setCode}
-          onRun={handleRun}
-          onCursorChange={(line, col) => setCursor({ line, col })}
-          height={editorHeight}
-        />
+        <div className={fill ? "min-h-0 flex-1 [&_.cm-editor]:h-full" : undefined}>
+          <SqlCodeEditor
+            value={code}
+            onChange={setCode}
+            onRun={handleRun}
+            onCursorChange={(line, col) => setCursor({ line, col })}
+            height={fill ? "100%" : editorHeight}
+            className={fill ? "h-full" : undefined}
+          />
+        </div>
       </div>
 
       {/* Results */}
-      <SqlResultsPanel
-        lastRun={lastRun}
-        loading={loading}
-        running={running}
-        initError={error}
-        onClear={clearResults}
-        maxHeight={consoleMaxHeight}
-      />
+      <div className={fill ? "flex min-h-0 flex-1 flex-col" : undefined}>
+        <SqlResultsPanel
+          lastRun={lastRun}
+          loading={loading}
+          running={running}
+          initError={error}
+          onClear={clearResults}
+          maxHeight={fill ? 240 : consoleMaxHeight}
+        />
+      </div>
 
       {/* Status bar */}
-      <div className="flex items-center justify-between border-t border-slate-800 bg-[#070b12] px-3 py-1.5 text-[10px] text-slate-500">
+      <div className="flex shrink-0 items-center justify-between border-t border-slate-800 bg-[#070b12] px-3 py-1.5 text-[10px] text-slate-500">
         <div className="flex flex-wrap gap-x-3 gap-y-0.5">
           <span>{runnerName}</span>
           <span className="hidden sm:inline">·</span>

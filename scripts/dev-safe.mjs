@@ -1,22 +1,26 @@
 /**
- * Safe dev startup: free ports, delete stale .next, then start Next.js dev.
- * Use: npm run dev
+ * Safe dev startup: free ports, then start Next.js (preserves .next cache).
+ * Use npm run clean / npm run dev:fresh when you need a wiped cache.
  */
 import { spawn } from "child_process";
-import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { killPorts, cleanNextDir, DEV_PORTS } from "./dev-utils.mjs";
+import { killPorts, DEV_PORTS } from "./dev-utils.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
 
 async function main() {
+  const fresh = process.argv.includes("--fresh");
+
   console.log("[dev] Stopping anything on ports", DEV_PORTS.join(", "), "…");
   await killPorts();
 
-  console.log("[dev] Removing stale .next cache …");
-  await cleanNextDir();
+  if (fresh) {
+    const { cleanNextDir } = await import("./dev-utils.mjs");
+    console.log("[dev] Removing .next cache (--fresh) …");
+    await cleanNextDir();
+  }
 
   console.log("[dev] Starting Next.js at http://localhost:3000");
   console.log("[dev] Tip: hard-refresh browser once (Ctrl+Shift+R) if assets look stuck.\n");

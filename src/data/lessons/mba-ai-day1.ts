@@ -2,8 +2,6 @@ import type { TopicLesson } from "@/lib/types";
 import { mbaAiDay1ExcelLabs } from "./mba-ai-day1-excel-labs";
 import { mbaAiDay1FinalProject } from "./mba-ai-day1-final-project";
 
-const CHATGPT_URL = "https://chatgpt.com/";
-
 /**
  * Day 1 lessons — theory (reading) + Excel labs (practice) + Power Pivot final project.
  * Hands-on practice is in Excel labs only; ChatGPT prompts there summarise Excel outputs.

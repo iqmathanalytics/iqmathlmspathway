@@ -1,9 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, BookOpen, Clock, Layers } from "lucide-react";
-import { courses } from "@/data/courses";
 import { getModulesByCourse } from "@/data/curriculum";
 import type { CourseId } from "@/lib/types";
 import { IconImage } from "@/components/ui/IconImage";
+import { usePublishedCourses } from "@/hooks/usePublishedCourses";
 
 const COURSE_META: Record<
   CourseId,
@@ -28,7 +30,7 @@ const COURSE_META: Record<
     prereq: null,
     featureHighlights: [
       "Run Python in your browser",
-      "14 modules from syntax to a final capstone project",
+      "18 modules from syntax through NumPy, Pandas, and a capstone project",
       "Practice with quizzes and exercises",
     ],
   },
@@ -77,6 +79,8 @@ const COURSE_META: Record<
 };
 
 export function HomeCourses() {
+  const { visibleCourses } = usePublishedCourses();
+
   return (
     <section id="courses" className="relative overflow-hidden border-y border-gray-200/80 bg-gray-50/80">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white to-transparent" />
@@ -90,12 +94,18 @@ export function HomeCourses() {
           </h2>
           <p className="mt-4 text-lg leading-8 text-gray-600">
             Four tracks: Python for Data Science, SQL & Databases, Agentic AI engineering,
-            and MBA: AI for Business Analytics — each with live practice built in.
+            and MBA: AI for Business Analytics — each with live practice built in. Only
+            published tracks are listed below.
           </p>
         </div>
 
         <div className="mt-12 grid items-stretch gap-6 lg:grid-cols-2 xl:grid-cols-2">
-          {courses.map((course) => {
+          {visibleCourses.length === 0 ? (
+            <p className="col-span-full text-center text-gray-500">
+              Courses will appear here once they are published.
+            </p>
+          ) : (
+          visibleCourses.map((course) => {
             const meta = COURSE_META[course.id];
             const courseModules = getModulesByCourse(course.id);
             const liveTopics = courseModules.reduce(
@@ -181,7 +191,8 @@ export function HomeCourses() {
                 </div>
               </div>
             );
-          })}
+          })
+          )}
         </div>
       </div>
     </section>

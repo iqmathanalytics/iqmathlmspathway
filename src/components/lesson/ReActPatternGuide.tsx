@@ -3,14 +3,11 @@
 import {
   BadgeCheck,
   Brain,
-  CheckCircle2,
   Eye,
   GitBranch,
   Lightbulb,
-  RefreshCw,
   ShieldAlert,
   Sparkles,
-  Zap,
 } from "lucide-react";
 
 const WORKING = [

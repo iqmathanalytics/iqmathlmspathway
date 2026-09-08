@@ -18,7 +18,7 @@ export function HomeCTA() {
   return (
     <section className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
       <div className="relative overflow-hidden rounded-[2rem] px-8 py-14 text-center shadow-2xl shadow-slate-300/70 sm:px-12 lg:py-20">
-        <StarfieldBackground />
+        <StarfieldBackground animated={false} />
         <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_80%_60%_at_15%_10%,rgba(15,117,189,0.28),transparent_55%),radial-gradient(ellipse_70%_55%_at_85%_20%,rgba(140,198,62,0.22),transparent_55%)]" />
         <div className="relative z-10 mx-auto max-w-3xl">
           <div className="mx-auto mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-sm font-semibold text-sky-100 backdrop-blur">

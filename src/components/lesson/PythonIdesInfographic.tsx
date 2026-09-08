@@ -4,10 +4,12 @@ import { useState } from "react";
 import {
   CircleCheck,
   Code2,
+  ExternalLink,
   LayoutGrid,
   Monitor,
   Terminal,
 } from "lucide-react";
+import { COLAB_NEW_NOTEBOOK_URL } from "@/lib/visualization-code";
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
@@ -373,6 +375,34 @@ export function PythonIdesInfographic() {
       </section>
 
       <section>
+        <SectionLabel>For visualizations</SectionLabel>
+        <div className="overflow-hidden rounded-[14px] border border-orange-200 bg-white">
+          <div className="flex items-start gap-3.5 px-5 py-4">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[9px] bg-gradient-to-br from-orange-400 to-yellow-400 text-[11px] font-bold text-white">
+              Co
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="text-sm font-medium text-[#1a1a18]">Google Colab</p>
+              <p className="mt-0.5 text-xs leading-relaxed text-[#888780]">
+                Use Colab only when you need to see charts. The built-in IDE
+                can run print() output, but matplotlib and seaborn plots need
+                a notebook display.
+              </p>
+              <a
+                href={COLAB_NEW_NOTEBOOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-flex items-center gap-2 rounded-xl border border-orange-300 bg-white px-3.5 py-1.5 text-[13px] font-semibold text-orange-700 shadow-sm transition-all hover:bg-orange-50 hover:shadow-md"
+              >
+                Open Google Colab
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
         <SectionLabel>Popular desktop IDEs</SectionLabel>
         <div className="overflow-hidden rounded-[14px] border border-black/10 bg-white">
           <div className="flex items-center gap-2 border-b border-black/[0.08] bg-[#fafaf8] px-5 py-4">
@@ -412,9 +442,9 @@ export function PythonIdesInfographic() {
       <div className="flex items-start gap-2.5 rounded-[10px] bg-[#E1F5EE] p-4 text-[13px] leading-relaxed text-[#0F6E56]">
         <CircleCheck className="mt-0.5 h-4 w-4 shrink-0" />
         <p>
-          For learning with us, the built-in IDE is enough. No downloads needed
-          — just use the Run button on every lesson page and you&apos;re good to
-          go.
+          For learning with us, the built-in IDE is enough for most lessons.
+          When you reach data visualization, use the Google Colab button to
+          see your plots.
         </p>
       </div>
     </div>

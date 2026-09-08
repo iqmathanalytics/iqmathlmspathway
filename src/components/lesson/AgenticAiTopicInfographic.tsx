@@ -514,34 +514,6 @@ function mistakes(info: TopicInfo): string[] {
   ];
 }
 
-function realWorldExample(info: TopicInfo) {
-  if (info.title === "What AI Is") {
-    return {
-      title: "Spam Filter - Old Way vs AI Way",
-      leftTitle: "Rule-based approach",
-      left: 'Developers manually write keyword lists: block "free money," "click here." Every new spam tactic needs a new rule written by a human.',
-      rightTitle: "AI approach",
-      right: "Train on thousands of labelled emails. The model learns subtle patterns: phrasing, structure, sender context, without anyone writing every rule.",
-    };
-  }
-  if (info.title === "System vs User") {
-    return {
-      title: "System Message vs User Message",
-      leftTitle: "System",
-      left: "Defines the assistant's role, tone, boundaries, and output style before the user asks anything.",
-      rightTitle: "User",
-      right: "Provides the current task or question. It changes every turn while the system behavior stays stable.",
-    };
-  }
-  return {
-    title: "Real App Example",
-    leftTitle: "Without this concept",
-    left: "The app depends on a vague model response and gives the developer very little control over quality.",
-    rightTitle: "With this concept",
-    right: info.example,
-  };
-}
-
 function beginnerExplanation(info: TopicInfo) {
   const mod = info.moduleLabel.toLowerCase();
   if (mod.includes("foundation")) {

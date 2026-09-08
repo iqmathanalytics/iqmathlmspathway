@@ -13,6 +13,10 @@ import { module11Lessons } from "./module-11";
 import { module12Lessons } from "./module-12";
 import { module13Lessons } from "./module-13";
 import { module14Lessons } from "./module-14";
+import { module15Lessons } from "./module-15";
+import { module16Lessons } from "./module-16";
+import { module17Lessons } from "./module-17";
+import { module18Lessons } from "./module-18";
 import { agenticAiModule1Lessons } from "./agentic-ai-module-1";
 import { agenticAiLangChainLessons } from "./agentic-ai-langchain";
 import { agenticAiModule2Lessons } from "./agentic-ai-module-2";
@@ -50,6 +54,10 @@ const allLessons: Record<string, TopicLesson> = {
   ...module12Lessons,
   ...module13Lessons,
   ...module14Lessons,
+  ...module15Lessons,
+  ...module16Lessons,
+  ...module17Lessons,
+  ...module18Lessons,
   ...agenticAiModule1Lessons,
   ...agenticAiLangChainLessons,
   ...agenticAiModule2Lessons,

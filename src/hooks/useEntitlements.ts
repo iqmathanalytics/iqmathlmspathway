@@ -30,7 +30,7 @@ export function useEntitlements() {
   const { user } = useAuth();
   const cached = user ? readCache(user.id) : null;
   const [hasPremium, setHasPremium] = useState(cached ?? false);
-  const [loading, setLoading] = useState(cached === null && Boolean(user));
+  const [loading, setLoading] = useState(Boolean(user));
 
   const refresh = useCallback(async () => {
     if (!user || !isSupabaseConfigured()) {
@@ -41,16 +41,23 @@ export function useEntitlements() {
 
     const sb = getSupabase();
     if (!sb) {
+      setHasPremium(false);
       setLoading(false);
       return;
     }
 
-    const { data } = await sb
+    const { data, error } = await sb
       .from("entitlements")
       .select("id")
       .eq("user_id", user.id)
       .eq("product", PRACTICE_PREMIUM_PRODUCT)
       .maybeSingle();
+
+    if (error) {
+      // Keep any cached value on transient failure; still end loading.
+      setLoading(false);
+      return;
+    }
 
     const premium = Boolean(data);
     setHasPremium(premium);
@@ -64,14 +71,14 @@ export function useEntitlements() {
       setLoading(false);
       return;
     }
+
+    // Show cache immediately, then always revalidate so admin grants/revokes apply.
     const hit = readCache(user.id);
     if (hit !== null) {
       setHasPremium(hit);
-      setLoading(false);
-      return;
     }
     setLoading(true);
-    refresh();
+    void refresh();
   }, [user, refresh]);
 
   return { hasPremium, loading, refresh };

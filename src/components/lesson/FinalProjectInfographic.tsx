@@ -39,10 +39,10 @@ const PILL_STYLES: Record<LabelVariant, string> = {
 };
 
 const PHASE_LINKS: Record<string, string> = {
-  data: "/learn/final-project/data-model",
-  logic: "/learn/final-project/logic-and-loops",
-  functions: "/learn/final-project/functions-and-report",
-  capstone: "/learn/final-project/capstone",
+  data: "/learn/capstone-project/data-model",
+  logic: "/learn/capstone-project/logic-and-loops",
+  functions: "/learn/capstone-project/functions-and-report",
+  capstone: "/learn/capstone-project/capstone",
 };
 
 function avg(scores: number[]) {

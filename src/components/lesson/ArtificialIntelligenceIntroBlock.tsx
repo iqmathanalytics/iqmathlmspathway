@@ -3,13 +3,11 @@
 import type { ElementType } from "react";
 import {
   BadgeCheck,
-  Bot,
   Brain,
   Cpu,
   Database,
   FileText,
   Layers,
-  LineChart,
   MessageSquare,
   Repeat2,
   ShieldAlert,

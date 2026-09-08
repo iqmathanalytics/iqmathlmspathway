@@ -7,7 +7,6 @@ import {
   Bot,
   Braces,
   Check,
-  Code2,
   Copy,
   Gauge,
   Globe2,
@@ -537,16 +536,13 @@ export function GroqDocsLessonBlock({ topicId }: { topicId?: string }) {
   const activeTopicId = topicId ?? "ai-m3-t2";
   const lesson = LESSONS[activeTopicId] ?? LESSONS["ai-m3-t2"];
   const steps = CODE_STEPS[activeTopicId] ?? CODE_STEPS["ai-m3-t2"];
-  const [copied, setCopied] = useState(false);
   const [copiedId, setCopiedId] = useState<number | null>(null);
   const { markCopied } = useLangChainCopy();
 
   function copyCode(stepId: number, code: string) {
     navigator.clipboard.writeText(code).then(() => {
-      setCopied(true);
       setCopiedId(stepId);
       markCopied(stepId);
-      setTimeout(() => setCopied(false), 2000);
       setTimeout(() => setCopiedId(null), 2000);
     });
   }

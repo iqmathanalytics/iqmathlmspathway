@@ -3,290 +3,177 @@ import type { TopicLesson } from "@/lib/types";
 export const module3Lessons: Record<string, TopicLesson> = {
   "m3-t1": {
     topicId: "m3-t1",
-    intro:
-      "Arithmetic operators let you do math in Python — add, subtract, multiply, divide, and more. You use them every day in data science for calculations.",
+    intro: "Arithmetic operators perform math: add, subtract, multiply, divide, and more.",
     blocks: [
       {
         type: "infographic",
         infographic: "math-operators",
       },
+      { type: "heading", content: "Explanation" },
+      { type: "paragraph", content: "`+ - * / % // **` perform addition, subtraction, multiplication, division, modulus (remainder), floor division, and exponentiation." },
+      { type: "heading", content: "Example Code" },
+      { type: "code", code: "a, b = 17, 5\nprint(a + b, a - b, a * b, a / b, a % b, a // b, a ** b)" },
+      { type: "heading", content: "Practice" },
       {
         type: "practice",
-        practiceLabel: "All operators",
-        ideOnly: true,
-        practicePrompt: "Run the program and check each result in the console.",
-        starterCode:
-          "print(10 + 3)   # 13\nprint(10 - 3)   # 7\nprint(10 * 3)   # 30\nprint(10 / 3)   # 3.3333333333333335\nprint(10 // 3)  # 3\nprint(10 % 3)   # 1\nprint(2 ** 4)   # 16",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Challenge",
-        practicePrompt:
-          "Calculate the area of a rectangle: width 7, height 4. Print the result.",
-        starterCode:
-          "width = 7\nheight = 4\narea = width * height\nprint(area)",
+        practicePrompt: "Given `a=13, b=4`, print the result of every arithmetic operator applied to them.",
+        starterCode: "# TODO: Given a=20, b=6, print all 7 arithmetic operator results",
       },
     ],
     keyTakeaways: [
-      "Use +, -, *, / for everyday math.",
-      "/ gives a float; // gives whole-number division.",
-      "% is remainder; ** is power.",
+      "+ - * / do basic arithmetic; // is floor division; % is remainder; ** is power.",
+      "Division with / always returns a float in Python 3.",
+      "Operator precedence follows standard math rules.",
     ],
   },
   "m3-t2": {
     topicId: "m3-t2",
-    intro:
-      "Assignment operators update a variable. = stores a value; shortcuts like += add and assign in one step.",
+    intro: "Assignment operators store values and update variables in place.",
     blocks: [
       {
         type: "infographic",
         infographic: "assignment-operators",
       },
+      { type: "heading", content: "Explanation" },
+      { type: "paragraph", content: "Assignment operators combine assignment with an operation: `=, +=, -=, *=, /=, %=, //=, **=`." },
+      { type: "heading", content: "Example Code" },
+      { type: "code", code: "x = 10\nx += 5   # x = 15\nx -= 3   # x = 12\nx *= 2   # x = 24\nprint(x)" },
+      { type: "heading", content: "Practice" },
       {
         type: "practice",
-        practiceLabel: "Basic assign",
-        ideOnly: true,
-        practicePrompt: "Run the code and watch how points changes.",
-        starterCode:
-          "points = 0\npoints = points + 10\nprint(points)  # 10",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Shortcuts",
-        ideOnly: true,
-        practicePrompt: "Run each line and check the score after each step.",
-        starterCode:
-          "score = 50\nscore += 5    # same as score = score + 5\nprint(score)  # 55\n\nscore *= 2\nprint(score)  # 110",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Challenge",
-        practicePrompt:
-          "Start with savings = 100. Add 25, then multiply by 2. Print after each step.",
-        starterCode:
-          "savings = 100\nsavings += 25\nprint(savings)\nsavings *= 2\nprint(savings)",
+        practicePrompt: "Start with `score = 50`. Add 10, subtract 5, then double it using assignment operators. Print the result.",
+        starterCode: "# TODO: Start with x=100, apply -=20, *=2, //=3, print final value",
       },
     ],
     keyTakeaways: [
-      "= assigns a value to a variable.",
-      "+=, -=, *=, /= update the variable in one line.",
-      "Shortcuts make code shorter and clearer.",
+      "= assigns; +=, -=, *=, /= update in place.",
+      "Augmented assignment is shorter and clearer for counters.",
+      "The right-hand side is evaluated before the update.",
     ],
   },
   "m3-t3": {
     topicId: "m3-t3",
-    intro:
-      "Comparison operators compare two values. They always give True or False — you will use them heavily in if statements soon.",
+    intro: "Comparison operators compare values and return True or False.",
     blocks: [
       {
         type: "infographic",
         infographic: "comparison-operators",
       },
+      { type: "heading", content: "Explanation" },
+      { type: "paragraph", content: "`== != > < >= <=` compare two values and return a boolean." },
+      { type: "heading", content: "Example Code" },
+      { type: "code", code: "print(5 == 5, 5 != 3, 7 > 2, 7 < 2, 5 >= 5, 4 <= 3)" },
+      { type: "heading", content: "Practice" },
       {
         type: "practice",
-        practiceLabel: "All comparisons",
-        ideOnly: true,
-        practicePrompt: "Run each line and check True/False in the console.",
-        starterCode:
-          "age = 18\nprint(age == 18)   # True\nprint(age != 21)   # True\nprint(age > 16)    # True\nprint(age < 16)    # False\nprint(age >= 18)   # True\nprint(age <= 20)   # True",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Booleans",
-        ideOnly: true,
-        practicePrompt: "Run the code and see how comparisons store True or False.",
-        starterCode:
-          "result = 10 > 5\nprint(result)        # True\nprint(10 == 10)      # True\nprint(10 == 9)       # False",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Challenge",
-        practicePrompt:
-          "Set temperature = 32. Print whether it is below 0, equal to 32, and above 100.",
-        starterCode:
-          "temperature = 32\nprint(temperature < 0)\nprint(temperature == 32)\nprint(temperature > 100)",
+        practicePrompt: "Given `a=8, b=8`, check and print results of all 6 comparisons.",
+        starterCode: "# TODO: Compare two user-input numbers using all 6 comparison operators",
       },
     ],
     keyTakeaways: [
-      "Comparisons return True or False.",
-      "== checks equality; = assigns values.",
-      "Use comparisons before decisions (if/else).",
+      "== and != test equality; < > <= >= compare order.",
+      "Comparisons return bool values.",
+      "You can chain comparisons in Python (e.g. 1 < x < 10).",
     ],
   },
   "m3-t4": {
     topicId: "m3-t4",
-    intro:
-      "Logical operators combine True/False values: and (both must be true), or (at least one true), not (flip true/false).",
+    intro: "Logical operators combine boolean conditions with and, or, and not.",
     blocks: [
       {
         type: "infographic",
         infographic: "logical-operators",
       },
+      { type: "heading", content: "Explanation" },
+      { type: "paragraph", content: "`and`, `or`, `not` combine boolean expressions. `and` needs both True; `or` needs at least one True; `not` inverts a boolean." },
+      { type: "heading", content: "Example Code" },
+      { type: "code", code: "age = 25\nhas_id = True\nprint(age >= 18 and has_id)\nprint(age < 18 or has_id)\nprint(not has_id)" },
+      { type: "heading", content: "Practice" },
       {
         type: "practice",
-        practiceLabel: "Basics",
-        ideOnly: true,
-        practicePrompt:
-          "Run the code and check each True/False result for and, or, and not.",
-        starterCode:
-          "has_ticket = True\nis_adult = True\nprint(has_ticket and is_adult)\nprint(True or False)\nprint(not True)",
-      },
-      {
-        type: "practice",
-        practiceLabel: "and table",
-        ideOnly: true,
-        practicePrompt:
-          "Run the code and print all four combinations of and — only one should be True.",
-        starterCode:
-          "print(True and True)\nprint(True and False)\nprint(False and True)\nprint(False and False)",
-      },
-      {
-        type: "practice",
-        practiceLabel: "or table",
-        ideOnly: true,
-        practicePrompt:
-          "Run the code and print all four combinations of or — only one should be False.",
-        starterCode:
-          "print(True or True)\nprint(True or False)\nprint(False or True)\nprint(False or False)",
-      },
-      {
-        type: "practice",
-        practiceLabel: "not",
-        ideOnly: true,
-        practicePrompt: "Run the code and see how not flips True and False.",
-        starterCode: "print(not True)\nprint(not False)",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Challenge",
-        practicePrompt:
-          "Create has_id and has_permission booleans. Print results of and, or, and not.",
-        starterCode:
-          "has_id = True\nhas_permission = False\nprint(has_id and has_permission)\nprint(has_id or has_permission)\nprint(not has_permission)",
+        practicePrompt: "Given `x=15`, check if `x` is between 10 and 20 (inclusive) using logical `and`.",
+        starterCode: "# TODO: Check if a number is between 10 and 20 using 'and'",
       },
     ],
     keyTakeaways: [
-      "and — both must be True; or — at least one True; not — flips the value.",
-      "Use truth tables to predict results before running code.",
-      "Perfect for combining checks in if statements.",
+      "and requires both sides True; or needs one; not flips a bool.",
+      "Short-circuit evaluation skips unnecessary work.",
+      "Combine logical operators carefully with parentheses.",
     ],
   },
   "m3-t5": {
     topicId: "m3-t5",
-    intro:
-      "Identity operators check if two variables point to the same object in memory: is and is not. A common use is comparing a value to None.",
+    intro: "Identity operators check whether two names refer to the same object in memory.",
     blocks: [
       {
         type: "infographic",
         infographic: "identity-operators",
       },
+      { type: "heading", content: "Explanation" },
+      { type: "paragraph", content: "`is` and `is not` check whether two variables reference the *same object* in memory, not just equal values." },
+      { type: "heading", content: "Example Code" },
+      { type: "code", code: "a = [1, 2, 3]\nb = a\nc = [1, 2, 3]\nprint(a is b)      # True (same object)\nprint(a is c)      # False (different objects, same values)\nprint(a == c)      # True (equal values)" },
+      { type: "heading", content: "Practice" },
       {
         type: "practice",
-        practiceLabel: "Identity vs equality",
-        ideOnly: true,
-        practicePrompt:
-          "Run the code and compare == (values) with is (same object).",
-        starterCode:
-          "a = [1, 2]\nb = [1, 2]\nc = a\n\nprint(a == b)   # True (same contents)\nprint(a is b)   # False (different objects)\nprint(a is c)   # True (same object)",
-      },
-      {
-        type: "practice",
-        practiceLabel: "None check",
-        ideOnly: true,
-        practicePrompt: "Run the code to see the recommended None check.",
-        starterCode:
-          'value = None\n\nif value is None:\n    print("No value found")',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Challenge",
-        practicePrompt: "Create x = None. Print x is None and x is not None.",
-        starterCode: "x = None\nprint(x is None)\nprint(x is not None)",
+        practicePrompt: "Given `x = None`, write code to check if `x is None` and print the result.",
+        starterCode: "# TODO: Create two variables pointing to the same list and two pointing to different lists with equal values; test 'is'",
       },
     ],
     keyTakeaways: [
-      "is / is not check same object, not just equal values.",
-      "Often used with None.",
-      "For equal values of numbers/strings, == is usually enough.",
+      "is / is not compare object identity, not equality.",
+      "Use == for value equality in most cases.",
+      "None checks often use is None.",
     ],
   },
   "m3-t6": {
     topicId: "m3-t6",
-    intro:
-      "Membership operators check whether something is inside a collection: in and not in. You will use these with lists, strings, and more.",
+    intro: "Membership operators test whether a value appears inside a sequence or collection.",
     blocks: [
       {
         type: "infographic",
         infographic: "membership-operators",
       },
+      { type: "heading", content: "Explanation" },
+      { type: "paragraph", content: "`in` and `not in` check whether a value exists within a sequence (list, string, tuple, set, dict keys)." },
+      { type: "heading", content: "Example Code" },
+      { type: "code", code: "fruits = [\"apple\", \"banana\", \"mango\"]\nprint(\"banana\" in fruits)      # True\nprint(\"grape\" not in fruits)   # True\nprint(\"a\" in \"banana\")         # True" },
+      { type: "heading", content: "Practice" },
       {
         type: "practice",
-        practiceLabel: "List check",
-        ideOnly: true,
-        practicePrompt: "Run the code and check in / not in with a list.",
-        starterCode:
-          'fruits = ["apple", "banana", "mango"]\n\nprint("banana" in fruits)      # True\nprint("grape" not in fruits)   # True',
-      },
-      {
-        type: "practice",
-        practiceLabel: "String search",
-        ideOnly: true,
-        practicePrompt: "Run the code and see how in works with strings.",
-        starterCode:
-          'word = "Python"\n\nprint("P" in word)      # True\nprint("x" in word)      # False\nprint("Py" in word)     # True',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Validation",
-        ideOnly: true,
-        practicePrompt: "Run the code to see role validation with in.",
-        starterCode:
-          'allowed = ["admin", "editor", "viewer"]\n\nrole = "editor"\n\nif role in allowed:\n    print("Access granted")',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Challenge",
-        practicePrompt:
-          "Make a list of three colors. Check if 'blue' is in the list.",
-        starterCode:
-          'colors = ["red", "green", "yellow"]\nprint("blue" in colors)\nprint("red" in colors)',
+        practicePrompt: "Given a list `nums = [2,4,6,8,10]`, check if `5` and `8` are in the list using membership operators.",
+        starterCode: "# TODO: Check if the number 7 is in a list of numbers 1-10",
       },
     ],
     keyTakeaways: [
-      "in returns True if the item exists inside the collection.",
-      "not in is the opposite.",
-      "Works on lists, strings, and other sequences.",
+      "in / not in test membership in sequences and collections.",
+      "Works with strings, lists, tuples, sets, and dict keys.",
+      "Membership checks are a clean alternative to loops for simple lookups.",
     ],
   },
   "m3-t7": {
     topicId: "m3-t7",
-    intro:
-      "Bitwise operators work on 0s and 1s at the bit level. They are used less often in everyday scripts but matter in systems and performance work.",
+    intro: "Bitwise operators work on the binary representation of integers.",
     blocks: [
       {
         type: "infographic",
         infographic: "bitwise-operators",
       },
+      { type: "heading", content: "Explanation" },
+      { type: "paragraph", content: "Operate on binary representations of integers: `&` (AND), `|` (OR), `^` (XOR), `~` (NOT), `<<` (left shift), `>>` (right shift)." },
+      { type: "heading", content: "Example Code" },
+      { type: "code", code: "a, b = 6, 3   # 110, 011 in binary\nprint(a & b)   # 2\nprint(a | b)   # 7\nprint(a ^ b)   # 5\nprint(~a)      # -7\nprint(a << 1)  # 12\nprint(a >> 1)  # 3" },
+      { type: "heading", content: "Practice" },
       {
         type: "practice",
-        practiceLabel: "All operators",
-        ideOnly: true,
-        practicePrompt: "Run each line and check the printed results.",
-        starterCode:
-          "print(5 & 3)    # 1\nprint(5 | 3)    # 7\nprint(5 ^ 3)    # 6\nprint(~5)       # -6\nprint(5 << 1)   # 10\nprint(5 >> 1)   # 2",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Challenge",
-        practicePrompt:
-          "Run the example bitwise lines and observe the numbers printed.",
-        starterCode: "print(5 & 3)\nprint(5 | 3)\nprint(5 ^ 3)\nprint(5 << 1)",
+        practicePrompt: "Given `a=5, b=9`, compute `a & b`, `a | b`, and `a ^ b`.",
+        starterCode: "# TODO: Given a=12, b=10, print results of &, |, ^, ~, <<, >>",
       },
     ],
     keyTakeaways: [
-      "Bitwise operators manipulate individual bits.",
-      "Uncommon in typical application code.",
-      "Arithmetic and comparison operators matter more for data science starters.",
+      "& | ^ ~ << >> operate on bits of integers.",
+      "Useful for flags, masks, and low-level work.",
+      "Know binary basics before relying on bitwise ops.",
     ],
   },
 };

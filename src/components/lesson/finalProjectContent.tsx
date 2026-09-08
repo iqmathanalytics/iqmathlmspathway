@@ -13,10 +13,10 @@ export type ConceptRow = {
   usedInProject: string;
 };
 
-export const PROJECT_TITLE = "Student Grade Manager";
+export const PROJECT_TITLE = "Retail Sales Analysis Capstone";
 
 export const PROJECT_SUMMARY =
-  "A command-line grade manager that stores students and scores, calculates averages, flags pass/fail, and prints a formatted class report — using every major Python concept from Modules 1–13.";
+  "An end-to-end retail sales project: define the problem, model the data, process records with loops and conditionals, build report functions, then load, clean, explore, visualize, and summarize insights — drawing on Modules 1–17.";
 
 export const CONCEPT_MAP: ConceptRow[] = [
   {
@@ -155,7 +155,7 @@ export const SECTION_CONTENT: Record<
     labelVariant: "orange",
     heading: "What you will build",
     intro:
-      "The Student Grade Manager is the capstone for this course. You will combine variables, collections, control flow, functions, and more into one working program.",
+      "The Retail Sales Analysis Capstone is the finale for this course. You will combine Python foundations, NumPy/Pandas skills, visualization, and EDA into one working analysis pipeline.",
     steps: [
       {
         id: "sample-output",
@@ -189,7 +189,7 @@ print(students)`,
     ],
     tip: (
       <>
-        Complete Modules 1–13 first, then build this project step by step. Each
+        Complete Modules 1–17 first, then build this project step by step. Each
         topic in this module adds one layer to the same program.
       </>
     ),

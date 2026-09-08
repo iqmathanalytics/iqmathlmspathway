@@ -1456,5 +1456,373 @@ export const module8Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ]
+  },
+  {
+    "id": "m8-t5-p01",
+    "topicId": "m8-t5",
+    "slug": "keys",
+    "title": "Nested Dictionaries: keys()",
+    "difficulty": "easy",
+    "order": 1,
+    "layout": "challenge",
+    "description": "Set d={\"a\":1,\"b\":2}, print list(d.keys()).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "d"
+      ],
+      "requiresDictKey": "a",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".keys()"
+        },
+        {
+          "type": "text",
+          "value": " to get all keys."
+        }
+      ],
+      "editorPlaceholder": "# keys",
+      "successDetail": "Correct!"
+    },
+    "examples": [
+      {
+        "output": "['a', 'b']"
+      }
+    ],
+    "constraints": [
+      "Print keys as list"
+    ],
+    "hints": [
+      "d = {\"a\":1,\"b\":2}\\nprint(list(d.keys()))"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m8-t5-p01-t1",
+        "label": "Sample test",
+        "expectedStdout": "['a', 'b']",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m8-t5-p02",
+    "topicId": "m8-t5",
+    "slug": "values",
+    "title": "Nested Dictionaries: values()",
+    "difficulty": "easy",
+    "order": 2,
+    "layout": "challenge",
+    "description": "Set d={\"a\":1,\"b\":2}, print list(d.values()).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "d"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".values()"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# values",
+      "successDetail": "Correct!"
+    },
+    "examples": [
+      {
+        "output": "[1, 2]"
+      }
+    ],
+    "constraints": [
+      "Print values"
+    ],
+    "hints": [
+      "d = {\"a\":1,\"b\":2}\\nprint(list(d.values()))"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m8-t5-p02-t1",
+        "label": "Sample test",
+        "expectedStdout": "[1, 2]",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m8-t5-p03",
+    "topicId": "m8-t5",
+    "slug": "items",
+    "title": "Nested Dictionaries: items()",
+    "difficulty": "medium",
+    "order": 3,
+    "layout": "challenge",
+    "description": "Set d={\"x\":1}, print list(d.items()).",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresVariables": [
+        "d"
+      ],
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".items()"
+        },
+        {
+          "type": "text",
+          "value": " for key-value pairs."
+        }
+      ],
+      "editorPlaceholder": "# items",
+      "successDetail": "Correct!"
+    },
+    "examples": [
+      {
+        "output": "[('x', 1)]"
+      }
+    ],
+    "constraints": [
+      "Print items"
+    ],
+    "hints": [
+      "d = {\"x\":1}\\nprint(list(d.items()))"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m8-t5-p03-t1",
+        "label": "Sample test",
+        "expectedStdout": "[('x', 1)]",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m8-t5-p04",
+    "topicId": "m8-t5",
+    "slug": "get",
+    "title": "Nested Dictionaries: get()",
+    "difficulty": "medium",
+    "order": 4,
+    "layout": "challenge",
+    "description": "Print {\"a\":1}.get(\"b\", 0).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# get",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct! get() returns default if key missing.",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": ".get(\"b\", 0)"
+        },
+        {
+          "type": "text",
+          "value": " for safe access."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "0",
+          "label": "output"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "output": "0"
+      }
+    ],
+    "constraints": [
+      "Output must be exactly: 0"
+    ],
+    "hints": [
+      "print({\"a\":1}.get(\"b\", 0))"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m8-t5-p04-t1",
+        "label": "Sample test",
+        "expectedStdout": "0",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m8-t5-p05",
+    "topicId": "m8-t5",
+    "slug": "in-dict",
+    "title": "Nested Dictionaries: Key Membership",
+    "difficulty": "medium",
+    "order": 5,
+    "layout": "challenge",
+    "description": "Print \"name\" in {\"name\":\"Ana\"}.",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# in dict",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Check if key exists with "
+        },
+        {
+          "type": "code",
+          "value": "in"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "True",
+          "label": "output"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "output": "True"
+      }
+    ],
+    "constraints": [
+      "Output must be exactly: True"
+    ],
+    "hints": [
+      "print(\"name\" in {\"name\":\"Ana\"})"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m8-t5-p05-t1",
+        "label": "Sample test",
+        "expectedStdout": "True",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m8-t5-p06",
+    "topicId": "m8-t5",
+    "slug": "len-dict",
+    "title": "Nested Dictionaries: Dict Length",
+    "difficulty": "hard",
+    "order": 6,
+    "layout": "challenge",
+    "description": "Print len({\"a\":1,\"b\":2,\"c\":3}).",
+    "challengeContent": {
+      "outputOnly": true,
+      "editorPlaceholder": "# len",
+      "emptyMessage": "Use print() to show the result.",
+      "successDetail": "Correct!",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "len() counts key-value pairs."
+        }
+      ],
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "3",
+          "label": "output"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "output": "3"
+      }
+    ],
+    "constraints": [
+      "Output must be exactly: 3"
+    ],
+    "hints": [
+      "print(len({\"a\":1,\"b\":2,\"c\":3}))"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m8-t5-p06-t1",
+        "label": "Sample test",
+        "expectedStdout": "3",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m8-t5-p07",
+    "topicId": "m8-t5",
+    "slug": "topic-lookup",
+    "title": "Nested Dictionaries: Topic Lookup",
+    "difficulty": "hard",
+    "order": 7,
+    "layout": "challenge",
+    "description": "Create d={\"topic\":\"Python\"}, print d[\"topic\"].",
+    "challengeContent": {
+      "outputOnly": true,
+      "requiresDictKey": "topic",
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Look up value by key."
+        }
+      ],
+      "editorPlaceholder": "# d[\"topic\"]",
+      "successDetail": "Correct!"
+    },
+    "examples": [
+      {
+        "output": "Python"
+      }
+    ],
+    "constraints": [
+      "Output: Python"
+    ],
+    "hints": [
+      "d = {\"topic\":\"Python\"}\\nprint(d[\"topic\"])"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m8-t5-p07-t1",
+        "label": "Sample test",
+        "expectedStdout": "Python",
+        "visibility": "public"
+      }
+    ]
   }
 ];

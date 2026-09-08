@@ -1613,4 +1613,418 @@ export const module1Practice: PracticeProblem[] = [
       }
     ]
   }
+,
+  {
+    "id": "m1-t5-p01",
+    "topicId": "m1-t5",
+    "slug": "jupyter-1",
+    "title": "Introduction to Jupyter Notebooks: Warm-up",
+    "difficulty": "easy",
+    "order": 1,
+    "layout": "challenge",
+    "description": "Write a short program related to Jupyter. Print Ready on one line.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Write a short program related to "
+        },
+        {
+          "type": "code",
+          "value": "Introduction to Jupyter Notebooks"
+        },
+        {
+          "type": "text",
+          "value": ". Print the expected output."
+        }
+      ],
+      "outputOnly": true,
+      "editorPlaceholder": "# Write your solution here",
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "expected output",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "Ready"
+        }
+      ],
+      "emptyMessage": "Use print() to display output.",
+      "successDetail": "Correct!"
+    },
+    "examples": [
+      {
+        "output": "Ready"
+      }
+    ],
+    "constraints": [
+      "Match the sample output exactly"
+    ],
+    "hints": [
+      "Use print()"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m1-t5-p01-t1",
+        "label": "Sample test",
+        "expectedStdout": "Ready",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m1-t5-p02",
+    "topicId": "m1-t5",
+    "slug": "jupyter-2",
+    "title": "Introduction to Jupyter Notebooks: Output Two Values",
+    "difficulty": "easy",
+    "order": 2,
+    "layout": "challenge",
+    "description": "Create two variables about Jupyter and print them comma-separated.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Write a short program related to "
+        },
+        {
+          "type": "code",
+          "value": "Introduction to Jupyter Notebooks"
+        },
+        {
+          "type": "text",
+          "value": ". Print the expected output."
+        }
+      ],
+      "outputOnly": true,
+      "editorPlaceholder": "# Write your solution here",
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "expected output",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "A,B"
+        }
+      ],
+      "emptyMessage": "Use print() to display output.",
+      "successDetail": "Correct!"
+    },
+    "examples": [
+      {
+        "output": "A,B"
+      }
+    ],
+    "constraints": [
+      "Match the sample output exactly"
+    ],
+    "hints": [
+      "Use print()"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m1-t5-p02-t1",
+        "label": "Sample test",
+        "expectedStdout": "A,B",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m1-t5-p03",
+    "topicId": "m1-t5",
+    "slug": "jupyter-3",
+    "title": "Introduction to Jupyter Notebooks: Loop Practice",
+    "difficulty": "medium",
+    "order": 3,
+    "layout": "challenge",
+    "description": "Use a for loop to print numbers from 1 to 4.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Write a short program related to "
+        },
+        {
+          "type": "code",
+          "value": "Introduction to Jupyter Notebooks"
+        },
+        {
+          "type": "text",
+          "value": ". Print the expected output."
+        }
+      ],
+      "outputOnly": true,
+      "editorPlaceholder": "# Write your solution here",
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "expected output",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "1\n2\n3\n4"
+        }
+      ],
+      "emptyMessage": "Use print() to display output.",
+      "successDetail": "Correct!"
+    },
+    "examples": [
+      {
+        "output": "1\n2\n3\n4"
+      }
+    ],
+    "constraints": [
+      "Match the sample output exactly"
+    ],
+    "hints": [
+      "Use print()"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m1-t5-p03-t1",
+        "label": "Sample test",
+        "expectedStdout": "1\n2\n3\n4",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m1-t5-p04",
+    "topicId": "m1-t5",
+    "slug": "jupyter-4",
+    "title": "Introduction to Jupyter Notebooks: Conditional",
+    "difficulty": "medium",
+    "order": 4,
+    "layout": "challenge",
+    "description": "If x=10, print Pass when x>=10 else Fail.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Write a short program related to "
+        },
+        {
+          "type": "code",
+          "value": "Introduction to Jupyter Notebooks"
+        },
+        {
+          "type": "text",
+          "value": ". Print the expected output."
+        }
+      ],
+      "outputOnly": true,
+      "editorPlaceholder": "# Write your solution here",
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "expected output",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "Pass"
+        }
+      ],
+      "emptyMessage": "Use print() to display output.",
+      "successDetail": "Correct!"
+    },
+    "examples": [
+      {
+        "output": "Pass"
+      }
+    ],
+    "constraints": [
+      "Match the sample output exactly"
+    ],
+    "hints": [
+      "Use print()"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m1-t5-p04-t1",
+        "label": "Sample test",
+        "expectedStdout": "Pass",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m1-t5-p05",
+    "topicId": "m1-t5",
+    "slug": "jupyter-5",
+    "title": "Introduction to Jupyter Notebooks: List Practice",
+    "difficulty": "medium",
+    "order": 5,
+    "layout": "challenge",
+    "description": "Create a list of three cell types and print index 1.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Write a short program related to "
+        },
+        {
+          "type": "code",
+          "value": "Introduction to Jupyter Notebooks"
+        },
+        {
+          "type": "text",
+          "value": ". Print the expected output."
+        }
+      ],
+      "outputOnly": true,
+      "editorPlaceholder": "# Write your solution here",
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "expected output",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "code"
+        }
+      ],
+      "emptyMessage": "Use print() to display output.",
+      "successDetail": "Correct!"
+    },
+    "examples": [
+      {
+        "output": "code"
+      }
+    ],
+    "constraints": [
+      "Match the sample output exactly"
+    ],
+    "hints": [
+      "Use print()"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m1-t5-p05-t1",
+        "label": "Sample test",
+        "expectedStdout": "code",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m1-t5-p06",
+    "topicId": "m1-t5",
+    "slug": "jupyter-6",
+    "title": "Introduction to Jupyter Notebooks: Dict Lookup",
+    "difficulty": "hard",
+    "order": 6,
+    "layout": "challenge",
+    "description": "Create a dict with key topic and print its value.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Write a short program related to "
+        },
+        {
+          "type": "code",
+          "value": "Introduction to Jupyter Notebooks"
+        },
+        {
+          "type": "text",
+          "value": ". Print the expected output."
+        }
+      ],
+      "outputOnly": true,
+      "editorPlaceholder": "# Write your solution here",
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "expected output",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "Jupyter"
+        }
+      ],
+      "emptyMessage": "Use print() to display output.",
+      "successDetail": "Correct!"
+    },
+    "examples": [
+      {
+        "output": "Jupyter"
+      }
+    ],
+    "constraints": [
+      "Match the sample output exactly"
+    ],
+    "hints": [
+      "Use print()"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m1-t5-p06-t1",
+        "label": "Sample test",
+        "expectedStdout": "Jupyter",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m1-t5-p07",
+    "topicId": "m1-t5",
+    "slug": "jupyter-7",
+    "title": "Introduction to Jupyter Notebooks: Format Output",
+    "difficulty": "hard",
+    "order": 7,
+    "layout": "challenge",
+    "description": "Use an f-string to print Notebook: ready",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Write a short program related to "
+        },
+        {
+          "type": "code",
+          "value": "Introduction to Jupyter Notebooks"
+        },
+        {
+          "type": "text",
+          "value": ". Print the expected output."
+        }
+      ],
+      "outputOnly": true,
+      "editorPlaceholder": "# Write your solution here",
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "expected output",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "Notebook: ready"
+        }
+      ],
+      "emptyMessage": "Use print() to display output.",
+      "successDetail": "Correct!"
+    },
+    "examples": [
+      {
+        "output": "Notebook: ready"
+      }
+    ],
+    "constraints": [
+      "Match the sample output exactly"
+    ],
+    "hints": [
+      "Use print()"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m1-t5-p07-t1",
+        "label": "Sample test",
+        "expectedStdout": "Notebook: ready",
+        "visibility": "public"
+      }
+    ]
+  }
 ];

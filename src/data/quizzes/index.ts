@@ -13,6 +13,10 @@ import { module11Quizzes } from "./module-11";
 import { module12Quizzes } from "./module-12";
 import { module13Quizzes } from "./module-13";
 import { module14Quizzes } from "./module-14";
+import { module15Quizzes } from "./module-15";
+import { module16Quizzes } from "./module-16";
+import { module17Quizzes } from "./module-17";
+import { module18Quizzes } from "./module-18";
 import { agenticAiQuizzes } from "./agentic-ai";
 import { sqlModule1Quizzes } from "./sql-module-1";
 import { sqlModule2Quizzes } from "./sql-module-2";
@@ -43,6 +47,10 @@ const allQuizzes: Record<string, TopicQuiz> = {
   ...module12Quizzes,
   ...module13Quizzes,
   ...module14Quizzes,
+  ...module15Quizzes,
+  ...module16Quizzes,
+  ...module17Quizzes,
+  ...module18Quizzes,
   ...agenticAiQuizzes,
   ...sqlModule1Quizzes,
   ...sqlModule2Quizzes,
@@ -62,3 +70,5 @@ const allQuizzes: Record<string, TopicQuiz> = {
 export function getQuiz(topicId: string): TopicQuiz | undefined {
   return allQuizzes[topicId];
 }
+
+export { hasQuiz, QUIZ_TOPIC_IDS } from "./meta";

@@ -8,37 +8,39 @@ import { PythonIDE } from "@/components/ide/PythonIDE.lazy";
 import { SqlIDE } from "@/components/ide/SqlIDE.lazy";
 import { SqlTableDetailsButton } from "@/components/ide/SqlTableDetailsButton";
 import { SqlSchemaModelButton } from "@/components/ide/SqlSchemaModelButton";
-import { GroqChatPlayground } from "@/components/ai/GroqChatPlayground";
-import { JupyterNotebookPanel } from "./JupyterNotebookPanel";
-import { SetupChecklistPanel } from "./SetupChecklistPanel";
-import { ConceptSummaryPanel } from "./ConceptSummaryPanel";
-import { LangChainWorkflowPanel } from "./LangChainWorkflowPanel";
-import { LangChainStepsChecklist } from "./LangChainStepsChecklist";
-import { RagBasicsStepsChecklist } from "./RagBasicsStepsChecklist";
-import { DocumentQaStepsChecklist } from "./DocumentQaStepsChecklist";
-import { MultiAgentStepsChecklist } from "./MultiAgentStepsChecklist";
-import { NextStepsStepsChecklist } from "./NextStepsStepsChecklist";
+import {
+  GroqChatPlayground,
+  JupyterNotebookPanel,
+  SetupChecklistPanel,
+  ConceptSummaryPanel,
+  LangChainWorkflowPanel,
+  LangChainStepsChecklist,
+  RagBasicsStepsChecklist,
+  DocumentQaStepsChecklist,
+  MultiAgentStepsChecklist,
+  NextStepsStepsChecklist,
+  LangChainPromptsGuide,
+  LangChainLCELGuide,
+  LangChainAgentsGuide,
+  LangChainLangSmithGuide,
+  GroqApiKeyChecklist,
+  GroqDocsReferencePanel,
+  HowToCreatePromptsPanel,
+  SystemVsUserGuidePanel,
+  FewShotPromptsPanel,
+  ChainOfThoughtPanel,
+  BestPracticesPanel,
+  ChatMemoryPanel,
+  QABotPanel,
+  TestingChatbotPanel,
+  ResponseQualityPanel,
+  AgentsInAiTypesPanel,
+  FunctionCallingPanel,
+  AgentWorkflowPatternsPanel,
+  ReActWorkflowPanel,
+  CustomerSupportProjectPanel,
+} from "@/components/lesson/dynamicPanels";
 import { LangChainCopyProvider } from "./LangChainCopyContext";
-import { LangChainPromptsGuide } from "./LangChainPromptsGuide";
-import { LangChainLCELGuide } from "./LangChainLCELGuide";
-import { LangChainAgentsGuide } from "./LangChainAgentsGuide";
-import { LangChainLangSmithGuide } from "./LangChainLangSmithGuide";
-import { GroqApiKeyChecklist } from "./GroqApiKeyChecklist";
-import { GroqDocsReferencePanel } from "./GroqDocsReferencePanel";
-import { HowToCreatePromptsPanel } from "./HowToCreatePromptsPanel";
-import { SystemVsUserGuidePanel } from "./SystemVsUserGuidePanel";
-import { FewShotPromptsPanel } from "./FewShotPromptsPanel";
-import { ChainOfThoughtPanel } from "./ChainOfThoughtPanel";
-import { BestPracticesPanel } from "./BestPracticesPanel";
-import { ChatMemoryPanel } from "./ChatMemoryPanel";
-import { QABotPanel } from "./QABotPanel";
-import { TestingChatbotPanel } from "./TestingChatbotPanel";
-import { ResponseQualityPanel } from "./ResponseQualityPanel";
-import { AgentsInAiTypesPanel } from "./AgentsInAiTypesPanel";
-import { FunctionCallingPanel } from "./FunctionCallingPanel";
-import { AgentWorkflowPatternsPanel } from "./AgentWorkflowPatternsPanel";
-import { ReActWorkflowPanel } from "./ReActWorkflowPanel";
-import { CustomerSupportProjectPanel } from "./CustomerSupportProjectPanel";
 import { LessonPracticeContext } from "./LessonPracticeContext";
 import {
   areAllExercisesComplete,
@@ -53,6 +55,7 @@ import {
 import { ArrowRight, CheckCircle2, Lock, Pencil } from "lucide-react";
 import { getSqlDatabaseForModule } from "@/lib/sql-runtime";
 import { useProgress } from "@/contexts/ProgressContext";
+import { isVisualizationCode } from "@/lib/visualization-code";
 
 interface TopicLessonLayoutProps {
   blocks: LessonBlock[];
@@ -160,11 +163,15 @@ export function TopicLessonLayout({
     activeBlock?.starterCode ??
     (courseId === "sql" ? defaultSqlCode : 'print("Hello, Python!")');
   const activeLabel = activeBlock?.practiceLabel ?? `Exercise ${activePractice + 1}`;
+  const activeIsVisualization = !isSqlCourse && isVisualizationCode(activeCode);
 
   const scrollToIde = useCallback(() => {
     if (!ideRef.current) return;
     ideRef.current.scrollTop = 0;
-    ideRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Only scroll the page on mobile; desktop uses independent column scroll
+    if (typeof window !== "undefined" && window.matchMedia("(max-width: 1023px)").matches) {
+      ideRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }, []);
 
   const selectPractice = useCallback(
@@ -222,6 +229,75 @@ export function TopicLessonLayout({
     sequential && topicId != null && areAllExercisesComplete(topicId, practices.length);
   const nextTopic = topicId && allDone ? getNextFinalProjectTopic(topicId) : null;
 
+  const isIdeAside =
+    practices.length > 0 &&
+    !groqBlock &&
+    !jupyterBlock &&
+    !setupBlock &&
+    !conceptBlock &&
+    !langchainWorkflow &&
+    !langchainChecklistBlock &&
+    !ragBasicsChecklistBlock &&
+    !documentQaChecklistBlock &&
+    !multiAgentChecklistBlock &&
+    !nextStepsChecklistBlock &&
+    !langchainPromptsGuide &&
+    !langchainLCELGuide &&
+    !langchainAgentsGuide &&
+    !langchainLangSmithGuide &&
+    !groqApiKeyChecklist &&
+    !groqDocsReference &&
+    !howToCreatePromptsBlock &&
+    !systemVsUserGuideBlock &&
+    !fewShotGuideBlock &&
+    !cotGuideBlock &&
+    !bestPracticesBlock &&
+    !chatMemoryBlock &&
+    !qaBotBlock &&
+    !responseQualityBlock &&
+    !agentsInAiTypesBlock &&
+    !functionCallingBlock &&
+    !agentWorkflowPatternsBlock &&
+    !reactWorkflowBlock &&
+    !customerSupportProjectBlock &&
+    !testingChatbotBlock;
+
+  // Real side panels (IDE / playgrounds / checklists). Reading-only placeholder is desktop-only.
+  const hasInteractiveAside =
+    practices.length > 0 ||
+    !!groqBlock ||
+    !!jupyterBlock ||
+    !!setupBlock ||
+    !!conceptBlock ||
+    !!langchainWorkflow ||
+    !!langchainChecklistBlock ||
+    !!ragBasicsChecklistBlock ||
+    !!documentQaChecklistBlock ||
+    !!multiAgentChecklistBlock ||
+    !!nextStepsChecklistBlock ||
+    !!langchainPromptsGuide ||
+    !!langchainLCELGuide ||
+    !!langchainAgentsGuide ||
+    !!langchainLangSmithGuide ||
+    !!groqApiKeyChecklist ||
+    !!groqDocsReference ||
+    !!howToCreatePromptsBlock ||
+    !!systemVsUserGuideBlock ||
+    !!fewShotGuideBlock ||
+    !!cotGuideBlock ||
+    !!bestPracticesBlock ||
+    !!chatMemoryBlock ||
+    !!qaBotBlock ||
+    !!responseQualityBlock ||
+    !!agentsInAiTypesBlock ||
+    !!functionCallingBlock ||
+    !!agentWorkflowPatternsBlock ||
+    !!reactWorkflowBlock ||
+    !!customerSupportProjectBlock ||
+    !!testingChatbotBlock;
+
+  const splitLayout = !singleColumnBlock && hasInteractiveAside;
+
   const practiceContext = useMemo(
     () => ({
       activeIndex: activePractice,
@@ -254,21 +330,27 @@ export function TopicLessonLayout({
   const layoutContent = (
     <LessonPracticeContext.Provider value={practiceContext}>
       {/*
-        Two-column: outer clips overflow, each column scrolls independently.
-        Single-column: outer itself is the scroll container (no right aside).
+        Viewport-locked shell: lesson column scrolls; IDE/aside stays in a fixed pane.
+        Single-column topics: outer itself is the scroll container (no right aside).
       */}
-      <div className={`lg:flex-1 lg:min-h-0 ${
-        singleColumnBlock
-          ? "lg:overflow-y-auto [scrollbar-width:thin]"
-          : "lg:overflow-hidden lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(340px,42%)]"
-      }`}>
+      <div
+        className={
+          splitLayout
+            ? "flex h-full min-h-0 flex-1 flex-col overflow-hidden lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(320px,42%)]"
+            : "flex h-full min-h-0 flex-1 flex-col overflow-y-auto [scrollbar-width:thin] lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(320px,42%)] lg:overflow-hidden"
+        }
+      >
 
         {/* ── Left column ── */}
-        <div className={`min-w-0 py-6 px-4 sm:px-6 lg:px-8 xl:px-10 ${
-          singleColumnBlock
-            ? "w-full"
-            : "lg:overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        }`}>
+        <div
+          className={
+            splitLayout
+              ? "min-h-0 min-w-0 flex-1 overflow-y-auto py-6 px-4 [scrollbar-width:thin] sm:px-6 lg:h-full lg:px-8 xl:px-10"
+              : singleColumnBlock
+                ? "min-w-0 w-full py-6 px-4 sm:px-6 lg:px-8 xl:px-10"
+                : "min-w-0 w-full py-6 px-4 sm:px-6 lg:h-full lg:min-h-0 lg:overflow-y-auto lg:px-8 xl:px-10 [scrollbar-width:thin]"
+          }
+        >
           {sequential && (
             <div className="mb-4 rounded-xl border border-brand-200 bg-brand-50/60 px-4 py-3">
               <p className="text-xs font-semibold uppercase tracking-wide text-brand-800">
@@ -319,8 +401,18 @@ export function TopicLessonLayout({
         <aside
           ref={ideRef}
           data-walkthrough="lesson-ide"
-          className={`mt-6 lg:mt-0 lg:overflow-y-auto lg:border-l lg:border-gray-200 lg:pl-6 xl:pl-8
-            [scrollbar-width:none] [&::-webkit-scrollbar]:hidden${singleColumnBlock ? " hidden lg:hidden" : ""}`}
+          className={
+            singleColumnBlock
+              ? "hidden"
+              : splitLayout
+                ? [
+                    "border-t border-gray-200 bg-white lg:mt-0 lg:h-full lg:min-h-0 lg:border-l lg:border-t-0 lg:border-gray-200 lg:bg-transparent lg:pl-6 xl:pl-8",
+                    isIdeAside
+                      ? "flex h-[min(48dvh,420px)] shrink-0 flex-col overflow-hidden lg:h-full lg:min-h-0"
+                      : "h-[min(48dvh,420px)] shrink-0 overflow-y-auto [scrollbar-width:thin] lg:h-full lg:min-h-0",
+                  ].join(" ")
+                : "mt-6 hidden lg:mt-0 lg:block lg:h-full lg:min-h-0 lg:overflow-y-auto lg:border-l lg:border-gray-200 lg:pl-6 lg:[scrollbar-width:thin] xl:pl-8"
+          }
         >
           {groqBlock && testingChatbotBlock ? (
             /* Testing — playground top + test checklist below */
@@ -593,14 +685,14 @@ export function TopicLessonLayout({
             </div>
           ) : practices.length > 0 ? (
             /* Default IDE only when the lesson has practice exercises */
-            <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
-              <div className="mb-3 flex items-center gap-2 text-sm font-medium text-gray-700">
+            <div className="flex min-h-0 flex-1 flex-col px-4 pt-3 sm:px-6 lg:px-0 lg:py-6 lg:pb-6 lg:pr-4 xl:pr-6">
+              <div className="mb-3 flex shrink-0 items-center gap-2 text-sm font-medium text-gray-700">
                 <Pencil className={`h-4 w-4 ${isSqlCourse ? "text-sky-600" : "text-brand-600"}`} />
                 {isSqlCourse ? "SQL IDE" : "Python IDE"}
               </div>
 
               {isSqlCourse && topicId && (
-                <div className="mb-3 flex gap-2">
+                <div className="mb-3 flex shrink-0 gap-2">
                   <SqlTableDetailsButton
                     topicId={topicId}
                     moduleSlug={moduleSlug}
@@ -611,7 +703,7 @@ export function TopicLessonLayout({
               )}
 
               {practices.length > 0 && (
-                <div className="mb-3 rounded-xl border border-brand-200 bg-brand-50/50 px-3 py-2.5">
+                <div className="mb-3 shrink-0 rounded-xl border border-brand-200 bg-brand-50/50 px-3 py-2.5">
                   <p className="text-xs font-medium uppercase tracking-wide text-brand-700">
                     {sequential ? "Current task" : "Current exercise"}
                   </p>
@@ -624,7 +716,7 @@ export function TopicLessonLayout({
               )}
 
               {practices.length > 1 && (
-                <div className="mb-3 flex flex-wrap gap-2">
+                <div className="mb-3 flex shrink-0 flex-wrap gap-2">
                   {practices.map((p, i) => {
                     const unlocked = checkUnlocked(i);
                     const done = checkComplete(i);
@@ -654,38 +746,53 @@ export function TopicLessonLayout({
                 </div>
               )}
 
-              {isSqlCourse ? (
-                <SqlIDE
-                  key={`practice-${activePractice}-${practiceReloadKey}-${activeCode.slice(0, 32)}`}
-                  initialCode={activeCode}
-                  editorHeight="280px"
-                  consoleMaxHeight={260}
-                  databaseId={sqlDatabaseId}
-                  onRun={topicId ? () => markIdeRan(topicId) : undefined}
-                />
-              ) : (
-                <PythonIDE
-                  key={`practice-${activePractice}-${practiceReloadKey}-${activeCode.slice(0, 32)}`}
-                  initialCode={activeCode}
-                  editorHeight="280px"
-                  consoleMaxHeight={260}
-                  onRun={topicId ? () => markIdeRan(topicId) : undefined}
-                />
+              {activeIsVisualization && (
+                <div className="mb-3 shrink-0 rounded-xl border border-orange-200 bg-orange-50 px-3 py-2.5">
+                  <p className="text-xs font-semibold text-orange-900">
+                    Visualization exercise
+                  </p>
+                  <p className="mt-1 text-xs text-orange-800">
+                    The browser IDE cannot show charts. Use{" "}
+                    <strong>Open in Google Colab</strong> in the IDE toolbar
+                    to run this code and see the plot.
+                  </p>
+                </div>
               )}
 
+              <div className="min-h-0 flex-1">
+                {isSqlCourse ? (
+                  <SqlIDE
+                    key={`practice-${activePractice}-${practiceReloadKey}-${activeCode.slice(0, 32)}`}
+                    initialCode={activeCode}
+                    fill
+                    databaseId={sqlDatabaseId}
+                    onRun={topicId ? () => markIdeRan(topicId) : undefined}
+                  />
+                ) : (
+                  <PythonIDE
+                    key={`practice-${activePractice}-${practiceReloadKey}-${activeCode.slice(0, 32)}`}
+                    initialCode={activeCode}
+                    fill
+                    onRun={topicId ? () => markIdeRan(topicId) : undefined}
+                  />
+                )}
+              </div>
+
               {activeBlock?.practicePrompt && (
-                <p className="mt-3 hidden text-sm text-gray-700 lg:block">
+                <p className="mt-3 hidden shrink-0 text-sm text-gray-700 lg:block">
                   {activeBlock.practicePrompt}
                 </p>
               )}
 
-              <div className="mt-3 hidden flex-wrap items-center gap-2 lg:flex">
+              <div className="mt-3 flex shrink-0 flex-wrap items-center gap-2">
                 <p className="text-xs text-gray-500">
                   {sequential
                     ? "Run your code, then continue when ready."
                     : isSqlCourse
                       ? "Press Ctrl+Enter to run SQL. Use Reset DB to undo DDL/DML experiments."
-                      : "Press Ctrl+Enter to run."}
+                      : activeIsVisualization
+                        ? "Use Google Colab to see charts. Ctrl+Enter still runs text output here."
+                        : "Press Ctrl+Enter to run."}
                 </p>
                 {sequential && !checkComplete(activePractice) && (
                   <button

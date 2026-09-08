@@ -7,6 +7,7 @@ import {
   clearGuestAndLegacyProgress,
   getActiveProgressUser,
   notifyProgressUpdated,
+  markIdeRan as markIdeRanLocal,
 } from "@/lib/progress";
 import { getSupabase, isSupabaseConfigured } from "@/lib/supabase/client";
 import { getPublishedTopicCount } from "@/data/curriculum";
@@ -28,34 +29,82 @@ export function saveProgress(progress: UserProgress): void {
   notifyProgressUpdated();
 }
 
+type LessonPatch = {
+  completed?: boolean;
+  quiz_score?: number;
+  quiz_attempted?: boolean;
+  ide_ran?: boolean;
+  last_visited_at?: string;
+};
+
+function missingColumnError(message: string | undefined): boolean {
+  if (!message) return false;
+  return /ide_ran|quiz_attempted|column/i.test(message);
+}
+
 async function upsertLessonRow(
   userId: string,
   topicId: string,
-  patch: { completed?: boolean; quiz_score?: number; last_visited_at?: string }
-) {
+  patch: LessonPatch
+): Promise<{ error: string | null }> {
   const sb = getSupabase();
-  if (!sb) return;
+  if (!sb) return { error: "Auth is not configured." };
 
-  const { data: existing } = await sb
+  let existing: {
+    completed?: boolean;
+    quiz_score?: number;
+    quiz_attempted?: boolean;
+    ide_ran?: boolean;
+  } | null = null;
+
+  const flagged = await sb
     .from("lesson_progress")
-    .select("completed, quiz_score")
+    .select("completed, quiz_score, quiz_attempted, ide_ran")
     .eq("user_id", userId)
     .eq("topic_id", topicId)
     .maybeSingle();
 
-  const completed = patch.completed ?? existing?.completed ?? false;
-  const quiz_score = Math.max(patch.quiz_score ?? 0, existing?.quiz_score ?? 0);
+  if (flagged.error && missingColumnError(flagged.error.message)) {
+    const basic = await sb
+      .from("lesson_progress")
+      .select("completed, quiz_score")
+      .eq("user_id", userId)
+      .eq("topic_id", topicId)
+      .maybeSingle();
+    existing = basic.data;
+  } else if (!flagged.error) {
+    existing = flagged.data;
+  }
 
-  await sb.from("lesson_progress").upsert(
-    {
-      user_id: userId,
-      topic_id: topicId,
-      completed,
-      quiz_score,
-      last_visited_at: patch.last_visited_at ?? new Date().toISOString(),
-    },
-    { onConflict: "user_id,topic_id" }
-  );
+  const baseRow = {
+    user_id: userId,
+    topic_id: topicId,
+    completed: patch.completed ?? existing?.completed ?? false,
+    quiz_score: Math.max(patch.quiz_score ?? 0, existing?.quiz_score ?? 0),
+    last_visited_at: patch.last_visited_at ?? new Date().toISOString(),
+  };
+
+  const fullRow = {
+    ...baseRow,
+    quiz_attempted:
+      patch.quiz_attempted ?? existing?.quiz_attempted ?? baseRow.quiz_score > 0,
+    ide_ran: patch.ide_ran ?? existing?.ide_ran ?? false,
+  };
+
+  const full = await sb.from("lesson_progress").upsert(fullRow, {
+    onConflict: "user_id,topic_id",
+  });
+
+  if (!full.error) return { error: null };
+
+  if (!missingColumnError(full.error.message)) {
+    return { error: full.error.message };
+  }
+
+  const fallback = await sb.from("lesson_progress").upsert(baseRow, {
+    onConflict: "user_id,topic_id",
+  });
+  return { error: fallback.error?.message ?? null };
 }
 
 /**
@@ -78,7 +127,7 @@ export async function migrateToAuthOnlyProgress(userId: string): Promise<void> {
   localStorage.setItem(flagKey, "1");
 }
 
-/** Cloud is source of truth for logged-in users. Never merges guest browser progress. */
+/** Cloud is source of truth for logged-in users when reachable. Never wipe local on fetch failure. */
 export async function syncProgressFromCloud(userId: string): Promise<UserProgress> {
   setActiveProgressUser(userId);
 
@@ -89,32 +138,70 @@ export async function syncProgressFromCloud(userId: string): Promise<UserProgres
   const sb = getSupabase();
   if (!sb) return loadLocalProgress();
 
-  const { data, error } = await sb
+  const local = loadLocalProgress();
+
+  let data:
+    | Array<{
+        topic_id: string;
+        completed: boolean;
+        quiz_score: number | null;
+        quiz_attempted?: boolean | null;
+        ide_ran?: boolean | null;
+        last_visited_at: string | null;
+      }>
+    | null = null;
+
+  const withFlags = await sb
     .from("lesson_progress")
-    .select("topic_id, completed, quiz_score, last_visited_at")
+    .select("topic_id, completed, quiz_score, quiz_attempted, ide_ran, last_visited_at")
     .eq("user_id", userId);
 
-  const local = loadLocalProgress();
+  if (withFlags.error && missingColumnError(withFlags.error.message)) {
+    const basic = await sb
+      .from("lesson_progress")
+      .select("topic_id, completed, quiz_score, last_visited_at")
+      .eq("user_id", userId);
+    if (basic.error) {
+      return local;
+    }
+    data = basic.data;
+  } else if (withFlags.error) {
+    return local;
+  } else {
+    data = withFlags.data;
+  }
+
   const progress: UserProgress = {
     completedTopics: [],
     quizScores: {},
-    ideRan: local.ideRan ?? [],
+    ideRan: [...(local.ideRan ?? [])],
   };
 
-  if (!error && data) {
-    let latest: { topicId: string; at: number } | null = null;
-    for (const row of data) {
-      if (row.completed) progress.completedTopics.push(row.topic_id);
-      if (row.quiz_score > 0) progress.quizScores[row.topic_id] = row.quiz_score;
-      if (row.last_visited_at) {
-        const at = new Date(row.last_visited_at).getTime();
-        if (!latest || at > latest.at) {
-          latest = { topicId: row.topic_id, at };
-        }
+  let latest: { topicId: string; at: number } | null = null;
+  for (const row of data ?? []) {
+    if (row.completed) progress.completedTopics.push(row.topic_id);
+
+    const attempted =
+      row.quiz_attempted === true ||
+      (row.quiz_attempted == null && (row.quiz_score ?? 0) > 0);
+    if (attempted && row.quiz_score != null) {
+      progress.quizScores[row.topic_id] = row.quiz_score;
+    }
+
+    if (row.ide_ran) {
+      if (!progress.ideRan.includes(row.topic_id)) {
+        progress.ideRan.push(row.topic_id);
       }
     }
-    if (latest) progress.lastVisited = latest.topicId;
+
+    if (row.last_visited_at) {
+      const at = new Date(row.last_visited_at).getTime();
+      if (!latest || at > latest.at) {
+        latest = { topicId: row.topic_id, at };
+      }
+    }
   }
+  if (latest) progress.lastVisited = latest.topicId;
 
   saveLocalProgress(progress);
   notifyProgressUpdated();
@@ -151,16 +238,35 @@ export async function saveQuizScoreAsync(
 ): Promise<UserProgress> {
   setActiveProgressUser(userId);
   const progress = loadLocalProgress();
-  const prev = progress.quizScores[topicId] ?? 0;
-  progress.quizScores[topicId] = Math.max(prev, scorePercent);
+  const prev = progress.quizScores[topicId];
+  progress.quizScores[topicId] =
+    prev === undefined ? scorePercent : Math.max(prev, scorePercent);
   saveLocalProgress(progress);
   notifyProgressUpdated();
 
   if (isSupabaseConfigured()) {
-    await upsertLessonRow(userId, topicId, { quiz_score: progress.quizScores[topicId] });
+    await upsertLessonRow(userId, topicId, {
+      quiz_score: progress.quizScores[topicId],
+      quiz_attempted: true,
+    });
   }
 
   return progress;
+}
+
+/** Persist IDE-run flag locally and to the cloud when possible. */
+export async function markIdeRanAsync(
+  userId: string,
+  topicId: string
+): Promise<void> {
+  setActiveProgressUser(userId);
+  markIdeRanLocal(topicId);
+
+  if (!isSupabaseConfigured()) return;
+  await upsertLessonRow(userId, topicId, {
+    ide_ran: true,
+    last_visited_at: new Date().toISOString(),
+  });
 }
 
 export function isTopicCompleted(topicId: string): boolean {
@@ -181,23 +287,46 @@ export function resetProgressSession(): void {
   setActiveProgressUser(null);
 }
 
-export async function clearCloudLessonProgress(userId: string): Promise<void> {
+export async function clearCloudLessonProgress(
+  userId: string
+): Promise<{ error: string | null }> {
   const sb = getSupabase();
-  if (!sb) return;
-  // Reset in place (works with existing update RLS; fixes stale completed rows)
-  await sb
+  if (!sb) return { error: "Auth is not configured." };
+
+  const updateRes = await sb
     .from("lesson_progress")
-    .update({ completed: false, quiz_score: 0 })
+    .update({ completed: false, quiz_score: 0, quiz_attempted: false, ide_ran: false })
     .eq("user_id", userId);
-  await sb.from("lesson_progress").delete().eq("user_id", userId);
+
+  if (updateRes.error && !missingColumnError(updateRes.error.message)) {
+    return { error: updateRes.error.message };
+  }
+
+  if (updateRes.error && missingColumnError(updateRes.error.message)) {
+    const legacy = await sb
+      .from("lesson_progress")
+      .update({ completed: false, quiz_score: 0 })
+      .eq("user_id", userId);
+    if (legacy.error) return { error: legacy.error.message };
+  }
+
+  const deleteRes = await sb.from("lesson_progress").delete().eq("user_id", userId);
+  if (deleteRes.error) {
+    return { error: deleteRes.error.message };
+  }
+
   clearProgressForUser(userId);
   notifyProgressUpdated();
+  return { error: null };
 }
 
-export async function clearCloudPracticeProgress(userId: string): Promise<void> {
+export async function clearCloudPracticeProgress(
+  userId: string
+): Promise<{ error: string | null }> {
   const sb = getSupabase();
-  if (!sb) return;
-  await sb
+  if (!sb) return { error: "Auth is not configured." };
+
+  const updateRes = await sb
     .from("practice_progress")
     .update({
       status: "not_started",
@@ -206,5 +335,15 @@ export async function clearCloudPracticeProgress(userId: string): Promise<void> 
       code_draft: "",
     })
     .eq("user_id", userId);
-  await sb.from("practice_progress").delete().eq("user_id", userId);
+
+  if (updateRes.error) {
+    return { error: updateRes.error.message };
+  }
+
+  const deleteRes = await sb.from("practice_progress").delete().eq("user_id", userId);
+  if (deleteRes.error) {
+    return { error: deleteRes.error.message };
+  }
+
+  return { error: null };
 }

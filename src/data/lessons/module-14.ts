@@ -3,233 +3,107 @@ import type { TopicLesson } from "@/lib/types";
 export const module14Lessons: Record<string, TopicLesson> = {
   "m14-t1": {
     topicId: "m14-t1",
-    intro:
-      "Welcome to the Final Project. You will build a Student Grade Manager that uses every major Python concept from Modules 1–13.",
+    intro: "NumPy ndarrays support fast element-wise (vectorized) operations unlike plain Python lists.",
     blocks: [
-      { type: "infographic", infographic: "final-project-overview" },
+      { type: "heading", content: "Explanation" },
+      { type: "paragraph", content: "`numpy.array()` creates an ndarray, which supports fast element-wise operations, unlike plain Python lists." },
+      { type: "heading", content: "Example Code" },
+      { type: "code", code: "import numpy as np\narr = np.array([1, 2, 3, 4])\nprint(arr)\nprint(type(arr))     # <class 'numpy.ndarray'>\nprint(arr * 2)        # [2 4 6 8] - vectorized!" },
+      { type: "heading", content: "Practice" },
       {
         type: "practice",
-        practiceLabel: "Preview output",
-        ideOnly: true,
-        practicePrompt:
-          "Run the code to see what the finished class report looks like.",
-        starterCode:
-          'print("=== Class Report ===")\nprint("Alice: avg 85.0 — PASS (B)")\nprint("Bob: avg 83.0 — PASS (B)")\nprint("Top student: Alice (85.0)")',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Data shape",
-        ideOnly: true,
-        practicePrompt:
-          "Create the students dict and print it.",
-        starterCode:
-          'students = {"Alice": [85, 92], "Bob": [70, 88]}\nprint(students)',
+        practicePrompt: "Create a NumPy array from [1, 2, 3, 4, 5] and add 10 to every element.",
+        starterCode: "# TODO: Add 10 to every element\nimport numpy as np\narr = np.array([1, 2, 3, 4, 5])\nprint(arr + 10)",
       },
     ],
     keyTakeaways: [
-      "The capstone combines all 13 modules into one Student Grade Manager.",
-      "Core data: dict of names → list of scores, plus a set of subjects.",
-      "Build in four steps: data → logic → functions → full capstone.",
+      "import numpy as np is the standard alias.",
+      "ndarrays support vectorized math without loops.",
+      "type(arr) shows numpy.ndarray.",
     ],
   },
   "m14-t2": {
     topicId: "m14-t2",
-    intro:
-      "Step 1 sets up the data layer using dictionaries, lists, sets, and tuples from Modules 5–8.",
+    intro: "Create arrays with zeros, ones, arange, and linspace. Inspect shape, dtype, ndim, and size.",
     blocks: [
-      { type: "infographic", infographic: "final-project-data" },
+      { type: "heading", content: "Explanation" },
+      { type: "paragraph", content: "NumPy offers helper functions: `np.zeros()`, `np.ones()`, `np.arange()`, `np.linspace()`. Arrays have properties: `.shape`, `.dtype`, `.ndim`, `.size`." },
+      { type: "heading", content: "Example Code" },
+      { type: "code", code: "import numpy as np\na = np.zeros((2, 3))\nb = np.arange(0, 10, 2)\nc = np.linspace(0, 1, 5)\nprint(a.shape, b, c)\nprint(a.dtype, a.ndim, a.size)" },
+      { type: "heading", content: "Practice" },
       {
         type: "practice",
-        practiceLabel: "Student dict",
-        ideOnly: true,
-        practicePrompt: "Create students dict with Alice and Bob, then print.",
-        starterCode:
-          'students = {}\nstudents["Alice"] = [85, 92]\nstudents["Bob"] = [70, 88]\nprint(students)',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Subject set",
-        ideOnly: true,
-        practicePrompt: "Build a set of subjects and print it.",
-        starterCode:
-          'subjects = set()\nsubjects.add("Math")\nsubjects.add("Science")\nsubjects.add("Math")\nprint(subjects)',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Tuple record",
-        ideOnly: true,
-        practicePrompt: "Unpack a (subject, score) tuple and print both values.",
-        starterCode:
-          'record = ("Math", 85)\nsubject, score = record\nprint(subject, score)',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Append grade",
-        ideOnly: true,
-        practicePrompt: "Append 92 to Alice's grade list.",
-        starterCode:
-          'students = {"Alice": [85]}\nstudents["Alice"].append(92)\nprint(students["Alice"])',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Challenge",
-        practicePrompt:
-          "Create students with Cara: [55, 48]. Add score 62 with append. Print Cara's list.",
-        starterCode:
-          'students = {"Cara": [55, 48]}\nstudents["Cara"].append(62)\nprint(students["Cara"])',
+        practicePrompt: "Create an array using np.arange(1, 11) and print its shape and size.",
+        starterCode: "# TODO: arange 1..10 and inspect properties\nimport numpy as np\narr = np.arange(1, 11)\nprint(arr)\nprint(arr.shape)\nprint(arr.size)",
       },
     ],
     keyTakeaways: [
-      "dict stores student name → list of grades.",
-      "set() tracks unique subject names.",
-      "tuple packs immutable (subject, score) records.",
+      "zeros/ones create filled arrays of a given shape.",
+      "arange is like range but returns an array.",
+      "shape, dtype, ndim, and size describe the array.",
     ],
   },
   "m14-t3": {
     topicId: "m14-t3",
-    intro:
-      "Step 2 adds processing: loops, conditionals, operators, and comprehensions from Modules 3, 9–11.",
+    intro: "Index and slice NumPy arrays like lists, plus multi-dimensional indexing with arr[row, col].",
     blocks: [
-      { type: "infographic", infographic: "final-project-logic" },
+      { type: "heading", content: "Explanation" },
+      { type: "paragraph", content: "NumPy arrays support the same `[start:stop:step]` slicing as lists, plus multi-dimensional indexing `arr[row, col]`." },
+      { type: "heading", content: "Example Code" },
+      { type: "code", code: "import numpy as np\narr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\nprint(arr[1, 2])     # 6\nprint(arr[:, 0])      # [1,4,7] - first column\nprint(arr[0:2, 1:3])  # sub-matrix" },
+      { type: "heading", content: "Practice" },
       {
         type: "practice",
-        practiceLabel: "Average loop",
-        ideOnly: true,
-        practicePrompt: "Calculate average of [85, 92, 78] using a for loop.",
-        starterCode:
-          "grades = [85, 92, 78]\ntotal = 0\nfor g in grades:\n    total += g\nprint(total / len(grades))",
-      },
-      {
-        type: "practice",
-        practiceLabel: "Pass / fail",
-        ideOnly: true,
-        practicePrompt: "Set status to PASS if avg >= 60 else FAIL. avg = 75.",
-        starterCode:
-          'avg = 75\nif avg >= 60:\n    status = "PASS"\nelse:\n    status = "FAIL"\nprint(status)',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Dict loop",
-        ideOnly: true,
-        practicePrompt: "Loop students.items() and print each name and average.",
-        starterCode:
-          'students = {"Alice": [90], "Bob": [60]}\nfor name, grades in students.items():\n    print(name, sum(grades) / len(grades))',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Comprehension",
-        ideOnly: true,
-        practicePrompt:
-          "Use a list comprehension to get names with average >= 60.",
-        starterCode:
-          'averages = {"Alice": 85, "Bob": 55, "Cara": 72}\npassing = [n for n, a in averages.items() if a >= 60]\nprint(passing)',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Challenge",
-        ideOnly: true,
-        practicePrompt:
-          "Given grades = [40, 55, 62], use elif to print FAIL, RETAKE, or PASS (60+ pass, 50+ retake).",
-        starterCode:
-          "grades = [40, 55, 62]\navg = sum(grades) / len(grades)\nif avg >= 60:\n    print('PASS')\nelif avg >= 50:\n    print('RETAKE')\nelse:\n    print('FAIL')",
+        practicePrompt: "Given arr = np.array([[1, 2], [3, 4], [5, 6]]), extract the second column.",
+        starterCode: "# TODO: Extract the second column\nimport numpy as np\narr = np.array([[1, 2], [3, 4], [5, 6]])\nprint(arr[:, 1])",
       },
     ],
     keyTakeaways: [
-      "for loops sum grades and walk the student dict.",
-      "if/elif/else assigns pass, retake, or fail.",
-      "List comprehensions filter passing students in one line.",
+      "arr[i, j] selects a single element.",
+      "arr[:, j] selects a whole column.",
+      "Slicing returns views/sub-arrays for further work.",
     ],
   },
   "m14-t4": {
     topicId: "m14-t4",
-    intro:
-      "Step 3 wraps logic in functions and formats output with f-strings and lambda sorting.",
+    intro: "Broadcasting lets NumPy operate on differently shaped arrays without explicit loops.",
     blocks: [
-      { type: "infographic", infographic: "final-project-functions" },
+      { type: "heading", content: "Explanation" },
+      { type: "paragraph", content: "Broadcasting lets NumPy perform operations between arrays of different (but compatible) shapes without explicit loops." },
+      { type: "heading", content: "Example Code" },
+      { type: "code", code: "import numpy as np\na = np.array([1, 2, 3])\nb = np.array([10, 20, 30])\nprint(a + b)          # [11,22,33]\nprint(a + 5)           # [6,7,8] - broadcasting a scalar\nmatrix = np.array([[1, 2, 3], [4, 5, 6]])\nprint(matrix + np.array([1, 0, 1]))  # broadcasting a row vector" },
+      { type: "heading", content: "Practice" },
       {
         type: "practice",
-        practiceLabel: "average()",
-        ideOnly: true,
-        practicePrompt: "Write average(scores) that returns sum/len.",
-        starterCode:
-          "def average(scores):\n    return sum(scores) / len(scores)\n\nprint(average([85, 92, 78]))",
-      },
-      {
-        type: "practice",
-        practiceLabel: "letter_grade()",
-        ideOnly: true,
-        practicePrompt: "Write letter_grade(avg) returning A–F.",
-        starterCode:
-          'def letter_grade(avg):\n    if avg >= 90: return "A"\n    if avg >= 80: return "B"\n    if avg >= 70: return "C"\n    if avg >= 60: return "D"\n    return "F"\n\nprint(letter_grade(85))',
-      },
-      {
-        type: "practice",
-        practiceLabel: "f-string report",
-        ideOnly: true,
-        practicePrompt: 'Print f"{name}: avg {avg:.1f} — PASS (B)"',
-        starterCode:
-          'name = "Alice"\navg = 85.333\nprint(f"{name}: avg {avg:.1f} — PASS (B)")',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Lambda sort",
-        ideOnly: true,
-        practicePrompt: "Sort ranking by score descending with lambda.",
-        starterCode:
-          'ranking = [("Alice", 85), ("Bob", 91)]\nranking.sort(key=lambda x: x[1], reverse=True)\nprint(ranking[0])',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Challenge",
-        ideOnly: true,
-        practicePrompt:
-          "Define status(avg) returning PASS or FAIL. Print status(72).",
-        starterCode:
-          'def status(avg):\n    return "PASS" if avg >= 60 else "FAIL"\n\nprint(status(72))',
+        practicePrompt: "Given a = np.array([1, 2, 3]) and b = np.array([4, 5, 6]), compute their element-wise product.",
+        starterCode: "# TODO: Element-wise product\nimport numpy as np\na = np.array([1, 2, 3])\nb = np.array([4, 5, 6])\nprint(a * b)",
       },
     ],
     keyTakeaways: [
-      "Functions keep average, letter_grade, and status reusable.",
-      "f-strings format report lines with fixed decimals.",
-      "lambda sorts the leaderboard by average.",
+      "Element-wise ops (+, *, etc.) work on matching shapes.",
+      "Scalars broadcast across every element.",
+      "Compatible shapes expand automatically — no Python loop needed.",
     ],
   },
   "m14-t5": {
     topicId: "m14-t5",
-    intro:
-      "Assemble the complete Student Grade Manager. Run it, study it, then extend it with your own features.",
+    intro: "NumPy stats helpers: mean, median, std, min, max, and sum for quick summaries.",
     blocks: [
-      { type: "infographic", infographic: "final-project-capstone" },
+      { type: "heading", content: "Explanation" },
+      { type: "paragraph", content: "NumPy provides `np.mean()`, `np.median()`, `np.std()`, `np.var()`, `np.min()`, `np.max()`, `np.sum()` for quick statistics." },
+      { type: "heading", content: "Example Code" },
+      { type: "code", code: "import numpy as np\ndata = np.array([10, 20, 30, 40, 50])\nprint(np.mean(data))    # 30.0\nprint(np.median(data))  # 30.0\nprint(np.std(data))     # standard deviation\nprint(np.max(data), np.min(data))" },
+      { type: "heading", content: "Practice" },
       {
         type: "practice",
-        practiceLabel: "Full program",
-        practicePrompt:
-          "Run the complete Student Grade Manager and read the output.",
-        starterCode:
-          'students = {"Alice": [85, 92, 78], "Bob": [70, 88, 91], "Cara": [55, 48, 62]}\nsubjects = {"Math", "Science", "English"}\n\ndef average(scores):\n    return sum(scores) / len(scores) if scores else 0\n\ndef letter_grade(avg):\n    if avg >= 90: return "A"\n    if avg >= 80: return "B"\n    if avg >= 70: return "C"\n    if avg >= 60: return "D"\n    return "F"\n\ndef status(avg):\n    return "PASS" if avg >= 60 else "FAIL"\n\nprint("=== Class Report ===")\naverages = {}\nfor name, grades in students.items():\n    avg = average(grades)\n    averages[name] = avg\n    print(f"{name}: avg {avg:.1f} — {status(avg)} ({letter_grade(avg)})")\n\ntop = max(averages.items(), key=lambda x: x[1])\nprint(f"Top student: {top[0]} ({top[1]:.1f})")\npassing = [n for n, a in averages.items() if a >= 60]\nprint(f"Passing ({len(passing)}): {passing}")\nprint(f"Subjects: {subjects}")',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Extend",
-        ideOnly: true,
-        practicePrompt:
-          "Add student Dan with grades [88, 76, 94] and print the updated dict.",
-        starterCode:
-          'students = {"Alice": [85], "Bob": [70]}\nstudents["Dan"] = [88, 76, 94]\nprint(students)',
-      },
-      {
-        type: "practice",
-        practiceLabel: "Challenge",
-        practicePrompt:
-          "Build a dict comprehension counting how many students get each letter grade (A–F) from averages = {\"Alice\": 85, \"Bob\": 55, \"Cara\": 92}.",
-        starterCode:
-          'def letter_grade(avg):\n    if avg >= 90: return "A"\n    if avg >= 80: return "B"\n    if avg >= 70: return "C"\n    if avg >= 60: return "D"\n    return "F"\n\naverages = {"Alice": 85, "Bob": 55, "Cara": 92}\ncounts = {g: sum(1 for a in averages.values() if letter_grade(a) == g) for g in "ABCDF"}\nprint(counts)',
+        practicePrompt: "Given data = np.array([5, 10, 15, 20, 25]), compute and print the mean and the sum.",
+        starterCode: "# TODO: mean and sum\nimport numpy as np\ndata = np.array([5, 10, 15, 20, 25])\nprint(np.mean(data))\nprint(np.sum(data))",
       },
     ],
     keyTakeaways: [
-      "The capstone uses dict, list, set, loops, conditionals, functions, f-strings, comprehensions, and lambda.",
-      "You can extend the project with new students, subjects, or reports.",
-      "This project pattern mirrors real data-cleaning scripts in data science.",
+      "np.mean / median summarize center.",
+      "np.std / var measure spread.",
+      "np.min, np.max, and np.sum are common aggregates.",
     ],
   },
 };

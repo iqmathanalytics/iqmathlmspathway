@@ -5,6 +5,7 @@ import { ModuleTopicList } from "./ModuleTopicList";
 import { AddOnModuleSections } from "./AddOnModuleSections";
 import { GroqApiKeySetup } from "@/components/ai/GroqApiKeySetup";
 import { IconImage } from "@/components/ui/IconImage";
+import { CourseAccessGate } from "@/components/courses/CourseAccessGate";
 
 interface ModulePageProps {
   params: Promise<{ moduleSlug: string }>;
@@ -22,6 +23,7 @@ export default async function ModulePage({ params }: ModulePageProps) {
   const isAddOn = courseModule.slug === "mba-add-on";
 
   return (
+    <CourseAccessGate courseId={courseModule.course}>
     <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <Link
         href="/dashboard"
@@ -58,5 +60,6 @@ export default async function ModulePage({ params }: ModulePageProps) {
         <ModuleTopicList courseModule={courseModule} courseModules={courseModules} />
       )}
     </div>
+    </CourseAccessGate>
   );
 }

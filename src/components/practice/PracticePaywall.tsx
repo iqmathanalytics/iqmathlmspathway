@@ -15,19 +15,18 @@ interface PracticePaywallProps {
 
 export function PracticePaywall({
   problem,
-  moduleSlug,
-  topicSlug,
   moduleName,
   topicTitle,
 }: PracticePaywallProps) {
   return (
     <div className="flex min-h-[calc(100vh-8rem)] flex-col">
       <PracticeBreadcrumb
-        moduleSlug={moduleSlug}
-        topicSlug={topicSlug}
+        moduleSlug="python"
+        topicSlug={problem.difficulty}
         moduleName={moduleName}
         topicTitle={topicTitle}
         problemTitle={problem.title}
+        difficulty={problem.difficulty}
       />
       <div className="flex flex-1 items-center justify-center rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
         <div className="max-w-md text-center">
@@ -35,7 +34,7 @@ export function PracticePaywall({
           <h1 className="mt-4 text-xl font-bold text-gray-900">{problem.title}</h1>
           <p className="mt-2 text-sm text-gray-600">
             This is a premium problem (problem {problem.order}). The first 5 problems in each
-            topic are free. Unlock all premium practice with a one-time purchase.
+            set are free. Unlock all premium practice with a one-time purchase.
           </p>
           <Link
             href="/checkout"
@@ -45,7 +44,7 @@ export function PracticePaywall({
             <ChevronRight className="h-4 w-4" />
           </Link>
           <Link
-            href={`/practice/${moduleSlug}/${topicSlug}`}
+            href="/practice/python"
             className="mt-3 block text-sm text-brand-700 hover:underline"
           >
             Back to problem list

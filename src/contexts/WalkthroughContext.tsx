@@ -10,17 +10,7 @@ import {
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { modules } from "@/data/curriculum";
-
-// First published topic URL — used to auto-navigate after the dashboard steps
-const FIRST_TOPIC_URL = (() => {
-  for (const m of modules) {
-    for (const t of m.topics) {
-      if (t.published) return `/learn/${m.slug}/${t.slug}`;
-    }
-  }
-  return null;
-})();
+import { FIRST_TOPIC_URL } from "@/data/platform";
 
 // ── Step definitions ────────────────────────────────────────────────────────
 export type WalkthroughStepId =

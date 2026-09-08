@@ -25,12 +25,16 @@ Deno.serve(async (req) => {
       password?: string;
       fullName?: string;
       mobile?: string;
+      collegeId?: string | null;
+      department?: string;
     };
 
     const email = body.email?.trim().toLowerCase() ?? "";
     const password = body.password ?? "";
     const fullName = body.fullName?.trim() ?? "";
     const mobile = body.mobile?.trim() ?? "";
+    const collegeId = body.collegeId?.trim() ?? "";
+    const department = body.department?.trim() ?? "";
 
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return json({ error: "Enter a valid email address." }, 400);
@@ -43,6 +47,9 @@ Deno.serve(async (req) => {
     }
     if (mobile.length < 8) {
       return json({ error: "Enter a valid mobile number." }, 400);
+    }
+    if (!department) {
+      return json({ error: "Department is required." }, 400);
     }
 
     const supabaseUrl = Deno.env.get("SUPABASE_URL");
@@ -64,6 +71,8 @@ Deno.serve(async (req) => {
       user_metadata: {
         full_name: fullName,
         mobile,
+        college_id: collegeId,
+        department,
       },
     });
 

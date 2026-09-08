@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy, ExternalLink, Monitor, BookOpen, Layers, ShieldCheck, HelpCircle, Code, ListFilter, AlertTriangle, Cpu } from "lucide-react";
+import { Check, Copy, ExternalLink, Monitor, BookOpen, ShieldCheck, Code, AlertTriangle } from "lucide-react";
 import { useLangChainCopy } from "./LangChainCopyContext";
 
 /* ── Data ───────────────────────────────────────────────────────────────────── */

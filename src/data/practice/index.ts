@@ -15,6 +15,10 @@ import { module11Practice } from "./module-11";
 import { module12Practice } from "./module-12";
 import { module13Practice } from "./module-13";
 import { module14Practice } from "./module-14";
+import { module15Practice } from "./module-15";
+import { module16Practice } from "./module-16";
+import { module17Practice } from "./module-17";
+import { module18Practice } from "./module-18";
 import { sqlModule1Practice } from "./sql-module-1";
 import { sqlModule2Practice } from "./sql-module-2";
 import { sqlModule3Practice } from "./sql-module-3";
@@ -40,6 +44,10 @@ const allProblems: PracticeProblem[] = [
   ...module12Practice,
   ...module13Practice,
   ...module14Practice,
+  ...module15Practice,
+  ...module16Practice,
+  ...module17Practice,
+  ...module18Practice,
   ...sqlModule1Practice,
   ...sqlModule2Practice,
   ...sqlModule3Practice,

@@ -14,7 +14,7 @@ interface MarkCompleteButtonProps {
   hasIde?: boolean;
 }
 
-const TEMPORARILY_DISABLE_TOPIC_LOCK = true;
+const TEMPORARILY_DISABLE_TOPIC_LOCK = false;
 
 export function MarkCompleteButton({ topicId, hasQuiz, hasIde = true }: MarkCompleteButtonProps) {
   const { user } = useAuth();

@@ -452,7 +452,13 @@ export function ChallengePracticeLayout({
       });
       await saveDraft(problem.id, code, "attempted");
       if (session?.access_token) {
-        await markSolved(problem.id, code);
+        const save = await markSolved(problem.id, code);
+        if (save.error) {
+          setCheckResult({
+            type: "error",
+            message: `Correct answer, but progress was not saved: ${save.error}`,
+          });
+        }
       }
     } else if (test?.error) {
       setCheckResult({ type: "error", message: test.error });

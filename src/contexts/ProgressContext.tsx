@@ -17,11 +17,11 @@ import {
   clearGuestAndLegacyProgress,
   loadProgress,
   migrateToAuthOnlyProgress,
+  markIdeRanAsync,
   resetProgressSession,
   setActiveProgressUser,
   syncProgressFromCloud,
 } from "@/lib/progress-service";
-import { markIdeRan as markIdeRanInStorage } from "@/lib/progress";
 
 const emptyProgress: UserProgress = { completedTopics: [], quizScores: {}, ideRan: [] };
 
@@ -100,7 +100,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
 
   const markIdeRan = useCallback((topicId: string) => {
     if (!user) return;
-    markIdeRanInStorage(topicId);
+    void markIdeRanAsync(user.id, topicId);
   }, [user]);
 
   const value = useMemo(

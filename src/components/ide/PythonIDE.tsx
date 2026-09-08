@@ -11,12 +11,16 @@ import {
 import { CodeEditor } from "./CodeEditor";
 import { ConsolePanel } from "./ConsolePanel";
 import { useCodeRunner } from "./useCodeRunner";
+import { OpenInColabButton } from "./OpenInColabButton";
+import { isVisualizationCode } from "@/lib/visualization-code";
 
 interface PythonIDEProps {
   initialCode?: string;
   editorHeight?: string;
   consoleMaxHeight?: number;
   filename?: string;
+  /** Fill parent height (lesson sidebar IDE). */
+  fill?: boolean;
   /** Called once the first time the user presses Run (used for completion tracking). */
   onRun?: () => void;
 }
@@ -24,8 +28,9 @@ interface PythonIDEProps {
 export function PythonIDE({
   initialCode = 'print("Hello, Python!")',
   editorHeight = "240px",
-  consoleMaxHeight = 220,
+  consoleMaxHeight = 260,
   filename = "main.py",
+  fill = false,
   onRun,
 }: PythonIDEProps) {
   const [code, setCode] = useState(initialCode);
@@ -52,6 +57,8 @@ export function PythonIDE({
     setCode(value);
   }
 
+  const isVisualization = isVisualizationCode(code);
+
   const statusText = error
     ? "Error"
     : loading
@@ -61,21 +68,30 @@ export function PythonIDE({
         : "Ready";
 
   return (
-    <div className="overflow-hidden rounded-xl border border-gray-700 bg-[#0d1117] shadow-xl ring-1 ring-black/20">
+    <div
+      className={
+        fill
+          ? "flex h-full min-h-0 flex-col overflow-hidden rounded-xl border border-gray-700 bg-[#0d1117] shadow-xl ring-1 ring-black/20"
+          : "overflow-hidden rounded-xl border border-gray-700 bg-[#0d1117] shadow-xl ring-1 ring-black/20"
+      }
+    >
       {/* Title bar */}
-      <div className="flex items-center justify-between border-b border-gray-700 bg-[#161b22] px-3 py-2">
-        <div className="flex items-center gap-3">
+      <div className="flex shrink-0 flex-wrap items-center justify-between gap-2 border-b border-gray-700 bg-[#161b22] px-3 py-2">
+        <div className="flex min-w-0 items-center gap-3">
           <div className="flex gap-1.5" aria-hidden>
             <span className="h-3 w-3 rounded-full bg-red-500/80" />
             <span className="h-3 w-3 rounded-full bg-yellow-500/80" />
             <span className="h-3 w-3 rounded-full bg-green-500/80" />
           </div>
-          <span className="flex items-center gap-1.5 text-xs text-gray-400">
-            <FileCode2 className="h-3.5 w-3.5" />
+          <span className="flex min-w-0 items-center gap-1.5 truncate text-xs text-gray-400">
+            <FileCode2 className="h-3.5 w-3.5 shrink-0" />
             {filename}
           </span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+          {isVisualization && (
+            <OpenInColabButton code={code} variant="ide" />
+          )}
           <button
             type="button"
             onMouseDown={(e) => e.preventDefault()}
@@ -84,7 +100,7 @@ export function PythonIDE({
             title="Reset to starter code"
           >
             <RotateCcw className="h-3.5 w-3.5" />
-            Reset
+            <span className="hidden sm:inline">Reset</span>
           </button>
           <button
             type="button"
@@ -94,13 +110,13 @@ export function PythonIDE({
             title="Clear console"
           >
             <Eraser className="h-3.5 w-3.5" />
-            Clear
+            <span className="hidden sm:inline">Clear</span>
           </button>
           <button
             type="button"
             onMouseDown={(e) => e.preventDefault()}
             onClick={handleRun}
-            disabled={loading || running || !!error}
+            disabled={loading || running}
             className="flex items-center gap-1.5 rounded-md bg-brand-600 px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-brand-500 disabled:cursor-not-allowed disabled:opacity-50"
             title="Run code (Ctrl+Enter)"
           >
@@ -114,19 +130,34 @@ export function PythonIDE({
         </div>
       </div>
 
+      {isVisualization && (
+        <div className="flex shrink-0 items-start gap-2 border-b border-orange-900/50 bg-orange-950/40 px-3 py-2 text-[11px] leading-relaxed text-orange-100/90">
+          <span className="mt-0.5 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-sm bg-gradient-to-br from-orange-400 to-yellow-400 text-[8px] font-bold text-white">
+            Co
+          </span>
+          <p>
+            Charts do not display in this browser IDE. Use{" "}
+            <strong className="font-semibold text-orange-50">Open in Google Colab</strong>{" "}
+            to see matplotlib and seaborn plots. Print output still runs here.
+          </p>
+        </div>
+      )}
+
       {/* Editor */}
-      <div className="border-b border-gray-800">
+      <div className={fill ? "min-h-0 flex-[1.35] border-b border-gray-800" : "border-b border-gray-800"}>
         <CodeEditor
           value={code}
           onChange={handleChange}
           onRun={handleRun}
           onCursorChange={(line, col) => setCursor({ line, col })}
-          minHeight={editorHeight}
+          height={fill ? "100%" : undefined}
+          minHeight={fill ? "0px" : editorHeight}
+          className={fill ? "h-full [&_.cm-editor]:h-full" : undefined}
         />
       </div>
 
       {supportsStandardInput && (
-        <div className="border-b border-gray-800 bg-[#0d1117] px-3 py-2">
+        <div className="shrink-0 border-b border-gray-800 bg-[#0d1117] px-3 py-2">
           <label
             htmlFor="judge0-stdin"
             className="mb-1 block text-xs font-medium text-gray-300"
@@ -137,7 +168,7 @@ export function PythonIDE({
             id="judge0-stdin"
             value={standardInput}
             onChange={(event) => setStandardInput(event.target.value)}
-            rows={3}
+            rows={fill ? 2 : 3}
             className="w-full resize-y rounded-md border border-gray-700 bg-[#010409] px-3 py-2 font-mono text-xs text-gray-100 outline-none transition-colors placeholder:text-gray-600 focus:border-brand-500"
             placeholder="Example: Alice"
             spellCheck={false}
@@ -148,22 +179,31 @@ export function PythonIDE({
         </div>
       )}
 
-      {/* Console */}
-      <ConsolePanel
-        lines={lines}
-        loading={loading}
-        running={running}
-        error={error}
-        onClear={clearConsole}
-        maxHeight={consoleMaxHeight}
-        stdinActive={stdinActive}
-        stdinDraft={stdinDraft}
-        onStdinDraftChange={setStdinDraft}
-        onStdinSubmit={submitStdin}
-      />
+      {/* Console — dedicated scroll region (output only) */}
+      <div
+        className={
+          fill
+            ? "flex min-h-0 flex-1 flex-col overflow-hidden"
+            : "flex flex-col overflow-hidden"
+        }
+      >
+        <ConsolePanel
+          lines={lines}
+          loading={loading}
+          running={running}
+          error={error}
+          onClear={clearConsole}
+          maxHeight={consoleMaxHeight}
+          fill={fill}
+          stdinActive={stdinActive}
+          stdinDraft={stdinDraft}
+          onStdinDraftChange={setStdinDraft}
+          onStdinSubmit={submitStdin}
+        />
+      </div>
 
       {/* Status bar */}
-      <div className="flex items-center justify-between border-t border-gray-800 bg-[#010409] px-3 py-1 text-[11px] text-gray-500">
+      <div className="flex shrink-0 items-center justify-between border-t border-gray-800 bg-[#010409] px-3 py-1 text-[11px] text-gray-500">
         <div className="flex gap-4">
           <span>
             Ln {cursor.line}, Col {cursor.col}

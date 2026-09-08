@@ -1,12 +1,11 @@
 "use client";
 
 import type { Module } from "@/lib/types";
-import { CheckCircle2, Circle, Lock, Clock, Terminal } from "lucide-react";
-import { getPracticeCountByTopic } from "@/data/practice/meta";
+import { CheckCircle2, Circle, Lock, Clock } from "lucide-react";
 import { useProgress } from "@/contexts/ProgressContext";
 import { NavigationLink } from "@/components/ui/NavigationLink";
 import { getUnlockedTopicIds } from "@/lib/topic-locking";
-import { getQuiz } from "@/data/quizzes";
+import { hasQuiz } from "@/data/quizzes/meta";
 
 interface ModuleTopicListProps {
   courseModule: Module;
@@ -17,7 +16,7 @@ export function ModuleTopicList({ courseModule, courseModules }: ModuleTopicList
   const { progress, ready } = useProgress();
   const published = courseModule.topics.filter((t) => t.published);
   const completedIds = ready ? progress.completedTopics : [];
-  const unlockedTopicIds = getUnlockedTopicIds(courseModules, progress, (topicId) => !!getQuiz(topicId));
+  const unlockedTopicIds = getUnlockedTopicIds(courseModules, progress, hasQuiz);
   const firstUnlockedTopic = published.find((topic) => unlockedTopicIds.has(topic.id));
 
   return (
@@ -26,7 +25,6 @@ export function ModuleTopicList({ courseModule, courseModules }: ModuleTopicList
         {courseModule.topics.map((topic, i) => {
           const isDone = completedIds.includes(topic.id);
           const isUnlocked = topic.published && unlockedTopicIds.has(topic.id);
-          const practiceCount = getPracticeCountByTopic(topic.id);
 
           return (
             <li key={topic.id}>
@@ -76,17 +74,6 @@ export function ModuleTopicList({ courseModule, courseModules }: ModuleTopicList
                         {topic.estimatedMinutes} min
                       </span>
                       <Lock className="h-5 w-5 text-gray-400" />
-                    </div>
-                  )}
-                  {practiceCount > 0 && isUnlocked && (
-                    <div className="border-t border-gray-100 px-4 py-2">
-                      <NavigationLink
-                        href={`/practice/${courseModule.slug}/${topic.slug}`}
-                        className="flex items-center gap-1.5 text-xs font-medium text-brand-700 hover:underline"
-                      >
-                        <Terminal className="h-3.5 w-3.5" />
-                        {practiceCount} practice problems
-                      </NavigationLink>
                     </div>
                   )}
                 </div>

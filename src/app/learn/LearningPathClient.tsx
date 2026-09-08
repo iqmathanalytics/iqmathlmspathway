@@ -7,7 +7,7 @@ import { useProgress } from "@/contexts/ProgressContext";
 import { ClientOnly } from "@/components/ui/ClientOnly";
 import { Loader2 } from "lucide-react";
 import { getUnlockedTopicIds } from "@/lib/topic-locking";
-import { getQuiz } from "@/data/quizzes";
+import { hasQuiz } from "@/data/quizzes/meta";
 
 interface LearningPathClientProps {
   modules: Module[];
@@ -20,7 +20,7 @@ function ModuleGrid({
   modules: Module[];
   progress: UserProgress;
 }) {
-  const unlockedTopicIds = getUnlockedTopicIds(modules, progress, (topicId) => !!getQuiz(topicId));
+  const unlockedTopicIds = getUnlockedTopicIds(modules, progress, hasQuiz);
 
   return (
     <div className="grid gap-6 lg:grid-cols-2">

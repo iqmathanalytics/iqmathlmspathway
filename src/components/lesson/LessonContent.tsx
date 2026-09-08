@@ -2,89 +2,93 @@
 
 import type { ReactNode } from "react";
 import type { LessonBlock } from "@/lib/types";
-import { FlowDiagram } from "@/components/visual/FlowDiagram";
-import { IntroProgrammingInfographic } from "@/components/lesson/IntroProgrammingInfographic";
-import { ChoosingPythonInfographic } from "@/components/lesson/ChoosingPythonInfographic";
-import { SettingUpPythonInfographic } from "@/components/lesson/SettingUpPythonInfographic";
-import { PythonIdesInfographic } from "@/components/lesson/PythonIdesInfographic";
-import { InputOutputInfographic } from "@/components/lesson/InputOutputInfographic";
-import { CommentsInfographic } from "@/components/lesson/CommentsInfographic";
-import { VariablesInfographic } from "@/components/lesson/VariablesInfographic";
-import { DataTypesInfographic } from "@/components/lesson/DataTypesInfographic";
-import { TypeCastingInfographic } from "@/components/lesson/TypeCastingInfographic";
-import { ArithmeticOperatorsInfographic } from "@/components/lesson/ArithmeticOperatorsInfographic";
-import { AssignmentOperatorsInfographic } from "@/components/lesson/AssignmentOperatorsInfographic";
-import { ComparisonOperatorsInfographic } from "@/components/lesson/ComparisonOperatorsInfographic";
-import { LogicalOperatorsInfographic } from "@/components/lesson/LogicalOperatorsInfographic";
-import { IdentityOperatorsInfographic } from "@/components/lesson/IdentityOperatorsInfographic";
-import { MembershipOperatorsInfographic } from "@/components/lesson/MembershipOperatorsInfographic";
-import { BitwiseOperatorsInfographic } from "@/components/lesson/BitwiseOperatorsInfographic";
-import { CreatingStringsInfographic } from "@/components/lesson/CreatingStringsInfographic";
-import { FormattingStringsInfographic } from "@/components/lesson/FormattingStringsInfographic";
-import { StringIndexingInfographic } from "@/components/lesson/StringIndexingInfographic";
-import { StringSlicingInfographic } from "@/components/lesson/StringSlicingInfographic";
-import { StringMethodsInfographic } from "@/components/lesson/StringMethodsInfographic";
-import { CreatingListsInfographic } from "@/components/lesson/CreatingListsInfographic";
-import { ListCharacteristicsInfographic } from "@/components/lesson/ListCharacteristicsInfographic";
-import { ListIndexingInfographic } from "@/components/lesson/ListIndexingInfographic";
-import { ListSlicingInfographic } from "@/components/lesson/ListSlicingInfographic";
-import { ListMethodsInfographic } from "@/components/lesson/ListMethodsInfographic";
-import { ListModifyingInfographic } from "@/components/lesson/ListModifyingInfographic";
-import { TupleSyntaxInfographic } from "@/components/lesson/TupleSyntaxInfographic";
-import { TupleIndexingInfographic } from "@/components/lesson/TupleIndexingInfographic";
-import { TuplePropertiesInfographic } from "@/components/lesson/TuplePropertiesInfographic";
-import { TupleSlicingInfographic } from "@/components/lesson/TupleSlicingInfographic";
-import { TupleMethodsInfographic } from "@/components/lesson/TupleMethodsInfographic";
-import { SetSyntaxInfographic } from "@/components/lesson/SetSyntaxInfographic";
-import { SetUpdatingInfographic } from "@/components/lesson/SetUpdatingInfographic";
-import { SetOperationsInfographic } from "@/components/lesson/SetOperationsInfographic";
-import { SetMethodsInfographic } from "@/components/lesson/SetMethodsInfographic";
-import { DictionarySyntaxInfographic } from "@/components/lesson/DictionarySyntaxInfographic";
-import { DictionaryKeysValuesInfographic } from "@/components/lesson/DictionaryKeysValuesInfographic";
-import { DictionaryAccessingInfographic } from "@/components/lesson/DictionaryAccessingInfographic";
-import { DictionaryMethodsInfographic } from "@/components/lesson/DictionaryMethodsInfographic";
-import { IfStatementInfographic } from "@/components/lesson/IfStatementInfographic";
-import { IfElseInfographic } from "@/components/lesson/IfElseInfographic";
-import { IfElifElseInfographic } from "@/components/lesson/IfElifElseInfographic";
-import { WhileLoopInfographic } from "@/components/lesson/WhileLoopInfographic";
-import { ForLoopInfographic } from "@/components/lesson/ForLoopInfographic";
-import { BreakContinueInfographic } from "@/components/lesson/BreakContinueInfographic";
-import { PassStatementInfographic } from "@/components/lesson/PassStatementInfographic";
-import { RangeFunctionInfographic } from "@/components/lesson/RangeFunctionInfographic";
-import { ListComprehensionInfographic } from "@/components/lesson/ListComprehensionInfographic";
-import { ComprehensionUsesInfographic } from "@/components/lesson/ComprehensionUsesInfographic";
-import { DictionaryComprehensionInfographic } from "@/components/lesson/DictionaryComprehensionInfographic";
-import { FunctionsCreatingInfographic } from "@/components/lesson/FunctionsCreatingInfographic";
-import { FunctionsCallingInfographic } from "@/components/lesson/FunctionsCallingInfographic";
-import { FunctionArgumentsInfographic } from "@/components/lesson/FunctionArgumentsInfographic";
-import { FunctionVariablesInfographic } from "@/components/lesson/FunctionVariablesInfographic";
-import { FunctionRecursionInfographic } from "@/components/lesson/FunctionRecursionInfographic";
-import { LambdaFunctionsInfographic } from "@/components/lesson/LambdaFunctionsInfographic";
-import { AgenticAiTopicInfographic } from "@/components/lesson/AgenticAiTopicInfographic";
-import { ArtificialIntelligenceIntroBlock } from "@/components/lesson/ArtificialIntelligenceIntroBlock";
-import { LargeLanguageModelIntroBlock } from "@/components/lesson/LargeLanguageModelIntroBlock";
-import { LlmOrchestrationBlock } from "@/components/lesson/LlmOrchestrationBlock";
-import { TopLlmModelsBlock } from "@/components/lesson/TopLlmModelsBlock";
-import { GroqApiKeyGuideBlock } from "@/components/lesson/GroqApiKeyGuideBlock";
-import { GroqDocsLessonBlock } from "@/components/lesson/GroqDocsLessonBlock";
-import { LangChainIntroBlock } from "@/components/lesson/LangChainIntroBlock";
-import { LangChainSetupGuide } from "@/components/lesson/LangChainSetupGuide";
-import { RagBasicsGuide } from "@/components/lesson/RagBasicsGuide";
-import { DocumentQaGuide } from "@/components/lesson/DocumentQaGuide";
-import { MultiAgentGuide } from "@/components/lesson/MultiAgentGuide";
-import { NextStepsGuide } from "@/components/lesson/NextStepsGuide";
-import { LangChainPromptsBlock } from "@/components/lesson/LangChainPromptsBlock";
-import { LangChainLCELBlock } from "@/components/lesson/LangChainLCELBlock";
-import { LangChainAgentsBlock } from "@/components/lesson/LangChainAgentsBlock";
-import { LangChainLangSmithBlock } from "@/components/lesson/LangChainLangSmithBlock";
-import { AgentsInAiGuide } from "@/components/lesson/AgentsInAiGuide";
-import { FunctionCallingGuide } from "@/components/lesson/FunctionCallingGuide";
-import { BuildingAiAgentsGuide } from "@/components/lesson/BuildingAiAgentsGuide";
-import { ReActPatternGuide } from "@/components/lesson/ReActPatternGuide";
-import { CustomerSupportProjectGuide } from "@/components/lesson/CustomerSupportProjectGuide";
-import { FinalProjectInfographic } from "@/components/lesson/FinalProjectInfographic";
-import { SqlTopicInfographic } from "@/components/lesson/SqlTopicInfographic";
+import {
+  FlowDiagram,
+  IntroProgrammingInfographic,
+  ChoosingPythonInfographic,
+  SettingUpPythonInfographic,
+  PythonIdesInfographic,
+  InputOutputInfographic,
+  CommentsInfographic,
+  VariablesInfographic,
+  DataTypesInfographic,
+  TypeCastingInfographic,
+  ArithmeticOperatorsInfographic,
+  AssignmentOperatorsInfographic,
+  ComparisonOperatorsInfographic,
+  LogicalOperatorsInfographic,
+  IdentityOperatorsInfographic,
+  MembershipOperatorsInfographic,
+  BitwiseOperatorsInfographic,
+  CreatingStringsInfographic,
+  FormattingStringsInfographic,
+  StringIndexingInfographic,
+  StringSlicingInfographic,
+  StringMethodsInfographic,
+  CreatingListsInfographic,
+  ListCharacteristicsInfographic,
+  ListIndexingInfographic,
+  ListSlicingInfographic,
+  ListMethodsInfographic,
+  ListModifyingInfographic,
+  TupleSyntaxInfographic,
+  TupleIndexingInfographic,
+  TuplePropertiesInfographic,
+  TupleSlicingInfographic,
+  TupleMethodsInfographic,
+  SetSyntaxInfographic,
+  SetUpdatingInfographic,
+  SetOperationsInfographic,
+  SetMethodsInfographic,
+  DictionarySyntaxInfographic,
+  DictionaryKeysValuesInfographic,
+  DictionaryAccessingInfographic,
+  DictionaryMethodsInfographic,
+  IfStatementInfographic,
+  IfElseInfographic,
+  IfElifElseInfographic,
+  WhileLoopInfographic,
+  ForLoopInfographic,
+  BreakContinueInfographic,
+  PassStatementInfographic,
+  RangeFunctionInfographic,
+  ListComprehensionInfographic,
+  ComprehensionUsesInfographic,
+  DictionaryComprehensionInfographic,
+  FunctionsCreatingInfographic,
+  FunctionsCallingInfographic,
+  FunctionArgumentsInfographic,
+  FunctionVariablesInfographic,
+  FunctionRecursionInfographic,
+  LambdaFunctionsInfographic,
+  AgenticAiTopicInfographic,
+  ArtificialIntelligenceIntroBlock,
+  LargeLanguageModelIntroBlock,
+  LlmOrchestrationBlock,
+  TopLlmModelsBlock,
+  GroqApiKeyGuideBlock,
+  GroqDocsLessonBlock,
+  LangChainIntroBlock,
+  LangChainSetupGuide,
+  RagBasicsGuide,
+  DocumentQaGuide,
+  MultiAgentGuide,
+  NextStepsGuide,
+  LangChainPromptsBlock,
+  LangChainLCELBlock,
+  LangChainAgentsBlock,
+  LangChainLangSmithBlock,
+  AgentsInAiGuide,
+  FunctionCallingGuide,
+  BuildingAiAgentsGuide,
+  ReActPatternGuide,
+  CustomerSupportProjectGuide,
+  FinalProjectInfographic,
+  SqlTopicInfographic,
+} from "@/components/lesson/dynamicBlocks";
 import { ArrowRight, Lightbulb, Code2, Pencil, Play } from "lucide-react";
+import { OpenInColabButton } from "@/components/ide/OpenInColabButton";
+import { isVisualizationCode } from "@/lib/visualization-code";
 
 /** Turn bare http(s) URLs and /datasets/ paths into clickable links. */
 function linkifyText(text: string): ReactNode {
@@ -560,15 +564,26 @@ export function LessonContent({
                 </div>
               );
             }
+            const isVizExample = isVisualizationCode(block.code);
             return (
               <div key={i} className="my-4">
-                <div className="mb-2 flex items-center gap-2 text-sm font-medium text-gray-700">
+                <div className="mb-2 flex flex-wrap items-center gap-2 text-sm font-medium text-gray-700">
                   <Code2 className="h-4 w-4" />
                   Example code
+                  {isVizExample && block.code && (
+                    <span className="ml-auto">
+                      <OpenInColabButton code={block.code} label="Open in Google Colab" />
+                    </span>
+                  )}
                 </div>
                 <pre className="overflow-x-auto rounded-xl bg-gray-900 p-4 font-mono text-sm text-green-100">
                   {block.code}
                 </pre>
+                {isVizExample && (
+                  <p className="mt-2 text-xs text-orange-800">
+                    Plots do not render in the course IDE. Open Google Colab to see this chart.
+                  </p>
+                )}
               </div>
             );
           case "practice": {
@@ -598,16 +613,35 @@ export function LessonContent({
                   {block.practicePrompt && (
                     <p className="text-gray-700">{block.practicePrompt}</p>
                   )}
-                  <button
-                    type="button"
-                    onMouseDown={(e) => e.preventDefault()}
-                    onClick={() => onSelectPractice?.(practiceIdx)}
-                    className="mt-3 text-sm font-medium text-brand-700 hover:text-brand-800"
-                  >
-                    {isActive
-                      ? "Active in IDE →"
-                      : "Load this exercise in the IDE →"}
-                  </button>
+                  {isVisualizationCode(block.starterCode) && block.starterCode ? (
+                    <div className="mt-3 flex flex-wrap items-center gap-2">
+                      <OpenInColabButton
+                        code={block.starterCode}
+                        label="Open in Google Colab"
+                      />
+                      <button
+                        type="button"
+                        onMouseDown={(e) => e.preventDefault()}
+                        onClick={() => onSelectPractice?.(practiceIdx)}
+                        className="text-sm font-medium text-brand-700 hover:text-brand-800"
+                      >
+                        {isActive
+                          ? "Active in IDE →"
+                          : "Load in IDE (text output only) →"}
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      type="button"
+                      onMouseDown={(e) => e.preventDefault()}
+                      onClick={() => onSelectPractice?.(practiceIdx)}
+                      className="mt-3 text-sm font-medium text-brand-700 hover:text-brand-800"
+                    >
+                      {isActive
+                        ? "Active in IDE →"
+                        : "Load this exercise in the IDE →"}
+                    </button>
+                  )}
                 </div>
               );
             }

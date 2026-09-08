@@ -4,50 +4,67 @@ export const module14Practice: PracticeProblem[] = [
   {
     "id": "m14-t1-p01",
     "topicId": "m14-t1",
-    "slug": "fp-preview",
-    "title": "Project Overview: Preview Report",
+    "slug": "m14_t1-1",
+    "title": "Introduction to NumPy Arrays: Warm-up",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Print \"=== Class Report ===\" on one line.",
+    "description": "Write a short program related to Introduction to NumPy Arrays. Print Ready on one line.",
     "challengeContent": {
-      "outputOnly": true,
-      "editorPlaceholder": "# print header",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Preview the capstone report header."
+          "value": "Write a short program related to "
+        },
+        {
+          "type": "code",
+          "value": "Introduction to NumPy Arrays"
+        },
+        {
+          "type": "text",
+          "value": ". Print the word "
+        },
+        {
+          "type": "code",
+          "value": "Ready"
+        },
+        {
+          "type": "text",
+          "value": " on one line."
         }
       ],
+      "outputOnly": true,
+      "editorPlaceholder": "# Write your solution here",
       "liveCheckRules": [
         {
           "id": "out",
+          "label": "prints Ready",
           "kind": "print-value",
           "index": 0,
-          "expected": "=== Class Report ===",
-          "label": "output"
+          "expected": "Ready"
         }
-      ]
+      ],
+      "emptyMessage": "Use print() to display output.",
+      "successDetail": "Correct! Great warm-up."
     },
     "examples": [
       {
-        "output": "=== Class Report ==="
+        "output": "Ready"
       }
     ],
     "constraints": [
-      "Output must be exactly: === Class Report ==="
+      "Use a single print() statement",
+      "Output must be exactly: Ready"
     ],
     "hints": [
-      "print(\"=== Class Report ===\")"
+      "Use: print(\"Ready\")"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m14-t1-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "=== Class Report ===",
+        "expectedStdout": "Ready",
         "visibility": "public"
       }
     ]
@@ -55,41 +72,46 @@ export const module14Practice: PracticeProblem[] = [
   {
     "id": "m14-t1-p02",
     "topicId": "m14-t1",
-    "slug": "fp-shape",
-    "title": "Project Overview: Data Shape",
+    "slug": "m14_t1-2",
+    "title": "Introduction to NumPy Arrays: Output Two Values",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create students = {\"Alice\": [85, 92]}, print students[\"Alice\"][0].",
+    "description": "Create two variables about Introduction to NumPy Arrays and print them comma-separated.",
     "challengeContent": {
-      "outputOnly": true,
-      "requiresDictKey": "Alice",
       "introSegments": [
         {
           "type": "text",
-          "value": "Dict maps names to grade lists."
+          "value": "Create two variables related to Introduction to NumPy Arrays and print them separated by a comma."
         }
       ],
-      "editorPlaceholder": "# students dict",
-      "successDetail": "Correct!"
+      "outputOnly": true,
+      "expectCommaPrint": true,
+      "editorPlaceholder": "# create variables and print A,B format",
+      "emptyMessage": "Create two variables and use print() to display them.",
+      "successDetail": "Correct! Two values printed with a comma separator."
     },
     "examples": [
       {
-        "output": "85"
+        "output": "A,B"
       }
     ],
     "constraints": [
-      "Output: 85"
+      "Create two variables before printing",
+      "Print output must be exactly: A,B",
+      "Use a comma separator between the two values"
     ],
     "hints": [
-      "students = {\"Alice\": [85, 92]}\\nprint(students[\"Alice\"][0])"
+      "Create two variables related to Introduction to NumPy Arrays",
+      "Use comma in print: print(a, b, sep=\",\")",
+      "Output must be exactly A,B"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m14-t1-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "85",
+        "expectedStdout": "A,B",
         "visibility": "public"
       }
     ]
@@ -97,50 +119,52 @@ export const module14Practice: PracticeProblem[] = [
   {
     "id": "m14-t1-p03",
     "topicId": "m14-t1",
-    "slug": "fp-concepts",
-    "title": "Project Overview: Module Map",
+    "slug": "m14_t1-3",
+    "title": "Introduction to NumPy Arrays: Simple Loop",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "Print len([\"dict\",\"list\",\"set\",\"tuple\"]).",
+    "description": "Use a for loop to print 1 through 4 for Introduction to NumPy Arrays.",
     "challengeContent": {
-      "outputOnly": true,
-      "editorPlaceholder": "# collections",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Four core collection types in the project."
+          "value": "Use a "
+        },
+        {
+          "type": "code",
+          "value": "for"
+        },
+        {
+          "type": "text",
+          "value": " loop to print numbers from 1 to 4. Practice loops for Introduction to NumPy Arrays."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "4",
-          "label": "output"
-        }
-      ]
+      "outputOnly": true,
+      "requiresForLoop": true,
+      "editorPlaceholder": "# use for loop to print 1 to 4",
+      "emptyMessage": "Use a for loop with print() to display the numbers.",
+      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
     },
     "examples": [
       {
-        "output": "4"
+        "output": "1\n2\n3\n4"
       }
     ],
     "constraints": [
-      "Output must be exactly: 4"
+      "Use a for loop with range()",
+      "Print numbers 1, 2, 3, and 4 — each on its own line",
+      "No extra lines or blank lines"
     ],
     "hints": [
-      "print(len([\"dict\",\"list\",\"set\",\"tuple\"]))"
+      "Example: for i in range(1, 5): then indent print(i) on the next line"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m14-t1-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "4",
+        "expectedStdout": "1\n2\n3\n4",
         "visibility": "public"
       }
     ]
@@ -148,40 +172,76 @@ export const module14Practice: PracticeProblem[] = [
   {
     "id": "m14-t1-p04",
     "topicId": "m14-t1",
-    "slug": "fp-subjects",
-    "title": "Project Overview: Subject Set",
+    "slug": "m14_t1-4",
+    "title": "Introduction to NumPy Arrays: Condition",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Create s = {\"Math\",\"Science\",\"Math\"}, print len(s).",
+    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
     "challengeContent": {
-      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Sets keep unique subjects only."
+          "value": "Set "
+        },
+        {
+          "type": "code",
+          "value": "score = 75"
+        },
+        {
+          "type": "text",
+          "value": ". If "
+        },
+        {
+          "type": "code",
+          "value": "score >= 60"
+        },
+        {
+          "type": "text",
+          "value": ", print "
+        },
+        {
+          "type": "code",
+          "value": "Pass"
+        },
+        {
+          "type": "text",
+          "value": ", otherwise print "
+        },
+        {
+          "type": "code",
+          "value": "Fail"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "editorPlaceholder": "# set of subjects",
-      "successDetail": "Correct!"
+      "outputOnly": true,
+      "requiresIfCondition": true,
+      "editorPlaceholder": "# write if-else condition",
+      "emptyMessage": "Define score and use an if condition to print the result.",
+      "successDetail": "Correct! Your condition evaluated to Pass."
     },
     "examples": [
       {
-        "output": "2"
+        "output": "Pass"
       }
     ],
     "constraints": [
-      "Output: 2"
+      "Define score = 75",
+      "Use an if/else to compare score against 60",
+      "Output must be exactly: Pass"
     ],
     "hints": [
-      "s = {\"Math\",\"Science\",\"Math\"}\\nprint(len(s))"
+      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m14-t1-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "2",
+        "expectedStdout": "Pass",
         "visibility": "public"
       }
     ]
@@ -189,607 +249,13 @@ export const module14Practice: PracticeProblem[] = [
   {
     "id": "m14-t1-p05",
     "topicId": "m14-t1",
-    "slug": "fp-plan",
-    "title": "Project Overview: Build Order",
-    "difficulty": "hard",
-    "order": 5,
-    "layout": "challenge",
-    "description": "Print \"data,logic,functions,capstone\" (comma-separated steps).",
-    "challengeContent": {
-      "outputOnly": true,
-      "editorPlaceholder": "# steps",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Print the four build steps in order."
-        }
-      ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "data,logic,functions,capstone",
-          "label": "output"
-        }
-      ]
-    },
-    "examples": [
-      {
-        "output": "data,logic,functions,capstone"
-      }
-    ],
-    "constraints": [
-      "Output must be exactly: data,logic,functions,capstone"
-    ],
-    "hints": [
-      "print(\"data,logic,functions,capstone\")"
-    ],
-    "starterCode": "",
-    "publicTests": [
-      {
-        "id": "m14-t1-p05-t1",
-        "label": "Sample test",
-        "expectedStdout": "data,logic,functions,capstone",
-        "visibility": "public"
-      }
-    ]
-  },
-  {
-    "id": "m14-t2-p01",
-    "topicId": "m14-t2",
-    "slug": "fp-dict",
-    "title": "Step 1: Data Model: Student Dict",
-    "difficulty": "easy",
-    "order": 1,
-    "layout": "challenge",
-    "description": "students = {\"Alice\": [85], \"Bob\": [70]}, print len(students).",
-    "challengeContent": {
-      "outputOnly": true,
-      "requiresVariables": [
-        "students"
-      ],
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Main database is a dict of names → grade lists."
-        }
-      ],
-      "editorPlaceholder": "# students = {}",
-      "successDetail": "Correct!"
-    },
-    "examples": [
-      {
-        "output": "2"
-      }
-    ],
-    "constraints": [
-      "Output: 2"
-    ],
-    "hints": [
-      "students = {\"Alice\": [85], \"Bob\": [70]}\\nprint(len(students))"
-    ],
-    "starterCode": "",
-    "publicTests": [
-      {
-        "id": "m14-t2-p01-t1",
-        "label": "Sample test",
-        "expectedStdout": "2",
-        "visibility": "public"
-      }
-    ]
-  },
-  {
-    "id": "m14-t2-p02",
-    "topicId": "m14-t2",
-    "slug": "fp-set",
-    "title": "Step 1: Data Model: Subject Set",
-    "difficulty": "easy",
-    "order": 2,
-    "layout": "challenge",
-    "description": "subjects = set(); subjects.add(\"Math\"); print \"Math\" in subjects.",
-    "challengeContent": {
-      "outputOnly": true,
-      "requiresVariables": [
-        "subjects"
-      ],
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Use a set for unique subject names."
-        }
-      ],
-      "editorPlaceholder": "# subjects = set()",
-      "successDetail": "Correct!"
-    },
-    "examples": [
-      {
-        "output": "True"
-      }
-    ],
-    "constraints": [
-      "Output: True"
-    ],
-    "hints": [
-      "subjects = set()\\nsubjects.add(\"Math\")\\nprint(\"Math\" in subjects)"
-    ],
-    "starterCode": "",
-    "publicTests": [
-      {
-        "id": "m14-t2-p02-t1",
-        "label": "Sample test",
-        "expectedStdout": "True",
-        "visibility": "public"
-      }
-    ]
-  },
-  {
-    "id": "m14-t2-p03",
-    "topicId": "m14-t2",
-    "slug": "fp-tuple",
-    "title": "Step 1: Data Model: Grade Record",
-    "difficulty": "easy",
-    "order": 3,
-    "layout": "challenge",
-    "description": "record = (\"Science\", 88); subject, score = record; print score.",
-    "challengeContent": {
-      "outputOnly": true,
-      "requiresVariables": [
-        "record"
-      ],
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Unpack a (subject, score) tuple."
-        }
-      ],
-      "editorPlaceholder": "# tuple unpack",
-      "successDetail": "Correct!"
-    },
-    "examples": [
-      {
-        "output": "88"
-      }
-    ],
-    "constraints": [
-      "Output: 88"
-    ],
-    "hints": [
-      "record = (\"Science\", 88)\\nsubject, score = record\\nprint(score)"
-    ],
-    "starterCode": "",
-    "publicTests": [
-      {
-        "id": "m14-t2-p03-t1",
-        "label": "Sample test",
-        "expectedStdout": "88",
-        "visibility": "public"
-      }
-    ]
-  },
-  {
-    "id": "m14-t2-p04",
-    "topicId": "m14-t2",
-    "slug": "fp-append",
-    "title": "Step 1: Data Model: Append Grade",
-    "difficulty": "medium",
-    "order": 4,
-    "layout": "challenge",
-    "description": "students = {\"Alice\": [85]}; students[\"Alice\"].append(92); print students[\"Alice\"][-1].",
-    "challengeContent": {
-      "outputOnly": true,
-      "requiresVariables": [
-        "students"
-      ],
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Use "
-        },
-        {
-          "type": "code",
-          "value": ".append()"
-        },
-        {
-          "type": "text",
-          "value": " to add a score."
-        }
-      ],
-      "editorPlaceholder": "# append grade",
-      "successDetail": "Correct!"
-    },
-    "examples": [
-      {
-        "output": "92"
-      }
-    ],
-    "constraints": [
-      "Output: 92"
-    ],
-    "hints": [
-      "students = {\"Alice\": [85]}\\nstudents[\"Alice\"].append(92)\\nprint(students[\"Alice\"][-1])"
-    ],
-    "starterCode": "",
-    "publicTests": [
-      {
-        "id": "m14-t2-p04-t1",
-        "label": "Sample test",
-        "expectedStdout": "92",
-        "visibility": "public"
-      }
-    ]
-  },
-  {
-    "id": "m14-t2-p05",
-    "topicId": "m14-t2",
-    "slug": "fp-add-student",
-    "title": "Step 1: Data Model: Add Student",
+    "slug": "m14_t1-5",
+    "title": "Introduction to NumPy Arrays: Function Stub",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "students = {}; students[\"Cara\"] = [55, 48]; print students[\"Cara\"][1].",
+    "description": "Define greet() that prints Hello and call it.",
     "challengeContent": {
-      "outputOnly": true,
-      "requiresVariables": [
-        "students"
-      ],
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Add a new student key with a grade list."
-        }
-      ],
-      "editorPlaceholder": "# add Cara",
-      "successDetail": "Correct!"
-    },
-    "examples": [
-      {
-        "output": "48"
-      }
-    ],
-    "constraints": [
-      "Output: 48"
-    ],
-    "hints": [
-      "students = {}\\nstudents[\"Cara\"] = [55, 48]\\nprint(students[\"Cara\"][1])"
-    ],
-    "starterCode": "",
-    "publicTests": [
-      {
-        "id": "m14-t2-p05-t1",
-        "label": "Sample test",
-        "expectedStdout": "48",
-        "visibility": "public"
-      }
-    ]
-  },
-  {
-    "id": "m14-t2-p06",
-    "topicId": "m14-t2",
-    "slug": "fp-challenge-data",
-    "title": "Step 1: Data Model: Merge Grades",
-    "difficulty": "hard",
-    "order": 6,
-    "layout": "challenge",
-    "description": "students = {\"Bob\": [70]}; students[\"Bob\"].extend([88, 91]); print sum(students[\"Bob\"]).",
-    "challengeContent": {
-      "outputOnly": true,
-      "requiresVariables": [
-        "students"
-      ],
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Use "
-        },
-        {
-          "type": "code",
-          "value": ".extend()"
-        },
-        {
-          "type": "text",
-          "value": " then sum the list."
-        }
-      ],
-      "editorPlaceholder": "# extend grades",
-      "successDetail": "Correct!"
-    },
-    "examples": [
-      {
-        "output": "249"
-      }
-    ],
-    "constraints": [
-      "Output: 249"
-    ],
-    "hints": [
-      "students = {\"Bob\": [70]}\\nstudents[\"Bob\"].extend([88, 91])\\nprint(sum(students[\"Bob\"]))"
-    ],
-    "starterCode": "",
-    "publicTests": [
-      {
-        "id": "m14-t2-p06-t1",
-        "label": "Sample test",
-        "expectedStdout": "249",
-        "visibility": "public"
-      }
-    ]
-  },
-  {
-    "id": "m14-t3-p01",
-    "topicId": "m14-t3",
-    "slug": "fp-avg",
-    "title": "Step 2: Logic & Loops: Average Loop",
-    "difficulty": "easy",
-    "order": 1,
-    "layout": "challenge",
-    "description": "grades = [85, 92, 78]; print sum(grades) / len(grades).",
-    "challengeContent": {
-      "outputOnly": true,
-      "requiresVariables": [
-        "grades"
-      ],
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Average = sum / len."
-        }
-      ],
-      "editorPlaceholder": "# average",
-      "successDetail": "Correct!"
-    },
-    "examples": [
-      {
-        "output": "85.0"
-      }
-    ],
-    "constraints": [
-      "Output: 85.0"
-    ],
-    "hints": [
-      "grades = [85, 92, 78]\\nprint(sum(grades) / len(grades))"
-    ],
-    "starterCode": "",
-    "publicTests": [
-      {
-        "id": "m14-t3-p01-t1",
-        "label": "Sample test",
-        "expectedStdout": "85.0",
-        "visibility": "public"
-      }
-    ]
-  },
-  {
-    "id": "m14-t3-p02",
-    "topicId": "m14-t3",
-    "slug": "fp-pass",
-    "title": "Step 2: Logic & Loops: Pass or Fail",
-    "difficulty": "easy",
-    "order": 2,
-    "layout": "challenge",
-    "description": "avg = 75; print \"PASS\" if avg >= 60 else \"FAIL\".",
-    "challengeContent": {
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Compare average to 60."
-        }
-      ],
-      "editorPlaceholder": "# if avg >= 60",
-      "successDetail": "Correct!"
-    },
-    "examples": [
-      {
-        "output": "PASS"
-      }
-    ],
-    "constraints": [
-      "Output: PASS"
-    ],
-    "hints": [
-      "avg = 75\\nprint(\"PASS\" if avg >= 60 else \"FAIL\")"
-    ],
-    "starterCode": "",
-    "publicTests": [
-      {
-        "id": "m14-t3-p02-t1",
-        "label": "Sample test",
-        "expectedStdout": "PASS",
-        "visibility": "public"
-      }
-    ]
-  },
-  {
-    "id": "m14-t3-p03",
-    "topicId": "m14-t3",
-    "slug": "fp-dict-loop",
-    "title": "Step 2: Logic & Loops: Loop Students",
-    "difficulty": "medium",
-    "order": 3,
-    "layout": "challenge",
-    "description": "students = {\"Alice\": [90]}; print list(students.keys())[0].",
-    "challengeContent": {
-      "outputOnly": true,
-      "requiresVariables": [
-        "students"
-      ],
-      "requiresForLoop": false,
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Access the first student name from the dict."
-        }
-      ],
-      "editorPlaceholder": "# students.keys()",
-      "successDetail": "Correct!"
-    },
-    "examples": [
-      {
-        "output": "Alice"
-      }
-    ],
-    "constraints": [
-      "Output: Alice"
-    ],
-    "hints": [
-      "students = {\"Alice\": [90]}\\nprint(list(students.keys())[0])"
-    ],
-    "starterCode": "",
-    "publicTests": [
-      {
-        "id": "m14-t3-p03-t1",
-        "label": "Sample test",
-        "expectedStdout": "Alice",
-        "visibility": "public"
-      }
-    ]
-  },
-  {
-    "id": "m14-t3-p04",
-    "topicId": "m14-t3",
-    "slug": "fp-comp",
-    "title": "Step 2: Logic & Loops: Passing List",
-    "difficulty": "medium",
-    "order": 4,
-    "layout": "challenge",
-    "description": "averages = {\"Alice\": 85, \"Bob\": 55}; print [n for n,a in averages.items() if a >= 60][0].",
-    "challengeContent": {
-      "outputOnly": true,
-      "requiresVariables": [
-        "averages"
-      ],
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "List comprehension filters passing students."
-        }
-      ],
-      "editorPlaceholder": "# comprehension",
-      "successDetail": "Correct!"
-    },
-    "examples": [
-      {
-        "output": "Alice"
-      }
-    ],
-    "constraints": [
-      "Output: Alice"
-    ],
-    "hints": [
-      "averages = {\"Alice\": 85, \"Bob\": 55}\\nprint([n for n,a in averages.items() if a >= 60][0])"
-    ],
-    "starterCode": "",
-    "publicTests": [
-      {
-        "id": "m14-t3-p04-t1",
-        "label": "Sample test",
-        "expectedStdout": "Alice",
-        "visibility": "public"
-      }
-    ]
-  },
-  {
-    "id": "m14-t3-p05",
-    "topicId": "m14-t3",
-    "slug": "fp-elif",
-    "title": "Step 2: Logic & Loops: Letter Band",
-    "difficulty": "medium",
-    "order": 5,
-    "layout": "challenge",
-    "description": "avg = 55; print RETAKE if 50 <= avg < 60 else PASS.",
-    "challengeContent": {
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Use elif bands for retake vs pass."
-        }
-      ],
-      "editorPlaceholder": "# elif bands",
-      "successDetail": "Correct!"
-    },
-    "examples": [
-      {
-        "output": "RETAKE"
-      }
-    ],
-    "constraints": [
-      "Output: RETAKE"
-    ],
-    "hints": [
-      "avg = 55\\nif avg >= 60: print(\"PASS\")\\nelif avg >= 50: print(\"RETAKE\")\\nelse: print(\"FAIL\")"
-    ],
-    "starterCode": "",
-    "publicTests": [
-      {
-        "id": "m14-t3-p05-t1",
-        "label": "Sample test",
-        "expectedStdout": "RETAKE",
-        "visibility": "public"
-      }
-    ]
-  },
-  {
-    "id": "m14-t3-p06",
-    "topicId": "m14-t3",
-    "slug": "fp-challenge-logic",
-    "title": "Step 2: Logic & Loops: Class Average",
-    "difficulty": "hard",
-    "order": 6,
-    "layout": "challenge",
-    "description": "students = {\"A\": [80, 90], \"B\": [70, 70]}; print sum(sum(g) for g in students.values()) / sum(len(g) for g in students.values()).",
-    "challengeContent": {
-      "outputOnly": true,
-      "requiresVariables": [
-        "students"
-      ],
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Compute overall class average across all grades."
-        }
-      ],
-      "editorPlaceholder": "# class average",
-      "successDetail": "Correct!"
-    },
-    "examples": [
-      {
-        "output": "77.5"
-      }
-    ],
-    "constraints": [
-      "Output: 77.5"
-    ],
-    "hints": [
-      "students = {\"A\": [80, 90], \"B\": [70, 70]}\\ntotal = sum(sum(g) for g in students.values())\\ncount = sum(len(g) for g in students.values())\\nprint(total / count)"
-    ],
-    "starterCode": "",
-    "publicTests": [
-      {
-        "id": "m14-t3-p06-t1",
-        "label": "Sample test",
-        "expectedStdout": "77.5",
-        "visibility": "public"
-      }
-    ]
-  },
-  {
-    "id": "m14-t4-p01",
-    "topicId": "m14-t4",
-    "slug": "fp-fn-avg",
-    "title": "Step 3: Functions & Report: average()",
-    "difficulty": "easy",
-    "order": 1,
-    "layout": "challenge",
-    "description": "def average(s): return sum(s)/len(s)\nprint average([85, 92, 78]).",
-    "challengeContent": {
-      "outputOnly": true,
-      "requiresFunction": "average",
       "introSegments": [
         {
           "type": "text",
@@ -797,33 +263,1254 @@ export const module14Practice: PracticeProblem[] = [
         },
         {
           "type": "code",
-          "value": "average(scores)"
+          "value": "greet()"
         },
         {
           "type": "text",
-          "value": " with return."
+          "value": " that prints "
+        },
+        {
+          "type": "code",
+          "value": "Hello"
+        },
+        {
+          "type": "text",
+          "value": " and call it once."
         }
       ],
-      "editorPlaceholder": "# def average",
-      "successDetail": "Correct!"
+      "outputOnly": true,
+      "requiresFunction": "greet",
+      "editorPlaceholder": "# define greet() function",
+      "emptyMessage": "Define greet() with a print inside, then call it.",
+      "successDetail": "Correct! Your function printed Hello."
     },
     "examples": [
       {
-        "output": "85.0"
+        "output": "Hello"
       }
     ],
     "constraints": [
-      "Output: 85.0"
+      "Define a function named greet",
+      "The function must print Hello",
+      "Call greet() once after defining it"
     ],
     "hints": [
-      "def average(s):\\n    return sum(s)/len(s)\\nprint(average([85, 92, 78]))"
+      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m14-t1-p05-t1",
+        "label": "Sample test",
+        "expectedStdout": "Hello",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m14-t1-p06",
+    "topicId": "m14-t1",
+    "slug": "m14_t1-6",
+    "title": "Introduction to NumPy Arrays: List Practice",
+    "difficulty": "hard",
+    "order": 6,
+    "layout": "challenge",
+    "description": "Create a list of three items and print index 1.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Create a list with three items about Introduction to NumPy Arrays. Print the "
+        },
+        {
+          "type": "code",
+          "value": "second item"
+        },
+        {
+          "type": "text",
+          "value": " using index "
+        },
+        {
+          "type": "code",
+          "value": "1"
+        },
+        {
+          "type": "text",
+          "value": " (Python counts from 0, so index 1 is the middle item)."
+        }
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
+          "items[0] is the first item, items[1] is the second.",
+          "print(items[1]) displays the second item on its own line."
+        ],
+        "codePreview": {
+          "comment": "# Expected output",
+          "lines": [
+            "middle"
+          ]
+        }
+      },
+      "outputOnly": true,
+      "requiresListAccess": true,
+      "editorPlaceholder": "# create a list and print items[1]",
+      "liveCheckRules": [
+        {
+          "id": "middle",
+          "label": "prints middle",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "middle"
+        }
+      ],
+      "emptyMessage": "Create a list with three items, then print the item at index 1.",
+      "successDetail": "Correct! You accessed the second list item with items[1]."
+    },
+    "examples": [
+      {
+        "output": "middle"
+      }
+    ],
+    "constraints": [
+      "Create a list with exactly three items",
+      "Print the item at index 1 (the second item)",
+      "Output must be exactly: middle"
+    ],
+    "hints": [
+      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m14-t1-p06-t1",
+        "label": "Sample test",
+        "expectedStdout": "middle",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m14-t1-p07",
+    "topicId": "m14-t1",
+    "slug": "m14_t1-7",
+    "title": "Introduction to NumPy Arrays: Dict Lookup",
+    "difficulty": "hard",
+    "order": 7,
+    "layout": "challenge",
+    "description": "Create a dict with key topic and print its value.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Create a dictionary with key "
+        },
+        {
+          "type": "code",
+          "value": "topic"
+        },
+        {
+          "type": "text",
+          "value": " and value "
+        },
+        {
+          "type": "code",
+          "value": "Python"
+        },
+        {
+          "type": "text",
+          "value": ". Print the value using "
+        },
+        {
+          "type": "code",
+          "value": "d[\"topic\"]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
+          "Use the key inside square brackets: d[\"topic\"]",
+          "print(d[\"topic\"]) displays Python on the screen."
+        ],
+        "codePreview": {
+          "comment": "# Expected output",
+          "lines": [
+            "Python"
+          ]
+        }
+      },
+      "outputOnly": true,
+      "requiresDictKey": "topic",
+      "editorPlaceholder": "# create dict and print d[\"topic\"]",
+      "liveCheckRules": [
+        {
+          "id": "val",
+          "label": "prints Python",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "Python"
+        }
+      ],
+      "emptyMessage": "Create a dictionary with key topic, then print its value.",
+      "successDetail": "Correct! You looked up a dictionary value by key."
+    },
+    "examples": [
+      {
+        "output": "Python"
+      }
+    ],
+    "constraints": [
+      "Create a dictionary with key topic",
+      "The value must be Python",
+      "Print the value using the key topic"
+    ],
+    "hints": [
+      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m14-t1-p07-t1",
+        "label": "Sample test",
+        "expectedStdout": "Python",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m14-t2-p01",
+    "topicId": "m14-t2",
+    "slug": "m14_t2-1",
+    "title": "Array Creation and Properties: Warm-up",
+    "difficulty": "easy",
+    "order": 1,
+    "layout": "challenge",
+    "description": "Write a short program related to Array Creation and Properties. Print Ready on one line.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Write a short program related to "
+        },
+        {
+          "type": "code",
+          "value": "Array Creation and Properties"
+        },
+        {
+          "type": "text",
+          "value": ". Print the word "
+        },
+        {
+          "type": "code",
+          "value": "Ready"
+        },
+        {
+          "type": "text",
+          "value": " on one line."
+        }
+      ],
+      "outputOnly": true,
+      "editorPlaceholder": "# Write your solution here",
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints Ready",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "Ready"
+        }
+      ],
+      "emptyMessage": "Use print() to display output.",
+      "successDetail": "Correct! Great warm-up."
+    },
+    "examples": [
+      {
+        "output": "Ready"
+      }
+    ],
+    "constraints": [
+      "Use a single print() statement",
+      "Output must be exactly: Ready"
+    ],
+    "hints": [
+      "Use: print(\"Ready\")"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m14-t2-p01-t1",
+        "label": "Sample test",
+        "expectedStdout": "Ready",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m14-t2-p02",
+    "topicId": "m14-t2",
+    "slug": "m14_t2-2",
+    "title": "Array Creation and Properties: Output Two Values",
+    "difficulty": "easy",
+    "order": 2,
+    "layout": "challenge",
+    "description": "Create two variables about Array Creation and Properties and print them comma-separated.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Create two variables related to Array Creation and Properties and print them separated by a comma."
+        }
+      ],
+      "outputOnly": true,
+      "expectCommaPrint": true,
+      "editorPlaceholder": "# create variables and print A,B format",
+      "emptyMessage": "Create two variables and use print() to display them.",
+      "successDetail": "Correct! Two values printed with a comma separator."
+    },
+    "examples": [
+      {
+        "output": "A,B"
+      }
+    ],
+    "constraints": [
+      "Create two variables before printing",
+      "Print output must be exactly: A,B",
+      "Use a comma separator between the two values"
+    ],
+    "hints": [
+      "Create two variables related to Array Creation and Properties",
+      "Use comma in print: print(a, b, sep=\",\")",
+      "Output must be exactly A,B"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m14-t2-p02-t1",
+        "label": "Sample test",
+        "expectedStdout": "A,B",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m14-t2-p03",
+    "topicId": "m14-t2",
+    "slug": "m14_t2-3",
+    "title": "Array Creation and Properties: Simple Loop",
+    "difficulty": "medium",
+    "order": 3,
+    "layout": "challenge",
+    "description": "Use a for loop to print 1 through 4 for Array Creation and Properties.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use a "
+        },
+        {
+          "type": "code",
+          "value": "for"
+        },
+        {
+          "type": "text",
+          "value": " loop to print numbers from 1 to 4. Practice loops for Array Creation and Properties."
+        }
+      ],
+      "outputOnly": true,
+      "requiresForLoop": true,
+      "editorPlaceholder": "# use for loop to print 1 to 4",
+      "emptyMessage": "Use a for loop with print() to display the numbers.",
+      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+    },
+    "examples": [
+      {
+        "output": "1\n2\n3\n4"
+      }
+    ],
+    "constraints": [
+      "Use a for loop with range()",
+      "Print numbers 1, 2, 3, and 4 — each on its own line",
+      "No extra lines or blank lines"
+    ],
+    "hints": [
+      "Example: for i in range(1, 5): then indent print(i) on the next line"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m14-t2-p03-t1",
+        "label": "Sample test",
+        "expectedStdout": "1\n2\n3\n4",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m14-t2-p04",
+    "topicId": "m14-t2",
+    "slug": "m14_t2-4",
+    "title": "Array Creation and Properties: Condition",
+    "difficulty": "medium",
+    "order": 4,
+    "layout": "challenge",
+    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Set "
+        },
+        {
+          "type": "code",
+          "value": "score = 75"
+        },
+        {
+          "type": "text",
+          "value": ". If "
+        },
+        {
+          "type": "code",
+          "value": "score >= 60"
+        },
+        {
+          "type": "text",
+          "value": ", print "
+        },
+        {
+          "type": "code",
+          "value": "Pass"
+        },
+        {
+          "type": "text",
+          "value": ", otherwise print "
+        },
+        {
+          "type": "code",
+          "value": "Fail"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "outputOnly": true,
+      "requiresIfCondition": true,
+      "editorPlaceholder": "# write if-else condition",
+      "emptyMessage": "Define score and use an if condition to print the result.",
+      "successDetail": "Correct! Your condition evaluated to Pass."
+    },
+    "examples": [
+      {
+        "output": "Pass"
+      }
+    ],
+    "constraints": [
+      "Define score = 75",
+      "Use an if/else to compare score against 60",
+      "Output must be exactly: Pass"
+    ],
+    "hints": [
+      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m14-t2-p04-t1",
+        "label": "Sample test",
+        "expectedStdout": "Pass",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m14-t2-p05",
+    "topicId": "m14-t2",
+    "slug": "m14_t2-5",
+    "title": "Array Creation and Properties: Function Stub",
+    "difficulty": "medium",
+    "order": 5,
+    "layout": "challenge",
+    "description": "Define greet() that prints Hello and call it.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Define "
+        },
+        {
+          "type": "code",
+          "value": "greet()"
+        },
+        {
+          "type": "text",
+          "value": " that prints "
+        },
+        {
+          "type": "code",
+          "value": "Hello"
+        },
+        {
+          "type": "text",
+          "value": " and call it once."
+        }
+      ],
+      "outputOnly": true,
+      "requiresFunction": "greet",
+      "editorPlaceholder": "# define greet() function",
+      "emptyMessage": "Define greet() with a print inside, then call it.",
+      "successDetail": "Correct! Your function printed Hello."
+    },
+    "examples": [
+      {
+        "output": "Hello"
+      }
+    ],
+    "constraints": [
+      "Define a function named greet",
+      "The function must print Hello",
+      "Call greet() once after defining it"
+    ],
+    "hints": [
+      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m14-t2-p05-t1",
+        "label": "Sample test",
+        "expectedStdout": "Hello",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m14-t2-p06",
+    "topicId": "m14-t2",
+    "slug": "m14_t2-6",
+    "title": "Array Creation and Properties: List Practice",
+    "difficulty": "hard",
+    "order": 6,
+    "layout": "challenge",
+    "description": "Create a list of three items and print index 1.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Create a list with three items about Array Creation and Properties. Print the "
+        },
+        {
+          "type": "code",
+          "value": "second item"
+        },
+        {
+          "type": "text",
+          "value": " using index "
+        },
+        {
+          "type": "code",
+          "value": "1"
+        },
+        {
+          "type": "text",
+          "value": " (Python counts from 0, so index 1 is the middle item)."
+        }
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
+          "items[0] is the first item, items[1] is the second.",
+          "print(items[1]) displays the second item on its own line."
+        ],
+        "codePreview": {
+          "comment": "# Expected output",
+          "lines": [
+            "middle"
+          ]
+        }
+      },
+      "outputOnly": true,
+      "requiresListAccess": true,
+      "editorPlaceholder": "# create a list and print items[1]",
+      "liveCheckRules": [
+        {
+          "id": "middle",
+          "label": "prints middle",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "middle"
+        }
+      ],
+      "emptyMessage": "Create a list with three items, then print the item at index 1.",
+      "successDetail": "Correct! You accessed the second list item with items[1]."
+    },
+    "examples": [
+      {
+        "output": "middle"
+      }
+    ],
+    "constraints": [
+      "Create a list with exactly three items",
+      "Print the item at index 1 (the second item)",
+      "Output must be exactly: middle"
+    ],
+    "hints": [
+      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m14-t2-p06-t1",
+        "label": "Sample test",
+        "expectedStdout": "middle",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m14-t2-p07",
+    "topicId": "m14-t2",
+    "slug": "m14_t2-7",
+    "title": "Array Creation and Properties: Dict Lookup",
+    "difficulty": "hard",
+    "order": 7,
+    "layout": "challenge",
+    "description": "Create a dict with key topic and print its value.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Create a dictionary with key "
+        },
+        {
+          "type": "code",
+          "value": "topic"
+        },
+        {
+          "type": "text",
+          "value": " and value "
+        },
+        {
+          "type": "code",
+          "value": "Python"
+        },
+        {
+          "type": "text",
+          "value": ". Print the value using "
+        },
+        {
+          "type": "code",
+          "value": "d[\"topic\"]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
+          "Use the key inside square brackets: d[\"topic\"]",
+          "print(d[\"topic\"]) displays Python on the screen."
+        ],
+        "codePreview": {
+          "comment": "# Expected output",
+          "lines": [
+            "Python"
+          ]
+        }
+      },
+      "outputOnly": true,
+      "requiresDictKey": "topic",
+      "editorPlaceholder": "# create dict and print d[\"topic\"]",
+      "liveCheckRules": [
+        {
+          "id": "val",
+          "label": "prints Python",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "Python"
+        }
+      ],
+      "emptyMessage": "Create a dictionary with key topic, then print its value.",
+      "successDetail": "Correct! You looked up a dictionary value by key."
+    },
+    "examples": [
+      {
+        "output": "Python"
+      }
+    ],
+    "constraints": [
+      "Create a dictionary with key topic",
+      "The value must be Python",
+      "Print the value using the key topic"
+    ],
+    "hints": [
+      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m14-t2-p07-t1",
+        "label": "Sample test",
+        "expectedStdout": "Python",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m14-t3-p01",
+    "topicId": "m14-t3",
+    "slug": "m14_t3-1",
+    "title": "Indexing and Slicing Arrays: Warm-up",
+    "difficulty": "easy",
+    "order": 1,
+    "layout": "challenge",
+    "description": "Write a short program related to Indexing and Slicing Arrays. Print Ready on one line.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Write a short program related to "
+        },
+        {
+          "type": "code",
+          "value": "Indexing and Slicing Arrays"
+        },
+        {
+          "type": "text",
+          "value": ". Print the word "
+        },
+        {
+          "type": "code",
+          "value": "Ready"
+        },
+        {
+          "type": "text",
+          "value": " on one line."
+        }
+      ],
+      "outputOnly": true,
+      "editorPlaceholder": "# Write your solution here",
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints Ready",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "Ready"
+        }
+      ],
+      "emptyMessage": "Use print() to display output.",
+      "successDetail": "Correct! Great warm-up."
+    },
+    "examples": [
+      {
+        "output": "Ready"
+      }
+    ],
+    "constraints": [
+      "Use a single print() statement",
+      "Output must be exactly: Ready"
+    ],
+    "hints": [
+      "Use: print(\"Ready\")"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m14-t3-p01-t1",
+        "label": "Sample test",
+        "expectedStdout": "Ready",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m14-t3-p02",
+    "topicId": "m14-t3",
+    "slug": "m14_t3-2",
+    "title": "Indexing and Slicing Arrays: Output Two Values",
+    "difficulty": "easy",
+    "order": 2,
+    "layout": "challenge",
+    "description": "Create two variables about Indexing and Slicing Arrays and print them comma-separated.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Create two variables related to Indexing and Slicing Arrays and print them separated by a comma."
+        }
+      ],
+      "outputOnly": true,
+      "expectCommaPrint": true,
+      "editorPlaceholder": "# create variables and print A,B format",
+      "emptyMessage": "Create two variables and use print() to display them.",
+      "successDetail": "Correct! Two values printed with a comma separator."
+    },
+    "examples": [
+      {
+        "output": "A,B"
+      }
+    ],
+    "constraints": [
+      "Create two variables before printing",
+      "Print output must be exactly: A,B",
+      "Use a comma separator between the two values"
+    ],
+    "hints": [
+      "Create two variables related to Indexing and Slicing Arrays",
+      "Use comma in print: print(a, b, sep=\",\")",
+      "Output must be exactly A,B"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m14-t3-p02-t1",
+        "label": "Sample test",
+        "expectedStdout": "A,B",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m14-t3-p03",
+    "topicId": "m14-t3",
+    "slug": "m14_t3-3",
+    "title": "Indexing and Slicing Arrays: Simple Loop",
+    "difficulty": "medium",
+    "order": 3,
+    "layout": "challenge",
+    "description": "Use a for loop to print 1 through 4 for Indexing and Slicing Arrays.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Use a "
+        },
+        {
+          "type": "code",
+          "value": "for"
+        },
+        {
+          "type": "text",
+          "value": " loop to print numbers from 1 to 4. Practice loops for Indexing and Slicing Arrays."
+        }
+      ],
+      "outputOnly": true,
+      "requiresForLoop": true,
+      "editorPlaceholder": "# use for loop to print 1 to 4",
+      "emptyMessage": "Use a for loop with print() to display the numbers.",
+      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+    },
+    "examples": [
+      {
+        "output": "1\n2\n3\n4"
+      }
+    ],
+    "constraints": [
+      "Use a for loop with range()",
+      "Print numbers 1, 2, 3, and 4 — each on its own line",
+      "No extra lines or blank lines"
+    ],
+    "hints": [
+      "Example: for i in range(1, 5): then indent print(i) on the next line"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m14-t3-p03-t1",
+        "label": "Sample test",
+        "expectedStdout": "1\n2\n3\n4",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m14-t3-p04",
+    "topicId": "m14-t3",
+    "slug": "m14_t3-4",
+    "title": "Indexing and Slicing Arrays: Condition",
+    "difficulty": "medium",
+    "order": 4,
+    "layout": "challenge",
+    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Set "
+        },
+        {
+          "type": "code",
+          "value": "score = 75"
+        },
+        {
+          "type": "text",
+          "value": ". If "
+        },
+        {
+          "type": "code",
+          "value": "score >= 60"
+        },
+        {
+          "type": "text",
+          "value": ", print "
+        },
+        {
+          "type": "code",
+          "value": "Pass"
+        },
+        {
+          "type": "text",
+          "value": ", otherwise print "
+        },
+        {
+          "type": "code",
+          "value": "Fail"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "outputOnly": true,
+      "requiresIfCondition": true,
+      "editorPlaceholder": "# write if-else condition",
+      "emptyMessage": "Define score and use an if condition to print the result.",
+      "successDetail": "Correct! Your condition evaluated to Pass."
+    },
+    "examples": [
+      {
+        "output": "Pass"
+      }
+    ],
+    "constraints": [
+      "Define score = 75",
+      "Use an if/else to compare score against 60",
+      "Output must be exactly: Pass"
+    ],
+    "hints": [
+      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m14-t3-p04-t1",
+        "label": "Sample test",
+        "expectedStdout": "Pass",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m14-t3-p05",
+    "topicId": "m14-t3",
+    "slug": "m14_t3-5",
+    "title": "Indexing and Slicing Arrays: Function Stub",
+    "difficulty": "medium",
+    "order": 5,
+    "layout": "challenge",
+    "description": "Define greet() that prints Hello and call it.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Define "
+        },
+        {
+          "type": "code",
+          "value": "greet()"
+        },
+        {
+          "type": "text",
+          "value": " that prints "
+        },
+        {
+          "type": "code",
+          "value": "Hello"
+        },
+        {
+          "type": "text",
+          "value": " and call it once."
+        }
+      ],
+      "outputOnly": true,
+      "requiresFunction": "greet",
+      "editorPlaceholder": "# define greet() function",
+      "emptyMessage": "Define greet() with a print inside, then call it.",
+      "successDetail": "Correct! Your function printed Hello."
+    },
+    "examples": [
+      {
+        "output": "Hello"
+      }
+    ],
+    "constraints": [
+      "Define a function named greet",
+      "The function must print Hello",
+      "Call greet() once after defining it"
+    ],
+    "hints": [
+      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m14-t3-p05-t1",
+        "label": "Sample test",
+        "expectedStdout": "Hello",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m14-t3-p06",
+    "topicId": "m14-t3",
+    "slug": "m14_t3-6",
+    "title": "Indexing and Slicing Arrays: List Practice",
+    "difficulty": "hard",
+    "order": 6,
+    "layout": "challenge",
+    "description": "Create a list of three items and print index 1.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Create a list with three items about Indexing and Slicing Arrays. Print the "
+        },
+        {
+          "type": "code",
+          "value": "second item"
+        },
+        {
+          "type": "text",
+          "value": " using index "
+        },
+        {
+          "type": "code",
+          "value": "1"
+        },
+        {
+          "type": "text",
+          "value": " (Python counts from 0, so index 1 is the middle item)."
+        }
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
+          "items[0] is the first item, items[1] is the second.",
+          "print(items[1]) displays the second item on its own line."
+        ],
+        "codePreview": {
+          "comment": "# Expected output",
+          "lines": [
+            "middle"
+          ]
+        }
+      },
+      "outputOnly": true,
+      "requiresListAccess": true,
+      "editorPlaceholder": "# create a list and print items[1]",
+      "liveCheckRules": [
+        {
+          "id": "middle",
+          "label": "prints middle",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "middle"
+        }
+      ],
+      "emptyMessage": "Create a list with three items, then print the item at index 1.",
+      "successDetail": "Correct! You accessed the second list item with items[1]."
+    },
+    "examples": [
+      {
+        "output": "middle"
+      }
+    ],
+    "constraints": [
+      "Create a list with exactly three items",
+      "Print the item at index 1 (the second item)",
+      "Output must be exactly: middle"
+    ],
+    "hints": [
+      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m14-t3-p06-t1",
+        "label": "Sample test",
+        "expectedStdout": "middle",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m14-t3-p07",
+    "topicId": "m14-t3",
+    "slug": "m14_t3-7",
+    "title": "Indexing and Slicing Arrays: Dict Lookup",
+    "difficulty": "hard",
+    "order": 7,
+    "layout": "challenge",
+    "description": "Create a dict with key topic and print its value.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Create a dictionary with key "
+        },
+        {
+          "type": "code",
+          "value": "topic"
+        },
+        {
+          "type": "text",
+          "value": " and value "
+        },
+        {
+          "type": "code",
+          "value": "Python"
+        },
+        {
+          "type": "text",
+          "value": ". Print the value using "
+        },
+        {
+          "type": "code",
+          "value": "d[\"topic\"]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
+          "Use the key inside square brackets: d[\"topic\"]",
+          "print(d[\"topic\"]) displays Python on the screen."
+        ],
+        "codePreview": {
+          "comment": "# Expected output",
+          "lines": [
+            "Python"
+          ]
+        }
+      },
+      "outputOnly": true,
+      "requiresDictKey": "topic",
+      "editorPlaceholder": "# create dict and print d[\"topic\"]",
+      "liveCheckRules": [
+        {
+          "id": "val",
+          "label": "prints Python",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "Python"
+        }
+      ],
+      "emptyMessage": "Create a dictionary with key topic, then print its value.",
+      "successDetail": "Correct! You looked up a dictionary value by key."
+    },
+    "examples": [
+      {
+        "output": "Python"
+      }
+    ],
+    "constraints": [
+      "Create a dictionary with key topic",
+      "The value must be Python",
+      "Print the value using the key topic"
+    ],
+    "hints": [
+      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m14-t3-p07-t1",
+        "label": "Sample test",
+        "expectedStdout": "Python",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m14-t4-p01",
+    "topicId": "m14-t4",
+    "slug": "m14_t4-1",
+    "title": "Array Operations and Broadcasting: Warm-up",
+    "difficulty": "easy",
+    "order": 1,
+    "layout": "challenge",
+    "description": "Write a short program related to Array Operations and Broadcasting. Print Ready on one line.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Write a short program related to "
+        },
+        {
+          "type": "code",
+          "value": "Array Operations and Broadcasting"
+        },
+        {
+          "type": "text",
+          "value": ". Print the word "
+        },
+        {
+          "type": "code",
+          "value": "Ready"
+        },
+        {
+          "type": "text",
+          "value": " on one line."
+        }
+      ],
+      "outputOnly": true,
+      "editorPlaceholder": "# Write your solution here",
+      "liveCheckRules": [
+        {
+          "id": "out",
+          "label": "prints Ready",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "Ready"
+        }
+      ],
+      "emptyMessage": "Use print() to display output.",
+      "successDetail": "Correct! Great warm-up."
+    },
+    "examples": [
+      {
+        "output": "Ready"
+      }
+    ],
+    "constraints": [
+      "Use a single print() statement",
+      "Output must be exactly: Ready"
+    ],
+    "hints": [
+      "Use: print(\"Ready\")"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m14-t4-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "85.0",
+        "expectedStdout": "Ready",
         "visibility": "public"
       }
     ]
@@ -831,41 +1518,46 @@ export const module14Practice: PracticeProblem[] = [
   {
     "id": "m14-t4-p02",
     "topicId": "m14-t4",
-    "slug": "fp-fn-grade",
-    "title": "Step 3: Functions & Report: letter_grade()",
+    "slug": "m14_t4-2",
+    "title": "Array Operations and Broadcasting: Output Two Values",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "def letter_grade(a):\n    if a >= 80: return \"B\"\n    return \"F\"\nprint letter_grade(85).",
+    "description": "Create two variables about Array Operations and Broadcasting and print them comma-separated.",
     "challengeContent": {
-      "outputOnly": true,
-      "requiresFunction": "letter_grade",
       "introSegments": [
         {
           "type": "text",
-          "value": "Map numeric average to a letter."
+          "value": "Create two variables related to Array Operations and Broadcasting and print them separated by a comma."
         }
       ],
-      "editorPlaceholder": "# def letter_grade",
-      "successDetail": "Correct!"
+      "outputOnly": true,
+      "expectCommaPrint": true,
+      "editorPlaceholder": "# create variables and print A,B format",
+      "emptyMessage": "Create two variables and use print() to display them.",
+      "successDetail": "Correct! Two values printed with a comma separator."
     },
     "examples": [
       {
-        "output": "B"
+        "output": "A,B"
       }
     ],
     "constraints": [
-      "Output: B"
+      "Create two variables before printing",
+      "Print output must be exactly: A,B",
+      "Use a comma separator between the two values"
     ],
     "hints": [
-      "def letter_grade(a):\\n    if a >= 80: return \"B\"\\n    return \"F\"\\nprint(letter_grade(85))"
+      "Create two variables related to Array Operations and Broadcasting",
+      "Use comma in print: print(a, b, sep=\",\")",
+      "Output must be exactly A,B"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m14-t4-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "B",
+        "expectedStdout": "A,B",
         "visibility": "public"
       }
     ]
@@ -873,40 +1565,52 @@ export const module14Practice: PracticeProblem[] = [
   {
     "id": "m14-t4-p03",
     "topicId": "m14-t4",
-    "slug": "fp-fstring",
-    "title": "Step 3: Functions & Report: Report Line",
+    "slug": "m14_t4-3",
+    "title": "Array Operations and Broadcasting: Simple Loop",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "name=\"Alice\"; avg=85.333; print f\"{name}: avg {avg:.1f}\".",
+    "description": "Use a for loop to print 1 through 4 for Array Operations and Broadcasting.",
     "challengeContent": {
-      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Format report lines with f-strings."
+          "value": "Use a "
+        },
+        {
+          "type": "code",
+          "value": "for"
+        },
+        {
+          "type": "text",
+          "value": " loop to print numbers from 1 to 4. Practice loops for Array Operations and Broadcasting."
         }
       ],
-      "editorPlaceholder": "# f-string",
-      "successDetail": "Correct!"
+      "outputOnly": true,
+      "requiresForLoop": true,
+      "editorPlaceholder": "# use for loop to print 1 to 4",
+      "emptyMessage": "Use a for loop with print() to display the numbers.",
+      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
     },
     "examples": [
       {
-        "output": "Alice: avg 85.3"
+        "output": "1\n2\n3\n4"
       }
     ],
     "constraints": [
-      "Output: Alice: avg 85.3"
+      "Use a for loop with range()",
+      "Print numbers 1, 2, 3, and 4 — each on its own line",
+      "No extra lines or blank lines"
     ],
     "hints": [
-      "name = \"Alice\"\\navg = 85.333\\nprint(f\"{name}: avg {avg:.1f}\")"
+      "Example: for i in range(1, 5): then indent print(i) on the next line"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m14-t4-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "Alice: avg 85.3",
+        "expectedStdout": "1\n2\n3\n4",
         "visibility": "public"
       }
     ]
@@ -914,51 +1618,76 @@ export const module14Practice: PracticeProblem[] = [
   {
     "id": "m14-t4-p04",
     "topicId": "m14-t4",
-    "slug": "fp-lambda-sort",
-    "title": "Step 3: Functions & Report: Top Student",
+    "slug": "m14_t4-4",
+    "title": "Array Operations and Broadcasting: Condition",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "ranking = [(\"Alice\", 85), (\"Bob\", 91)]; ranking.sort(key=lambda x: x[1], reverse=True); print ranking[0][0].",
+    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
     "challengeContent": {
-      "outputOnly": true,
-      "requiresVariables": [
-        "ranking"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Sort by average with "
+          "value": "Set "
         },
         {
           "type": "code",
-          "value": "key=lambda"
+          "value": "score = 75"
+        },
+        {
+          "type": "text",
+          "value": ". If "
+        },
+        {
+          "type": "code",
+          "value": "score >= 60"
+        },
+        {
+          "type": "text",
+          "value": ", print "
+        },
+        {
+          "type": "code",
+          "value": "Pass"
+        },
+        {
+          "type": "text",
+          "value": ", otherwise print "
+        },
+        {
+          "type": "code",
+          "value": "Fail"
         },
         {
           "type": "text",
           "value": "."
         }
       ],
-      "editorPlaceholder": "# lambda sort",
-      "successDetail": "Correct!"
+      "outputOnly": true,
+      "requiresIfCondition": true,
+      "editorPlaceholder": "# write if-else condition",
+      "emptyMessage": "Define score and use an if condition to print the result.",
+      "successDetail": "Correct! Your condition evaluated to Pass."
     },
     "examples": [
       {
-        "output": "Bob"
+        "output": "Pass"
       }
     ],
     "constraints": [
-      "Output: Bob"
+      "Define score = 75",
+      "Use an if/else to compare score against 60",
+      "Output must be exactly: Pass"
     ],
     "hints": [
-      "ranking = [(\"Alice\", 85), (\"Bob\", 91)]\\nranking.sort(key=lambda x: x[1], reverse=True)\\nprint(ranking[0][0])"
+      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m14-t4-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "Bob",
+        "expectedStdout": "Pass",
         "visibility": "public"
       }
     ]
@@ -966,41 +1695,60 @@ export const module14Practice: PracticeProblem[] = [
   {
     "id": "m14-t4-p05",
     "topicId": "m14-t4",
-    "slug": "fp-status",
-    "title": "Step 3: Functions & Report: status()",
+    "slug": "m14_t4-5",
+    "title": "Array Operations and Broadcasting: Function Stub",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "def status(a): return \"PASS\" if a >= 60 else \"FAIL\"\nprint status(72).",
+    "description": "Define greet() that prints Hello and call it.",
     "challengeContent": {
-      "outputOnly": true,
-      "requiresFunction": "status",
       "introSegments": [
         {
           "type": "text",
-          "value": "Return PASS or FAIL from a function."
+          "value": "Define "
+        },
+        {
+          "type": "code",
+          "value": "greet()"
+        },
+        {
+          "type": "text",
+          "value": " that prints "
+        },
+        {
+          "type": "code",
+          "value": "Hello"
+        },
+        {
+          "type": "text",
+          "value": " and call it once."
         }
       ],
-      "editorPlaceholder": "# def status",
-      "successDetail": "Correct!"
+      "outputOnly": true,
+      "requiresFunction": "greet",
+      "editorPlaceholder": "# define greet() function",
+      "emptyMessage": "Define greet() with a print inside, then call it.",
+      "successDetail": "Correct! Your function printed Hello."
     },
     "examples": [
       {
-        "output": "PASS"
+        "output": "Hello"
       }
     ],
     "constraints": [
-      "Output: PASS"
+      "Define a function named greet",
+      "The function must print Hello",
+      "Call greet() once after defining it"
     ],
     "hints": [
-      "def status(a):\\n    return \"PASS\" if a >= 60 else \"FAIL\"\\nprint(status(72))"
+      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m14-t4-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "PASS",
+        "expectedStdout": "Hello",
         "visibility": "public"
       }
     ]
@@ -1008,41 +1756,175 @@ export const module14Practice: PracticeProblem[] = [
   {
     "id": "m14-t4-p06",
     "topicId": "m14-t4",
-    "slug": "fp-challenge-fn",
-    "title": "Step 3: Functions & Report: Full Line",
+    "slug": "m14_t4-6",
+    "title": "Array Operations and Broadcasting: List Practice",
     "difficulty": "hard",
     "order": 6,
     "layout": "challenge",
-    "description": "def line(n,a): return f\"{n}: avg {a:.1f}\"\nprint line(\"Cara\", 72.5).",
+    "description": "Create a list of three items and print index 1.",
     "challengeContent": {
-      "outputOnly": true,
-      "requiresFunction": "line",
       "introSegments": [
         {
           "type": "text",
-          "value": "Combine function + f-string for one report line."
+          "value": "Create a list with three items about Array Operations and Broadcasting. Print the "
+        },
+        {
+          "type": "code",
+          "value": "second item"
+        },
+        {
+          "type": "text",
+          "value": " using index "
+        },
+        {
+          "type": "code",
+          "value": "1"
+        },
+        {
+          "type": "text",
+          "value": " (Python counts from 0, so index 1 is the middle item)."
         }
       ],
-      "editorPlaceholder": "# def line",
-      "successDetail": "Correct!"
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
+          "items[0] is the first item, items[1] is the second.",
+          "print(items[1]) displays the second item on its own line."
+        ],
+        "codePreview": {
+          "comment": "# Expected output",
+          "lines": [
+            "middle"
+          ]
+        }
+      },
+      "outputOnly": true,
+      "requiresListAccess": true,
+      "editorPlaceholder": "# create a list and print items[1]",
+      "liveCheckRules": [
+        {
+          "id": "middle",
+          "label": "prints middle",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "middle"
+        }
+      ],
+      "emptyMessage": "Create a list with three items, then print the item at index 1.",
+      "successDetail": "Correct! You accessed the second list item with items[1]."
     },
     "examples": [
       {
-        "output": "Cara: avg 72.5"
+        "output": "middle"
       }
     ],
     "constraints": [
-      "Output: Cara: avg 72.5"
+      "Create a list with exactly three items",
+      "Print the item at index 1 (the second item)",
+      "Output must be exactly: middle"
     ],
     "hints": [
-      "def line(n,a):\\n    return f\"{n}: avg {a:.1f}\"\\nprint(line(\"Cara\", 72.5))"
+      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m14-t4-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "Cara: avg 72.5",
+        "expectedStdout": "middle",
+        "visibility": "public"
+      }
+    ]
+  },
+  {
+    "id": "m14-t4-p07",
+    "topicId": "m14-t4",
+    "slug": "m14_t4-7",
+    "title": "Array Operations and Broadcasting: Dict Lookup",
+    "difficulty": "hard",
+    "order": 7,
+    "layout": "challenge",
+    "description": "Create a dict with key topic and print its value.",
+    "challengeContent": {
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Create a dictionary with key "
+        },
+        {
+          "type": "code",
+          "value": "topic"
+        },
+        {
+          "type": "text",
+          "value": " and value "
+        },
+        {
+          "type": "code",
+          "value": "Python"
+        },
+        {
+          "type": "text",
+          "value": ". Print the value using "
+        },
+        {
+          "type": "code",
+          "value": "d[\"topic\"]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
+          "Use the key inside square brackets: d[\"topic\"]",
+          "print(d[\"topic\"]) displays Python on the screen."
+        ],
+        "codePreview": {
+          "comment": "# Expected output",
+          "lines": [
+            "Python"
+          ]
+        }
+      },
+      "outputOnly": true,
+      "requiresDictKey": "topic",
+      "editorPlaceholder": "# create dict and print d[\"topic\"]",
+      "liveCheckRules": [
+        {
+          "id": "val",
+          "label": "prints Python",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "Python"
+        }
+      ],
+      "emptyMessage": "Create a dictionary with key topic, then print its value.",
+      "successDetail": "Correct! You looked up a dictionary value by key."
+    },
+    "examples": [
+      {
+        "output": "Python"
+      }
+    ],
+    "constraints": [
+      "Create a dictionary with key topic",
+      "The value must be Python",
+      "Print the value using the key topic"
+    ],
+    "hints": [
+      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m14-t4-p07-t1",
+        "label": "Sample test",
+        "expectedStdout": "Python",
         "visibility": "public"
       }
     ]
@@ -1050,50 +1932,67 @@ export const module14Practice: PracticeProblem[] = [
   {
     "id": "m14-t5-p01",
     "topicId": "m14-t5",
-    "slug": "fp-cap-header",
-    "title": "Capstone Build: Report Header",
+    "slug": "m14_t5-1",
+    "title": "Statistical Functions in NumPy: Warm-up",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "print \"=== Class Report ===\"",
+    "description": "Write a short program related to Statistical Functions in NumPy. Print Ready on one line.",
     "challengeContent": {
-      "outputOnly": true,
-      "editorPlaceholder": "# header",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Start the capstone with the report header."
+          "value": "Write a short program related to "
+        },
+        {
+          "type": "code",
+          "value": "Statistical Functions in NumPy"
+        },
+        {
+          "type": "text",
+          "value": ". Print the word "
+        },
+        {
+          "type": "code",
+          "value": "Ready"
+        },
+        {
+          "type": "text",
+          "value": " on one line."
         }
       ],
+      "outputOnly": true,
+      "editorPlaceholder": "# Write your solution here",
       "liveCheckRules": [
         {
           "id": "out",
+          "label": "prints Ready",
           "kind": "print-value",
           "index": 0,
-          "expected": "=== Class Report ===",
-          "label": "output"
+          "expected": "Ready"
         }
-      ]
+      ],
+      "emptyMessage": "Use print() to display output.",
+      "successDetail": "Correct! Great warm-up."
     },
     "examples": [
       {
-        "output": "=== Class Report ==="
+        "output": "Ready"
       }
     ],
     "constraints": [
-      "Output must be exactly: === Class Report ==="
+      "Use a single print() statement",
+      "Output must be exactly: Ready"
     ],
     "hints": [
-      "print(\"=== Class Report ===\")"
+      "Use: print(\"Ready\")"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m14-t5-p01-t1",
         "label": "Sample test",
-        "expectedStdout": "=== Class Report ===",
+        "expectedStdout": "Ready",
         "visibility": "public"
       }
     ]
@@ -1101,41 +2000,46 @@ export const module14Practice: PracticeProblem[] = [
   {
     "id": "m14-t5-p02",
     "topicId": "m14-t5",
-    "slug": "fp-cap-avg",
-    "title": "Capstone Build: One Student Line",
-    "difficulty": "medium",
+    "slug": "m14_t5-2",
+    "title": "Statistical Functions in NumPy: Output Two Values",
+    "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "def average(s): return sum(s)/len(s)\ngrades=[85,92,78]; print round(average(grades),1).",
+    "description": "Create two variables about Statistical Functions in NumPy and print them comma-separated.",
     "challengeContent": {
-      "outputOnly": true,
-      "requiresFunction": "average",
       "introSegments": [
         {
           "type": "text",
-          "value": "Compute one student's average."
+          "value": "Create two variables related to Statistical Functions in NumPy and print them separated by a comma."
         }
       ],
-      "editorPlaceholder": "# average + print",
-      "successDetail": "Correct!"
+      "outputOnly": true,
+      "expectCommaPrint": true,
+      "editorPlaceholder": "# create variables and print A,B format",
+      "emptyMessage": "Create two variables and use print() to display them.",
+      "successDetail": "Correct! Two values printed with a comma separator."
     },
     "examples": [
       {
-        "output": "85.0"
+        "output": "A,B"
       }
     ],
     "constraints": [
-      "Output: 85.0"
+      "Create two variables before printing",
+      "Print output must be exactly: A,B",
+      "Use a comma separator between the two values"
     ],
     "hints": [
-      "def average(s): return sum(s)/len(s)\\ngrades = [85,92,78]\\nprint(round(average(grades),1))"
+      "Create two variables related to Statistical Functions in NumPy",
+      "Use comma in print: print(a, b, sep=\",\")",
+      "Output must be exactly A,B"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m14-t5-p02-t1",
         "label": "Sample test",
-        "expectedStdout": "85.0",
+        "expectedStdout": "A,B",
         "visibility": "public"
       }
     ]
@@ -1143,43 +2047,52 @@ export const module14Practice: PracticeProblem[] = [
   {
     "id": "m14-t5-p03",
     "topicId": "m14-t5",
-    "slug": "fp-cap-top",
-    "title": "Capstone Build: Find Top",
+    "slug": "m14_t5-3",
+    "title": "Statistical Functions in NumPy: Simple Loop",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "averages={\"Alice\":85,\"Bob\":91}; print max(averages.items(), key=lambda x:x[1])[0].",
+    "description": "Use a for loop to print 1 through 4 for Statistical Functions in NumPy.",
     "challengeContent": {
-      "outputOnly": true,
-      "requiresVariables": [
-        "averages"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Use max + lambda to find top student."
+          "value": "Use a "
+        },
+        {
+          "type": "code",
+          "value": "for"
+        },
+        {
+          "type": "text",
+          "value": " loop to print numbers from 1 to 4. Practice loops for Statistical Functions in NumPy."
         }
       ],
-      "editorPlaceholder": "# max lambda",
-      "successDetail": "Correct!"
+      "outputOnly": true,
+      "requiresForLoop": true,
+      "editorPlaceholder": "# use for loop to print 1 to 4",
+      "emptyMessage": "Use a for loop with print() to display the numbers.",
+      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
     },
     "examples": [
       {
-        "output": "Bob"
+        "output": "1\n2\n3\n4"
       }
     ],
     "constraints": [
-      "Output: Bob"
+      "Use a for loop with range()",
+      "Print numbers 1, 2, 3, and 4 — each on its own line",
+      "No extra lines or blank lines"
     ],
     "hints": [
-      "averages = {\"Alice\": 85, \"Bob\": 91}\\nprint(max(averages.items(), key=lambda x: x[1])[0])"
+      "Example: for i in range(1, 5): then indent print(i) on the next line"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m14-t5-p03-t1",
         "label": "Sample test",
-        "expectedStdout": "Bob",
+        "expectedStdout": "1\n2\n3\n4",
         "visibility": "public"
       }
     ]
@@ -1187,43 +2100,76 @@ export const module14Practice: PracticeProblem[] = [
   {
     "id": "m14-t5-p04",
     "topicId": "m14-t5",
-    "slug": "fp-cap-extend",
-    "title": "Capstone Build: Add Dan",
+    "slug": "m14_t5-4",
+    "title": "Statistical Functions in NumPy: Condition",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "students={\"Alice\":[85]}; students[\"Dan\"]=[88,76,94]; print len(students).",
+    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
     "challengeContent": {
-      "outputOnly": true,
-      "requiresVariables": [
-        "students"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Extend the project with a new student."
+          "value": "Set "
+        },
+        {
+          "type": "code",
+          "value": "score = 75"
+        },
+        {
+          "type": "text",
+          "value": ". If "
+        },
+        {
+          "type": "code",
+          "value": "score >= 60"
+        },
+        {
+          "type": "text",
+          "value": ", print "
+        },
+        {
+          "type": "code",
+          "value": "Pass"
+        },
+        {
+          "type": "text",
+          "value": ", otherwise print "
+        },
+        {
+          "type": "code",
+          "value": "Fail"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "editorPlaceholder": "# add Dan",
-      "successDetail": "Correct!"
+      "outputOnly": true,
+      "requiresIfCondition": true,
+      "editorPlaceholder": "# write if-else condition",
+      "emptyMessage": "Define score and use an if condition to print the result.",
+      "successDetail": "Correct! Your condition evaluated to Pass."
     },
     "examples": [
       {
-        "output": "2"
+        "output": "Pass"
       }
     ],
     "constraints": [
-      "Output: 2"
+      "Define score = 75",
+      "Use an if/else to compare score against 60",
+      "Output must be exactly: Pass"
     ],
     "hints": [
-      "students = {\"Alice\": [85]}\\nstudents[\"Dan\"] = [88, 76, 94]\\nprint(len(students))"
+      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m14-t5-p04-t1",
         "label": "Sample test",
-        "expectedStdout": "2",
+        "expectedStdout": "Pass",
         "visibility": "public"
       }
     ]
@@ -1231,43 +2177,60 @@ export const module14Practice: PracticeProblem[] = [
   {
     "id": "m14-t5-p05",
     "topicId": "m14-t5",
-    "slug": "fp-cap-passing",
-    "title": "Capstone Build: Passing Count",
-    "difficulty": "hard",
+    "slug": "m14_t5-5",
+    "title": "Statistical Functions in NumPy: Function Stub",
+    "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "averages={\"Alice\":85,\"Bob\":55,\"Cara\":72}; print len([a for a in averages.values() if a>=60]).",
+    "description": "Define greet() that prints Hello and call it.",
     "challengeContent": {
-      "outputOnly": true,
-      "requiresVariables": [
-        "averages"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Count how many students passed."
+          "value": "Define "
+        },
+        {
+          "type": "code",
+          "value": "greet()"
+        },
+        {
+          "type": "text",
+          "value": " that prints "
+        },
+        {
+          "type": "code",
+          "value": "Hello"
+        },
+        {
+          "type": "text",
+          "value": " and call it once."
         }
       ],
-      "editorPlaceholder": "# passing count",
-      "successDetail": "Correct!"
+      "outputOnly": true,
+      "requiresFunction": "greet",
+      "editorPlaceholder": "# define greet() function",
+      "emptyMessage": "Define greet() with a print inside, then call it.",
+      "successDetail": "Correct! Your function printed Hello."
     },
     "examples": [
       {
-        "output": "2"
+        "output": "Hello"
       }
     ],
     "constraints": [
-      "Output: 2"
+      "Define a function named greet",
+      "The function must print Hello",
+      "Call greet() once after defining it"
     ],
     "hints": [
-      "averages = {\"Alice\": 85, \"Bob\": 55, \"Cara\": 72}\\nprint(len([a for a in averages.values() if a >= 60]))"
+      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m14-t5-p05-t1",
         "label": "Sample test",
-        "expectedStdout": "2",
+        "expectedStdout": "Hello",
         "visibility": "public"
       }
     ]
@@ -1275,41 +2238,83 @@ export const module14Practice: PracticeProblem[] = [
   {
     "id": "m14-t5-p06",
     "topicId": "m14-t5",
-    "slug": "fp-cap-grade-count",
-    "title": "Capstone Build: Grade Histogram",
+    "slug": "m14_t5-6",
+    "title": "Statistical Functions in NumPy: List Practice",
     "difficulty": "hard",
     "order": 6,
     "layout": "challenge",
-    "description": "def lg(a):\n    if a>=90: return \"A\"\n    if a>=80: return \"B\"\n    return \"F\"\naverages={\"Alice\":85,\"Cara\":92}; print sum(1 for v in averages.values() if lg(v)==\"B\").",
+    "description": "Create a list of three items and print index 1.",
     "challengeContent": {
-      "outputOnly": true,
-      "requiresFunction": "lg",
       "introSegments": [
         {
           "type": "text",
-          "value": "Count students with grade B using a helper function."
+          "value": "Create a list with three items about Statistical Functions in NumPy. Print the "
+        },
+        {
+          "type": "code",
+          "value": "second item"
+        },
+        {
+          "type": "text",
+          "value": " using index "
+        },
+        {
+          "type": "code",
+          "value": "1"
+        },
+        {
+          "type": "text",
+          "value": " (Python counts from 0, so index 1 is the middle item)."
         }
       ],
-      "editorPlaceholder": "# grade count",
-      "successDetail": "Correct!"
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
+          "items[0] is the first item, items[1] is the second.",
+          "print(items[1]) displays the second item on its own line."
+        ],
+        "codePreview": {
+          "comment": "# Expected output",
+          "lines": [
+            "middle"
+          ]
+        }
+      },
+      "outputOnly": true,
+      "requiresListAccess": true,
+      "editorPlaceholder": "# create a list and print items[1]",
+      "liveCheckRules": [
+        {
+          "id": "middle",
+          "label": "prints middle",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "middle"
+        }
+      ],
+      "emptyMessage": "Create a list with three items, then print the item at index 1.",
+      "successDetail": "Correct! You accessed the second list item with items[1]."
     },
     "examples": [
       {
-        "output": "1"
+        "output": "middle"
       }
     ],
     "constraints": [
-      "Output: 1"
+      "Create a list with exactly three items",
+      "Print the item at index 1 (the second item)",
+      "Output must be exactly: middle"
     ],
     "hints": [
-      "def lg(a):\\n    if a >= 90: return \"A\"\\n    if a >= 80: return \"B\"\\n    return \"F\"\\naverages = {\"Alice\": 85, \"Cara\": 92}\\nprint(sum(1 for v in averages.values() if lg(v) == \"B\"))"
+      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m14-t5-p06-t1",
         "label": "Sample test",
-        "expectedStdout": "1",
+        "expectedStdout": "middle",
         "visibility": "public"
       }
     ]
@@ -1317,43 +2322,91 @@ export const module14Practice: PracticeProblem[] = [
   {
     "id": "m14-t5-p07",
     "topicId": "m14-t5",
-    "slug": "fp-cap-challenge",
-    "title": "Capstone Build: Mini Capstone",
+    "slug": "m14_t5-7",
+    "title": "Statistical Functions in NumPy: Dict Lookup",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "students={\"A\":[90],\"B\":[50]}; print sum(1 for g in students.values() if sum(g)/len(g)>=60).",
+    "description": "Create a dict with key topic and print its value.",
     "challengeContent": {
-      "outputOnly": true,
-      "requiresVariables": [
-        "students"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Count passing students from raw grade lists."
+          "value": "Create a dictionary with key "
+        },
+        {
+          "type": "code",
+          "value": "topic"
+        },
+        {
+          "type": "text",
+          "value": " and value "
+        },
+        {
+          "type": "code",
+          "value": "Python"
+        },
+        {
+          "type": "text",
+          "value": ". Print the value using "
+        },
+        {
+          "type": "code",
+          "value": "d[\"topic\"]"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "editorPlaceholder": "# mini capstone",
-      "successDetail": "Correct! You built a mini grade manager."
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
+          "Use the key inside square brackets: d[\"topic\"]",
+          "print(d[\"topic\"]) displays Python on the screen."
+        ],
+        "codePreview": {
+          "comment": "# Expected output",
+          "lines": [
+            "Python"
+          ]
+        }
+      },
+      "outputOnly": true,
+      "requiresDictKey": "topic",
+      "editorPlaceholder": "# create dict and print d[\"topic\"]",
+      "liveCheckRules": [
+        {
+          "id": "val",
+          "label": "prints Python",
+          "kind": "print-value",
+          "index": 0,
+          "expected": "Python"
+        }
+      ],
+      "emptyMessage": "Create a dictionary with key topic, then print its value.",
+      "successDetail": "Correct! You looked up a dictionary value by key."
     },
     "examples": [
       {
-        "output": "1"
+        "output": "Python"
       }
     ],
     "constraints": [
-      "Output: 1"
+      "Create a dictionary with key topic",
+      "The value must be Python",
+      "Print the value using the key topic"
     ],
     "hints": [
-      "students = {\"A\": [90], \"B\": [50]}\\nprint(sum(1 for g in students.values() if sum(g)/len(g) >= 60))"
+      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m14-t5-p07-t1",
         "label": "Sample test",
-        "expectedStdout": "1",
+        "expectedStdout": "Python",
         "visibility": "public"
       }
     ]

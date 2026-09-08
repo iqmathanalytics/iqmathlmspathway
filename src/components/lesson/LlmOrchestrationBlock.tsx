@@ -4,7 +4,6 @@ import type { ElementType } from "react";
 import {
   BadgeCheck,
   Boxes,
-  BrainCircuit,
   Database,
   Gauge,
   GitBranch,
@@ -17,7 +16,6 @@ import {
   Route,
   ServerCog,
   ShieldAlert,
-  Sparkles,
   Workflow,
   Zap,
 } from "lucide-react";

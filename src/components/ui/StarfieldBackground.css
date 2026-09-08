@@ -6,18 +6,48 @@
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   overflow: hidden;
   z-index: 0;
+  pointer-events: none;
 }
 
 .starfield-layer {
   position: absolute;
-  inset: 0;
+  inset: -50% 0 0 0;
+  background-repeat: repeat;
+  background-size: 400px 400px;
+  opacity: 0.85;
   animation: animStar linear infinite;
+  will-change: transform;
 }
 
-.starfield-dot {
-  position: absolute;
-  left: 0;
-  background: transparent;
+.starfield-layer--a {
+  background-image: radial-gradient(1px 1px at 20px 30px, #fff, transparent),
+    radial-gradient(1px 1px at 80px 120px, #fff, transparent),
+    radial-gradient(1px 1px at 160px 60px, #fff, transparent),
+    radial-gradient(1px 1px at 240px 180px, #fff, transparent),
+    radial-gradient(1px 1px at 320px 90px, #fff, transparent),
+    radial-gradient(1px 1px at 60px 260px, #fff, transparent),
+    radial-gradient(1px 1px at 200px 300px, #fff, transparent),
+    radial-gradient(1px 1px at 350px 220px, #fff, transparent);
+  animation-duration: 60s;
+  opacity: 0.7;
+}
+
+.starfield-layer--b {
+  background-image: radial-gradient(1.5px 1.5px at 40px 80px, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 140px 40px, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 260px 160px, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 100px 220px, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 300px 280px, #fff, transparent);
+  animation-duration: 100s;
+  opacity: 0.55;
+}
+
+.starfield-layer--c {
+  background-image: radial-gradient(2px 2px at 70px 50px, #fff, transparent),
+    radial-gradient(2px 2px at 190px 140px, #fff, transparent),
+    radial-gradient(2px 2px at 310px 210px, #fff, transparent);
+  animation-duration: 150s;
+  opacity: 0.4;
 }
 
 @keyframes animStar {
@@ -25,6 +55,18 @@
     transform: translateY(0);
   }
   to {
-    transform: translateY(-2000px);
+    transform: translateY(50%);
+  }
+}
+
+.starfield-layer--static {
+  animation: none;
+  will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .starfield-layer {
+    animation: none;
+    will-change: auto;
   }
 }

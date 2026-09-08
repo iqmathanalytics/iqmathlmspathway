@@ -14,7 +14,7 @@ import clsx from "clsx";
 import type { CourseId, Module, Topic } from "@/lib/types";
 import { getModulesByCourse } from "@/data/curriculum";
 import { getCourse } from "@/data/courses";
-import { getQuiz } from "@/data/quizzes";
+import { hasQuiz as topicHasQuiz } from "@/data/quizzes/meta";
 import { useProgress } from "@/contexts/ProgressContext";
 import { isTopicProgressionDone, isTopicUnlocked } from "@/lib/topic-locking";
 import { modules } from "@/data/curriculum";
@@ -264,7 +264,7 @@ export function CourseTopicSidebar({
     }
   }, [currentModule.slug, currentTopic.slug, ready, open]);
 
-  const hasQuiz = useCallback((topicId: string) => !!getQuiz(topicId), []);
+  const hasQuiz = useCallback((topicId: string) => topicHasQuiz(topicId), []);
 
   const toggleModule = useCallback((slug: string) => {
     setExpandedModules((prev) => {

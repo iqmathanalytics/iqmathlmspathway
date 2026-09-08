@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getTopic, modules, getAdjacentPublishedTopics } from "@/data/curriculum";
 import { getLesson } from "@/data/lessons";
 import { getQuiz } from "@/data/quizzes";
+import { hasQuiz as topicHasQuiz } from "@/data/quizzes/meta";
 import { getAddOnVideoSection } from "@/data/mba-add-on-videos";
 import { TopicLessonLayout } from "@/components/lesson/TopicLessonLayout";
 import { PAGE_CONTAINER } from "@/lib/layout";
@@ -11,7 +12,6 @@ import { MarkCompleteButton } from "@/components/lesson/MarkCompleteButton";
 import { TopicQuizSection } from "./TopicQuizSection";
 import { TopicLessonHeader } from "@/components/lesson/TopicLessonHeader";
 import { KeyTakeaways } from "@/components/lesson/KeyTakeaways";
-import { TopicPracticeLink } from "@/components/lesson/TopicPracticeLink";
 import { VideoTutorialModal } from "@/components/lesson/VideoTutorialModal";
 import { NextTopicButton } from "@/components/lesson/NextTopicButton";
 import { GroqApiKeySetup } from "@/components/ai/GroqApiKeySetup";
@@ -79,17 +79,15 @@ export default async function TopicPage({ params }: TopicPageProps) {
     <TopicAccessGate
       previousTopicId={prev?.topic.id}
       previousTopicTitle={prev?.topic.title}
-      previousTopicHasQuiz={prev ? !!getQuiz(prev.topic.id) : false}
+      previousTopicHasQuiz={prev ? topicHasQuiz(prev.topic.id) : false}
       moduleHref={`/learn/${module.slug}`}
     >
       {/*
-      Desktop: two independent scroll columns filling the viewport below the navbar.
-      Left column: header → lesson → footer (all scroll together).
-      Right column: IDE (scrolls independently).
-      Mobile: normal single-column page flow.
+      Viewport-locked below the navbar: lesson column scrolls; IDE stays fixed in its pane.
+      Desktop: two columns. Mobile: lesson on top, capped IDE band at the bottom.
       */}
       <TopicPageShell courseId={module.course} module={module} topic={topic}>
-      <article className="w-full lg:flex lg:flex-1 lg:flex-col lg:min-h-0 lg:overflow-hidden">
+      <article className="flex h-full min-h-0 w-full flex-1 flex-col overflow-hidden">
         <TopicLessonLayout
           blocks={lesson.blocks}
           topicId={topic.id}
@@ -129,18 +127,13 @@ export default async function TopicPage({ params }: TopicPageProps) {
                   </span>
                 )}
               </div>
-              <div className="mt-4 flex flex-wrap items-center gap-3">
-                <TopicPracticeLink
-                  moduleSlug={module.slug}
-                  topicSlug={topic.slug}
-                  topicId={topic.id}
-                />
-                {topic.videoUrl && (
+              {topic.videoUrl && (
+                <div className="mt-4 flex flex-wrap items-center gap-3">
                   <span data-walkthrough="lesson-video">
                     <VideoTutorialModal videoUrl={topic.videoUrl} />
                   </span>
-                )}
-              </div>
+                </div>
+              )}
               {module.slug === "groq-api" && <GroqApiKeySetup />}
             </>
           }

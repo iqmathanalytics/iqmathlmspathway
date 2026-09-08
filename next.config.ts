@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   experimental: {
-    optimizePackageImports: ["lucide-react"],
+    optimizePackageImports: ["lucide-react", "@uiw/react-codemirror", "clsx"],
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {

@@ -1,14 +1,15 @@
 "use client";
 
-import { Suspense, useCallback, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import { getModulesByCourse } from "@/data/curriculum";
-import { courses } from "@/data/courses"; // used for URL param validation
-import { getPracticeCountForTopics } from "@/data/practice/meta";
+import { courses, courseShortName } from "@/data/courses"; // used for URL param validation
+import { getPythonProgrammingProblems } from "@/data/python-programming";
 import { PAGE_CONTAINER } from "@/lib/layout";
 import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/contexts/ProgressContext";
 import { getSupabase } from "@/lib/supabase/client";
 import { useEntitlements } from "@/hooks/useEntitlements";
+import { useAccessibleCourses } from "@/hooks/usePublishedCourses";
 import type { CourseId } from "@/lib/types";
 import { BookOpen, Terminal, CheckCircle2, Lock, Loader2, Zap } from "lucide-react";
 import { DashboardRoadmap } from "@/components/dashboard/DashboardRoadmap";
@@ -21,7 +22,9 @@ export default function DashboardPage() {
   const { user, profile } = useAuth();
   const { progress, ready } = useProgress();
   const { hasPremium } = useEntitlements();
+  const { accessibleCourses, loading: coursesLoading } = useAccessibleCourses();
   const [practiceSolved, setPracticeSolved] = useState(0);
+  const [practiceStatsError, setPracticeStatsError] = useState<string | null>(null);
   const [activeCourse, setActiveCourse] = useState<CourseId>("python");
 
   // On mount: honour ?course= URL param first, then fall back to localStorage
@@ -49,6 +52,13 @@ export default function DashboardPage() {
     } catch { /* ignore */ }
   }
 
+  useEffect(() => {
+    if (coursesLoading || accessibleCourses.length === 0) return;
+    if (!accessibleCourses.some((c) => c.id === activeCourse)) {
+      setActiveCourse(accessibleCourses[0].id);
+    }
+  }, [accessibleCourses, coursesLoading, activeCourse]);
+
   const courseModules = getModulesByCourse(activeCourse);
 
   // Stats scoped to the active course topics
@@ -67,32 +77,36 @@ export default function DashboardPage() {
     ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)
     : 0;
 
-  // Course-scoped practice total (0 for courses without practice problems)
-  const totalPractice = getPracticeCountForTopics(courseTopicIds);
+  const pythonProblemIds = useMemo(
+    () => new Set(getPythonProgrammingProblems().map((p) => p.id)),
+    []
+  );
+  const totalPractice = activeCourse === "python" ? pythonProblemIds.size : 0;
   const courseHasPractice = totalPractice > 0;
 
   const loadPracticeStats = useCallback(async () => {
     if (!user) return;
     const sb = getSupabase();
     if (!sb) return;
-    const { data: rows } = await sb
+    const { data: rows, error } = await sb
       .from("practice_progress")
       .select("problem_id")
       .eq("user_id", user.id)
       .eq("status", "solved");
 
-    if (!rows) { setPracticeSolved(0); return; }
+    if (error) {
+      setPracticeStatsError(error.message);
+      return;
+    }
 
-    // Filter to only problems belonging to the active course
-    // Practice problem IDs have the format "{topicId}-p{N}", e.g. "m1-t1-p01"
-    const courseSolved = rows.filter((r) => {
-      const parts = r.problem_id.split("-");
-      const topicId = parts.slice(0, -1).join("-");
-      return courseTopicIdSet.has(topicId);
-    });
+    setPracticeStatsError(null);
+    const courseSolved =
+      activeCourse === "python"
+        ? (rows ?? []).filter((r) => pythonProblemIds.has(r.problem_id))
+        : [];
 
     setPracticeSolved(courseSolved.length);
-  }, [user, activeCourse]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [user, activeCourse, pythonProblemIds]);
 
   useEffect(() => {
     if (ready && user) void loadPracticeStats();
@@ -113,13 +127,19 @@ export default function DashboardPage() {
       </Suspense>
 
       <h1 className="text-3xl font-bold text-gray-900">Your progress</h1>
-      <p className="mt-2 text-gray-600">
+      <p className="mt-2 max-w-full truncate text-gray-600" title={profile?.full_name || undefined}>
         Welcome back{profile?.full_name ? `, ${profile.full_name}` : ""}.
       </p>
 
       {/* Course switcher */}
-      <div className="mt-6 flex gap-2 rounded-xl border border-gray-200 bg-gray-50 p-1.5 w-fit">
-        {courses.map((course) => {
+      {accessibleCourses.length === 0 ? (
+        <p className="mt-6 rounded-xl border border-gray-200 bg-white p-6 text-sm text-gray-600">
+          No courses are available for your account yet. Ask your administrator to enroll you.
+        </p>
+      ) : (
+      <>
+      <div className="mt-6 grid w-full grid-cols-2 gap-1.5 rounded-xl border border-gray-200 bg-gray-50 p-1.5 sm:grid-cols-4">
+        {accessibleCourses.map((course) => {
           const isActive = activeCourse === course.id;
           const activeClass =
             course.color === "violet"
@@ -127,33 +147,28 @@ export default function DashboardPage() {
               : course.color === "sky"
                 ? "bg-sky-600 text-white shadow-sm"
                 : "bg-brand-600 text-white shadow-sm";
-          const shortLabel =
-            course.id === "python"
-              ? "Python"
-              : course.id === "sql"
-                ? "SQL"
-                : "Agentic AI";
+          const shortLabel = courseShortName(course.id);
           return (
             <button
               key={course.id}
               type="button"
-              onClick={() => switchCourse(course.id as CourseId)}
-              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-all ${
+              title={course.name}
+              onClick={() => switchCourse(course.id)}
+              className={`flex min-w-0 items-center justify-center gap-1.5 rounded-lg px-2 py-2.5 text-xs font-semibold transition-all sm:gap-2 sm:px-3 sm:text-sm ${
                 isActive
                   ? activeClass
-                  : "text-gray-500 hover:text-gray-800 hover:bg-white"
+                  : "text-gray-500 hover:bg-white hover:text-gray-800"
               }`}
             >
               <IconImage
                 src={course.iconImage}
                 alt={course.iconAlt ?? `${course.name} logo`}
                 fallback={course.icon}
-                className="h-5 w-5"
+                className="h-4 w-4 shrink-0 sm:h-5 sm:w-5"
                 imageClassName="h-full w-full object-contain"
-                fallbackClassName="text-base leading-none"
+                fallbackClassName="text-sm leading-none sm:text-base"
               />
-              <span className="hidden sm:inline">{course.name}</span>
-              <span className="sm:hidden">{shortLabel}</span>
+              <span className="truncate">{shortLabel}</span>
             </button>
           );
         })}
@@ -175,20 +190,29 @@ export default function DashboardPage() {
               <StatCard
                 icon={Terminal}
                 label="Practice solved"
-                value={`${practiceSolved} / ${totalPractice}`}
+                value={
+                  practiceStatsError
+                    ? "—"
+                    : `${practiceSolved} / ${totalPractice}`
+                }
+                sublabel={
+                  practiceStatsError
+                    ? "Could not load practice stats"
+                    : undefined
+                }
               />
             ) : (
               <StatCard
                 icon={Zap}
                 label="Course type"
                 value="Lesson-based"
-                sublabel="No practice problems"
+                sublabel="Lessons and quizzes"
               />
             )}
             <StatCard
               icon={CheckCircle2}
               label="Average quiz score"
-              value={quizAvg ? `${quizAvg}%` : "—"}
+              value={scores.length ? `${quizAvg}%` : "—"}
             />
             {courseHasPractice ? (
               <StatCard
@@ -220,6 +244,8 @@ export default function DashboardPage() {
             />
           </div>
         </>
+      )}
+      </>
       )}
     </div>
   );

@@ -5,6 +5,8 @@ export interface TestRunResult {
   testId: string;
   label: string;
   passed: boolean;
+  /** Revealed to the user only when the test fails. */
+  input?: string;
   expected?: string;
   actual?: string;
   error?: string;
@@ -14,11 +16,31 @@ function normalizeStdout(s: string): string {
   return s.replace(/\r\n/g, "\n").trimEnd();
 }
 
+/** Pull Expected/Got from assert messages like: Expected 'a', got 'b' */
+function parseAssertExpectedActual(message: string): {
+  expected?: string;
+  actual?: string;
+} {
+  const patterns = [
+    /Expected\s+([\s\S]+?),\s*got\s+([\s\S]+?)(?:\s*$)/i,
+    /AssertionError:\s*Expected\s+([\s\S]+?),\s*got\s+([\s\S]+?)(?:\s*$)/i,
+  ];
+  for (const re of patterns) {
+    const m = message.match(re);
+    if (m) {
+      return {
+        expected: m[1]?.trim(),
+        actual: m[2]?.trim(),
+      };
+    }
+  }
+  return {};
+}
+
 async function runSingleTest(
   userCode: string,
   test: PracticeTest
 ): Promise<TestRunResult> {
-  const pyodide = await loadPyodideRuntime();
   let stdout = "";
 
   const parts: string[] = [];
@@ -27,14 +49,19 @@ async function runSingleTest(
   if (test.assertCode) parts.push(test.assertCode);
 
   try {
+    // Runtime is cached; do not re-import Pyodide per test.
+    const pyodide = await loadPyodideRuntime();
     await runPythonWithLock(pyodide, parts.join("\n\n"), {
       onStdout: (chunk) => {
         stdout += chunk;
       },
-      stdinLines: test.stdin ? [test.stdin] : undefined,
+      stdinLines: test.stdin
+        ? test.stdin.replace(/\r\n/g, "\n").split("\n")
+        : undefined,
     });
 
     const actual = normalizeStdout(stdout);
+    const input = test.stdin;
 
     if (test.expectedStdout !== undefined) {
       const expected = normalizeStdout(test.expectedStdout);
@@ -43,21 +70,39 @@ async function runSingleTest(
         testId: test.id,
         label: test.label,
         passed,
-        expected,
-        actual,
-        error: passed ? undefined : "Output does not match expected.",
+        ...(passed
+          ? {}
+          : {
+              input,
+              expected,
+              actual,
+              error: "Output does not match expected.",
+            }),
       };
     }
 
-    return { testId: test.id, label: test.label, passed: true, actual };
-  } catch (e) {
-    const msg = e instanceof Error ? e.message : String(e);
+    if (test.assertCode) {
+      return { testId: test.id, label: test.label, passed: true };
+    }
+
     return {
       testId: test.id,
       label: test.label,
       passed: false,
-      expected: test.expectedStdout,
-      actual: normalizeStdout(stdout) || undefined,
+      input,
+      actual,
+      error: "Test is missing expectedStdout or assertCode.",
+    };
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e);
+    const fromAssert = parseAssertExpectedActual(msg);
+    return {
+      testId: test.id,
+      label: test.label,
+      passed: false,
+      input: test.stdin,
+      expected: test.expectedStdout ?? fromAssert.expected,
+      actual: normalizeStdout(stdout) || fromAssert.actual || undefined,
       error: msg,
     };
   }
@@ -67,6 +112,9 @@ export async function runPublicTests(
   userCode: string,
   tests: PracticeTest[]
 ): Promise<{ allPassed: boolean; results: TestRunResult[] }> {
+  // Warm the shared runtime once before the test loop.
+  await loadPyodideRuntime();
+
   const results: TestRunResult[] = [];
   for (const test of tests) {
     results.push(await runSingleTest(userCode, test));
