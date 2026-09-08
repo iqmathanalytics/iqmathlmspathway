@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Link from "next/link";
 import { PAGE_CONTAINER } from "@/lib/layout";
 import {
@@ -9,23 +10,8 @@ import {
   getPythonProgrammingStats,
 } from "@/data/python-programming";
 import { PythonPracticeProblemTable } from "@/components/practice/PythonPracticeProblemTable";
-import { isPracticeDifficulty } from "@/data/python-practice";
-import type { PracticeDifficulty } from "@/lib/types";
 
-interface PageProps {
-  searchParams: Promise<{ difficulty?: string }>;
-}
-
-export default async function PythonProgrammingPracticePage({
-  searchParams,
-}: PageProps) {
-  const params = await searchParams;
-  const initialDifficulty: PracticeDifficulty | "all" = isPracticeDifficulty(
-    params.difficulty ?? ""
-  )
-    ? (params.difficulty as PracticeDifficulty)
-    : "all";
-
+export default function PythonProgrammingPracticePage() {
   const stats = getPythonProgrammingStats();
   const problems = getPythonProgrammingProblems();
 
@@ -62,17 +48,23 @@ export default async function PythonProgrammingPracticePage({
       </header>
 
       <section className="mt-8">
-        <PythonPracticeProblemTable
-          problems={problems}
-          mergedLinks
-          orderScope="all"
-          orderPrefix={PYTHON_PROGRAMMING_ORDER_PREFIX}
-          categories={PYTHON_PROGRAMMING_CATEGORIES}
-          showKindFilter
-          showDifficultyFilter
-          namespacedCategories
-          initialDifficulty={initialDifficulty}
-        />
+        <Suspense
+          fallback={
+            <p className="text-sm text-gray-500">Loading problem list…</p>
+          }
+        >
+          <PythonPracticeProblemTable
+            problems={problems}
+            mergedLinks
+            orderScope="all"
+            orderPrefix={PYTHON_PROGRAMMING_ORDER_PREFIX}
+            categories={PYTHON_PROGRAMMING_CATEGORIES}
+            showKindFilter
+            showDifficultyFilter
+            namespacedCategories
+            readDifficultyFromUrl
+          />
+        </Suspense>
       </section>
     </div>
   );

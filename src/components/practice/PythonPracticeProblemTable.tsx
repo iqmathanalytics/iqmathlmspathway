@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import clsx from "clsx";
 import { CheckCircle2, Circle, RotateCcw, Search, Shuffle } from "lucide-react";
 import type { PracticeDifficulty, PracticeProblem } from "@/lib/types";
@@ -22,6 +23,7 @@ import {
   matchesProgrammingCategory,
   type PythonProgrammingKind,
 } from "@/lib/python-programming-links";
+import { isPracticeDifficulty } from "@/data/python-practice";
 
 const difficultyClass: Record<PracticeDifficulty, string> = {
   easy: "text-emerald-600 bg-emerald-50",
@@ -55,6 +57,8 @@ interface PythonPracticeProblemTableProps {
   showDifficultyFilter?: boolean;
   /** Initial difficulty filter (e.g. from ?difficulty=). */
   initialDifficulty?: PracticeDifficulty | "all";
+  /** Read ?difficulty= on the client (static export–safe). */
+  readDifficultyFromUrl?: boolean;
 }
 
 export function PythonPracticeProblemTable({
@@ -70,14 +74,24 @@ export function PythonPracticeProblemTable({
   namespacedCategories = false,
   showDifficultyFilter = false,
   initialDifficulty = "all",
+  readDifficultyFromUrl = false,
 }: PythonPracticeProblemTableProps) {
+  const searchParams = useSearchParams();
+  const urlDifficulty = readDifficultyFromUrl
+    ? searchParams.get("difficulty")
+    : null;
+  const resolvedInitial: PracticeDifficulty | "all" =
+    urlDifficulty && isPracticeDifficulty(urlDifficulty)
+      ? urlDifficulty
+      : initialDifficulty;
+
   const labelDifficulty = (d: PracticeDifficulty) =>
     difficultyLabels?.[d] ?? defaultDifficultyLabel(d);
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<string>("all");
   const [kind, setKind] = useState<"all" | PythonProgrammingKind>("all");
   const [difficulty, setDifficulty] = useState<"all" | PracticeDifficulty>(
-    initialDifficulty
+    resolvedInitial
   );
   const [orderVersion, setOrderVersion] = useState(0);
   const [mounted, setMounted] = useState(false);
@@ -89,8 +103,8 @@ export function PythonPracticeProblemTable({
   }, []);
 
   useEffect(() => {
-    setDifficulty(initialDifficulty);
-  }, [initialDifficulty]);
+    setDifficulty(resolvedInitial);
+  }, [resolvedInitial]);
 
   const ordered = useMemo(() => {
     if (!mounted) return problems;
