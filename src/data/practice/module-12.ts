@@ -34,6 +34,7 @@ export const module12Practice: PracticeProblem[] = [
       "def greet():\\n    print(\"Hi\")\\ngreet()"
     ],
     "starterCode": "",
+    "approach": "Define def greet(): print(\"Hi\"), call it. Key points: def greet():\\n print(\"Hi\")\\ngreet() A correct solution looks like this: def greet(): print(\"Hi\") greet()",
     "publicTests": [
       {
         "id": "m12-t1-p01-t1",
@@ -85,6 +86,7 @@ export const module12Practice: PracticeProblem[] = [
       "def add(a,b):\\n    return a+b\\nprint(add(2,3))"
     ],
     "starterCode": "",
+    "approach": "Define def add(a,b): return a+b, print add(2,3). Key points: def add(a,b):\\n return a+b\\nprint(add(2,3)) A correct solution looks like this: def add(a,b): return a+b print(add(2,3))",
     "publicTests": [
       {
         "id": "m12-t1-p02-t1",
@@ -128,6 +130,7 @@ export const module12Practice: PracticeProblem[] = [
       "def shout(name):\\n    print(name.upper())\\nshout(\"hi\")"
     ],
     "starterCode": "",
+    "approach": "Define def shout(name): print(name.upper()), call shout(\"hi\"). Key points: def shout(name):\\n print(name.upper())\\nshout(\"hi\") A correct solution looks like this: def shout(name): print(name.upper()) shout(\"hi\")",
     "publicTests": [
       {
         "id": "m12-t1-p03-t1",
@@ -171,6 +174,7 @@ export const module12Practice: PracticeProblem[] = [
       "def greet(name=\"Guest\"):\\n    print(f\"Hi {name}\")\\ngreet()"
     ],
     "starterCode": "",
+    "approach": "Define def greet(name=\"Guest\"): print(f\"Hi {name}\"), call greet(). Key points: def greet(name=\"Guest\"):\\n print(f\"Hi {name}\")\\ngreet() A correct solution looks like this: def greet(name=\"Guest\"): print(f\"Hi {name}\") greet()",
     "publicTests": [
       {
         "id": "m12-t1-p04-t1",
@@ -214,6 +218,7 @@ export const module12Practice: PracticeProblem[] = [
       "def minmax(a,b):\\n    return min(a,b), max(a,b)\\nprint(minmax(3,7)[0])"
     ],
     "starterCode": "",
+    "approach": "Define def minmax(a,b): return min(a,b), max(a,b), print minmax(3,7)[0]. Key points: def minmax(a,b):\\n return min(a,b), max(a,b)\\nprint(minmax(3,7)[0]) A correct solution looks like this: def minmax(a,b): return min(a,b), max(a,b) print(minmax(3,7)[0])",
     "publicTests": [
       {
         "id": "m12-t1-p05-t1",
@@ -257,6 +262,7 @@ export const module12Practice: PracticeProblem[] = [
       "def f():\\n    x=10\\n    return x\\nprint(f())"
     ],
     "starterCode": "",
+    "approach": "Define def f(): x=10; return x, print f(). Key points: def f():\\n x=10\\n return x\\nprint(f()) A correct solution looks like this: def f(): x=10 return x print(f())",
     "publicTests": [
       {
         "id": "m12-t1-p06-t1",
@@ -300,6 +306,7 @@ export const module12Practice: PracticeProblem[] = [
       "def double(x): return x*2\\ndef quad(x): return double(double(x))\\nprint(quad(2))"
     ],
     "starterCode": "",
+    "approach": "Define def double(x): return x*2, def quad(x): return double(double(x)), print quad(2). Key points: def double(x): return x*2\\ndef quad(x): return double(double(x))\\nprint(quad(2)) A correct solution looks like this: def double(x): return x*2 def quad(x): return double(double(x)) print(quad(2))",
     "publicTests": [
       {
         "id": "m12-t1-p07-t1",
@@ -343,6 +350,7 @@ export const module12Practice: PracticeProblem[] = [
       "def greet():\\n    print(\"Hi\")\\ngreet()"
     ],
     "starterCode": "",
+    "approach": "Define def greet(): print(\"Hi\"), call it. Key points: def greet():\\n print(\"Hi\")\\ngreet() A correct solution looks like this: def greet(): print(\"Hi\") greet()",
     "publicTests": [
       {
         "id": "m12-t2-p01-t1",
@@ -394,6 +402,7 @@ export const module12Practice: PracticeProblem[] = [
       "def add(a,b):\\n    return a+b\\nprint(add(2,3))"
     ],
     "starterCode": "",
+    "approach": "Define def add(a,b): return a+b, print add(2,3). Key points: def add(a,b):\\n return a+b\\nprint(add(2,3)) A correct solution looks like this: def add(a,b): return a+b print(add(2,3))",
     "publicTests": [
       {
         "id": "m12-t2-p02-t1",
@@ -437,6 +446,7 @@ export const module12Practice: PracticeProblem[] = [
       "def shout(name):\\n    print(name.upper())\\nshout(\"hi\")"
     ],
     "starterCode": "",
+    "approach": "Define def shout(name): print(name.upper()), call shout(\"hi\"). Key points: def shout(name):\\n print(name.upper())\\nshout(\"hi\") A correct solution looks like this: def shout(name): print(name.upper()) shout(\"hi\")",
     "publicTests": [
       {
         "id": "m12-t2-p03-t1",
@@ -480,6 +490,7 @@ export const module12Practice: PracticeProblem[] = [
       "def greet(name=\"Guest\"):\\n    print(f\"Hi {name}\")\\ngreet()"
     ],
     "starterCode": "",
+    "approach": "Define def greet(name=\"Guest\"): print(f\"Hi {name}\"), call greet(). Key points: def greet(name=\"Guest\"):\\n print(f\"Hi {name}\")\\ngreet() A correct solution looks like this: def greet(name=\"Guest\"): print(f\"Hi {name}\") greet()",
     "publicTests": [
       {
         "id": "m12-t2-p04-t1",
@@ -523,6 +534,7 @@ export const module12Practice: PracticeProblem[] = [
       "def minmax(a,b):\\n    return min(a,b), max(a,b)\\nprint(minmax(3,7)[0])"
     ],
     "starterCode": "",
+    "approach": "Define def minmax(a,b): return min(a,b), max(a,b), print minmax(3,7)[0]. Key points: def minmax(a,b):\\n return min(a,b), max(a,b)\\nprint(minmax(3,7)[0]) A correct solution looks like this: def minmax(a,b): return min(a,b), max(a,b) print(minmax(3,7)[0])",
     "publicTests": [
       {
         "id": "m12-t2-p05-t1",
@@ -566,6 +578,7 @@ export const module12Practice: PracticeProblem[] = [
       "def f():\\n    x=10\\n    return x\\nprint(f())"
     ],
     "starterCode": "",
+    "approach": "Define def f(): x=10; return x, print f(). Key points: def f():\\n x=10\\n return x\\nprint(f()) A correct solution looks like this: def f(): x=10 return x print(f())",
     "publicTests": [
       {
         "id": "m12-t2-p06-t1",
@@ -609,6 +622,7 @@ export const module12Practice: PracticeProblem[] = [
       "def double(x): return x*2\\ndef quad(x): return double(double(x))\\nprint(quad(2))"
     ],
     "starterCode": "",
+    "approach": "Define def double(x): return x*2, def quad(x): return double(double(x)), print quad(2). Key points: def double(x): return x*2\\ndef quad(x): return double(double(x))\\nprint(quad(2)) A correct solution looks like this: def double(x): return x*2 def quad(x): return double(double(x)) print(quad(2))",
     "publicTests": [
       {
         "id": "m12-t2-p07-t1",
@@ -652,6 +666,7 @@ export const module12Practice: PracticeProblem[] = [
       "def greet():\\n    print(\"Hi\")\\ngreet()"
     ],
     "starterCode": "",
+    "approach": "Define def greet(): print(\"Hi\"), call it. Key points: def greet():\\n print(\"Hi\")\\ngreet() A correct solution looks like this: def greet(): print(\"Hi\") greet()",
     "publicTests": [
       {
         "id": "m12-t3-p01-t1",
@@ -703,6 +718,7 @@ export const module12Practice: PracticeProblem[] = [
       "def add(a,b):\\n    return a+b\\nprint(add(2,3))"
     ],
     "starterCode": "",
+    "approach": "Define def add(a,b): return a+b, print add(2,3). Key points: def add(a,b):\\n return a+b\\nprint(add(2,3)) A correct solution looks like this: def add(a,b): return a+b print(add(2,3))",
     "publicTests": [
       {
         "id": "m12-t3-p02-t1",
@@ -746,6 +762,7 @@ export const module12Practice: PracticeProblem[] = [
       "def shout(name):\\n    print(name.upper())\\nshout(\"hi\")"
     ],
     "starterCode": "",
+    "approach": "Define def shout(name): print(name.upper()), call shout(\"hi\"). Key points: def shout(name):\\n print(name.upper())\\nshout(\"hi\") A correct solution looks like this: def shout(name): print(name.upper()) shout(\"hi\")",
     "publicTests": [
       {
         "id": "m12-t3-p03-t1",
@@ -789,6 +806,7 @@ export const module12Practice: PracticeProblem[] = [
       "def greet(name=\"Guest\"):\\n    print(f\"Hi {name}\")\\ngreet()"
     ],
     "starterCode": "",
+    "approach": "Define def greet(name=\"Guest\"): print(f\"Hi {name}\"), call greet(). Key points: def greet(name=\"Guest\"):\\n print(f\"Hi {name}\")\\ngreet() A correct solution looks like this: def greet(name=\"Guest\"): print(f\"Hi {name}\") greet()",
     "publicTests": [
       {
         "id": "m12-t3-p04-t1",
@@ -832,6 +850,7 @@ export const module12Practice: PracticeProblem[] = [
       "def minmax(a,b):\\n    return min(a,b), max(a,b)\\nprint(minmax(3,7)[0])"
     ],
     "starterCode": "",
+    "approach": "Define def minmax(a,b): return min(a,b), max(a,b), print minmax(3,7)[0]. Key points: def minmax(a,b):\\n return min(a,b), max(a,b)\\nprint(minmax(3,7)[0]) A correct solution looks like this: def minmax(a,b): return min(a,b), max(a,b) print(minmax(3,7)[0])",
     "publicTests": [
       {
         "id": "m12-t3-p05-t1",
@@ -875,6 +894,7 @@ export const module12Practice: PracticeProblem[] = [
       "def f():\\n    x=10\\n    return x\\nprint(f())"
     ],
     "starterCode": "",
+    "approach": "Define def f(): x=10; return x, print f(). Key points: def f():\\n x=10\\n return x\\nprint(f()) A correct solution looks like this: def f(): x=10 return x print(f())",
     "publicTests": [
       {
         "id": "m12-t3-p06-t1",
@@ -918,6 +938,7 @@ export const module12Practice: PracticeProblem[] = [
       "def double(x): return x*2\\ndef quad(x): return double(double(x))\\nprint(quad(2))"
     ],
     "starterCode": "",
+    "approach": "Define def double(x): return x*2, def quad(x): return double(double(x)), print quad(2). Key points: def double(x): return x*2\\ndef quad(x): return double(double(x))\\nprint(quad(2)) A correct solution looks like this: def double(x): return x*2 def quad(x): return double(double(x)) print(quad(2))",
     "publicTests": [
       {
         "id": "m12-t3-p07-t1",
@@ -961,6 +982,7 @@ export const module12Practice: PracticeProblem[] = [
       "def greet():\\n    print(\"Hi\")\\ngreet()"
     ],
     "starterCode": "",
+    "approach": "Define def greet(): print(\"Hi\"), call it. Key points: def greet():\\n print(\"Hi\")\\ngreet() A correct solution looks like this: def greet(): print(\"Hi\") greet()",
     "publicTests": [
       {
         "id": "m12-t4-p01-t1",
@@ -1012,6 +1034,7 @@ export const module12Practice: PracticeProblem[] = [
       "def add(a,b):\\n    return a+b\\nprint(add(2,3))"
     ],
     "starterCode": "",
+    "approach": "Define def add(a,b): return a+b, print add(2,3). Key points: def add(a,b):\\n return a+b\\nprint(add(2,3)) A correct solution looks like this: def add(a,b): return a+b print(add(2,3))",
     "publicTests": [
       {
         "id": "m12-t4-p02-t1",
@@ -1055,6 +1078,7 @@ export const module12Practice: PracticeProblem[] = [
       "def shout(name):\\n    print(name.upper())\\nshout(\"hi\")"
     ],
     "starterCode": "",
+    "approach": "Define def shout(name): print(name.upper()), call shout(\"hi\"). Key points: def shout(name):\\n print(name.upper())\\nshout(\"hi\") A correct solution looks like this: def shout(name): print(name.upper()) shout(\"hi\")",
     "publicTests": [
       {
         "id": "m12-t4-p03-t1",
@@ -1098,6 +1122,7 @@ export const module12Practice: PracticeProblem[] = [
       "def greet(name=\"Guest\"):\\n    print(f\"Hi {name}\")\\ngreet()"
     ],
     "starterCode": "",
+    "approach": "Define def greet(name=\"Guest\"): print(f\"Hi {name}\"), call greet(). Key points: def greet(name=\"Guest\"):\\n print(f\"Hi {name}\")\\ngreet() A correct solution looks like this: def greet(name=\"Guest\"): print(f\"Hi {name}\") greet()",
     "publicTests": [
       {
         "id": "m12-t4-p04-t1",
@@ -1141,6 +1166,7 @@ export const module12Practice: PracticeProblem[] = [
       "def minmax(a,b):\\n    return min(a,b), max(a,b)\\nprint(minmax(3,7)[0])"
     ],
     "starterCode": "",
+    "approach": "Define def minmax(a,b): return min(a,b), max(a,b), print minmax(3,7)[0]. Key points: def minmax(a,b):\\n return min(a,b), max(a,b)\\nprint(minmax(3,7)[0]) A correct solution looks like this: def minmax(a,b): return min(a,b), max(a,b) print(minmax(3,7)[0])",
     "publicTests": [
       {
         "id": "m12-t4-p05-t1",
@@ -1184,6 +1210,7 @@ export const module12Practice: PracticeProblem[] = [
       "def f():\\n    x=10\\n    return x\\nprint(f())"
     ],
     "starterCode": "",
+    "approach": "Define def f(): x=10; return x, print f(). Key points: def f():\\n x=10\\n return x\\nprint(f()) A correct solution looks like this: def f(): x=10 return x print(f())",
     "publicTests": [
       {
         "id": "m12-t4-p06-t1",
@@ -1227,6 +1254,7 @@ export const module12Practice: PracticeProblem[] = [
       "def double(x): return x*2\\ndef quad(x): return double(double(x))\\nprint(quad(2))"
     ],
     "starterCode": "",
+    "approach": "Define def double(x): return x*2, def quad(x): return double(double(x)), print quad(2). Key points: def double(x): return x*2\\ndef quad(x): return double(double(x))\\nprint(quad(2)) A correct solution looks like this: def double(x): return x*2 def quad(x): return double(double(x)) print(quad(2))",
     "publicTests": [
       {
         "id": "m12-t4-p07-t1",
@@ -1270,6 +1298,7 @@ export const module12Practice: PracticeProblem[] = [
       "def countdown(n):\\n    print(n)\\n    if n>1:\\n        countdown(n-1)\\ncountdown(3)"
     ],
     "starterCode": "",
+    "approach": "Define def countdown(n): print(n); if n>1: countdown(n-1), call countdown(3). Key points: def countdown(n):\\n print(n)\\n if n>1:\\n countdown(n-1)\\ncountdown(3) A correct solution looks like this: def countdown(n): print(n) if n>1: countdown(n-1) countdown(3)",
     "publicTests": [
       {
         "id": "m12-t5-p01-t1",
@@ -1313,6 +1342,7 @@ export const module12Practice: PracticeProblem[] = [
       "def fact(n):\\n    return 1 if n<=1 else n*fact(n-1)\\nprint(fact(5))"
     ],
     "starterCode": "",
+    "approach": "Define def fact(n): return 1 if n<=1 else n*fact(n-1), print fact(5). Key points: def fact(n):\\n return 1 if n<=1 else n*fact(n-1)\\nprint(fact(5)) A correct solution looks like this: def fact(n): return 1 if n<=1 else n*fact(n-1) print(fact(5))",
     "publicTests": [
       {
         "id": "m12-t5-p02-t1",
@@ -1356,6 +1386,7 @@ export const module12Practice: PracticeProblem[] = [
       "def rsum(n):\\n    return 0 if n<=0 else n+rsum(n-1)\\nprint(rsum(5))"
     ],
     "starterCode": "",
+    "approach": "Define def rsum(n): return 0 if n<=0 else n+rsum(n-1), print rsum(5). Key points: def rsum(n):\\n return 0 if n<=0 else n+rsum(n-1)\\nprint(rsum(5)) A correct solution looks like this: def rsum(n): return 0 if n<=0 else n+rsum(n-1) print(rsum(5))",
     "publicTests": [
       {
         "id": "m12-t5-p03-t1",
@@ -1399,6 +1430,7 @@ export const module12Practice: PracticeProblem[] = [
       "def fib(n):\\n    return n if n<=1 else fib(n-1)+fib(n-2)\\nprint(fib(6))"
     ],
     "starterCode": "",
+    "approach": "Define def fib(n): return n if n<=1 else fib(n-1)+fib(n-2), print fib(6). Key points: def fib(n):\\n return n if n<=1 else fib(n-1)+fib(n-2)\\nprint(fib(6)) A correct solution looks like this: def fib(n): return n if n<=1 else fib(n-1)+fib(n-2) print(fib(6))",
     "publicTests": [
       {
         "id": "m12-t5-p04-t1",
@@ -1442,6 +1474,7 @@ export const module12Practice: PracticeProblem[] = [
       "def power(b,e):\\n    return 1 if e==0 else b*power(b,e-1)\\nprint(power(2,3))"
     ],
     "starterCode": "",
+    "approach": "Define def power(b,e): return 1 if e==0 else b*power(b,e-1), print power(2,3). Key points: def power(b,e):\\n return 1 if e==0 else b*power(b,e-1)\\nprint(power(2,3)) A correct solution looks like this: def power(b,e): return 1 if e==0 else b*power(b,e-1) print(power(2,3))",
     "publicTests": [
       {
         "id": "m12-t5-p05-t1",
@@ -1485,6 +1518,7 @@ export const module12Practice: PracticeProblem[] = [
       "def rlen(s):\\n    return 0 if s==\"\" else 1+rlen(s[1:])\\nprint(rlen(\"abc\"))"
     ],
     "starterCode": "",
+    "approach": "Define def rlen(s): return 0 if s==\"\" else 1+rlen(s[1:]), print rlen(\"abc\"). Key points: def rlen(s):\\n return 0 if s==\"\" else 1+rlen(s[1:])\\nprint(rlen(\"abc\")) A correct solution looks like this: def rlen(s): return 0 if s==\"\" else 1+rlen(s[1:]) print(rlen(\"abc\"))",
     "publicTests": [
       {
         "id": "m12-t5-p06-t1",
@@ -1528,6 +1562,7 @@ export const module12Practice: PracticeProblem[] = [
       "def print_down(n):\\n    if n>=1:\\n        print(n)\\n        print_down(n-1)\\nprint_down(2)"
     ],
     "starterCode": "",
+    "approach": "Define def print_down(n): if n>=1: print(n); print_down(n-1), call print_down(2). Key points: def print_down(n):\\n if n>=1:\\n print(n)\\n print_down(n-1)\\nprint_down(2) A correct solution looks like this: def print_down(n): if n>=1: print(n) print_down(n-1) print_down(2)",
     "publicTests": [
       {
         "id": "m12-t5-p07-t1",
@@ -1570,6 +1605,7 @@ export const module12Practice: PracticeProblem[] = [
       "f = lambda x: x*2\\nprint(f(5))"
     ],
     "starterCode": "",
+    "approach": "Set f = lambda x: x*2, print f(5). Key points: f = lambda x: x*2\\nprint(f(5)) A correct solution looks like this: f = lambda x: x*2 print(f(5))",
     "publicTests": [
       {
         "id": "m12-t6-p01-t1",
@@ -1612,6 +1648,7 @@ export const module12Practice: PracticeProblem[] = [
       "add = lambda a,b: a+b\\nprint(add(3,4))"
     ],
     "starterCode": "",
+    "approach": "Set add = lambda a,b: a+b, print add(3,4). Key points: add = lambda a,b: a+b\\nprint(add(3,4)) A correct solution looks like this: add = lambda a,b: a+b print(add(3,4))",
     "publicTests": [
       {
         "id": "m12-t6-p02-t1",
@@ -1654,6 +1691,7 @@ export const module12Practice: PracticeProblem[] = [
       "sq = lambda x: x**2\\nprint(sq(4))"
     ],
     "starterCode": "",
+    "approach": "Set sq = lambda x: x**2, print sq(4). Key points: sq = lambda x: x**2\\nprint(sq(4)) A correct solution looks like this: sq = lambda x: x**2 print(sq(4))",
     "publicTests": [
       {
         "id": "m12-t6-p03-t1",
@@ -1722,7 +1760,8 @@ export const module12Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(list(map(lambda x: x*2, [1,2,3])))"
+    "solutionCode": "print(list(map(lambda x: x*2, [1,2,3])))",
+    "approach": "Print list(map(lambda x: x*2, [1,2,3])).\n\nKey points: print(list(map(lambda x: x*2, [1,2,3])))\n\nA correct solution looks like this:\nprint(list(map(lambda x: x*2, [1,2,3])))"
   },
   {
     "id": "m12-t6-p05",
@@ -1782,7 +1821,8 @@ export const module12Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(list(filter(lambda x: x>2, [1,2,3,4])))"
+    "solutionCode": "print(list(filter(lambda x: x>2, [1,2,3,4])))",
+    "approach": "Print list(filter(lambda x: x>2, [1,2,3,4])).\n\nKey points: print(list(filter(lambda x: x>2, [1,2,3,4])))\n\nA correct solution looks like this:\nprint(list(filter(lambda x: x>2, [1,2,3,4])))"
   },
   {
     "id": "m12-t6-p06",
@@ -1834,7 +1874,8 @@ export const module12Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(sorted(['bb','a','ccc'], key=lambda s: len(s)))"
+    "solutionCode": "print(sorted(['bb','a','ccc'], key=lambda s: len(s)))",
+    "approach": "Print sorted(['bb','a','ccc'], key=lambda s: len(s)).\n\nKey points: print(sorted(['bb','a','ccc'], key=lambda s: len(s)))\n\nA correct solution looks like this:\nprint(sorted(['bb','a','ccc'], key=lambda s: len(s)))"
   },
   {
     "id": "m12-t6-p07",
@@ -1894,6 +1935,7 @@ export const module12Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print((lambda x: x+1)(9))"
+    "solutionCode": "print((lambda x: x+1)(9))",
+    "approach": "Print (lambda x: x+1)(9).\n\nKey points: print((lambda x: x+1)(9))\n\nA correct solution looks like this:\nprint((lambda x: x+1)(9))"
   }
 ];

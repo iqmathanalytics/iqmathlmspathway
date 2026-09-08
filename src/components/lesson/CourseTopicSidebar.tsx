@@ -41,35 +41,39 @@ const ACCENT: Record<
   }
 > = {
   python: {
-    moduleActive: "bg-brand-50/80 text-brand-900",
-    topicActive: "bg-brand-50 text-brand-900 border-brand-500 shadow-sm",
-    topicHover: "hover:bg-brand-50/60 hover:text-brand-900",
-    ring: "ring-brand-200",
-    badge: "bg-brand-100 text-brand-800",
+    moduleActive: "bg-brand-50/80 text-brand-900 dark:bg-brand-900/40 dark:text-brand-100",
+    topicActive:
+      "bg-brand-50 text-brand-900 border-brand-500 shadow-sm dark:bg-brand-900/50 dark:text-brand-100 dark:border-brand-400",
+    topicHover: "hover:bg-brand-50/60 hover:text-brand-900 dark:hover:bg-brand-900/30 dark:hover:text-brand-100",
+    ring: "ring-brand-200 dark:ring-brand-700",
+    badge: "bg-brand-100 text-brand-800 dark:bg-brand-900/50 dark:text-brand-200",
     progress: "bg-brand-500",
   },
   "agentic-ai": {
-    moduleActive: "bg-violet-50/80 text-violet-900",
-    topicActive: "bg-violet-50 text-violet-900 border-violet-500 shadow-sm",
-    topicHover: "hover:bg-violet-50/60 hover:text-violet-900",
-    ring: "ring-violet-200",
-    badge: "bg-violet-100 text-violet-800",
+    moduleActive: "bg-violet-50/80 text-violet-900 dark:bg-violet-950/50 dark:text-violet-100",
+    topicActive:
+      "bg-violet-50 text-violet-900 border-violet-500 shadow-sm dark:bg-violet-950/60 dark:text-violet-100 dark:border-violet-400",
+    topicHover: "hover:bg-violet-50/60 hover:text-violet-900 dark:hover:bg-violet-950/40 dark:hover:text-violet-100",
+    ring: "ring-violet-200 dark:ring-violet-700",
+    badge: "bg-violet-100 text-violet-800 dark:bg-violet-950/50 dark:text-violet-200",
     progress: "bg-violet-500",
   },
   sql: {
-    moduleActive: "bg-sky-50/80 text-sky-900",
-    topicActive: "bg-sky-50 text-sky-900 border-sky-500 shadow-sm",
-    topicHover: "hover:bg-sky-50/60 hover:text-sky-900",
-    ring: "ring-sky-200",
-    badge: "bg-sky-100 text-sky-800",
+    moduleActive: "bg-sky-50/80 text-sky-900 dark:bg-sky-950/50 dark:text-sky-100",
+    topicActive:
+      "bg-sky-50 text-sky-900 border-sky-500 shadow-sm dark:bg-sky-950/60 dark:text-sky-100 dark:border-sky-400",
+    topicHover: "hover:bg-sky-50/60 hover:text-sky-900 dark:hover:bg-sky-950/40 dark:hover:text-sky-100",
+    ring: "ring-sky-200 dark:ring-sky-700",
+    badge: "bg-sky-100 text-sky-800 dark:bg-sky-950/50 dark:text-sky-200",
     progress: "bg-sky-500",
   },
   "mba-ai": {
-    moduleActive: "bg-brand-50/80 text-brand-900",
-    topicActive: "bg-brand-50 text-brand-900 border-brand-500 shadow-sm",
-    topicHover: "hover:bg-brand-50/60 hover:text-brand-900",
-    ring: "ring-brand-200",
-    badge: "bg-brand-100 text-brand-800",
+    moduleActive: "bg-brand-50/80 text-brand-900 dark:bg-brand-900/40 dark:text-brand-100",
+    topicActive:
+      "bg-brand-50 text-brand-900 border-brand-500 shadow-sm dark:bg-brand-900/50 dark:text-brand-100 dark:border-brand-400",
+    topicHover: "hover:bg-brand-50/60 hover:text-brand-900 dark:hover:bg-brand-900/30 dark:hover:text-brand-100",
+    ring: "ring-brand-200 dark:ring-brand-700",
+    badge: "bg-brand-100 text-brand-800 dark:bg-brand-900/50 dark:text-brand-200",
     progress: "bg-brand-500",
   },
 };
@@ -277,7 +281,7 @@ export function CourseTopicSidebar({
 
   const sidebarBody = (
     <>
-      <div className="border-b border-gray-100 px-4 py-4">
+      <div className="shrink-0 border-b border-gray-100 px-4 py-4 dark:border-slate-800">
         <div className="flex items-start justify-between gap-2">
           <div className="min-w-0">
             {course?.iconImage && (
@@ -292,7 +296,7 @@ export function CourseTopicSidebar({
             <p className={clsx("text-[11px] font-semibold uppercase tracking-wide", accent.badge, "inline-flex rounded-full px-2 py-0.5")}>
               Course
             </p>
-            <h2 className="mt-1 text-base font-bold leading-snug text-gray-900">
+            <h2 className="mt-1 text-base font-bold leading-snug text-gray-900 dark:text-slate-50">
               {course?.name ?? "Course"}
             </h2>
           </div>
@@ -300,7 +304,7 @@ export function CourseTopicSidebar({
             <button
               type="button"
               onClick={onClose}
-              className="shrink-0 rounded-lg p-1.5 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-800"
+              className="shrink-0 rounded-lg p-1.5 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-800 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100"
               aria-label="Close navigation"
             >
               <X className="h-5 w-5" />
@@ -310,7 +314,7 @@ export function CourseTopicSidebar({
         <NavigationLink
           href={`/dashboard?course=${courseId}`}
           onClick={onClose}
-          className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 transition-colors hover:text-gray-800"
+          className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 transition-colors hover:text-gray-800 dark:text-slate-400 dark:hover:text-slate-100"
         >
           <LayoutDashboard className="h-3.5 w-3.5" />
           Back to dashboard
@@ -319,7 +323,7 @@ export function CourseTopicSidebar({
 
       <div
         ref={scrollRef}
-        className="flex-1 overflow-y-auto overscroll-contain px-3 py-3 [scrollbar-width:thin] [scrollbar-color:rgba(0,0,0,0.15)_transparent]"
+        className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 py-3 [scrollbar-width:thin] [scrollbar-color:rgba(0,0,0,0.15)_transparent]"
       >
         <nav aria-label="Course modules and topics" className="space-y-2">
           {courseModules.map((mod) => (
@@ -343,21 +347,26 @@ export function CourseTopicSidebar({
 
   return (
     <>
-      {/* Desktop sidebar — slides closed with width transition */}
+      {/* Reserves horizontal space so main content is not covered by the fixed panel */}
+      <div
+        className={clsx(
+          "hidden shrink-0 transition-[width] duration-300 ease-in-out lg:block",
+          open ? "w-[min(100%,18.5rem)]" : "w-0"
+        )}
+        aria-hidden
+      />
+
+      {/* Desktop — viewport-frozen below the header */}
       <aside
         className={clsx(
-          "hidden shrink-0 flex-col border-r border-gray-200/90 bg-gradient-to-b from-gray-50/90 to-white",
-          "overflow-hidden transition-[width,opacity,border-color] duration-300 ease-in-out lg:flex",
-          open
-            ? "w-[min(100%,18.5rem)] opacity-100"
-            : "w-0 border-transparent opacity-0 pointer-events-none",
+          "fixed bottom-0 left-0 top-14 z-40 hidden w-[min(100%,18.5rem)] flex-col border-r border-gray-200/90 bg-gradient-to-b from-gray-50/90 to-white shadow-lg transition-transform duration-300 ease-in-out dark:border-slate-700 dark:from-slate-950 dark:to-slate-900 lg:flex",
+          open ? "translate-x-0" : "-translate-x-full pointer-events-none",
           className
         )}
         aria-hidden={!open}
+        aria-label="Course modules and topics"
       >
-        <div className="flex h-full w-[min(100%,18.5rem)] min-w-[18.5rem] flex-col">
-          {sidebarBody}
-        </div>
+        {sidebarBody}
       </aside>
 
       {/* Mobile drawer */}
@@ -379,7 +388,7 @@ export function CourseTopicSidebar({
         />
         <aside
           className={clsx(
-            "absolute inset-y-0 left-0 flex w-[min(100%,20rem)] flex-col bg-white shadow-2xl transition-transform duration-300 ease-out",
+            "absolute bottom-0 left-0 top-0 flex w-[min(100%,20rem)] flex-col bg-white shadow-2xl transition-transform duration-300 ease-out dark:bg-slate-900",
             open ? "translate-x-0" : "-translate-x-full"
           )}
         >

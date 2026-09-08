@@ -42,6 +42,7 @@ export function PracticeWorkspace(props: PracticeWorkspaceProps) {
           moduleName={props.moduleName}
           topicTitle={props.topicTitle}
           problemTitle={props.problem.title}
+          coursePractice
         />
         <div className="flex flex-1 items-center justify-center">
           <Loader2 className="h-8 w-8 animate-spin text-brand-600" />

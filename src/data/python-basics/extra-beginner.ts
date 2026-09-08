@@ -7,7 +7,7 @@ import { buildBasicsProblem, buildScriptProblem } from "./helpers";
  */
 export const beginnerExtraProblems = [
   buildScriptProblem({
-    order: 35,
+    order: 18,
     slug: "store-city",
     title: "Store City and Country",
     difficulty: "easy",
@@ -30,7 +30,7 @@ print(f"{city}, {country}")`,
   }),
 
   buildScriptProblem({
-    order: 36,
+    order: 19,
     slug: "swap-values",
     title: "Swap Two Values",
     difficulty: "easy",
@@ -58,7 +58,7 @@ print(a, b)`,
   }),
 
   buildScriptProblem({
-    order: 37,
+    order: 20,
     slug: "circle-area",
     title: "Circle Area",
     difficulty: "easy",
@@ -84,7 +84,7 @@ print(int(area))`,
   }),
 
   buildScriptProblem({
-    order: 38,
+    order: 21,
     slug: "full-name",
     title: "Build a Full Name",
     difficulty: "easy",
@@ -109,7 +109,7 @@ print(first + " " + last)`,
   }),
 
   buildScriptProblem({
-    order: 39,
+    order: 22,
     slug: "value-and-type",
     title: "Value and Type",
     difficulty: "easy",
@@ -135,7 +135,7 @@ print(type(x))`,
   }),
 
   buildScriptProblem({
-    order: 40,
+    order: 23,
     slug: "greeting-fstring",
     title: "Greeting with f-string",
     difficulty: "easy",
@@ -158,7 +158,7 @@ print(f"Hello, {name}!")`,
   }),
 
   buildScriptProblem({
-    order: 41,
+    order: 24,
     slug: "word-length",
     title: "Word Length",
     difficulty: "easy",
@@ -186,7 +186,7 @@ print(len(word))`,
   }),
 
   buildScriptProblem({
-    order: 42,
+    order: 25,
     slug: "slice-username",
     title: "Slice a Username",
     difficulty: "easy",
@@ -210,7 +210,7 @@ print(email[:at])`,
   }),
 
   buildScriptProblem({
-    order: 43,
+    order: 26,
     slug: "replace-hyphens",
     title: "Replace Spaces with Hyphens",
     difficulty: "easy",
@@ -233,7 +233,7 @@ print(slogan.replace(" ", "-"))`,
   }),
 
   buildScriptProblem({
-    order: 44,
+    order: 27,
     slug: "middle-character",
     title: "Middle Character",
     difficulty: "easy",
@@ -256,7 +256,7 @@ print(word[2])`,
   }),
 
   buildScriptProblem({
-    order: 45,
+    order: 28,
     slug: "average-three",
     title: "Average of Three Numbers",
     difficulty: "easy",
@@ -278,7 +278,7 @@ print(total / 3)`,
   }),
 
   buildScriptProblem({
-    order: 46,
+    order: 29,
     slug: "power-calculation",
     title: "Power Calculation",
     difficulty: "easy",
@@ -303,7 +303,7 @@ print(base ** exp)`,
   }),
 
   buildScriptProblem({
-    order: 47,
+    order: 30,
     slug: "round-price",
     title: "Round a Price",
     difficulty: "easy",
@@ -326,7 +326,7 @@ print(round(price, 2))`,
   }),
 
   buildScriptProblem({
-    order: 48,
+    order: 31,
     slug: "abs-difference",
     title: "Absolute Difference",
     difficulty: "easy",
@@ -351,7 +351,7 @@ print(abs(a - b))`,
   }),
 
   buildScriptProblem({
-    order: 49,
+    order: 32,
     slug: "integer-division-chain",
     title: "Integer Division Chain",
     difficulty: "easy",
@@ -372,7 +372,7 @@ print(abs(a - b))`,
   }),
 
   buildScriptProblem({
-    order: 50,
+    order: 33,
     slug: "list-endpoints",
     title: "List First and Last",
     difficulty: "easy",
@@ -398,7 +398,7 @@ print(nums[-1])`,
   }),
 
   buildScriptProblem({
-    order: 51,
+    order: 34,
     slug: "list-pop-append",
     title: "Pop and Append",
     difficulty: "easy",
@@ -423,7 +423,7 @@ print(items)`,
   }),
 
   buildScriptProblem({
-    order: 52,
+    order: 35,
     slug: "list-middle-slice",
     title: "Middle Slice",
     difficulty: "easy",
@@ -446,7 +446,7 @@ print(data[1:4])`,
   }),
 
   buildScriptProblem({
-    order: 53,
+    order: 36,
     slug: "list-count-apples",
     title: "Count Apples",
     difficulty: "easy",
@@ -469,7 +469,7 @@ print(fruits.count("apple"))`,
   }),
 
   buildScriptProblem({
-    order: 54,
+    order: 37,
     slug: "list-extend-merge",
     title: "Extend Two Lists",
     difficulty: "easy",
@@ -495,7 +495,7 @@ print(a)`,
   }),
 
   buildScriptProblem({
-    order: 55,
+    order: 38,
     slug: "tuple-second-item",
     title: "Second Tuple Item",
     difficulty: "easy",
@@ -518,7 +518,7 @@ print(colors[1])`,
   }),
 
   buildScriptProblem({
-    order: 56,
+    order: 39,
     slug: "tuple-count-twos",
     title: "Count Twos in Tuple",
     difficulty: "easy",
@@ -541,7 +541,7 @@ print(nums.count(2))`,
   }),
 
   buildScriptProblem({
-    order: 57,
+    order: 40,
     slug: "tuple-concatenate",
     title: "Concatenate Tuples",
     difficulty: "easy",
@@ -566,7 +566,7 @@ print(left + right)`,
   }),
 
   buildScriptProblem({
-    order: 58,
+    order: 41,
     slug: "tuple-unpack-sum",
     title: "Unpack and Sum",
     difficulty: "easy",
@@ -590,7 +590,7 @@ print(a + b + c)`,
   }),
 
   buildScriptProblem({
-    order: 59,
+    order: 42,
     slug: "dict-get-default",
     title: "Get with Default",
     difficulty: "easy",
@@ -613,7 +613,7 @@ print(scores.get("science", 0))`,
   }),
 
   buildScriptProblem({
-    order: 60,
+    order: 43,
     slug: "dict-sorted-keys",
     title: "Sorted Dictionary Keys",
     difficulty: "easy",
@@ -636,7 +636,7 @@ print(sorted(data.keys()))`,
   }),
 
   buildScriptProblem({
-    order: 61,
+    order: 44,
     slug: "dict-add-field",
     title: "Add a Dictionary Field",
     difficulty: "easy",
@@ -660,7 +660,7 @@ print(user)`,
   }),
 
   buildScriptProblem({
-    order: 62,
+    order: 45,
     slug: "dict-values-total",
     title: "Sum Dictionary Values",
     difficulty: "easy",
@@ -683,7 +683,7 @@ print(sum(marks.values()))`,
   }),
 
   buildScriptProblem({
-    order: 63,
+    order: 46,
     slug: "set-add-remove",
     title: "Add and Discard",
     difficulty: "easy",
@@ -708,7 +708,7 @@ print(sorted(tags))`,
   }),
 
   buildScriptProblem({
-    order: 64,
+    order: 47,
     slug: "set-subset-check",
     title: "Subset Check",
     difficulty: "easy",
@@ -733,7 +733,7 @@ print(small <= big)`,
   }),
 
   buildScriptProblem({
-    order: 65,
+    order: 48,
     slug: "set-symmetric-difference",
     title: "Symmetric Difference",
     difficulty: "easy",
@@ -758,7 +758,7 @@ print(sorted(a ^ b))`,
   }),
 
   buildScriptProblem({
-    order: 66,
+    order: 49,
     slug: "unique-sorted",
     title: "Unique Sorted Values",
     difficulty: "easy",
@@ -781,7 +781,7 @@ print(sorted(set(nums)))`,
   }),
 
   buildScriptProblem({
-    order: 67,
+    order: 50,
     slug: "even-or-odd",
     title: "Even or Odd",
     difficulty: "easy",
@@ -807,7 +807,7 @@ else:
   }),
 
   buildScriptProblem({
-    order: 68,
+    order: 51,
     slug: "pick-larger",
     title: "Pick the Larger Value",
     difficulty: "easy",
@@ -835,7 +835,7 @@ else:
   }),
 
   buildScriptProblem({
-    order: 69,
+    order: 52,
     slug: "repeat-laugh",
     title: "Repeat a String",
     difficulty: "easy",
@@ -856,7 +856,7 @@ else:
   }),
 
   buildScriptProblem({
-    order: 70,
+    order: 53,
     slug: "password-strength",
     title: "Password Length Check",
     difficulty: "easy",
@@ -879,7 +879,7 @@ print(len(password) >= 8)`,
   }),
 
   buildScriptProblem({
-    order: 71,
+    order: 54,
     slug: "leap-year-label",
     title: "Leap Year Label",
     difficulty: "easy",
@@ -905,7 +905,7 @@ else:
   }),
 
   buildScriptProblem({
-    order: 72,
+    order: 55,
     slug: "sign-label",
     title: "Sign Label",
     difficulty: "easy",
@@ -933,7 +933,7 @@ else:
   }),
 
   buildScriptProblem({
-    order: 73,
+    order: 56,
     slug: "weekend-check",
     title: "Weekend Check",
     difficulty: "easy",
@@ -959,7 +959,7 @@ else:
   }),
 
   buildScriptProblem({
-    order: 74,
+    order: 57,
     slug: "shipping-fee",
     title: "Shipping Fee",
     difficulty: "easy",
@@ -985,7 +985,7 @@ else:
   }),
 
   buildScriptProblem({
-    order: 75,
+    order: 58,
     slug: "countdown-loop",
     title: "Countdown Loop",
     difficulty: "easy",
@@ -1011,7 +1011,7 @@ else:
   }),
 
   buildScriptProblem({
-    order: 76,
+    order: 59,
     slug: "star-row",
     title: "Row of Stars",
     difficulty: "easy",
@@ -1034,7 +1034,7 @@ print()`,
   }),
 
   buildScriptProblem({
-    order: 77,
+    order: 60,
     slug: "squares-one-to-five",
     title: "Squares One to Five",
     difficulty: "easy",
@@ -1064,7 +1064,7 @@ print()`,
   }),
 
   buildScriptProblem({
-    order: 78,
+    order: 61,
     slug: "sum-until-zero",
     title: "Sum Until Zero",
     difficulty: "easy",
@@ -1100,7 +1100,7 @@ print(total)`,
   }),
 
   buildBasicsProblem({
-    order: 79,
+    order: 62,
     slug: "add-two",
     title: "Add Two Numbers",
     difficulty: "easy",
@@ -1126,7 +1126,7 @@ print(total)`,
   }),
 
   buildBasicsProblem({
-    order: 80,
+    order: 63,
     slug: "is-even",
     title: "Is Even",
     difficulty: "easy",
@@ -1152,7 +1152,7 @@ print(total)`,
   }),
 
   buildBasicsProblem({
-    order: 81,
+    order: 64,
     slug: "double-each",
     title: "Double Each Item",
     difficulty: "easy",
@@ -1181,7 +1181,7 @@ print(total)`,
   }),
 
   buildBasicsProblem({
-    order: 82,
+    order: 65,
     slug: "greet-user",
     title: "Greet User",
     difficulty: "easy",
@@ -1207,7 +1207,7 @@ print(total)`,
   }),
 
   buildBasicsProblem({
-    order: 83,
+    order: 66,
     slug: "max-of-three",
     title: "Maximum of Three",
     difficulty: "easy",
@@ -1237,7 +1237,7 @@ print(total)`,
   }),
 
   buildBasicsProblem({
-    order: 84,
+    order: 67,
     slug: "count-vowels",
     title: "Count Vowels",
     difficulty: "easy",
@@ -1267,7 +1267,7 @@ print(total)`,
   }),
 
   buildBasicsProblem({
-    order: 85,
+    order: 68,
     slug: "reverse-string-fn",
     title: "Reverse a String",
     difficulty: "easy",
@@ -1293,7 +1293,7 @@ print(total)`,
   }),
 
   buildBasicsProblem({
-    order: 86,
+    order: 69,
     slug: "square-number",
     title: "Square a Number",
     difficulty: "easy",
@@ -1319,7 +1319,7 @@ print(total)`,
   }),
 
   buildBasicsProblem({
-    order: 87,
+    order: 70,
     slug: "list-average",
     title: "List Average",
     difficulty: "easy",
@@ -1345,7 +1345,7 @@ print(total)`,
   }),
 
   buildBasicsProblem({
-    order: 88,
+    order: 71,
     slug: "celsius-to-fahrenheit",
     title: "Celsius to Fahrenheit",
     difficulty: "easy",

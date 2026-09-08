@@ -39,6 +39,8 @@ interface AuthContextValue {
     password: string,
     mobile?: string
   ) => Promise<{ error: string | null; isAdmin: boolean }>;
+  requestPasswordReset: (email: string) => Promise<{ error: string | null }>;
+  updatePassword: (password: string) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
   refreshProfile: () => Promise<void>;
   updateProfile: (
@@ -256,6 +258,29 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     [loadProfile, user]
   );
 
+  const requestPasswordReset = useCallback(async (email: string) => {
+    const sb = getSupabase();
+    if (!sb) return { error: "Auth is not configured." };
+    const origin =
+      typeof window !== "undefined" ? window.location.origin : undefined;
+    const { error } = await sb.auth.resetPasswordForEmail(email.trim(), {
+      redirectTo: origin ? `${origin}/auth/reset-password` : undefined,
+    });
+    if (error) return { error: formatAuthError(error.message) };
+    return { error: null };
+  }, []);
+
+  const updatePassword = useCallback(async (password: string) => {
+    const sb = getSupabase();
+    if (!sb) return { error: "Auth is not configured." };
+    if (password.length < 8) {
+      return { error: "Password must be at least 8 characters." };
+    }
+    const { error } = await sb.auth.updateUser({ password });
+    if (error) return { error: formatAuthError(error.message) };
+    return { error: null };
+  }, []);
+
   const signOut = useCallback(async () => {
     const sb = getSupabase();
     if (!sb) return;
@@ -278,6 +303,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       configured,
       signUp,
       signIn,
+      requestPasswordReset,
+      updatePassword,
       signOut,
       refreshProfile,
       updateProfile,
@@ -291,6 +318,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       configured,
       signUp,
       signIn,
+      requestPasswordReset,
+      updatePassword,
       signOut,
       refreshProfile,
       updateProfile,

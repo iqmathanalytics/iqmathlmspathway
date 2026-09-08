@@ -59,7 +59,8 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([x for x in range(3)])"
+    "solutionCode": "print([x for x in range(3)])",
+    "approach": "Print [x for x in range(3)].\n\nKey points: print([x for x in range(3)])\n\nA correct solution looks like this:\nprint([x for x in range(3)])"
   },
   {
     "id": "m11-t1-p02",
@@ -111,7 +112,8 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([x*x for x in range(1,4)])"
+    "solutionCode": "print([x*x for x in range(1,4)])",
+    "approach": "Print [x*x for x in range(1,4)].\n\nKey points: print([x*x for x in range(1,4)])\n\nA correct solution looks like this:\nprint([x*x for x in range(1,4)])"
   },
   {
     "id": "m11-t1-p03",
@@ -171,7 +173,8 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([x for x in range(6) if x%2==0])"
+    "solutionCode": "print([x for x in range(6) if x%2==0])",
+    "approach": "Print [x for x in range(6) if x%2==0].\n\nKey points: print([x for x in range(6) if x%2==0])\n\nA correct solution looks like this:\nprint([x for x in range(6) if x%2==0])"
   },
   {
     "id": "m11-t1-p04",
@@ -223,7 +226,8 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([c.upper() for c in [\"a\",\"b\"]])"
+    "solutionCode": "print([c.upper() for c in [\"a\",\"b\"]])",
+    "approach": "Print [c.upper() for c in [\"a\",\"b\"]].\n\nKey points: print([c.upper() for c in [\"a\",\"b\"]])\n\nA correct solution looks like this:\nprint([c.upper() for c in [\"a\",\"b\"]])"
   },
   {
     "id": "m11-t1-p05",
@@ -275,7 +279,8 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([j for i in range(2) for j in range(2)])"
+    "solutionCode": "print([j for i in range(2) for j in range(2)])",
+    "approach": "Print [j for i in range(2) for j in range(2)].\n\nKey points: print([j for i in range(2) for j in range(2)])\n\nA correct solution looks like this:\nprint([j for i in range(2) for j in range(2)])"
   },
   {
     "id": "m11-t1-p06",
@@ -327,7 +332,8 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([len(w) for w in [\"hi\",\"hey\"]])"
+    "solutionCode": "print([len(w) for w in [\"hi\",\"hey\"]])",
+    "approach": "Print [len(w) for w in [\"hi\",\"hey\"]].\n\nKey points: print([len(w) for w in [\"hi\",\"hey\"]])\n\nA correct solution looks like this:\nprint([len(w) for w in [\"hi\",\"hey\"]])"
   },
   {
     "id": "m11-t1-p07",
@@ -379,7 +385,8 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([x if x%2==0 else -x for x in range(1,4)])"
+    "solutionCode": "print([x if x%2==0 else -x for x in range(1,4)])",
+    "approach": "Print [x if x%2==0 else -x for x in range(1,4)].\n\nKey points: print([x if x%2==0 else -x for x in range(1,4)])\n\nA correct solution looks like this:\nprint([x if x%2==0 else -x for x in range(1,4)])"
   },
   {
     "id": "m11-t2-p01",
@@ -439,7 +446,8 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([x for x in range(3)])"
+    "solutionCode": "print([x for x in range(3)])",
+    "approach": "Print [x for x in range(3)].\n\nKey points: print([x for x in range(3)])\n\nA correct solution looks like this:\nprint([x for x in range(3)])"
   },
   {
     "id": "m11-t2-p02",
@@ -491,7 +499,8 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([x*x for x in range(1,4)])"
+    "solutionCode": "print([x*x for x in range(1,4)])",
+    "approach": "Print [x*x for x in range(1,4)].\n\nKey points: print([x*x for x in range(1,4)])\n\nA correct solution looks like this:\nprint([x*x for x in range(1,4)])"
   },
   {
     "id": "m11-t2-p03",
@@ -551,7 +560,8 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([x for x in range(6) if x%2==0])"
+    "solutionCode": "print([x for x in range(6) if x%2==0])",
+    "approach": "Print [x for x in range(6) if x%2==0].\n\nKey points: print([x for x in range(6) if x%2==0])\n\nA correct solution looks like this:\nprint([x for x in range(6) if x%2==0])"
   },
   {
     "id": "m11-t2-p04",
@@ -603,7 +613,8 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([c.upper() for c in [\"a\",\"b\"]])"
+    "solutionCode": "print([c.upper() for c in [\"a\",\"b\"]])",
+    "approach": "Print [c.upper() for c in [\"a\",\"b\"]].\n\nKey points: print([c.upper() for c in [\"a\",\"b\"]])\n\nA correct solution looks like this:\nprint([c.upper() for c in [\"a\",\"b\"]])"
   },
   {
     "id": "m11-t2-p05",
@@ -655,7 +666,8 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([j for i in range(2) for j in range(2)])"
+    "solutionCode": "print([j for i in range(2) for j in range(2)])",
+    "approach": "Print [j for i in range(2) for j in range(2)].\n\nKey points: print([j for i in range(2) for j in range(2)])\n\nA correct solution looks like this:\nprint([j for i in range(2) for j in range(2)])"
   },
   {
     "id": "m11-t2-p06",
@@ -707,7 +719,8 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([len(w) for w in [\"hi\",\"hey\"]])"
+    "solutionCode": "print([len(w) for w in [\"hi\",\"hey\"]])",
+    "approach": "Print [len(w) for w in [\"hi\",\"hey\"]].\n\nKey points: print([len(w) for w in [\"hi\",\"hey\"]])\n\nA correct solution looks like this:\nprint([len(w) for w in [\"hi\",\"hey\"]])"
   },
   {
     "id": "m11-t2-p07",
@@ -759,7 +772,8 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([x if x%2==0 else -x for x in range(1,4)])"
+    "solutionCode": "print([x if x%2==0 else -x for x in range(1,4)])",
+    "approach": "Print [x if x%2==0 else -x for x in range(1,4)].\n\nKey points: print([x if x%2==0 else -x for x in range(1,4)])\n\nA correct solution looks like this:\nprint([x if x%2==0 else -x for x in range(1,4)])"
   },
   {
     "id": "m11-t3-p01",
@@ -819,7 +833,8 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({x:x*2 for x in range(3)})"
+    "solutionCode": "print({x:x*2 for x in range(3)})",
+    "approach": "Print {x:x*2 for x in range(3)}.\n\nKey points: print({x:x*2 for x in range(3)})\n\nA correct solution looks like this:\nprint({x:x*2 for x in range(3)})"
   },
   {
     "id": "m11-t3-p02",
@@ -871,7 +886,8 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({c:len(c) for c in [\"a\",\"ab\"]})"
+    "solutionCode": "print({c:len(c) for c in [\"a\",\"ab\"]})",
+    "approach": "Print {c:len(c) for c in [\"a\",\"ab\"]}.\n\nKey points: print({c:len(c) for c in [\"a\",\"ab\"]})\n\nA correct solution looks like this:\nprint({c:len(c) for c in [\"a\",\"ab\"]})"
   },
   {
     "id": "m11-t3-p03",
@@ -923,7 +939,8 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({x:x for x in range(5) if x%2==1})"
+    "solutionCode": "print({x:x for x in range(5) if x%2==1})",
+    "approach": "Print {x:x for x in range(5) if x%2==1}.\n\nKey points: print({x:x for x in range(5) if x%2==1})\n\nA correct solution looks like this:\nprint({x:x for x in range(5) if x%2==1})"
   },
   {
     "id": "m11-t3-p04",
@@ -975,7 +992,8 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({v:k for k,v in {\"a\":1,\"b\":2}.items()})"
+    "solutionCode": "print({v:k for k,v in {\"a\":1,\"b\":2}.items()})",
+    "approach": "Print {v:k for k,v in {\"a\":1,\"b\":2}.items()}.\n\nKey points: print({v:k for k,v in {\"a\":1,\"b\":2}.items()})\n\nA correct solution looks like this:\nprint({v:k for k,v in {\"a\":1,\"b\":2}.items()})"
   },
   {
     "id": "m11-t3-p05",
@@ -1027,7 +1045,8 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({c:i for i,c in enumerate(\"ab\")})"
+    "solutionCode": "print({c:i for i,c in enumerate(\"ab\")})",
+    "approach": "Print {c:i for i,c in enumerate(\"ab\")}.\n\nKey points: print({c:i for i,c in enumerate(\"ab\")})\n\nA correct solution looks like this:\nprint({c:i for i,c in enumerate(\"ab\")})"
   },
   {
     "id": "m11-t3-p06",
@@ -1061,6 +1080,7 @@ export const module11Practice: PracticeProblem[] = [
       "print({x:(\"even\" if x%2==0 else \"odd\") for x in range(3)})"
     ],
     "starterCode": "",
+    "approach": "Print {x:(\"even\" if x%2==0 else \"odd\") for x in range(3)}. Key points: print({x:(\"even\" if x%2==0 else \"odd\") for x in range(3)}) A correct solution looks like this: print({x:(\"even\" if x%2==0 else \"odd\") for x in range(3)})",
     "publicTests": [
       {
         "id": "m11-t3-p06-t1",
@@ -1121,6 +1141,7 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({k:v for k,v in zip([\"a\",\"b\"],[1,2])})"
+    "solutionCode": "print({k:v for k,v in zip([\"a\",\"b\"],[1,2])})",
+    "approach": "Print {k:v for k,v in zip([\"a\",\"b\"],[1,2])}.\n\nKey points: print({k:v for k,v in zip([\"a\",\"b\"],[1,2])})\n\nA correct solution looks like this:\nprint({k:v for k,v in zip([\"a\",\"b\"],[1,2])})"
   }
 ];

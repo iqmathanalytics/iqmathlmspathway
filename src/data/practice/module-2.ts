@@ -68,7 +68,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Jordan\")"
+    "solutionCode": "print(\"Jordan\")",
+    "approach": "Use print() to display your name on one line.\n\nKey points: Try: print(\"Jordan\")\n\nA correct solution looks like this:\nprint(\"Jordan\")"
   },
   {
     "id": "m2-t1-p02",
@@ -150,7 +151,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(10 + 5)"
+    "solutionCode": "print(10 + 5)",
+    "approach": "1. Python can add numbers inside print() — no quotes around numbers. 2. print(10 + 5) calculates the sum and prints the answer.\n\nA correct solution looks like this:\nprint(10 + 5)"
   },
   {
     "id": "m2-t1-p03",
@@ -256,7 +258,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Hello\")\nprint(\"Python\")"
+    "solutionCode": "print(\"Hello\")\nprint(\"Python\")",
+    "approach": "Print Hello on line 1 and Python on line 2.\n\nKey points: First: print(\"Hello\"), then: print(\"Python\")\n\nA correct solution looks like this:\nprint(\"Hello\")\nprint(\"Python\")"
   },
   {
     "id": "m2-t1-p04",
@@ -337,7 +340,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Hello, Mia\")"
+    "solutionCode": "print(\"Hello, Mia\")",
+    "approach": "Set name = \"Mia\" then print Hello, Mia using concatenation.\n\nKey points: Try: name = \"Mia\" then print(\"Hello, \" + name)\n\nA correct solution looks like this:\nprint(\"Hello, Mia\")"
   },
   {
     "id": "m2-t1-p05",
@@ -423,7 +427,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Name: Leo, Age: 20\")"
+    "solutionCode": "print(\"Name: Leo, Age: 20\")",
+    "approach": "Use f-string: name = \"Leo\", age = 20, print Name: Leo, Age: 20\n\nKey points: Try: print(f\"Name: {name}, Age: {age}\")\n\nA correct solution looks like this:\nprint(\"Name: Leo, Age: 20\")"
   },
   {
     "id": "m2-t1-p06",
@@ -508,7 +513,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(1, 2, 3)"
+    "solutionCode": "print(1, 2, 3)",
+    "approach": "Print 1, 2, 3 using one print with default separator.\n\nKey points: Try: print(1, 2, 3) — commas add spaces between values\n\nA correct solution looks like this:\nprint(1, 2, 3)"
   },
   {
     "id": "m2-t1-p07",
@@ -593,7 +599,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"a\", \"b\", \"c\", sep=\"-\")"
+    "solutionCode": "print(\"a\", \"b\", \"c\", sep=\"-\")",
+    "approach": "Print a, b, c separated by dashes using sep='-'.\n\nKey points: Try: print(\"a\", \"b\", \"c\", sep=\"-\")\n\nA correct solution looks like this:\nprint(\"a\", \"b\", \"c\", sep=\"-\")"
   },
   {
     "id": "m2-t2-p01",
@@ -646,6 +653,7 @@ export const module2Practice: PracticeProblem[] = [
       "Example: # greeting message\\nprint(\"Hi\")"
     ],
     "starterCode": "",
+    "approach": "Add a comment line starting with #, then print Hi. Key points: Example: # greeting message\\nprint(\"Hi\") A correct solution looks like this: # greeting message print(\"Hi\")",
     "publicTests": [
       {
         "id": "m2-t2-p01-t1",
@@ -707,6 +715,7 @@ export const module2Practice: PracticeProblem[] = [
       "Add # then print(\"Line1\") and print(\"Line2\")"
     ],
     "starterCode": "",
+    "approach": "Add one comment, then print Line1 and Line2 on separate lines. Key points: Add # then print(\"Line1\") and print(\"Line2\") A correct solution looks like this: print(\"Line1\") print(\"Line2\")",
     "publicTests": [
       {
         "id": "m2-t2-p02-t1",
@@ -771,6 +780,7 @@ export const module2Practice: PracticeProblem[] = [
       "# store a number\\nx = 5\\nprint(x)"
     ],
     "starterCode": "",
+    "approach": "Add a comment above x = 5, then print x. Key points: # store a number\\nx = 5\\nprint(x) A correct solution looks like this: # store a number x = 5 print(x)",
     "publicTests": [
       {
         "id": "m2-t2-p03-t1",
@@ -810,6 +820,7 @@ export const module2Practice: PracticeProblem[] = [
       "# first value\\nprint(\"A\")\\n# second value\\nprint(\"B\")"
     ],
     "starterCode": "",
+    "approach": "Use two comment lines — one before each print statement. Print A then B. Key points: # first value\\nprint(\"A\")\\n# second value\\nprint(\"B\") A correct solution looks like this: # first value print(\"A\") # second value print(\"B\")",
     "publicTests": [
       {
         "id": "m2-t2-p04-t1",
@@ -851,6 +862,7 @@ export const module2Practice: PracticeProblem[] = [
       "# print numbers 1 to 3\\nfor i in range(1, 4):\\n    print(i)"
     ],
     "starterCode": "",
+    "approach": "Add a comment explaining the loop, then use for i in range(1, 4): print(i). Key points: # print numbers 1 to 3\\nfor i in range(1, 4):\\n print(i) A correct solution looks like this: # print numbers 1 to 3 for i in range(1, 4): print(i)",
     "publicTests": [
       {
         "id": "m2-t2-p05-t1",
@@ -892,6 +904,7 @@ export const module2Practice: PracticeProblem[] = [
       "# says hello\\ndef greet():\\n    print(\"Hello\")\\ngreet()"
     ],
     "starterCode": "",
+    "approach": "Add a comment above def greet():, print Hello inside, call greet(). Key points: # says hello\\ndef greet():\\n print(\"Hello\")\\ngreet() A correct solution looks like this: # says hello def greet(): print(\"Hello\") greet()",
     "publicTests": [
       {
         "id": "m2-t2-p06-t1",
@@ -933,6 +946,7 @@ export const module2Practice: PracticeProblem[] = [
       "Add comments before score=80 and before the if statement"
     ],
     "starterCode": "",
+    "approach": "Add comments for: variable setup, condition, and output. Set score=80, if score>=60 print Pass else Fail. Key points: Add comments before score=80 and before the if statement A correct solution looks like this: d = {\"topic\": \"Pass\"} print(d[\"topic\"])",
     "publicTests": [
       {
         "id": "m2-t2-p07-t1",
@@ -1013,7 +1027,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"21\")"
+    "solutionCode": "print(\"21\")",
+    "approach": "Create age = 21 and print age.\n\nKey points: Try: age = 21 then print(age)\n\nA correct solution looks like this:\nprint(\"21\")"
   },
   {
     "id": "m2-t3-p02",
@@ -1085,7 +1100,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Pune\")"
+    "solutionCode": "print(\"Pune\")",
+    "approach": "Create city = \"Pune\" and print city.\n\nKey points: Try: city = \"Pune\" then print(city)\n\nA correct solution looks like this:\nprint(\"Pune\")"
   },
   {
     "id": "m2-t3-p03",
@@ -1165,7 +1181,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"2\")"
+    "solutionCode": "print(\"2\")",
+    "approach": "Set x = 1, then x = 2, print x.\n\nKey points: Try: x = 1, x = 2, print(x) — the last assignment wins\n\nA correct solution looks like this:\nprint(\"2\")"
   },
   {
     "id": "m2-t3-p04",
@@ -1247,7 +1264,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"15\")"
+    "solutionCode": "print(\"15\")",
+    "approach": "Create width = 5 and height = 3, print width * height.\n\nKey points: Try: width = 5, height = 3, print(width * height)\n\nA correct solution looks like this:\nprint(\"15\")"
   },
   {
     "id": "m2-t3-p05",
@@ -1359,7 +1377,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"2\")\nprint(\"1\")"
+    "solutionCode": "print(\"2\")\nprint(\"1\")",
+    "approach": "Swap a and b. Start a=1, b=2. Print a then b.\n\nKey points: Try: a, b = 1, 2 then a, b = b, a then print(a) and print(b)\n\nA correct solution looks like this:\nprint(\"2\")\nprint(\"1\")"
   },
   {
     "id": "m2-t3-p06",
@@ -1431,7 +1450,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"88\")"
+    "solutionCode": "print(\"88\")",
+    "approach": "Use total_score = 88 and print it.\n\nKey points: Try: total_score = 88 then print(total_score)\n\nA correct solution looks like this:\nprint(\"88\")"
   },
   {
     "id": "m2-t3-p07",
@@ -1506,7 +1526,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"6\"}\nprint(d[\"topic\"])"
+    "solutionCode": "d = {\"topic\": \"6\"}\nprint(d[\"topic\"])",
+    "approach": "Use x, y, z = 1, 2, 3 and print their sum.\n\nKey points: Try: x, y, z = 1, 2, 3 then print(x + y + z)\n\nA correct solution looks like this:\nd = {\"topic\": \"6\"}\nprint(d[\"topic\"])"
   },
   {
     "id": "m2-t4-p01",
@@ -1569,7 +1590,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "age = 21\nprint(age)"
+    "solutionCode": "age = 21\nprint(age)",
+    "approach": "Create age = 21 and print age.\n\nKey points: age = 21\\nprint(age)\n\nA correct solution looks like this:\nage = 21\nprint(age)"
   },
   {
     "id": "m2-t4-p02",
@@ -1632,7 +1654,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "pi = 3.14\nprint(pi)"
+    "solutionCode": "pi = 3.14\nprint(pi)",
+    "approach": "Create pi = 3.14 and print pi.\n\nKey points: pi = 3.14\\nprint(pi)\n\nA correct solution looks like this:\npi = 3.14\nprint(pi)"
   },
   {
     "id": "m2-t4-p03",
@@ -1695,7 +1718,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "name = \"Ana\"\nprint(name)"
+    "solutionCode": "name = \"Ana\"\nprint(name)",
+    "approach": "Create name = \"Ana\" and print name.\n\nKey points: name = \"Ana\"\\nprint(name)\n\nA correct solution looks like this:\nname = \"Ana\"\nprint(name)"
   },
   {
     "id": "m2-t4-p04",
@@ -1758,7 +1782,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "active = True\nprint(active)"
+    "solutionCode": "active = True\nprint(active)",
+    "approach": "Create active = True and print active.\n\nKey points: active = True\\nprint(active)\n\nA correct solution looks like this:\nactive = True\nprint(active)"
   },
   {
     "id": "m2-t4-p05",
@@ -1826,7 +1851,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(type(42))"
+    "solutionCode": "print(type(42))",
+    "approach": "Print the type of 42 using type().\n\nKey points: print(type(42))\n\nA correct solution looks like this:\nprint(type(42))"
   },
   {
     "id": "m2-t4-p06",
@@ -1886,7 +1912,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(type(\"hello\"))"
+    "solutionCode": "print(type(\"hello\"))",
+    "approach": "Print the type of \"hello\" using type().\n\nKey points: print(type(\"hello\"))\n\nA correct solution looks like this:\nprint(type(\"hello\"))"
   },
   {
     "id": "m2-t4-p07",
@@ -1941,7 +1968,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(type(10))\nprint(type(3.5))"
+    "solutionCode": "print(type(10))\nprint(type(3.5))",
+    "approach": "Print type(10) on line 1 and type(3.5) on line 2.\n\nKey points: print(type(10))\\nprint(type(3.5))\n\nA correct solution looks like this:\nprint(type(10))\nprint(type(3.5))"
   },
   {
     "id": "m2-t5-p01",
@@ -2001,7 +2029,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(int(\"7\"))"
+    "solutionCode": "print(int(\"7\"))",
+    "approach": "Convert \"7\" to an integer and print it.\n\nKey points: print(int(\"7\"))\n\nA correct solution looks like this:\nprint(int(\"7\"))"
   },
   {
     "id": "m2-t5-p02",
@@ -2061,7 +2090,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(float(\"3.5\"))"
+    "solutionCode": "print(float(\"3.5\"))",
+    "approach": "Convert \"3.5\" to float and print it.\n\nKey points: print(float(\"3.5\"))\n\nA correct solution looks like this:\nprint(float(\"3.5\"))"
   },
   {
     "id": "m2-t5-p03",
@@ -2121,7 +2151,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(str(42))"
+    "solutionCode": "print(str(42))",
+    "approach": "Convert 42 to a string and print it.\n\nKey points: print(str(42))\n\nA correct solution looks like this:\nprint(str(42))"
   },
   {
     "id": "m2-t5-p04",
@@ -2181,7 +2212,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(int(9.9))"
+    "solutionCode": "print(int(9.9))",
+    "approach": "Convert 9.9 to int and print it (truncates to 9).\n\nKey points: print(int(9.9))\n\nA correct solution looks like this:\nprint(int(9.9))"
   },
   {
     "id": "m2-t5-p05",
@@ -2249,7 +2281,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(int(\"5\") + int(\"3\"))"
+    "solutionCode": "print(int(\"5\") + int(\"3\"))",
+    "approach": "Print int(\"5\") + int(\"3\").\n\nKey points: print(int(\"5\") + int(\"3\"))\n\nA correct solution looks like this:\nprint(int(\"5\") + int(\"3\"))"
   },
   {
     "id": "m2-t5-p06",
@@ -2309,7 +2342,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Score: \" + str(100))"
+    "solutionCode": "print(\"Score: \" + str(100))",
+    "approach": "Print \"Score: \" + str(100).\n\nKey points: print(\"Score: \" + str(100))\n\nA correct solution looks like this:\nprint(\"Score: \" + str(100))"
   },
   {
     "id": "m2-t5-p07",
@@ -2362,6 +2396,7 @@ export const module2Practice: PracticeProblem[] = [
       "print(int(True))\\nprint(int(False))"
     ],
     "starterCode": "",
+    "approach": "Print int(True) and int(False) on separate lines. Key points: print(int(True))\\nprint(int(False)) A correct solution looks like this: print(int(True)) print(int(False))",
     "publicTests": [
       {
         "id": "m2-t5-p07-t1",

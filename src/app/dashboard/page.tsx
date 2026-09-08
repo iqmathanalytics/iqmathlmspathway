@@ -3,7 +3,7 @@
 import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import { getModulesByCourse } from "@/data/curriculum";
 import { courses, courseShortName } from "@/data/courses"; // used for URL param validation
-import { getPythonProgrammingProblems } from "@/data/python-programming";
+import { getAllPracticeProblems } from "@/data/practice";
 import { PAGE_CONTAINER } from "@/lib/layout";
 import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/contexts/ProgressContext";
@@ -77,11 +77,19 @@ export default function DashboardPage() {
     ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)
     : 0;
 
-  const pythonProblemIds = useMemo(
-    () => new Set(getPythonProgrammingProblems().map((p) => p.id)),
-    []
-  );
-  const totalPractice = activeCourse === "python" ? pythonProblemIds.size : 0;
+  const coursePracticeIds = useMemo(() => {
+    const topicIds = new Set(
+      getModulesByCourse(activeCourse).flatMap((m) => m.topics.map((t) => t.id))
+    );
+    // Module challenges only — do not mix in Practice hub (Basics/Algorithms).
+    return new Set(
+      getAllPracticeProblems()
+        .filter((p) => topicIds.has(p.topicId))
+        .map((p) => p.id)
+    );
+  }, [activeCourse]);
+
+  const totalPractice = coursePracticeIds.size;
   const courseHasPractice = totalPractice > 0;
 
   const loadPracticeStats = useCallback(async () => {
@@ -100,13 +108,12 @@ export default function DashboardPage() {
     }
 
     setPracticeStatsError(null);
-    const courseSolved =
-      activeCourse === "python"
-        ? (rows ?? []).filter((r) => pythonProblemIds.has(r.problem_id))
-        : [];
+    const courseSolved = (rows ?? []).filter((r) =>
+      coursePracticeIds.has(r.problem_id)
+    );
 
     setPracticeSolved(courseSolved.length);
-  }, [user, activeCourse, pythonProblemIds]);
+  }, [user, coursePracticeIds]);
 
   useEffect(() => {
     if (ready && user) void loadPracticeStats();
@@ -189,7 +196,7 @@ export default function DashboardPage() {
             {courseHasPractice ? (
               <StatCard
                 icon={Terminal}
-                label="Practice solved"
+                label="Challenges solved"
                 value={
                   practiceStatsError
                     ? "—"
@@ -197,8 +204,8 @@ export default function DashboardPage() {
                 }
                 sublabel={
                   practiceStatsError
-                    ? "Could not load practice stats"
-                    : undefined
+                    ? "Could not load challenge stats"
+                    : "Module questions for this course"
                 }
               />
             ) : (

@@ -2,7 +2,7 @@ import { buildBasicsProblem } from "./helpers";
 
 export const advancedProblems = [
   buildBasicsProblem({
-    order: 28,
+    order: 1,
     slug: "squares-generator",
     title: "Squares Generator",
     difficulty: "hard",
@@ -56,7 +56,7 @@ assert list(e) == [0, 1, 4, 9, 16]`,
   }),
 
   buildBasicsProblem({
-    order: 29,
+    order: 2,
     slug: "flatten-matrix",
     title: "Flatten a Matrix",
     difficulty: "hard",
@@ -93,7 +93,7 @@ def make_matrix(n):
   }),
 
   buildBasicsProblem({
-    order: 30,
+    order: 3,
     slug: "repeat-decorator",
     title: "Repeat Decorator",
     difficulty: "hard",
@@ -154,7 +154,7 @@ assert add(2, 3) == [5]`,
   }),
 
   buildBasicsProblem({
-    order: 31,
+    order: 4,
     slug: "custom-age-error",
     title: "Raise a Custom Error",
     difficulty: "hard",
@@ -213,7 +213,7 @@ except CustomError as e:
   }),
 
   buildBasicsProblem({
-    order: 32,
+    order: 5,
     slug: "person-special-methods",
     title: "Person Special Methods",
     difficulty: "hard",
@@ -274,7 +274,7 @@ assert p1 + p2 == 55`,
   }),
 
   buildBasicsProblem({
-    order: 33,
+    order: 6,
     slug: "extract-phones",
     title: "Extract Phone Numbers",
     difficulty: "hard",
@@ -325,7 +325,7 @@ def extract_phones(text):
   }),
 
   buildBasicsProblem({
-    order: 34,
+    order: 7,
     slug: "json-file-roundtrip",
     title: "JSON File Roundtrip",
     difficulty: "hard",
@@ -377,7 +377,7 @@ assert load_json("_pb_data.json") == data`,
   }),
 
   buildBasicsProblem({
-    order: 223,
+    order: 31,
     slug: "dotted-path-get",
     title: "Dotted Path Lookup",
     difficulty: "hard",
@@ -437,7 +437,7 @@ If any step is missing or not a dict, return default.`,
   }),
 
   buildBasicsProblem({
-    order: 224,
+    order: 32,
     slug: "function-compose",
     title: "Compose Functions",
     difficulty: "hard",
@@ -496,7 +496,7 @@ If no functions are passed, return a function that returns its argument unchange
   }),
 
   buildBasicsProblem({
-    order: 225,
+    order: 33,
     slug: "retry-on-exception",
     title: "Retry On Exception",
     difficulty: "hard",

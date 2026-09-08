@@ -62,6 +62,22 @@ export default function AdminCoursesPage() {
         Only published courses appear on Home, Dashboard, and Learn. Unpublished tracks stay hidden
         from students.
       </p>
+      <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950">
+        <p className="font-semibold">Before publishing a new track</p>
+        <ul className="mt-2 list-disc space-y-1 pl-5">
+          <li>
+            <strong>SQL:</strong> lessons + in-lesson IDE are ready; hub practice arrays are empty
+            (expected).
+          </li>
+          <li>
+            <strong>Agentic AI:</strong> review generated quizzes for depth before flipping live.
+          </li>
+          <li>
+            <strong>MBA AI:</strong> confirm Day 4 external dataset/Colab links still work for your
+            cohort.
+          </li>
+        </ul>
+      </div>
       {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
       <div className="mt-6 grid gap-4">
         {courses.map((course) => {

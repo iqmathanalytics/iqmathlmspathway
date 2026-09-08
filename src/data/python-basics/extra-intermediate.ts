@@ -7,7 +7,7 @@ import { buildBasicsProblem, buildScriptProblem } from "./helpers";
  */
 export const intermediateExtraProblems = [
   buildScriptProblem({
-    order: 100,
+    order: 12,
     slug: "nested-loop-grid",
     title: "Multiplication Mini Grid",
     difficulty: "medium",
@@ -46,7 +46,7 @@ Last line: 3 x 3 = 9`,
   }),
 
   buildScriptProblem({
-    order: 101,
+    order: 13,
     slug: "enumerate-ranking",
     title: "Ranked Standings",
     difficulty: "medium",
@@ -82,7 +82,7 @@ for rank, name in enumerate(names, start=1):
   }),
 
   buildScriptProblem({
-    order: 102,
+    order: 14,
     slug: "while-collatz",
     title: "Collatz Sequence",
     difficulty: "medium",
@@ -133,7 +133,7 @@ print(1)`,
   }),
 
   buildScriptProblem({
-    order: 103,
+    order: 15,
     slug: "operator-precedence",
     title: "Expression Evaluation",
     difficulty: "medium",
@@ -168,7 +168,7 @@ print(2 ** 3 ** 2)`,
   }),
 
   buildScriptProblem({
-    order: 104,
+    order: 16,
     slug: "fizzbuzz-range",
     title: "FizzBuzz 1–15",
     difficulty: "medium",
@@ -221,7 +221,7 @@ FizzBuzz` }
   }),
 
   buildScriptProblem({
-    order: 105,
+    order: 17,
     slug: "prime-list-script",
     title: "Primes Up to 30",
     difficulty: "medium",
@@ -269,7 +269,7 @@ Use any correct approach (trial division is fine).`,
   }),
 
   buildScriptProblem({
-    order: 106,
+    order: 18,
     slug: "running-average-script",
     title: "Running Averages",
     difficulty: "medium",
@@ -311,7 +311,7 @@ for v in values:
   }),
 
   buildScriptProblem({
-    order: 107,
+    order: 19,
     slug: "ascii-table-script",
     title: "Simple Text Table",
     difficulty: "medium",
@@ -344,7 +344,7 @@ Note    8` }
   }),
 
   buildScriptProblem({
-    order: 108,
+    order: 20,
     slug: "set-report-script",
     title: "Set Operations Report",
     difficulty: "medium",
@@ -386,7 +386,7 @@ print(",".join(str(x) for x in sorted(a ^ b)))`,
   }),
 
   buildScriptProblem({
-    order: 109,
+    order: 21,
     slug: "tuple-unpack-script",
     title: "Coordinate Unpacking",
     difficulty: "medium",
@@ -421,7 +421,7 @@ x=-2, y=5, dist=5.39` }
   }),
 
   buildScriptProblem({
-    order: 110,
+    order: 22,
     slug: "word-count-script",
     title: "Word Frequency Lines",
     difficulty: "medium",
@@ -460,7 +460,7 @@ to: 2` }
   }),
 
   buildScriptProblem({
-    order: 111,
+    order: 23,
     slug: "json-print-script",
     title: "Build and Print JSON",
     difficulty: "medium",
@@ -487,7 +487,7 @@ print(json.dumps(payload))`,
   }),
 
   buildScriptProblem({
-    order: 112,
+    order: 24,
     slug: "filter-evens-script",
     title: "Filter and Double Evens",
     difficulty: "medium",
@@ -515,7 +515,7 @@ print(result)`,
   }),
 
   buildScriptProblem({
-    order: 113,
+    order: 25,
     slug: "score-bands-script",
     title: "Multiple Score Bands",
     difficulty: "medium",
@@ -557,7 +557,7 @@ honors` }
   }),
 
   buildScriptProblem({
-    order: 114,
+    order: 26,
     slug: "cycle-remainder-script",
     title: "Day-of-Week Cycle",
     difficulty: "medium",
@@ -598,7 +598,7 @@ for offset in offsets:
   }),
 
   buildBasicsProblem({
-    order: 115,
+    order: 27,
     slug: "keyword-profile",
     title: "Build Profile from Keywords",
     difficulty: "medium",
@@ -628,7 +628,7 @@ Example: build_profile("Sam", city="Boston", role="TA") -> {"name": "Sam", "city
   }),
 
   buildBasicsProblem({
-    order: 116,
+    order: 28,
     slug: "default-greeting",
     title: "Greeting with Default Title",
     difficulty: "medium",
@@ -658,7 +658,7 @@ If title is omitted, use "Student".`,
   }),
 
   buildBasicsProblem({
-    order: 117,
+    order: 29,
     slug: "merge-word-counts",
     title: "Merge Word Count Dicts",
     difficulty: "medium",
@@ -689,7 +689,7 @@ If a word appears in both, add the counts. Neither input dict should be mutated.
   }),
 
   buildBasicsProblem({
-    order: 118,
+    order: 30,
     slug: "parse-csv-fields",
     title: "Parse CSV Line",
     difficulty: "medium",
@@ -717,7 +717,7 @@ Example: '  apple, banana ,cherry  ' -> ['apple', 'banana', 'cherry']`,
   }),
 
   buildBasicsProblem({
-    order: 119,
+    order: 31,
     slug: "password-rules",
     title: "Password Strength Check",
     difficulty: "medium",
@@ -755,7 +755,7 @@ Example: '  apple, banana ,cherry  ' -> ['apple', 'banana', 'cherry']`,
   }),
 
   buildBasicsProblem({
-    order: 120,
+    order: 32,
     slug: "zip-pair-sums",
     title: "Pairwise Sums with Zip",
     difficulty: "medium",
@@ -783,7 +783,7 @@ If lengths differ, stop at the shorter list (like zip).`,
   }),
 
   buildBasicsProblem({
-    order: 121,
+    order: 33,
     slug: "symmetric-difference",
     title: "Symmetric Difference List",
     difficulty: "medium",
@@ -809,7 +809,7 @@ If lengths differ, stop at the shorter list (like zip).`,
   }),
 
   buildBasicsProblem({
-    order: 122,
+    order: 34,
     slug: "sort-tuples-by-score",
     title: "Sort Records by Score",
     difficulty: "medium",
@@ -838,7 +838,7 @@ If scores tie, sort names alphabetically ascending among ties.`,
   }),
 
   buildBasicsProblem({
-    order: 123,
+    order: 35,
     slug: "safe-divide",
     title: "Safe Division",
     difficulty: "medium",
@@ -870,7 +870,7 @@ If b is zero, return None instead of raising ZeroDivisionError.`,
   }),
 
   buildBasicsProblem({
-    order: 124,
+    order: 36,
     slug: "lines-from-text",
     title: "Non-Empty Lines from Text",
     difficulty: "medium",
@@ -903,7 +903,7 @@ Treat blank or whitespace-only lines as empty.`,
   }),
 
   buildBasicsProblem({
-    order: 125,
+    order: 37,
     slug: "stats-with-math",
     title: "Hypotenuse and Rounded Root",
     difficulty: "medium",
@@ -947,7 +947,7 @@ def round_root(x, digits=2):
   }),
 
   buildBasicsProblem({
-    order: 126,
+    order: 38,
     slug: "product-class",
     title: "Product Inventory Item",
     difficulty: "medium",
@@ -1010,7 +1010,7 @@ assert p.qty == 12`,
   }),
 
   buildBasicsProblem({
-    order: 127,
+    order: 39,
     slug: "merge-json-configs",
     title: "Merge JSON Config Strings",
     difficulty: "medium",
@@ -1046,7 +1046,7 @@ def merge_configs(json_a, json_b):
   }),
 
   buildBasicsProblem({
-    order: 128,
+    order: 40,
     slug: "find-phones-lite",
     title: "Find Phone Numbers",
     difficulty: "medium",
@@ -1078,7 +1078,7 @@ def find_phones(text):
   }),
 
   buildBasicsProblem({
-    order: 129,
+    order: 41,
     slug: "comprehension-grid",
     title: "Build a Number Grid",
     difficulty: "medium",
@@ -1106,7 +1106,7 @@ Example: make_grid(2, 3) -> [[1, 2, 3], [4, 5, 6]]`,
   }),
 
   buildBasicsProblem({
-    order: 130,
+    order: 42,
     slug: "rotate-list",
     title: "Rotate List Left",
     difficulty: "medium",
@@ -1140,7 +1140,7 @@ Use k % len(items) when items is non-empty; return [] for empty input.`,
   }),
 
   buildBasicsProblem({
-    order: 131,
+    order: 43,
     slug: "invert-dict-unique",
     title: "Invert Unique Mapping",
     difficulty: "medium",
@@ -1175,7 +1175,7 @@ If any value would collide (duplicate values), return None instead.`,
   }),
 
   buildBasicsProblem({
-    order: 132,
+    order: 44,
     slug: "phrase-palindrome",
     title: "Phrase Palindrome Check",
     difficulty: "medium",
@@ -1206,7 +1206,7 @@ Example: "A man, a plan, a canal: Panama" -> True`,
   }),
 
   buildBasicsProblem({
-    order: 133,
+    order: 45,
     slug: "nested-get-path",
     title: "Nested Dict Path Lookup",
     difficulty: "medium",
@@ -1240,7 +1240,7 @@ Return the value at the path, or None if any key is missing.`,
   }),
 
   buildBasicsProblem({
-    order: 134,
+    order: 46,
     slug: "click-counter-class",
     title: "Click Counter Class",
     difficulty: "medium",
@@ -1298,7 +1298,7 @@ assert c.read() == 0`,
   }),
 
   buildBasicsProblem({
-    order: 135,
+    order: 47,
     slug: "parse-int-list",
     title: "Parse Integer List Safely",
     difficulty: "medium",
@@ -1332,7 +1332,7 @@ Skip any item that raises ValueError; return a list of successful conversions in
   }),
 
   buildBasicsProblem({
-    order: 136,
+    order: 48,
     slug: "group-by-category",
     title: "Group Records by Key",
     difficulty: "medium",
@@ -1363,7 +1363,7 @@ Write group_names(records) returning a dict mapping each category to a list of n
   }),
 
   buildBasicsProblem({
-    order: 137,
+    order: 49,
     slug: "pipeline-transform",
     title: "Transform Pipeline",
     difficulty: "medium",
@@ -1407,7 +1407,7 @@ def pipeline(numbers):
   }),
 
   buildBasicsProblem({
-    order: 138,
+    order: 50,
     slug: "strip-html-tags",
     title: "Strip Simple HTML Tags",
     difficulty: "medium",

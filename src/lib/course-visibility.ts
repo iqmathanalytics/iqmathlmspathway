@@ -4,8 +4,9 @@ import { getSupabase } from "@/lib/supabase/client";
 
 /**
  * Published course IDs for learners.
- * - Table missing / query error → fail-open (all catalog courses).
- * - Empty table (not seeded) → fail-open (all catalog courses).
+ * - No Supabase client (local/build without env) → all catalog (static export needs paths).
+ * - Query error or empty `course_settings` → fail-closed (empty set) so unpublished
+ *   tracks are never exposed by accident.
  * - Rows present → only `published = true`.
  */
 export async function fetchPublishedCourseIds(): Promise<Set<CourseId>> {
@@ -14,7 +15,9 @@ export async function fetchPublishedCourseIds(): Promise<Set<CourseId>> {
   if (!sb) return all;
 
   const { data, error } = await sb.from("course_settings").select("course_id, published");
-  if (error || !data || data.length === 0) return all;
+  if (error || !data || data.length === 0) {
+    return new Set<CourseId>();
+  }
 
   const published = new Set<CourseId>();
   for (const row of data) {

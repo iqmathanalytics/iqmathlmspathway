@@ -42,6 +42,7 @@ export const module10Practice: PracticeProblem[] = [
       "n=1\\nwhile n<=3:\\n    print(n)\\n    n+=1"
     ],
     "starterCode": "",
+    "approach": "Use while to print 1, 2, 3 on separate lines. Key points: n=1\\nwhile n<=3:\\n print(n)\\n n+=1 A correct solution looks like this: n=1 while n<=3: print(n) n+=1",
     "publicTests": [
       {
         "id": "m10-t1-p01-t1",
@@ -84,6 +85,7 @@ export const module10Practice: PracticeProblem[] = [
       "total=0\\nn=1\\nwhile n<=5:\\n    total+=n\\n    n+=1\\nprint(total)"
     ],
     "starterCode": "",
+    "approach": "Use while to print 1+2+3+4+5 result: 15. Key points: total=0\\nn=1\\nwhile n<=5:\\n total+=n\\n n+=1\\nprint(total) A correct solution looks like this: total=0 n=1 while n<=5: total+=n n+=1 print(total)",
     "publicTests": [
       {
         "id": "m10-t1-p02-t1",
@@ -126,6 +128,7 @@ export const module10Practice: PracticeProblem[] = [
       "x=3\\nwhile x>0:\\n    print(x)\\n    x-=1"
     ],
     "starterCode": "",
+    "approach": "Set x=3, while x>0: print(x); x-=1. Output 3,2,1. Key points: x=3\\nwhile x>0:\\n print(x)\\n x-=1 A correct solution looks like this: x=3 while x>0: print(x) x-=1",
     "publicTests": [
       {
         "id": "m10-t1-p03-t1",
@@ -176,6 +179,7 @@ export const module10Practice: PracticeProblem[] = [
       "n=0\\nwhile True:\\n    n+=1\\n    print(n)\\n    if n==2: break"
     ],
     "starterCode": "",
+    "approach": "Use while True, print 1,2 then break. Key points: n=0\\nwhile True:\\n n+=1\\n print(n)\\n if n==2: break A correct solution looks like this: n=0 while True: n+=1 print(n) if n==2: break",
     "publicTests": [
       {
         "id": "m10-t1-p04-t1",
@@ -218,6 +222,7 @@ export const module10Practice: PracticeProblem[] = [
       "count=0\\nwhile count<3:\\n    print(\"tick\")\\n    count+=1"
     ],
     "starterCode": "",
+    "approach": "Set count=0, while count<3: print(\"tick\"); count+=1. Key points: count=0\\nwhile count<3:\\n print(\"tick\")\\n count+=1 A correct solution looks like this: count=0 while count<3: print(\"tick\") count+=1",
     "publicTests": [
       {
         "id": "m10-t1-p05-t1",
@@ -260,6 +265,7 @@ export const module10Practice: PracticeProblem[] = [
       "n=4\\nresult=1\\nwhile n>0:\\n    result*=n\\n    n-=1\\nprint(result)"
     ],
     "starterCode": "",
+    "approach": "Use while to compute 4! = 24 and print it. Key points: n=4\\nresult=1\\nwhile n>0:\\n result*=n\\n n-=1\\nprint(result) A correct solution looks like this: n=4 result=1 while n>0: result*=n n-=1 print(result)",
     "publicTests": [
       {
         "id": "m10-t1-p06-t1",
@@ -302,6 +308,7 @@ export const module10Practice: PracticeProblem[] = [
       "running=True\\nn=0\\nwhile running:\\n    print(n)\\n    n+=1\\n    if n>=3: running=False"
     ],
     "starterCode": "",
+    "approach": "Set running=True, n=0, while running: print(n); n+=1; if n>=3: running=False. Key points: running=True\\nn=0\\nwhile running:\\n print(n)\\n n+=1\\n if n>=3: running=False A correct solution looks like this: running=True n=0 while running: print(n) n+=1 if n>=3: running=False",
     "publicTests": [
       {
         "id": "m10-t1-p07-t1",
@@ -353,6 +360,7 @@ export const module10Practice: PracticeProblem[] = [
       "for i in range(1,4):\\n    print(i)"
     ],
     "starterCode": "",
+    "approach": "Use for i in range(1,4): print(i). Key points: for i in range(1,4):\\n print(i) A correct solution looks like this: for i in range(1,4): print(i)",
     "publicTests": [
       {
         "id": "m10-t2-p01-t1",
@@ -396,6 +404,7 @@ export const module10Practice: PracticeProblem[] = [
       "for item in [\"a\",\"b\",\"c\"]:\\n    print(item)"
     ],
     "starterCode": "",
+    "approach": "For item in [\"a\",\"b\",\"c\"]: print(item). Key points: for item in [\"a\",\"b\",\"c\"]:\\n print(item) A correct solution looks like this: for item in [\"a\",\"b\",\"c\"]: print(item)",
     "publicTests": [
       {
         "id": "m10-t2-p02-t1",
@@ -439,6 +448,7 @@ export const module10Practice: PracticeProblem[] = [
       "for char in \"hi\":\\n    print(char)"
     ],
     "starterCode": "",
+    "approach": "For char in \"hi\": print(char). Key points: for char in \"hi\":\\n print(char) A correct solution looks like this: for char in \"hi\": print(char)",
     "publicTests": [
       {
         "id": "m10-t2-p03-t1",
@@ -482,6 +492,7 @@ export const module10Practice: PracticeProblem[] = [
       "total=0\\nfor n in [1,2,3,4]:\\n    total+=n\\nprint(total)"
     ],
     "starterCode": "",
+    "approach": "Use for to sum [1,2,3,4] and print 10. Key points: total=0\\nfor n in [1,2,3,4]:\\n total+=n\\nprint(total) A correct solution looks like this: total=0 for n in [1,2,3,4]: total+=n print(total)",
     "publicTests": [
       {
         "id": "m10-t2-p04-t1",
@@ -525,6 +536,7 @@ export const module10Practice: PracticeProblem[] = [
       "items=[\"x\",\"y\"]\\nfor i in range(len(items)):\\n    print(f\"{i}:{items[i]}\")"
     ],
     "starterCode": "",
+    "approach": "Print index:value for [\"x\",\"y\"] as 0:x and 1:y. Key points: items=[\"x\",\"y\"]\\nfor i in range(len(items)):\\n print(f\"{i}:{items[i]}\") A correct solution looks like this: items=[\"x\",\"y\"] for i in range(len(items)): print(f\"{i}:{items[i]}\")",
     "publicTests": [
       {
         "id": "m10-t2-p05-t1",
@@ -568,6 +580,7 @@ export const module10Practice: PracticeProblem[] = [
       "for _ in range(2):\\n    for n in [1,2]:\\n        print(n)"
     ],
     "starterCode": "",
+    "approach": "Use nested for to print 1,2 for two rows. Key points: for _ in range(2):\\n for n in [1,2]:\\n print(n) A correct solution looks like this: for _ in range(2): for n in [1,2]: print(n)",
     "publicTests": [
       {
         "id": "m10-t2-p06-t1",
@@ -611,6 +624,7 @@ export const module10Practice: PracticeProblem[] = [
       "for n in [1,2,3]:\\n    print(n)"
     ],
     "starterCode": "",
+    "approach": "Loop [1,2,3] printing each — just print all items. Key points: for n in [1,2,3]:\\n print(n) A correct solution looks like this: for n in [1,2,3]: print(n)",
     "publicTests": [
       {
         "id": "m10-t2-p07-t1",
@@ -662,6 +676,7 @@ export const module10Practice: PracticeProblem[] = [
       "for i in range(1,6):\\n    if i==3: break\\n    print(i)"
     ],
     "starterCode": "",
+    "approach": "Loop 1-5, break at 3, print numbers before break: 1,2. Key points: for i in range(1,6):\\n if i==3: break\\n print(i) A correct solution looks like this: for i in range(1,6): if i==3: break print(i)",
     "publicTests": [
       {
         "id": "m10-t3-p01-t1",
@@ -713,6 +728,7 @@ export const module10Practice: PracticeProblem[] = [
       "for i in range(1,5):\\n    if i==2: continue\\n    print(i)"
     ],
     "starterCode": "",
+    "approach": "Loop 1-4, skip 2 with continue, print 1,3,4. Key points: for i in range(1,5):\\n if i==2: continue\\n print(i) A correct solution looks like this: for i in range(1,5): if i==2: continue print(i)",
     "publicTests": [
       {
         "id": "m10-t3-p02-t1",
@@ -756,6 +772,7 @@ export const module10Practice: PracticeProblem[] = [
       "for n in [1,2,3,4]:\\n    if n==3:\\n        print(\"found\")\\n        break"
     ],
     "starterCode": "",
+    "approach": "Find 3 in [1,2,3,4], print \"found\" when found. Key points: for n in [1,2,3,4]:\\n if n==3:\\n print(\"found\")\\n break A correct solution looks like this: for n in [1,2,3,4]: if n==3: print(\"found\") break",
     "publicTests": [
       {
         "id": "m10-t3-p03-t1",
@@ -799,6 +816,7 @@ export const module10Practice: PracticeProblem[] = [
       "for i in range(1,5):\\n    if i%2!=0: continue\\n    print(i)"
     ],
     "starterCode": "",
+    "approach": "Print even numbers 2,4 from range(1,5) using continue. Key points: for i in range(1,5):\\n if i%2!=0: continue\\n print(i) A correct solution looks like this: for i in range(1,5): if i%2!=0: continue print(i)",
     "publicTests": [
       {
         "id": "m10-t3-p04-t1",
@@ -841,6 +859,7 @@ export const module10Practice: PracticeProblem[] = [
       "n=0\\nwhile True:\\n    n+=1\\n    if n==3: break\\n    print(n)"
     ],
     "starterCode": "",
+    "approach": "Use while with break when n reaches 3. Key points: n=0\\nwhile True:\\n n+=1\\n if n==3: break\\n print(n) A correct solution looks like this: n=0 while True: n+=1 if n==3: break print(n)",
     "publicTests": [
       {
         "id": "m10-t3-p05-t1",
@@ -884,6 +903,7 @@ export const module10Practice: PracticeProblem[] = [
       "for c in \"a b\":\\n    if c==\" \": continue\\n    print(c)"
     ],
     "starterCode": "",
+    "approach": "For c in \"a b\", skip spaces with continue, print a and b. Key points: for c in \"a b\":\\n if c==\" \": continue\\n print(c) A correct solution looks like this: for c in \"a b\": if c==\" \": continue print(c)",
     "publicTests": [
       {
         "id": "m10-t3-p06-t1",
@@ -927,6 +947,7 @@ export const module10Practice: PracticeProblem[] = [
       "for i in range(1,3):\\n    for j in range(1,4):\\n        if j==3: break\\n        print(j)"
     ],
     "starterCode": "",
+    "approach": "Nested loop, break inner at j=2, print pairs until break. Key points: for i in range(1,3):\\n for j in range(1,4):\\n if j==3: break\\n print(j) A correct solution looks like this: d = {\"topic\": \"1\\n1\\n2\"} print(d[\"topic\"])",
     "publicTests": [
       {
         "id": "m10-t3-p07-t1",
@@ -977,6 +998,7 @@ export const module10Practice: PracticeProblem[] = [
       "x=5\\nif x>0:\\n    pass\\nprint(\"ok\")"
     ],
     "starterCode": "",
+    "approach": "Set x=5, if x>0: pass, then print \"ok\". Key points: x=5\\nif x>0:\\n pass\\nprint(\"ok\") A correct solution looks like this: x=5 if x>0: pass print(\"ok\")",
     "publicTests": [
       {
         "id": "m10-t4-p01-t1",
@@ -1019,6 +1041,7 @@ export const module10Practice: PracticeProblem[] = [
       "x=0\\nif x:\\n    print(\"yes\")\\nelse:\\n    pass\\nprint(\"done\")"
     ],
     "starterCode": "",
+    "approach": "Set x=0, if x: print(\"yes\") else: pass, print \"done\". Key points: x=0\\nif x:\\n print(\"yes\")\\nelse:\\n pass\\nprint(\"done\") A correct solution looks like this: x=0 if x: print(\"yes\") else: pass print(\"done\")",
     "publicTests": [
       {
         "id": "m10-t4-p02-t1",
@@ -1062,6 +1085,7 @@ export const module10Practice: PracticeProblem[] = [
       "for i in range(3):\\n    pass\\nprint(\"finished\")"
     ],
     "starterCode": "",
+    "approach": "for i in range(3): pass, then print \"finished\". Key points: for i in range(3):\\n pass\\nprint(\"finished\") A correct solution looks like this: for i in range(3): pass print(\"finished\")",
     "publicTests": [
       {
         "id": "m10-t4-p03-t1",
@@ -1105,6 +1129,7 @@ export const module10Practice: PracticeProblem[] = [
       "def todo():\\n    pass\\ntodo()\\nprint(\"called\")"
     ],
     "starterCode": "",
+    "approach": "Define def todo(): pass, call todo(), print \"called\". Key points: def todo():\\n pass\\ntodo()\\nprint(\"called\") A correct solution looks like this: def todo(): pass todo() print(\"called\")",
     "publicTests": [
       {
         "id": "m10-t4-p04-t1",
@@ -1147,6 +1172,7 @@ export const module10Practice: PracticeProblem[] = [
       "show=False\\nif show:\\n    pass\\nprint(\"ready\")"
     ],
     "starterCode": "",
+    "approach": "Set show=False, if show: pass, print \"ready\". Key points: show=False\\nif show:\\n pass\\nprint(\"ready\") A correct solution looks like this: show=False if show: pass print(\"ready\")",
     "publicTests": [
       {
         "id": "m10-t4-p05-t1",
@@ -1189,6 +1215,7 @@ export const module10Practice: PracticeProblem[] = [
       "try:\\n    x=1\\nexcept:\\n    pass\\nprint(\"safe\")"
     ],
     "starterCode": "",
+    "approach": "Use try/except with pass in except, print \"safe\". Key points: try:\\n x=1\\nexcept:\\n pass\\nprint(\"safe\") A correct solution looks like this: print(\"safe\")",
     "publicTests": [
       {
         "id": "m10-t4-p06-t1",
@@ -1231,6 +1258,7 @@ export const module10Practice: PracticeProblem[] = [
       "def a(): pass\\ndef b(): pass\\nprint(\"stubs\")"
     ],
     "starterCode": "",
+    "approach": "Define def a(): pass and def b(): pass, print \"stubs\". Key points: def a(): pass\\ndef b(): pass\\nprint(\"stubs\") A correct solution looks like this: def a(): pass def b(): pass print(\"stubs\")",
     "publicTests": [
       {
         "id": "m10-t4-p07-t1",
@@ -1291,7 +1319,8 @@ export const module10Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(list(range(5)))"
+    "solutionCode": "print(list(range(5)))",
+    "approach": "Print list(range(5)).\n\nKey points: print(list(range(5)))\n\nA correct solution looks like this:\nprint(list(range(5)))"
   },
   {
     "id": "m10-t5-p02",
@@ -1343,7 +1372,8 @@ export const module10Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(list(range(2,6)))"
+    "solutionCode": "print(list(range(2,6)))",
+    "approach": "Print list(range(2,6)).\n\nKey points: print(list(range(2,6)))\n\nA correct solution looks like this:\nprint(list(range(2,6)))"
   },
   {
     "id": "m10-t5-p03",
@@ -1395,7 +1425,8 @@ export const module10Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(list(range(0,10,2)))"
+    "solutionCode": "print(list(range(0,10,2)))",
+    "approach": "Print list(range(0,10,2)).\n\nKey points: print(list(range(0,10,2)))\n\nA correct solution looks like this:\nprint(list(range(0,10,2)))"
   },
   {
     "id": "m10-t5-p04",
@@ -1430,6 +1461,7 @@ export const module10Practice: PracticeProblem[] = [
       "for i in range(1,4):\\n    print(i)"
     ],
     "starterCode": "",
+    "approach": "for i in range(1,4): print(i). Key points: for i in range(1,4):\\n print(i) A correct solution looks like this: for i in range(1,4): print(i)",
     "publicTests": [
       {
         "id": "m10-t5-p04-t1",
@@ -1474,6 +1506,7 @@ export const module10Practice: PracticeProblem[] = [
       "a=[10,20,30]\\nfor i in range(len(a)):\\n    print(a[i])"
     ],
     "starterCode": "",
+    "approach": "Set a=[10,20,30], for i in range(len(a)): print(a[i]). Key points: a=[10,20,30]\\nfor i in range(len(a)):\\n print(a[i]) A correct solution looks like this: a=[10,20,30] for i in range(len(a)): print(a[i])",
     "publicTests": [
       {
         "id": "m10-t5-p05-t1",
@@ -1534,7 +1567,8 @@ export const module10Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(list(range(5,0,-1)))"
+    "solutionCode": "print(list(range(5,0,-1)))",
+    "approach": "Print list(range(5,0,-1)).\n\nKey points: print(list(range(5,0,-1)))\n\nA correct solution looks like this:\nprint(list(range(5,0,-1)))"
   },
   {
     "id": "m10-t5-p07",
@@ -1568,6 +1602,7 @@ export const module10Practice: PracticeProblem[] = [
       "total=0\\nfor i in range(1,6):\\n    total+=i\\nprint(total)"
     ],
     "starterCode": "",
+    "approach": "Sum range(1,6) and print 15. Key points: total=0\\nfor i in range(1,6):\\n total+=i\\nprint(total) A correct solution looks like this: total=0 for i in range(1,6): total+=i print(total)",
     "publicTests": [
       {
         "id": "m10-t5-p07-t1",

@@ -7,7 +7,7 @@ import { buildBasicsProblem, buildScriptProblem } from "./helpers";
  */
 export const advancedExtraProblems = [
   buildBasicsProblem({
-    order: 200,
+    order: 8,
     slug: "make-multiplier",
     title: "Multiplier Closure",
     difficulty: "hard",
@@ -39,7 +39,7 @@ The inner function must close over factor — do not use a global.`,
   }),
 
   buildBasicsProblem({
-    order: 201,
+    order: 9,
     slug: "make-counter",
     title: "Counter Closure",
     difficulty: "hard",
@@ -84,7 +84,7 @@ assert c() == 11`,
   }),
 
   buildBasicsProblem({
-    order: 202,
+    order: 10,
     slug: "fibonacci-generator",
     title: "Fibonacci Generator",
     difficulty: "hard",
@@ -121,7 +121,7 @@ assert isinstance(fibonacci_gen(5), types.GeneratorType)`,
   }),
 
   buildBasicsProblem({
-    order: 203,
+    order: 11,
     slug: "prime-sieve-gen",
     title: "Prime Generator",
     difficulty: "hard",
@@ -164,7 +164,7 @@ Use trial division — no imports required.`,
   }),
 
   buildBasicsProblem({
-    order: 204,
+    order: 12,
     slug: "word-frequency-map",
     title: "Word Frequency Map",
     difficulty: "hard",
@@ -193,7 +193,7 @@ Use a dict comprehension with text.count(word) or an equivalent comprehension-ba
   }),
 
   buildBasicsProblem({
-    order: 205,
+    order: 13,
     slug: "shape-inheritance",
     title: "Shape and Circle",
     difficulty: "hard",
@@ -248,7 +248,7 @@ except NotImplementedError:
   }),
 
   buildBasicsProblem({
-    order: 206,
+    order: 14,
     slug: "celsius-property",
     title: "Temperature Property",
     difficulty: "hard",
@@ -302,7 +302,7 @@ assert t.celsius == 100`,
   }),
 
   buildBasicsProblem({
-    order: 207,
+    order: 15,
     slug: "employee-hierarchy",
     title: "Employee Hierarchy",
     difficulty: "hard",
@@ -361,7 +361,7 @@ assert m.name == "Cara"`,
   }),
 
   buildBasicsProblem({
-    order: 208,
+    order: 16,
     slug: "list-context-manager",
     title: "Append List Context Manager",
     difficulty: "hard",
@@ -421,7 +421,7 @@ assert items == ["done"]`,
   }),
 
   buildBasicsProblem({
-    order: 209,
+    order: 17,
     slug: "memoize-decorator",
     title: "Memoize Decorator",
     difficulty: "hard",
@@ -475,7 +475,7 @@ assert double(5) == 10`,
   }),
 
   buildBasicsProblem({
-    order: 210,
+    order: 18,
     slug: "log-calls-decorator",
     title: "Log Calls Decorator",
     difficulty: "hard",
@@ -524,7 +524,7 @@ assert CALL_LOG == ["add", "greet"]`,
   }),
 
   buildBasicsProblem({
-    order: 211,
+    order: 19,
     slug: "positive-args-only",
     title: "Positive Args Decorator",
     difficulty: "hard",
@@ -575,7 +575,7 @@ except ValueError as e:
   }),
 
   buildBasicsProblem({
-    order: 212,
+    order: 20,
     slug: "extract-ipv4",
     title: "Extract IPv4 Addresses",
     difficulty: "hard",
@@ -613,7 +613,7 @@ def extract_ipv4(text):
   }),
 
   buildBasicsProblem({
-    order: 213,
+    order: 21,
     slug: "parse-log-fields",
     title: "Parse Log Fields",
     difficulty: "hard",
@@ -655,7 +655,7 @@ def parse_log_line(line):
   }),
 
   buildBasicsProblem({
-    order: 214,
+    order: 22,
     slug: "merge-json-strings",
     title: "Merge JSON Strings",
     difficulty: "hard",
@@ -686,7 +686,7 @@ def merge_json(a_json, b_json):
   }),
 
   buildBasicsProblem({
-    order: 215,
+    order: 23,
     slug: "invalid-score-error",
     title: "Invalid Score Error",
     difficulty: "hard",
@@ -740,7 +740,7 @@ except InvalidScoreError as e:
   }),
 
   buildBasicsProblem({
-    order: 216,
+    order: 24,
     slug: "safe-divide-chain",
     title: "Safe Divide Chain",
     difficulty: "hard",
@@ -774,7 +774,7 @@ Return None (do not raise) when b is zero or either argument is not int/float.`,
   }),
 
   buildBasicsProblem({
-    order: 217,
+    order: 25,
     slug: "read-last-lines",
     title: "Read Last N Lines",
     difficulty: "hard",
@@ -816,7 +816,7 @@ assert read_last_lines("_pb_short.txt", 5) == ["only"]`,
   }),
 
   buildBasicsProblem({
-    order: 218,
+    order: 26,
     slug: "write-json-lines",
     title: "Write JSON Lines File",
     difficulty: "hard",
@@ -856,7 +856,7 @@ assert lines == ['{"a": 1}', '{"b": 2}']`,
   }),
 
   buildBasicsProblem({
-    order: 219,
+    order: 27,
     slug: "parse-semver",
     title: "Parse Version String",
     difficulty: "hard",
@@ -893,7 +893,7 @@ Return None if the string is not exactly three dot-separated integer parts.`,
   }),
 
   buildScriptProblem({
-    order: 220,
+    order: 28,
     slug: "stdin-sum-evens",
     title: "Sum Evens From Input",
     difficulty: "hard",
@@ -920,7 +920,7 @@ print(sum(n for n in nums if n % 2 == 0))
   }),
 
   buildScriptProblem({
-    order: 221,
+    order: 29,
     slug: "stdin-email-redact",
     title: "Redact Emails From Input",
     difficulty: "hard",
@@ -950,7 +950,7 @@ print(re.sub(r"\\b\\w+@\\w+\\.\\w+\\b", "[REDACTED]", text))
   }),
 
   buildScriptProblem({
-    order: 222,
+    order: 30,
     slug: "stdin-json-greet",
     title: "Greet From JSON Input",
     difficulty: "hard",

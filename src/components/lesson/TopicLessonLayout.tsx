@@ -119,13 +119,25 @@ export function TopicLessonLayout({
   // Detect if this is a Final Project topic with sequential task gating
   const sequential = topicId != null && isFinalProjectTopic(topicId);
 
-  const practices = useMemo(
-    () =>
-      blocks
-        .map((block, index) => ({ block, index }))
-        .filter((x) => x.block.type === "practice"),
-    [blocks]
-  );
+  /**
+   * Python course uses the right-side terminal + /learn/.../challenges IDE.
+   * Do not embed the old lesson Python IDE beside content.
+   * SQL (and others) still use the in-lesson IDE when practice blocks exist.
+   */
+  const embedLessonIde = courseId !== "python";
+
+  const practices = useMemo(() => {
+    if (!embedLessonIde) return [];
+    return blocks
+      .map((block, index) => ({ block, index }))
+      .filter((x) => x.block.type === "practice");
+  }, [blocks, embedLessonIde]);
+
+  const contentBlocks = useMemo(() => {
+    if (embedLessonIde) return blocks;
+    // Hide inline practice prompts that only existed to drive the lesson IDE.
+    return blocks.filter((b) => b.type !== "practice");
+  }, [blocks, embedLessonIde]);
 
   const [completedExercises, setCompletedExercises] = useState<Set<number>>(new Set());
   const [hydrated, setHydrated] = useState(false);
@@ -296,7 +308,8 @@ export function TopicLessonLayout({
     !!customerSupportProjectBlock ||
     !!testingChatbotBlock;
 
-  const splitLayout = !singleColumnBlock && hasInteractiveAside;
+  const forceSingleColumn = courseId === "python" || !!singleColumnBlock;
+  const splitLayout = !forceSingleColumn && hasInteractiveAside;
 
   const practiceContext = useMemo(
     () => ({
@@ -337,7 +350,9 @@ export function TopicLessonLayout({
         className={
           splitLayout
             ? "flex h-full min-h-0 flex-1 flex-col overflow-hidden lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(320px,42%)]"
-            : "flex h-full min-h-0 flex-1 flex-col overflow-y-auto [scrollbar-width:thin] lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(320px,42%)] lg:overflow-hidden"
+            : forceSingleColumn
+              ? "flex h-full min-h-0 flex-1 flex-col overflow-y-auto [scrollbar-width:thin]"
+              : "flex h-full min-h-0 flex-1 flex-col overflow-y-auto [scrollbar-width:thin] lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(320px,42%)] lg:overflow-hidden"
         }
       >
 
@@ -346,17 +361,17 @@ export function TopicLessonLayout({
           className={
             splitLayout
               ? "min-h-0 min-w-0 flex-1 overflow-y-auto py-6 px-4 [scrollbar-width:thin] sm:px-6 lg:h-full lg:px-8 xl:px-10"
-              : singleColumnBlock
+              : singleColumnBlock || courseId === "python"
                 ? "min-w-0 w-full py-6 px-4 sm:px-6 lg:px-8 xl:px-10"
                 : "min-w-0 w-full py-6 px-4 sm:px-6 lg:h-full lg:min-h-0 lg:overflow-y-auto lg:px-8 xl:px-10 [scrollbar-width:thin]"
           }
         >
-          {sequential && (
-            <div className="mb-4 rounded-xl border border-brand-200 bg-brand-50/60 px-4 py-3">
-              <p className="text-xs font-semibold uppercase tracking-wide text-brand-800">
+          {sequential && embedLessonIde && (
+            <div className="mb-4 rounded-xl border border-brand-200 bg-brand-50/60 px-4 py-3 dark:border-brand-800 dark:bg-brand-950/40">
+              <p className="text-xs font-semibold uppercase tracking-wide text-brand-800 dark:text-brand-200">
                 Sequential build
               </p>
-              <p className="mt-1 text-sm text-gray-700">
+              <p className="mt-1 text-sm text-gray-700 dark:text-slate-300">
                 Complete each task in the IDE, then click{" "}
                 <strong>Complete task &amp; continue</strong> to unlock the next step.
               </p>
@@ -366,7 +381,7 @@ export function TopicLessonLayout({
           {headerSlot && <div className="mb-6">{headerSlot}</div>}
           <div data-walkthrough="lesson-content">
             <LessonContent
-              blocks={blocks}
+              blocks={contentBlocks}
               practiceMode="sidebar"
               activePracticeIndex={activePractice}
               onSelectPractice={selectPractice}
@@ -374,12 +389,12 @@ export function TopicLessonLayout({
           </div>
 
           {allDone && nextTopic && moduleSlug && (
-            <div className="mt-6 rounded-xl border-2 border-green-300 bg-green-50 p-4">
+            <div className="mt-6 rounded-xl border-2 border-green-300 bg-green-50 p-4 dark:border-green-800 dark:bg-green-950/40">
               <div className="flex items-start gap-3">
-                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-green-600" />
+                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-green-600 dark:text-green-400" />
                 <div className="flex-1">
-                  <p className="font-semibold text-green-900">All tasks complete!</p>
-                  <p className="mt-1 text-sm text-green-800">
+                  <p className="font-semibold text-green-900 dark:text-green-100">All tasks complete!</p>
+                  <p className="mt-1 text-sm text-green-800 dark:text-green-200">
                     You finished every exercise in this step. Continue to the next part of the project.
                   </p>
                   <Link
@@ -402,7 +417,7 @@ export function TopicLessonLayout({
           ref={ideRef}
           data-walkthrough="lesson-ide"
           className={
-            singleColumnBlock
+            forceSingleColumn
               ? "hidden"
               : splitLayout
                 ? [
@@ -828,7 +843,7 @@ export function TopicLessonLayout({
             </div>
           ) : (
             <div className="lg:py-6 lg:pb-10 pr-4 sm:pr-6">
-              <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-gray-50 via-white to-brand-50/30 p-5 shadow-sm">
+              <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-gray-50 via-white to-brand-50/30 p-5 shadow-sm dark:border-slate-700 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800">
                 <p className="text-sm font-semibold text-gray-900">Reading topic</p>
                 <p className="mt-2 text-sm leading-relaxed text-gray-600">
                   Focus on the lesson on the left. Hands-on labs appear on topics that need practice.

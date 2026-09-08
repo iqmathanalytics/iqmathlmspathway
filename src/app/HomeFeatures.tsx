@@ -11,18 +11,18 @@ const features = [
   },
   {
     icon: GitBranch,
-    title: "Four structured tracks",
-    text: "Python (18 modules), SQL (9), Agentic AI (8), and a 4-day MBA business pathway with published Days 1–4.",
+    title: "Python track live now",
+    text: "18 published modules from basics through NumPy, Pandas, visualization, EDA, and a capstone — with more tracks coming soon.",
   },
   {
     icon: Code2,
     title: "Real practice surfaces",
-    text: "Browser IDEs, ChatGPT copy-ready labs, notebook cells for Colab, and downloadable business datasets.",
+    text: "Lesson challenges, browser IDEs, and standalone Python Basics & Algorithms practice with instant feedback.",
   },
   {
     icon: Database,
-    title: "Grounded RAG & data",
-    text: "MBA Day 4 uses FreshBasket extracts and real company PDFs for RAG; Day 3 builds LangChain chatbots with live tools.",
+    title: "Grounded labs & data",
+    text: "Hands-on exercises in every topic, plus downloadable datasets when you unlock upcoming analytics pathways.",
   },
   {
     icon: LineChart,
@@ -31,8 +31,8 @@ const features = [
   },
   {
     icon: Sparkles,
-    title: "From prompts to agents",
-    text: "Build chatbots with tools, LangChain workflows, RAG knowledge desks, and grounded document Q&A.",
+    title: "Built for learners",
+    text: "Topic locking, practice premium unlocks, and admin-managed college enrollments keep cohorts on track.",
   },
 ];
 
@@ -45,12 +45,12 @@ export function HomeFeatures() {
             Why learners stay engaged
           </p>
           <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Code, data, and AI business skills in one platform
+            Code and data skills in one platform
           </h2>
         </div>
         <p className="max-w-2xl text-lg leading-8 text-gray-600 lg:justify-self-end">
-          Whether you are starting Python, mastering SQL, shipping agents, or running an MBA
-          analytics sprint — every concept connects to a hands-on lab.
+          Start with the live Python pathway — lessons, quizzes, and practice in the browser.
+          Additional tracks unlock when your college publishes them.
         </p>
       </div>
 

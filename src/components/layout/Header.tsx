@@ -8,7 +8,6 @@ import { Home, LayoutDashboard, Shield, Terminal } from "lucide-react";
 import clsx from "clsx";
 import { PLATFORM_LOGO, PLATFORM_NAME } from "@/data/platform";
 import { AuthNav } from "@/components/layout/AuthNav";
-import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { useAuth } from "@/contexts/AuthContext";
 import { isAdmin } from "@/lib/admin";
 
@@ -67,7 +66,6 @@ export function Header() {
               </Link>
             );
           })}
-          <ThemeToggle />
           <AuthNav />
         </nav>
       </div>

@@ -26,9 +26,9 @@ import {
 import { isPracticeDifficulty } from "@/data/python-practice";
 
 const difficultyClass: Record<PracticeDifficulty, string> = {
-  easy: "text-emerald-600 bg-emerald-50",
-  medium: "text-amber-700 bg-amber-50",
-  hard: "text-red-600 bg-red-50",
+  easy: "text-emerald-600 bg-emerald-50 dark:text-emerald-300 dark:bg-emerald-950/40",
+  medium: "text-amber-700 bg-amber-50 dark:text-amber-200 dark:bg-amber-950/40",
+  hard: "text-red-600 bg-red-50 dark:text-red-300 dark:bg-red-950/40",
 };
 
 function defaultDifficultyLabel(d: PracticeDifficulty): string {
@@ -184,7 +184,7 @@ export function PythonPracticeProblemTable({
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search problems"
-            className="w-full rounded-xl border border-gray-200 bg-white py-2.5 pl-9 pr-3 text-sm text-gray-900 outline-none ring-brand-500 placeholder:text-gray-400 focus:border-brand-400 focus:ring-2"
+            className="w-full rounded-xl border border-gray-200 bg-white py-2.5 pl-9 pr-3 text-sm text-gray-900 outline-none ring-brand-500 placeholder:text-gray-400 focus:border-brand-400 focus:ring-2 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500"
           />
         </label>
         {showDifficultyFilter && (
@@ -193,7 +193,7 @@ export function PythonPracticeProblemTable({
             onChange={(e) =>
               setDifficulty(e.target.value as "all" | PracticeDifficulty)
             }
-            className="rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-800 outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-500"
+            className="rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-800 outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-500 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
             aria-label="Filter by difficulty"
           >
             <option value="all">All difficulties</option>
@@ -208,7 +208,7 @@ export function PythonPracticeProblemTable({
             onChange={(e) =>
               setKind(e.target.value as "all" | PythonProgrammingKind)
             }
-            className="rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-800 outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-500"
+            className="rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-800 outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-500 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
           >
             <option value="all">All types</option>
             <option value="language">Language drills</option>
@@ -260,10 +260,12 @@ export function PythonPracticeProblemTable({
             </tr>
           </thead>
           <tbody>
-            {filtered.map((p) => {
+            {filtered.map((p, index) => {
               const solved = rows[p.id]?.status === "solved";
               const href = problemHref(p);
               const problemKind = getProblemKind(p);
+              // Visible list is always numbered 1..n (filters / shuffle).
+              const listNumber = index + 1;
               return (
                 <tr
                   key={p.id}
@@ -271,17 +273,17 @@ export function PythonPracticeProblemTable({
                 >
                   <td className="px-4 py-3">
                     {solved ? (
-                      <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+                      <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                     ) : (
-                      <Circle className="h-4 w-4 text-gray-300" />
+                      <Circle className="h-4 w-4 text-gray-300 dark:text-slate-600" />
                     )}
                   </td>
                   <td className="px-4 py-3">
                     <Link
                       href={href}
-                      className="font-medium text-gray-900 hover:text-brand-700"
+                      className="font-medium text-gray-900 hover:text-brand-700 dark:text-slate-100 dark:hover:text-brand-300"
                     >
-                      {p.order}. {p.title}
+                      {listNumber}. {p.title}
                     </Link>
                   </td>
                   {showKindFilter && (

@@ -10,11 +10,13 @@ import { CodeEditor } from "@/components/ide/CodeEditor";
 import { runPublicTests } from "@/lib/practice-runner";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePracticeProgress } from "@/hooks/usePracticeProgress";
+import { useCoursePracticeReturn } from "@/hooks/useCoursePracticeReturn";
 import {
   AlertTriangle,
   CheckCircle2,
   Circle,
   Leaf,
+  BookOpen,
   Lightbulb,
   Loader2,
   Play,
@@ -37,7 +39,7 @@ type ResultType = "success" | "error" | "warn";
 
 function InlineCode({ children }: { children: React.ReactNode }) {
   return (
-    <code className="rounded border border-gray-200 bg-gray-100 px-1.5 py-0.5 font-mono text-[13px] text-indigo-600">
+    <code className="rounded border border-gray-200 bg-gray-100 px-1.5 py-0.5 font-mono text-[13px] text-indigo-600 dark:border-slate-600 dark:bg-slate-800 dark:text-indigo-300">
       {children}
     </code>
   );
@@ -126,6 +128,53 @@ function ApproachCodePreview({
   );
 }
 
+/** Build a learner-facing explanation from approach + challenge content + hints. */
+function getProblemExplanation(problem: PracticeProblem): {
+  concept?: string;
+  steps: string[];
+  tips: string[];
+  codeExample?: string;
+} | null {
+  const content = problem.challengeContent;
+  const codeExample =
+    content?.learnSection?.codeExample ??
+    (content?.steps?.codePreview?.lines?.length
+      ? content.steps.codePreview.lines.map((line) => `print("${line}")`).join("\n")
+      : undefined);
+
+  if (problem.approach?.trim()) {
+    return {
+      concept: problem.approach.trim(),
+      steps: [],
+      tips: [],
+      codeExample,
+    };
+  }
+
+  const concept = content?.learnSection?.body?.trim() || undefined;
+  const steps = content?.steps?.items?.filter(Boolean) ?? [];
+  const tips = problem.hints.filter(Boolean);
+
+  if (concept || steps.length > 0) {
+    return { concept, steps, tips: [], codeExample };
+  }
+
+  if (tips.length > 0) {
+    return { steps: [], tips, codeExample };
+  }
+
+  if (problem.description.trim()) {
+    return {
+      concept: problem.description.trim(),
+      steps: [],
+      tips: [],
+      codeExample,
+    };
+  }
+
+  return null;
+}
+
 function LiveCheckPill({
   label,
   state,
@@ -137,9 +186,10 @@ function LiveCheckPill({
     <span
       className={clsx(
         "inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-[13px]",
-        state === "pass" && "border-green-200 bg-green-50 text-green-800",
-        state === "fail" && "border-red-200 bg-red-50 text-red-800",
-        state === "none" && "border-gray-200 bg-gray-50 text-gray-400"
+        state === "pass" &&
+          "border-green-400/30 bg-green-500/15 text-green-200",
+        state === "fail" && "border-red-400/30 bg-red-500/15 text-red-200",
+        state === "none" && "border-[#45475a] bg-[#313244] text-[#6c7086]"
       )}
     >
       {state === "pass" ? (
@@ -164,9 +214,12 @@ export function ChallengePracticeLayout({
   const { session } = useAuth();
   const { rows, loading: progressLoading, saveDraft, markSolved } =
     usePracticeProgress([problem.id]);
+  const { returnAfterSolve } = useCoursePracticeReturn();
 
   const [code, setCode] = useState(problem.starterCode);
   const [hintsShown, setHintsShown] = useState(0);
+  const [solutionOpen, setSolutionOpen] = useState(false);
+  const [explanationOpen, setExplanationOpen] = useState(false);
   const [checking, setChecking] = useState(false);
   const [checkResult, setCheckResult] = useState<{
     type: ResultType;
@@ -179,6 +232,14 @@ export function ChallengePracticeLayout({
   const content = problem.challengeContent;
   const status = rows[problem.id]?.status ?? "not_started";
   const example = problem.examples?.[0];
+  const expectedOutput =
+    problem.publicTests?.[0]?.expectedStdout ?? example?.output ?? "";
+  const inputLabel =
+    content?.inputLabel ??
+    example?.input ??
+    (problem.publicTests?.[0]?.stdin
+      ? problem.publicTests[0].stdin
+      : "No input needed");
 
   const printCount = useMemo(() => countPrintCalls(code), [code]);
   const printValues = useMemo(() => getPrintValues(code), [code]);
@@ -195,6 +256,8 @@ export function ChallengePracticeLayout({
     codeInitializedRef.current = null;
     setCheckResult(null);
     setHintsShown(0);
+    setSolutionOpen(false);
+    setExplanationOpen(false);
   }, [problem.id]);
 
   useEffect(() => {
@@ -297,7 +360,7 @@ export function ChallengePracticeLayout({
       ) {
         setCheckResult({
           type: "error",
-          message: `Expected output: ${example.output}`,
+          message: `Expected output: ${expectedOutput || example?.output || ""}`,
         });
         return;
       }
@@ -421,32 +484,29 @@ export function ChallengePracticeLayout({
     const test = result.results[0];
 
     if (result.allPassed) {
+      const actualLines = (test?.actual ?? expectedOutput).split("\n");
       setCheckResult({
         type: "success",
-        message: content?.successDetail ? (
+        message: (
           <>
             <strong>Correct!</strong>
-            {example?.output && (
+            <br />
+            <span className="mt-1 block text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+              Your output
+            </span>
+            {actualLines.map((line, i) => (
+              <span key={`out-${i}`}>
+                <br />
+                <InlineCode>{line === "" ? " " : line}</InlineCode>
+              </span>
+            ))}
+            {content?.successDetail ? (
               <>
                 <br />
-                Your output:
-                {example.output.split("\n").map((line) => (
-                  <span key={line}>
-                    <br />
-                    <InlineCode>{line}</InlineCode>
-                  </span>
-                ))}
                 <br />
-                <br />
+                {content.successDetail}
               </>
-            )}
-            {content.successDetail}
-          </>
-        ) : (
-          <>
-            <strong>Correct!</strong> Output:{" "}
-            <InlineCode>{example?.output ?? "Hello, World!"}</InlineCode> —
-            you just ran your first Python program!
+            ) : null}
           </>
         ),
       });
@@ -458,8 +518,44 @@ export function ChallengePracticeLayout({
             type: "error",
             message: `Correct answer, but progress was not saved: ${save.error}`,
           });
+        } else {
+          returnAfterSolve();
         }
       }
+    } else if (test && (test.expected !== undefined || test.actual !== undefined)) {
+      setCheckResult({
+        type: "error",
+        message: (
+          <>
+            <strong>Not quite — output does not match.</strong>
+            <br />
+            <br />
+            <span className="text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+              Your output
+            </span>
+            <br />
+            <InlineCode>{test.actual || "(empty)"}</InlineCode>
+            <br />
+            <br />
+            <span className="text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+              Expected output
+            </span>
+            <br />
+            <InlineCode>{test.expected || expectedOutput || "(empty)"}</InlineCode>
+            {test.input ? (
+              <>
+                <br />
+                <br />
+                <span className="text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+                  Input
+                </span>
+                <br />
+                <InlineCode>{test.input}</InlineCode>
+              </>
+            ) : null}
+          </>
+        ),
+      });
     } else if (test?.error) {
       setCheckResult({ type: "error", message: test.error });
     } else if (sequenceRule?.kind === "print-sequence") {
@@ -506,7 +602,7 @@ export function ChallengePracticeLayout({
               <br />
               Expected:
               <br />
-              <InlineCode>{test.expected}</InlineCode>
+              <InlineCode>{test.expected || expectedOutput}</InlineCode>
             </>
           ),
         });
@@ -520,7 +616,8 @@ export function ChallengePracticeLayout({
           <>
             Your output: <InlineCode>{test?.actual || "(empty)"}</InlineCode>
             <br />
-            Expected: <InlineCode>{test?.expected || example?.output}</InlineCode>
+            Expected:{" "}
+            <InlineCode>{test?.expected || expectedOutput || "(empty)"}</InlineCode>
           </>
         ),
       });
@@ -531,12 +628,14 @@ export function ChallengePracticeLayout({
     code,
     content,
     example,
+    expectedOutput,
     printCount,
     printValues,
     problem,
     saveDraft,
     session,
     markSolved,
+    returnAfterSolve,
   ]);
 
   const handleReset = () => {
@@ -552,15 +651,33 @@ export function ChallengePracticeLayout({
     problem.difficulty.charAt(0).toUpperCase() + problem.difficulty.slice(1);
 
   const badgeStyles = {
-    easy: "border-green-200 bg-green-100 text-green-700",
-    medium: "border-amber-200 bg-amber-100 text-amber-800",
-    hard: "border-red-200 bg-red-100 text-red-800",
+    easy: "border-green-200 bg-green-100 text-green-700 dark:border-green-800 dark:bg-green-950/50 dark:text-green-300",
+    medium:
+      "border-amber-200 bg-amber-100 text-amber-800 dark:border-amber-800 dark:bg-amber-950/50 dark:text-amber-200",
+    hard: "border-red-200 bg-red-100 text-red-800 dark:border-red-800 dark:bg-red-950/50 dark:text-red-300",
   } as const;
 
   const badgeClass =
     content?.badgeVariant === "blue"
-      ? "border-blue-200 bg-blue-100 text-blue-800"
+      ? "border-blue-200 bg-blue-100 text-blue-800 dark:border-blue-800 dark:bg-blue-950/50 dark:text-blue-200"
       : badgeStyles[problem.difficulty];
+
+  const explanation = useMemo(() => getProblemExplanation(problem), [problem]);
+  const explanationRef = useRef<HTMLElement | null>(null);
+  const sectionLabel =
+    "mb-2.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400";
+  const revealLink =
+    "inline-flex items-center gap-1.5 border-none bg-transparent p-0 text-[13.5px] font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300";
+
+  function openExplanation() {
+    setExplanationOpen(true);
+    requestAnimationFrame(() => {
+      explanationRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    });
+  }
 
   return (
     <div className="flex min-h-[calc(100vh-8rem)] flex-col">
@@ -570,11 +687,12 @@ export function ChallengePracticeLayout({
         moduleName={moduleName}
         topicTitle={topicTitle}
         problemTitle={problem.title}
+        coursePractice
       />
 
-      <div className="grid min-h-0 flex-1 gap-0 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm lg:grid-cols-[minmax(0,44%)_minmax(0,56%)]">
+      <div className="grid min-h-0 flex-1 gap-0 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900 lg:grid-cols-[minmax(0,44%)_minmax(0,56%)]">
         {/* Left — problem statement */}
-        <div className="overflow-y-auto border-b border-gray-200 p-6 lg:border-b-0 lg:border-r">
+        <div className="overflow-y-auto border-b border-gray-200 p-6 dark:border-slate-700 lg:border-b-0 lg:border-r">
           {/* Header */}
           <section className="mb-5">
             <span
@@ -589,17 +707,17 @@ export function ChallengePracticeLayout({
               {difficultyLabel} · Problem {problem.order}
             </span>
             <div className="flex flex-wrap items-center gap-2">
-              <h1 className="text-2xl font-semibold tracking-tight text-gray-900">
+              <h1 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-slate-50">
                 {problem.title}
               </h1>
               {status === "solved" && (
-                <span className="flex items-center gap-1 text-xs font-medium text-green-700">
+                <span className="flex items-center gap-1 text-xs font-medium text-green-700 dark:text-green-400">
                   <CheckCircle2 className="h-3.5 w-3.5" />
                   Solved
                 </span>
               )}
             </div>
-            <div className="mt-2 text-[15px] leading-relaxed text-gray-600">
+            <div className="mt-2 text-[15px] leading-relaxed text-gray-600 dark:text-slate-300">
               {content?.introLead && <p>{content.introLead}</p>}
               {content?.introBullets?.map((bullet, i) => (
                 <p key={i} className={content.introLead ? "mt-1" : ""}>
@@ -619,25 +737,23 @@ export function ChallengePracticeLayout({
             </div>
           </section>
 
-          <hr className="my-5 border-gray-200" />
+          <hr className="my-5 border-gray-200 dark:border-slate-700" />
 
           {/* Two approaches */}
           {content?.approaches && (
             <section className="mb-5">
-              <p className="mb-2.5 text-[11px] font-semibold uppercase tracking-wide text-gray-400">
-                {content.approaches.title}
-              </p>
+              <p className={sectionLabel}>{content.approaches.title}</p>
               <div className="grid grid-cols-2 gap-2.5">
                 {content.approaches.items.map((approach) => (
                   <div
                     key={approach.title}
-                    className="rounded-[10px] border border-gray-200 bg-gray-50 px-4 py-3.5"
+                    className="rounded-[10px] border border-gray-200 bg-gray-50 px-4 py-3.5 dark:border-slate-700 dark:bg-slate-800/80"
                   >
-                    <p className="mb-2 text-[12px] font-semibold uppercase tracking-wide text-gray-500">
+                    <p className="mb-2 text-[12px] font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">
                       {approach.title}
                     </p>
                     <ApproachCodePreview lines={approach.lines} />
-                    <p className="mt-2 text-[13px] leading-snug text-gray-500">
+                    <p className="mt-2 text-[13px] leading-snug text-gray-500 dark:text-slate-400">
                       {approach.note}
                     </p>
                   </div>
@@ -649,22 +765,20 @@ export function ChallengePracticeLayout({
           {/* Steps card */}
           {content?.steps && (
             <section className="mb-5">
-              <p className="mb-2.5 text-[11px] font-semibold uppercase tracking-wide text-gray-400">
-                {content.steps.title}
-              </p>
-              <div className="rounded-[10px] border border-gray-200 bg-gray-50 px-5 py-4">
+              <p className={sectionLabel}>{content.steps.title}</p>
+              <div className="rounded-[10px] border border-gray-200 bg-gray-50 px-5 py-4 dark:border-slate-700 dark:bg-slate-800/80">
                 {content.steps.items.map((item, i) => (
                   <div
                     key={i}
                     className={clsx(
                       "flex items-start gap-3 py-1.5",
-                      i > 0 && "border-t border-gray-100"
+                      i > 0 && "border-t border-gray-100 dark:border-slate-700"
                     )}
                   >
-                    <span className="mt-0.5 flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full bg-indigo-100 text-xs font-semibold text-indigo-700">
+                    <span className="mt-0.5 flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full bg-indigo-100 text-xs font-semibold text-indigo-700 dark:bg-indigo-900/60 dark:text-indigo-200">
                       {i + 1}
                     </span>
-                    <p className="text-sm leading-relaxed text-gray-600">
+                    <p className="text-sm leading-relaxed text-gray-600 dark:text-slate-300">
                       {renderPrintInline(item)}
                     </p>
                   </div>
@@ -697,11 +811,9 @@ export function ChallengePracticeLayout({
           {/* Learn section (hello-world style) */}
           {content?.learnSection && (
             <section className="mb-5">
-              <p className="mb-2.5 text-[11px] font-semibold uppercase tracking-wide text-gray-400">
-                {content.learnSection.title}
-              </p>
-              <div className="rounded-[10px] border border-gray-200 bg-gray-50 px-5 py-4">
-                <p className="text-sm leading-relaxed text-gray-600">
+              <p className={sectionLabel}>{content.learnSection.title}</p>
+              <div className="rounded-[10px] border border-gray-200 bg-gray-50 px-5 py-4 dark:border-slate-700 dark:bg-slate-800/80">
+                <p className="text-sm leading-relaxed text-gray-600 dark:text-slate-300">
                   {content.learnSection.body
                     .split("print()")
                     .map((part, i, arr) =>
@@ -727,38 +839,36 @@ export function ChallengePracticeLayout({
             </section>
           )}
 
-          {/* Expected output */}
-          {example && (
+          {/* Expected output — always from publicTests (source of truth) */}
+          {expectedOutput !== "" && (
             <section className="mb-5">
-              <p className="mb-2.5 text-[11px] font-semibold uppercase tracking-wide text-gray-400">
-                Expected output
-              </p>
+              <p className={sectionLabel}>Sample I/O</p>
               {content?.outputOnly ? (
-                <div className="rounded-[10px] border border-gray-200 bg-gray-50 px-4 py-3.5">
-                  <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-400">
-                    Output
+                <div className="rounded-[10px] border border-gray-200 bg-gray-50 px-4 py-3.5 dark:border-slate-700 dark:bg-slate-800/80">
+                  <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">
+                    Expected output
                   </p>
-                  <p className="whitespace-pre-line font-mono text-sm leading-relaxed text-gray-900">
-                    {example.output}
-                  </p>
+                  <pre className="whitespace-pre-wrap font-mono text-sm leading-relaxed text-gray-900 dark:text-slate-100">
+                    {expectedOutput}
+                  </pre>
                 </div>
               ) : (
                 <div className="grid grid-cols-2 gap-2.5">
-                  <div className="rounded-[10px] border border-gray-200 bg-gray-50 px-4 py-3.5">
-                    <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-400">
+                  <div className="rounded-[10px] border border-gray-200 bg-gray-50 px-4 py-3.5 dark:border-slate-700 dark:bg-slate-800/80">
+                    <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">
                       Input
                     </p>
-                    <p className="font-mono text-sm italic text-gray-400">
-                      {content?.inputLabel ?? example.input ?? "No input needed"}
-                    </p>
+                    <pre className="whitespace-pre-wrap font-mono text-sm italic text-gray-500 dark:text-slate-400">
+                      {inputLabel}
+                    </pre>
                   </div>
-                  <div className="rounded-[10px] border border-gray-200 bg-gray-50 px-4 py-3.5">
-                    <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-400">
-                      Output
+                  <div className="rounded-[10px] border border-gray-200 bg-gray-50 px-4 py-3.5 dark:border-slate-700 dark:bg-slate-800/80">
+                    <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">
+                      Expected output
                     </p>
-                    <p className="whitespace-pre-line font-mono text-sm leading-relaxed text-gray-900">
-                      {example.output}
-                    </p>
+                    <pre className="whitespace-pre-wrap font-mono text-sm leading-relaxed text-gray-900 dark:text-slate-100">
+                      {expectedOutput}
+                    </pre>
                   </div>
                 </div>
               )}
@@ -768,16 +878,14 @@ export function ChallengePracticeLayout({
           {/* Constraints */}
           {problem.constraints && problem.constraints.length > 0 && (
             <section className="mb-5">
-              <p className="mb-2.5 text-[11px] font-semibold uppercase tracking-wide text-gray-400">
-                Constraints
-              </p>
+              <p className={sectionLabel}>Constraints</p>
               <ul className="space-y-1">
                 {problem.constraints.map((c) => (
                   <li
                     key={c}
-                    className="flex items-start gap-2.5 text-sm leading-relaxed text-gray-600"
+                    className="flex items-start gap-2.5 text-sm leading-relaxed text-gray-600 dark:text-slate-300"
                   >
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-300" />
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-300 dark:bg-slate-500" />
                     {renderPrintInline(c)}
                   </li>
                 ))}
@@ -787,10 +895,8 @@ export function ChallengePracticeLayout({
 
           {/* Hints */}
           {problem.hints.length > 0 && (
-            <section>
-              <p className="mb-2.5 text-[11px] font-semibold uppercase tracking-wide text-gray-400">
-                Hints
-              </p>
+            <section className="mb-5">
+              <p className={sectionLabel}>Hints</p>
               <div className="space-y-2">
                 {problem.hints.map((hint, i) => {
                   if (i >= hintsShown) {
@@ -801,7 +907,7 @@ export function ChallengePracticeLayout({
                           type="button"
                           onMouseDown={(e) => e.preventDefault()}
                           onClick={revealHint}
-                          className="inline-flex items-center gap-1.5 border-none bg-transparent p-0 text-[13.5px] font-medium text-blue-600 hover:text-blue-700"
+                          className={revealLink}
                         >
                           <Lightbulb className="h-3.5 w-3.5" />
                           Reveal hint {i + 1} of {problem.hints.length}
@@ -813,7 +919,7 @@ export function ChallengePracticeLayout({
                   return (
                     <div
                       key={i}
-                      className="rounded-r-md border-l-2 border-blue-200 bg-blue-50 py-2.5 pl-3.5 pr-4 text-sm leading-relaxed text-gray-700"
+                      className="rounded-r-md border-l-2 border-blue-200 bg-blue-50 py-2.5 pl-3.5 pr-4 text-sm leading-relaxed text-slate-800 dark:border-blue-700 dark:bg-blue-950/40 dark:text-slate-200"
                     >
                       {renderPrintInline(hint)}
                     </div>
@@ -822,10 +928,80 @@ export function ChallengePracticeLayout({
               </div>
             </section>
           )}
+
+          {/* Explanation */}
+          {explanation && (
+            <section ref={explanationRef} className="mb-5">
+              <p className={sectionLabel}>Explanation</p>
+              {!explanationOpen ? (
+                <button
+                  type="button"
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={openExplanation}
+                  className={revealLink}
+                >
+                  <BookOpen className="h-3.5 w-3.5" />
+                  Show explanation
+                </button>
+              ) : (
+                <div className="space-y-3 rounded-lg border border-indigo-100 bg-indigo-50/60 px-4 py-3.5 text-sm leading-relaxed text-slate-800 dark:border-indigo-800 dark:bg-indigo-950/40 dark:text-slate-100">
+                  {explanation.concept && (
+                    <p className="whitespace-pre-wrap">
+                      {renderPrintInline(explanation.concept)}
+                    </p>
+                  )}
+                  {explanation.steps.length > 0 && (
+                    <ol className="list-decimal space-y-1.5 pl-4">
+                      {explanation.steps.map((step) => (
+                        <li key={step}>{renderPrintInline(step)}</li>
+                      ))}
+                    </ol>
+                  )}
+                  {!explanation.concept &&
+                    explanation.steps.length === 0 &&
+                    explanation.tips.length > 0 && (
+                      <ul className="space-y-1.5">
+                        {explanation.tips.map((tip) => (
+                          <li key={tip} className="flex items-start gap-2">
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-300 dark:bg-indigo-400" />
+                            <span>{renderPrintInline(tip)}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  {explanation.codeExample && (
+                    <pre className="overflow-x-auto rounded-md border border-indigo-100 bg-white px-3 py-2.5 font-mono text-[12.5px] leading-relaxed text-gray-800 dark:border-indigo-800 dark:bg-slate-900 dark:text-slate-200">
+                      {explanation.codeExample}
+                    </pre>
+                  )}
+                </div>
+              )}
+            </section>
+          )}
+
+          {problem.solutionCode?.trim() && (
+            <section>
+              <p className={sectionLabel}>Solution</p>
+              {!solutionOpen ? (
+                <button
+                  type="button"
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={() => setSolutionOpen(true)}
+                  className={revealLink}
+                >
+                  Show solution
+                </button>
+              ) : (
+                <pre className="overflow-x-auto rounded-lg border border-gray-200 bg-gray-50 p-3 font-mono text-[12.5px] leading-relaxed text-gray-800 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200">
+                  {problem.solutionCode}
+                </pre>
+              )}
+            </section>
+          )}
         </div>
 
         {/* Right — editor workspace */}
-        <div className="flex min-h-[480px] flex-col bg-[#1e1e2e] lg:min-h-0">
+        <div className="ide-dark-chrome flex min-h-[480px] flex-col bg-[#1e1e2e] lg:min-h-0">
           <div className="flex items-center justify-between border-b border-[#313244] bg-[#181825] px-4 py-2">
             <div className="flex items-center gap-1.5">
               <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
@@ -872,8 +1048,19 @@ export function ChallengePracticeLayout({
                 ) : (
                   <Play className="h-3.5 w-3.5" />
                 )}
-                Run &amp; Check
+                Submit &amp; Check
               </button>
+              {explanation && (
+                <button
+                  type="button"
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={openExplanation}
+                  className="inline-flex items-center gap-1.5 rounded-md border border-indigo-400/30 bg-indigo-500/20 px-4 py-2 text-[13.5px] font-medium text-indigo-200 transition hover:bg-indigo-500/30"
+                >
+                  <BookOpen className="h-3.5 w-3.5" />
+                  Explanation
+                </button>
+              )}
               <button
                 type="button"
                 onMouseDown={(e) => e.preventDefault()}

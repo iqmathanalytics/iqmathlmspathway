@@ -9,6 +9,7 @@ import { runPublicTests, submitForGrading, type TestRunResult } from "@/lib/prac
 import { isProblemPremium } from "@/lib/practice-config";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePracticeProgress } from "@/hooks/usePracticeProgress";
+import { useCoursePracticeReturn } from "@/hooks/useCoursePracticeReturn";
 import {
   CheckCircle2,
   Lightbulb,
@@ -40,6 +41,7 @@ export function PracticeWorkspaceEditor({
   const { session } = useAuth();
   const { rows, loading: progressLoading, saveDraft, markSolved, refresh } =
     usePracticeProgress([problem.id]);
+  const { returnAfterSolve } = useCoursePracticeReturn();
 
   const [code, setCode] = useState(problem.starterCode ?? "");
   const codeInitializedRef = useRef<string | null>(null);
@@ -127,7 +129,8 @@ export function PracticeWorkspaceEditor({
         if (save.error) {
           setSubmitMessage(`Tests passed, but progress was not saved: ${save.error}`);
         } else {
-          setSubmitMessage("All tests passed — problem solved!");
+          setSubmitMessage("All tests passed — problem solved! Returning to lesson…");
+          returnAfterSolve();
         }
       } else {
         setSubmitMessage(
@@ -142,12 +145,14 @@ export function PracticeWorkspaceEditor({
     } finally {
       setSubmitting(false);
     }
-  }, [session, code, problem, markSolved, saveDraft, refresh]);
+  }, [session, code, problem, markSolved, saveDraft, refresh, returnAfterSolve]);
 
   const difficultyColor = useMemo(() => {
-    if (problem.difficulty === "easy") return "bg-green-100 text-green-800";
-    if (problem.difficulty === "medium") return "bg-amber-100 text-amber-800";
-    return "bg-red-100 text-red-800";
+    if (problem.difficulty === "easy")
+      return "bg-green-100 text-green-800 dark:bg-green-950/50 dark:text-green-300";
+    if (problem.difficulty === "medium")
+      return "bg-amber-100 text-amber-800 dark:bg-amber-950/50 dark:text-amber-200";
+    return "bg-red-100 text-red-800 dark:bg-red-950/50 dark:text-red-300";
   }, [problem.difficulty]);
 
   if (problem.layout === "challenge") {
@@ -170,9 +175,10 @@ export function PracticeWorkspaceEditor({
         moduleName={moduleName}
         topicTitle={topicTitle}
         problemTitle={problem.title}
+        coursePractice
       />
 
-      <div className="grid min-h-0 flex-1 gap-0 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm lg:grid-cols-[minmax(0,42%)_minmax(0,58%)]">
+      <div className="grid min-h-0 flex-1 gap-0 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900 lg:grid-cols-[minmax(0,42%)_minmax(0,58%)]">
         <ProblemPanel
           problem={problem}
           difficultyColor={difficultyColor}
@@ -183,9 +189,9 @@ export function PracticeWorkspaceEditor({
           submitMessage={submitMessage}
         />
 
-        <div className="flex min-h-[480px] flex-col bg-gray-950 lg:min-h-0">
-          <div className="flex items-center justify-between border-b border-gray-800 px-4 py-2">
-            <span className="flex items-center gap-2 text-sm font-medium text-gray-300">
+        <div className="ide-dark-chrome flex min-h-[480px] flex-col bg-gray-950 lg:min-h-0">
+          <div className="flex items-center justify-between border-b border-slate-800 px-4 py-2">
+            <span className="flex items-center gap-2 text-sm font-medium text-slate-300">
               <Terminal className="h-4 w-4" />
               Code workspace
             </span>
@@ -194,7 +200,7 @@ export function PracticeWorkspaceEditor({
                 type="button"
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={() => setCode("")}
-                className="flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs text-gray-400 hover:bg-gray-800 hover:text-white"
+                className="flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs text-slate-400 hover:bg-slate-800 hover:text-white"
               >
                 <RotateCcw className="h-3.5 w-3.5" />
                 Clear
@@ -277,44 +283,44 @@ function ProblemPanel({
   submitMessage: string | null;
 }) {
   return (
-    <div className="overflow-y-auto border-b border-gray-200 p-6 lg:border-b-0 lg:border-r">
+    <div className="overflow-y-auto border-b border-gray-200 p-6 dark:border-slate-700 lg:border-b-0 lg:border-r">
       <div className="flex flex-wrap items-center gap-2">
         <span className={clsx("rounded-full px-2.5 py-0.5 text-xs font-semibold capitalize", difficultyColor)}>
           {problem.difficulty}
         </span>
-        <span className="text-xs text-gray-500">Problem {problem.order}</span>
+        <span className="text-xs text-gray-500 dark:text-slate-400">Problem {problem.order}</span>
         {status === "solved" && (
-          <span className="flex items-center gap-1 text-xs font-medium text-green-700">
+          <span className="flex items-center gap-1 text-xs font-medium text-green-700 dark:text-green-400">
             <CheckCircle2 className="h-3.5 w-3.5" />
             Solved
           </span>
         )}
         {isProblemPremium(problem.order) && (
-          <span className="rounded-full bg-brand-100 px-2 py-0.5 text-xs font-medium text-brand-800">
+          <span className="rounded-full bg-brand-100 px-2 py-0.5 text-xs font-medium text-brand-800 dark:bg-brand-900/50 dark:text-brand-200">
             Premium
           </span>
         )}
       </div>
 
-      <h1 className="mt-3 text-2xl font-bold text-gray-900">{problem.title}</h1>
-      <p className="mt-4 whitespace-pre-wrap text-sm leading-relaxed text-gray-700">
+      <h1 className="mt-3 text-2xl font-bold text-gray-900 dark:text-slate-50">{problem.title}</h1>
+      <p className="mt-4 whitespace-pre-wrap text-sm leading-relaxed text-gray-700 dark:text-slate-300">
         {problem.description}
       </p>
 
       {problem.examples && problem.examples.length > 0 && (
         <div className="mt-6">
-          <h2 className="text-sm font-semibold text-gray-900">Example</h2>
+          <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-100">Example</h2>
           {problem.examples.map((ex, i) => (
-            <div key={i} className="mt-2 rounded-lg border border-gray-200 bg-gray-50 p-3 text-sm">
+            <div key={i} className="mt-2 rounded-lg border border-gray-200 bg-gray-50 p-3 text-sm dark:border-slate-700 dark:bg-slate-800/80">
               {ex.input && (
-                <p className="text-gray-600">
-                  <span className="font-medium text-gray-700">Input:</span> {ex.input}
+                <p className="text-gray-600 dark:text-slate-300">
+                  <span className="font-medium text-gray-700 dark:text-slate-200">Input:</span> {ex.input}
                 </p>
               )}
-              <p className={ex.input ? "mt-2 font-medium text-gray-700" : "font-medium text-gray-700"}>
+              <p className={ex.input ? "mt-2 font-medium text-gray-700 dark:text-slate-200" : "font-medium text-gray-700 dark:text-slate-200"}>
                 Output:
               </p>
-              <pre className="mt-1 overflow-x-auto rounded border border-gray-200 bg-white px-3 py-2 font-mono text-xs text-gray-900">
+              <pre className="mt-1 overflow-x-auto rounded border border-gray-200 bg-white px-3 py-2 font-mono text-xs text-gray-900 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100">
                 {ex.output}
               </pre>
             </div>
@@ -324,8 +330,8 @@ function ProblemPanel({
 
       {problem.constraints && (
         <div className="mt-6">
-          <h2 className="text-sm font-semibold text-gray-900">Constraints</h2>
-          <ul className="mt-2 list-inside list-disc text-sm text-gray-600">
+          <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-100">Constraints</h2>
+          <ul className="mt-2 list-inside list-disc text-sm text-gray-600 dark:text-slate-300">
             {problem.constraints.map((c) => (
               <li key={c}>{c}</li>
             ))}
@@ -336,7 +342,7 @@ function ProblemPanel({
       {problem.hints.length > 0 && (
         <div className="mt-6">
           <div className="flex items-center justify-between">
-            <h2 className="flex items-center gap-1.5 text-sm font-semibold text-gray-900">
+            <h2 className="flex items-center gap-1.5 text-sm font-semibold text-gray-900 dark:text-slate-100">
               <Lightbulb className="h-4 w-4 text-amber-500" />
               Hints
             </h2>
@@ -345,7 +351,7 @@ function ProblemPanel({
                 type="button"
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={() => setHintsShown((h) => Math.min(h + 1, problem.hints.length))}
-                className="text-xs font-medium text-brand-700 hover:underline"
+                className="text-xs font-medium text-brand-700 hover:underline dark:text-brand-300"
               >
                 Reveal hint ({hintsShown}/{problem.hints.length})
               </button>
@@ -355,7 +361,7 @@ function ProblemPanel({
             {problem.hints.slice(0, hintsShown).map((hint, i) => (
               <li
                 key={i}
-                className="rounded-lg border border-amber-100 bg-amber-50 p-3 text-sm text-amber-900"
+                className="rounded-lg border border-amber-100 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-100"
               >
                 {hint}
               </li>
@@ -366,14 +372,16 @@ function ProblemPanel({
 
       {testResults && (
         <div className="mt-6">
-          <h2 className="text-sm font-semibold text-gray-900">Public test results</h2>
+          <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-100">Public test results</h2>
           <ul className="mt-2 space-y-2">
             {testResults.map((t) => (
               <li
                 key={t.testId}
                 className={clsx(
                   "rounded-lg border p-3 text-sm",
-                  t.passed ? "border-green-200 bg-green-50" : "border-red-200 bg-red-50"
+                  t.passed
+                    ? "border-green-200 bg-green-50 text-green-900 dark:border-green-800 dark:bg-green-950/40 dark:text-green-100"
+                    : "border-red-200 bg-red-50 text-red-900 dark:border-red-800 dark:bg-red-950/40 dark:text-red-100"
                 )}
               >
                 <p className="font-medium">
@@ -382,21 +390,21 @@ function ProblemPanel({
                 {!t.passed && t.expected !== undefined && (
                   <div className="mt-2 space-y-2 text-xs">
                     <div>
-                      <p className="font-medium text-gray-700">Expected:</p>
-                      <pre className="mt-0.5 overflow-x-auto rounded bg-white/80 px-2 py-1 font-mono">
+                      <p className="font-medium text-slate-700 dark:text-slate-200">Expected:</p>
+                      <pre className="mt-0.5 overflow-x-auto rounded bg-white/80 px-2 py-1 font-mono dark:bg-black/30 dark:text-slate-100">
                         {t.expected || "(empty)"}
                       </pre>
                     </div>
                     <div>
-                      <p className="font-medium text-gray-700">Your output:</p>
-                      <pre className="mt-0.5 overflow-x-auto rounded bg-white/80 px-2 py-1 font-mono">
+                      <p className="font-medium text-slate-700 dark:text-slate-200">Your output:</p>
+                      <pre className="mt-0.5 overflow-x-auto rounded bg-white/80 px-2 py-1 font-mono dark:bg-black/30 dark:text-slate-100">
                         {t.actual || "(empty)"}
                       </pre>
                     </div>
                   </div>
                 )}
                 {!t.passed && t.error && (
-                  <p className="mt-1 text-xs text-red-700">{t.error}</p>
+                  <p className="mt-1 text-xs text-red-700 dark:text-red-300">{t.error}</p>
                 )}
               </li>
             ))}
@@ -409,8 +417,8 @@ function ProblemPanel({
           className={clsx(
             "mt-4 rounded-lg p-3 text-sm",
             submitMessage.includes("solved")
-              ? "bg-green-50 text-green-800"
-              : "bg-gray-50 text-gray-700"
+              ? "bg-green-50 text-green-800 dark:bg-green-950/40 dark:text-green-200"
+              : "bg-gray-50 text-gray-700 dark:bg-slate-800 dark:text-slate-200"
           )}
         >
           {submitMessage}

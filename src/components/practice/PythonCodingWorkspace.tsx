@@ -60,9 +60,9 @@ interface PythonCodingWorkspaceProps {
 }
 
 const difficultyClass: Record<string, string> = {
-  easy: "text-emerald-600",
-  medium: "text-amber-600",
-  hard: "text-red-600",
+  easy: "text-emerald-600 dark:text-emerald-400",
+  medium: "text-amber-600 dark:text-amber-400",
+  hard: "text-red-600 dark:text-red-400",
 };
 
 function usePersistedPct(
@@ -343,17 +343,17 @@ export function PythonCodingWorkspace({
                     {track.labelDifficulty(problem.difficulty)}
                   </span>
                   {problem.categoryLabel && (
-                    <span className="rounded-md bg-sky-50 px-2.5 py-0.5 text-xs font-medium text-brand-800 ring-1 ring-sky-100">
+                    <span className="rounded-md bg-sky-50 px-2.5 py-0.5 text-xs font-medium text-brand-800 ring-1 ring-sky-100 dark:bg-slate-800 dark:text-brand-200 dark:ring-slate-600">
                       {problem.categoryLabel}
                     </span>
                   )}
                   {solved && (
-                    <span className="rounded-md bg-accent-100 px-2.5 py-0.5 text-xs font-semibold text-accent-700 ring-1 ring-accent-200">
+                    <span className="rounded-md bg-accent-100 px-2.5 py-0.5 text-xs font-semibold text-accent-700 ring-1 ring-accent-200 dark:bg-lime-950/50 dark:text-lime-200 dark:ring-lime-800">
                       Solved
                     </span>
                   )}
                   {isLast && (
-                    <span className="rounded-md bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-500">
+                    <span className="rounded-md bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-500 dark:bg-slate-800 dark:text-slate-400">
                       Last in set
                     </span>
                   )}
@@ -364,39 +364,39 @@ export function PythonCodingWorkspace({
 
                 {examples.length > 0 && (
                   <div className="mt-6 space-y-3">
-                    <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                    <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                       Examples
                     </h2>
                     {examples.map((ex, i) => (
                       <div
                         key={i}
-                        className="overflow-hidden rounded-xl border border-sky-100 bg-gradient-to-br from-sky-50/70 to-white shadow-sm shadow-sky-100/60 transition-transform duration-200 hover:-translate-y-0.5"
+                        className="overflow-hidden rounded-xl border border-sky-100 bg-gradient-to-br from-sky-50/70 to-white shadow-sm shadow-sky-100/60 transition-transform duration-200 hover:-translate-y-0.5 dark:border-slate-700 dark:from-slate-800 dark:to-slate-900 dark:shadow-none"
                         style={{ animationDelay: `${i * 60}ms` }}
                       >
-                        <div className="border-b border-sky-100 bg-white/80 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-brand-700">
+                        <div className="border-b border-sky-100 bg-white/80 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-brand-700 dark:border-slate-700 dark:bg-slate-900 dark:text-brand-300">
                           Example {i + 1}
                         </div>
-                        <div className="space-y-0 divide-y divide-sky-50 p-0 font-mono text-xs">
+                        <div className="space-y-0 divide-y divide-sky-50 p-0 font-mono text-xs dark:divide-slate-700">
                           {ex.input != null && ex.input !== "" && (
                             <div className="px-3 py-2.5">
-                              <p className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-brand-600">
+                              <p className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-300">
                                 Input
                               </p>
-                              <pre className="whitespace-pre-wrap text-slate-800">
+                              <pre className="whitespace-pre-wrap text-slate-800 dark:text-slate-200">
                                 {ex.input}
                               </pre>
                             </div>
                           )}
                           <div className="px-3 py-2.5">
-                            <p className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-accent-700">
+                            <p className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-accent-700 dark:text-lime-300">
                               Output
                             </p>
-                            <pre className="whitespace-pre-wrap text-slate-800">
+                            <pre className="whitespace-pre-wrap text-slate-800 dark:text-slate-200">
                               {ex.output}
                             </pre>
                           </div>
                           {ex.explanation && (
-                            <div className="px-3 py-2.5 text-xs leading-relaxed text-slate-600">
+                            <div className="px-3 py-2.5 text-xs leading-relaxed text-slate-600 dark:text-slate-400">
                               {ex.explanation}
                             </div>
                           )}
@@ -408,10 +408,10 @@ export function PythonCodingWorkspace({
 
                 {problem.constraints && problem.constraints.length > 0 && (
                   <div className="mt-6">
-                    <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                    <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                       Constraints
                     </h2>
-                    <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
+                    <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600 dark:text-slate-300">
                       {problem.constraints.map((c) => (
                         <li key={c}>{c}</li>
                       ))}
@@ -423,12 +423,12 @@ export function PythonCodingWorkspace({
 
             {leftTab === "hints" && (
               <div>
-                <h2 className="flex items-center gap-1.5 text-sm font-semibold text-slate-900">
+                <h2 className="flex items-center gap-1.5 text-sm font-semibold text-slate-900 dark:text-slate-50">
                   <Lightbulb className="h-4 w-4 text-amber-500" />
                   Hints
                 </h2>
                 {problem.approach && (
-                  <p className="mt-3 text-sm leading-relaxed text-slate-700">
+                  <p className="mt-3 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
                     {problem.approach}
                   </p>
                 )}
@@ -436,7 +436,7 @@ export function PythonCodingWorkspace({
                   {problem.hints.slice(0, hintsShown).map((hint, i) => (
                     <li
                       key={i}
-                      className="animate-fade-up rounded-xl border border-amber-200/80 bg-amber-50 p-3 text-sm text-amber-950"
+                      className="animate-fade-up rounded-xl border border-amber-200/80 bg-amber-50 p-3 text-sm text-amber-950 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-100"
                     >
                       {hint}
                     </li>
@@ -448,7 +448,7 @@ export function PythonCodingWorkspace({
                     onClick={() =>
                       setHintsShown((h) => Math.min(h + 1, problem.hints.length))
                     }
-                    className="mt-4 text-sm font-semibold text-brand-700 transition-colors hover:text-brand-800 hover:underline"
+                    className="mt-4 text-sm font-semibold text-brand-700 transition-colors hover:text-brand-800 hover:underline dark:text-brand-300 dark:hover:text-brand-200"
                   >
                     Reveal hint ({hintsShown}/{problem.hints.length})
                   </button>
@@ -458,7 +458,7 @@ export function PythonCodingWorkspace({
 
             {leftTab === "solution" && (
               <div>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-slate-600 dark:text-slate-400">
                   Try the problem first. Reveal the reference solution when you want to
                   compare approaches.
                 </p>
@@ -471,7 +471,7 @@ export function PythonCodingWorkspace({
                     Show solution
                   </button>
                 ) : (
-                  <pre className="mt-4 animate-fade-up overflow-x-auto rounded-xl border border-sky-100 bg-slate-950 p-4 font-mono text-xs leading-relaxed text-sky-100 shadow-inner">
+                  <pre className="mt-4 animate-fade-up overflow-x-auto rounded-xl border border-sky-100 bg-slate-950 p-4 font-mono text-xs leading-relaxed text-sky-100 shadow-inner dark:border-slate-700">
                     {problem.solutionCode}
                   </pre>
                 )}
@@ -479,11 +479,11 @@ export function PythonCodingWorkspace({
             )}
           </div>
 
-          <div className="flex min-w-0 shrink-0 items-center justify-between gap-2 border-t border-sky-200 bg-white px-4 py-2 text-sm">
+          <div className="flex min-w-0 shrink-0 items-center justify-between gap-2 border-t border-sky-200 bg-white px-4 py-2 text-sm dark:border-slate-700 dark:bg-slate-900">
             {prev ? (
               <Link
                 href={getProblemWorkspaceHref(prev)}
-                className="inline-flex min-w-0 items-center gap-1 text-slate-500 transition-colors hover:text-brand-700"
+                className="inline-flex min-w-0 items-center gap-1 text-slate-500 transition-colors hover:text-brand-700 dark:text-slate-400 dark:hover:text-brand-300"
               >
                 <ChevronLeft className="h-4 w-4 shrink-0" />
                 <span className="truncate">{prev.title}</span>
@@ -491,19 +491,19 @@ export function PythonCodingWorkspace({
             ) : (
               <Link
                 href={listHref}
-                className="inline-flex items-center gap-1 text-slate-500 transition-colors hover:text-brand-700"
+                className="inline-flex items-center gap-1 text-slate-500 transition-colors hover:text-brand-700 dark:text-slate-400 dark:hover:text-brand-300"
               >
                 <ChevronLeft className="h-4 w-4" />
                 Problem list
               </Link>
             )}
-            <span className="shrink-0 text-xs font-medium text-slate-400">
+            <span className="shrink-0 text-xs font-medium text-slate-400 dark:text-slate-500">
               {index >= 0 ? `${index + 1} / ${orderedProblems.length}` : null}
             </span>
             {next ? (
               <Link
                 href={getProblemWorkspaceHref(next)}
-                className="inline-flex min-w-0 items-center gap-1 text-slate-500 transition-colors hover:text-brand-700"
+                className="inline-flex min-w-0 items-center gap-1 text-slate-500 transition-colors hover:text-brand-700 dark:text-slate-400 dark:hover:text-brand-300"
               >
                 <span className="truncate">{next.title}</span>
                 <ChevronRight className="h-4 w-4 shrink-0" />
@@ -511,7 +511,7 @@ export function PythonCodingWorkspace({
             ) : (
               <Link
                 href={listHref}
-                className="inline-flex items-center gap-1 font-semibold text-brand-700 hover:underline"
+                className="inline-flex items-center gap-1 font-semibold text-brand-700 hover:underline dark:text-brand-300"
               >
                 Finish set
                 <ChevronRight className="h-4 w-4" />

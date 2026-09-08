@@ -151,7 +151,7 @@ export function ConsolePanel({
     <div
       className={clsx(
         "flex flex-col",
-        light ? "bg-[#f8fbfd]" : "bg-[#0d1117]",
+        light ? "bg-[#f8fbfd]" : "ide-dark-chrome bg-[#0d1117]",
         !compact && (light ? "border-t border-sky-100" : "border-t border-gray-700"),
         fill && "h-full min-h-0"
       )}

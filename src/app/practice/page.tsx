@@ -11,8 +11,9 @@ export default function PracticeHubPage() {
       <header>
         <h1 className="text-3xl font-bold text-gray-900">Practice Problems</h1>
         <p className="mt-2 max-w-2xl text-gray-600">
-          Standalone coding challenges with an in-browser editor, test cases, and
-          instant feedback — separate from course lessons.
+          Standalone coding challenges (Python Basics &amp; Algorithms) with an
+          in-browser editor and instant feedback. Separate from course module
+          challenges inside Learn.
         </p>
       </header>
       <PracticeHubClient

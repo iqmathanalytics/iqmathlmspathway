@@ -36,6 +36,7 @@ export const module7Practice: PracticeProblem[] = [
       "s = {1, 2, 3}\\nprint(s)"
     ],
     "starterCode": "",
+    "approach": "Create s = {1, 2, 3} and print s (order may vary). Key points: s = {1, 2, 3}\\nprint(s) A correct solution looks like this: print(\"{1, 2, 3}\")",
     "publicTests": [
       {
         "id": "m7-t1-p01-t1",
@@ -104,7 +105,8 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{1, 2, 3}\")"
+    "solutionCode": "print(\"{1, 2, 3}\")",
+    "approach": "Print set([1,2,2,3]).\n\nKey points: print(set([1,2,2,3]))\n\nA correct solution looks like this:\nprint(\"{1, 2, 3}\")"
   },
   {
     "id": "m7-t1-p03",
@@ -156,7 +158,8 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(len({1,1,2,2,3}))"
+    "solutionCode": "print(len({1,1,2,2,3}))",
+    "approach": "Print len({1,1,2,2,3}).\n\nKey points: print(len({1,1,2,2,3}))\n\nA correct solution looks like this:\nprint(len({1,1,2,2,3}))"
   },
   {
     "id": "m7-t1-p04",
@@ -201,6 +204,7 @@ export const module7Practice: PracticeProblem[] = [
       "s = set()\\nprint(len(s))"
     ],
     "starterCode": "",
+    "approach": "Create s = set(), print len(s). Key points: s = set()\\nprint(len(s)) A correct solution looks like this: s = set() print(len(s))",
     "publicTests": [
       {
         "id": "m7-t1-p04-t1",
@@ -269,7 +273,8 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(2 in {1,2,3})"
+    "solutionCode": "print(2 in {1,2,3})",
+    "approach": "Print 2 in {1,2,3}.\n\nKey points: print(2 in {1,2,3})\n\nA correct solution looks like this:\nprint(2 in {1,2,3})"
   },
   {
     "id": "m7-t1-p06",
@@ -303,6 +308,7 @@ export const module7Practice: PracticeProblem[] = [
       "print({1, \"a\"})"
     ],
     "starterCode": "",
+    "approach": "Print {1, \"a\"} — sets can mix types. Key points: print({1, \"a\"}) A correct solution looks like this: print(\"{'a', 1}\")",
     "publicTests": [
       {
         "id": "m7-t1-p06-t1",
@@ -345,6 +351,7 @@ export const module7Practice: PracticeProblem[] = [
       "print(set(\"hello\"))"
     ],
     "starterCode": "",
+    "approach": "Print set(\"hello\") — unique letters. Key points: print(set(\"hello\")) A correct solution looks like this: print(\"{'h', 'e', 'l', 'o'}\")",
     "publicTests": [
       {
         "id": "m7-t1-p07-t1",
@@ -398,6 +405,7 @@ export const module7Practice: PracticeProblem[] = [
       "s = {1}\\ns.add(2)\\nprint(s)"
     ],
     "starterCode": "",
+    "approach": "Set s={1}, s.add(2), print s. Key points: s = {1}\\ns.add(2)\\nprint(s) A correct solution looks like this: print(\"{1, 2}\")",
     "publicTests": [
       {
         "id": "m7-t2-p01-t1",
@@ -451,6 +459,7 @@ export const module7Practice: PracticeProblem[] = [
       "s = {1,2,3}\\ns.remove(2)\\nprint(s)"
     ],
     "starterCode": "",
+    "approach": "Set s={1,2,3}, s.remove(2), print s. Key points: s = {1,2,3}\\ns.remove(2)\\nprint(s) A correct solution looks like this: print(\"{1, 3}\")",
     "publicTests": [
       {
         "id": "m7-t2-p02-t1",
@@ -496,6 +505,7 @@ export const module7Practice: PracticeProblem[] = [
       "s = {1,2}\\ns.discard(3)\\nprint(s)"
     ],
     "starterCode": "",
+    "approach": "Set s={1,2}, s.discard(3), print s. Key points: s = {1,2}\\ns.discard(3)\\nprint(s) A correct solution looks like this: print(\"{1, 2}\")",
     "publicTests": [
       {
         "id": "m7-t2-p03-t1",
@@ -549,6 +559,7 @@ export const module7Practice: PracticeProblem[] = [
       "s = {1}\\ns.update({2,3})\\nprint(s)"
     ],
     "starterCode": "",
+    "approach": "Set s={1}, s.update({2,3}), print s. Key points: s = {1}\\ns.update({2,3})\\nprint(s) A correct solution looks like this: print(\"{1, 2, 3}\")",
     "publicTests": [
       {
         "id": "m7-t2-p04-t1",
@@ -594,6 +605,7 @@ export const module7Practice: PracticeProblem[] = [
       "s = {1,2,3}\\nprint(s.pop())"
     ],
     "starterCode": "",
+    "approach": "Set s={1,2,3}, print s.pop() — removes arbitrary item. Key points: s = {1,2,3}\\nprint(s.pop()) A correct solution looks like this: s = {1,2,3} print(s.pop())",
     "publicTests": [
       {
         "id": "m7-t2-p05-t1",
@@ -639,6 +651,7 @@ export const module7Practice: PracticeProblem[] = [
       "s = {1,2}\\ns.clear()\\nprint(s)"
     ],
     "starterCode": "",
+    "approach": "Set s={1,2}, s.clear(), print s. Key points: s = {1,2}\\ns.clear()\\nprint(s) A correct solution looks like this: s = {1,2} s.clear() print(s)",
     "publicTests": [
       {
         "id": "m7-t2-p06-t1",
@@ -684,6 +697,7 @@ export const module7Practice: PracticeProblem[] = [
       "s = {1,2}\\ns.add(2)\\nprint(s)"
     ],
     "starterCode": "",
+    "approach": "Set s={1,2}, s.add(2), print s. Key points: s = {1,2}\\ns.add(2)\\nprint(s) A correct solution looks like this: print(\"{1, 2}\")",
     "publicTests": [
       {
         "id": "m7-t2-p07-t1",
@@ -752,7 +766,8 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{1, 2, 3}\")"
+    "solutionCode": "print(\"{1, 2, 3}\")",
+    "approach": "Print {1,2} | {2,3}.\n\nKey points: print({1,2} | {2,3})\n\nA correct solution looks like this:\nprint(\"{1, 2, 3}\")"
   },
   {
     "id": "m7-t3-p02",
@@ -812,7 +827,8 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{2, 3}\")"
+    "solutionCode": "print(\"{2, 3}\")",
+    "approach": "Print {1,2,3} & {2,3,4}.\n\nKey points: print({1,2,3} & {2,3,4})\n\nA correct solution looks like this:\nprint(\"{2, 3}\")"
   },
   {
     "id": "m7-t3-p03",
@@ -872,7 +888,8 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{1, 3}\")"
+    "solutionCode": "print(\"{1, 3}\")",
+    "approach": "Print {1,2,3} - {2}.\n\nKey points: print({1,2,3} - {2})\n\nA correct solution looks like this:\nprint(\"{1, 3}\")"
   },
   {
     "id": "m7-t3-p04",
@@ -932,7 +949,8 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{1, 3}\")"
+    "solutionCode": "print(\"{1, 3}\")",
+    "approach": "Print {1,2} ^ {2,3}.\n\nKey points: print({1,2} ^ {2,3})\n\nA correct solution looks like this:\nprint(\"{1, 3}\")"
   },
   {
     "id": "m7-t3-p05",
@@ -992,7 +1010,8 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({1,2} <= {1,2,3})"
+    "solutionCode": "print({1,2} <= {1,2,3})",
+    "approach": "Print {1,2} <= {1,2,3}.\n\nKey points: print({1,2} <= {1,2,3})\n\nA correct solution looks like this:\nprint({1,2} <= {1,2,3})"
   },
   {
     "id": "m7-t3-p06",
@@ -1052,7 +1071,8 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({1,2,3} >= {1,2})"
+    "solutionCode": "print({1,2,3} >= {1,2})",
+    "approach": "Print {1,2,3} >= {1,2}.\n\nKey points: print({1,2,3} >= {1,2})\n\nA correct solution looks like this:\nprint({1,2,3} >= {1,2})"
   },
   {
     "id": "m7-t3-p07",
@@ -1112,7 +1132,8 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({1,2}.isdisjoint({3,4}))"
+    "solutionCode": "print({1,2}.isdisjoint({3,4}))",
+    "approach": "Print {1,2}.isdisjoint({3,4}).\n\nKey points: print({1,2}.isdisjoint({3,4}))\n\nA correct solution looks like this:\nprint({1,2}.isdisjoint({3,4}))"
   },
   {
     "id": "m7-t4-p01",
@@ -1172,7 +1193,8 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{1, 2, 3}\")"
+    "solutionCode": "print(\"{1, 2, 3}\")",
+    "approach": "Print {1,2} | {2,3}.\n\nKey points: print({1,2} | {2,3})\n\nA correct solution looks like this:\nprint(\"{1, 2, 3}\")"
   },
   {
     "id": "m7-t4-p02",
@@ -1232,7 +1254,8 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{2, 3}\")"
+    "solutionCode": "print(\"{2, 3}\")",
+    "approach": "Print {1,2,3} & {2,3,4}.\n\nKey points: print({1,2,3} & {2,3,4})\n\nA correct solution looks like this:\nprint(\"{2, 3}\")"
   },
   {
     "id": "m7-t4-p03",
@@ -1292,7 +1315,8 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{1, 3}\")"
+    "solutionCode": "print(\"{1, 3}\")",
+    "approach": "Print {1,2,3} - {2}.\n\nKey points: print({1,2,3} - {2})\n\nA correct solution looks like this:\nprint(\"{1, 3}\")"
   },
   {
     "id": "m7-t4-p04",
@@ -1352,7 +1376,8 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{1, 3}\")"
+    "solutionCode": "print(\"{1, 3}\")",
+    "approach": "Print {1,2} ^ {2,3}.\n\nKey points: print({1,2} ^ {2,3})\n\nA correct solution looks like this:\nprint(\"{1, 3}\")"
   },
   {
     "id": "m7-t4-p05",
@@ -1412,7 +1437,8 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({1,2} <= {1,2,3})"
+    "solutionCode": "print({1,2} <= {1,2,3})",
+    "approach": "Print {1,2} <= {1,2,3}.\n\nKey points: print({1,2} <= {1,2,3})\n\nA correct solution looks like this:\nprint({1,2} <= {1,2,3})"
   },
   {
     "id": "m7-t4-p06",
@@ -1472,7 +1498,8 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({1,2,3} >= {1,2})"
+    "solutionCode": "print({1,2,3} >= {1,2})",
+    "approach": "Print {1,2,3} >= {1,2}.\n\nKey points: print({1,2,3} >= {1,2})\n\nA correct solution looks like this:\nprint({1,2,3} >= {1,2})"
   },
   {
     "id": "m7-t4-p07",
@@ -1532,6 +1559,7 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({1,2}.isdisjoint({3,4}))"
+    "solutionCode": "print({1,2}.isdisjoint({3,4}))",
+    "approach": "Print {1,2}.isdisjoint({3,4}).\n\nKey points: print({1,2}.isdisjoint({3,4}))\n\nA correct solution looks like this:\nprint({1,2}.isdisjoint({3,4}))"
   }
 ];

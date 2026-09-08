@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { PracticeProblem } from "@/lib/types";
 import { ChevronRight, Lock } from "lucide-react";
 import { PracticeBreadcrumb } from "./PracticeBreadcrumb";
+import { courseTopicChallengeHref } from "@/lib/course-practice-links";
 
 interface PracticePaywallProps {
   problem: PracticeProblem;
@@ -15,18 +16,20 @@ interface PracticePaywallProps {
 
 export function PracticePaywall({
   problem,
+  moduleSlug,
+  topicSlug,
   moduleName,
   topicTitle,
 }: PracticePaywallProps) {
   return (
     <div className="flex min-h-[calc(100vh-8rem)] flex-col">
       <PracticeBreadcrumb
-        moduleSlug="python"
-        topicSlug={problem.difficulty}
+        moduleSlug={moduleSlug}
+        topicSlug={topicSlug}
         moduleName={moduleName}
         topicTitle={topicTitle}
         problemTitle={problem.title}
-        difficulty={problem.difficulty}
+        coursePractice
       />
       <div className="flex flex-1 items-center justify-center rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
         <div className="max-w-md text-center">
@@ -44,10 +47,10 @@ export function PracticePaywall({
             <ChevronRight className="h-4 w-4" />
           </Link>
           <Link
-            href="/practice/python"
+            href={courseTopicChallengeHref(moduleSlug, topicSlug)}
             className="mt-3 block text-sm text-brand-700 hover:underline"
           >
-            Back to problem list
+            Back to challenge list
           </Link>
         </div>
       </div>

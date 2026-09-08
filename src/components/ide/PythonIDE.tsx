@@ -71,8 +71,8 @@ export function PythonIDE({
     <div
       className={
         fill
-          ? "flex h-full min-h-0 flex-col overflow-hidden rounded-xl border border-gray-700 bg-[#0d1117] shadow-xl ring-1 ring-black/20"
-          : "overflow-hidden rounded-xl border border-gray-700 bg-[#0d1117] shadow-xl ring-1 ring-black/20"
+          ? "ide-dark-chrome flex h-full min-h-0 flex-col overflow-hidden rounded-xl border border-gray-700 bg-[#0d1117] shadow-xl ring-1 ring-black/20"
+          : "ide-dark-chrome overflow-hidden rounded-xl border border-gray-700 bg-[#0d1117] shadow-xl ring-1 ring-black/20"
       }
     >
       {/* Title bar */}

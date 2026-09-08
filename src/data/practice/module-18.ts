@@ -51,7 +51,8 @@ export const module18Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"=== Class Report ===\")"
+    "solutionCode": "print(\"=== Class Report ===\")",
+    "approach": "Print \"=== Class Report ===\" on one line.\n\nKey points: print(\"=== Class Report ===\")\n\nA correct solution looks like this:\nprint(\"=== Class Report ===\")"
   },
   {
     "id": "m18-t1-p02",
@@ -86,6 +87,7 @@ export const module18Practice: PracticeProblem[] = [
       "students = {\"Alice\": [85, 92]}\\nprint(students[\"Alice\"][0])"
     ],
     "starterCode": "",
+    "approach": "Create students = {\"Alice\": [85, 92]}, print students[\"Alice\"][0]. Key points: students = {\"Alice\": [85, 92]}\\nprint(students[\"Alice\"][0]) A correct solution looks like this: students = {\"Alice\": [85, 92]} print(students[\"Alice\"][0])",
     "publicTests": [
       {
         "id": "m18-t1-p02-t1",
@@ -146,7 +148,8 @@ export const module18Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(len([\"dict\",\"list\",\"set\",\"tuple\"]))"
+    "solutionCode": "print(len([\"dict\",\"list\",\"set\",\"tuple\"]))",
+    "approach": "Print len([\"dict\",\"list\",\"set\",\"tuple\"]).\n\nKey points: print(len([\"dict\",\"list\",\"set\",\"tuple\"]))\n\nA correct solution looks like this:\nprint(len([\"dict\",\"list\",\"set\",\"tuple\"]))"
   },
   {
     "id": "m18-t1-p04",
@@ -180,6 +183,7 @@ export const module18Practice: PracticeProblem[] = [
       "s = {\"Math\",\"Science\",\"Math\"}\\nprint(len(s))"
     ],
     "starterCode": "",
+    "approach": "Create s = {\"Math\",\"Science\",\"Math\"}, print len(s). Key points: s = {\"Math\",\"Science\",\"Math\"}\\nprint(len(s)) A correct solution looks like this: s = {\"Math\",\"Science\",\"Math\"} print(len(s))",
     "publicTests": [
       {
         "id": "m18-t1-p04-t1",
@@ -240,7 +244,8 @@ export const module18Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"data,logic,functions,capstone\")"
+    "solutionCode": "print(\"data,logic,functions,capstone\")",
+    "approach": "Print \"data,logic,functions,capstone\" (comma-separated steps).\n\nKey points: print(\"data,logic,functions,capstone\")\n\nA correct solution looks like this:\nprint(\"data,logic,functions,capstone\")"
   },
   {
     "id": "m18-t2-p01",
@@ -277,6 +282,7 @@ export const module18Practice: PracticeProblem[] = [
       "students = {\"Alice\": [85], \"Bob\": [70]}\\nprint(len(students))"
     ],
     "starterCode": "",
+    "approach": "students = {\"Alice\": [85], \"Bob\": [70]}, print len(students). Key points: students = {\"Alice\": [85], \"Bob\": [70]}\\nprint(len(students)) A correct solution looks like this: students = {\"Alice\": [85], \"Bob\": [70]} print(len(students))",
     "publicTests": [
       {
         "id": "m18-t2-p01-t1",
@@ -322,6 +328,7 @@ export const module18Practice: PracticeProblem[] = [
       "subjects = set()\\nsubjects.add(\"Math\")\\nprint(\"Math\" in subjects)"
     ],
     "starterCode": "",
+    "approach": "subjects = set(); subjects.add(\"Math\"); print \"Math\" in subjects. Key points: subjects = set()\\nsubjects.add(\"Math\")\\nprint(\"Math\" in subjects) A correct solution looks like this: subjects = set() subjects.add(\"Math\") print(\"Math\" in subjects)",
     "publicTests": [
       {
         "id": "m18-t2-p02-t1",
@@ -367,6 +374,7 @@ export const module18Practice: PracticeProblem[] = [
       "record = (\"Science\", 88)\\nsubject, score = record\\nprint(score)"
     ],
     "starterCode": "",
+    "approach": "record = (\"Science\", 88); subject, score = record; print score. Key points: record = (\"Science\", 88)\\nsubject, score = record\\nprint(score) A correct solution looks like this: record = (\"Science\", 88) subject, score = record print(score)",
     "publicTests": [
       {
         "id": "m18-t2-p03-t1",
@@ -420,6 +428,7 @@ export const module18Practice: PracticeProblem[] = [
       "students = {\"Alice\": [85]}\\nstudents[\"Alice\"].append(92)\\nprint(students[\"Alice\"][-1])"
     ],
     "starterCode": "",
+    "approach": "students = {\"Alice\": [85]}; students[\"Alice\"].append(92); print students[\"Alice\"][-1]. Key points: students = {\"Alice\": [85]}\\nstudents[\"Alice\"].append(92)\\nprint(students[\"Alice\"][-1]) A correct solution looks like this: students = {\"Alice\": [85]} students[\"Alice\"].append(92) print(students[\"Alice\"][-1])",
     "publicTests": [
       {
         "id": "m18-t2-p04-t1",
@@ -465,6 +474,7 @@ export const module18Practice: PracticeProblem[] = [
       "students = {}\\nstudents[\"Cara\"] = [55, 48]\\nprint(students[\"Cara\"][1])"
     ],
     "starterCode": "",
+    "approach": "students = {}; students[\"Cara\"] = [55, 48]; print students[\"Cara\"][1]. Key points: students = {}\\nstudents[\"Cara\"] = [55, 48]\\nprint(students[\"Cara\"][1]) A correct solution looks like this: students = {} students[\"Cara\"] = [55, 48] print(students[\"Cara\"][1])",
     "publicTests": [
       {
         "id": "m18-t2-p05-t1",
@@ -518,6 +528,7 @@ export const module18Practice: PracticeProblem[] = [
       "students = {\"Bob\": [70]}\\nstudents[\"Bob\"].extend([88, 91])\\nprint(sum(students[\"Bob\"]))"
     ],
     "starterCode": "",
+    "approach": "students = {\"Bob\": [70]}; students[\"Bob\"].extend([88, 91]); print sum(students[\"Bob\"]). Key points: students = {\"Bob\": [70]}\\nstudents[\"Bob\"].extend([88, 91])\\nprint(sum(students[\"Bob\"])) A correct solution looks like this: students = {\"Bob\": [70]} students[\"Bob\"].extend([88, 91]) print(sum(students[\"Bob\"]))",
     "publicTests": [
       {
         "id": "m18-t2-p06-t1",
@@ -563,6 +574,7 @@ export const module18Practice: PracticeProblem[] = [
       "grades = [85, 92, 78]\\nprint(sum(grades) / len(grades))"
     ],
     "starterCode": "",
+    "approach": "grades = [85, 92, 78]; print sum(grades) / len(grades). Key points: grades = [85, 92, 78]\\nprint(sum(grades) / len(grades)) A correct solution looks like this: grades = [85, 92, 78] print(sum(grades) / len(grades))",
     "publicTests": [
       {
         "id": "m18-t3-p01-t1",
@@ -606,6 +618,7 @@ export const module18Practice: PracticeProblem[] = [
       "avg = 75\\nprint(\"PASS\" if avg >= 60 else \"FAIL\")"
     ],
     "starterCode": "",
+    "approach": "avg = 75; print \"PASS\" if avg >= 60 else \"FAIL\". Key points: avg = 75\\nprint(\"PASS\" if avg >= 60 else \"FAIL\") A correct solution looks like this: avg = 75 print(\"PASS\" if avg >= 60 else \"FAIL\")",
     "publicTests": [
       {
         "id": "m18-t3-p02-t1",
@@ -652,6 +665,7 @@ export const module18Practice: PracticeProblem[] = [
       "students = {\"Alice\": [90]}\\nprint(list(students.keys())[0])"
     ],
     "starterCode": "",
+    "approach": "students = {\"Alice\": [90]}; print list(students.keys())[0]. Key points: students = {\"Alice\": [90]}\\nprint(list(students.keys())[0]) A correct solution looks like this: students = {\"Alice\": [90]} print(list(students.keys())[0])",
     "publicTests": [
       {
         "id": "m18-t3-p03-t1",
@@ -697,6 +711,7 @@ export const module18Practice: PracticeProblem[] = [
       "averages = {\"Alice\": 85, \"Bob\": 55}\\nprint([n for n,a in averages.items() if a >= 60][0])"
     ],
     "starterCode": "",
+    "approach": "averages = {\"Alice\": 85, \"Bob\": 55}; print [n for n,a in averages.items() if a >= 60][0]. Key points: averages = {\"Alice\": 85, \"Bob\": 55}\\nprint([n for n,a in averages.items() if a >= 60][0]) A correct solution looks like this: averages = {\"Alice\": 85, \"Bob\": 55} print([n for n,a in averages.items() if a >= 60][0])",
     "publicTests": [
       {
         "id": "m18-t3-p04-t1",
@@ -740,6 +755,7 @@ export const module18Practice: PracticeProblem[] = [
       "avg = 55\\nif avg >= 60: print(\"PASS\")\\nelif avg >= 50: print(\"RETAKE\")\\nelse: print(\"FAIL\")"
     ],
     "starterCode": "",
+    "approach": "avg = 55; print RETAKE if 50 <= avg < 60 else PASS. Key points: avg = 55\\nif avg >= 60: print(\"PASS\")\\nelif avg >= 50: print(\"RETAKE\")\\nelse: print(\"FAIL\") A correct solution looks like this: avg = 55 if avg >= 60: print(\"PASS\") elif avg >= 50: print(\"RETAKE\") else: print(\"FAIL\")",
     "publicTests": [
       {
         "id": "m18-t3-p05-t1",
@@ -785,6 +801,7 @@ export const module18Practice: PracticeProblem[] = [
       "students = {\"A\": [80, 90], \"B\": [70, 70]}\\ntotal = sum(sum(g) for g in students.values())\\ncount = sum(len(g) for g in students.values())\\nprint(total / count)"
     ],
     "starterCode": "",
+    "approach": "students = {\"A\": [80, 90], \"B\": [70, 70]}; print sum(sum(g) for g in students.values()) / sum(len(g) for g in students.values()). Key points: students = {\"A\": [80, 90], \"B\": [70, 70]}\\ntotal = sum(sum(g) for g in students.values())\\ncount = sum(len(g) for g in students.values())\\nprint(total / count) A correct solution looks like this: students = {\"A\": [80, 90], \"B\": [70, 70]} total = sum(sum(g) for g in students.values()) count = sum(len(g) for g in students.values()) print(total / count)",
     "publicTests": [
       {
         "id": "m18-t3-p06-t1",
@@ -836,6 +853,7 @@ export const module18Practice: PracticeProblem[] = [
       "def average(s):\\n    return sum(s)/len(s)\\nprint(average([85, 92, 78]))"
     ],
     "starterCode": "",
+    "approach": "def average(s): return sum(s)/len(s) print average([85, 92, 78]). Key points: def average(s):\\n return sum(s)/len(s)\\nprint(average([85, 92, 78])) A correct solution looks like this: def average(s): return sum(s)/len(s) print(average([85, 92, 78]))",
     "publicTests": [
       {
         "id": "m18-t4-p01-t1",
@@ -879,6 +897,7 @@ export const module18Practice: PracticeProblem[] = [
       "def letter_grade(a):\\n    if a >= 80: return \"B\"\\n    return \"F\"\\nprint(letter_grade(85))"
     ],
     "starterCode": "",
+    "approach": "def letter_grade(a): if a >= 80: return \"B\" return \"F\" print letter_grade(85). Key points: def letter_grade(a):\\n if a >= 80: return \"B\"\\n return \"F\"\\nprint(letter_grade(85)) A correct solution looks like this: def letter_grade(a): if a >= 80: return \"B\" return \"F\" print(letter_grade(85))",
     "publicTests": [
       {
         "id": "m18-t4-p02-t1",
@@ -921,6 +940,7 @@ export const module18Practice: PracticeProblem[] = [
       "name = \"Alice\"\\navg = 85.333\\nprint(f\"{name}: avg {avg:.1f}\")"
     ],
     "starterCode": "",
+    "approach": "name=\"Alice\"; avg=85.333; print f\"{name}: avg {avg:.1f}\". Key points: name = \"Alice\"\\navg = 85.333\\nprint(f\"{name}: avg {avg:.1f}\") A correct solution looks like this: name = \"Alice\" avg = 85.333 print(f\"{name}: avg {avg:.1f}\")",
     "publicTests": [
       {
         "id": "m18-t4-p03-t1",
@@ -974,6 +994,7 @@ export const module18Practice: PracticeProblem[] = [
       "ranking = [(\"Alice\", 85), (\"Bob\", 91)]\\nranking.sort(key=lambda x: x[1], reverse=True)\\nprint(ranking[0][0])"
     ],
     "starterCode": "",
+    "approach": "ranking = [(\"Alice\", 85), (\"Bob\", 91)]; ranking.sort(key=lambda x: x[1], reverse=True); print ranking[0][0]. Key points: ranking = [(\"Alice\", 85), (\"Bob\", 91)]\\nranking.sort(key=lambda x: x[1], reverse=True)\\nprint(ranking[0][0]) A correct solution looks like this: ranking = [(\"Alice\", 85), (\"Bob\", 91)] ranking.sort(key=lambda x: x[1], reverse=True) print(ranking[0][0])",
     "publicTests": [
       {
         "id": "m18-t4-p04-t1",
@@ -1017,6 +1038,7 @@ export const module18Practice: PracticeProblem[] = [
       "def status(a):\\n    return \"PASS\" if a >= 60 else \"FAIL\"\\nprint(status(72))"
     ],
     "starterCode": "",
+    "approach": "def status(a): return \"PASS\" if a >= 60 else \"FAIL\" print status(72). Key points: def status(a):\\n return \"PASS\" if a >= 60 else \"FAIL\"\\nprint(status(72)) A correct solution looks like this: def status(a): return \"PASS\" if a >= 60 else \"FAIL\" print(status(72))",
     "publicTests": [
       {
         "id": "m18-t4-p05-t1",
@@ -1060,6 +1082,7 @@ export const module18Practice: PracticeProblem[] = [
       "def line(n,a):\\n    return f\"{n}: avg {a:.1f}\"\\nprint(line(\"Cara\", 72.5))"
     ],
     "starterCode": "",
+    "approach": "def line(n,a): return f\"{n}: avg {a:.1f}\" print line(\"Cara\", 72.5). Key points: def line(n,a):\\n return f\"{n}: avg {a:.1f}\"\\nprint(line(\"Cara\", 72.5)) A correct solution looks like this: def line(n,a): return f\"{n}: avg {a:.1f}\" print(line(\"Cara\", 72.5))",
     "publicTests": [
       {
         "id": "m18-t4-p06-t1",
@@ -1120,7 +1143,8 @@ export const module18Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"=== Class Report ===\")"
+    "solutionCode": "print(\"=== Class Report ===\")",
+    "approach": "print \"=== Class Report ===\"\n\nKey points: print(\"=== Class Report ===\")\n\nA correct solution looks like this:\nprint(\"=== Class Report ===\")"
   },
   {
     "id": "m18-t5-p02",
@@ -1155,6 +1179,7 @@ export const module18Practice: PracticeProblem[] = [
       "def average(s): return sum(s)/len(s)\\ngrades = [85,92,78]\\nprint(round(average(grades),1))"
     ],
     "starterCode": "",
+    "approach": "def average(s): return sum(s)/len(s) grades=[85,92,78]; print round(average(grades),1). Key points: def average(s): return sum(s)/len(s)\\ngrades = [85,92,78]\\nprint(round(average(grades),1)) A correct solution looks like this: def average(s): return sum(s)/len(s) grades = [85,92,78] print(round(average(grades),1))",
     "publicTests": [
       {
         "id": "m18-t5-p02-t1",
@@ -1200,6 +1225,7 @@ export const module18Practice: PracticeProblem[] = [
       "averages = {\"Alice\": 85, \"Bob\": 91}\\nprint(max(averages.items(), key=lambda x: x[1])[0])"
     ],
     "starterCode": "",
+    "approach": "averages={\"Alice\":85,\"Bob\":91}; print max(averages.items(), key=lambda x:x[1])[0]. Key points: averages = {\"Alice\": 85, \"Bob\": 91}\\nprint(max(averages.items(), key=lambda x: x[1])[0]) A correct solution looks like this: averages = {\"Alice\": 85, \"Bob\": 91} print(max(averages.items(), key=lambda x: x[1])[0])",
     "publicTests": [
       {
         "id": "m18-t5-p03-t1",
@@ -1245,6 +1271,7 @@ export const module18Practice: PracticeProblem[] = [
       "students = {\"Alice\": [85]}\\nstudents[\"Dan\"] = [88, 76, 94]\\nprint(len(students))"
     ],
     "starterCode": "",
+    "approach": "students={\"Alice\":[85]}; students[\"Dan\"]=[88,76,94]; print len(students). Key points: students = {\"Alice\": [85]}\\nstudents[\"Dan\"] = [88, 76, 94]\\nprint(len(students)) A correct solution looks like this: students = {\"Alice\": [85]} students[\"Dan\"] = [88, 76, 94] print(len(students))",
     "publicTests": [
       {
         "id": "m18-t5-p04-t1",
@@ -1290,6 +1317,7 @@ export const module18Practice: PracticeProblem[] = [
       "averages = {\"Alice\": 85, \"Bob\": 55, \"Cara\": 72}\\nprint(len([a for a in averages.values() if a >= 60]))"
     ],
     "starterCode": "",
+    "approach": "averages={\"Alice\":85,\"Bob\":55,\"Cara\":72}; print len([a for a in averages.values() if a>=60]). Key points: averages = {\"Alice\": 85, \"Bob\": 55, \"Cara\": 72}\\nprint(len([a for a in averages.values() if a >= 60])) A correct solution looks like this: averages = {\"Alice\": 85, \"Bob\": 55, \"Cara\": 72} print(len([a for a in averages.values() if a >= 60]))",
     "publicTests": [
       {
         "id": "m18-t5-p05-t1",
@@ -1333,6 +1361,7 @@ export const module18Practice: PracticeProblem[] = [
       "def lg(a):\\n    if a >= 90: return \"A\"\\n    if a >= 80: return \"B\"\\n    return \"F\"\\naverages = {\"Alice\": 85, \"Cara\": 92}\\nprint(sum(1 for v in averages.values() if lg(v) == \"B\"))"
     ],
     "starterCode": "",
+    "approach": "def lg(a): if a>=90: return \"A\" if a>=80: return \"B\" return \"F\" averages={\"Alice\":85,\"Cara\":92}; print sum(1 for v in averages.values() if lg(v)==\"B\"). Key points: def lg(a):\\n if a >= 90: return \"A\"\\n if a >= 80: return \"B\"\\n return \"F\"\\naverages = {\"Alice\": 85, \"Cara\": 92}\\nprint(sum(1 for v in averages.values() if lg(v) == \"B\")) A correct solution looks like this: def lg(a): if a >= 90: return \"A\" if a >= 80: return \"B\" return \"F\" averages = {\"Alice\": 85, \"Cara\": 92} print(sum(1 for v in averages.values() if lg(v) == \"B\"))",
     "publicTests": [
       {
         "id": "m18-t5-p06-t1",
@@ -1378,6 +1407,7 @@ export const module18Practice: PracticeProblem[] = [
       "students = {\"A\": [90], \"B\": [50]}\\nprint(sum(1 for g in students.values() if sum(g)/len(g) >= 60))"
     ],
     "starterCode": "",
+    "approach": "students={\"A\":[90],\"B\":[50]}; print sum(1 for g in students.values() if sum(g)/len(g)>=60). Key points: students = {\"A\": [90], \"B\": [50]}\\nprint(sum(1 for g in students.values() if sum(g)/len(g) >= 60)) A correct solution looks like this: students = {\"A\": [90], \"B\": [50]} print(sum(1 for g in students.values() if sum(g)/len(g) >= 60))",
     "publicTests": [
       {
         "id": "m18-t5-p07-t1",

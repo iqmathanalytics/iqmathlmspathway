@@ -606,7 +606,7 @@ export function LessonContent({
                       : "border-gray-200 bg-gray-50/50"
                   }`}
                 >
-                  <div className="mb-2 flex items-center gap-2 text-sm font-medium text-brand-900">
+                  <div className="mb-2 flex items-center gap-2 text-sm font-medium text-brand-900 dark:text-brand-200">
                     <Pencil className="h-4 w-4" />
                     Practice
                   </div>
@@ -717,11 +717,11 @@ export function LessonContent({
           // Right-side signal blocks — rendered invisibly in the left column
           case "jupyter-notebook":
             return (
-              <div key={i} className="my-4 flex items-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-4 py-3">
-                <span className="text-xs font-semibold text-violet-700">
+              <div key={i} className="my-4 flex items-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-4 py-3 dark:border-violet-800 dark:bg-violet-950/40">
+                <span className="text-xs font-semibold text-violet-700 dark:text-violet-200">
                   Notebook exercise on the right →
                 </span>
-                <span className="text-xs text-violet-500">
+                <span className="text-xs text-violet-500 dark:text-violet-300">
                   Copy the cells into Jupyter or Google Colab to run the real code.
                 </span>
               </div>
@@ -760,11 +760,11 @@ export function LessonContent({
             ) : null;
           case "how-to-create-prompts":
             return (
-              <div key={i} className="my-4 flex items-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-4 py-3">
-                <span className="text-xs font-semibold text-violet-700">
+              <div key={i} className="my-4 flex items-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-4 py-3 dark:border-violet-800 dark:bg-violet-950/40">
+                <span className="text-xs font-semibold text-violet-700 dark:text-violet-200">
                   How to Create AI Prompts on the right →
                 </span>
-                <span className="text-xs text-violet-500">
+                <span className="text-xs text-violet-500 dark:text-violet-300">
                   Work through each step and tick it off when practised.
                 </span>
               </div>
@@ -829,9 +829,9 @@ export function LessonContent({
             );
           case "testing-chatbot-guide":
             return (
-              <div key={i} className="my-4 flex items-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-4 py-3">
-                <span className="text-xs font-semibold text-violet-700">Test scenarios checklist on the right →</span>
-                <span className="text-xs text-violet-500">Use the Groq Playground to run each test, then tick it off.</span>
+              <div key={i} className="my-4 flex items-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-4 py-3 dark:border-violet-800 dark:bg-violet-950/40">
+                <span className="text-xs font-semibold text-violet-700 dark:text-violet-200">Test scenarios checklist on the right →</span>
+                <span className="text-xs text-violet-500 dark:text-violet-300">Use the Groq Playground to run each test, then tick it off.</span>
               </div>
             );
           case "response-quality-guide":

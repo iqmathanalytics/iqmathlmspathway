@@ -18,6 +18,8 @@ import { GroqApiKeySetup } from "@/components/ai/GroqApiKeySetup";
 import { TopicAccessGate } from "@/components/lesson/TopicAccessGate";
 import { TopicPageShell } from "@/components/lesson/TopicPageShell";
 import { AddOnVideoSectionView } from "@/components/lesson/AddOnVideoSectionView";
+import { TopicPracticeLink } from "@/components/lesson/TopicPracticeLink";
+import { getPracticeCountByTopic } from "@/data/practice";
 
 interface TopicPageProps {
   params: Promise<{ moduleSlug: string; topicSlug: string }>;
@@ -71,8 +73,12 @@ export default async function TopicPage({ params }: TopicPageProps) {
 
   const quiz = getQuiz(topic.id);
   const hasQuiz = !!quiz;
-  // Topics with no "practice" block have no IDE exercise — hide the IDE requirement
-  const hasIde = lesson.blocks.some((b) => b.type === "practice");
+  // Python: module challenges replace the in-lesson IDE (no ide_ran gate).
+  // Other courses: keep IDE requirement when the lesson has practice blocks.
+  const hasIde =
+    module.course !== "python" &&
+    lesson.blocks.some((b) => b.type === "practice");
+  const curriculumPracticeCount = getPracticeCountByTopic(topic.id);
   const { prev, next } = getAdjacentPublishedTopics(module.slug, topic.slug);
 
   return (
@@ -140,6 +146,11 @@ export default async function TopicPage({ params }: TopicPageProps) {
           footerSlot={
             <>
               <KeyTakeaways items={lesson.keyTakeaways} />
+              <TopicPracticeLink
+                moduleSlug={module.slug}
+                topicSlug={topic.slug}
+                count={curriculumPracticeCount}
+              />
               {quiz && <TopicQuizSection quiz={quiz} />}
               <div className="mt-8">
                 <MarkCompleteButton topicId={topic.id} hasQuiz={hasQuiz} hasIde={hasIde} />

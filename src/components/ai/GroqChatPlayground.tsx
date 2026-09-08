@@ -146,7 +146,7 @@ export function GroqChatPlayground({
   const hasKey = apiKey.trim().length > 0;
 
   return (
-    <div className="flex flex-col h-full min-h-0 rounded-2xl overflow-hidden shadow-lg border border-gray-800/60 bg-gray-950">
+    <div className="ide-dark-chrome flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-gray-800/60 bg-gray-950 shadow-lg">
       {/* Gradient header */}
       <div className="relative flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-violet-900 via-indigo-900 to-violet-900 border-b border-violet-700/40">
         <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-violet-500/20 ring-1 ring-violet-400/40">

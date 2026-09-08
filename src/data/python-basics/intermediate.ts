@@ -2,7 +2,7 @@ import { buildBasicsProblem } from "./helpers";
 
 export const intermediateProblems = [
   buildBasicsProblem({
-    order: 17,
+    order: 1,
     slug: "average-args",
     title: "Average of Any Count",
     difficulty: "medium",
@@ -35,7 +35,7 @@ If no numbers are passed, return 0.`,
   }),
 
   buildBasicsProblem({
-    order: 18,
+    order: 2,
     slug: "lambda-map-filter",
     title: "Lambda with Map and Filter",
     difficulty: "medium",
@@ -96,7 +96,7 @@ def double_if_greater(numbers, threshold):
   }),
 
   buildBasicsProblem({
-    order: 19,
+    order: 3,
     slug: "comprehensions-practice",
     title: "List and Dict Comprehensions",
     difficulty: "medium",
@@ -156,7 +156,7 @@ def word_lengths(words):
   }),
 
   buildBasicsProblem({
-    order: 20,
+    order: 4,
     slug: "safe-integer-parse",
     title: "Safe Integer Parse",
     difficulty: "medium",
@@ -189,7 +189,7 @@ If conversion fails (ValueError), return None instead of crashing.`,
   }),
 
   buildBasicsProblem({
-    order: 21,
+    order: 5,
     slug: "file-number-range",
     title: "Write and Read a Number File",
     difficulty: "medium",
@@ -259,7 +259,7 @@ assert read_ints(path) == list(range(1, 21))`,
   }),
 
   buildBasicsProblem({
-    order: 22,
+    order: 6,
     slug: "days-until-new-year",
     title: "Days Until New Year",
     difficulty: "medium",
@@ -320,7 +320,7 @@ assert days_until_new_year(date(2026, 1, 1)) == 365`,
   }),
 
   buildBasicsProblem({
-    order: 23,
+    order: 7,
     slug: "bank-account",
     title: "Bank Account Class",
     difficulty: "medium",
@@ -389,7 +389,7 @@ assert acct.balance == 100`,
   }),
 
   buildBasicsProblem({
-    order: 24,
+    order: 8,
     slug: "product-receipt",
     title: "Product Receipt Total",
     difficulty: "medium",
@@ -433,7 +433,7 @@ def format_money(value):
   }),
 
   buildBasicsProblem({
-    order: 25,
+    order: 9,
     slug: "extract-emails",
     title: "Extract Emails",
     difficulty: "medium",
@@ -474,7 +474,7 @@ def extract_emails(text):
   }),
 
   buildBasicsProblem({
-    order: 26,
+    order: 10,
     slug: "student-results",
     title: "Student Results",
     difficulty: "medium",
@@ -562,7 +562,7 @@ assert loads_results(text) == got`,
   }),
 
   buildBasicsProblem({
-    order: 27,
+    order: 11,
     slug: "library-system",
     title: "Library System",
     difficulty: "medium",

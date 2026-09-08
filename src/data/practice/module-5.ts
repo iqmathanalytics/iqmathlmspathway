@@ -45,6 +45,7 @@ export const module5Practice: PracticeProblem[] = [
       "nums = [1, 2, 3]\\nprint(nums)"
     ],
     "starterCode": "",
+    "approach": "Create nums = [1, 2, 3] and print nums. Key points: nums = [1, 2, 3]\\nprint(nums) A correct solution looks like this: nums = [1, 2, 3] print(nums)",
     "publicTests": [
       {
         "id": "m5-t1-p01-t1",
@@ -105,7 +106,8 @@ export const module5Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = []\nprint(len(items))"
+    "solutionCode": "items = []\nprint(len(items))",
+    "approach": "Create items = [] and print len(items).\n\nKey points: items = []\\nprint(len(items))\n\nA correct solution looks like this:\nitems = []\nprint(len(items))"
   },
   {
     "id": "m5-t1-p03",
@@ -142,6 +144,7 @@ export const module5Practice: PracticeProblem[] = [
       "data = [1, \"hi\", True]\\nprint(data)"
     ],
     "starterCode": "",
+    "approach": "Create data = [1, \"hi\", True] and print data. Key points: data = [1, \"hi\", True]\\nprint(data) A correct solution looks like this: data = [1, \"hi\", True] print(data)",
     "publicTests": [
       {
         "id": "m5-t1-p03-t1",
@@ -188,6 +191,7 @@ export const module5Practice: PracticeProblem[] = [
       "grid = [[1,2],[3,4]]\\nprint(grid[0])"
     ],
     "starterCode": "",
+    "approach": "Create grid = [[1,2],[3,4]] and print grid[0]. Key points: grid = [[1,2],[3,4]]\\nprint(grid[0]) A correct solution looks like this: grid = [[1,2],[3,4]] print(grid[0])",
     "publicTests": [
       {
         "id": "m5-t1-p04-t1",
@@ -256,7 +260,8 @@ export const module5Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(list(range(1, 4)))"
+    "solutionCode": "print(list(range(1, 4)))",
+    "approach": "Print list(range(1, 4)).\n\nKey points: print(list(range(1, 4)))\n\nA correct solution looks like this:\nprint(list(range(1, 4)))"
   },
   {
     "id": "m5-t1-p06",
@@ -316,7 +321,8 @@ export const module5Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([0] * 3)"
+    "solutionCode": "print([0] * 3)",
+    "approach": "Print [0] * 3.\n\nKey points: print([0] * 3)\n\nA correct solution looks like this:\nprint([0] * 3)"
   },
   {
     "id": "m5-t1-p07",
@@ -376,7 +382,8 @@ export const module5Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([1, 2] + [3, 4])"
+    "solutionCode": "print([1, 2] + [3, 4])",
+    "approach": "Print [1, 2] + [3, 4].\n\nKey points: print([1, 2] + [3, 4])\n\nA correct solution looks like this:\nprint([1, 2] + [3, 4])"
   },
   {
     "id": "m5-t2-p01",
@@ -413,6 +420,7 @@ export const module5Practice: PracticeProblem[] = [
       "a = [3,1,2]\\nprint(a)"
     ],
     "starterCode": "",
+    "approach": "Set a=[3,1,2], print a — order is preserved. Key points: a = [3,1,2]\\nprint(a) A correct solution looks like this: a = [3,1,2] print(a)",
     "publicTests": [
       {
         "id": "m5-t2-p01-t1",
@@ -459,6 +467,7 @@ export const module5Practice: PracticeProblem[] = [
       "a = [1,2]\\na[0]=99\\nprint(a)"
     ],
     "starterCode": "",
+    "approach": "Set a=[1,2], change a[0]=99, print a. Key points: a = [1,2]\\na[0]=99\\nprint(a) A correct solution looks like this: a = [1,2] a[0]=99 print(a)",
     "publicTests": [
       {
         "id": "m5-t2-p02-t1",
@@ -519,7 +528,8 @@ export const module5Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([1, 1, 2])"
+    "solutionCode": "print([1, 1, 2])",
+    "approach": "Print [1, 1, 2].\n\nKey points: print([1, 1, 2])\n\nA correct solution looks like this:\nprint([1, 1, 2])"
   },
   {
     "id": "m5-t2-p04",
@@ -564,6 +574,7 @@ export const module5Practice: PracticeProblem[] = [
       "a = [10,20,30,40]\\nprint(len(a))"
     ],
     "starterCode": "",
+    "approach": "Set a=[10,20,30,40], print len(a). Key points: a = [10,20,30,40]\\nprint(len(a)) A correct solution looks like this: a = [10,20,30,40] print(len(a))",
     "publicTests": [
       {
         "id": "m5-t2-p04-t1",
@@ -624,7 +635,8 @@ export const module5Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(type([1,2,3]))"
+    "solutionCode": "print(type([1,2,3]))",
+    "approach": "Print type([1,2,3]).\n\nKey points: print(type([1,2,3]))\n\nA correct solution looks like this:\nprint(type([1,2,3]))"
   },
   {
     "id": "m5-t2-p06",
@@ -684,7 +696,8 @@ export const module5Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(2 in [1,2,3])"
+    "solutionCode": "print(2 in [1,2,3])",
+    "approach": "Print 2 in [1,2,3].\n\nKey points: print(2 in [1,2,3])\n\nA correct solution looks like this:\nprint(2 in [1,2,3])"
   },
   {
     "id": "m5-t2-p07",
@@ -736,7 +749,8 @@ export const module5Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([1, \"two\", 3.0])"
+    "solutionCode": "print([1, \"two\", 3.0])",
+    "approach": "Print [1, \"two\", 3.0].\n\nKey points: print([1, \"two\", 3.0])\n\nA correct solution looks like this:\nprint([1, \"two\", 3.0])"
   },
   {
     "id": "m5-t3-p01",
@@ -782,6 +796,7 @@ export const module5Practice: PracticeProblem[] = [
       "items = [10,20,30]\\nprint(items[0])"
     ],
     "starterCode": "",
+    "approach": "Set items = [10,20,30], print items[0]. Key points: items = [10,20,30]\\nprint(items[0]) A correct solution looks like this: items = [10,20,30] print(items[0])",
     "publicTests": [
       {
         "id": "m5-t3-p01-t1",
@@ -836,6 +851,7 @@ export const module5Practice: PracticeProblem[] = [
       "items = [10,20,30]\\nprint(items[-1])"
     ],
     "starterCode": "",
+    "approach": "Set items = [10,20,30], print items[-1]. Key points: items = [10,20,30]\\nprint(items[-1]) A correct solution looks like this: items = [10,20,30] print(items[-1])",
     "publicTests": [
       {
         "id": "m5-t3-p02-t1",
@@ -882,6 +898,7 @@ export const module5Practice: PracticeProblem[] = [
       "items = [\"a\",\"middle\",\"c\"]\\nprint(items[1])"
     ],
     "starterCode": "",
+    "approach": "Set items = [\"a\",\"middle\",\"c\"], print items[1]. Key points: items = [\"a\",\"middle\",\"c\"]\\nprint(items[1]) A correct solution looks like this: items = [\"a\",\"middle\",\"c\"] print(items[1])",
     "publicTests": [
       {
         "id": "m5-t3-p03-t1",
@@ -928,6 +945,7 @@ export const module5Practice: PracticeProblem[] = [
       "nums = [1,2,3]\\nprint(nums[2])"
     ],
     "starterCode": "",
+    "approach": "Set nums = [1,2,3], print nums[2]. Key points: nums = [1,2,3]\\nprint(nums[2]) A correct solution looks like this: nums = [1,2,3] print(nums[2])",
     "publicTests": [
       {
         "id": "m5-t3-p04-t1",
@@ -982,6 +1000,7 @@ export const module5Practice: PracticeProblem[] = [
       "m = [[1,2],[3,4]]\\nprint(m[1][0])"
     ],
     "starterCode": "",
+    "approach": "Set m = [[1,2],[3,4]], print m[1][0]. Key points: m = [[1,2],[3,4]]\\nprint(m[1][0]) A correct solution looks like this: m = [[1,2],[3,4]] print(m[1][0])",
     "publicTests": [
       {
         "id": "m5-t3-p05-t1",
@@ -1029,6 +1048,7 @@ export const module5Practice: PracticeProblem[] = [
       "a = [5,10,15]\\nprint(a[0])\\nprint(a[2])"
     ],
     "starterCode": "",
+    "approach": "Set a = [5,10,15], print a[0] and a[2] on separate lines. Key points: a = [5,10,15]\\nprint(a[0])\\nprint(a[2]) A correct solution looks like this: a = [5,10,15] print(a[0]) print(a[2])",
     "publicTests": [
       {
         "id": "m5-t3-p06-t1",
@@ -1083,6 +1103,7 @@ export const module5Practice: PracticeProblem[] = [
       "items = [4,8,12]\\nprint(items[len(items)-1])"
     ],
     "starterCode": "",
+    "approach": "Set items = [4,8,12], print items[len(items)-1]. Key points: items = [4,8,12]\\nprint(items[len(items)-1]) A correct solution looks like this: items = [4,8,12] print(items[len(items)-1])",
     "publicTests": [
       {
         "id": "m5-t3-p07-t1",
@@ -1137,6 +1158,7 @@ export const module5Practice: PracticeProblem[] = [
       "a = [0,1,2,3,4]\\nprint(a[1:3])"
     ],
     "starterCode": "",
+    "approach": "Set a = [0,1,2,3,4], print a[1:3]. Key points: a = [0,1,2,3,4]\\nprint(a[1:3]) A correct solution looks like this: a = [0,1,2,3,4] print(a[1:3])",
     "publicTests": [
       {
         "id": "m5-t4-p01-t1",
@@ -1191,6 +1213,7 @@ export const module5Practice: PracticeProblem[] = [
       "a = [0,1,2,3]\\nprint(a[:2])"
     ],
     "starterCode": "",
+    "approach": "Set a = [0,1,2,3], print a[:2]. Key points: a = [0,1,2,3]\\nprint(a[:2]) A correct solution looks like this: a = [0,1,2,3] print(a[:2])",
     "publicTests": [
       {
         "id": "m5-t4-p02-t1",
@@ -1245,6 +1268,7 @@ export const module5Practice: PracticeProblem[] = [
       "a = [0,1,2,3]\\nprint(a[2:])"
     ],
     "starterCode": "",
+    "approach": "Set a = [0,1,2,3], print a[2:]. Key points: a = [0,1,2,3]\\nprint(a[2:]) A correct solution looks like this: a = [0,1,2,3] print(a[2:])",
     "publicTests": [
       {
         "id": "m5-t4-p03-t1",
@@ -1299,6 +1323,7 @@ export const module5Practice: PracticeProblem[] = [
       "a = [0,1,2,3,4]\\nprint(a[::2])"
     ],
     "starterCode": "",
+    "approach": "Set a = [0,1,2,3,4], print a[::2]. Key points: a = [0,1,2,3,4]\\nprint(a[::2]) A correct solution looks like this: a = [0,1,2,3,4] print(a[::2])",
     "publicTests": [
       {
         "id": "m5-t4-p04-t1",
@@ -1353,6 +1378,7 @@ export const module5Practice: PracticeProblem[] = [
       "a = [1,2,3]\\nprint(a[::-1])"
     ],
     "starterCode": "",
+    "approach": "Set a = [1,2,3], print a[::-1]. Key points: a = [1,2,3]\\nprint(a[::-1]) A correct solution looks like this: a = [1,2,3] print(a[::-1])",
     "publicTests": [
       {
         "id": "m5-t4-p05-t1",
@@ -1407,6 +1433,7 @@ export const module5Practice: PracticeProblem[] = [
       "a = [10,20,30,40]\\nprint(a[1:4])"
     ],
     "starterCode": "",
+    "approach": "Set a = [10,20,30,40], print a[1:4]. Key points: a = [10,20,30,40]\\nprint(a[1:4]) A correct solution looks like this: a = [10,20,30,40] print(a[1:4])",
     "publicTests": [
       {
         "id": "m5-t4-p06-t1",
@@ -1461,6 +1488,7 @@ export const module5Practice: PracticeProblem[] = [
       "a = [1,2,3]\\nprint(a[2:2])"
     ],
     "starterCode": "",
+    "approach": "Set a = [1,2,3], print a[2:2]. Key points: a = [1,2,3]\\nprint(a[2:2]) A correct solution looks like this: a = [1,2,3] print(a[2:2])",
     "publicTests": [
       {
         "id": "m5-t4-p07-t1",
@@ -1514,6 +1542,7 @@ export const module5Practice: PracticeProblem[] = [
       "a = [1,2]\\na.append(3)\\nprint(a)"
     ],
     "starterCode": "",
+    "approach": "Set a=[1,2], a.append(3), print a. Key points: a = [1,2]\\na.append(3)\\nprint(a) A correct solution looks like this: a = [1,2] a.append(3) print(a)",
     "publicTests": [
       {
         "id": "m5-t5-p01-t1",
@@ -1567,6 +1596,7 @@ export const module5Practice: PracticeProblem[] = [
       "a = [1,2,3]\\nprint(a.pop())"
     ],
     "starterCode": "",
+    "approach": "Set a=[1,2,3], print a.pop(). Key points: a = [1,2,3]\\nprint(a.pop()) A correct solution looks like this: a = [1,2,3] print(a.pop())",
     "publicTests": [
       {
         "id": "m5-t5-p02-t1",
@@ -1620,6 +1650,7 @@ export const module5Practice: PracticeProblem[] = [
       "a = [3,1,2]\\na.sort()\\nprint(a)"
     ],
     "starterCode": "",
+    "approach": "Set a=[3,1,2], a.sort(), print a. Key points: a = [3,1,2]\\na.sort()\\nprint(a) A correct solution looks like this: a = [3,1,2] a.sort() print(a)",
     "publicTests": [
       {
         "id": "m5-t5-p03-t1",
@@ -1688,7 +1719,8 @@ export const module5Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([1,2,2,3].count(2))"
+    "solutionCode": "print([1,2,2,3].count(2))",
+    "approach": "Print [1,2,2,3].count(2).\n\nKey points: print([1,2,2,3].count(2))\n\nA correct solution looks like this:\nprint([1,2,2,3].count(2))"
   },
   {
     "id": "m5-t5-p05",
@@ -1748,7 +1780,8 @@ export const module5Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([\"a\",\"b\",\"c\"].index(\"b\"))"
+    "solutionCode": "print([\"a\",\"b\",\"c\"].index(\"b\"))",
+    "approach": "Print [\"a\",\"b\",\"c\"].index(\"b\").\n\nKey points: print([\"a\",\"b\",\"c\"].index(\"b\"))\n\nA correct solution looks like this:\nprint([\"a\",\"b\",\"c\"].index(\"b\"))"
   },
   {
     "id": "m5-t5-p06",
@@ -1793,6 +1826,7 @@ export const module5Practice: PracticeProblem[] = [
       "a = [1,2]\\na.extend([3,4])\\nprint(a)"
     ],
     "starterCode": "",
+    "approach": "Set a=[1,2], a.extend([3,4]), print a. Key points: a = [1,2]\\na.extend([3,4])\\nprint(a) A correct solution looks like this: a = [1,2] a.extend([3,4]) print(a)",
     "publicTests": [
       {
         "id": "m5-t5-p06-t1",
@@ -1846,6 +1880,7 @@ export const module5Practice: PracticeProblem[] = [
       "a = [1,2,3,2]\\na.remove(2)\\nprint(a)"
     ],
     "starterCode": "",
+    "approach": "Set a=[1,2,3,2], a.remove(2), print a. Key points: a = [1,2,3,2]\\na.remove(2)\\nprint(a) A correct solution looks like this: a = [1,2,3,2] a.remove(2) print(a)",
     "publicTests": [
       {
         "id": "m5-t5-p07-t1",
@@ -1900,6 +1935,7 @@ export const module5Practice: PracticeProblem[] = [
       "a = [1,2,3]\\na[0] = 10\\nprint(a)"
     ],
     "starterCode": "",
+    "approach": "Set a=[1,2,3], set a[0]=10, print a. Key points: a = [1,2,3]\\na[0] = 10\\nprint(a) A correct solution looks like this: a = [1,2,3] a[0] = 10 print(a)",
     "publicTests": [
       {
         "id": "m5-t6-p01-t1",
@@ -1953,6 +1989,7 @@ export const module5Practice: PracticeProblem[] = [
       "a = [1,3]\\na.insert(1,2)\\nprint(a)"
     ],
     "starterCode": "",
+    "approach": "Set a=[1,3], a.insert(1,2), print a. Key points: a = [1,3]\\na.insert(1,2)\\nprint(a) A correct solution looks like this: a = [1,3] a.insert(1,2) print(a)",
     "publicTests": [
       {
         "id": "m5-t6-p02-t1",
@@ -2007,6 +2044,7 @@ export const module5Practice: PracticeProblem[] = [
       "a = [1,2,3]\\ndel a[1]\\nprint(a)"
     ],
     "starterCode": "",
+    "approach": "Set a=[1,2,3], del a[1], print a. Key points: a = [1,2,3]\\ndel a[1]\\nprint(a) A correct solution looks like this: a = [1,2,3] del a[1] print(a)",
     "publicTests": [
       {
         "id": "m5-t6-p03-t1",
@@ -2060,6 +2098,7 @@ export const module5Practice: PracticeProblem[] = [
       "a = [1,2,3]\\na.clear()\\nprint(a)"
     ],
     "starterCode": "",
+    "approach": "Set a=[1,2,3], a.clear(), print a. Key points: a = [1,2,3]\\na.clear()\\nprint(a) A correct solution looks like this: a = [1,2,3] a.clear() print(a)",
     "publicTests": [
       {
         "id": "m5-t6-p04-t1",
@@ -2114,6 +2153,7 @@ export const module5Practice: PracticeProblem[] = [
       "a = [0,0,0,0]\\na[1:3] = [10,20]\\nprint(a)"
     ],
     "starterCode": "",
+    "approach": "Set a=[0,0,0,0], a[1:3]=[10,20], print a. Key points: a = [0,0,0,0]\\na[1:3] = [10,20]\\nprint(a) A correct solution looks like this: a = [0,0,0,0] a[1:3] = [10,20] print(a)",
     "publicTests": [
       {
         "id": "m5-t6-p05-t1",
@@ -2158,6 +2198,7 @@ export const module5Practice: PracticeProblem[] = [
       "a = []\\nfor i in range(3):\\n    a.append(i)\\nprint(a)"
     ],
     "starterCode": "",
+    "approach": "Build [0,1,2] using a loop and append, print result. Key points: a = []\\nfor i in range(3):\\n a.append(i)\\nprint(a) A correct solution looks like this: a = [] for i in range(3): a.append(i) print(a)",
     "publicTests": [
       {
         "id": "m5-t6-p06-t1",
@@ -2212,6 +2253,7 @@ export const module5Practice: PracticeProblem[] = [
       "m = [[1,2],[3,4]]\\nm[0][1] = 9\\nprint(m)"
     ],
     "starterCode": "",
+    "approach": "Set m=[[1,2],[3,4]], set m[0][1]=9, print m. Key points: m = [[1,2],[3,4]]\\nm[0][1] = 9\\nprint(m) A correct solution looks like this: m = [[1,2],[3,4]] m[0][1] = 9 print(m)",
     "publicTests": [
       {
         "id": "m5-t6-p07-t1",

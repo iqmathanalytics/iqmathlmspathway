@@ -173,7 +173,7 @@ assert matrix == [[0, 0, 0, 0], [0, 4, 5, 0], [0, 3, 1, 0]]`,
 
 export const advancedProblems = [
   buildCodingProblem({
-    order: 76,
+    order: 75,
     slug: "median-of-two-sorted-arrays",
     title: "Median of Two Sorted Arrays",
     difficulty: "hard",
@@ -227,7 +227,7 @@ The overall run time complexity should be O(log (m + n)).`,
   }),
 
   buildCodingProblem({
-    order: 77,
+    order: 76,
     slug: "trapping-rain-water",
     title: "Trapping Rain Water",
     difficulty: "hard",
@@ -282,7 +282,7 @@ The overall run time complexity should be O(log (m + n)).`,
   }),
 
   buildCodingProblem({
-    order: 78,
+    order: 77,
     slug: "regular-expression-matching",
     title: "Regular Expression Matching",
     difficulty: "hard",

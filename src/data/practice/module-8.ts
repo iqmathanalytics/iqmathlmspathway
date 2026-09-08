@@ -45,6 +45,7 @@ export const module8Practice: PracticeProblem[] = [
       "d = {\"name\":\"Ana\",\"age\":20}\\nprint(d[\"name\"])"
     ],
     "starterCode": "",
+    "approach": "Create d = {\"name\": \"Ana\", \"age\": 20} and print d[\"name\"]. Key points: d = {\"name\":\"Ana\",\"age\":20}\\nprint(d[\"name\"]) A correct solution looks like this: d = {\"name\":\"Ana\",\"age\":20} print(d[\"name\"])",
     "publicTests": [
       {
         "id": "m8-t1-p01-t1",
@@ -98,6 +99,7 @@ export const module8Practice: PracticeProblem[] = [
       "d = {}\\nprint(len(d))"
     ],
     "starterCode": "",
+    "approach": "Create d = {}, print len(d). Key points: d = {}\\nprint(len(d)) A correct solution looks like this: d = {} print(len(d))",
     "publicTests": [
       {
         "id": "m8-t1-p02-t1",
@@ -166,7 +168,8 @@ export const module8Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(dict(name=\"Bob\", age=25)[\"name\"])"
+    "solutionCode": "print(dict(name=\"Bob\", age=25)[\"name\"])",
+    "approach": "Print dict(name=\"Bob\", age=25)[\"name\"].\n\nKey points: print(dict(name=\"Bob\", age=25)[\"name\"])\n\nA correct solution looks like this:\nprint(dict(name=\"Bob\", age=25)[\"name\"])"
   },
   {
     "id": "m8-t1-p04",
@@ -212,6 +215,7 @@ export const module8Practice: PracticeProblem[] = [
       "d = {\"x\":10}\\nprint(d[\"x\"])"
     ],
     "starterCode": "",
+    "approach": "Set d={\"x\":10}, print d[\"x\"]. Key points: d = {\"x\":10}\\nprint(d[\"x\"]) A correct solution looks like this: d = {\"x\":10} print(d[\"x\"])",
     "publicTests": [
       {
         "id": "m8-t1-p04-t1",
@@ -258,6 +262,7 @@ export const module8Practice: PracticeProblem[] = [
       "d = {\"user\":{\"name\":\"Kim\"}}\\nprint(d[\"user\"][\"name\"])"
     ],
     "starterCode": "",
+    "approach": "Set d={\"user\":{\"name\":\"Kim\"}}, print d[\"user\"][\"name\"]. Key points: d = {\"user\":{\"name\":\"Kim\"}}\\nprint(d[\"user\"][\"name\"]) A correct solution looks like this: d = {\"user\":{\"name\":\"Kim\"}} print(d[\"user\"][\"name\"])",
     "publicTests": [
       {
         "id": "m8-t1-p05-t1",
@@ -304,6 +309,7 @@ export const module8Practice: PracticeProblem[] = [
       "d = {\"a\":1}\\nd[\"a\"]=2\\nprint(d[\"a\"])"
     ],
     "starterCode": "",
+    "approach": "Set d={\"a\":1}, d[\"a\"]=2, print d[\"a\"]. Key points: d = {\"a\":1}\\nd[\"a\"]=2\\nprint(d[\"a\"]) A correct solution looks like this: d = {\"a\":1} d[\"a\"]=2 print(d[\"a\"])",
     "publicTests": [
       {
         "id": "m8-t1-p06-t1",
@@ -350,6 +356,7 @@ export const module8Practice: PracticeProblem[] = [
       "d = {\"a\":1}\\nd[\"b\"]=2\\nprint(d[\"b\"])"
     ],
     "starterCode": "",
+    "approach": "Set d={\"a\":1}, d[\"b\"]=2, print d[\"b\"]. Key points: d = {\"a\":1}\\nd[\"b\"]=2\\nprint(d[\"b\"]) A correct solution looks like this: d = {\"a\":1} d[\"b\"]=2 print(d[\"b\"])",
     "publicTests": [
       {
         "id": "m8-t1-p07-t1",
@@ -404,6 +411,7 @@ export const module8Practice: PracticeProblem[] = [
       "d = {\"a\":1,\"b\":2}\\nprint(list(d.keys()))"
     ],
     "starterCode": "",
+    "approach": "Set d={\"a\":1,\"b\":2}, print list(d.keys()). Key points: d = {\"a\":1,\"b\":2}\\nprint(list(d.keys())) A correct solution looks like this: d = {\"a\":1,\"b\":2} print(list(d.keys()))",
     "publicTests": [
       {
         "id": "m8-t2-p01-t1",
@@ -457,6 +465,7 @@ export const module8Practice: PracticeProblem[] = [
       "d = {\"a\":1,\"b\":2}\\nprint(list(d.values()))"
     ],
     "starterCode": "",
+    "approach": "Set d={\"a\":1,\"b\":2}, print list(d.values()). Key points: d = {\"a\":1,\"b\":2}\\nprint(list(d.values())) A correct solution looks like this: d = {\"a\":1,\"b\":2} print(list(d.values()))",
     "publicTests": [
       {
         "id": "m8-t2-p02-t1",
@@ -510,6 +519,7 @@ export const module8Practice: PracticeProblem[] = [
       "d = {\"x\":1}\\nprint(list(d.items()))"
     ],
     "starterCode": "",
+    "approach": "Set d={\"x\":1}, print list(d.items()). Key points: d = {\"x\":1}\\nprint(list(d.items())) A correct solution looks like this: d = {\"x\":1} print(list(d.items()))",
     "publicTests": [
       {
         "id": "m8-t2-p03-t1",
@@ -578,7 +588,8 @@ export const module8Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({\"a\":1}.get(\"b\", 0))"
+    "solutionCode": "print({\"a\":1}.get(\"b\", 0))",
+    "approach": "Print {\"a\":1}.get(\"b\", 0).\n\nKey points: print({\"a\":1}.get(\"b\", 0))\n\nA correct solution looks like this:\nprint({\"a\":1}.get(\"b\", 0))"
   },
   {
     "id": "m8-t2-p05",
@@ -638,7 +649,8 @@ export const module8Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"name\" in {\"name\":\"Ana\"})"
+    "solutionCode": "print(\"name\" in {\"name\":\"Ana\"})",
+    "approach": "Print \"name\" in {\"name\":\"Ana\"}.\n\nKey points: print(\"name\" in {\"name\":\"Ana\"})\n\nA correct solution looks like this:\nprint(\"name\" in {\"name\":\"Ana\"})"
   },
   {
     "id": "m8-t2-p06",
@@ -690,7 +702,8 @@ export const module8Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(len({\"a\":1,\"b\":2,\"c\":3}))"
+    "solutionCode": "print(len({\"a\":1,\"b\":2,\"c\":3}))",
+    "approach": "Print len({\"a\":1,\"b\":2,\"c\":3}).\n\nKey points: print(len({\"a\":1,\"b\":2,\"c\":3}))\n\nA correct solution looks like this:\nprint(len({\"a\":1,\"b\":2,\"c\":3}))"
   },
   {
     "id": "m8-t2-p07",
@@ -725,6 +738,7 @@ export const module8Practice: PracticeProblem[] = [
       "d = {\"topic\":\"Python\"}\\nprint(d[\"topic\"])"
     ],
     "starterCode": "",
+    "approach": "Create d={\"topic\":\"Python\"}, print d[\"topic\"]. Key points: d = {\"topic\":\"Python\"}\\nprint(d[\"topic\"]) A correct solution looks like this: d = {\"topic\":\"Python\"} print(d[\"topic\"])",
     "publicTests": [
       {
         "id": "m8-t2-p07-t1",
@@ -779,6 +793,7 @@ export const module8Practice: PracticeProblem[] = [
       "d = {\"a\":1,\"b\":2}\\nprint(list(d.keys()))"
     ],
     "starterCode": "",
+    "approach": "Set d={\"a\":1,\"b\":2}, print list(d.keys()). Key points: d = {\"a\":1,\"b\":2}\\nprint(list(d.keys())) A correct solution looks like this: d = {\"a\":1,\"b\":2} print(list(d.keys()))",
     "publicTests": [
       {
         "id": "m8-t3-p01-t1",
@@ -832,6 +847,7 @@ export const module8Practice: PracticeProblem[] = [
       "d = {\"a\":1,\"b\":2}\\nprint(list(d.values()))"
     ],
     "starterCode": "",
+    "approach": "Set d={\"a\":1,\"b\":2}, print list(d.values()). Key points: d = {\"a\":1,\"b\":2}\\nprint(list(d.values())) A correct solution looks like this: d = {\"a\":1,\"b\":2} print(list(d.values()))",
     "publicTests": [
       {
         "id": "m8-t3-p02-t1",
@@ -885,6 +901,7 @@ export const module8Practice: PracticeProblem[] = [
       "d = {\"x\":1}\\nprint(list(d.items()))"
     ],
     "starterCode": "",
+    "approach": "Set d={\"x\":1}, print list(d.items()). Key points: d = {\"x\":1}\\nprint(list(d.items())) A correct solution looks like this: d = {\"x\":1} print(list(d.items()))",
     "publicTests": [
       {
         "id": "m8-t3-p03-t1",
@@ -953,7 +970,8 @@ export const module8Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({\"a\":1}.get(\"b\", 0))"
+    "solutionCode": "print({\"a\":1}.get(\"b\", 0))",
+    "approach": "Print {\"a\":1}.get(\"b\", 0).\n\nKey points: print({\"a\":1}.get(\"b\", 0))\n\nA correct solution looks like this:\nprint({\"a\":1}.get(\"b\", 0))"
   },
   {
     "id": "m8-t3-p05",
@@ -1013,7 +1031,8 @@ export const module8Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"name\" in {\"name\":\"Ana\"})"
+    "solutionCode": "print(\"name\" in {\"name\":\"Ana\"})",
+    "approach": "Print \"name\" in {\"name\":\"Ana\"}.\n\nKey points: print(\"name\" in {\"name\":\"Ana\"})\n\nA correct solution looks like this:\nprint(\"name\" in {\"name\":\"Ana\"})"
   },
   {
     "id": "m8-t3-p06",
@@ -1065,7 +1084,8 @@ export const module8Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(len({\"a\":1,\"b\":2,\"c\":3}))"
+    "solutionCode": "print(len({\"a\":1,\"b\":2,\"c\":3}))",
+    "approach": "Print len({\"a\":1,\"b\":2,\"c\":3}).\n\nKey points: print(len({\"a\":1,\"b\":2,\"c\":3}))\n\nA correct solution looks like this:\nprint(len({\"a\":1,\"b\":2,\"c\":3}))"
   },
   {
     "id": "m8-t3-p07",
@@ -1100,6 +1120,7 @@ export const module8Practice: PracticeProblem[] = [
       "d = {\"topic\":\"Python\"}\\nprint(d[\"topic\"])"
     ],
     "starterCode": "",
+    "approach": "Create d={\"topic\":\"Python\"}, print d[\"topic\"]. Key points: d = {\"topic\":\"Python\"}\\nprint(d[\"topic\"]) A correct solution looks like this: d = {\"topic\":\"Python\"} print(d[\"topic\"])",
     "publicTests": [
       {
         "id": "m8-t3-p07-t1",
@@ -1154,6 +1175,7 @@ export const module8Practice: PracticeProblem[] = [
       "d = {\"a\":1,\"b\":2}\\nprint(list(d.keys()))"
     ],
     "starterCode": "",
+    "approach": "Set d={\"a\":1,\"b\":2}, print list(d.keys()). Key points: d = {\"a\":1,\"b\":2}\\nprint(list(d.keys())) A correct solution looks like this: d = {\"a\":1,\"b\":2} print(list(d.keys()))",
     "publicTests": [
       {
         "id": "m8-t4-p01-t1",
@@ -1207,6 +1229,7 @@ export const module8Practice: PracticeProblem[] = [
       "d = {\"a\":1,\"b\":2}\\nprint(list(d.values()))"
     ],
     "starterCode": "",
+    "approach": "Set d={\"a\":1,\"b\":2}, print list(d.values()). Key points: d = {\"a\":1,\"b\":2}\\nprint(list(d.values())) A correct solution looks like this: d = {\"a\":1,\"b\":2} print(list(d.values()))",
     "publicTests": [
       {
         "id": "m8-t4-p02-t1",
@@ -1260,6 +1283,7 @@ export const module8Practice: PracticeProblem[] = [
       "d = {\"x\":1}\\nprint(list(d.items()))"
     ],
     "starterCode": "",
+    "approach": "Set d={\"x\":1}, print list(d.items()). Key points: d = {\"x\":1}\\nprint(list(d.items())) A correct solution looks like this: d = {\"x\":1} print(list(d.items()))",
     "publicTests": [
       {
         "id": "m8-t4-p03-t1",
@@ -1328,7 +1352,8 @@ export const module8Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({\"a\":1}.get(\"b\", 0))"
+    "solutionCode": "print({\"a\":1}.get(\"b\", 0))",
+    "approach": "Print {\"a\":1}.get(\"b\", 0).\n\nKey points: print({\"a\":1}.get(\"b\", 0))\n\nA correct solution looks like this:\nprint({\"a\":1}.get(\"b\", 0))"
   },
   {
     "id": "m8-t4-p05",
@@ -1388,7 +1413,8 @@ export const module8Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"name\" in {\"name\":\"Ana\"})"
+    "solutionCode": "print(\"name\" in {\"name\":\"Ana\"})",
+    "approach": "Print \"name\" in {\"name\":\"Ana\"}.\n\nKey points: print(\"name\" in {\"name\":\"Ana\"})\n\nA correct solution looks like this:\nprint(\"name\" in {\"name\":\"Ana\"})"
   },
   {
     "id": "m8-t4-p06",
@@ -1440,7 +1466,8 @@ export const module8Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(len({\"a\":1,\"b\":2,\"c\":3}))"
+    "solutionCode": "print(len({\"a\":1,\"b\":2,\"c\":3}))",
+    "approach": "Print len({\"a\":1,\"b\":2,\"c\":3}).\n\nKey points: print(len({\"a\":1,\"b\":2,\"c\":3}))\n\nA correct solution looks like this:\nprint(len({\"a\":1,\"b\":2,\"c\":3}))"
   },
   {
     "id": "m8-t4-p07",
@@ -1475,6 +1502,7 @@ export const module8Practice: PracticeProblem[] = [
       "d = {\"topic\":\"Python\"}\\nprint(d[\"topic\"])"
     ],
     "starterCode": "",
+    "approach": "Create d={\"topic\":\"Python\"}, print d[\"topic\"]. Key points: d = {\"topic\":\"Python\"}\\nprint(d[\"topic\"]) A correct solution looks like this: d = {\"topic\":\"Python\"} print(d[\"topic\"])",
     "publicTests": [
       {
         "id": "m8-t4-p07-t1",
@@ -1529,6 +1557,7 @@ export const module8Practice: PracticeProblem[] = [
       "d = {\"a\":1,\"b\":2}\\nprint(list(d.keys()))"
     ],
     "starterCode": "",
+    "approach": "Set d={\"a\":1,\"b\":2}, print list(d.keys()). Key points: d = {\"a\":1,\"b\":2}\\nprint(list(d.keys())) A correct solution looks like this: d = {\"a\":1,\"b\":2} print(list(d.keys()))",
     "publicTests": [
       {
         "id": "m8-t5-p01-t1",
@@ -1582,6 +1611,7 @@ export const module8Practice: PracticeProblem[] = [
       "d = {\"a\":1,\"b\":2}\\nprint(list(d.values()))"
     ],
     "starterCode": "",
+    "approach": "Set d={\"a\":1,\"b\":2}, print list(d.values()). Key points: d = {\"a\":1,\"b\":2}\\nprint(list(d.values())) A correct solution looks like this: d = {\"a\":1,\"b\":2} print(list(d.values()))",
     "publicTests": [
       {
         "id": "m8-t5-p02-t1",
@@ -1635,6 +1665,7 @@ export const module8Practice: PracticeProblem[] = [
       "d = {\"x\":1}\\nprint(list(d.items()))"
     ],
     "starterCode": "",
+    "approach": "Set d={\"x\":1}, print list(d.items()). Key points: d = {\"x\":1}\\nprint(list(d.items())) A correct solution looks like this: d = {\"x\":1} print(list(d.items()))",
     "publicTests": [
       {
         "id": "m8-t5-p03-t1",
@@ -1703,7 +1734,8 @@ export const module8Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({\"a\":1}.get(\"b\", 0))"
+    "solutionCode": "print({\"a\":1}.get(\"b\", 0))",
+    "approach": "Print {\"a\":1}.get(\"b\", 0).\n\nKey points: print({\"a\":1}.get(\"b\", 0))\n\nA correct solution looks like this:\nprint({\"a\":1}.get(\"b\", 0))"
   },
   {
     "id": "m8-t5-p05",
@@ -1763,7 +1795,8 @@ export const module8Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"name\" in {\"name\":\"Ana\"})"
+    "solutionCode": "print(\"name\" in {\"name\":\"Ana\"})",
+    "approach": "Print \"name\" in {\"name\":\"Ana\"}.\n\nKey points: print(\"name\" in {\"name\":\"Ana\"})\n\nA correct solution looks like this:\nprint(\"name\" in {\"name\":\"Ana\"})"
   },
   {
     "id": "m8-t5-p06",
@@ -1815,7 +1848,8 @@ export const module8Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(len({\"a\":1,\"b\":2,\"c\":3}))"
+    "solutionCode": "print(len({\"a\":1,\"b\":2,\"c\":3}))",
+    "approach": "Print len({\"a\":1,\"b\":2,\"c\":3}).\n\nKey points: print(len({\"a\":1,\"b\":2,\"c\":3}))\n\nA correct solution looks like this:\nprint(len({\"a\":1,\"b\":2,\"c\":3}))"
   },
   {
     "id": "m8-t5-p07",
@@ -1850,6 +1884,7 @@ export const module8Practice: PracticeProblem[] = [
       "d = {\"topic\":\"Python\"}\\nprint(d[\"topic\"])"
     ],
     "starterCode": "",
+    "approach": "Create d={\"topic\":\"Python\"}, print d[\"topic\"]. Key points: d = {\"topic\":\"Python\"}\\nprint(d[\"topic\"]) A correct solution looks like this: d = {\"topic\":\"Python\"} print(d[\"topic\"])",
     "publicTests": [
       {
         "id": "m8-t5-p07-t1",

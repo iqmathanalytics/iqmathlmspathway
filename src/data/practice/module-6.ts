@@ -44,6 +44,7 @@ export const module6Practice: PracticeProblem[] = [
       "t = (1, 2, 3)\\nprint(t)"
     ],
     "starterCode": "",
+    "approach": "Create t = (1, 2, 3) and print t. Key points: t = (1, 2, 3)\\nprint(t) A correct solution looks like this: t = (1, 2, 3) print(t)",
     "publicTests": [
       {
         "id": "m6-t1-p01-t1",
@@ -98,6 +99,7 @@ export const module6Practice: PracticeProblem[] = [
       "t = (\"a\",\"b\",\"c\")\\nprint(t[1])"
     ],
     "starterCode": "",
+    "approach": "Set t=(\"a\",\"b\",\"c\"), print t[1]. Key points: t = (\"a\",\"b\",\"c\")\\nprint(t[1]) A correct solution looks like this: t = (\"a\",\"b\",\"c\") print(t[1])",
     "publicTests": [
       {
         "id": "m6-t1-p02-t1",
@@ -152,6 +154,7 @@ export const module6Practice: PracticeProblem[] = [
       "t = (1,2)\\nprint(t[0])"
     ],
     "starterCode": "",
+    "approach": "Set t=(1,2), try concept: print t[0] (read-only access). Key points: t = (1,2)\\nprint(t[0]) A correct solution looks like this: t = (1,2) print(t[0])",
     "publicTests": [
       {
         "id": "m6-t1-p03-t1",
@@ -197,6 +200,7 @@ export const module6Practice: PracticeProblem[] = [
       "t = (1,2,3,4)\\nprint(len(t))"
     ],
     "starterCode": "",
+    "approach": "Set t=(1,2,3,4), print len(t). Key points: t = (1,2,3,4)\\nprint(len(t)) A correct solution looks like this: t = (1,2,3,4) print(len(t))",
     "publicTests": [
       {
         "id": "m6-t1-p04-t1",
@@ -251,6 +255,7 @@ export const module6Practice: PracticeProblem[] = [
       "t = (0,1,2,3)\\nprint(t[1:3])"
     ],
     "starterCode": "",
+    "approach": "Set t=(0,1,2,3), print t[1:3]. Key points: t = (0,1,2,3)\\nprint(t[1:3]) A correct solution looks like this: t = (0,1,2,3) print(t[1:3])",
     "publicTests": [
       {
         "id": "m6-t1-p05-t1",
@@ -319,7 +324,8 @@ export const module6Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print((1,2,2,3).count(2))"
+    "solutionCode": "print((1,2,2,3).count(2))",
+    "approach": "Print (1,2,2,3).count(2).\n\nKey points: print((1,2,2,3).count(2))\n\nA correct solution looks like this:\nprint((1,2,2,3).count(2))"
   },
   {
     "id": "m6-t1-p07",
@@ -379,7 +385,8 @@ export const module6Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print((\"x\",\"y\",\"z\").index(\"y\"))"
+    "solutionCode": "print((\"x\",\"y\",\"z\").index(\"y\"))",
+    "approach": "Print (\"x\",\"y\",\"z\").index(\"y\").\n\nKey points: print((\"x\",\"y\",\"z\").index(\"y\"))\n\nA correct solution looks like this:\nprint((\"x\",\"y\",\"z\").index(\"y\"))"
   },
   {
     "id": "m6-t2-p01",
@@ -431,7 +438,8 @@ export const module6Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print((3,1,2))"
+    "solutionCode": "print((3,1,2))",
+    "approach": "Print (3,1,2) — order preserved.\n\nKey points: print((3,1,2))\n\nA correct solution looks like this:\nprint((3,1,2))"
   },
   {
     "id": "m6-t2-p02",
@@ -483,7 +491,8 @@ export const module6Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(len((1,2,3)))"
+    "solutionCode": "print(len((1,2,3)))",
+    "approach": "Print len((1,2,3)).\n\nKey points: print(len((1,2,3)))\n\nA correct solution looks like this:\nprint(len((1,2,3)))"
   },
   {
     "id": "m6-t2-p03",
@@ -535,7 +544,8 @@ export const module6Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print((1,1,2))"
+    "solutionCode": "print((1,1,2))",
+    "approach": "Print (1,1,2).\n\nKey points: print((1,1,2))\n\nA correct solution looks like this:\nprint((1,1,2))"
   },
   {
     "id": "m6-t2-p04",
@@ -587,7 +597,8 @@ export const module6Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print((1, \"a\", True))"
+    "solutionCode": "print((1, \"a\", True))",
+    "approach": "Print (1, \"a\", True).\n\nKey points: print((1, \"a\", True))\n\nA correct solution looks like this:\nprint((1, \"a\", True))"
   },
   {
     "id": "m6-t2-p05",
@@ -647,7 +658,8 @@ export const module6Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print((42,))"
+    "solutionCode": "print((42,))",
+    "approach": "Print (42,) — note the comma.\n\nKey points: print((42,))\n\nA correct solution looks like this:\nprint((42,))"
   },
   {
     "id": "m6-t2-p06",
@@ -692,6 +704,7 @@ export const module6Practice: PracticeProblem[] = [
       "t = 1, 2, 3\\nprint(t)"
     ],
     "starterCode": "",
+    "approach": "Set t = 1, 2, 3 (tuple packing), print t. Key points: t = 1, 2, 3\\nprint(t) A correct solution looks like this: t = 1, 2, 3 print(t)",
     "publicTests": [
       {
         "id": "m6-t2-p06-t1",
@@ -737,6 +750,7 @@ export const module6Practice: PracticeProblem[] = [
       "t = (10, 20)\\na, b = t\\nprint(a)"
     ],
     "starterCode": "",
+    "approach": "Set t = (10, 20), unpack to a, b = t, print a. Key points: t = (10, 20)\\na, b = t\\nprint(a) A correct solution looks like this: t = (10, 20) a, b = t print(a)",
     "publicTests": [
       {
         "id": "m6-t2-p07-t1",
@@ -782,6 +796,7 @@ export const module6Practice: PracticeProblem[] = [
       "t = (1, 2, 3)\\nprint(t)"
     ],
     "starterCode": "",
+    "approach": "Create t = (1, 2, 3) and print t. Key points: t = (1, 2, 3)\\nprint(t) A correct solution looks like this: print(\"[1, 2, 3]\")",
     "publicTests": [
       {
         "id": "m6-t3-p01-t1",
@@ -836,6 +851,7 @@ export const module6Practice: PracticeProblem[] = [
       "t = (\"a\",\"b\",\"c\")\\nprint(t[1])"
     ],
     "starterCode": "",
+    "approach": "Set t=(\"a\",\"b\",\"c\"), print t[1]. Key points: t = (\"a\",\"b\",\"c\")\\nprint(t[1]) A correct solution looks like this: t = (\"a\",\"b\",\"c\") print(t[1])",
     "publicTests": [
       {
         "id": "m6-t3-p02-t1",
@@ -890,6 +906,7 @@ export const module6Practice: PracticeProblem[] = [
       "t = (1,2)\\nprint(t[0])"
     ],
     "starterCode": "",
+    "approach": "Set t=(1,2), try concept: print t[0] (read-only access). Key points: t = (1,2)\\nprint(t[0]) A correct solution looks like this: t = (1,2) print(t[0])",
     "publicTests": [
       {
         "id": "m6-t3-p03-t1",
@@ -935,6 +952,7 @@ export const module6Practice: PracticeProblem[] = [
       "t = (1,2,3,4)\\nprint(len(t))"
     ],
     "starterCode": "",
+    "approach": "Set t=(1,2,3,4), print len(t). Key points: t = (1,2,3,4)\\nprint(len(t)) A correct solution looks like this: t = (1,2,3,4) print(len(t))",
     "publicTests": [
       {
         "id": "m6-t3-p04-t1",
@@ -989,6 +1007,7 @@ export const module6Practice: PracticeProblem[] = [
       "t = (0,1,2,3)\\nprint(t[1:3])"
     ],
     "starterCode": "",
+    "approach": "Set t=(0,1,2,3), print t[1:3]. Key points: t = (0,1,2,3)\\nprint(t[1:3]) A correct solution looks like this: t = (0,1,2,3) print(t[1:3])",
     "publicTests": [
       {
         "id": "m6-t3-p05-t1",
@@ -1057,7 +1076,8 @@ export const module6Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print((1,2,2,3).count(2))"
+    "solutionCode": "print((1,2,2,3).count(2))",
+    "approach": "Print (1,2,2,3).count(2).\n\nKey points: print((1,2,2,3).count(2))\n\nA correct solution looks like this:\nprint((1,2,2,3).count(2))"
   },
   {
     "id": "m6-t3-p07",
@@ -1117,7 +1137,8 @@ export const module6Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print((\"x\",\"y\",\"z\").index(\"y\"))"
+    "solutionCode": "print((\"x\",\"y\",\"z\").index(\"y\"))",
+    "approach": "Print (\"x\",\"y\",\"z\").index(\"y\").\n\nKey points: print((\"x\",\"y\",\"z\").index(\"y\"))\n\nA correct solution looks like this:\nprint((\"x\",\"y\",\"z\").index(\"y\"))"
   },
   {
     "id": "m6-t4-p01",
@@ -1154,6 +1175,7 @@ export const module6Practice: PracticeProblem[] = [
       "t = (1, 2, 3)\\nprint(t)"
     ],
     "starterCode": "",
+    "approach": "Create t = (1, 2, 3) and print t. Key points: t = (1, 2, 3)\\nprint(t) A correct solution looks like this: print(\"[1, 2, 3]\")",
     "publicTests": [
       {
         "id": "m6-t4-p01-t1",
@@ -1208,6 +1230,7 @@ export const module6Practice: PracticeProblem[] = [
       "t = (\"a\",\"b\",\"c\")\\nprint(t[1])"
     ],
     "starterCode": "",
+    "approach": "Set t=(\"a\",\"b\",\"c\"), print t[1]. Key points: t = (\"a\",\"b\",\"c\")\\nprint(t[1]) A correct solution looks like this: t = (\"a\",\"b\",\"c\") print(t[1])",
     "publicTests": [
       {
         "id": "m6-t4-p02-t1",
@@ -1262,6 +1285,7 @@ export const module6Practice: PracticeProblem[] = [
       "t = (1,2)\\nprint(t[0])"
     ],
     "starterCode": "",
+    "approach": "Set t=(1,2), try concept: print t[0] (read-only access). Key points: t = (1,2)\\nprint(t[0]) A correct solution looks like this: t = (1,2) print(t[0])",
     "publicTests": [
       {
         "id": "m6-t4-p03-t1",
@@ -1307,6 +1331,7 @@ export const module6Practice: PracticeProblem[] = [
       "t = (1,2,3,4)\\nprint(len(t))"
     ],
     "starterCode": "",
+    "approach": "Set t=(1,2,3,4), print len(t). Key points: t = (1,2,3,4)\\nprint(len(t)) A correct solution looks like this: t = (1,2,3,4) print(len(t))",
     "publicTests": [
       {
         "id": "m6-t4-p04-t1",
@@ -1361,6 +1386,7 @@ export const module6Practice: PracticeProblem[] = [
       "t = (0,1,2,3)\\nprint(t[1:3])"
     ],
     "starterCode": "",
+    "approach": "Set t=(0,1,2,3), print t[1:3]. Key points: t = (0,1,2,3)\\nprint(t[1:3]) A correct solution looks like this: t = (0,1,2,3) print(t[1:3])",
     "publicTests": [
       {
         "id": "m6-t4-p05-t1",
@@ -1429,7 +1455,8 @@ export const module6Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print((1,2,2,3).count(2))"
+    "solutionCode": "print((1,2,2,3).count(2))",
+    "approach": "Print (1,2,2,3).count(2).\n\nKey points: print((1,2,2,3).count(2))\n\nA correct solution looks like this:\nprint((1,2,2,3).count(2))"
   },
   {
     "id": "m6-t4-p07",
@@ -1489,7 +1516,8 @@ export const module6Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print((\"x\",\"y\",\"z\").index(\"y\"))"
+    "solutionCode": "print((\"x\",\"y\",\"z\").index(\"y\"))",
+    "approach": "Print (\"x\",\"y\",\"z\").index(\"y\").\n\nKey points: print((\"x\",\"y\",\"z\").index(\"y\"))\n\nA correct solution looks like this:\nprint((\"x\",\"y\",\"z\").index(\"y\"))"
   },
   {
     "id": "m6-t5-p01",
@@ -1526,6 +1554,7 @@ export const module6Practice: PracticeProblem[] = [
       "t = (1, 2, 3)\\nprint(t)"
     ],
     "starterCode": "",
+    "approach": "Create t = (1, 2, 3) and print t. Key points: t = (1, 2, 3)\\nprint(t) A correct solution looks like this: print(\"[1, 2, 3]\")",
     "publicTests": [
       {
         "id": "m6-t5-p01-t1",
@@ -1580,6 +1609,7 @@ export const module6Practice: PracticeProblem[] = [
       "t = (\"a\",\"b\",\"c\")\\nprint(t[1])"
     ],
     "starterCode": "",
+    "approach": "Set t=(\"a\",\"b\",\"c\"), print t[1]. Key points: t = (\"a\",\"b\",\"c\")\\nprint(t[1]) A correct solution looks like this: t = (\"a\",\"b\",\"c\") print(t[1])",
     "publicTests": [
       {
         "id": "m6-t5-p02-t1",
@@ -1634,6 +1664,7 @@ export const module6Practice: PracticeProblem[] = [
       "t = (1,2)\\nprint(t[0])"
     ],
     "starterCode": "",
+    "approach": "Set t=(1,2), try concept: print t[0] (read-only access). Key points: t = (1,2)\\nprint(t[0]) A correct solution looks like this: t = (1,2) print(t[0])",
     "publicTests": [
       {
         "id": "m6-t5-p03-t1",
@@ -1679,6 +1710,7 @@ export const module6Practice: PracticeProblem[] = [
       "t = (1,2,3,4)\\nprint(len(t))"
     ],
     "starterCode": "",
+    "approach": "Set t=(1,2,3,4), print len(t). Key points: t = (1,2,3,4)\\nprint(len(t)) A correct solution looks like this: t = (1,2,3,4) print(len(t))",
     "publicTests": [
       {
         "id": "m6-t5-p04-t1",
@@ -1733,6 +1765,7 @@ export const module6Practice: PracticeProblem[] = [
       "t = (0,1,2,3)\\nprint(t[1:3])"
     ],
     "starterCode": "",
+    "approach": "Set t=(0,1,2,3), print t[1:3]. Key points: t = (0,1,2,3)\\nprint(t[1:3]) A correct solution looks like this: t = (0,1,2,3) print(t[1:3])",
     "publicTests": [
       {
         "id": "m6-t5-p05-t1",
@@ -1801,7 +1834,8 @@ export const module6Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print((1,2,2,3).count(2))"
+    "solutionCode": "print((1,2,2,3).count(2))",
+    "approach": "Print (1,2,2,3).count(2).\n\nKey points: print((1,2,2,3).count(2))\n\nA correct solution looks like this:\nprint((1,2,2,3).count(2))"
   },
   {
     "id": "m6-t5-p07",
@@ -1861,6 +1895,7 @@ export const module6Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print((\"x\",\"y\",\"z\").index(\"y\"))"
+    "solutionCode": "print((\"x\",\"y\",\"z\").index(\"y\"))",
+    "approach": "Print (\"x\",\"y\",\"z\").index(\"y\").\n\nKey points: print((\"x\",\"y\",\"z\").index(\"y\"))\n\nA correct solution looks like this:\nprint((\"x\",\"y\",\"z\").index(\"y\"))"
   }
 ];

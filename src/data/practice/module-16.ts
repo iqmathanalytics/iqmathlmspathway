@@ -68,7 +68,8 @@ export const module16Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")"
+    "solutionCode": "print(\"Ready\")",
+    "approach": "Write a short program related to Introduction to Matplotlib. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
   },
   {
     "id": "m16-t1-p02",
@@ -108,6 +109,7 @@ export const module16Practice: PracticeProblem[] = [
       "Output must be exactly A,B"
     ],
     "starterCode": "",
+    "approach": "Create two variables about Introduction to Matplotlib and print them comma-separated. Key points: Create two variables related to Introduction to Matplotlib Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
     "publicTests": [
       {
         "id": "m16-t1-p02-t1",
@@ -162,6 +164,7 @@ export const module16Practice: PracticeProblem[] = [
       "Example: for i in range(1, 5): then indent print(i) on the next line"
     ],
     "starterCode": "",
+    "approach": "Use a for loop to print 1 through 4 for Introduction to Matplotlib. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
     "publicTests": [
       {
         "id": "m16-t1-p03-t1",
@@ -240,6 +243,7 @@ export const module16Practice: PracticeProblem[] = [
       "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
     ],
     "starterCode": "",
+    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
     "publicTests": [
       {
         "id": "m16-t1-p04-t1",
@@ -302,6 +306,7 @@ export const module16Practice: PracticeProblem[] = [
       "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
     ],
     "starterCode": "",
+    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
     "publicTests": [
       {
         "id": "m16-t1-p05-t1",
@@ -395,7 +400,8 @@ export const module16Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
   },
   {
     "id": "m16-t1-p07",
@@ -488,7 +494,8 @@ export const module16Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
   },
   {
     "id": "m16-t2-p01",
@@ -557,7 +564,8 @@ export const module16Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")"
+    "solutionCode": "print(\"Ready\")",
+    "approach": "Write a short program related to Line Bar Scatter and Histogram. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
   },
   {
     "id": "m16-t2-p02",
@@ -597,6 +605,7 @@ export const module16Practice: PracticeProblem[] = [
       "Output must be exactly A,B"
     ],
     "starterCode": "",
+    "approach": "Create two variables about Line Bar Scatter and Histogram and print them comma-separated. Key points: Create two variables related to Line Bar Scatter and Histogram Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
     "publicTests": [
       {
         "id": "m16-t2-p02-t1",
@@ -651,6 +660,7 @@ export const module16Practice: PracticeProblem[] = [
       "Example: for i in range(1, 5): then indent print(i) on the next line"
     ],
     "starterCode": "",
+    "approach": "Use a for loop to print 1 through 4 for Line Bar Scatter and Histogram. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
     "publicTests": [
       {
         "id": "m16-t2-p03-t1",
@@ -729,6 +739,7 @@ export const module16Practice: PracticeProblem[] = [
       "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
     ],
     "starterCode": "",
+    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
     "publicTests": [
       {
         "id": "m16-t2-p04-t1",
@@ -791,6 +802,7 @@ export const module16Practice: PracticeProblem[] = [
       "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
     ],
     "starterCode": "",
+    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
     "publicTests": [
       {
         "id": "m16-t2-p05-t1",
@@ -884,7 +896,8 @@ export const module16Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
   },
   {
     "id": "m16-t2-p07",
@@ -977,7 +990,8 @@ export const module16Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
   },
   {
     "id": "m16-t3-p01",
@@ -1046,7 +1060,8 @@ export const module16Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")"
+    "solutionCode": "print(\"Ready\")",
+    "approach": "Write a short program related to Customizing Plots. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
   },
   {
     "id": "m16-t3-p02",
@@ -1086,6 +1101,7 @@ export const module16Practice: PracticeProblem[] = [
       "Output must be exactly A,B"
     ],
     "starterCode": "",
+    "approach": "Create two variables about Customizing Plots and print them comma-separated. Key points: Create two variables related to Customizing Plots Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
     "publicTests": [
       {
         "id": "m16-t3-p02-t1",
@@ -1140,6 +1156,7 @@ export const module16Practice: PracticeProblem[] = [
       "Example: for i in range(1, 5): then indent print(i) on the next line"
     ],
     "starterCode": "",
+    "approach": "Use a for loop to print 1 through 4 for Customizing Plots. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
     "publicTests": [
       {
         "id": "m16-t3-p03-t1",
@@ -1218,6 +1235,7 @@ export const module16Practice: PracticeProblem[] = [
       "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
     ],
     "starterCode": "",
+    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
     "publicTests": [
       {
         "id": "m16-t3-p04-t1",
@@ -1280,6 +1298,7 @@ export const module16Practice: PracticeProblem[] = [
       "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
     ],
     "starterCode": "",
+    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
     "publicTests": [
       {
         "id": "m16-t3-p05-t1",
@@ -1373,7 +1392,8 @@ export const module16Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
   },
   {
     "id": "m16-t3-p07",
@@ -1466,7 +1486,8 @@ export const module16Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
   },
   {
     "id": "m16-t4-p01",
@@ -1535,7 +1556,8 @@ export const module16Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")"
+    "solutionCode": "print(\"Ready\")",
+    "approach": "Write a short program related to Introduction to Seaborn. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
   },
   {
     "id": "m16-t4-p02",
@@ -1575,6 +1597,7 @@ export const module16Practice: PracticeProblem[] = [
       "Output must be exactly A,B"
     ],
     "starterCode": "",
+    "approach": "Create two variables about Introduction to Seaborn and print them comma-separated. Key points: Create two variables related to Introduction to Seaborn Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
     "publicTests": [
       {
         "id": "m16-t4-p02-t1",
@@ -1629,6 +1652,7 @@ export const module16Practice: PracticeProblem[] = [
       "Example: for i in range(1, 5): then indent print(i) on the next line"
     ],
     "starterCode": "",
+    "approach": "Use a for loop to print 1 through 4 for Introduction to Seaborn. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
     "publicTests": [
       {
         "id": "m16-t4-p03-t1",
@@ -1707,6 +1731,7 @@ export const module16Practice: PracticeProblem[] = [
       "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
     ],
     "starterCode": "",
+    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
     "publicTests": [
       {
         "id": "m16-t4-p04-t1",
@@ -1769,6 +1794,7 @@ export const module16Practice: PracticeProblem[] = [
       "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
     ],
     "starterCode": "",
+    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
     "publicTests": [
       {
         "id": "m16-t4-p05-t1",
@@ -1862,7 +1888,8 @@ export const module16Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
   },
   {
     "id": "m16-t4-p07",
@@ -1955,7 +1982,8 @@ export const module16Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
   },
   {
     "id": "m16-t5-p01",
@@ -2024,7 +2052,8 @@ export const module16Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")"
+    "solutionCode": "print(\"Ready\")",
+    "approach": "Write a short program related to Statistical and Categorical Plots. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
   },
   {
     "id": "m16-t5-p02",
@@ -2064,6 +2093,7 @@ export const module16Practice: PracticeProblem[] = [
       "Output must be exactly A,B"
     ],
     "starterCode": "",
+    "approach": "Create two variables about Statistical and Categorical Plots and print them comma-separated. Key points: Create two variables related to Statistical and Categorical Plots Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
     "publicTests": [
       {
         "id": "m16-t5-p02-t1",
@@ -2118,6 +2148,7 @@ export const module16Practice: PracticeProblem[] = [
       "Example: for i in range(1, 5): then indent print(i) on the next line"
     ],
     "starterCode": "",
+    "approach": "Use a for loop to print 1 through 4 for Statistical and Categorical Plots. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
     "publicTests": [
       {
         "id": "m16-t5-p03-t1",
@@ -2196,6 +2227,7 @@ export const module16Practice: PracticeProblem[] = [
       "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
     ],
     "starterCode": "",
+    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
     "publicTests": [
       {
         "id": "m16-t5-p04-t1",
@@ -2258,6 +2290,7 @@ export const module16Practice: PracticeProblem[] = [
       "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
     ],
     "starterCode": "",
+    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
     "publicTests": [
       {
         "id": "m16-t5-p05-t1",
@@ -2351,7 +2384,8 @@ export const module16Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
+    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
   },
   {
     "id": "m16-t5-p07",
@@ -2444,6 +2478,7 @@ export const module16Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
+    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
   }
 ];

@@ -6,7 +6,7 @@ import { buildBasicsProblem, buildScriptProblem } from "./helpers";
  */
 export const beginnerProblems = [
   buildScriptProblem({
-    order: 0,
+    order: 1,
     slug: "hello-name",
     title: "Hello, Name",
     difficulty: "easy",
@@ -53,7 +53,7 @@ print(f"Hello, {name}!")`,
   }),
 
   buildScriptProblem({
-    order: 1,
+    order: 2,
     slug: "variable-assignment",
     title: "Variable Assignment",
     difficulty: "easy",
@@ -84,7 +84,7 @@ print(name, age, gpa, is_enrolled)`,
   }),
 
   buildScriptProblem({
-    order: 2,
+    order: 3,
     slug: "string-manipulation",
     title: "String Manipulation",
     difficulty: "easy",
@@ -122,7 +122,7 @@ print(sentence[::-1])`,
   }),
 
   buildScriptProblem({
-    order: 3,
+    order: 4,
     slug: "mathematical-operations",
     title: "Mathematical Operations",
     difficulty: "easy",
@@ -153,7 +153,7 @@ print(a % b)`,
   }),
 
   buildScriptProblem({
-    order: 4,
+    order: 5,
     slug: "list-operations",
     title: "List Operations",
     difficulty: "easy",
@@ -180,7 +180,7 @@ print(len(nums))`,
   }),
 
   buildScriptProblem({
-    order: 5,
+    order: 6,
     slug: "tuples-and-unpacking",
     title: "Tuples and Unpacking",
     difficulty: "easy",
@@ -208,7 +208,7 @@ print(point)`,
   }),
 
   buildScriptProblem({
-    order: 6,
+    order: 7,
     slug: "dictionary-operations",
     title: "Dictionary Operations",
     difficulty: "easy",
@@ -244,7 +244,7 @@ print(student)`,
   }),
 
   buildScriptProblem({
-    order: 7,
+    order: 8,
     slug: "set-operations",
     title: "Set Operations",
     difficulty: "easy",
@@ -279,7 +279,7 @@ print(sorted(a - b))`,
   }),
 
   buildScriptProblem({
-    order: 8,
+    order: 9,
     slug: "restaurant-bill",
     title: "Restaurant Bill",
     difficulty: "easy",
@@ -311,7 +311,7 @@ print(int(total))`,
   }),
 
   buildScriptProblem({
-    order: 9,
+    order: 10,
     slug: "temperature-label",
     title: "Temperature Label",
     difficulty: "easy",
@@ -341,7 +341,7 @@ else:
   }),
 
   buildScriptProblem({
-    order: 10,
+    order: 11,
     slug: "loan-eligibility",
     title: "Loan Eligibility",
     difficulty: "easy",
@@ -368,7 +368,7 @@ else:
   }),
 
   buildScriptProblem({
-    order: 11,
+    order: 12,
     slug: "multiplication-table",
     title: "Multiplication Table",
     difficulty: "easy",
@@ -396,7 +396,7 @@ for i in range(1, 6):
   }),
 
   buildScriptProblem({
-    order: 12,
+    order: 13,
     slug: "sum-of-evens",
     title: "Sum of Even Numbers",
     difficulty: "easy",
@@ -421,7 +421,7 @@ print(total)`,
   }),
 
   buildScriptProblem({
-    order: 13,
+    order: 14,
     slug: "until-quit",
     title: "Loop Until Quit",
     difficulty: "easy",
@@ -461,7 +461,7 @@ quit`,
   }),
 
   buildBasicsProblem({
-    order: 14,
+    order: 15,
     slug: "factorial",
     title: "Factorial Function",
     difficulty: "easy",
@@ -494,7 +494,7 @@ quit`,
   }),
 
   buildScriptProblem({
-    order: 15,
+    order: 16,
     slug: "membership-check",
     title: "Membership Check",
     difficulty: "easy",
@@ -517,7 +517,7 @@ print("mango" not in items)`,
   }),
 
   buildScriptProblem({
-    order: 16,
+    order: 17,
     slug: "letter-grade",
     title: "Letter Grade",
     difficulty: "easy",
