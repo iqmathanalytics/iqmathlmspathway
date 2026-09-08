@@ -7,6 +7,7 @@
 import { spawnSync } from "node:child_process";
 import { getPythonBasicsProblems } from "../src/data/python-basics/index.ts";
 import { getPythonPracticeProblems } from "../src/data/python-practice/index.ts";
+import { getAllPracticeProblems } from "../src/data/practice/index.ts";
 
 function normalizeStdout(s) {
   return s.replace(/\r\n/g, "\n").trimEnd();
@@ -130,10 +131,18 @@ function validateProblem(problem, track) {
 
 const basics = getPythonBasicsProblems();
 const algos = getPythonPracticeProblems();
+const curriculum = getAllPracticeProblems();
 
 const allFailures = [];
 let basicsOk = 0;
 let algosOk = 0;
+let curriculumOk = 0;
+
+for (const p of curriculum) {
+  const f = validateProblem(p, "curriculum");
+  if (f.length) allFailures.push(...f);
+  else curriculumOk += 1;
+}
 
 for (const p of basics) {
   const f = validateProblem(p, "basics");
@@ -151,12 +160,18 @@ console.log(
   JSON.stringify(
     {
       totals: {
+        curriculum: curriculum.length,
         basics: basics.length,
         algorithms: algos.length,
-        combined: basics.length + algos.length,
+        combined: curriculum.length + basics.length + algos.length,
       },
-      passedProblems: { basics: basicsOk, algorithms: algosOk },
+      passedProblems: {
+        curriculum: curriculumOk,
+        basics: basicsOk,
+        algorithms: algosOk,
+      },
       failedProblems: {
+        curriculum: curriculum.length - curriculumOk,
         basics: basics.length - basicsOk,
         algorithms: algos.length - algosOk,
       },

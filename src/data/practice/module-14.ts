@@ -67,7 +67,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "Ready",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"Ready\")"
   },
   {
     "id": "m14-t1-p02",
@@ -114,7 +115,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "A,B",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
   },
   {
     "id": "m14-t1-p03",
@@ -167,7 +169,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "1\n2\n3\n4",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "for i in range(1, 5):\n    print(i)"
   },
   {
     "id": "m14-t1-p04",
@@ -244,7 +247,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "Pass",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
   },
   {
     "id": "m14-t1-p05",
@@ -305,7 +309,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "Hello",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
   },
   {
     "id": "m14-t1-p06",
@@ -389,7 +394,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "middle",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
   },
   {
     "id": "m14-t1-p07",
@@ -481,7 +487,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "Python",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
   },
   {
     "id": "m14-t2-p01",
@@ -549,7 +556,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "Ready",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"Ready\")"
   },
   {
     "id": "m14-t2-p02",
@@ -596,7 +604,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "A,B",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
   },
   {
     "id": "m14-t2-p03",
@@ -649,7 +658,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "1\n2\n3\n4",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "for i in range(1, 5):\n    print(i)"
   },
   {
     "id": "m14-t2-p04",
@@ -726,7 +736,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "Pass",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
   },
   {
     "id": "m14-t2-p05",
@@ -787,7 +798,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "Hello",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
   },
   {
     "id": "m14-t2-p06",
@@ -871,7 +883,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "middle",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
   },
   {
     "id": "m14-t2-p07",
@@ -963,7 +976,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "Python",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
   },
   {
     "id": "m14-t3-p01",
@@ -1031,7 +1045,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "Ready",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"Ready\")"
   },
   {
     "id": "m14-t3-p02",
@@ -1078,7 +1093,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "A,B",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
   },
   {
     "id": "m14-t3-p03",
@@ -1131,7 +1147,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "1\n2\n3\n4",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "for i in range(1, 5):\n    print(i)"
   },
   {
     "id": "m14-t3-p04",
@@ -1208,7 +1225,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "Pass",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
   },
   {
     "id": "m14-t3-p05",
@@ -1269,7 +1287,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "Hello",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
   },
   {
     "id": "m14-t3-p06",
@@ -1353,7 +1372,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "middle",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
   },
   {
     "id": "m14-t3-p07",
@@ -1445,7 +1465,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "Python",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
   },
   {
     "id": "m14-t4-p01",
@@ -1513,7 +1534,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "Ready",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"Ready\")"
   },
   {
     "id": "m14-t4-p02",
@@ -1560,7 +1582,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "A,B",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
   },
   {
     "id": "m14-t4-p03",
@@ -1613,7 +1636,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "1\n2\n3\n4",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "for i in range(1, 5):\n    print(i)"
   },
   {
     "id": "m14-t4-p04",
@@ -1690,7 +1714,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "Pass",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
   },
   {
     "id": "m14-t4-p05",
@@ -1751,7 +1776,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "Hello",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
   },
   {
     "id": "m14-t4-p06",
@@ -1835,7 +1861,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "middle",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
   },
   {
     "id": "m14-t4-p07",
@@ -1927,7 +1954,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "Python",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
   },
   {
     "id": "m14-t5-p01",
@@ -1995,7 +2023,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "Ready",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"Ready\")"
   },
   {
     "id": "m14-t5-p02",
@@ -2042,7 +2071,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "A,B",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
   },
   {
     "id": "m14-t5-p03",
@@ -2095,7 +2125,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "1\n2\n3\n4",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "for i in range(1, 5):\n    print(i)"
   },
   {
     "id": "m14-t5-p04",
@@ -2172,7 +2203,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "Pass",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
   },
   {
     "id": "m14-t5-p05",
@@ -2233,7 +2265,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "Hello",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
   },
   {
     "id": "m14-t5-p06",
@@ -2317,7 +2350,8 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "middle",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
   },
   {
     "id": "m14-t5-p07",
@@ -2409,6 +2443,7 @@ export const module14Practice: PracticeProblem[] = [
         "expectedStdout": "Python",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
   }
 ];

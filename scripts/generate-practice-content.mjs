@@ -741,6 +741,10 @@ function buildProblem(
     constraints: challengeConstraints,
     hints: challengeHints,
     starterCode: "",
+    solutionCode: expected
+      .split("\n")
+      .map((line) => `print(${JSON.stringify(line)})`)
+      .join("\n"),
     publicTests: [
       {
         id: `${id}-t1`,

@@ -16,8 +16,14 @@ export const module1Practice: PracticeProblem[] = [
           "type": "text",
           "value": "Your very first Python challenge! Write a program that prints "
         },
-        { "type": "code", "value": "Hello, World!" },
-        { "type": "text", "value": " exactly to the screen." }
+        {
+          "type": "code",
+          "value": "Hello, World!"
+        },
+        {
+          "type": "text",
+          "value": " exactly to the screen."
+        }
       ],
       "learnSection": {
         "title": "What you need to know",
@@ -50,7 +56,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "Hello, World!",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"Hello, World!\")"
   },
   {
     "id": "m1-t1-p02",
@@ -65,17 +72,35 @@ export const module1Practice: PracticeProblem[] = [
       "introLead": "Write a program that prints exactly two lines:",
       "introBullets": [
         [
-          { "type": "text", "value": "First line: " },
-          { "type": "code", "value": "Alex" }
+          {
+            "type": "text",
+            "value": "First line: "
+          },
+          {
+            "type": "code",
+            "value": "Alex"
+          }
         ],
         [
-          { "type": "text", "value": "Second line: " },
-          { "type": "code", "value": "Data Science" }
+          {
+            "type": "text",
+            "value": "Second line: "
+          },
+          {
+            "type": "code",
+            "value": "Data Science"
+          }
         ]
       ],
       "introFooter": [
-        { "type": "text", "value": "Use two " },
-        { "type": "code", "value": "print()" },
+        {
+          "type": "text",
+          "value": "Use two "
+        },
+        {
+          "type": "code",
+          "value": "print()"
+        },
         {
           "type": "text",
           "value": " calls. Do not add extra blank lines or spaces."
@@ -90,7 +115,10 @@ export const module1Practice: PracticeProblem[] = [
         ],
         "codePreview": {
           "comment": "# Example: printing two lines",
-          "lines": ["Line one", "Line two"]
+          "lines": [
+            "Line one",
+            "Line two"
+          ]
         }
       },
       "inputLabel": "No input needed",
@@ -145,7 +173,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "Alex\nData Science",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"Alex\")\nprint(\"Data Science\")"
   },
   {
     "id": "m1-t1-p03",
@@ -158,18 +187,42 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Print the numbers 1, 2, and 3 — each on its own line.",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Print the numbers " },
-        { "type": "code", "value": "1" },
-        { "type": "text", "value": ", " },
-        { "type": "code", "value": "2" },
-        { "type": "text", "value": ", and " },
-        { "type": "code", "value": "3" },
+        {
+          "type": "text",
+          "value": "Print the numbers "
+        },
+        {
+          "type": "code",
+          "value": "1"
+        },
+        {
+          "type": "text",
+          "value": ", "
+        },
+        {
+          "type": "code",
+          "value": "2"
+        },
+        {
+          "type": "text",
+          "value": ", and "
+        },
+        {
+          "type": "code",
+          "value": "3"
+        },
         {
           "type": "text",
           "value": " — each on its own line. You can use strings or numbers inside "
         },
-        { "type": "code", "value": "print()" },
-        { "type": "text", "value": " — both work!" }
+        {
+          "type": "code",
+          "value": "print()"
+        },
+        {
+          "type": "text",
+          "value": " — both work!"
+        }
       ],
       "approaches": {
         "title": "Two valid approaches",
@@ -178,18 +231,36 @@ export const module1Practice: PracticeProblem[] = [
             "title": "Using numbers",
             "note": "Pass the number directly — no quotes needed.",
             "lines": [
-              { "type": "number", "value": "1" },
-              { "type": "number", "value": "2" },
-              { "type": "number", "value": "3" }
+              {
+                "type": "number",
+                "value": "1"
+              },
+              {
+                "type": "number",
+                "value": "2"
+              },
+              {
+                "type": "number",
+                "value": "3"
+              }
             ]
           },
           {
             "title": "Using strings",
             "note": "Wrap in quotes — Python prints the same output.",
             "lines": [
-              { "type": "string", "value": "1" },
-              { "type": "string", "value": "2" },
-              { "type": "string", "value": "3" }
+              {
+                "type": "string",
+                "value": "1"
+              },
+              {
+                "type": "string",
+                "value": "2"
+              },
+              {
+                "type": "string",
+                "value": "3"
+              }
             ]
           }
         ]
@@ -219,7 +290,11 @@ export const module1Practice: PracticeProblem[] = [
           "id": "order",
           "label": "correct order",
           "kind": "print-sequence",
-          "expected": ["1", "2", "3"]
+          "expected": [
+            "1",
+            "2",
+            "3"
+          ]
         }
       ],
       "emptyMessage": "Nothing to run! Write your three print() statements first.",
@@ -250,7 +325,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "1\n2\n3",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(1)\nprint(2)\nprint(3)"
   },
   {
     "id": "m1-t1-p04",
@@ -263,9 +339,18 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Add a comment describing the next line, then print Python is fun.",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Add a comment describing the next line, then print " },
-        { "type": "code", "value": "Python is fun" },
-        { "type": "text", "value": "." }
+        {
+          "type": "text",
+          "value": "Add a comment describing the next line, then print "
+        },
+        {
+          "type": "code",
+          "value": "Python is fun"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
       ],
       "outputOnly": true,
       "requiresComment": true,
@@ -293,7 +378,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "Python is fun",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"Python is fun\")"
   },
   {
     "id": "m1-t1-p05",
@@ -306,13 +392,34 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Print three lines: ====, Welcome to Python, ====",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Print three lines exactly: " },
-        { "type": "code", "value": "====" },
-        { "type": "text", "value": ", " },
-        { "type": "code", "value": "Welcome to Python" },
-        { "type": "text", "value": ", " },
-        { "type": "code", "value": "====" },
-        { "type": "text", "value": "." }
+        {
+          "type": "text",
+          "value": "Print three lines exactly: "
+        },
+        {
+          "type": "code",
+          "value": "===="
+        },
+        {
+          "type": "text",
+          "value": ", "
+        },
+        {
+          "type": "code",
+          "value": "Welcome to Python"
+        },
+        {
+          "type": "text",
+          "value": ", "
+        },
+        {
+          "type": "code",
+          "value": "===="
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
       ],
       "outputOnly": true,
       "editorPlaceholder": "# print banner here",
@@ -342,7 +449,11 @@ export const module1Practice: PracticeProblem[] = [
           "id": "order",
           "label": "correct order",
           "kind": "print-sequence",
-          "expected": ["====", "Welcome to Python", "===="]
+          "expected": [
+            "====",
+            "Welcome to Python",
+            "===="
+          ]
         }
       ],
       "emptyMessage": "Write three print() statements to build the banner.",
@@ -371,7 +482,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "====\nWelcome to Python\n====",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"====\")\nprint(\"Welcome to Python\")\nprint(\"====\")"
   },
   {
     "id": "m1-t1-p06",
@@ -384,19 +496,52 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Create two variables and print a sentence that introduces who you are and what you are learning.",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Create variables " },
-        { "type": "code", "value": "name" },
-        { "type": "text", "value": " and " },
-        { "type": "code", "value": "topic" },
-        { "type": "text", "value": ". Set " },
-        { "type": "code", "value": "name = \"Sam\"" },
-        { "type": "text", "value": " and " },
-        { "type": "code", "value": "topic = \"Python\"" },
-        { "type": "text", "value": ", then print this exact sentence: " },
-        { "type": "code", "value": "I am Sam learning Python" }
+        {
+          "type": "text",
+          "value": "Create variables "
+        },
+        {
+          "type": "code",
+          "value": "name"
+        },
+        {
+          "type": "text",
+          "value": " and "
+        },
+        {
+          "type": "code",
+          "value": "topic"
+        },
+        {
+          "type": "text",
+          "value": ". Set "
+        },
+        {
+          "type": "code",
+          "value": "name = \"Sam\""
+        },
+        {
+          "type": "text",
+          "value": " and "
+        },
+        {
+          "type": "code",
+          "value": "topic = \"Python\""
+        },
+        {
+          "type": "text",
+          "value": ", then print this exact sentence: "
+        },
+        {
+          "type": "code",
+          "value": "I am Sam learning Python"
+        }
       ],
       "outputOnly": true,
-      "requiresVariables": ["name", "topic"],
+      "requiresVariables": [
+        "name",
+        "topic"
+      ],
       "editorPlaceholder": "# set name and topic, then print the sentence",
       "liveCheckRules": [
         {
@@ -431,7 +576,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "I am Sam learning Python",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"I am Sam learning Python\")"
   },
   {
     "id": "m1-t1-p07",
@@ -444,11 +590,26 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Use print() to show the result of adding 17 and 25.",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Use " },
-        { "type": "code", "value": "print()" },
-        { "type": "text", "value": " to show the result of " },
-        { "type": "code", "value": "17 + 25" },
-        { "type": "text", "value": "." }
+        {
+          "type": "text",
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "print()"
+        },
+        {
+          "type": "text",
+          "value": " to show the result of "
+        },
+        {
+          "type": "code",
+          "value": "17 + 25"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
       ],
       "steps": {
         "title": "What you need to know",
@@ -459,7 +620,9 @@ export const module1Practice: PracticeProblem[] = [
         ],
         "codePreview": {
           "comment": "# Example output",
-          "lines": ["42"]
+          "lines": [
+            "42"
+          ]
         }
       },
       "outputOnly": true,
@@ -497,7 +660,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "42",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(17 + 25)"
   },
   {
     "id": "m1-t2-p01",
@@ -511,9 +675,18 @@ export const module1Practice: PracticeProblem[] = [
     "challengeContent": {
       "badgeVariant": "blue",
       "introSegments": [
-        { "type": "text", "value": "Write a simple program that prints the word " },
-        { "type": "code", "value": "Ready" },
-        { "type": "text", "value": " on a single line." }
+        {
+          "type": "text",
+          "value": "Write a simple program that prints the word "
+        },
+        {
+          "type": "code",
+          "value": "Ready"
+        },
+        {
+          "type": "text",
+          "value": " on a single line."
+        }
       ],
       "outputOnly": true,
       "editorPlaceholder": "# print Ready here",
@@ -549,7 +722,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "Ready",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"Ready\")"
   },
   {
     "id": "m1-t2-p02",
@@ -563,7 +737,10 @@ export const module1Practice: PracticeProblem[] = [
     "challengeContent": {
       "badgeVariant": "blue",
       "introSegments": [
-        { "type": "text", "value": "Create two variables related to Choosing Python and print them separated by a comma." }
+        {
+          "type": "text",
+          "value": "Create two variables related to Choosing Python and print them separated by a comma."
+        }
       ],
       "outputOnly": true,
       "expectCommaPrint": true,
@@ -594,7 +771,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "A,B",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
   },
   {
     "id": "m1-t2-p03",
@@ -607,9 +785,18 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Use a for loop to print numbers from 1 to 4 for basic practice.",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Use a " },
-        { "type": "code", "value": "for" },
-        { "type": "text", "value": " loop to print numbers from 1 to 4 for basic practice." }
+        {
+          "type": "text",
+          "value": "Use a "
+        },
+        {
+          "type": "code",
+          "value": "for"
+        },
+        {
+          "type": "text",
+          "value": " loop to print numbers from 1 to 4 for basic practice."
+        }
       ],
       "outputOnly": true,
       "requiresForLoop": true,
@@ -638,7 +825,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "1\n2\n3\n4",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "for i in range(1, 5):\n    print(i)"
   },
   {
     "id": "m1-t2-p04",
@@ -651,13 +839,34 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Set " },
-        { "type": "code", "value": "score = 75" },
-        { "type": "text", "value": ". If score is greater than or equal to 60, print " },
-        { "type": "code", "value": "Pass" },
-        { "type": "text", "value": ", otherwise print " },
-        { "type": "code", "value": "Fail" },
-        { "type": "text", "value": "." }
+        {
+          "type": "text",
+          "value": "Set "
+        },
+        {
+          "type": "code",
+          "value": "score = 75"
+        },
+        {
+          "type": "text",
+          "value": ". If score is greater than or equal to 60, print "
+        },
+        {
+          "type": "code",
+          "value": "Pass"
+        },
+        {
+          "type": "text",
+          "value": ", otherwise print "
+        },
+        {
+          "type": "code",
+          "value": "Fail"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
       ],
       "outputOnly": true,
       "requiresIfCondition": true,
@@ -686,7 +895,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "Pass",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
   },
   {
     "id": "m1-t2-p05",
@@ -699,11 +909,26 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Define a function greet() that prints Hello, and call it once.",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Define a function " },
-        { "type": "code", "value": "greet()" },
-        { "type": "text", "value": " that prints " },
-        { "type": "code", "value": "Hello" },
-        { "type": "text", "value": ", and call it once." }
+        {
+          "type": "text",
+          "value": "Define a function "
+        },
+        {
+          "type": "code",
+          "value": "greet()"
+        },
+        {
+          "type": "text",
+          "value": " that prints "
+        },
+        {
+          "type": "code",
+          "value": "Hello"
+        },
+        {
+          "type": "text",
+          "value": ", and call it once."
+        }
       ],
       "outputOnly": true,
       "requiresFunction": "greet",
@@ -732,7 +957,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "Hello",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
   },
   {
     "id": "m1-t2-p06",
@@ -745,11 +971,26 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Create a list with three items and print the second item (at index 1).",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Create a list with three items about Choosing Python. Print the " },
-        { "type": "code", "value": "second item" },
-        { "type": "text", "value": " using index " },
-        { "type": "code", "value": "1" },
-        { "type": "text", "value": " (Python counts from 0, so index 1 is the middle item)." }
+        {
+          "type": "text",
+          "value": "Create a list with three items about Choosing Python. Print the "
+        },
+        {
+          "type": "code",
+          "value": "second item"
+        },
+        {
+          "type": "text",
+          "value": " using index "
+        },
+        {
+          "type": "code",
+          "value": "1"
+        },
+        {
+          "type": "text",
+          "value": " (Python counts from 0, so index 1 is the middle item)."
+        }
       ],
       "steps": {
         "title": "What you need to know",
@@ -760,7 +1001,9 @@ export const module1Practice: PracticeProblem[] = [
         ],
         "codePreview": {
           "comment": "# Expected output",
-          "lines": ["middle"]
+          "lines": [
+            "middle"
+          ]
         }
       },
       "outputOnly": true,
@@ -799,7 +1042,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "middle",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
   },
   {
     "id": "m1-t2-p07",
@@ -812,13 +1056,34 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Create a dictionary with key topic and print its value.",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Create a dictionary with key " },
-        { "type": "code", "value": "topic" },
-        { "type": "text", "value": " and value " },
-        { "type": "code", "value": "Python" },
-        { "type": "text", "value": ". Print the value using " },
-        { "type": "code", "value": "d[\"topic\"]" },
-        { "type": "text", "value": "." }
+        {
+          "type": "text",
+          "value": "Create a dictionary with key "
+        },
+        {
+          "type": "code",
+          "value": "topic"
+        },
+        {
+          "type": "text",
+          "value": " and value "
+        },
+        {
+          "type": "code",
+          "value": "Python"
+        },
+        {
+          "type": "text",
+          "value": ". Print the value using "
+        },
+        {
+          "type": "code",
+          "value": "d[\"topic\"]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
       ],
       "steps": {
         "title": "What you need to know",
@@ -829,7 +1094,9 @@ export const module1Practice: PracticeProblem[] = [
         ],
         "codePreview": {
           "comment": "# Expected output",
-          "lines": ["Python"]
+          "lines": [
+            "Python"
+          ]
         }
       },
       "outputOnly": true,
@@ -868,7 +1135,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "Python",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
   },
   {
     "id": "m1-t3-p01",
@@ -881,9 +1149,18 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Write a short program related to Setting up Python Environment. Print the word Ready on one line.",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Write a short program related to Setting up Python Environment. Print the word " },
-        { "type": "code", "value": "Ready" },
-        { "type": "text", "value": " on one line." }
+        {
+          "type": "text",
+          "value": "Write a short program related to Setting up Python Environment. Print the word "
+        },
+        {
+          "type": "code",
+          "value": "Ready"
+        },
+        {
+          "type": "text",
+          "value": " on one line."
+        }
       ],
       "outputOnly": true,
       "editorPlaceholder": "# Write your solution here",
@@ -919,7 +1196,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "Ready",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"Ready\")"
   },
   {
     "id": "m1-t3-p02",
@@ -932,7 +1210,10 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Create two variables relevant to Setting up Python Environment and print them separated by a comma.",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Create two variables relevant to Setting up Python Environment and print them separated by a comma." }
+        {
+          "type": "text",
+          "value": "Create two variables relevant to Setting up Python Environment and print them separated by a comma."
+        }
       ],
       "outputOnly": true,
       "expectCommaPrint": true,
@@ -963,7 +1244,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "A,B",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
   },
   {
     "id": "m1-t3-p03",
@@ -976,9 +1258,18 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Use a for loop to print numbers from 1 to 4 for basic practice.",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Use a " },
-        { "type": "code", "value": "for" },
-        { "type": "text", "value": " loop to print numbers from 1 to 4. This is basic loop practice for Setting up Python Environment." }
+        {
+          "type": "text",
+          "value": "Use a "
+        },
+        {
+          "type": "code",
+          "value": "for"
+        },
+        {
+          "type": "text",
+          "value": " loop to print numbers from 1 to 4. This is basic loop practice for Setting up Python Environment."
+        }
       ],
       "outputOnly": true,
       "requiresForLoop": true,
@@ -1007,7 +1298,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "1\n2\n3\n4",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "for i in range(1, 5):\n    print(i)"
   },
   {
     "id": "m1-t3-p04",
@@ -1020,15 +1312,42 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Set " },
-        { "type": "code", "value": "score = 75" },
-        { "type": "text", "value": ". If " },
-        { "type": "code", "value": "score >= 60" },
-        { "type": "text", "value": ", print " },
-        { "type": "code", "value": "Pass" },
-        { "type": "text", "value": ", otherwise print " },
-        { "type": "code", "value": "Fail" },
-        { "type": "text", "value": "." }
+        {
+          "type": "text",
+          "value": "Set "
+        },
+        {
+          "type": "code",
+          "value": "score = 75"
+        },
+        {
+          "type": "text",
+          "value": ". If "
+        },
+        {
+          "type": "code",
+          "value": "score >= 60"
+        },
+        {
+          "type": "text",
+          "value": ", print "
+        },
+        {
+          "type": "code",
+          "value": "Pass"
+        },
+        {
+          "type": "text",
+          "value": ", otherwise print "
+        },
+        {
+          "type": "code",
+          "value": "Fail"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
       ],
       "outputOnly": true,
       "requiresIfCondition": true,
@@ -1057,7 +1376,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "Pass",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
   },
   {
     "id": "m1-t3-p05",
@@ -1071,11 +1391,26 @@ export const module1Practice: PracticeProblem[] = [
     "challengeContent": {
       "badgeVariant": "blue",
       "introSegments": [
-        { "type": "text", "value": "Define " },
-        { "type": "code", "value": "greet()" },
-        { "type": "text", "value": " that prints " },
-        { "type": "code", "value": "Hello" },
-        { "type": "text", "value": " and call it once." }
+        {
+          "type": "text",
+          "value": "Define "
+        },
+        {
+          "type": "code",
+          "value": "greet()"
+        },
+        {
+          "type": "text",
+          "value": " that prints "
+        },
+        {
+          "type": "code",
+          "value": "Hello"
+        },
+        {
+          "type": "text",
+          "value": " and call it once."
+        }
       ],
       "outputOnly": true,
       "requiresFunction": "greet",
@@ -1104,7 +1439,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "Hello",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
   },
   {
     "id": "m1-t3-p06",
@@ -1117,11 +1453,26 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Create a list with three items and print the second item (at index 1).",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Create a list with three items about Setting up Python Environment. Print the " },
-        { "type": "code", "value": "second item" },
-        { "type": "text", "value": " using index " },
-        { "type": "code", "value": "1" },
-        { "type": "text", "value": " (Python counts from 0, so index 1 is the middle item)." }
+        {
+          "type": "text",
+          "value": "Create a list with three items about Setting up Python Environment. Print the "
+        },
+        {
+          "type": "code",
+          "value": "second item"
+        },
+        {
+          "type": "text",
+          "value": " using index "
+        },
+        {
+          "type": "code",
+          "value": "1"
+        },
+        {
+          "type": "text",
+          "value": " (Python counts from 0, so index 1 is the middle item)."
+        }
       ],
       "steps": {
         "title": "What you need to know",
@@ -1132,7 +1483,9 @@ export const module1Practice: PracticeProblem[] = [
         ],
         "codePreview": {
           "comment": "# Expected output",
-          "lines": ["middle"]
+          "lines": [
+            "middle"
+          ]
         }
       },
       "outputOnly": true,
@@ -1171,7 +1524,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "middle",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
   },
   {
     "id": "m1-t3-p07",
@@ -1184,13 +1538,34 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Create a dictionary with key topic and print its value.",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Create a dictionary with key " },
-        { "type": "code", "value": "topic" },
-        { "type": "text", "value": " and value " },
-        { "type": "code", "value": "Python" },
-        { "type": "text", "value": ". Print the value using " },
-        { "type": "code", "value": "d[\"topic\"]" },
-        { "type": "text", "value": "." }
+        {
+          "type": "text",
+          "value": "Create a dictionary with key "
+        },
+        {
+          "type": "code",
+          "value": "topic"
+        },
+        {
+          "type": "text",
+          "value": " and value "
+        },
+        {
+          "type": "code",
+          "value": "Python"
+        },
+        {
+          "type": "text",
+          "value": ". Print the value using "
+        },
+        {
+          "type": "code",
+          "value": "d[\"topic\"]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
       ],
       "steps": {
         "title": "What you need to know",
@@ -1201,7 +1576,9 @@ export const module1Practice: PracticeProblem[] = [
         ],
         "codePreview": {
           "comment": "# Expected output",
-          "lines": ["Python"]
+          "lines": [
+            "Python"
+          ]
         }
       },
       "outputOnly": true,
@@ -1240,7 +1617,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "Python",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
   },
   {
     "id": "m1-t4-p01",
@@ -1253,9 +1631,18 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Write a short program related to Python IDEs. Print the word Ready on one line.",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Write a short program related to Python IDEs. Print the word " },
-        { "type": "code", "value": "Ready" },
-        { "type": "text", "value": " on one line." }
+        {
+          "type": "text",
+          "value": "Write a short program related to Python IDEs. Print the word "
+        },
+        {
+          "type": "code",
+          "value": "Ready"
+        },
+        {
+          "type": "text",
+          "value": " on one line."
+        }
       ],
       "outputOnly": true,
       "editorPlaceholder": "# Write your solution here",
@@ -1291,7 +1678,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "Ready",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"Ready\")"
   },
   {
     "id": "m1-t4-p02",
@@ -1304,7 +1692,10 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Create two variables relevant to Python IDEs and print them separated by a comma.",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Create two variables relevant to Python IDEs and print them separated by a comma." }
+        {
+          "type": "text",
+          "value": "Create two variables relevant to Python IDEs and print them separated by a comma."
+        }
       ],
       "outputOnly": true,
       "expectCommaPrint": true,
@@ -1335,7 +1726,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "A,B",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
   },
   {
     "id": "m1-t4-p03",
@@ -1348,9 +1740,18 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Use a for loop to print numbers from 1 to 4 for basic practice.",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Use a " },
-        { "type": "code", "value": "for" },
-        { "type": "text", "value": " loop to print numbers from 1 to 4. This is basic loop practice for Python IDEs." }
+        {
+          "type": "text",
+          "value": "Use a "
+        },
+        {
+          "type": "code",
+          "value": "for"
+        },
+        {
+          "type": "text",
+          "value": " loop to print numbers from 1 to 4. This is basic loop practice for Python IDEs."
+        }
       ],
       "outputOnly": true,
       "requiresForLoop": true,
@@ -1379,7 +1780,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "1\n2\n3\n4",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "for i in range(1, 5):\n    print(i)"
   },
   {
     "id": "m1-t4-p04",
@@ -1392,15 +1794,42 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Set " },
-        { "type": "code", "value": "score = 75" },
-        { "type": "text", "value": ". If " },
-        { "type": "code", "value": "score >= 60" },
-        { "type": "text", "value": ", print " },
-        { "type": "code", "value": "Pass" },
-        { "type": "text", "value": ", otherwise print " },
-        { "type": "code", "value": "Fail" },
-        { "type": "text", "value": "." }
+        {
+          "type": "text",
+          "value": "Set "
+        },
+        {
+          "type": "code",
+          "value": "score = 75"
+        },
+        {
+          "type": "text",
+          "value": ". If "
+        },
+        {
+          "type": "code",
+          "value": "score >= 60"
+        },
+        {
+          "type": "text",
+          "value": ", print "
+        },
+        {
+          "type": "code",
+          "value": "Pass"
+        },
+        {
+          "type": "text",
+          "value": ", otherwise print "
+        },
+        {
+          "type": "code",
+          "value": "Fail"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
       ],
       "outputOnly": true,
       "requiresIfCondition": true,
@@ -1429,7 +1858,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "Pass",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
   },
   {
     "id": "m1-t4-p05",
@@ -1442,11 +1872,26 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Define greet() that prints Hello and call it once.",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Define " },
-        { "type": "code", "value": "greet()" },
-        { "type": "text", "value": " that prints " },
-        { "type": "code", "value": "Hello" },
-        { "type": "text", "value": " and call it once." }
+        {
+          "type": "text",
+          "value": "Define "
+        },
+        {
+          "type": "code",
+          "value": "greet()"
+        },
+        {
+          "type": "text",
+          "value": " that prints "
+        },
+        {
+          "type": "code",
+          "value": "Hello"
+        },
+        {
+          "type": "text",
+          "value": " and call it once."
+        }
       ],
       "outputOnly": true,
       "requiresFunction": "greet",
@@ -1475,7 +1920,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "Hello",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
   },
   {
     "id": "m1-t4-p06",
@@ -1488,11 +1934,26 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Create a list with three items and print the second item (at index 1).",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Create a list with three items about Python IDEs. Print the " },
-        { "type": "code", "value": "second item" },
-        { "type": "text", "value": " using index " },
-        { "type": "code", "value": "1" },
-        { "type": "text", "value": " (Python counts from 0, so index 1 is the middle item)." }
+        {
+          "type": "text",
+          "value": "Create a list with three items about Python IDEs. Print the "
+        },
+        {
+          "type": "code",
+          "value": "second item"
+        },
+        {
+          "type": "text",
+          "value": " using index "
+        },
+        {
+          "type": "code",
+          "value": "1"
+        },
+        {
+          "type": "text",
+          "value": " (Python counts from 0, so index 1 is the middle item)."
+        }
       ],
       "steps": {
         "title": "What you need to know",
@@ -1503,7 +1964,9 @@ export const module1Practice: PracticeProblem[] = [
         ],
         "codePreview": {
           "comment": "# Expected output",
-          "lines": ["middle"]
+          "lines": [
+            "middle"
+          ]
         }
       },
       "outputOnly": true,
@@ -1542,7 +2005,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "middle",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
   },
   {
     "id": "m1-t4-p07",
@@ -1555,13 +2019,34 @@ export const module1Practice: PracticeProblem[] = [
     "description": "Create a dictionary with key topic and print its value.",
     "challengeContent": {
       "introSegments": [
-        { "type": "text", "value": "Create a dictionary with key " },
-        { "type": "code", "value": "topic" },
-        { "type": "text", "value": " and value " },
-        { "type": "code", "value": "Python" },
-        { "type": "text", "value": ". Print the value using " },
-        { "type": "code", "value": "d[\"topic\"]" },
-        { "type": "text", "value": "." }
+        {
+          "type": "text",
+          "value": "Create a dictionary with key "
+        },
+        {
+          "type": "code",
+          "value": "topic"
+        },
+        {
+          "type": "text",
+          "value": " and value "
+        },
+        {
+          "type": "code",
+          "value": "Python"
+        },
+        {
+          "type": "text",
+          "value": ". Print the value using "
+        },
+        {
+          "type": "code",
+          "value": "d[\"topic\"]"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
       ],
       "steps": {
         "title": "What you need to know",
@@ -1572,7 +2057,9 @@ export const module1Practice: PracticeProblem[] = [
         ],
         "codePreview": {
           "comment": "# Expected output",
-          "lines": ["Python"]
+          "lines": [
+            "Python"
+          ]
         }
       },
       "outputOnly": true,
@@ -1611,9 +2098,9 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "Python",
         "visibility": "public"
       }
-    ]
-  }
-,
+    ],
+    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+  },
   {
     "id": "m1-t5-p01",
     "topicId": "m1-t5",
@@ -1671,7 +2158,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "Ready",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"Ready\")"
   },
   {
     "id": "m1-t5-p02",
@@ -1730,7 +2218,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "A,B",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
   },
   {
     "id": "m1-t5-p03",
@@ -1789,7 +2278,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "1\n2\n3\n4",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "for i in range(1, 5):\n    print(i)"
   },
   {
     "id": "m1-t5-p04",
@@ -1848,7 +2338,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "Pass",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
   },
   {
     "id": "m1-t5-p05",
@@ -1907,7 +2398,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "code",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"code\")"
   },
   {
     "id": "m1-t5-p06",
@@ -1966,7 +2458,8 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "Jupyter",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"Jupyter\")"
   },
   {
     "id": "m1-t5-p07",
@@ -2025,6 +2518,7 @@ export const module1Practice: PracticeProblem[] = [
         "expectedStdout": "Notebook: ready",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"topic\": \"Notebook: ready\"}\nprint(d[\"topic\"])"
   }
 ];

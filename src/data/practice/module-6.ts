@@ -51,7 +51,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "(1, 2, 3)",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "t = (1, 2, 3)\nprint(t)"
   },
   {
     "id": "m6-t1-p02",
@@ -104,7 +105,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "b",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "t = (\"a\",\"b\",\"c\")\nprint(t[1])"
   },
   {
     "id": "m6-t1-p03",
@@ -157,7 +159,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "1",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "t = (1,2)\nprint(t[0])"
   },
   {
     "id": "m6-t1-p04",
@@ -201,7 +204,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "4",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "t = (1,2,3,4)\nprint(len(t))"
   },
   {
     "id": "m6-t1-p05",
@@ -254,7 +258,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "(1, 2)",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "t = (0,1,2,3)\nprint(t[1:3])"
   },
   {
     "id": "m6-t1-p06",
@@ -313,7 +318,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "2",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print((1,2,2,3).count(2))"
   },
   {
     "id": "m6-t1-p07",
@@ -372,7 +378,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "1",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print((\"x\",\"y\",\"z\").index(\"y\"))"
   },
   {
     "id": "m6-t2-p01",
@@ -423,7 +430,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "(3, 1, 2)",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print((3,1,2))"
   },
   {
     "id": "m6-t2-p02",
@@ -474,7 +482,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "3",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(len((1,2,3)))"
   },
   {
     "id": "m6-t2-p03",
@@ -525,7 +534,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "(1, 1, 2)",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print((1,1,2))"
   },
   {
     "id": "m6-t2-p04",
@@ -576,7 +586,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "(1, 'a', True)",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print((1, \"a\", True))"
   },
   {
     "id": "m6-t2-p05",
@@ -635,7 +646,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "(42,)",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print((42,))"
   },
   {
     "id": "m6-t2-p06",
@@ -687,7 +699,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "(1, 2, 3)",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "t = 1, 2, 3\nprint(t)"
   },
   {
     "id": "m6-t2-p07",
@@ -731,7 +744,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "10",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "t = (10, 20)\na, b = t\nprint(a)"
   },
   {
     "id": "m6-t3-p01",
@@ -775,7 +789,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "[1, 2, 3]",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"[1, 2, 3]\")"
   },
   {
     "id": "m6-t3-p02",
@@ -828,7 +843,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "b",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "t = (\"a\",\"b\",\"c\")\nprint(t[1])"
   },
   {
     "id": "m6-t3-p03",
@@ -881,7 +897,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "1",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "t = (1,2)\nprint(t[0])"
   },
   {
     "id": "m6-t3-p04",
@@ -925,7 +942,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "4",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "t = (1,2,3,4)\nprint(len(t))"
   },
   {
     "id": "m6-t3-p05",
@@ -978,7 +996,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "(1, 2)",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "t = (0,1,2,3)\nprint(t[1:3])"
   },
   {
     "id": "m6-t3-p06",
@@ -1037,7 +1056,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "2",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print((1,2,2,3).count(2))"
   },
   {
     "id": "m6-t3-p07",
@@ -1096,7 +1116,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "1",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print((\"x\",\"y\",\"z\").index(\"y\"))"
   },
   {
     "id": "m6-t4-p01",
@@ -1140,7 +1161,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "[1, 2, 3]",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"[1, 2, 3]\")"
   },
   {
     "id": "m6-t4-p02",
@@ -1193,7 +1215,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "b",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "t = (\"a\",\"b\",\"c\")\nprint(t[1])"
   },
   {
     "id": "m6-t4-p03",
@@ -1246,7 +1269,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "1",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "t = (1,2)\nprint(t[0])"
   },
   {
     "id": "m6-t4-p04",
@@ -1290,7 +1314,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "4",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "t = (1,2,3,4)\nprint(len(t))"
   },
   {
     "id": "m6-t4-p05",
@@ -1343,7 +1368,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "(1, 2)",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "t = (0,1,2,3)\nprint(t[1:3])"
   },
   {
     "id": "m6-t4-p06",
@@ -1402,7 +1428,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "2",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print((1,2,2,3).count(2))"
   },
   {
     "id": "m6-t4-p07",
@@ -1461,7 +1488,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "1",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print((\"x\",\"y\",\"z\").index(\"y\"))"
   },
   {
     "id": "m6-t5-p01",
@@ -1505,7 +1533,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "[1, 2, 3]",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"[1, 2, 3]\")"
   },
   {
     "id": "m6-t5-p02",
@@ -1558,7 +1587,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "b",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "t = (\"a\",\"b\",\"c\")\nprint(t[1])"
   },
   {
     "id": "m6-t5-p03",
@@ -1611,7 +1641,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "1",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "t = (1,2)\nprint(t[0])"
   },
   {
     "id": "m6-t5-p04",
@@ -1655,7 +1686,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "4",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "t = (1,2,3,4)\nprint(len(t))"
   },
   {
     "id": "m6-t5-p05",
@@ -1708,7 +1740,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "(1, 2)",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "t = (0,1,2,3)\nprint(t[1:3])"
   },
   {
     "id": "m6-t5-p06",
@@ -1767,7 +1800,8 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "2",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print((1,2,2,3).count(2))"
   },
   {
     "id": "m6-t5-p07",
@@ -1826,6 +1860,7 @@ export const module6Practice: PracticeProblem[] = [
         "expectedStdout": "1",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print((\"x\",\"y\",\"z\").index(\"y\"))"
   }
 ];

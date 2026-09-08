@@ -41,7 +41,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "Hi",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def greet():\n    print(\"Hi\")\ngreet()"
   },
   {
     "id": "m12-t1-p02",
@@ -91,7 +92,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "5",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def add(a,b):\n    return a+b\nprint(add(2,3))"
   },
   {
     "id": "m12-t1-p03",
@@ -133,7 +135,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "HI",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def shout(name):\n    print(name.upper())\nshout(\"hi\")"
   },
   {
     "id": "m12-t1-p04",
@@ -175,7 +178,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "Hi Guest",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def greet(name=\"Guest\"):\n    print(f\"Hi {name}\")\ngreet()"
   },
   {
     "id": "m12-t1-p05",
@@ -217,7 +221,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "3",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def minmax(a,b):\n    return min(a,b), max(a,b)\nprint(minmax(3,7)[0])"
   },
   {
     "id": "m12-t1-p06",
@@ -259,7 +264,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "10",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def f():\n    x=10\n    return x\nprint(f())"
   },
   {
     "id": "m12-t1-p07",
@@ -301,7 +307,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "8",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def double(x): return x*2\ndef quad(x): return double(double(x))\nprint(quad(2))"
   },
   {
     "id": "m12-t2-p01",
@@ -343,7 +350,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "Hi",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def greet():\n    print(\"Hi\")\ngreet()"
   },
   {
     "id": "m12-t2-p02",
@@ -393,7 +401,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "5",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def add(a,b):\n    return a+b\nprint(add(2,3))"
   },
   {
     "id": "m12-t2-p03",
@@ -435,7 +444,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "HI",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def shout(name):\n    print(name.upper())\nshout(\"hi\")"
   },
   {
     "id": "m12-t2-p04",
@@ -477,7 +487,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "Hi Guest",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def greet(name=\"Guest\"):\n    print(f\"Hi {name}\")\ngreet()"
   },
   {
     "id": "m12-t2-p05",
@@ -519,7 +530,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "3",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def minmax(a,b):\n    return min(a,b), max(a,b)\nprint(minmax(3,7)[0])"
   },
   {
     "id": "m12-t2-p06",
@@ -561,7 +573,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "10",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def f():\n    x=10\n    return x\nprint(f())"
   },
   {
     "id": "m12-t2-p07",
@@ -603,7 +616,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "8",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def double(x): return x*2\ndef quad(x): return double(double(x))\nprint(quad(2))"
   },
   {
     "id": "m12-t3-p01",
@@ -645,7 +659,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "Hi",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def greet():\n    print(\"Hi\")\ngreet()"
   },
   {
     "id": "m12-t3-p02",
@@ -695,7 +710,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "5",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def add(a,b):\n    return a+b\nprint(add(2,3))"
   },
   {
     "id": "m12-t3-p03",
@@ -737,7 +753,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "HI",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def shout(name):\n    print(name.upper())\nshout(\"hi\")"
   },
   {
     "id": "m12-t3-p04",
@@ -779,7 +796,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "Hi Guest",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def greet(name=\"Guest\"):\n    print(f\"Hi {name}\")\ngreet()"
   },
   {
     "id": "m12-t3-p05",
@@ -821,7 +839,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "3",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def minmax(a,b):\n    return min(a,b), max(a,b)\nprint(minmax(3,7)[0])"
   },
   {
     "id": "m12-t3-p06",
@@ -863,7 +882,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "10",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def f():\n    x=10\n    return x\nprint(f())"
   },
   {
     "id": "m12-t3-p07",
@@ -905,7 +925,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "8",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def double(x): return x*2\ndef quad(x): return double(double(x))\nprint(quad(2))"
   },
   {
     "id": "m12-t4-p01",
@@ -947,7 +968,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "Hi",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def greet():\n    print(\"Hi\")\ngreet()"
   },
   {
     "id": "m12-t4-p02",
@@ -997,7 +1019,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "5",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def add(a,b):\n    return a+b\nprint(add(2,3))"
   },
   {
     "id": "m12-t4-p03",
@@ -1039,7 +1062,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "HI",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def shout(name):\n    print(name.upper())\nshout(\"hi\")"
   },
   {
     "id": "m12-t4-p04",
@@ -1081,7 +1105,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "Hi Guest",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def greet(name=\"Guest\"):\n    print(f\"Hi {name}\")\ngreet()"
   },
   {
     "id": "m12-t4-p05",
@@ -1123,7 +1148,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "3",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def minmax(a,b):\n    return min(a,b), max(a,b)\nprint(minmax(3,7)[0])"
   },
   {
     "id": "m12-t4-p06",
@@ -1165,7 +1191,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "10",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def f():\n    x=10\n    return x\nprint(f())"
   },
   {
     "id": "m12-t4-p07",
@@ -1207,7 +1234,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "8",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def double(x): return x*2\ndef quad(x): return double(double(x))\nprint(quad(2))"
   },
   {
     "id": "m12-t5-p01",
@@ -1249,7 +1277,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "3\n2\n1",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def countdown(n):\n    print(n)\n    if n>1:\n        countdown(n-1)\ncountdown(3)"
   },
   {
     "id": "m12-t5-p02",
@@ -1291,7 +1320,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "120",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def fact(n):\n    return 1 if n<=1 else n*fact(n-1)\nprint(fact(5))"
   },
   {
     "id": "m12-t5-p03",
@@ -1333,7 +1363,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "15",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def rsum(n):\n    return 0 if n<=0 else n+rsum(n-1)\nprint(rsum(5))"
   },
   {
     "id": "m12-t5-p04",
@@ -1375,7 +1406,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "8",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def fib(n):\n    return n if n<=1 else fib(n-1)+fib(n-2)\nprint(fib(6))"
   },
   {
     "id": "m12-t5-p05",
@@ -1417,7 +1449,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "8",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def power(b,e):\n    return 1 if e==0 else b*power(b,e-1)\nprint(power(2,3))"
   },
   {
     "id": "m12-t5-p06",
@@ -1459,7 +1492,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "3",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def rlen(s):\n    return 0 if s==\"\" else 1+rlen(s[1:])\nprint(rlen(\"abc\"))"
   },
   {
     "id": "m12-t5-p07",
@@ -1501,7 +1535,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "2\n1",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def print_down(n):\n    if n>=1:\n        print(n)\n        print_down(n-1)\nprint_down(2)"
   },
   {
     "id": "m12-t6-p01",
@@ -1542,7 +1577,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "10",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "f = lambda x: x*2\nprint(f(5))"
   },
   {
     "id": "m12-t6-p02",
@@ -1583,7 +1619,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "7",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "add = lambda a,b: a+b\nprint(add(3,4))"
   },
   {
     "id": "m12-t6-p03",
@@ -1624,7 +1661,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "16",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "sq = lambda x: x**2\nprint(sq(4))"
   },
   {
     "id": "m12-t6-p04",
@@ -1683,7 +1721,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "[2, 4, 6]",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(list(map(lambda x: x*2, [1,2,3])))"
   },
   {
     "id": "m12-t6-p05",
@@ -1742,7 +1781,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "[3, 4]",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(list(filter(lambda x: x>2, [1,2,3,4])))"
   },
   {
     "id": "m12-t6-p06",
@@ -1793,7 +1833,8 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "['a', 'bb', 'ccc']",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(sorted(['bb','a','ccc'], key=lambda s: len(s)))"
   },
   {
     "id": "m12-t6-p07",
@@ -1852,6 +1893,7 @@ export const module12Practice: PracticeProblem[] = [
         "expectedStdout": "10",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print((lambda x: x+1)(9))"
   }
 ];

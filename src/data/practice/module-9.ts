@@ -52,7 +52,8 @@ export const module9Practice: PracticeProblem[] = [
         "expectedStdout": "yes",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "x = 10\nif x > 5:\n    print(\"yes\")"
   },
   {
     "id": "m9-t1-p02",
@@ -96,7 +97,8 @@ export const module9Practice: PracticeProblem[] = [
         "expectedStdout": "done",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "x = 2\nif x > 5:\n    print(\"yes\")\nprint(\"done\")"
   },
   {
     "id": "m9-t1-p03",
@@ -138,7 +140,8 @@ export const module9Practice: PracticeProblem[] = [
         "expectedStdout": "zero",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "n = 0\nif n:\n    print(\"nonzero\")\nelse:\n    print(\"zero\")"
   },
   {
     "id": "m9-t1-p04",
@@ -188,7 +191,8 @@ export const module9Practice: PracticeProblem[] = [
         "expectedStdout": "Pass",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")"
   },
   {
     "id": "m9-t1-p05",
@@ -232,7 +236,8 @@ export const module9Practice: PracticeProblem[] = [
         "expectedStdout": "Hello",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "name = \"Ana\"\nif name:\n    print(\"Hello\")"
   },
   {
     "id": "m9-t1-p06",
@@ -284,7 +289,8 @@ export const module9Practice: PracticeProblem[] = [
         "expectedStdout": "ok",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "age=20\nscore=80\nif age>=18 and score>=60:\n    print(\"ok\")"
   },
   {
     "id": "m9-t1-p07",
@@ -329,7 +335,8 @@ export const module9Practice: PracticeProblem[] = [
         "expectedStdout": "has items",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "items=[1,2]\nif len(items)>0:\n    print(\"has items\")"
   },
   {
     "id": "m9-t2-p01",
@@ -379,7 +386,8 @@ export const module9Practice: PracticeProblem[] = [
         "expectedStdout": "Pass",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "score=75\nif score>=60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
   },
   {
     "id": "m9-t2-p02",
@@ -429,7 +437,8 @@ export const module9Practice: PracticeProblem[] = [
         "expectedStdout": "even",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "n=4\nif n%2==0:\n    print(\"even\")\nelse:\n    print(\"odd\")"
   },
   {
     "id": "m9-t2-p03",
@@ -471,7 +480,8 @@ export const module9Practice: PracticeProblem[] = [
         "expectedStdout": "a wins",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "a=5\nb=3\nif a>b:\n    print(\"a wins\")\nelse:\n    print(\"b wins\")"
   },
   {
     "id": "m9-t2-p04",
@@ -513,7 +523,8 @@ export const module9Practice: PracticeProblem[] = [
         "expectedStdout": "neg",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "x=-3\nif x>=0:\n    print(\"pos\")\nelse:\n    print(\"neg\")"
   },
   {
     "id": "m9-t2-p05",
@@ -555,7 +566,8 @@ export const module9Practice: PracticeProblem[] = [
         "expectedStdout": "empty",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "s=\"\"\nif s:\n    print(\"has text\")\nelse:\n    print(\"empty\")"
   },
   {
     "id": "m9-t2-p06",
@@ -597,7 +609,8 @@ export const module9Practice: PracticeProblem[] = [
         "expectedStdout": "positive",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "x=10\nif x>0:\n    print(\"positive\")\nelse:\n    print(\"non-positive\")"
   },
   {
     "id": "m9-t2-p07",
@@ -639,7 +652,8 @@ export const module9Practice: PracticeProblem[] = [
         "expectedStdout": "welcome",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "user=\"admin\"\nif user==\"admin\":\n    print(\"welcome\")\nelse:\n    print(\"denied\")"
   },
   {
     "id": "m9-t3-p01",
@@ -689,7 +703,8 @@ export const module9Practice: PracticeProblem[] = [
         "expectedStdout": "A",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "score=90\nif score>=90:\n    print(\"A\")\nelif score>=80:\n    print(\"B\")\nelse:\n    print(\"C\")"
   },
   {
     "id": "m9-t3-p02",
@@ -731,7 +746,8 @@ export const module9Practice: PracticeProblem[] = [
         "expectedStdout": "B",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "score=85\nif score>=90: print(\"A\")\nelif score>=80: print(\"B\")\nelse: print(\"C\")"
   },
   {
     "id": "m9-t3-p03",
@@ -773,7 +789,8 @@ export const module9Practice: PracticeProblem[] = [
         "expectedStdout": "C",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "score=70\nif score>=90: print(\"A\")\nelif score>=80: print(\"B\")\nelse: print(\"C\")"
   },
   {
     "id": "m9-t3-p04",
@@ -815,7 +832,8 @@ export const module9Practice: PracticeProblem[] = [
         "expectedStdout": "warm",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "temp=25\nif temp>30: print(\"hot\")\nelif temp>20: print(\"warm\")\nelse: print(\"cool\")"
   },
   {
     "id": "m9-t3-p05",
@@ -857,7 +875,8 @@ export const module9Practice: PracticeProblem[] = [
         "expectedStdout": "zero",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "n=0\nif n>0: print(\"pos\")\nelif n<0: print(\"neg\")\nelse: print(\"zero\")"
   },
   {
     "id": "m9-t3-p06",
@@ -899,7 +918,8 @@ export const module9Practice: PracticeProblem[] = [
         "expectedStdout": "warning",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "speed=55\nif speed>65: print(\"ticket\")\nelif speed>50: print(\"warning\")\nelse: print(\"ok\")"
   },
   {
     "id": "m9-t3-p07",
@@ -941,6 +961,7 @@ export const module9Practice: PracticeProblem[] = [
         "expectedStdout": "view",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "choice=\"b\"\nif choice==\"a\": print(\"add\")\nelif choice==\"b\": print(\"view\")\nelse: print(\"exit\")"
   }
 ];

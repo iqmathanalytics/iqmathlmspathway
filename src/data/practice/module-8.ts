@@ -52,7 +52,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "Ana",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"name\":\"Ana\",\"age\":20}\nprint(d[\"name\"])"
   },
   {
     "id": "m8-t1-p02",
@@ -104,7 +105,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "0",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {}\nprint(len(d))"
   },
   {
     "id": "m8-t1-p03",
@@ -163,7 +165,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "Bob",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(dict(name=\"Bob\", age=25)[\"name\"])"
   },
   {
     "id": "m8-t1-p04",
@@ -216,7 +219,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "10",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"x\":10}\nprint(d[\"x\"])"
   },
   {
     "id": "m8-t1-p05",
@@ -261,7 +265,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "Kim",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"user\":{\"name\":\"Kim\"}}\nprint(d[\"user\"][\"name\"])"
   },
   {
     "id": "m8-t1-p06",
@@ -306,7 +311,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "2",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"a\":1}\nd[\"a\"]=2\nprint(d[\"a\"])"
   },
   {
     "id": "m8-t1-p07",
@@ -351,7 +357,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "2",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"a\":1}\nd[\"b\"]=2\nprint(d[\"b\"])"
   },
   {
     "id": "m8-t2-p01",
@@ -404,7 +411,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "['a', 'b']",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"a\":1,\"b\":2}\nprint(list(d.keys()))"
   },
   {
     "id": "m8-t2-p02",
@@ -456,7 +464,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "[1, 2]",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"a\":1,\"b\":2}\nprint(list(d.values()))"
   },
   {
     "id": "m8-t2-p03",
@@ -508,7 +517,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "[('x', 1)]",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"x\":1}\nprint(list(d.items()))"
   },
   {
     "id": "m8-t2-p04",
@@ -567,7 +577,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "0",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print({\"a\":1}.get(\"b\", 0))"
   },
   {
     "id": "m8-t2-p05",
@@ -626,7 +637,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "True",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"name\" in {\"name\":\"Ana\"})"
   },
   {
     "id": "m8-t2-p06",
@@ -677,7 +689,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "3",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(len({\"a\":1,\"b\":2,\"c\":3}))"
   },
   {
     "id": "m8-t2-p07",
@@ -719,7 +732,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "Python",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"topic\":\"Python\"}\nprint(d[\"topic\"])"
   },
   {
     "id": "m8-t3-p01",
@@ -772,7 +786,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "['a', 'b']",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"a\":1,\"b\":2}\nprint(list(d.keys()))"
   },
   {
     "id": "m8-t3-p02",
@@ -824,7 +839,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "[1, 2]",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"a\":1,\"b\":2}\nprint(list(d.values()))"
   },
   {
     "id": "m8-t3-p03",
@@ -876,7 +892,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "[('x', 1)]",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"x\":1}\nprint(list(d.items()))"
   },
   {
     "id": "m8-t3-p04",
@@ -935,7 +952,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "0",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print({\"a\":1}.get(\"b\", 0))"
   },
   {
     "id": "m8-t3-p05",
@@ -994,7 +1012,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "True",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"name\" in {\"name\":\"Ana\"})"
   },
   {
     "id": "m8-t3-p06",
@@ -1045,7 +1064,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "3",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(len({\"a\":1,\"b\":2,\"c\":3}))"
   },
   {
     "id": "m8-t3-p07",
@@ -1087,7 +1107,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "Python",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"topic\":\"Python\"}\nprint(d[\"topic\"])"
   },
   {
     "id": "m8-t4-p01",
@@ -1140,7 +1161,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "['a', 'b']",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"a\":1,\"b\":2}\nprint(list(d.keys()))"
   },
   {
     "id": "m8-t4-p02",
@@ -1192,7 +1214,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "[1, 2]",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"a\":1,\"b\":2}\nprint(list(d.values()))"
   },
   {
     "id": "m8-t4-p03",
@@ -1244,7 +1267,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "[('x', 1)]",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"x\":1}\nprint(list(d.items()))"
   },
   {
     "id": "m8-t4-p04",
@@ -1303,7 +1327,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "0",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print({\"a\":1}.get(\"b\", 0))"
   },
   {
     "id": "m8-t4-p05",
@@ -1362,7 +1387,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "True",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"name\" in {\"name\":\"Ana\"})"
   },
   {
     "id": "m8-t4-p06",
@@ -1413,7 +1439,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "3",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(len({\"a\":1,\"b\":2,\"c\":3}))"
   },
   {
     "id": "m8-t4-p07",
@@ -1455,7 +1482,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "Python",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"topic\":\"Python\"}\nprint(d[\"topic\"])"
   },
   {
     "id": "m8-t5-p01",
@@ -1508,7 +1536,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "['a', 'b']",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"a\":1,\"b\":2}\nprint(list(d.keys()))"
   },
   {
     "id": "m8-t5-p02",
@@ -1560,7 +1589,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "[1, 2]",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"a\":1,\"b\":2}\nprint(list(d.values()))"
   },
   {
     "id": "m8-t5-p03",
@@ -1612,7 +1642,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "[('x', 1)]",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"x\":1}\nprint(list(d.items()))"
   },
   {
     "id": "m8-t5-p04",
@@ -1671,7 +1702,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "0",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print({\"a\":1}.get(\"b\", 0))"
   },
   {
     "id": "m8-t5-p05",
@@ -1730,7 +1762,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "True",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"name\" in {\"name\":\"Ana\"})"
   },
   {
     "id": "m8-t5-p06",
@@ -1781,7 +1814,8 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "3",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(len({\"a\":1,\"b\":2,\"c\":3}))"
   },
   {
     "id": "m8-t5-p07",
@@ -1823,6 +1857,7 @@ export const module8Practice: PracticeProblem[] = [
         "expectedStdout": "Python",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"topic\":\"Python\"}\nprint(d[\"topic\"])"
   }
 ];

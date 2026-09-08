@@ -58,7 +58,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "Hello",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"Hello\")"
   },
   {
     "id": "m4-t1-p02",
@@ -109,7 +110,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "Python",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print('Python')"
   },
   {
     "id": "m4-t1-p03",
@@ -168,7 +170,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "Python",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"Py\" + \"thon\")"
   },
   {
     "id": "m4-t1-p04",
@@ -227,7 +230,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "HaHaHa",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"Ha\" * 3)"
   },
   {
     "id": "m4-t1-p05",
@@ -277,7 +281,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "Line1\nLine2",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"Line1\")\nprint(\"Line2\")"
   },
   {
     "id": "m4-t1-p06",
@@ -336,7 +341,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "0",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(len(\"\"))"
   },
   {
     "id": "m4-t1-p07",
@@ -395,7 +401,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "Data Science",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"Data\" + \" \" + \"Science\")"
   },
   {
     "id": "m4-t2-p01",
@@ -456,7 +463,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "Hello, Ana",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "name = \"Ana\"\nprint(f\"Hello, {name}\")"
   },
   {
     "id": "m4-t2-p02",
@@ -515,7 +523,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "2 + 3 = 5",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(f\"2 + 3 = {2 + 3}\")"
   },
   {
     "id": "m4-t2-p03",
@@ -574,7 +583,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "Score: 90",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"Score: {}\".format(90))"
   },
   {
     "id": "m4-t2-p04",
@@ -635,7 +645,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "3 + 4 = 7",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "x = 3\ny = 4\nprint(f\"{x} + {y} = {x+y}\")"
   },
   {
     "id": "m4-t2-p05",
@@ -694,7 +705,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "Hello World",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"{1} {0}\".format(\"World\", \"Hello\"))"
   },
   {
     "id": "m4-t2-p06",
@@ -753,7 +765,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "Pi is 3.14",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(f\"Pi is {3.14159:.2f}\")"
   },
   {
     "id": "m4-t2-p07",
@@ -812,7 +825,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "Value: 42",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"Value: %d\" % 42)"
   },
   {
     "id": "m4-t3-p01",
@@ -865,7 +879,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "P",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "s = \"Python\"\nprint(s[0])"
   },
   {
     "id": "m4-t3-p02",
@@ -918,7 +933,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "n",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "s = \"Python\"\nprint(s[5])"
   },
   {
     "id": "m4-t3-p03",
@@ -970,7 +986,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "n",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "s = \"Python\"\nprint(s[-1])"
   },
   {
     "id": "m4-t3-p04",
@@ -1022,7 +1039,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "o",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "word = \"code\"\nprint(word[1])"
   },
   {
     "id": "m4-t3-p05",
@@ -1066,7 +1084,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "l",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "s = \"hello\"\nprint(s[2])"
   },
   {
     "id": "m4-t3-p06",
@@ -1111,7 +1130,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "P\nt",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "s = \"Python\"\nprint(s[0])\nprint(s[2])"
   },
   {
     "id": "m4-t3-p07",
@@ -1171,7 +1191,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "Hi",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "s = \"Hi\"\nprint(s[0] + s[1])"
   },
   {
     "id": "m4-t4-p01",
@@ -1223,7 +1244,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "Py",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "s = \"Python\"\nprint(s[0:2])"
   },
   {
     "id": "m4-t4-p02",
@@ -1275,7 +1297,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "thon",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "s = \"Python\"\nprint(s[2:])"
   },
   {
     "id": "m4-t4-p03",
@@ -1327,7 +1350,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "Pyt",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "s = \"Python\"\nprint(s[:3])"
   },
   {
     "id": "m4-t4-p04",
@@ -1379,7 +1403,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "Pto",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "s = \"Python\"\nprint(s[::2])"
   },
   {
     "id": "m4-t4-p05",
@@ -1431,7 +1456,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "nohtyP",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "s = \"Python\"\nprint(s[::-1])"
   },
   {
     "id": "m4-t4-p06",
@@ -1475,7 +1501,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "ata",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "w = \"Data\"\nprint(w[1:])"
   },
   {
     "id": "m4-t4-p07",
@@ -1527,7 +1554,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "ell",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "s = \"hello\"\nprint(s[1:4])"
   },
   {
     "id": "m4-t5-p01",
@@ -1586,7 +1614,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "HELLO",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"hello\".upper())"
   },
   {
     "id": "m4-t5-p02",
@@ -1645,7 +1674,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "hello",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"HELLO\".lower())"
   },
   {
     "id": "m4-t5-p03",
@@ -1704,7 +1734,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "hi",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"  hi  \".strip())"
   },
   {
     "id": "m4-t5-p04",
@@ -1763,7 +1794,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "['a', 'b', 'c']",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"a,b,c\".split(\",\"))"
   },
   {
     "id": "m4-t5-p05",
@@ -1822,7 +1854,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "a-b-c",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"-\".join([\"a\", \"b\", \"c\"]))"
   },
   {
     "id": "m4-t5-p06",
@@ -1881,7 +1914,8 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "heLLo",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"hello\".replace(\"l\", \"L\"))"
   },
   {
     "id": "m4-t5-p07",
@@ -1940,6 +1974,7 @@ export const module4Practice: PracticeProblem[] = [
         "expectedStdout": "3",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"banana\".count(\"a\"))"
   }
 ];

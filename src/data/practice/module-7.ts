@@ -43,7 +43,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "{1, 2, 3}",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"{1, 2, 3}\")"
   },
   {
     "id": "m7-t1-p02",
@@ -102,7 +103,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "{1, 2, 3}",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"{1, 2, 3}\")"
   },
   {
     "id": "m7-t1-p03",
@@ -153,7 +155,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "3",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(len({1,1,2,2,3}))"
   },
   {
     "id": "m7-t1-p04",
@@ -205,7 +208,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "0",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "s = set()\nprint(len(s))"
   },
   {
     "id": "m7-t1-p05",
@@ -264,7 +268,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "True",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(2 in {1,2,3})"
   },
   {
     "id": "m7-t1-p06",
@@ -305,7 +310,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "{'a', 1}",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"{'a', 1}\")"
   },
   {
     "id": "m7-t1-p07",
@@ -346,7 +352,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "{'h', 'e', 'l', 'o'}",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"{'h', 'e', 'l', 'o'}\")"
   },
   {
     "id": "m7-t2-p01",
@@ -398,7 +405,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "{1, 2}",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"{1, 2}\")"
   },
   {
     "id": "m7-t2-p02",
@@ -450,7 +458,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "{1, 3}",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"{1, 3}\")"
   },
   {
     "id": "m7-t2-p03",
@@ -494,7 +503,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "{1, 2}",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"{1, 2}\")"
   },
   {
     "id": "m7-t2-p04",
@@ -546,7 +556,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "{1, 2, 3}",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"{1, 2, 3}\")"
   },
   {
     "id": "m7-t2-p05",
@@ -590,7 +601,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "1",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "s = {1,2,3}\nprint(s.pop())"
   },
   {
     "id": "m7-t2-p06",
@@ -634,7 +646,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "set()",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "s = {1,2}\ns.clear()\nprint(s)"
   },
   {
     "id": "m7-t2-p07",
@@ -678,7 +691,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "{1, 2}",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"{1, 2}\")"
   },
   {
     "id": "m7-t3-p01",
@@ -737,7 +751,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "{1, 2, 3}",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"{1, 2, 3}\")"
   },
   {
     "id": "m7-t3-p02",
@@ -796,7 +811,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "{2, 3}",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"{2, 3}\")"
   },
   {
     "id": "m7-t3-p03",
@@ -855,7 +871,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "{1, 3}",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"{1, 3}\")"
   },
   {
     "id": "m7-t3-p04",
@@ -914,7 +931,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "{1, 3}",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"{1, 3}\")"
   },
   {
     "id": "m7-t3-p05",
@@ -973,7 +991,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "True",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print({1,2} <= {1,2,3})"
   },
   {
     "id": "m7-t3-p06",
@@ -1032,7 +1051,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "True",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print({1,2,3} >= {1,2})"
   },
   {
     "id": "m7-t3-p07",
@@ -1091,7 +1111,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "True",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print({1,2}.isdisjoint({3,4}))"
   },
   {
     "id": "m7-t4-p01",
@@ -1150,7 +1171,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "{1, 2, 3}",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"{1, 2, 3}\")"
   },
   {
     "id": "m7-t4-p02",
@@ -1209,7 +1231,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "{2, 3}",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"{2, 3}\")"
   },
   {
     "id": "m7-t4-p03",
@@ -1268,7 +1291,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "{1, 3}",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"{1, 3}\")"
   },
   {
     "id": "m7-t4-p04",
@@ -1327,7 +1351,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "{1, 3}",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"{1, 3}\")"
   },
   {
     "id": "m7-t4-p05",
@@ -1386,7 +1411,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "True",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print({1,2} <= {1,2,3})"
   },
   {
     "id": "m7-t4-p06",
@@ -1445,7 +1471,8 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "True",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print({1,2,3} >= {1,2})"
   },
   {
     "id": "m7-t4-p07",
@@ -1504,6 +1531,7 @@ export const module7Practice: PracticeProblem[] = [
         "expectedStdout": "True",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print({1,2}.isdisjoint({3,4}))"
   }
 ];

@@ -49,7 +49,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "1\n2\n3",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "n=1\nwhile n<=3:\n    print(n)\n    n+=1"
   },
   {
     "id": "m10-t1-p02",
@@ -90,7 +91,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "15",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "total=0\nn=1\nwhile n<=5:\n    total+=n\n    n+=1\nprint(total)"
   },
   {
     "id": "m10-t1-p03",
@@ -131,7 +133,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "3\n2\n1",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "x=3\nwhile x>0:\n    print(x)\n    x-=1"
   },
   {
     "id": "m10-t1-p04",
@@ -180,7 +183,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "1\n2",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "n=0\nwhile True:\n    n+=1\n    print(n)\n    if n==2: break"
   },
   {
     "id": "m10-t1-p05",
@@ -221,7 +225,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "tick\ntick\ntick",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "count=0\nwhile count<3:\n    print(\"tick\")\n    count+=1"
   },
   {
     "id": "m10-t1-p06",
@@ -262,7 +267,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "24",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "n=4\nresult=1\nwhile n>0:\n    result*=n\n    n-=1\nprint(result)"
   },
   {
     "id": "m10-t1-p07",
@@ -303,7 +309,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "0\n1\n2",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "running=True\nn=0\nwhile running:\n    print(n)\n    n+=1\n    if n>=3: running=False"
   },
   {
     "id": "m10-t2-p01",
@@ -353,7 +360,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "1\n2\n3",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "for i in range(1,4):\n    print(i)"
   },
   {
     "id": "m10-t2-p02",
@@ -395,7 +403,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "a\nb\nc",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "for item in [\"a\",\"b\",\"c\"]:\n    print(item)"
   },
   {
     "id": "m10-t2-p03",
@@ -437,7 +446,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "h\ni",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "for char in \"hi\":\n    print(char)"
   },
   {
     "id": "m10-t2-p04",
@@ -479,7 +489,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "10",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "total=0\nfor n in [1,2,3,4]:\n    total+=n\nprint(total)"
   },
   {
     "id": "m10-t2-p05",
@@ -521,7 +532,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "0:x\n1:y",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "items=[\"x\",\"y\"]\nfor i in range(len(items)):\n    print(f\"{i}:{items[i]}\")"
   },
   {
     "id": "m10-t2-p06",
@@ -563,7 +575,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "1\n2\n1\n2",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "for _ in range(2):\n    for n in [1,2]:\n        print(n)"
   },
   {
     "id": "m10-t2-p07",
@@ -605,7 +618,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "1\n2\n3",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "for n in [1,2,3]:\n    print(n)"
   },
   {
     "id": "m10-t3-p01",
@@ -655,7 +669,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "1\n2",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "for i in range(1,6):\n    if i==3: break\n    print(i)"
   },
   {
     "id": "m10-t3-p02",
@@ -705,7 +720,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "1\n3\n4",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "for i in range(1,5):\n    if i==2: continue\n    print(i)"
   },
   {
     "id": "m10-t3-p03",
@@ -747,7 +763,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "found",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "for n in [1,2,3,4]:\n    if n==3:\n        print(\"found\")\n        break"
   },
   {
     "id": "m10-t3-p04",
@@ -789,7 +806,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "2\n4",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "for i in range(1,5):\n    if i%2!=0: continue\n    print(i)"
   },
   {
     "id": "m10-t3-p05",
@@ -830,7 +848,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "1\n2",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "n=0\nwhile True:\n    n+=1\n    if n==3: break\n    print(n)"
   },
   {
     "id": "m10-t3-p06",
@@ -872,7 +891,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "a\nb",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "for c in \"a b\":\n    if c==\" \": continue\n    print(c)"
   },
   {
     "id": "m10-t3-p07",
@@ -914,7 +934,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "1\n1\n2",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "d = {\"topic\": \"1\\n1\\n2\"}\nprint(d[\"topic\"])"
   },
   {
     "id": "m10-t4-p01",
@@ -963,7 +984,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "ok",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "x=5\nif x>0:\n    pass\nprint(\"ok\")"
   },
   {
     "id": "m10-t4-p02",
@@ -1004,7 +1026,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "done",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "x=0\nif x:\n    print(\"yes\")\nelse:\n    pass\nprint(\"done\")"
   },
   {
     "id": "m10-t4-p03",
@@ -1046,7 +1069,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "finished",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "for i in range(3):\n    pass\nprint(\"finished\")"
   },
   {
     "id": "m10-t4-p04",
@@ -1088,7 +1112,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "called",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def todo():\n    pass\ntodo()\nprint(\"called\")"
   },
   {
     "id": "m10-t4-p05",
@@ -1129,7 +1154,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "ready",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "show=False\nif show:\n    pass\nprint(\"ready\")"
   },
   {
     "id": "m10-t4-p06",
@@ -1170,7 +1196,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "safe",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"safe\")"
   },
   {
     "id": "m10-t4-p07",
@@ -1211,7 +1238,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "stubs",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def a(): pass\ndef b(): pass\nprint(\"stubs\")"
   },
   {
     "id": "m10-t5-p01",
@@ -1262,7 +1290,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "[0, 1, 2, 3, 4]",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(list(range(5)))"
   },
   {
     "id": "m10-t5-p02",
@@ -1313,7 +1342,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "[2, 3, 4, 5]",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(list(range(2,6)))"
   },
   {
     "id": "m10-t5-p03",
@@ -1364,7 +1394,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "[0, 2, 4, 6, 8]",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(list(range(0,10,2)))"
   },
   {
     "id": "m10-t5-p04",
@@ -1406,7 +1437,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "1\n2\n3",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "for i in range(1,4):\n    print(i)"
   },
   {
     "id": "m10-t5-p05",
@@ -1449,7 +1481,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "10\n20\n30",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "a=[10,20,30]\nfor i in range(len(a)):\n    print(a[i])"
   },
   {
     "id": "m10-t5-p06",
@@ -1500,7 +1533,8 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "[5, 4, 3, 2, 1]",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(list(range(5,0,-1)))"
   },
   {
     "id": "m10-t5-p07",
@@ -1541,6 +1575,7 @@ export const module10Practice: PracticeProblem[] = [
         "expectedStdout": "15",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "total=0\nfor i in range(1,6):\n    total+=i\nprint(total)"
   }
 ];

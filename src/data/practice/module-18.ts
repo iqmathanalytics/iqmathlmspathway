@@ -50,7 +50,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "=== Class Report ===",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"=== Class Report ===\")"
   },
   {
     "id": "m18-t1-p02",
@@ -92,7 +93,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "85",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "students = {\"Alice\": [85, 92]}\nprint(students[\"Alice\"][0])"
   },
   {
     "id": "m18-t1-p03",
@@ -143,7 +145,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "4",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(len([\"dict\",\"list\",\"set\",\"tuple\"]))"
   },
   {
     "id": "m18-t1-p04",
@@ -184,7 +187,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "2",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "s = {\"Math\",\"Science\",\"Math\"}\nprint(len(s))"
   },
   {
     "id": "m18-t1-p05",
@@ -235,7 +239,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "data,logic,functions,capstone",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"data,logic,functions,capstone\")"
   },
   {
     "id": "m18-t2-p01",
@@ -279,7 +284,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "2",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "students = {\"Alice\": [85], \"Bob\": [70]}\nprint(len(students))"
   },
   {
     "id": "m18-t2-p02",
@@ -323,7 +329,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "True",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "subjects = set()\nsubjects.add(\"Math\")\nprint(\"Math\" in subjects)"
   },
   {
     "id": "m18-t2-p03",
@@ -367,7 +374,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "88",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "record = (\"Science\", 88)\nsubject, score = record\nprint(score)"
   },
   {
     "id": "m18-t2-p04",
@@ -419,7 +427,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "92",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "students = {\"Alice\": [85]}\nstudents[\"Alice\"].append(92)\nprint(students[\"Alice\"][-1])"
   },
   {
     "id": "m18-t2-p05",
@@ -463,7 +472,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "48",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "students = {}\nstudents[\"Cara\"] = [55, 48]\nprint(students[\"Cara\"][1])"
   },
   {
     "id": "m18-t2-p06",
@@ -515,7 +525,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "249",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "students = {\"Bob\": [70]}\nstudents[\"Bob\"].extend([88, 91])\nprint(sum(students[\"Bob\"]))"
   },
   {
     "id": "m18-t3-p01",
@@ -559,7 +570,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "85.0",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "grades = [85, 92, 78]\nprint(sum(grades) / len(grades))"
   },
   {
     "id": "m18-t3-p02",
@@ -601,7 +613,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "PASS",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "avg = 75\nprint(\"PASS\" if avg >= 60 else \"FAIL\")"
   },
   {
     "id": "m18-t3-p03",
@@ -646,7 +659,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "Alice",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "students = {\"Alice\": [90]}\nprint(list(students.keys())[0])"
   },
   {
     "id": "m18-t3-p04",
@@ -690,7 +704,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "Alice",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "averages = {\"Alice\": 85, \"Bob\": 55}\nprint([n for n,a in averages.items() if a >= 60][0])"
   },
   {
     "id": "m18-t3-p05",
@@ -732,7 +747,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "RETAKE",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "avg = 55\nif avg >= 60: print(\"PASS\")\nelif avg >= 50: print(\"RETAKE\")\nelse: print(\"FAIL\")"
   },
   {
     "id": "m18-t3-p06",
@@ -776,7 +792,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "77.5",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "students = {\"A\": [80, 90], \"B\": [70, 70]}\ntotal = sum(sum(g) for g in students.values())\ncount = sum(len(g) for g in students.values())\nprint(total / count)"
   },
   {
     "id": "m18-t4-p01",
@@ -826,7 +843,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "85.0",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def average(s):\n    return sum(s)/len(s)\nprint(average([85, 92, 78]))"
   },
   {
     "id": "m18-t4-p02",
@@ -868,7 +886,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "B",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def letter_grade(a):\n    if a >= 80: return \"B\"\n    return \"F\"\nprint(letter_grade(85))"
   },
   {
     "id": "m18-t4-p03",
@@ -909,7 +928,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "Alice: avg 85.3",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "name = \"Alice\"\navg = 85.333\nprint(f\"{name}: avg {avg:.1f}\")"
   },
   {
     "id": "m18-t4-p04",
@@ -961,7 +981,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "Bob",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "ranking = [(\"Alice\", 85), (\"Bob\", 91)]\nranking.sort(key=lambda x: x[1], reverse=True)\nprint(ranking[0][0])"
   },
   {
     "id": "m18-t4-p05",
@@ -1003,7 +1024,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "PASS",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def status(a):\n    return \"PASS\" if a >= 60 else \"FAIL\"\nprint(status(72))"
   },
   {
     "id": "m18-t4-p06",
@@ -1045,7 +1067,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "Cara: avg 72.5",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def line(n,a):\n    return f\"{n}: avg {a:.1f}\"\nprint(line(\"Cara\", 72.5))"
   },
   {
     "id": "m18-t5-p01",
@@ -1096,7 +1119,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "=== Class Report ===",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "print(\"=== Class Report ===\")"
   },
   {
     "id": "m18-t5-p02",
@@ -1138,7 +1162,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "85.0",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def average(s): return sum(s)/len(s)\ngrades = [85,92,78]\nprint(round(average(grades),1))"
   },
   {
     "id": "m18-t5-p03",
@@ -1182,7 +1207,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "Bob",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "averages = {\"Alice\": 85, \"Bob\": 91}\nprint(max(averages.items(), key=lambda x: x[1])[0])"
   },
   {
     "id": "m18-t5-p04",
@@ -1226,7 +1252,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "2",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "students = {\"Alice\": [85]}\nstudents[\"Dan\"] = [88, 76, 94]\nprint(len(students))"
   },
   {
     "id": "m18-t5-p05",
@@ -1270,7 +1297,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "2",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "averages = {\"Alice\": 85, \"Bob\": 55, \"Cara\": 72}\nprint(len([a for a in averages.values() if a >= 60]))"
   },
   {
     "id": "m18-t5-p06",
@@ -1312,7 +1340,8 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "1",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "def lg(a):\n    if a >= 90: return \"A\"\n    if a >= 80: return \"B\"\n    return \"F\"\naverages = {\"Alice\": 85, \"Cara\": 92}\nprint(sum(1 for v in averages.values() if lg(v) == \"B\"))"
   },
   {
     "id": "m18-t5-p07",
@@ -1356,6 +1385,7 @@ export const module18Practice: PracticeProblem[] = [
         "expectedStdout": "1",
         "visibility": "public"
       }
-    ]
+    ],
+    "solutionCode": "students = {\"A\": [90], \"B\": [50]}\nprint(sum(1 for g in students.values() if sum(g)/len(g) >= 60))"
   }
 ];
