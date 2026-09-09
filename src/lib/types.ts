@@ -494,3 +494,10 @@ export interface CourseSettingsRow {
   published: boolean;
   updated_at: string;
 }
+
+/** Courses assigned to a college (that college's learning plan). */
+export interface CollegeCourseRow {
+  college_id: string;
+  course_id: CourseId;
+  assigned_at: string;
+}

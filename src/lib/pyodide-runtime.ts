@@ -1,4 +1,8 @@
 import { consoleStdin } from "@/lib/console-stdin";
+import {
+  isVisualizationCode,
+  prepareVisualizationRunCode,
+} from "@/lib/visualization-code";
 
 const PYODIDE_CDN = "https://cdn.jsdelivr.net/pyodide/v0.26.4/full/";
 
@@ -207,12 +211,15 @@ export async function runPythonWithLock(
 
     const withStdin = needsStdinBridge(code, options);
     const quietInput = (options.stdinLines?.length ?? 0) > 0;
-    const python = withStdin
-      ? `${INPUT_BOOTSTRAP}\nbuiltins.__py_quiet_input = ${quietInput ? "True" : "False"}\n\n${code}`
+    const runnable = isVisualizationCode(code)
+      ? prepareVisualizationRunCode(code)
       : code;
+    const python = withStdin
+      ? `${INPUT_BOOTSTRAP}\nbuiltins.__py_quiet_input = ${quietInput ? "True" : "False"}\n\n${runnable}`
+      : runnable;
 
     try {
-      await loadRequiredPackages(pyodide, code);
+      await loadRequiredPackages(pyodide, runnable);
       await pyodide.runPythonAsync(python);
     } finally {
       bridge.flush();

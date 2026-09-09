@@ -156,30 +156,7 @@ export function PythonIDE({
         />
       </div>
 
-      {supportsStandardInput && (
-        <div className="shrink-0 border-b border-gray-800 bg-[#0d1117] px-3 py-2">
-          <label
-            htmlFor="judge0-stdin"
-            className="mb-1 block text-xs font-medium text-gray-300"
-          >
-            Standard input
-          </label>
-          <textarea
-            id="judge0-stdin"
-            value={standardInput}
-            onChange={(event) => setStandardInput(event.target.value)}
-            rows={fill ? 2 : 3}
-            className="w-full resize-y rounded-md border border-gray-700 bg-[#010409] px-3 py-2 font-mono text-xs text-gray-100 outline-none transition-colors placeholder:text-gray-600 focus:border-brand-500"
-            placeholder="Example: Alice"
-            spellCheck={false}
-          />
-          <p className="mt-1 text-[11px] text-gray-500">
-            Used by Judge0 for programs that call input().
-          </p>
-        </div>
-      )}
-
-      {/* Console — dedicated scroll region (output only) */}
+      {/* Console — input at top, then output */}
       <div
         className={
           fill
@@ -199,6 +176,29 @@ export function PythonIDE({
           stdinDraft={stdinDraft}
           onStdinDraftChange={setStdinDraft}
           onStdinSubmit={submitStdin}
+          showInput
+          batchInput={supportsStandardInput ? standardInput : undefined}
+          onBatchInputChange={
+            supportsStandardInput ? setStandardInput : undefined
+          }
+          batchInputLabel="Standard input"
+          batchInputPlaceholder="One value per line for input() — used by Judge0 and interactive runs"
+          actions={
+            <button
+              type="button"
+              onMouseDown={(e) => e.preventDefault()}
+              onClick={handleRun}
+              disabled={loading || running}
+              className="inline-flex items-center gap-1.5 rounded-md bg-brand-600 px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-brand-500 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {running || loading ? (
+                <Loader2 className="h-3.5 w-3.5 animate-spin" />
+              ) : (
+                <Play className="h-3.5 w-3.5 fill-current" />
+              )}
+              Run
+            </button>
+          }
         />
       </div>
 

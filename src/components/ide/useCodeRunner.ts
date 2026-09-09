@@ -1,6 +1,10 @@
 "use client";
 
 import { useCallback, useState } from "react";
+import {
+  isVisualizationCode,
+  prepareVisualizationRunCode,
+} from "@/lib/visualization-code";
 import { usePyodideRunner } from "./usePyodideRunner";
 import type { ConsoleLine } from "./types";
 
@@ -160,12 +164,15 @@ export function useCodeRunner() {
   const runCode = useCallback(
     (code: string, stdin = "") => {
       void (async () => {
-        const ok = await runWithJudge0(code, stdin);
+        const toRun = isVisualizationCode(code)
+          ? prepareVisualizationRunCode(code)
+          : code;
+        const ok = await runWithJudge0(toRun, stdin);
         if (ok) return;
         setActiveRunner("pyodide");
         // Do not leave a sticky error that disables Run — console already explains.
         setStatusError(null);
-        pyodide.runCode(code);
+        void pyodide.runCode(toRun, stdin);
       })();
     },
     [pyodide, runWithJudge0]

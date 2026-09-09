@@ -15,9 +15,10 @@ function nextId() {
   return `line-${lineId}`;
 }
 
-export function usePyodideRunner() {
+export function usePyodideRunner(options?: { autoload?: boolean }) {
+  const autoload = options?.autoload ?? true;
   const [lines, setLines] = useState<ConsoleLine[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(autoload);
   const [running, setRunning] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [stdinActive, setStdinActive] = useState(false);
@@ -62,6 +63,7 @@ export function usePyodideRunner() {
   }, [flushPendingOutput]);
 
   useEffect(() => {
+    if (!autoload) return;
     let cancelled = false;
 
     async function init() {
@@ -93,7 +95,7 @@ export function usePyodideRunner() {
         cancelAnimationFrame(flushRafRef.current);
       }
     };
-  }, []);
+  }, [autoload]);
 
   const submitStdin = useCallback((line: string) => {
     setStdinActive(false);
@@ -105,7 +107,7 @@ export function usePyodideRunner() {
     consoleStdin.submit(line);
   }, []);
 
-  const runCode = useCallback(async (code: string) => {
+  const runCode = useCallback(async (code: string, stdin = "") => {
     if (runningRef.current) return;
     runningRef.current = true;
     // Immediate feedback — don't wait for Pyodide to finish loading first.
@@ -127,10 +129,32 @@ export function usePyodideRunner() {
       scheduleFlush();
     };
 
+    const stdinLines = stdin
+      .replace(/\r\n/g, "\n")
+      .split("\n")
+      .filter((line, index, arr) => !(index === arr.length - 1 && line === ""));
+
     try {
       let pyodide = pyodideRef.current;
       if (!pyodide) {
-        pyodide = (await (loadPromiseRef.current ?? loadPyodideRuntime())) ?? null;
+        setLoading(true);
+        if (!loadPromiseRef.current) {
+          loadPromiseRef.current = loadPyodideRuntime()
+            .then((runtime) => {
+              pyodideRef.current = runtime;
+              setLoading(false);
+              setError(null);
+              return runtime;
+            })
+            .catch((e) => {
+              setError(
+                e instanceof Error ? e.message : "Could not load Python runtime"
+              );
+              setLoading(false);
+              return null;
+            });
+        }
+        pyodide = (await loadPromiseRef.current) ?? null;
         if (pyodide) {
           pyodideRef.current = pyodide;
           setLoading(false);
@@ -151,6 +175,7 @@ export function usePyodideRunner() {
       await runPythonWithLock(pyodide, code, {
         onStdout: appendStdout,
         onStderr: appendStderr,
+        stdinLines: stdinLines.length > 0 ? stdinLines : undefined,
         interactiveStdin: true,
         onStdinRequest: () => setStdinActive(true),
       });

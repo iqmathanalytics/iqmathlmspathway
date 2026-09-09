@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { Terminal, Trash2, Copy, Check } from "lucide-react";
 import type { ConsoleLine } from "./types";
 import clsx from "clsx";
@@ -21,8 +21,24 @@ interface ConsolePanelProps {
   stdinDraft?: string;
   onStdinDraftChange?: (value: string) => void;
   onStdinSubmit?: (value: string) => void;
+  /**
+   * Always show the interactive input row at the top of the console.
+   * Defaults to true whenever stdin handlers are provided.
+   */
+  showInput?: boolean;
+  /** Pre-run standard input (Judge0 / batch programs). Shown at top of console. */
+  batchInput?: string;
+  onBatchInputChange?: (value: string) => void;
+  batchInputLabel?: string;
+  batchInputPlaceholder?: string;
+  /** Action buttons (Run / Tests / Submit / Prev / Next) rendered under the input. */
+  actions?: ReactNode;
+  /** Replace the scrollable output body (e.g. test results) while keeping input/actions. */
+  outputOverride?: ReactNode;
   /** Practice studio uses light; lesson IDE keeps dark. */
   variant?: "dark" | "light";
+  /** Shown when there is no output (overrides the default idle hint). */
+  emptyHint?: string;
 }
 
 function lineClass(kind: ConsoleLine["kind"], light: boolean) {
@@ -90,7 +106,15 @@ export function ConsolePanel({
   stdinDraft = "",
   onStdinDraftChange,
   onStdinSubmit,
+  showInput,
+  batchInput,
+  onBatchInputChange,
+  batchInputLabel = "Standard input",
+  batchInputPlaceholder = "Lines fed to input() before / while the program runs",
+  actions,
+  outputOverride,
   variant = "dark",
+  emptyHint,
 }: ConsolePanelProps) {
   const light = variant === "light";
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -98,6 +122,10 @@ export function ConsolePanel({
   const [copied, setCopied] = useState(false);
   const [copyError, setCopyError] = useState(false);
   const prevCountRef = useRef(0);
+
+  const hasInteractiveHandlers = Boolean(onStdinSubmit && onStdinDraftChange);
+  const inputVisible =
+    showInput ?? (hasInteractiveHandlers || onBatchInputChange != null);
 
   const outputLines = lines.filter(
     (l) =>
@@ -144,6 +172,7 @@ export function ConsolePanel({
 
   function handleStdinSubmit(e: FormEvent) {
     e.preventDefault();
+    if (!stdinActive) return;
     onStdinSubmit?.(stdinDraft);
   }
 
@@ -221,9 +250,7 @@ export function ConsolePanel({
             disabled={!textToCopy}
             className={clsx(
               "flex items-center gap-1 rounded px-2 py-1 text-xs disabled:opacity-40",
-              light
-                ? "hover:bg-sky-50"
-                : "hover:bg-gray-800",
+              light ? "hover:bg-sky-50" : "hover:bg-gray-800",
               copyError
                 ? light
                   ? "text-red-600 hover:text-red-700"
@@ -265,13 +292,115 @@ export function ConsolePanel({
         </div>
       </div>
 
+      {/* Input section — always at the top of the console when enabled */}
+      {inputVisible && (
+        <div
+          className={clsx(
+            "shrink-0 space-y-2 px-3 py-2",
+            light
+              ? "border-b border-sky-200 bg-sky-50/90"
+              : "border-b border-sky-900/50 bg-[#0c1929]"
+          )}
+        >
+          {onBatchInputChange != null && (
+            <div>
+              <label
+                className={clsx(
+                  "mb-1 block text-[11px] font-semibold uppercase tracking-wide",
+                  light ? "text-slate-600" : "text-sky-200/80"
+                )}
+              >
+                {batchInputLabel}
+              </label>
+              <textarea
+                value={batchInput ?? ""}
+                onChange={(e) => onBatchInputChange(e.target.value)}
+                rows={2}
+                className={clsx(
+                  "w-full resize-y rounded-md border px-2.5 py-1.5 font-mono text-xs outline-none transition-colors",
+                  light
+                    ? "border-sky-200 bg-white text-slate-800 placeholder:text-slate-400 focus:border-brand-500"
+                    : "border-sky-800/60 bg-[#010409] text-sky-50 placeholder:text-gray-500 focus:border-sky-500"
+                )}
+                placeholder={batchInputPlaceholder}
+                spellCheck={false}
+                aria-label={batchInputLabel}
+              />
+            </div>
+          )}
+
+          {hasInteractiveHandlers && (
+            <form onSubmit={handleStdinSubmit} className="flex items-center gap-2">
+              <span
+                className={clsx(
+                  "select-none font-mono text-[13px]",
+                  light ? "text-brand-600" : "text-sky-300/70"
+                )}
+              >
+                ›
+              </span>
+              <input
+                ref={stdinRef}
+                type="text"
+                value={stdinDraft}
+                onChange={(e) => onStdinDraftChange?.(e.target.value)}
+                disabled={!stdinActive && running}
+                className={clsx(
+                  "min-w-0 flex-1 rounded-md border bg-transparent px-2 py-1.5 font-mono text-[13px] outline-none",
+                  light
+                    ? "border-sky-200 text-slate-800 placeholder:text-slate-400 focus:border-brand-500 disabled:bg-sky-50/50"
+                    : "border-sky-800/60 text-sky-100 placeholder:text-gray-500 focus:border-sky-500 disabled:opacity-60",
+                  stdinActive &&
+                    (light
+                      ? "ring-2 ring-sky-300 border-sky-400"
+                      : "ring-2 ring-sky-500/50 border-sky-400")
+                )}
+                placeholder={
+                  stdinActive
+                    ? "Type input and press Enter"
+                    : "Program input (ready when input() is called)"
+                }
+                aria-label="Program input"
+                autoComplete="off"
+                spellCheck={false}
+              />
+              <button
+                type="submit"
+                disabled={!stdinActive}
+                className={clsx(
+                  "shrink-0 rounded-md px-2.5 py-1.5 text-xs font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-40",
+                  light
+                    ? "bg-brand-600 text-white hover:bg-brand-700"
+                    : "bg-sky-600 text-white hover:bg-sky-500"
+                )}
+              >
+                Enter
+              </button>
+            </form>
+          )}
+        </div>
+      )}
+
+      {actions && (
+        <div
+          className={clsx(
+            "flex shrink-0 flex-wrap items-center gap-1.5 px-3 py-2",
+            light
+              ? "border-b border-sky-100 bg-white/90"
+              : "border-b border-gray-800 bg-[#161b22]"
+          )}
+        >
+          {actions}
+        </div>
+      )}
+
       <div
         ref={scrollRef}
         className={clsx(
           "min-h-0 flex-1 overflow-x-auto overflow-y-scroll overscroll-contain p-3 font-mono text-[13px] leading-relaxed",
           light ? "ide-console-scroll-light" : "ide-console-scroll"
         )}
-        style={fill ? undefined : { maxHeight, minHeight: 140 }}
+        style={fill ? undefined : { maxHeight, minHeight: 120 }}
         role="log"
         aria-live="polite"
         aria-busy={running || loading}
@@ -279,7 +408,9 @@ export function ConsolePanel({
         aria-label="Program output"
         onWheel={(event) => event.stopPropagation()}
       >
-        {outputLines.length > 0 ? (
+        {outputOverride != null ? (
+          outputOverride
+        ) : outputLines.length > 0 ? (
           <div className="space-y-0.5">
             {outputLines.map((line) => {
               const prefix = linePrefix(line.kind);
@@ -322,47 +453,11 @@ export function ConsolePanel({
               ? "Running…"
               : loading
                 ? "Starting Python runtime…"
-                : "Output will appear here after you run your code."}
+                : emptyHint ??
+                  "Output will appear here after you run your code."}
           </p>
         )}
       </div>
-
-      {stdinActive && onStdinSubmit && onStdinDraftChange && (
-        <form
-          onSubmit={handleStdinSubmit}
-          className={clsx(
-            "flex shrink-0 items-center gap-2 px-3 py-2",
-            light
-              ? "border-t border-sky-200 bg-sky-50/80"
-              : "border-t border-sky-900/60 bg-[#0c1929]"
-          )}
-        >
-          <span
-            className={clsx(
-              "select-none font-mono text-[13px]",
-              light ? "text-brand-600" : "text-sky-300/70"
-            )}
-          >
-            ›
-          </span>
-          <input
-            ref={stdinRef}
-            type="text"
-            value={stdinDraft}
-            onChange={(e) => onStdinDraftChange(e.target.value)}
-            className={clsx(
-              "min-w-0 flex-1 bg-transparent font-mono text-[13px] outline-none",
-              light
-                ? "text-slate-800 placeholder:text-slate-400"
-                : "text-sky-100 placeholder:text-gray-500"
-            )}
-            placeholder="Type input and press Enter"
-            aria-label="Program input"
-            autoComplete="off"
-            spellCheck={false}
-          />
-        </form>
-      )}
     </div>
   );
 }

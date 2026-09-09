@@ -80,6 +80,15 @@ if (colleges.status !== 200 || !Array.isArray(colleges.json)) {
   console.log(`colleges: ${colleges.json.length} visible to public/anon`);
 }
 
+const collegeCourses = await rest(anon, "college_courses", "select=college_id,course_id");
+if (collegeCourses.status !== 200 || !Array.isArray(collegeCourses.json)) {
+  failures.push(
+    `college_courses: HTTP ${collegeCourses.status} — run supabase/RUN_COLLEGE_COURSES.sql (${JSON.stringify(collegeCourses.json)})`
+  );
+} else {
+  console.log(`college_courses: ${collegeCourses.json.length} plan row(s)`);
+}
+
 const enrollments = await rest(anon, "enrollments", "select=user_id&limit=1");
 if (enrollments.status === 200) {
   console.log("enrollments: reachable (anon may see 0 rows because of RLS)");
@@ -112,6 +121,7 @@ if (specRes.ok) {
     colleges: ["name", "code", "city", "archived"],
     enrollments: ["user_id", "course_id"],
     course_settings: ["course_id", "published"],
+    college_courses: ["college_id", "course_id"],
   };
   for (const [table, cols] of Object.entries(needed)) {
     const props = Object.keys(defs[table]?.properties ?? {});

@@ -649,6 +649,8 @@ export function PythonCodingWorkspace({
             submitMessage={submitMessage}
             accepted={accepted}
             isLast={isLast}
+            prevHref={prev ? getProblemWorkspaceHref(prev) : undefined}
+            prevTitle={prev?.title}
             nextHref={next ? getProblemWorkspaceHref(next) : undefined}
             nextTitle={next?.title}
             finishHref={listHref}
@@ -668,6 +670,11 @@ export function PythonCodingWorkspace({
               setTestResults(null);
               setSubmitMessage(null);
             }}
+            onRun={handleRunFile}
+            onRunTests={handleRunTests}
+            onSubmit={handleSubmit}
+            testing={testing}
+            submitting={submitting}
           />
         </section>
       </div>

@@ -2,6 +2,7 @@
 
 import { ArrowRight, Play, Target } from "lucide-react";
 import { useLessonPractice } from "@/components/lesson/LessonPracticeContext";
+import { CodeExercisePanel } from "@/components/lesson/CodeExercisePanel";
 import {
   STRING_CAT_NAV,
   STRING_METHOD_CATEGORIES,
@@ -41,11 +42,7 @@ const CAT_BTN_STYLES: Record<LabelVariant, string> = {
   pink: "border-fuchsia-200/80 bg-fuchsia-50 text-fuchsia-900 hover:opacity-90",
 };
 
-function CodeExercisePanel({
-  practiceIndex,
-  filename,
-  children,
-}: {
+: {
   practiceIndex: number;
   filename: string;
   children: React.ReactNode;

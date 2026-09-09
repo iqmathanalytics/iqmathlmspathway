@@ -29,7 +29,7 @@ export const module17Lessons: Record<string, TopicLesson> = {
       { type: "heading", content: "Explanation" },
       { type: "paragraph", content: "A distribution describes how values are spread — common shapes include normal (bell curve), skewed, and uniform. Histograms and density plots visualize distribution shape. Use **Open in Google Colab** on the example to see the histogram — the browser IDE cannot display charts." },
       { type: "heading", content: "Example Code" },
-      { type: "code", code: "import numpy as np\nimport matplotlib.pyplot as plt\ndata = np.random.normal(loc=50, scale=10, size=1000)\nplt.hist(data, bins=30)\nplt.title(\"Distribution of Data\")\nplt.show()\nprint(\"Skewness check via mean vs median:\", np.mean(data), np.median(data))" },
+      { type: "code", code: "import numpy as np\nimport matplotlib.pyplot as plt\ndata = np.random.normal(loc=50, scale=10, size=1000)\nprint(\"Skewness check via mean vs median:\", np.mean(data), np.median(data))\nplt.hist(data, bins=30)\nplt.title(\"Distribution of Data\")\nplt.show()" },
       { type: "heading", content: "Practice" },
       {
         type: "practice",

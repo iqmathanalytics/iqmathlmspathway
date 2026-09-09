@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState, type Dispatch, type SetStateAction } from "react";
+import Link from "next/link";
 import type { PracticeProblem } from "@/lib/types";
 import { CodeEditor } from "@/components/ide/CodeEditor";
 import { ConsolePanel } from "@/components/ide/ConsolePanel";
@@ -10,8 +11,11 @@ import { isProblemPremium } from "@/lib/practice-config";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePracticeProgress } from "@/hooks/usePracticeProgress";
 import { useCoursePracticeReturn } from "@/hooks/useCoursePracticeReturn";
+import { getProblemsByTopic } from "@/data/practice";
 import {
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
   Lightbulb,
   Loader2,
   Play,
@@ -155,6 +159,19 @@ export function PracticeWorkspaceEditor({
     return "bg-red-100 text-red-800 dark:bg-red-950/50 dark:text-red-300";
   }, [problem.difficulty]);
 
+  const { prevProblem, nextProblem, listHref } = useMemo(() => {
+    const list = getProblemsByTopic(problem.topicId);
+    const idx = list.findIndex((p) => p.id === problem.id);
+    const challengeBase = `/learn/${moduleSlug}/${topicSlug}/challenges`;
+    return {
+      prevProblem: idx > 0 ? list[idx - 1] : null,
+      nextProblem: idx >= 0 && idx < list.length - 1 ? list[idx + 1] : null,
+      listHref: challengeBase,
+    };
+  }, [problem.id, problem.topicId, moduleSlug, topicSlug]);
+
+  const actionsBusy = loading || running || testing || submitting;
+
   if (problem.layout === "challenge") {
     return (
       <ChallengePracticeLayout
@@ -195,46 +212,15 @@ export function PracticeWorkspaceEditor({
               <Terminal className="h-4 w-4" />
               Code workspace
             </span>
-            <div className="flex flex-wrap gap-2">
-              <button
-                type="button"
-                onMouseDown={(e) => e.preventDefault()}
-                onClick={() => setCode("")}
-                className="flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs text-slate-400 hover:bg-slate-800 hover:text-white"
-              >
-                <RotateCcw className="h-3.5 w-3.5" />
-                Clear
-              </button>
-              <button
-                type="button"
-                onMouseDown={(e) => e.preventDefault()}
-                onClick={handleRun}
-                disabled={loading || running}
-                className="flex items-center gap-1 rounded-lg bg-gray-800 px-3 py-1.5 text-xs font-medium text-white hover:bg-gray-700 disabled:opacity-50"
-              >
-                {running ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Play className="h-3.5 w-3.5" />}
-                Run
-              </button>
-              <button
-                type="button"
-                onMouseDown={(e) => e.preventDefault()}
-                onClick={handleRunTests}
-                disabled={loading || testing || running}
-                className="rounded-lg bg-brand-700 px-3 py-1.5 text-xs font-medium text-white hover:bg-brand-600 disabled:opacity-50"
-              >
-                {testing ? "Testing…" : "Run public tests"}
-              </button>
-              <button
-                type="button"
-                onMouseDown={(e) => e.preventDefault()}
-                onClick={handleSubmit}
-                disabled={loading || submitting || running}
-                className="flex items-center gap-1 rounded-lg bg-green-700 px-3 py-1.5 text-xs font-medium text-white hover:bg-green-600 disabled:opacity-50"
-              >
-                <Send className="h-3.5 w-3.5" />
-                {submitting ? "Submitting…" : "Submit"}
-              </button>
-            </div>
+            <button
+              type="button"
+              onMouseDown={(e) => e.preventDefault()}
+              onClick={() => setCode(problem.starterCode ?? "")}
+              className="flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs text-slate-400 hover:bg-slate-800 hover:text-white"
+            >
+              <RotateCcw className="h-3.5 w-3.5" />
+              Reset
+            </button>
           </div>
 
           <div className="min-h-0 flex-1 overflow-hidden">
@@ -253,11 +239,83 @@ export function PracticeWorkspaceEditor({
             running={running}
             error={error}
             onClear={clearConsole}
-            maxHeight={200}
+            maxHeight={220}
+            showInput
             stdinActive={stdinActive}
             stdinDraft={stdinDraft}
             onStdinDraftChange={setStdinDraft}
             onStdinSubmit={submitStdin}
+            actions={
+              <>
+                {prevProblem ? (
+                  <Link
+                    href={`/learn/${moduleSlug}/${topicSlug}/challenges/${prevProblem.slug}`}
+                    className="inline-flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-300 hover:bg-slate-800 hover:text-white"
+                  >
+                    <ChevronLeft className="h-3.5 w-3.5" />
+                    Prev
+                  </Link>
+                ) : (
+                  <Link
+                    href={listHref}
+                    className="inline-flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-300 hover:bg-slate-800 hover:text-white"
+                  >
+                    <ChevronLeft className="h-3.5 w-3.5" />
+                    List
+                  </Link>
+                )}
+                <button
+                  type="button"
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={handleRun}
+                  disabled={actionsBusy}
+                  className="inline-flex items-center gap-1 rounded-lg bg-brand-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-brand-500 disabled:opacity-50"
+                >
+                  {running ? (
+                    <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                  ) : (
+                    <Play className="h-3.5 w-3.5" />
+                  )}
+                  Run
+                </button>
+                <button
+                  type="button"
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={handleRunTests}
+                  disabled={actionsBusy}
+                  className="inline-flex items-center gap-1 rounded-lg border border-slate-600 bg-slate-900 px-3 py-1.5 text-xs font-semibold text-slate-100 hover:bg-slate-800 disabled:opacity-50"
+                >
+                  {testing ? "Testing…" : "Test"}
+                </button>
+                <button
+                  type="button"
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={handleSubmit}
+                  disabled={actionsBusy}
+                  className="inline-flex items-center gap-1 rounded-lg bg-green-700 px-3 py-1.5 text-xs font-semibold text-white hover:bg-green-600 disabled:opacity-50"
+                >
+                  <Send className="h-3.5 w-3.5" />
+                  {submitting ? "Submitting…" : "Submit"}
+                </button>
+                {nextProblem ? (
+                  <Link
+                    href={`/learn/${moduleSlug}/${topicSlug}/challenges/${nextProblem.slug}`}
+                    className="ml-auto inline-flex items-center gap-1 rounded-lg bg-slate-800 px-2.5 py-1.5 text-xs font-semibold text-brand-200 hover:bg-slate-700"
+                  >
+                    Next
+                    <ChevronRight className="h-3.5 w-3.5" />
+                  </Link>
+                ) : (
+                  <Link
+                    href={listHref}
+                    className="ml-auto inline-flex items-center gap-1 rounded-lg bg-slate-800 px-2.5 py-1.5 text-xs font-semibold text-brand-200 hover:bg-slate-700"
+                  >
+                    Finish
+                    <ChevronRight className="h-3.5 w-3.5" />
+                  </Link>
+                )}
+              </>
+            }
           />
         </div>
       </div>

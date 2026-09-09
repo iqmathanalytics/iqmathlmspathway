@@ -11,6 +11,7 @@ import {
   Ruler,
 } from "lucide-react";
 import { useLessonPractice } from "@/components/lesson/LessonPracticeContext";
+import { CodeExercisePanel } from "@/components/lesson/CodeExercisePanel";
 
 function SectionLabel({
   children,
@@ -36,11 +37,7 @@ function SectionLabel({
   );
 }
 
-function CodeExercisePanel({
-  practiceIndex,
-  filename,
-  children,
-}: {
+: {
   practiceIndex: number;
   filename: string;
   children: React.ReactNode;

@@ -13,6 +13,7 @@ import {
   Trash2,
 } from "lucide-react";
 import { useLessonPractice } from "@/components/lesson/LessonPracticeContext";
+import { CodeExercisePanel } from "@/components/lesson/CodeExercisePanel";
 
 type LabelVariant =
   | "purple"
@@ -48,11 +49,7 @@ function SectionLabel({
   );
 }
 
-function CodeExercisePanel({
-  practiceIndex,
-  filename,
-  children,
-}: {
+: {
   practiceIndex: number;
   filename: string;
   children: React.ReactNode;

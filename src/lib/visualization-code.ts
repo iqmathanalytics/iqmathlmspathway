@@ -1,6 +1,13 @@
 export const COLAB_NEW_NOTEBOOK_URL =
   "https://colab.research.google.com/#create=true";
 
+/** Force a non-GUI backend so plt.show() does not hang, then run the snippet. */
+export function prepareVisualizationRunCode(code: string): string {
+  // Idempotent — safe if the IDE and Pyodide runtime both wrap the same snippet.
+  if (/_mpl\.use\(["']Agg["']\)/.test(code)) return code;
+  return `import matplotlib as _mpl\n_mpl.use("Agg")\n${code}\nprint("\\n[Chart created — open Google Colab to view the plot.]")`;
+}
+
 /** True when the snippet actually plots (not just mentions matplotlib in a string). */
 export function isVisualizationCode(code?: string | null): boolean {
   if (!code) return false;

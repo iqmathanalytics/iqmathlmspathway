@@ -89,6 +89,7 @@ import {
 import { ArrowRight, Lightbulb, Code2, Pencil, Play } from "lucide-react";
 import { OpenInColabButton } from "@/components/ide/OpenInColabButton";
 import { isVisualizationCode } from "@/lib/visualization-code";
+import { RunnableLessonCode } from "@/components/lesson/RunnableLessonCode";
 
 /** Turn bare http(s) URLs and /datasets/ paths into clickable links. */
 function linkifyText(text: string): ReactNode {
@@ -564,27 +565,8 @@ export function LessonContent({
                 </div>
               );
             }
-            const isVizExample = isVisualizationCode(block.code);
             return (
-              <div key={i} className="my-4">
-                <div className="mb-2 flex flex-wrap items-center gap-2 text-sm font-medium text-gray-700">
-                  <Code2 className="h-4 w-4" />
-                  Example code
-                  {isVizExample && block.code && (
-                    <span className="ml-auto">
-                      <OpenInColabButton code={block.code} label="Open in Google Colab" />
-                    </span>
-                  )}
-                </div>
-                <pre className="overflow-x-auto rounded-xl bg-gray-900 p-4 font-mono text-sm text-green-100">
-                  {block.code}
-                </pre>
-                {isVizExample && (
-                  <p className="mt-2 text-xs text-orange-800">
-                    Plots do not render in the course IDE. Open Google Colab to see this chart.
-                  </p>
-                )}
-              </div>
+              <RunnableLessonCode key={i} code={block.code ?? ""} />
             );
           case "practice": {
             practiceCounter += 1;
