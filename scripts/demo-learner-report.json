@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-08T06:19:30.834Z",
+  "generatedAt": "2026-09-08T07:19:16.081Z",
   "demoAccount": {
     "email": "demo.learner@iqmath.test",
     "password": "Demo@12345",
@@ -53,7 +53,7 @@
       "total": 625,
       "passed": 625,
       "failed": 0,
-      "noSolutionCode": 625
+      "noSolutionCode": 0
     },
     "basics": {
       "total": 154,
@@ -66,7 +66,7 @@
       "failed": 0
     }
   },
-  "lessonProgressMode": "legacy-columns",
+  "lessonProgressMode": "full-flags",
   "progressWritten": {
     "lessonsUpserted": 90,
     "practiceUpserted": 856,
@@ -78,18 +78,7 @@
   },
   "issueSummary": {
     "errors": 0,
-    "warnings": 2
+    "warnings": 0
   },
-  "issues": [
-    {
-      "area": "progress:lessons",
-      "severity": "warn",
-      "message": "DB missing ide_ran/quiz_attempted columns — wrote completed + quiz_score only. Run supabase/migrations/006_lesson_progress_flags.sql"
-    },
-    {
-      "area": "practice:curriculum",
-      "severity": "warn",
-      "message": "625 curriculum practice problems have no solutionCode (cannot auto-grade official answers). Demo progress still marked solved."
-    }
-  ]
+  "issues": []
 }
