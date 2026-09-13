@@ -63,7 +63,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t1-p01-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Ready",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t1-p01-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Ready",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t1-p01-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Ready",
         "visibility": "public"
       }
@@ -113,7 +125,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t1-p02-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "A,B",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t1-p02-t2",
+        "label": "Exact Output",
+        "expectedStdout": "A,B",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t1-p02-t3",
+        "label": "No Extra Output",
         "expectedStdout": "A,B",
         "visibility": "public"
       }
@@ -168,7 +192,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t1-p03-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "1\n2\n3\n4",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t1-p03-t2",
+        "label": "Exact Output",
+        "expectedStdout": "1\n2\n3\n4",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t1-p03-t3",
+        "label": "Multi-line Format",
         "expectedStdout": "1\n2\n3\n4",
         "visibility": "public"
       }
@@ -247,7 +283,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t1-p04-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Pass",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t1-p04-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Pass",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t1-p04-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Pass",
         "visibility": "public"
       }
@@ -310,7 +358,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t1-p05-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Hello",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t1-p05-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Hello",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t1-p05-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Hello",
         "visibility": "public"
       }
@@ -395,7 +455,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t1-p06-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "middle",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t1-p06-t2",
+        "label": "Exact Output",
+        "expectedStdout": "middle",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t1-p06-t3",
+        "label": "No Extra Output",
         "expectedStdout": "middle",
         "visibility": "public"
       }
@@ -489,7 +561,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t1-p07-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Python",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t1-p07-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Python",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t1-p07-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Python",
         "visibility": "public"
       }
@@ -559,7 +643,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t2-p01-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Ready",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t2-p01-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Ready",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t2-p01-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Ready",
         "visibility": "public"
       }
@@ -609,7 +705,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t2-p02-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "A,B",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t2-p02-t2",
+        "label": "Exact Output",
+        "expectedStdout": "A,B",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t2-p02-t3",
+        "label": "No Extra Output",
         "expectedStdout": "A,B",
         "visibility": "public"
       }
@@ -664,7 +772,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t2-p03-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "1\n2\n3\n4",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t2-p03-t2",
+        "label": "Exact Output",
+        "expectedStdout": "1\n2\n3\n4",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t2-p03-t3",
+        "label": "Multi-line Format",
         "expectedStdout": "1\n2\n3\n4",
         "visibility": "public"
       }
@@ -743,7 +863,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t2-p04-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Pass",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t2-p04-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Pass",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t2-p04-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Pass",
         "visibility": "public"
       }
@@ -806,7 +938,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t2-p05-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Hello",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t2-p05-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Hello",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t2-p05-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Hello",
         "visibility": "public"
       }
@@ -891,7 +1035,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t2-p06-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "middle",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t2-p06-t2",
+        "label": "Exact Output",
+        "expectedStdout": "middle",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t2-p06-t3",
+        "label": "No Extra Output",
         "expectedStdout": "middle",
         "visibility": "public"
       }
@@ -985,7 +1141,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t2-p07-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Python",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t2-p07-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Python",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t2-p07-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Python",
         "visibility": "public"
       }
@@ -1055,7 +1223,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t3-p01-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Ready",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t3-p01-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Ready",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t3-p01-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Ready",
         "visibility": "public"
       }
@@ -1105,7 +1285,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t3-p02-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "A,B",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t3-p02-t2",
+        "label": "Exact Output",
+        "expectedStdout": "A,B",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t3-p02-t3",
+        "label": "No Extra Output",
         "expectedStdout": "A,B",
         "visibility": "public"
       }
@@ -1160,7 +1352,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t3-p03-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "1\n2\n3\n4",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t3-p03-t2",
+        "label": "Exact Output",
+        "expectedStdout": "1\n2\n3\n4",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t3-p03-t3",
+        "label": "Multi-line Format",
         "expectedStdout": "1\n2\n3\n4",
         "visibility": "public"
       }
@@ -1239,7 +1443,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t3-p04-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Pass",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t3-p04-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Pass",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t3-p04-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Pass",
         "visibility": "public"
       }
@@ -1302,7 +1518,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t3-p05-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Hello",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t3-p05-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Hello",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t3-p05-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Hello",
         "visibility": "public"
       }
@@ -1387,7 +1615,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t3-p06-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "middle",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t3-p06-t2",
+        "label": "Exact Output",
+        "expectedStdout": "middle",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t3-p06-t3",
+        "label": "No Extra Output",
         "expectedStdout": "middle",
         "visibility": "public"
       }
@@ -1481,7 +1721,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t3-p07-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Python",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t3-p07-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Python",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t3-p07-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Python",
         "visibility": "public"
       }
@@ -1551,7 +1803,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t4-p01-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Ready",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t4-p01-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Ready",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t4-p01-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Ready",
         "visibility": "public"
       }
@@ -1601,7 +1865,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t4-p02-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "A,B",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t4-p02-t2",
+        "label": "Exact Output",
+        "expectedStdout": "A,B",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t4-p02-t3",
+        "label": "No Extra Output",
         "expectedStdout": "A,B",
         "visibility": "public"
       }
@@ -1656,7 +1932,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t4-p03-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "1\n2\n3\n4",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t4-p03-t2",
+        "label": "Exact Output",
+        "expectedStdout": "1\n2\n3\n4",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t4-p03-t3",
+        "label": "Multi-line Format",
         "expectedStdout": "1\n2\n3\n4",
         "visibility": "public"
       }
@@ -1735,7 +2023,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t4-p04-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Pass",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t4-p04-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Pass",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t4-p04-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Pass",
         "visibility": "public"
       }
@@ -1798,7 +2098,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t4-p05-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Hello",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t4-p05-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Hello",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t4-p05-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Hello",
         "visibility": "public"
       }
@@ -1883,7 +2195,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t4-p06-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "middle",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t4-p06-t2",
+        "label": "Exact Output",
+        "expectedStdout": "middle",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t4-p06-t3",
+        "label": "No Extra Output",
         "expectedStdout": "middle",
         "visibility": "public"
       }
@@ -1977,7 +2301,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t4-p07-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Python",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t4-p07-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Python",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t4-p07-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Python",
         "visibility": "public"
       }
@@ -2047,7 +2383,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t5-p01-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Ready",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t5-p01-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Ready",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t5-p01-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Ready",
         "visibility": "public"
       }
@@ -2097,7 +2445,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t5-p02-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "A,B",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t5-p02-t2",
+        "label": "Exact Output",
+        "expectedStdout": "A,B",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t5-p02-t3",
+        "label": "No Extra Output",
         "expectedStdout": "A,B",
         "visibility": "public"
       }
@@ -2152,7 +2512,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t5-p03-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "1\n2\n3\n4",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t5-p03-t2",
+        "label": "Exact Output",
+        "expectedStdout": "1\n2\n3\n4",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t5-p03-t3",
+        "label": "Multi-line Format",
         "expectedStdout": "1\n2\n3\n4",
         "visibility": "public"
       }
@@ -2231,7 +2603,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t5-p04-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Pass",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t5-p04-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Pass",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t5-p04-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Pass",
         "visibility": "public"
       }
@@ -2294,7 +2678,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t5-p05-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Hello",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t5-p05-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Hello",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t5-p05-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Hello",
         "visibility": "public"
       }
@@ -2379,7 +2775,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t5-p06-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "middle",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t5-p06-t2",
+        "label": "Exact Output",
+        "expectedStdout": "middle",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t5-p06-t3",
+        "label": "No Extra Output",
         "expectedStdout": "middle",
         "visibility": "public"
       }
@@ -2473,7 +2881,19 @@ export const module14Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m14-t5-p07-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Python",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t5-p07-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Python",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t5-p07-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Python",
         "visibility": "public"
       }

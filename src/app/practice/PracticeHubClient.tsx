@@ -5,6 +5,7 @@ import { ArrowRight, Code2, Terminal } from "lucide-react";
 import { useEffect, useState } from "react";
 import { getSupabase, isSupabaseConfigured } from "@/lib/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
+import { isStandalonePracticeProblemId } from "@/lib/practice-config";
 
 interface PracticeHubClientProps {
   totalCount: number;
@@ -30,7 +31,12 @@ export function PracticeHubClient({
       .select("problem_id")
       .eq("user_id", user.id)
       .eq("status", "solved")
-      .then(({ data }) => setSolvedCount(data?.length ?? 0));
+      .then(({ data }) => {
+        const hubOnly = (data ?? []).filter((row) =>
+          isStandalonePracticeProblemId(String(row.problem_id))
+        );
+        setSolvedCount(hubOnly.length);
+      });
   }, [user]);
 
   return (
@@ -63,8 +69,9 @@ export function PracticeHubClient({
           </div>
           <p className="mt-4 text-sm text-gray-600">
             One practice set for Python: language drills (scripts and functions)
-            plus algorithm challenges. Filter by type, topic, and difficulty —
-            then solve in the in-browser editor.
+            plus algorithm challenges. Separate from course module challenges in
+            Learn. Filter by type, topic, and difficulty — then solve in the
+            in-browser editor.
           </p>
           <div className="mt-4 flex flex-wrap gap-2 text-xs font-medium">
             <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-emerald-700">

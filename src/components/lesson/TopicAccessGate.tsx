@@ -2,8 +2,10 @@
 
 import type { ReactNode } from "react";
 import { ArrowLeft, Loader2, Lock } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/contexts/ProgressContext";
 import { NavigationLink } from "@/components/ui/NavigationLink";
+import { isAdmin } from "@/lib/admin";
 import { isTopicProgressionDone } from "@/lib/topic-locking";
 
 interface TopicAccessGateProps {
@@ -21,9 +23,11 @@ export function TopicAccessGate({
   moduleHref,
   children,
 }: TopicAccessGateProps) {
+  const { profile } = useAuth();
   const { progress, ready } = useProgress();
+  const admin = isAdmin(profile);
 
-  if (!ready) {
+  if (!ready && !admin) {
     return (
       <div className="flex min-h-[50vh] items-center justify-center">
         <Loader2 className="h-8 w-8 animate-spin text-brand-600" />
@@ -32,6 +36,7 @@ export function TopicAccessGate({
   }
 
   const unlocked =
+    admin ||
     !previousTopicId ||
     isTopicProgressionDone(progress, previousTopicId, previousTopicHasQuiz);
 

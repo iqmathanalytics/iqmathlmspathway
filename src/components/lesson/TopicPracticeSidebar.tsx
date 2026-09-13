@@ -13,9 +13,9 @@ import {
 import clsx from "clsx";
 import type { Module, Topic } from "@/lib/types";
 import { getProblemsByTopic } from "@/data/practice";
+import { useAuth } from "@/contexts/AuthContext";
 import { usePracticeProgress } from "@/hooks/usePracticeProgress";
-import { useEntitlements } from "@/hooks/useEntitlements";
-import { isProblemPremium } from "@/lib/practice-config";
+import { isAdmin } from "@/lib/admin";
 import {
   getSolvedPracticeIds,
   isCoursePracticeProblemUnlocked,
@@ -36,10 +36,11 @@ export function TopicPracticeSidebar({
   open,
   onClose,
 }: TopicPracticeSidebarProps) {
+  const { profile } = useAuth();
+  const admin = isAdmin(profile);
   const problems = getProblemsByTopic(topic.id);
   const problemIds = problems.map((p) => p.id);
   const { rows, loading } = usePracticeProgress(problemIds);
-  const { hasPremium } = useEntitlements();
   const solvedIds = getSolvedPracticeIds(rows);
   const solvedCount = problems.filter((p) => solvedIds.has(p.id)).length;
 
@@ -145,12 +146,11 @@ export function TopicPracticeSidebar({
                   const unlocked = isCoursePracticeProblemUnlocked(
                     problems,
                     p.id,
-                    solvedIds
+                    solvedIds,
+                    { unlockAll: admin }
                   );
                   const solved = solvedIds.has(p.id);
-                  const premiumLocked =
-                    isProblemPremium(p.order) && !hasPremium && !solved;
-                  const canOpen = unlocked && !premiumLocked;
+                  const canOpen = unlocked;
                   const href = courseChallengeHref(
                     module.slug,
                     topic.slug,
@@ -167,17 +167,15 @@ export function TopicPracticeSidebar({
 
                   const icon = solved ? (
                     <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green-600 dark:text-green-400" />
-                  ) : !unlocked || premiumLocked ? (
+                  ) : !unlocked ? (
                     <Lock className="mt-0.5 h-4 w-4 shrink-0 text-gray-400 dark:text-slate-500" />
                   ) : (
                     <Circle className="mt-0.5 h-4 w-4 shrink-0 text-brand-500 dark:text-brand-300" />
                   );
 
-                  const meta = premiumLocked
-                    ? "Premium — unlock practice access"
-                    : !unlocked
-                      ? "Solve the previous question first"
-                      : p.difficulty;
+                  const meta = !unlocked
+                    ? "Solve the previous question first"
+                    : p.difficulty;
 
                   if (canOpen) {
                     return (

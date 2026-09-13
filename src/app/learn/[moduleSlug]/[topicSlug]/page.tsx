@@ -20,6 +20,7 @@ import { TopicPageShell } from "@/components/lesson/TopicPageShell";
 import { AddOnVideoSectionView } from "@/components/lesson/AddOnVideoSectionView";
 import { TopicPracticeLink } from "@/components/lesson/TopicPracticeLink";
 import { getPracticeCountByTopic } from "@/data/practice";
+import { getTopicExplanation } from "@/data/module-guides";
 
 interface TopicPageProps {
   params: Promise<{ moduleSlug: string; topicSlug: string }>;
@@ -117,6 +118,11 @@ export default async function TopicPage({ params }: TopicPageProps) {
                     moduleName={module.name}
                     title={topic.title}
                     intro={lesson.intro}
+                    explanation={getTopicExplanation(
+                      module.slug,
+                      topic.id,
+                      topic.description
+                    )}
                     estimatedMinutes={topic.estimatedMinutes}
                   />
                 </div>

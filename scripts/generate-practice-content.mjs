@@ -748,7 +748,21 @@ function buildProblem(
     publicTests: [
       {
         id: `${id}-t1`,
-        label: "Sample test",
+        label: "Sample Case",
+        expectedStdout: expected,
+        visibility: "public",
+      },
+      {
+        id: `${id}-t2`,
+        label: "Exact Output",
+        expectedStdout: expected,
+        visibility: "public",
+      },
+      {
+        id: `${id}-t3`,
+        label: String(expected).includes("\n")
+          ? "Multi-line Format"
+          : "No Extra Output",
         expectedStdout: expected,
         visibility: "public",
       },

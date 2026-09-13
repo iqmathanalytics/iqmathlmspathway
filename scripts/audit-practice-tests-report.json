@@ -1,0 +1,10 @@
+{
+  "total": 625,
+  "ok3": 625,
+  "byCount": {
+    "3": 625
+  },
+  "wrongCount": [],
+  "failing": [],
+  "missingSol": []
+}

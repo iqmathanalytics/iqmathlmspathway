@@ -3,9 +3,11 @@
 import type { Module, UserProgress } from "@/lib/types";
 import { ModuleCard } from "@/components/curriculum/ModuleCard";
 import { ProgressTracker } from "@/components/progress/ProgressTracker";
+import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/contexts/ProgressContext";
 import { ClientOnly } from "@/components/ui/ClientOnly";
 import { Loader2 } from "lucide-react";
+import { isAdmin } from "@/lib/admin";
 import { getUnlockedTopicIds } from "@/lib/topic-locking";
 import { hasQuiz } from "@/data/quizzes/meta";
 
@@ -16,11 +18,15 @@ interface LearningPathClientProps {
 function ModuleGrid({
   modules,
   progress,
+  unlockAll,
 }: {
   modules: Module[];
   progress: UserProgress;
+  unlockAll?: boolean;
 }) {
-  const unlockedTopicIds = getUnlockedTopicIds(modules, progress, hasQuiz);
+  const unlockedTopicIds = getUnlockedTopicIds(modules, progress, hasQuiz, {
+    unlockAll,
+  });
 
   return (
     <div className="grid gap-6 lg:grid-cols-2">
@@ -37,7 +43,9 @@ function ModuleGrid({
 }
 
 function LearningPathInner({ modules }: LearningPathClientProps) {
+  const { profile } = useAuth();
   const { progress, ready } = useProgress();
+  const unlockAll = isAdmin(profile);
 
   if (!ready) {
     return (
@@ -53,7 +61,7 @@ function LearningPathInner({ modules }: LearningPathClientProps) {
   return (
     <div className="space-y-8">
       <ProgressTracker />
-      <ModuleGrid modules={modules} progress={progress} />
+      <ModuleGrid modules={modules} progress={progress} unlockAll={unlockAll} />
     </div>
   );
 }

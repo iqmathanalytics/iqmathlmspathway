@@ -16,10 +16,17 @@ export function getPublishedTopicEntries(modules: Module[]): TopicPathEntry[] {
 export function getUnlockedTopicIds(
   modules: Module[],
   progress: UserProgress,
-  hasQuiz: (topicId: string) => boolean
+  hasQuiz: (topicId: string) => boolean,
+  options?: { unlockAll?: boolean }
 ): Set<string> {
-  const unlocked = new Set<string>();
   const path = getPublishedTopicEntries(modules);
+
+  // Admins preview the full curriculum without sequential unlock.
+  if (options?.unlockAll) {
+    return new Set(path.map((entry) => entry.topic.id));
+  }
+
+  const unlocked = new Set<string>();
 
   path.forEach((entry, index) => {
     const previous = path[index - 1];
@@ -38,9 +45,10 @@ export function isTopicUnlocked(
   modules: Module[],
   topicId: string,
   progress: UserProgress,
-  hasQuiz: (topicId: string) => boolean
+  hasQuiz: (topicId: string) => boolean,
+  options?: { unlockAll?: boolean }
 ): boolean {
-  return getUnlockedTopicIds(modules, progress, hasQuiz).has(topicId);
+  return getUnlockedTopicIds(modules, progress, hasQuiz, options).has(topicId);
 }
 
 export function isTopicProgressionDone(

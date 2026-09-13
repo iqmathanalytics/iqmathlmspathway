@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
+import { isAdmin } from "@/lib/admin";
 import { PRACTICE_PREMIUM_PRODUCT } from "@/lib/practice-config";
 import { getSupabase, isSupabaseConfigured } from "@/lib/supabase/client";
 
@@ -27,12 +28,19 @@ function writeCache(userId: string, hasPremium: boolean) {
 }
 
 export function useEntitlements() {
-  const { user } = useAuth();
+  const { user, profile } = useAuth();
+  const admin = isAdmin(profile);
   const cached = user ? readCache(user.id) : null;
-  const [hasPremium, setHasPremium] = useState(cached ?? false);
-  const [loading, setLoading] = useState(Boolean(user));
+  const [hasPremium, setHasPremium] = useState(admin || cached || false);
+  const [loading, setLoading] = useState(Boolean(user) && !admin);
 
   const refresh = useCallback(async () => {
+    if (admin) {
+      setHasPremium(true);
+      setLoading(false);
+      return;
+    }
+
     if (!user || !isSupabaseConfigured()) {
       setHasPremium(false);
       setLoading(false);
@@ -63,11 +71,17 @@ export function useEntitlements() {
     setHasPremium(premium);
     writeCache(user.id, premium);
     setLoading(false);
-  }, [user]);
+  }, [user, admin]);
 
   useEffect(() => {
     if (!user) {
       setHasPremium(false);
+      setLoading(false);
+      return;
+    }
+
+    if (admin) {
+      setHasPremium(true);
       setLoading(false);
       return;
     }
@@ -79,7 +93,7 @@ export function useEntitlements() {
     }
     setLoading(true);
     void refresh();
-  }, [user, refresh]);
+  }, [user, admin, refresh]);
 
-  return { hasPremium, loading, refresh };
+  return { hasPremium: admin || hasPremium, loading: admin ? false : loading, refresh };
 }

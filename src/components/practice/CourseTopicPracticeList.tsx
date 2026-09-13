@@ -7,9 +7,9 @@ import {
   Lock,
 } from "lucide-react";
 import type { PracticeProblem } from "@/lib/types";
+import { useAuth } from "@/contexts/AuthContext";
 import { usePracticeProgress } from "@/hooks/usePracticeProgress";
-import { useEntitlements } from "@/hooks/useEntitlements";
-import { isProblemPremium } from "@/lib/practice-config";
+import { isAdmin } from "@/lib/admin";
 import {
   getSolvedPracticeIds,
   isCoursePracticeProblemUnlocked,
@@ -34,8 +34,9 @@ export function CourseTopicPracticeList({
   topicTitle,
   problems,
 }: CourseTopicPracticeListProps) {
+  const { profile } = useAuth();
+  const admin = isAdmin(profile);
   const { rows, loading } = usePracticeProgress(problems.map((p) => p.id));
-  const { hasPremium } = useEntitlements();
   const solvedIds = getSolvedPracticeIds(rows);
   const solvedCount = problems.filter((p) => solvedIds.has(p.id)).length;
 
@@ -65,7 +66,7 @@ export function CourseTopicPracticeList({
       <p className="mt-2 max-w-2xl text-gray-600">
         {loading
           ? "Loading progress…"
-          : `${solvedCount} / ${problems.length} solved — module questions only (not Practice hub). Unlock the next by finishing the previous.`}
+          : `${solvedCount} / ${problems.length} solved — these are this module’s topic challenges only (not the Practice hub). Unlock the next by finishing the previous.`}
       </p>
       <ul className="mt-8 divide-y divide-gray-100 rounded-xl border border-gray-200 bg-white dark:divide-slate-800 dark:border-slate-700 dark:bg-slate-900">
         {problems.map((p, index) => {
@@ -73,19 +74,17 @@ export function CourseTopicPracticeList({
           const unlocked = isCoursePracticeProblemUnlocked(
             problems,
             p.id,
-            solvedIds
+            solvedIds,
+            { unlockAll: admin }
           );
           const solved = solvedIds.has(p.id);
-          const premiumLocked =
-            isProblemPremium(p.order) && !hasPremium && !solved;
-          const canOpen = unlocked && !premiumLocked;
           const href = courseChallengeHref(moduleSlug, topicSlug, p.slug, {
             returnToLesson: true,
           });
 
           return (
             <li key={p.id}>
-              {canOpen ? (
+              {unlocked ? (
                 <Link
                   href={href}
                   className="flex items-center justify-between gap-4 px-4 py-3.5 text-sm hover:bg-gray-50 dark:hover:bg-slate-800"
@@ -109,9 +108,7 @@ export function CourseTopicPracticeList({
                     {listNumber}. {p.title}
                   </span>
                   <span className="shrink-0 text-xs">
-                    {premiumLocked
-                      ? "Premium"
-                      : "Locked — finish previous first"}
+                    Locked — finish previous first
                   </span>
                 </div>
               )}

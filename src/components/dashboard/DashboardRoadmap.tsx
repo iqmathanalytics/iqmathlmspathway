@@ -7,6 +7,8 @@ import type { Module, UserProgress } from "@/lib/types";
 import { NavigationLink } from "@/components/ui/NavigationLink";
 import Link from "next/link";
 import { useWalkthrough } from "@/contexts/WalkthroughContext";
+import { useAuth } from "@/contexts/AuthContext";
+import { isAdmin } from "@/lib/admin";
 import { getUnlockedTopicIds } from "@/lib/topic-locking";
 import { hasQuiz } from "@/data/quizzes/meta";
 import { IconImage } from "@/components/ui/IconImage";
@@ -238,8 +240,11 @@ function ModuleNode({
 }
 
 export function DashboardRoadmap({ modules, progress }: DashboardRoadmapProps) {
+  const { profile } = useAuth();
   const completedTopicIds = progress.completedTopics;
-  const unlockedTopicIds = getUnlockedTopicIds(modules, progress, hasQuiz);
+  const unlockedTopicIds = getUnlockedTopicIds(modules, progress, hasQuiz, {
+    unlockAll: isAdmin(profile),
+  });
 
   return (
     <div className="relative mt-4">

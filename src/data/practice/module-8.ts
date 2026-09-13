@@ -49,7 +49,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t1-p01-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Ana",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t1-p01-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Ana",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t1-p01-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Ana",
         "visibility": "public"
       }
@@ -103,7 +115,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t1-p02-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "0",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t1-p02-t2",
+        "label": "Exact Output",
+        "expectedStdout": "0",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t1-p02-t3",
+        "label": "No Extra Output",
         "expectedStdout": "0",
         "visibility": "public"
       }
@@ -163,7 +187,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t1-p03-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Bob",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t1-p03-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Bob",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t1-p03-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Bob",
         "visibility": "public"
       }
@@ -219,7 +255,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t1-p04-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "10",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t1-p04-t2",
+        "label": "Exact Output",
+        "expectedStdout": "10",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t1-p04-t3",
+        "label": "No Extra Output",
         "expectedStdout": "10",
         "visibility": "public"
       }
@@ -266,7 +314,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t1-p05-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Kim",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t1-p05-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Kim",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t1-p05-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Kim",
         "visibility": "public"
       }
@@ -313,7 +373,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t1-p06-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "2",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t1-p06-t2",
+        "label": "Exact Output",
+        "expectedStdout": "2",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t1-p06-t3",
+        "label": "No Extra Output",
         "expectedStdout": "2",
         "visibility": "public"
       }
@@ -360,7 +432,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t1-p07-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "2",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t1-p07-t2",
+        "label": "Exact Output",
+        "expectedStdout": "2",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t1-p07-t3",
+        "label": "No Extra Output",
         "expectedStdout": "2",
         "visibility": "public"
       }
@@ -415,7 +499,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t2-p01-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "['a', 'b']",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t2-p01-t2",
+        "label": "Exact Output",
+        "expectedStdout": "['a', 'b']",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t2-p01-t3",
+        "label": "No Extra Output",
         "expectedStdout": "['a', 'b']",
         "visibility": "public"
       }
@@ -469,7 +565,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t2-p02-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "[1, 2]",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t2-p02-t2",
+        "label": "Exact Output",
+        "expectedStdout": "[1, 2]",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t2-p02-t3",
+        "label": "No Extra Output",
         "expectedStdout": "[1, 2]",
         "visibility": "public"
       }
@@ -523,7 +631,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t2-p03-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "[('x', 1)]",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t2-p03-t2",
+        "label": "Exact Output",
+        "expectedStdout": "[('x', 1)]",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t2-p03-t3",
+        "label": "No Extra Output",
         "expectedStdout": "[('x', 1)]",
         "visibility": "public"
       }
@@ -583,7 +703,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t2-p04-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "0",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t2-p04-t2",
+        "label": "Exact Output",
+        "expectedStdout": "0",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t2-p04-t3",
+        "label": "No Extra Output",
         "expectedStdout": "0",
         "visibility": "public"
       }
@@ -644,7 +776,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t2-p05-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "True",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t2-p05-t2",
+        "label": "Exact Output",
+        "expectedStdout": "True",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t2-p05-t3",
+        "label": "No Extra Output",
         "expectedStdout": "True",
         "visibility": "public"
       }
@@ -697,7 +841,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t2-p06-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "3",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t2-p06-t2",
+        "label": "Exact Output",
+        "expectedStdout": "3",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t2-p06-t3",
+        "label": "No Extra Output",
         "expectedStdout": "3",
         "visibility": "public"
       }
@@ -742,7 +898,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t2-p07-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Python",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t2-p07-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Python",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t2-p07-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Python",
         "visibility": "public"
       }
@@ -797,7 +965,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t3-p01-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "['a', 'b']",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t3-p01-t2",
+        "label": "Exact Output",
+        "expectedStdout": "['a', 'b']",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t3-p01-t3",
+        "label": "No Extra Output",
         "expectedStdout": "['a', 'b']",
         "visibility": "public"
       }
@@ -851,7 +1031,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t3-p02-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "[1, 2]",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t3-p02-t2",
+        "label": "Exact Output",
+        "expectedStdout": "[1, 2]",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t3-p02-t3",
+        "label": "No Extra Output",
         "expectedStdout": "[1, 2]",
         "visibility": "public"
       }
@@ -905,7 +1097,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t3-p03-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "[('x', 1)]",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t3-p03-t2",
+        "label": "Exact Output",
+        "expectedStdout": "[('x', 1)]",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t3-p03-t3",
+        "label": "No Extra Output",
         "expectedStdout": "[('x', 1)]",
         "visibility": "public"
       }
@@ -965,7 +1169,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t3-p04-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "0",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t3-p04-t2",
+        "label": "Exact Output",
+        "expectedStdout": "0",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t3-p04-t3",
+        "label": "No Extra Output",
         "expectedStdout": "0",
         "visibility": "public"
       }
@@ -1026,7 +1242,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t3-p05-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "True",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t3-p05-t2",
+        "label": "Exact Output",
+        "expectedStdout": "True",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t3-p05-t3",
+        "label": "No Extra Output",
         "expectedStdout": "True",
         "visibility": "public"
       }
@@ -1079,7 +1307,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t3-p06-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "3",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t3-p06-t2",
+        "label": "Exact Output",
+        "expectedStdout": "3",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t3-p06-t3",
+        "label": "No Extra Output",
         "expectedStdout": "3",
         "visibility": "public"
       }
@@ -1124,7 +1364,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t3-p07-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Python",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t3-p07-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Python",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t3-p07-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Python",
         "visibility": "public"
       }
@@ -1179,7 +1431,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t4-p01-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "['a', 'b']",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t4-p01-t2",
+        "label": "Exact Output",
+        "expectedStdout": "['a', 'b']",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t4-p01-t3",
+        "label": "No Extra Output",
         "expectedStdout": "['a', 'b']",
         "visibility": "public"
       }
@@ -1233,7 +1497,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t4-p02-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "[1, 2]",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t4-p02-t2",
+        "label": "Exact Output",
+        "expectedStdout": "[1, 2]",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t4-p02-t3",
+        "label": "No Extra Output",
         "expectedStdout": "[1, 2]",
         "visibility": "public"
       }
@@ -1287,7 +1563,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t4-p03-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "[('x', 1)]",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t4-p03-t2",
+        "label": "Exact Output",
+        "expectedStdout": "[('x', 1)]",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t4-p03-t3",
+        "label": "No Extra Output",
         "expectedStdout": "[('x', 1)]",
         "visibility": "public"
       }
@@ -1347,7 +1635,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t4-p04-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "0",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t4-p04-t2",
+        "label": "Exact Output",
+        "expectedStdout": "0",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t4-p04-t3",
+        "label": "No Extra Output",
         "expectedStdout": "0",
         "visibility": "public"
       }
@@ -1408,7 +1708,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t4-p05-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "True",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t4-p05-t2",
+        "label": "Exact Output",
+        "expectedStdout": "True",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t4-p05-t3",
+        "label": "No Extra Output",
         "expectedStdout": "True",
         "visibility": "public"
       }
@@ -1461,7 +1773,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t4-p06-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "3",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t4-p06-t2",
+        "label": "Exact Output",
+        "expectedStdout": "3",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t4-p06-t3",
+        "label": "No Extra Output",
         "expectedStdout": "3",
         "visibility": "public"
       }
@@ -1506,7 +1830,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t4-p07-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Python",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t4-p07-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Python",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t4-p07-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Python",
         "visibility": "public"
       }
@@ -1561,7 +1897,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t5-p01-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "['a', 'b']",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t5-p01-t2",
+        "label": "Exact Output",
+        "expectedStdout": "['a', 'b']",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t5-p01-t3",
+        "label": "No Extra Output",
         "expectedStdout": "['a', 'b']",
         "visibility": "public"
       }
@@ -1615,7 +1963,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t5-p02-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "[1, 2]",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t5-p02-t2",
+        "label": "Exact Output",
+        "expectedStdout": "[1, 2]",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t5-p02-t3",
+        "label": "No Extra Output",
         "expectedStdout": "[1, 2]",
         "visibility": "public"
       }
@@ -1669,7 +2029,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t5-p03-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "[('x', 1)]",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t5-p03-t2",
+        "label": "Exact Output",
+        "expectedStdout": "[('x', 1)]",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t5-p03-t3",
+        "label": "No Extra Output",
         "expectedStdout": "[('x', 1)]",
         "visibility": "public"
       }
@@ -1729,7 +2101,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t5-p04-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "0",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t5-p04-t2",
+        "label": "Exact Output",
+        "expectedStdout": "0",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t5-p04-t3",
+        "label": "No Extra Output",
         "expectedStdout": "0",
         "visibility": "public"
       }
@@ -1790,7 +2174,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t5-p05-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "True",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t5-p05-t2",
+        "label": "Exact Output",
+        "expectedStdout": "True",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t5-p05-t3",
+        "label": "No Extra Output",
         "expectedStdout": "True",
         "visibility": "public"
       }
@@ -1843,7 +2239,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t5-p06-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "3",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t5-p06-t2",
+        "label": "Exact Output",
+        "expectedStdout": "3",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t5-p06-t3",
+        "label": "No Extra Output",
         "expectedStdout": "3",
         "visibility": "public"
       }
@@ -1888,7 +2296,19 @@ export const module8Practice: PracticeProblem[] = [
     "publicTests": [
       {
         "id": "m8-t5-p07-t1",
-        "label": "Sample test",
+        "label": "Sample Case",
+        "expectedStdout": "Python",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t5-p07-t2",
+        "label": "Exact Output",
+        "expectedStdout": "Python",
+        "visibility": "public"
+      },
+      {
+        "id": "m8-t5-p07-t3",
+        "label": "No Extra Output",
         "expectedStdout": "Python",
         "visibility": "public"
       }

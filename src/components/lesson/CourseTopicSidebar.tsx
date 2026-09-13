@@ -15,7 +15,9 @@ import type { CourseId, Module, Topic } from "@/lib/types";
 import { getModulesByCourse } from "@/data/curriculum";
 import { getCourse } from "@/data/courses";
 import { hasQuiz as topicHasQuiz } from "@/data/quizzes/meta";
+import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/contexts/ProgressContext";
+import { isAdmin } from "@/lib/admin";
 import { isTopicProgressionDone, isTopicUnlocked } from "@/lib/topic-locking";
 import { modules } from "@/data/curriculum";
 import { NavigationLink } from "@/components/ui/NavigationLink";
@@ -87,6 +89,7 @@ function ModuleSection({
   accent,
   progress,
   hasQuiz,
+  unlockAll,
   onNavigate,
 }: {
   mod: Module;
@@ -97,6 +100,7 @@ function ModuleSection({
   accent: (typeof ACCENT)[CourseId];
   progress: ReturnType<typeof useProgress>["progress"];
   hasQuiz: (id: string) => boolean;
+  unlockAll?: boolean;
   onNavigate?: () => void;
 }) {
   const published = mod.topics.filter((t) => t.published);
@@ -171,7 +175,13 @@ function ModuleSection({
             {published.map((topic) => {
               const isActive =
                 mod.slug === currentModuleSlug && topic.slug === currentTopicSlug;
-              const unlocked = isTopicUnlocked(modules, topic.id, progress, hasQuiz);
+              const unlocked = isTopicUnlocked(
+                modules,
+                topic.id,
+                progress,
+                hasQuiz,
+                { unlockAll }
+              );
               const done = isTopicProgressionDone(progress, topic.id, hasQuiz(topic.id));
               const href = `/learn/${mod.slug}/${topic.slug}`;
 
@@ -244,7 +254,9 @@ export function CourseTopicSidebar({
   onClose,
   className,
 }: CourseTopicSidebarProps) {
+  const { profile } = useAuth();
   const { progress, ready } = useProgress();
+  const unlockAll = isAdmin(profile);
   const scrollRef = useRef<HTMLDivElement>(null);
   const course = getCourse(courseId);
   const accent = ACCENT[courseId];
@@ -337,6 +349,7 @@ export function CourseTopicSidebar({
               accent={accent}
               progress={progress}
               hasQuiz={hasQuiz}
+              unlockAll={unlockAll}
               onNavigate={onClose}
             />
           ))}

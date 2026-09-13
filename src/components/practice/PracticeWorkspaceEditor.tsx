@@ -7,7 +7,6 @@ import { CodeEditor } from "@/components/ide/CodeEditor";
 import { ConsolePanel } from "@/components/ide/ConsolePanel";
 import { usePyodideRunner } from "@/components/ide/usePyodideRunner";
 import { runPublicTests, submitForGrading, type TestRunResult } from "@/lib/practice-runner";
-import { isProblemPremium } from "@/lib/practice-config";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePracticeProgress } from "@/hooks/usePracticeProgress";
 import { useCoursePracticeReturn } from "@/hooks/useCoursePracticeReturn";
@@ -351,11 +350,6 @@ function ProblemPanel({
           <span className="flex items-center gap-1 text-xs font-medium text-green-700 dark:text-green-400">
             <CheckCircle2 className="h-3.5 w-3.5" />
             Solved
-          </span>
-        )}
-        {isProblemPremium(problem.order) && (
-          <span className="rounded-full bg-brand-100 px-2 py-0.5 text-xs font-medium text-brand-800 dark:bg-brand-900/50 dark:text-brand-200">
-            Premium
           </span>
         )}
       </div>

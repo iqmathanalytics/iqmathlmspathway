@@ -42,6 +42,9 @@ import {
 } from "@/components/lesson/dynamicPanels";
 import { LangChainCopyProvider } from "./LangChainCopyContext";
 import { LessonPracticeContext } from "./LessonPracticeContext";
+import { useAuth } from "@/contexts/AuthContext";
+import { useProgress } from "@/contexts/ProgressContext";
+import { isAdmin } from "@/lib/admin";
 import {
   areAllExercisesComplete,
   getCompletedExercises,
@@ -54,7 +57,6 @@ import {
 } from "@/lib/final-project-progress";
 import { ArrowRight, CheckCircle2, Lock, Pencil } from "lucide-react";
 import { getSqlDatabaseForModule } from "@/lib/sql-runtime";
-import { useProgress } from "@/contexts/ProgressContext";
 import { isVisualizationCode } from "@/lib/visualization-code";
 
 interface TopicLessonLayoutProps {
@@ -80,6 +82,8 @@ export function TopicLessonLayout({
   headerSlot,
   footerSlot,
 }: TopicLessonLayoutProps) {
+  const { profile } = useAuth();
+  const admin = isAdmin(profile);
   const { markIdeRan } = useProgress();
   const ideRef = useRef<HTMLElement>(null);
 
@@ -188,23 +192,23 @@ export function TopicLessonLayout({
 
   const selectPractice = useCallback(
     (index: number) => {
-      if (sequential && topicId && !isExerciseUnlocked(topicId, index)) return;
+      if (sequential && topicId && !admin && !isExerciseUnlocked(topicId, index)) return;
       setActivePractice(index);
       setPracticeReloadKey((key) => key + 1);
       scrollToIde();
     },
-    [sequential, topicId, scrollToIde]
+    [sequential, topicId, admin, scrollToIde]
   );
 
   const nextPractice = useCallback(() => {
     setActivePractice((current) => {
       const next = Math.min(current + 1, practices.length - 1);
-      if (sequential && topicId && !isExerciseUnlocked(topicId, next)) return current;
+      if (sequential && topicId && !admin && !isExerciseUnlocked(topicId, next)) return current;
       return next;
     });
     setPracticeReloadKey((key) => key + 1);
     scrollToIde();
-  }, [practices.length, scrollToIde, sequential, topicId]);
+  }, [practices.length, scrollToIde, sequential, topicId, admin]);
 
   const completeExercise = useCallback(
     (index: number) => {
@@ -223,10 +227,10 @@ export function TopicLessonLayout({
 
   const checkUnlocked = useCallback(
     (index: number) => {
-      if (!sequential || !topicId) return true;
+      if (!sequential || !topicId || admin) return true;
       return isExerciseUnlocked(topicId, index);
     },
-    [sequential, topicId]
+    [sequential, topicId, admin]
   );
 
   const checkComplete = useCallback(

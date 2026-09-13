@@ -29,7 +29,7 @@ export function CourseAccessGate({
     let cancelled = false;
 
     async function load() {
-      if (!user) {
+      if (!user || isAdmin(profile)) {
         if (!cancelled) {
           setEnrolledIds(new Set());
           setEnrollLoading(false);
@@ -49,9 +49,9 @@ export function CourseAccessGate({
     return () => {
       cancelled = true;
     };
-  }, [user]);
+  }, [user, profile]);
 
-  if (authLoading || publishedLoading || enrollLoading) {
+  if (authLoading || publishedLoading || (enrollLoading && !isAdmin(profile))) {
     return (
       <div className="flex min-h-[40vh] items-center justify-center">
         <Loader2 className="h-8 w-8 animate-spin text-brand-600" />

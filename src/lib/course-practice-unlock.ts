@@ -18,8 +18,12 @@ export function getSolvedPracticeIds(
 export function isCoursePracticeProblemUnlocked(
   problems: PracticeProblem[],
   problemId: string,
-  solvedIds: Set<string>
+  solvedIds: Set<string>,
+  options?: { unlockAll?: boolean }
 ): boolean {
+  if (options?.unlockAll) {
+    return problems.some((p) => p.id === problemId);
+  }
   const sorted = [...problems].sort((a, b) => a.order - b.order);
   const idx = sorted.findIndex((p) => p.id === problemId);
   if (idx < 0) return false;
@@ -29,8 +33,11 @@ export function isCoursePracticeProblemUnlocked(
 
 export function getFirstUnlockedCoursePractice(
   problems: PracticeProblem[],
-  solvedIds: Set<string>
+  solvedIds: Set<string>,
+  options?: { unlockAll?: boolean }
 ): PracticeProblem | undefined {
   const sorted = [...problems].sort((a, b) => a.order - b.order);
-  return sorted.find((p) => isCoursePracticeProblemUnlocked(problems, p.id, solvedIds));
+  return sorted.find((p) =>
+    isCoursePracticeProblemUnlocked(problems, p.id, solvedIds, options)
+  );
 }

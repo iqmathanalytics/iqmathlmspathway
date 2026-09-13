@@ -5,7 +5,9 @@ import { useRouter } from "next/navigation";
 import { Loader2, Lock } from "lucide-react";
 import type { PracticeProblem } from "@/lib/types";
 import { getProblemsByTopic } from "@/data/practice";
+import { useAuth } from "@/contexts/AuthContext";
 import { usePracticeProgress } from "@/hooks/usePracticeProgress";
+import { isAdmin } from "@/lib/admin";
 import {
   getSolvedPracticeIds,
   isCoursePracticeProblemUnlocked,
@@ -29,26 +31,26 @@ export function CoursePracticeUnlockGate({
   children,
 }: CoursePracticeUnlockGateProps) {
   const router = useRouter();
+  const { profile } = useAuth();
+  const admin = isAdmin(profile);
   const problems = useMemo(
     () => getProblemsByTopic(problem.topicId),
     [problem.topicId]
   );
   const { rows, loading } = usePracticeProgress(problems.map((p) => p.id));
   const solvedIds = getSolvedPracticeIds(rows);
-  const unlocked = isCoursePracticeProblemUnlocked(
-    problems,
-    problem.id,
-    solvedIds
-  );
+  const unlocked =
+    admin ||
+    isCoursePracticeProblemUnlocked(problems, problem.id, solvedIds);
 
   useEffect(() => {
-    if (loading) return;
+    if (admin || loading) return;
     if (!unlocked) {
       router.replace(courseTopicChallengeHref(moduleSlug, topicSlug));
     }
-  }, [loading, unlocked, router, moduleSlug, topicSlug]);
+  }, [admin, loading, unlocked, router, moduleSlug, topicSlug]);
 
-  if (loading) {
+  if (!admin && loading) {
     return (
       <div className="flex min-h-[50vh] items-center justify-center">
         <Loader2 className="h-8 w-8 animate-spin text-brand-600" />
