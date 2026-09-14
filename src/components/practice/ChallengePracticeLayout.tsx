@@ -7,6 +7,8 @@ import type {
   PracticeProblem,
 } from "@/lib/types";
 import { CodeEditor } from "@/components/ide/CodeEditor";
+import { ConsolePanel } from "@/components/ide/ConsolePanel";
+import { usePyodideRunner } from "@/components/ide/usePyodideRunner";
 import { runPublicTests } from "@/lib/practice-runner";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePracticeProgress } from "@/hooks/usePracticeProgress";
@@ -21,6 +23,7 @@ import {
   Loader2,
   Play,
   RefreshCw,
+  Terminal,
   XCircle,
 } from "lucide-react";
 import clsx from "clsx";
@@ -229,6 +232,19 @@ export function ChallengePracticeLayout({
   const rowsRef = useRef(rows);
   rowsRef.current = rows;
 
+  const {
+    lines,
+    loading: runtimeLoading,
+    running,
+    error: runtimeError,
+    runCode,
+    clearConsole,
+    stdinActive,
+    stdinDraft,
+    setStdinDraft,
+    submitStdin,
+  } = usePyodideRunner();
+
   const content = problem.challengeContent;
   const status = rows[problem.id]?.status ?? "not_started";
   const example = problem.examples?.[0];
@@ -258,7 +274,14 @@ export function ChallengePracticeLayout({
     setHintsShown(0);
     setSolutionOpen(false);
     setExplanationOpen(false);
-  }, [problem.id]);
+    clearConsole();
+  }, [problem.id, clearConsole]);
+
+  const handleRun = useCallback(() => {
+    if (running || checking || runtimeLoading) return;
+    setCheckResult(null);
+    void runCode(code);
+  }, [code, runCode, running, checking, runtimeLoading]);
 
   useEffect(() => {
     if (progressLoading) return;
@@ -277,6 +300,8 @@ export function ChallengePracticeLayout({
   }, [code, problem.id, saveDraft]);
 
   const handleRunCheck = useCallback(async () => {
+    if (running || checking || runtimeLoading) return;
+
     const trimmed = code.trim();
     const realCode = trimmed.replace(/#.*$/gm, "").trim();
 
@@ -636,12 +661,18 @@ export function ChallengePracticeLayout({
     session,
     markSolved,
     returnAfterSolve,
+    running,
+    checking,
+    runtimeLoading,
   ]);
 
   const handleReset = () => {
-    setCode("");
+    setCode(problem.starterCode ?? "");
     setCheckResult(null);
+    clearConsole();
   };
+
+  const actionsBusy = running || checking || runtimeLoading;
 
   const revealHint = () => {
     setHintsShown((h) => Math.min(h + 1, problem.hints.length));
@@ -1020,7 +1051,7 @@ export function ChallengePracticeLayout({
             <CodeEditor
               value={code}
               onChange={setCode}
-              onRun={handleRunCheck}
+              onRun={handleRun}
               height="100%"
               className="h-full min-h-[240px]"
             />
@@ -1034,48 +1065,82 @@ export function ChallengePracticeLayout({
             </div>
           )}
 
-          <div className="border-t border-[#313244] bg-[#181825] px-4 py-3">
-            <div className="flex flex-wrap gap-2">
-              <button
-                type="button"
-                onMouseDown={(e) => e.preventDefault()}
-                onClick={handleRunCheck}
-                disabled={checking}
-                className="inline-flex items-center gap-1.5 rounded-md border border-blue-400/30 bg-blue-500/20 px-4 py-2 text-[13.5px] font-medium text-blue-200 transition hover:bg-blue-500/30 disabled:opacity-50"
-              >
-                {checking ? (
-                  <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                ) : (
-                  <Play className="h-3.5 w-3.5" />
-                )}
-                Submit &amp; Check
-              </button>
-              {explanation && (
+          <ConsolePanel
+            lines={lines}
+            loading={runtimeLoading}
+            running={running}
+            error={runtimeError}
+            onClear={clearConsole}
+            maxHeight={180}
+            showInput
+            stdinActive={stdinActive}
+            stdinDraft={stdinDraft}
+            onStdinDraftChange={setStdinDraft}
+            onStdinSubmit={submitStdin}
+            emptyHint="Press Run to execute your code and see print() output here."
+            actions={
+              <>
                 <button
                   type="button"
                   onMouseDown={(e) => e.preventDefault()}
-                  onClick={openExplanation}
-                  className="inline-flex items-center gap-1.5 rounded-md border border-indigo-400/30 bg-indigo-500/20 px-4 py-2 text-[13.5px] font-medium text-indigo-200 transition hover:bg-indigo-500/30"
+                  onClick={handleRun}
+                  disabled={actionsBusy}
+                  className="inline-flex items-center gap-1.5 rounded-md bg-brand-600 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-brand-500 disabled:opacity-50"
                 >
-                  <BookOpen className="h-3.5 w-3.5" />
-                  Explanation
+                  {running || runtimeLoading ? (
+                    <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                  ) : (
+                    <Terminal className="h-3.5 w-3.5" />
+                  )}
+                  {running
+                    ? runtimeLoading
+                      ? "Loading…"
+                      : "Running…"
+                    : "Run"}
                 </button>
-              )}
-              <button
-                type="button"
-                onMouseDown={(e) => e.preventDefault()}
-                onClick={handleReset}
-                className="inline-flex items-center gap-1.5 rounded-md border border-[#45475a] bg-[#313244] px-4 py-2 text-[13.5px] font-medium text-[#cdd6f4] transition hover:bg-[#45475a]"
-              >
-                <RefreshCw className="h-3.5 w-3.5" />
-                Reset
-              </button>
-            </div>
+                <button
+                  type="button"
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={handleRunCheck}
+                  disabled={actionsBusy}
+                  className="inline-flex items-center gap-1.5 rounded-md border border-blue-400/30 bg-blue-500/20 px-3 py-1.5 text-xs font-semibold text-blue-200 transition hover:bg-blue-500/30 disabled:opacity-50"
+                >
+                  {checking ? (
+                    <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                  ) : (
+                    <Play className="h-3.5 w-3.5" />
+                  )}
+                  Submit &amp; Check
+                </button>
+                {explanation && (
+                  <button
+                    type="button"
+                    onMouseDown={(e) => e.preventDefault()}
+                    onClick={openExplanation}
+                    className="inline-flex items-center gap-1.5 rounded-md border border-indigo-400/30 bg-indigo-500/20 px-3 py-1.5 text-xs font-semibold text-indigo-200 transition hover:bg-indigo-500/30"
+                  >
+                    <BookOpen className="h-3.5 w-3.5" />
+                    Explanation
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={handleReset}
+                  className="inline-flex items-center gap-1.5 rounded-md border border-[#45475a] bg-[#313244] px-3 py-1.5 text-xs font-semibold text-[#cdd6f4] transition hover:bg-[#45475a]"
+                >
+                  <RefreshCw className="h-3.5 w-3.5" />
+                  Reset
+                </button>
+              </>
+            }
+          />
 
-            {checkResult && (
+          {checkResult && (
+            <div className="border-t border-[#313244] bg-[#181825] px-4 py-3">
               <div
                 className={clsx(
-                  "mt-3 rounded-lg border px-4 py-3 text-sm leading-relaxed",
+                  "rounded-lg border px-4 py-3 text-sm leading-relaxed",
                   checkResult.type === "success" &&
                     "border-green-400/30 bg-green-500/10 text-green-200",
                   checkResult.type === "error" &&
@@ -1095,8 +1160,8 @@ export function ChallengePracticeLayout({
                   <div>{checkResult.message}</div>
                 </div>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
