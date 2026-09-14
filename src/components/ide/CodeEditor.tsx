@@ -11,6 +11,8 @@ interface CodeEditorProps {
   value: string;
   onChange: (value: string) => void;
   onRun: () => void;
+  /** Optional Ctrl/Cmd+Shift+Enter handler (e.g. Submit). */
+  onSubmit?: () => void;
   onCursorChange?: (line: number, col: number) => void;
   readOnly?: boolean;
   minHeight?: string;
@@ -78,20 +80,26 @@ export function CodeEditor({
   value,
   onChange,
   onRun,
+  onSubmit,
   onCursorChange,
   readOnly = false,
   minHeight = "220px",
   height,
   className,
-  theme = "dark",
+  theme = "light",
 }: CodeEditorProps) {
-  const isLight = theme === "light";
+  const isLight = theme !== "dark";
   const onRunRef = useRef(onRun);
+  const onSubmitRef = useRef(onSubmit);
   const onCursorChangeRef = useRef(onCursorChange);
 
   useEffect(() => {
     onRunRef.current = onRun;
   }, [onRun]);
+
+  useEffect(() => {
+    onSubmitRef.current = onSubmit;
+  }, [onSubmit]);
 
   useEffect(() => {
     onCursorChangeRef.current = onCursorChange;
@@ -113,6 +121,20 @@ export function CodeEditor({
           run: () => {
             onRunRef.current();
             return true;
+          },
+        },
+        {
+          key: "Ctrl-Shift-Enter",
+          run: () => {
+            onSubmitRef.current?.();
+            return Boolean(onSubmitRef.current);
+          },
+        },
+        {
+          key: "Mod-Shift-Enter",
+          run: () => {
+            onSubmitRef.current?.();
+            return Boolean(onSubmitRef.current);
           },
         },
       ]),

@@ -194,7 +194,7 @@ export function PracticeWorkspaceEditor({
         coursePractice
       />
 
-      <div className="grid min-h-0 flex-1 gap-0 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900 lg:grid-cols-[minmax(0,42%)_minmax(0,58%)]">
+      <div className="ide-light-locked grid min-h-0 flex-1 gap-0 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm lg:grid-cols-[minmax(0,42%)_minmax(0,58%)]">
         <ProblemPanel
           problem={problem}
           difficultyColor={difficultyColor}
@@ -205,30 +205,31 @@ export function PracticeWorkspaceEditor({
           submitMessage={submitMessage}
         />
 
-        <div className="ide-dark-chrome flex min-h-[480px] flex-col bg-gray-950 lg:min-h-0">
-          <div className="flex items-center justify-between border-b border-slate-800 px-4 py-2">
-            <span className="flex items-center gap-2 text-sm font-medium text-slate-300">
-              <Terminal className="h-4 w-4" />
+        <div className="flex min-h-[480px] flex-col overflow-hidden bg-white lg:min-h-0">
+          <div className="flex items-center justify-between border-b border-sky-200 bg-white px-4 py-2">
+            <span className="flex items-center gap-2 text-sm font-medium text-slate-700">
+              <Terminal className="h-4 w-4 text-brand-600" />
               Code workspace
             </span>
             <button
               type="button"
               onMouseDown={(e) => e.preventDefault()}
               onClick={() => setCode(problem.starterCode ?? "")}
-              className="flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs text-slate-400 hover:bg-slate-800 hover:text-white"
+              className="flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs font-medium text-slate-500 hover:bg-sky-50 hover:text-brand-700"
             >
               <RotateCcw className="h-3.5 w-3.5" />
               Reset
             </button>
           </div>
 
-          <div className="min-h-0 flex-1 overflow-hidden">
+          <div className="min-h-0 flex-1 overflow-hidden bg-sky-50">
             <CodeEditor
               value={code}
               onChange={setCode}
               onRun={handleRun}
               height="100%"
-              className="h-full min-h-[240px]"
+              theme="light"
+              className="h-full min-h-[240px] bg-sky-50 [&_.cm-editor]:bg-sky-50 [&_.cm-scroller]:bg-sky-50"
             />
           </div>
 
@@ -238,8 +239,36 @@ export function PracticeWorkspaceEditor({
             running={running}
             error={error}
             onClear={clearConsole}
-            maxHeight={220}
+            maxHeight={200}
+            collapsible
             showInput
+            statusText={
+              error
+                ? "Runtime error"
+                : loading
+                  ? "Loading Python…"
+                  : running
+                    ? stdinActive
+                      ? "Waiting for input…"
+                      : "Running…"
+                    : lines.some(
+                          (l) =>
+                            l.kind === "stdout" ||
+                            l.kind === "stderr" ||
+                            l.kind === "error"
+                        )
+                      ? "Execution completed"
+                      : "Console ready"
+            }
+            statusTone={
+              error
+                ? "error"
+                : loading || running
+                  ? "busy"
+                  : lines.some((l) => l.kind === "stdout" || l.kind === "stderr")
+                    ? "success"
+                    : "idle"
+            }
             stdinActive={stdinActive}
             stdinDraft={stdinDraft}
             onStdinDraftChange={setStdinDraft}
@@ -249,17 +278,19 @@ export function PracticeWorkspaceEditor({
                 {prevProblem ? (
                   <Link
                     href={`/learn/${moduleSlug}/${topicSlug}/challenges/${prevProblem.slug}`}
-                    className="inline-flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-300 hover:bg-slate-800 hover:text-white"
+                    className="inline-flex h-8 items-center gap-1 rounded-lg px-2.5 text-xs font-semibold text-slate-300 hover:bg-slate-800 hover:text-white"
+                    title="Previous question"
                   >
-                    <ChevronLeft className="h-3.5 w-3.5" />
+                    <ChevronLeft className="h-3.5 w-3.5" aria-hidden />
                     Prev
                   </Link>
                 ) : (
                   <Link
                     href={listHref}
-                    className="inline-flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-300 hover:bg-slate-800 hover:text-white"
+                    className="inline-flex h-8 items-center gap-1 rounded-lg px-2.5 text-xs font-semibold text-slate-300 hover:bg-slate-800 hover:text-white"
+                    title="Back to list"
                   >
-                    <ChevronLeft className="h-3.5 w-3.5" />
+                    <ChevronLeft className="h-3.5 w-3.5" aria-hidden />
                     List
                   </Link>
                 )}
@@ -268,12 +299,14 @@ export function PracticeWorkspaceEditor({
                   onMouseDown={(e) => e.preventDefault()}
                   onClick={handleRun}
                   disabled={actionsBusy}
-                  className="inline-flex items-center gap-1 rounded-lg bg-brand-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-brand-500 disabled:opacity-50"
+                  className="inline-flex h-8 items-center gap-1 rounded-lg bg-brand-600 px-3 text-xs font-semibold text-white hover:bg-brand-500 disabled:opacity-50"
+                  title="Run code"
+                  aria-label="Run code"
                 >
                   {running ? (
-                    <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                    <Loader2 className="h-3.5 w-3.5 animate-spin" aria-hidden />
                   ) : (
-                    <Play className="h-3.5 w-3.5" />
+                    <Play className="h-3.5 w-3.5" aria-hidden />
                   )}
                   Run
                 </button>
@@ -282,7 +315,9 @@ export function PracticeWorkspaceEditor({
                   onMouseDown={(e) => e.preventDefault()}
                   onClick={handleRunTests}
                   disabled={actionsBusy}
-                  className="inline-flex items-center gap-1 rounded-lg border border-slate-600 bg-slate-900 px-3 py-1.5 text-xs font-semibold text-slate-100 hover:bg-slate-800 disabled:opacity-50"
+            className="inline-flex h-8 items-center gap-1 rounded-lg border border-sky-200 bg-white px-3 text-xs font-semibold text-brand-800 hover:bg-sky-50 disabled:opacity-50"
+                  title="Run public tests"
+                  aria-label="Run public tests"
                 >
                   {testing ? "Testing…" : "Test"}
                 </button>
@@ -291,26 +326,30 @@ export function PracticeWorkspaceEditor({
                   onMouseDown={(e) => e.preventDefault()}
                   onClick={handleSubmit}
                   disabled={actionsBusy}
-                  className="inline-flex items-center gap-1 rounded-lg bg-green-700 px-3 py-1.5 text-xs font-semibold text-white hover:bg-green-600 disabled:opacity-50"
+                  className="inline-flex h-8 items-center gap-1 rounded-lg bg-green-700 px-3 text-xs font-semibold text-white hover:bg-green-600 disabled:opacity-50"
+                  title="Submit solution"
+                  aria-label="Submit solution"
                 >
-                  <Send className="h-3.5 w-3.5" />
+                  <Send className="h-3.5 w-3.5" aria-hidden />
                   {submitting ? "Submitting…" : "Submit"}
                 </button>
                 {nextProblem ? (
                   <Link
                     href={`/learn/${moduleSlug}/${topicSlug}/challenges/${nextProblem.slug}`}
-                    className="ml-auto inline-flex items-center gap-1 rounded-lg bg-slate-800 px-2.5 py-1.5 text-xs font-semibold text-brand-200 hover:bg-slate-700"
+                    className="ml-auto inline-flex h-8 items-center gap-1 rounded-lg bg-slate-800 px-2.5 text-xs font-semibold text-brand-200 hover:bg-slate-700"
+                    title="Next question"
                   >
                     Next
-                    <ChevronRight className="h-3.5 w-3.5" />
+                    <ChevronRight className="h-3.5 w-3.5" aria-hidden />
                   </Link>
                 ) : (
                   <Link
                     href={listHref}
-                    className="ml-auto inline-flex items-center gap-1 rounded-lg bg-slate-800 px-2.5 py-1.5 text-xs font-semibold text-brand-200 hover:bg-slate-700"
+                    className="ml-auto inline-flex h-8 items-center gap-1 rounded-lg bg-slate-800 px-2.5 text-xs font-semibold text-brand-200 hover:bg-slate-700"
+                    title="Finish"
                   >
                     Finish
-                    <ChevronRight className="h-3.5 w-3.5" />
+                    <ChevronRight className="h-3.5 w-3.5" aria-hidden />
                   </Link>
                 )}
               </>

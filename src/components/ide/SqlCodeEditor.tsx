@@ -2,7 +2,6 @@
 
 import CodeMirror from "@uiw/react-codemirror";
 import { sql } from "@codemirror/lang-sql";
-import { oneDark } from "@codemirror/theme-one-dark";
 import { EditorView, keymap } from "@codemirror/view";
 import { defaultKeymap, indentWithTab } from "@codemirror/commands";
 
@@ -17,28 +16,38 @@ interface SqlCodeEditorProps {
   className?: string;
 }
 
-const editorTheme = EditorView.theme({
-  "&": { fontSize: "13.5px", backgroundColor: "#0d1117" },
-  ".cm-scroller": {
-    fontFamily: "ui-monospace, Consolas, Monaco, monospace",
-    lineHeight: "1.65",
+const lightEditorTheme = EditorView.theme(
+  {
+    "&": {
+      fontSize: "13.5px",
+      backgroundColor: "#f0f7fc",
+      color: "#0f172a",
+    },
+    ".cm-scroller": {
+      fontFamily: "ui-monospace, Consolas, Monaco, monospace",
+      lineHeight: "1.65",
+      backgroundColor: "#f0f7fc",
+    },
+    ".cm-content": {
+      caretColor: "#0f75bd",
+      color: "#0f172a",
+      backgroundColor: "#f0f7fc",
+    },
+    ".cm-gutters": {
+      backgroundColor: "#e7f1fa",
+      color: "#64748b",
+      borderRight: "1px solid #cfe3f4",
+    },
+    ".cm-activeLineGutter": { backgroundColor: "#d9ebf8", color: "#0f75bd" },
+    ".cm-activeLine": { backgroundColor: "rgba(15, 117, 189, 0.08)" },
+    ".cm-cursor, .cm-cursor-primary": { borderLeftColor: "#0f75bd" },
+    ".cm-selectionBackground, &.cm-focused .cm-selectionBackground": {
+      backgroundColor: "rgba(15, 117, 189, 0.2) !important",
+    },
+    ".cm-line": { padding: "0 2px", color: "#0f172a" },
   },
-  ".cm-gutters": {
-    backgroundColor: "#0a0e14",
-    color: "#484f58",
-    borderRight: "1px solid #21262d",
-  },
-  ".cm-activeLineGutter": {
-    backgroundColor: "#161b22",
-    color: "#8b949e",
-  },
-  ".cm-activeLine": { backgroundColor: "rgba(56, 189, 248, 0.06)" },
-  ".cm-cursor": { borderLeftColor: "#38bdf8" },
-  ".cm-selectionBackground, &.cm-focused .cm-selectionBackground": {
-    backgroundColor: "rgba(56, 189, 248, 0.18) !important",
-  },
-  ".cm-line": { padding: "0 2px" },
-});
+  { dark: false }
+);
 
 const runKeymap = (onRun: () => void) =>
   keymap.of([
@@ -73,13 +82,14 @@ export function SqlCodeEditor({
       <CodeMirror
         value={value}
         height={height ?? minHeight}
-        theme={[oneDark, editorTheme]}
+        theme="light"
         extensions={[
           sql(),
           EditorView.lineWrapping,
           keymap.of([...defaultKeymap, indentWithTab]),
           runKeymap(onRun),
           EditorView.editable.of(!readOnly),
+          lightEditorTheme,
           EditorView.updateListener.of((update) => {
             if (update.selectionSet && onCursorChange) {
               const pos = update.state.selection.main.head;

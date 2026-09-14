@@ -38,15 +38,15 @@ export function RunnableLessonCode({ code }: RunnableLessonCodeProps) {
   }, [code, isViz, runCode]);
 
   return (
-    <div className="my-4 overflow-hidden rounded-xl border border-gray-800 bg-[#0d1117] shadow-sm">
-      <div className="flex flex-wrap items-center gap-2 border-b border-gray-800 bg-[#161b22] px-3 py-2">
-        <Code2 className="h-4 w-4 text-green-300" />
-        <span className="text-sm font-medium text-gray-200">Example code</span>
+    <div className="ide-light-locked my-4 overflow-hidden rounded-xl border border-sky-200 bg-white shadow-sm ring-1 ring-sky-100">
+      <div className="flex flex-wrap items-center gap-2 border-b border-sky-200 bg-white px-3 py-2">
+        <Code2 className="h-4 w-4 text-brand-600" />
+        <span className="text-sm font-medium text-slate-800">Example code</span>
         <div className="ml-auto flex flex-wrap items-center gap-2">
           {isViz && (
             <OpenInColabButton
               code={code}
-              variant="ide"
+              variant="light"
               label="Open in Google Colab"
             />
           )}
@@ -54,7 +54,7 @@ export function RunnableLessonCode({ code }: RunnableLessonCodeProps) {
             type="button"
             onClick={() => void handleRun()}
             disabled={running}
-            className="inline-flex items-center gap-1.5 rounded-md bg-emerald-600 px-2.5 py-1 text-xs font-semibold text-white transition-colors hover:bg-emerald-500 disabled:cursor-wait disabled:opacity-70"
+            className="inline-flex items-center gap-1.5 rounded-md bg-brand-600 px-2.5 py-1 text-xs font-semibold text-white transition-colors hover:bg-brand-700 disabled:cursor-wait disabled:opacity-70"
             title="Run this example and show the output"
           >
             {running ? (
@@ -66,7 +66,7 @@ export function RunnableLessonCode({ code }: RunnableLessonCodeProps) {
           </button>
         </div>
       </div>
-      <pre className="overflow-x-auto p-4 font-mono text-sm text-green-100">
+      <pre className="overflow-x-auto bg-sky-50 p-4 font-mono text-sm text-slate-800">
         {code}
       </pre>
       {hasRun && (
@@ -78,6 +78,33 @@ export function RunnableLessonCode({ code }: RunnableLessonCodeProps) {
           onClear={clearConsole}
           maxHeight={180}
           showInput
+          statusText={
+            error
+              ? "Runtime error"
+              : loading
+                ? "Loading Python…"
+                : running
+                  ? stdinActive
+                    ? "Waiting for input…"
+                    : "Running…"
+                  : lines.some(
+                        (l) =>
+                          l.kind === "stdout" ||
+                          l.kind === "stderr" ||
+                          l.kind === "error"
+                      )
+                    ? "Execution completed"
+                    : "Console ready"
+          }
+          statusTone={
+            error
+              ? "error"
+              : loading || running
+                ? "busy"
+                : lines.some((l) => l.kind === "stdout" || l.kind === "stderr")
+                  ? "success"
+                  : "idle"
+          }
           stdinActive={stdinActive}
           stdinDraft={stdinDraft}
           onStdinDraftChange={setStdinDraft}
@@ -87,32 +114,16 @@ export function RunnableLessonCode({ code }: RunnableLessonCodeProps) {
               ? "Ran with no printed output. Add print(...) to see values."
               : undefined
           }
-          actions={
-            <button
-              type="button"
-              onMouseDown={(e) => e.preventDefault()}
-              onClick={() => void handleRun()}
-              disabled={running}
-              className="inline-flex items-center gap-1.5 rounded-md bg-emerald-600 px-2.5 py-1 text-xs font-semibold text-white hover:bg-emerald-500 disabled:opacity-70"
-            >
-              {running ? (
-                <Loader2 className="h-3.5 w-3.5 animate-spin" />
-              ) : (
-                <Play className="h-3.5 w-3.5" />
-              )}
-              {running ? "Running…" : "Run"}
-            </button>
-          }
         />
       )}
       {needsInput && (
-        <p className="border-t border-gray-800 bg-[#161b22] px-4 py-2 text-xs text-sky-300">
+        <p className="border-t border-sky-200 bg-sky-50 px-4 py-2 text-xs text-brand-800">
           This example uses input(). Click Run, then type each answer in the
           input box at the top of the console and press Enter.
         </p>
       )}
       {isViz && (
-        <p className="border-t border-gray-800 bg-[#161b22] px-4 py-2 text-xs text-orange-300">
+        <p className="border-t border-amber-200 bg-amber-50 px-4 py-2 text-xs text-amber-900">
           Plots do not render in the course page. Click Run to see any printed
           results, or open Google Colab to view the chart.
         </p>

@@ -617,7 +617,7 @@ export function GroqDocsLessonBlock({ topicId }: { topicId?: string }) {
                   {copiedId === step.id ? "Copied" : "Copy"}
                 </button>
               </div>
-              <pre className="overflow-x-auto whitespace-pre-wrap bg-slate-950 px-4 py-4 font-mono text-[12.5px] leading-relaxed text-emerald-100">
+              <pre className="overflow-x-auto whitespace-pre-wrap border-t border-sky-100 bg-sky-50 px-4 py-4 font-mono text-[12.5px] leading-relaxed text-slate-800">
                 {step.code}
               </pre>
             </article>

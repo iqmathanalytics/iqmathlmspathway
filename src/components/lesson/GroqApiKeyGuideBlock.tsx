@@ -321,7 +321,7 @@ function StepCard({
               </li>
             ))}
           </ul>
-          <pre className="mt-3 overflow-x-auto whitespace-pre-wrap rounded-xl bg-slate-950 p-3 font-mono text-[11.5px] leading-relaxed text-emerald-100">
+          <pre className="mt-3 overflow-x-auto whitespace-pre-wrap rounded-xl border border-sky-100 bg-sky-50 p-3 font-mono text-[11.5px] leading-relaxed text-slate-800">
             {step.code}
           </pre>
         </div>

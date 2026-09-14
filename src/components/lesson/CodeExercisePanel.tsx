@@ -131,6 +131,34 @@ export function CodeExercisePanel({
           onClear={clearConsole}
           maxHeight={180}
           showInput
+          outputLabel="Output"
+          statusText={
+            error
+              ? "Runtime error"
+              : loading
+                ? "Loading Python…"
+                : running
+                  ? stdinActive
+                    ? "Waiting for input…"
+                    : "Running…"
+                  : lines.some(
+                        (l) =>
+                          l.kind === "stdout" ||
+                          l.kind === "stderr" ||
+                          l.kind === "error"
+                      )
+                    ? "Execution completed"
+                    : "Console ready"
+          }
+          statusTone={
+            error
+              ? "error"
+              : loading || running
+                ? "busy"
+                : lines.some((l) => l.kind === "stdout" || l.kind === "stderr")
+                  ? "success"
+                  : "idle"
+          }
           stdinActive={stdinActive}
           stdinDraft={stdinDraft}
           onStdinDraftChange={setStdinDraft}

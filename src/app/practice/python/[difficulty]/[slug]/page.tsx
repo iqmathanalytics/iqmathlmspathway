@@ -32,7 +32,7 @@ export default async function PythonPracticeProblemPage({ params }: ProblemPageP
   if (!problem || problem.difficulty !== difficulty) notFound();
 
   return (
-    <div className="flex h-[calc(100dvh-3.5rem)] min-h-0 flex-col overflow-hidden px-2 py-2 sm:px-3">
+    <div className="flex h-[calc(100dvh-3.5rem)] min-h-0 flex-col overflow-hidden px-3 py-2 sm:px-6 lg:px-8">
       <PythonCodingShell problem={problem} />
     </div>
   );

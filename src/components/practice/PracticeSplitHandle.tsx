@@ -110,12 +110,33 @@ export function PracticeSplitHandle({
       onPointerCancel={endDrag}
       onKeyDown={onKeyDown}
       className={clsx(
-        "practice-split-handle z-10 shrink-0 touch-none bg-sky-100/90 transition-all duration-200 hover:bg-[var(--brand)]/35 focus:bg-[var(--brand)]/45 focus:outline-none focus:ring-2 focus:ring-[var(--brand)]/30",
+        "practice-split-handle group relative z-10 shrink-0 touch-none focus:outline-none",
         orientation === "vertical"
-          ? "hidden w-1.5 cursor-col-resize lg:block"
-          : "h-1.5 cursor-row-resize",
+          ? "hidden w-0 cursor-col-resize lg:block"
+          : "h-0 cursor-row-resize",
         className
       )}
-    />
+    >
+      {/* Visual 1–2px rule */}
+      <span
+        aria-hidden
+        className={clsx(
+          "pointer-events-none absolute bg-sky-200/80 transition-colors duration-150 group-hover:bg-[var(--brand)]/45 group-focus:bg-[var(--brand)]/55 dark:bg-slate-600/80",
+          orientation === "vertical"
+            ? "inset-y-0 left-1/2 w-0.5 -translate-x-1/2"
+            : "inset-x-0 top-1/2 h-0.5 -translate-y-1/2"
+        )}
+      />
+      {/* Larger hit target */}
+      <span
+        aria-hidden
+        className={clsx(
+          "absolute",
+          orientation === "vertical"
+            ? "inset-y-0 -left-1.5 w-3"
+            : "inset-x-0 -top-1.5 h-3"
+        )}
+      />
+    </div>
   );
 }

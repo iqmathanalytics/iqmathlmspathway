@@ -474,7 +474,7 @@ function CodeCell({
           )}
         </button>
       </div>
-      <pre className="max-h-[420px] overflow-auto bg-slate-950 px-4 py-3 text-[12px] leading-6 text-slate-100">
+      <pre className="max-h-[420px] overflow-auto border-t border-sky-100 bg-sky-50 px-4 py-3 font-mono text-[12px] leading-6 text-slate-800">
         <code>{step.code}</code>
       </pre>
     </div>

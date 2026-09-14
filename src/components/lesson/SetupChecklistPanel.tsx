@@ -22,7 +22,7 @@ function CopyButton({ text }: { text: string }) {
     <button
       type="button"
       onClick={handleCopy}
-      className="flex shrink-0 items-center gap-1 rounded-md px-2 py-1 text-xs text-gray-400 transition-colors hover:bg-gray-700 hover:text-white"
+      className="flex shrink-0 items-center gap-1 rounded-md px-2 py-1 text-xs text-slate-500 transition-colors hover:bg-sky-50 hover:text-brand-700"
       title="Copy"
     >
       {copied ? (
@@ -103,15 +103,15 @@ export function SetupChecklistPanel({ steps }: SetupChecklistPanelProps) {
 
               {/* Commands */}
               {step.commands && step.commands.length > 0 && (
-                <div className="border-t border-gray-100 bg-[#0d1117] overflow-hidden rounded-b-xl">
-                  <div className="flex items-center justify-between border-b border-gray-800 bg-[#161b22] px-3 py-1.5">
-                    <span className="flex items-center gap-1.5 text-xs text-gray-400">
+                <div className="ide-light-locked overflow-hidden rounded-b-xl border-t border-sky-100 bg-sky-50">
+                  <div className="flex items-center justify-between border-b border-sky-200 bg-white px-3 py-1.5">
+                    <span className="flex items-center gap-1.5 text-xs text-slate-500">
                       <Terminal className="h-3 w-3" />
                       Copyable prompt
                     </span>
                     <CopyButton text={step.commands.join("\n")} />
                   </div>
-                  <pre className="overflow-x-auto p-3 text-xs leading-relaxed text-gray-200">
+                  <pre className="overflow-x-auto p-3 font-mono text-xs leading-relaxed text-slate-800">
                     <code>{step.commands.join("\n")}</code>
                   </pre>
                 </div>
