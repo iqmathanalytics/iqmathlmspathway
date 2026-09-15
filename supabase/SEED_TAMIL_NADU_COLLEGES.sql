@@ -1,0 +1,72 @@
+-- Seed Tamil Nadu colleges for registration / profile pickers.
+-- Safe to re-run. Inserts only when lower(name) is not already present.
+-- Paste into Supabase SQL Editor, or run after RUN_ADMIN.sql.
+
+insert into public.colleges (name, code, city, archived)
+select v.name, '', v.city, false
+from (
+  values
+    ('Anna University', 'Chennai'),
+    ('Madras Institute of Technology', 'Chennai'),
+    ('Loyola College', 'Chennai'),
+    ('Madras Christian College', 'Tambaram'),
+    ('Stella Maris College', 'Chennai'),
+    ('Presidency College', 'Chennai'),
+    ('SRM Institute of Science and Technology', 'Chennai'),
+    ('Sathyabama Institute of Science and Technology', 'Chennai'),
+    ('Hindustan Institute of Technology and Science', 'Chennai'),
+    ('VIT Chennai', 'Chennai'),
+    ('Saveetha Engineering College', 'Chennai'),
+    ('Rajalakshmi Engineering College', 'Chennai'),
+    ('SSN College of Engineering', 'Chennai'),
+    ('Sri Sairam Engineering College', 'Chennai'),
+    ('Panimalar Engineering College', 'Chennai'),
+    ('PSG College of Technology', 'Coimbatore'),
+    ('Coimbatore Institute of Technology', 'Coimbatore'),
+    ('Kumaraguru College of Technology', 'Coimbatore'),
+    ('Sri Krishna College of Engineering and Technology', 'Coimbatore'),
+    ('Sri Ramakrishna Engineering College', 'Coimbatore'),
+    ('Karpagam College of Engineering', 'Coimbatore'),
+    ('Hindusthan College of Engineering and Technology', 'Coimbatore'),
+    ('SNS College of Technology', 'Coimbatore'),
+    ('Amrita Vishwa Vidyapeetham', 'Coimbatore'),
+    ('Government College of Technology', 'Coimbatore'),
+    ('Thiagarajar College of Engineering', 'Madurai'),
+    ('Madurai Kamaraj University', 'Madurai'),
+    ('Velammal College of Engineering and Technology', 'Madurai'),
+    ('Sethu Institute of Technology', 'Madurai'),
+    ('Fatima College', 'Madurai'),
+    ('The American College', 'Madurai'),
+    ('Thiagarajar School of Management', 'Madurai'),
+    ('National Institute of Technology, Tiruchirappalli', 'Tiruchirappalli'),
+    ('SASTRA Deemed University', 'Thanjavur'),
+    ('SRM Institute of Science and Technology – Tiruchirappalli', 'Tiruchirappalli'),
+    ('K. Ramakrishnan College of Engineering', 'Tiruchirappalli'),
+    ('M.A.M. College of Engineering', 'Tiruchirappalli'),
+    ('Holy Cross College', 'Tiruchirappalli'),
+    ('Bishop Heber College', 'Tiruchirappalli'),
+    ('Government College of Engineering, Salem', 'Salem'),
+    ('Sona College of Technology', 'Salem'),
+    ('Knowledge Institute of Technology', 'Salem'),
+    ('Vinayaka Mission''s Kirupananda Variyar Engineering College', 'Salem'),
+    ('Mahendra Engineering College', 'Namakkal'),
+    ('AVS Engineering College', 'Salem'),
+    ('Kongu Engineering College', 'Erode'),
+    ('Bannari Amman Institute of Technology', 'Erode'),
+    ('Nandha Engineering College', 'Erode'),
+    ('Velalar College of Engineering and Technology', 'Erode'),
+    ('Government College of Engineering, Erode', 'Erode'),
+    ('Government College of Engineering, Tirunelveli', 'Tirunelveli'),
+    ('Francis Xavier Engineering College', 'Tirunelveli'),
+    ('PSN College of Engineering and Technology', 'Tirunelveli'),
+    ('National Engineering College', 'Kovilpatti'),
+    ('University College of Engineering, Nagercoil', 'Nagercoil'),
+    ('St. Xavier''s College', 'Palayamkottai'),
+    ('Government College of Engineering, Thanjavur', 'Thanjavur'),
+    ('PRIST University', 'Thanjavur'),
+    ('K. Ramakrishna College of Technology', 'Tiruchirappalli'),
+    ('A.V.V.M. Sri Pushpam College', 'Thanjavur')
+) as v(name, city)
+where not exists (
+  select 1 from public.colleges c where lower(c.name) = lower(v.name)
+);

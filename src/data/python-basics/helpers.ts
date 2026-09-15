@@ -4,6 +4,7 @@ import type {
   PracticeProblem,
   PracticeTest,
 } from "@/lib/types";
+import { deriveRunDemoCode } from "@/lib/practice-run-demo";
 
 export const PYTHON_BASICS_CATEGORIES = [
   { id: "variables", label: "Variables" },
@@ -51,7 +52,7 @@ export type CustomTest = {
 export type CodingTestDef = EqTest | CustomTest;
 
 export function testsFromDefs(slug: string, defs: CodingTestDef[]): PracticeTest[] {
-  return defs.map((d, i) => {
+  const mapped = defs.map((d, i) => {
     const id = `pb-${slug}-t${i + 1}`;
     if (d.kind === "custom") {
       return {
@@ -72,6 +73,28 @@ export function testsFromDefs(slug: string, defs: CodingTestDef[]): PracticeTest
       ].join("\n"),
     };
   });
+  return ensureThreePublicTests(`pb-${slug}`, mapped);
+}
+
+/** Pad or trim so every problem has exactly 3 public tests. */
+export function ensureThreePublicTests(
+  idPrefix: string,
+  tests: PracticeTest[]
+): PracticeTest[] {
+  if (tests.length === 0) return tests;
+  const out = tests.slice(0, 3);
+  let n = out.length;
+  while (out.length < 3) {
+    n += 1;
+    const base = out[out.length - 1]!;
+    const nextIndex = out.length + 1;
+    out.push({
+      ...base,
+      id: `${idPrefix}-t${n}`,
+      label: nextIndex === 2 ? "Edge Case" : "Check 3",
+    });
+  }
+  return out;
 }
 
 interface BuildBasicsProblemInput {
@@ -88,9 +111,15 @@ interface BuildBasicsProblemInput {
   starterCode: string;
   solutionCode: string;
   tests: CodingTestDef[];
+  runDemoCode?: string;
 }
 
 export function buildBasicsProblem(input: BuildBasicsProblemInput): PracticeProblem {
+  const runDemoCode = deriveRunDemoCode({
+    override: input.runDemoCode,
+    tests: input.tests,
+  });
+
   return {
     id: `pb-${input.slug}`,
     topicId: `pb-${input.category}`,
@@ -108,6 +137,7 @@ export function buildBasicsProblem(input: BuildBasicsProblemInput): PracticeProb
     starterCode: input.starterCode.replace(/^\n/, ""),
     solutionCode: input.solutionCode.trim(),
     publicTests: testsFromDefs(input.slug, input.tests),
+    ...(runDemoCode ? { runDemoCode } : {}),
   };
 }
 
@@ -151,12 +181,15 @@ export function buildScriptProblem(input: BuildScriptProblemInput): PracticeProb
     approach: input.approach.trim(),
     starterCode: (input.starterCode ?? "# Write your script here\n").replace(/^\n/, ""),
     solutionCode: input.solutionCode.trim(),
-    publicTests: input.tests.map((t, i) => ({
-      id: `pb-${input.slug}-t${i + 1}`,
-      label: t.label,
-      visibility: "public" as const,
-      expectedStdout: t.expectedStdout,
-      stdin: t.stdin,
-    })),
+    publicTests: ensureThreePublicTests(
+      `pb-${input.slug}`,
+      input.tests.map((t, i) => ({
+        id: `pb-${input.slug}-t${i + 1}`,
+        label: t.label,
+        visibility: "public" as const,
+        expectedStdout: t.expectedStdout,
+        stdin: t.stdin,
+      }))
+    ),
   };
 }

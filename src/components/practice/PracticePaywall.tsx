@@ -36,8 +36,8 @@ export function PracticePaywall({
           <Lock className="mx-auto h-10 w-10 text-brand-600" />
           <h1 className="mt-4 text-xl font-bold text-gray-900">{problem.title}</h1>
           <p className="mt-2 text-sm text-gray-600">
-            This is a premium problem (problem {problem.order}). The first 5 problems in each
-            set are free. Unlock all premium practice with a one-time purchase.
+            Practice questions unlock after premium access. Purchase once, or ask an
+            admin to grant practice access.
           </p>
           <Link
             href="/checkout"

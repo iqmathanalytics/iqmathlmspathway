@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { PracticeProgressRow, PracticeStatus } from "@/lib/types";
 import { getSupabase, isSupabaseConfigured } from "@/lib/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
+import { notifyProgressUpdated } from "@/lib/progress";
 
 export function usePracticeProgress(problemIds: string[]) {
   const { user } = useAuth();
@@ -90,6 +91,10 @@ export function usePracticeProgress(problemIds: string[]) {
         return { error: error.message };
       }
 
+      if (nextStatus === "solved" || nextStatus === "attempted") {
+        notifyProgressUpdated();
+      }
+
       return { error: null };
     },
     [user]
@@ -138,6 +143,7 @@ export function usePracticeProgress(problemIds: string[]) {
         return { error: error.message };
       }
 
+      notifyProgressUpdated();
       return { error: null };
     },
     [user]

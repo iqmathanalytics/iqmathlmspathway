@@ -172,7 +172,7 @@ export default function CheckoutPage() {
     return (
       <div className={`${PAGE_CONTAINER} py-16 text-center`}>
         <h1 className="text-2xl font-bold text-gray-900">Already unlocked</h1>
-        <p className="mt-2 text-gray-600">You have access to all premium practice problems.</p>
+        <p className="mt-2 text-gray-600">You have access to all practice questions.</p>
         <Link href="/practice" className="mt-6 inline-block text-brand-700 hover:underline">
           Go to practice
         </Link>
@@ -184,12 +184,13 @@ export default function CheckoutPage() {
     <div className={`${PAGE_CONTAINER} py-16`}>
       <div className="mx-auto max-w-lg rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
         <Lock className="mx-auto h-10 w-10 text-brand-600" />
-        <h1 className="mt-4 text-center text-2xl font-bold text-gray-900">Practice Premium</h1>
+        <h1 className="mt-4 text-center text-2xl font-bold text-gray-900">Unlock Practice</h1>
         <p className="mt-3 text-center text-sm text-gray-600">
-          One-time payment unlocks all premium practice problems across every module and topic.
+          One-time payment unlocks all practice questions (hub and course challenges).
+          Admins can also grant access from the Students panel.
         </p>
         <ul className="mt-6 space-y-2 text-sm text-gray-700">
-          <li>• Problems 6+ in each topic</li>
+          <li>• All practice problems unlocked</li>
           <li>• Hidden test validation on submit</li>
           <li>• Progress synced to your account</li>
           <li>• Lifetime access — no subscription</li>

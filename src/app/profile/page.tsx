@@ -3,11 +3,13 @@
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useColleges } from "@/hooks/useColleges";
-import { DEPARTMENT_OPTIONS } from "@/data/departments";
+import { CollegeCombobox } from "@/components/ui/CollegeCombobox";
 import { PAGE_CONTAINER } from "@/lib/layout";
 import { courses, courseShortName } from "@/data/courses";
 import { getSupabase } from "@/lib/supabase/client";
 import { cleanMobile, isValidMobile } from "@/lib/mobile";
+import { resolveCollegeIdForProfile } from "@/lib/resolve-college";
+import { isCatalogCollegeId } from "@/data/tamil-nadu-colleges";
 import type { CourseId } from "@/lib/types";
 import { Loader2 } from "lucide-react";
 
@@ -18,7 +20,7 @@ const readonlyClass =
 
 export default function ProfilePage() {
   const { user, profile, updateProfile, refreshProfile } = useAuth();
-  const { colleges, loading: collegesLoading } = useColleges();
+  const { colleges, loading: collegesLoading, refresh: refreshColleges } = useColleges();
   const [fullName, setFullName] = useState("");
   const [mobile, setMobile] = useState("");
   const [collegeId, setCollegeId] = useState("");
@@ -72,10 +74,24 @@ export default function ProfilePage() {
       return;
     }
     setSaving(true);
+    const sb = getSupabase();
+    let resolvedCollegeId: string | null = collegeId || null;
+    if (sb && collegeId && isCatalogCollegeId(collegeId)) {
+      const resolved = await resolveCollegeIdForProfile(sb, collegeId);
+      if (resolved.error) {
+        setSaving(false);
+        setError(resolved.error);
+        return;
+      }
+      resolvedCollegeId = resolved.id;
+      await refreshColleges();
+      if (resolved.id) setCollegeId(resolved.id);
+    }
+
     const result = await updateProfile({
       full_name: fullName.trim(),
       mobile: mobileClean,
-      college_id: collegeId || null,
+      college_id: resolvedCollegeId,
       department: department.trim(),
     });
     setSaving(false);
@@ -129,23 +145,23 @@ export default function ProfilePage() {
             </p>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">College</label>
-            <select
-              value={collegeId}
-              onChange={(e) => setCollegeId(e.target.value)}
-              className={inputClass}
-              disabled={collegesLoading}
+            <label
+              htmlFor="profile-college"
+              className="block text-sm font-medium text-gray-700"
             >
-              <option value="">
-                {collegesLoading ? "Loading…" : "Select college"}
-              </option>
-              {colleges.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.name}
-                  {c.city ? ` (${c.city})` : ""}
-                </option>
-              ))}
-            </select>
+              College
+            </label>
+            <div className="mt-1">
+              <CollegeCombobox
+                id="profile-college"
+                colleges={colleges}
+                value={collegeId}
+                onChange={setCollegeId}
+                loading={collegesLoading}
+                placeholder="Search college by name or city…"
+                emptyLabel="No college selected"
+              />
+            </div>
             {!collegesLoading && colleges.length === 0 && (
               <p className="mt-1 text-xs text-gray-500">
                 No colleges listed yet{collegeName ? ` · currently ${collegeName}` : ""}.
@@ -157,16 +173,15 @@ export default function ProfilePage() {
             <input
               type="text"
               required
-              list="profile-departments"
               value={department}
               onChange={(e) => setDepartment(e.target.value)}
+              placeholder="Type your department"
               className={inputClass}
+              autoComplete="organization-title"
             />
-            <datalist id="profile-departments">
-              {DEPARTMENT_OPTIONS.map((d) => (
-                <option key={d} value={d} />
-              ))}
-            </datalist>
+            <p className="mt-1 text-xs text-gray-500">
+              Enter your department yourself.
+            </p>
           </div>
 
           <div>

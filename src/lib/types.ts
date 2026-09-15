@@ -424,6 +424,12 @@ export interface PracticeProblem {
   hints: string[];
   starterCode: string;
   publicTests: PracticeTest[];
+  /**
+   * Appended only for free Run (not Test/Submit). Calls the solution with an
+   * example and prints results so the console is not blank for function-style
+   * problems.
+   */
+  runDemoCode?: string;
   /** Standalone coding-practice topic, e.g. "Arrays & Lists" */
   category?: string;
   categoryLabel?: string;

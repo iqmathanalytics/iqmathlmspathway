@@ -9,7 +9,11 @@ import { getSupabase } from "@/lib/supabase/client";
 import { schemaMissing } from "@/lib/admin";
 import { PRACTICE_PREMIUM_PRODUCT } from "@/lib/practice-config";
 import type { CollegeRow, CourseId, ProfileRow } from "@/lib/types";
-import { DEPARTMENT_OPTIONS } from "@/data/departments";
+import { CollegeCombobox } from "@/components/ui/CollegeCombobox";
+import {
+  isCatalogCollegeId,
+} from "@/data/tamil-nadu-colleges";
+import { resolveCollegeIdForProfile } from "@/lib/resolve-college";
 import { Loader2, Search, Unlock, Lock } from "lucide-react";
 
 interface StudentExtras {
@@ -30,7 +34,7 @@ function StudentsAdminInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const selectedId = searchParams.get("id");
-  const { colleges } = useColleges(true);
+  const { colleges, refresh: refreshColleges } = useColleges(true);
   const [students, setStudents] = useState<ProfileRow[]>([]);
   const [query, setQuery] = useState("");
   const [collegeFilter, setCollegeFilter] = useState("");
@@ -294,12 +298,25 @@ function StudentsAdminInner() {
     setSaving(true);
     setFormError(null);
 
+    let resolvedCollegeId: string | null = editCollege || null;
+    if (editCollege && isCatalogCollegeId(editCollege)) {
+      const resolved = await resolveCollegeIdForProfile(sb, editCollege);
+      if (resolved.error) {
+        setSaving(false);
+        setFormError(resolved.error);
+        return;
+      }
+      resolvedCollegeId = resolved.id;
+      await refreshColleges();
+      if (resolved.id) setEditCollege(resolved.id);
+    }
+
     const { error: pError } = await sb
       .from("profiles")
       .update({
         full_name: editName.trim(),
         mobile: editMobile.trim(),
-        college_id: editCollege || null,
+        college_id: resolvedCollegeId,
         department: editDept.trim(),
         is_active: editActive,
       })
@@ -370,7 +387,7 @@ function StudentsAdminInner() {
       ...selected,
       full_name: editName.trim(),
       mobile: editMobile.trim(),
-      college_id: editCollege || null,
+      college_id: resolvedCollegeId,
       department: editDept.trim(),
       is_active: editActive,
     });
@@ -397,24 +414,19 @@ function StudentsAdminInner() {
               className="w-full rounded-lg border border-gray-300 py-2 pl-9 pr-3 text-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
             />
           </label>
-          <select
-            value={collegeFilter}
-            onChange={(e) => {
-              setCollegeFilter(e.target.value);
-              setBulkMessage(null);
-              setBulkError(null);
-            }}
-            className="rounded-lg border border-gray-300 px-3 py-2 text-sm"
-          >
-            <option value="">All colleges</option>
-            {colleges
-              .filter((c) => !c.archived)
-              .map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.name}
-                </option>
-              ))}
-          </select>
+          <div className="min-w-[220px] sm:w-72">
+            <CollegeCombobox
+              colleges={colleges.filter((c) => !c.archived && !isCatalogCollegeId(c.id))}
+              value={collegeFilter}
+              onChange={(v) => {
+                setCollegeFilter(v);
+                setBulkMessage(null);
+                setBulkError(null);
+              }}
+              placeholder="Filter by college…"
+              emptyLabel="All colleges"
+            />
+          </div>
         </div>
 
         <div className="mt-3 rounded-xl border border-brand-100 bg-brand-50/60 p-3">
@@ -567,33 +579,25 @@ function StudentsAdminInner() {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700">College</label>
-              <select
-                value={editCollege}
-                onChange={(e) => setEditCollege(e.target.value)}
-                className={inputClass}
-              >
-                <option value="">Unassigned</option>
-                {colleges.map((c) => (
-                  <option key={c.id} value={c.id}>
-                    {c.name}
-                    {c.archived ? " (archived)" : ""}
-                  </option>
-                ))}
-              </select>
+              <div className="mt-1">
+                <CollegeCombobox
+                  colleges={colleges}
+                  value={editCollege}
+                  onChange={setEditCollege}
+                  placeholder="Search college by name or city…"
+                  emptyLabel="Unassigned"
+                />
+              </div>
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700">Department</label>
               <input
-                list="admin-departments"
+                type="text"
                 value={editDept}
                 onChange={(e) => setEditDept(e.target.value)}
+                placeholder="Student-entered department"
                 className={inputClass}
               />
-              <datalist id="admin-departments">
-                {DEPARTMENT_OPTIONS.map((d) => (
-                  <option key={d} value={d} />
-                ))}
-              </datalist>
             </div>
             <fieldset>
               <legend className="text-sm font-medium text-gray-700">Enrolled courses</legend>
@@ -620,7 +624,7 @@ function StudentsAdminInner() {
                 checked={editPremium}
                 onChange={(e) => setEditPremium(e.target.checked)}
               />
-              Practice premium (unlock all practice)
+              Practice access (unlock all practice questions)
             </label>
             <label className="flex items-center gap-2 text-sm text-gray-700">
               <input

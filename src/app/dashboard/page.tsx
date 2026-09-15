@@ -4,27 +4,44 @@ import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import { getModulesByCourse } from "@/data/curriculum";
 import { courses, courseShortName } from "@/data/courses"; // used for URL param validation
 import { getAllPracticeProblems } from "@/data/practice";
+import { getPythonBasicsProblems } from "@/data/python-basics";
+import { getPythonPracticeProblems } from "@/data/python-practice";
 import { PAGE_CONTAINER } from "@/lib/layout";
 import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/contexts/ProgressContext";
 import { getSupabase } from "@/lib/supabase/client";
 import { useEntitlements } from "@/hooks/useEntitlements";
 import { useAccessibleCourses } from "@/hooks/usePublishedCourses";
+import { isStandalonePracticeProblemId } from "@/lib/practice-config";
 import type { CourseId } from "@/lib/types";
-import { BookOpen, Terminal, CheckCircle2, Lock, Loader2, Zap } from "lucide-react";
+import {
+  BookOpen,
+  Terminal,
+  CheckCircle2,
+  Lock,
+  Loader2,
+  Zap,
+  Code2,
+} from "lucide-react";
 import { DashboardRoadmap } from "@/components/dashboard/DashboardRoadmap";
 import { TourTrigger } from "@/components/walkthrough/TourTrigger";
 import { IconImage } from "@/components/ui/IconImage";
 
 const COURSE_STORAGE_KEY = "last-active-course";
 
+const HUB_PRACTICE_TOTAL =
+  getPythonBasicsProblems().length + getPythonPracticeProblems().length;
+
 export default function DashboardPage() {
   const { user, profile } = useAuth();
   const { progress, ready } = useProgress();
   const { hasPremium } = useEntitlements();
   const { accessibleCourses, loading: coursesLoading } = useAccessibleCourses();
-  const [practiceSolved, setPracticeSolved] = useState(0);
-  const [practiceStatsError, setPracticeStatsError] = useState<string | null>(null);
+  const [challengeSolved, setChallengeSolved] = useState(0);
+  const [hubPracticeSolved, setHubPracticeSolved] = useState(0);
+  const [practiceStatsError, setPracticeStatsError] = useState<string | null>(
+    null
+  );
   const [activeCourse, setActiveCourse] = useState<CourseId>("python");
 
   // On mount: honour ?course= URL param first, then fall back to localStorage
@@ -39,7 +56,9 @@ export default function DashboardPage() {
       }
       const saved = localStorage.getItem(COURSE_STORAGE_KEY) as CourseId | null;
       if (saved && courses.some((c) => c.id === saved)) setActiveCourse(saved);
-    } catch { /* ignore */ }
+    } catch {
+      /* ignore */
+    }
   }, []);
 
   function switchCourse(id: CourseId) {
@@ -49,7 +68,9 @@ export default function DashboardPage() {
       const url = new URL(window.location.href);
       url.searchParams.set("course", id);
       window.history.replaceState(null, "", url.toString());
-    } catch { /* ignore */ }
+    } catch {
+      /* ignore */
+    }
   }
 
   useEffect(() => {
@@ -65,7 +86,9 @@ export default function DashboardPage() {
   const courseTopicIds = courseModules.flatMap((m) => m.topics.map((t) => t.id));
   const courseTopicIdSet = new Set(courseTopicIds);
 
-  const lessonCompleted = progress.completedTopics.filter((id) => courseTopicIdSet.has(id)).length;
+  const lessonCompleted = progress.completedTopics.filter((id) =>
+    courseTopicIdSet.has(id)
+  ).length;
   const courseTotal = courseModules.reduce(
     (acc, m) => acc + m.topics.filter((t) => t.published).length,
     0
@@ -79,7 +102,9 @@ export default function DashboardPage() {
 
   const coursePracticeIds = useMemo(() => {
     const topicIds = new Set(
-      getModulesByCourse(activeCourse).flatMap((m) => m.topics.map((t) => t.id))
+      getModulesByCourse(activeCourse).flatMap((m) =>
+        m.topics.map((t) => t.id)
+      )
     );
     // Module challenges only — do not mix in Practice hub (Basics/Algorithms).
     return new Set(
@@ -89,8 +114,8 @@ export default function DashboardPage() {
     );
   }, [activeCourse]);
 
-  const totalPractice = coursePracticeIds.size;
-  const courseHasPractice = totalPractice > 0;
+  const totalChallenges = coursePracticeIds.size;
+  const courseHasPractice = totalChallenges > 0;
 
   const loadPracticeStats = useCallback(async () => {
     if (!user) return;
@@ -108,11 +133,13 @@ export default function DashboardPage() {
     }
 
     setPracticeStatsError(null);
-    const courseSolved = (rows ?? []).filter((r) =>
-      coursePracticeIds.has(r.problem_id)
+    const solvedIds = (rows ?? []).map((r) => String(r.problem_id));
+    setChallengeSolved(
+      solvedIds.filter((id) => coursePracticeIds.has(id)).length
     );
-
-    setPracticeSolved(courseSolved.length);
+    setHubPracticeSolved(
+      solvedIds.filter((id) => isStandalonePracticeProblemId(id)).length
+    );
   }, [user, coursePracticeIds]);
 
   useEffect(() => {
@@ -120,9 +147,20 @@ export default function DashboardPage() {
   }, [ready, user, loadPracticeStats]);
 
   useEffect(() => {
-    const onUpdate = () => { void loadPracticeStats(); };
+    const onUpdate = () => {
+      void loadPracticeStats();
+    };
+    const onVisible = () => {
+      if (document.visibilityState === "visible") void loadPracticeStats();
+    };
     window.addEventListener("pypath-progress-updated", onUpdate);
-    return () => window.removeEventListener("pypath-progress-updated", onUpdate);
+    window.addEventListener("focus", onUpdate);
+    document.addEventListener("visibilitychange", onVisible);
+    return () => {
+      window.removeEventListener("pypath-progress-updated", onUpdate);
+      window.removeEventListener("focus", onUpdate);
+      document.removeEventListener("visibilitychange", onVisible);
+    };
   }, [loadPracticeStats]);
 
   const loading = !ready;
@@ -134,125 +172,144 @@ export default function DashboardPage() {
       </Suspense>
 
       <h1 className="text-3xl font-bold text-gray-900">Your progress</h1>
-      <p className="mt-2 max-w-full truncate text-gray-600" title={profile?.full_name || undefined}>
+      <p
+        className="mt-2 max-w-full truncate text-gray-600"
+        title={profile?.full_name || undefined}
+      >
         Welcome back{profile?.full_name ? `, ${profile.full_name}` : ""}.
       </p>
 
-      {/* Course switcher */}
       {accessibleCourses.length === 0 ? (
         <p className="mt-6 rounded-xl border border-gray-200 bg-white p-6 text-sm text-gray-600">
-          No courses are available for your account yet. Ask your administrator to enroll you.
+          No courses are available for your account yet. Ask your administrator
+          to enroll you.
         </p>
       ) : (
-      <>
-      <div className="mt-6 grid w-full grid-cols-2 gap-1.5 rounded-xl border border-gray-200 bg-gray-50 p-1.5 sm:grid-cols-4">
-        {accessibleCourses.map((course) => {
-          const isActive = activeCourse === course.id;
-          const activeClass =
-            course.color === "violet"
-              ? "bg-violet-600 text-white shadow-sm"
-              : course.color === "sky"
-                ? "bg-sky-600 text-white shadow-sm"
-                : "bg-brand-600 text-white shadow-sm";
-          const shortLabel = courseShortName(course.id);
-          return (
-            <button
-              key={course.id}
-              type="button"
-              title={course.name}
-              onClick={() => switchCourse(course.id)}
-              className={`flex min-w-0 items-center justify-center gap-1.5 rounded-lg px-2 py-2.5 text-xs font-semibold transition-all sm:gap-2 sm:px-3 sm:text-sm ${
-                isActive
-                  ? activeClass
-                  : "text-gray-500 hover:bg-white hover:text-gray-800"
-              }`}
-            >
-              <IconImage
-                src={course.iconImage}
-                alt={course.iconAlt ?? `${course.name} logo`}
-                fallback={course.icon}
-                className="h-4 w-4 shrink-0 sm:h-5 sm:w-5"
-                imageClassName="h-full w-full object-contain"
-                fallbackClassName="text-sm leading-none sm:text-base"
-              />
-              <span className="truncate">{shortLabel}</span>
-            </button>
-          );
-        })}
-      </div>
-
-      {loading ? (
-        <div className="mt-12 flex justify-center">
-          <Loader2 className="h-8 w-8 animate-spin text-brand-600" />
-        </div>
-      ) : (
         <>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <StatCard
-              icon={BookOpen}
-              label="Lessons completed"
-              value={`${lessonCompleted} / ${courseTotal}`}
-            />
-            {courseHasPractice ? (
-              <StatCard
-                icon={Terminal}
-                label="Challenges solved"
-                value={
-                  practiceStatsError
-                    ? "—"
-                    : `${practiceSolved} / ${totalPractice}`
-                }
-                sublabel={
-                  practiceStatsError
-                    ? "Could not load challenge stats"
-                    : "Module questions for this course"
-                }
-              />
-            ) : (
-              <StatCard
-                icon={Zap}
-                label="Course type"
-                value="Lesson-based"
-                sublabel="Lessons and quizzes"
-              />
-            )}
-            <StatCard
-              icon={CheckCircle2}
-              label="Average quiz score"
-              value={scores.length ? `${quizAvg}%` : "—"}
-            />
-            {courseHasPractice ? (
-              <StatCard
-                icon={Lock}
-                label="Practice premium"
-                value={hasPremium ? "Unlocked" : "Locked"}
-                highlight={hasPremium}
-              />
-            ) : (
-              <StatCard
-                icon={CheckCircle2}
-                label="Access"
-                value="Full access"
-                highlight
-              />
-            )}
+          <div className="mt-6 grid w-full grid-cols-2 gap-1.5 rounded-xl border border-gray-200 bg-gray-50 p-1.5 sm:grid-cols-4">
+            {accessibleCourses.map((course) => {
+              const isActive = activeCourse === course.id;
+              const activeClass =
+                course.color === "violet"
+                  ? "bg-violet-600 text-white shadow-sm"
+                  : course.color === "sky"
+                    ? "bg-sky-600 text-white shadow-sm"
+                    : "bg-brand-600 text-white shadow-sm";
+              const shortLabel = courseShortName(course.id);
+              return (
+                <button
+                  key={course.id}
+                  type="button"
+                  title={course.name}
+                  onClick={() => switchCourse(course.id)}
+                  className={`flex min-w-0 items-center justify-center gap-1.5 rounded-lg px-2 py-2.5 text-xs font-semibold transition-all sm:gap-2 sm:px-3 sm:text-sm ${
+                    isActive
+                      ? activeClass
+                      : "text-gray-500 hover:bg-white hover:text-gray-800"
+                  }`}
+                >
+                  <IconImage
+                    src={course.iconImage}
+                    alt={course.iconAlt ?? `${course.name} logo`}
+                    fallback={course.icon}
+                    className="h-4 w-4 shrink-0 sm:h-5 sm:w-5"
+                    imageClassName="h-full w-full object-contain"
+                    fallbackClassName="text-sm leading-none sm:text-base"
+                  />
+                  <span className="truncate">{shortLabel}</span>
+                </button>
+              );
+            })}
           </div>
 
-          <div className="mt-10">
-            <div data-walkthrough="dashboard-roadmap" className="scroll-mt-24">
-              <h2 className="text-lg font-semibold text-gray-900">Learning Roadmap</h2>
-              <p className="mt-1 text-sm text-gray-500">
-                Follow modules in order. Click any module to expand its topics.
-              </p>
+          {loading ? (
+            <div className="mt-12 flex justify-center">
+              <Loader2 className="h-8 w-8 animate-spin text-brand-600" />
             </div>
-            <DashboardRoadmap
-              modules={courseModules}
-              progress={progress}
-            />
-          </div>
+          ) : (
+            <>
+              <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+                <StatCard
+                  icon={BookOpen}
+                  label="Lessons completed"
+                  value={`${lessonCompleted} / ${courseTotal}`}
+                  sublabel="For this course"
+                />
+                {courseHasPractice ? (
+                  <StatCard
+                    icon={Terminal}
+                    label="Challenges solved"
+                    value={
+                      practiceStatsError
+                        ? "—"
+                        : `${challengeSolved} / ${totalChallenges}`
+                    }
+                    sublabel={
+                      practiceStatsError
+                        ? "Could not load challenge stats"
+                        : "Module questions for this course"
+                    }
+                  />
+                ) : (
+                  <StatCard
+                    icon={Zap}
+                    label="Course type"
+                    value="Lesson-based"
+                    sublabel="Lessons and quizzes"
+                  />
+                )}
+                <StatCard
+                  icon={Code2}
+                  label="Practice solved"
+                  value={
+                    practiceStatsError
+                      ? "—"
+                      : `${hubPracticeSolved} / ${HUB_PRACTICE_TOTAL}`
+                  }
+                  sublabel={
+                    practiceStatsError
+                      ? "Could not load practice stats"
+                      : "Python course hub only"
+                  }
+                />
+                <StatCard
+                  icon={CheckCircle2}
+                  label="Average quiz score"
+                  value={scores.length ? `${quizAvg}%` : "—"}
+                  sublabel="For this course"
+                />
+                <StatCard
+                  icon={Lock}
+                  label="Practice premium"
+                  value={hasPremium ? "Unlocked" : "Locked"}
+                  highlight={hasPremium}
+                  sublabel={
+                    hasPremium ? "Full practice access" : "Unlock to practice"
+                  }
+                />
+              </div>
+
+              <div className="mt-10">
+                <div
+                  data-walkthrough="dashboard-roadmap"
+                  className="scroll-mt-24"
+                >
+                  <h2 className="text-lg font-semibold text-gray-900">
+                    Learning Roadmap
+                  </h2>
+                  <p className="mt-1 text-sm text-gray-500">
+                    Follow modules in order. Click any module to expand its
+                    topics.
+                  </p>
+                </div>
+                <DashboardRoadmap
+                  modules={courseModules}
+                  progress={progress}
+                />
+              </div>
+            </>
+          )}
         </>
-      )}
-      </>
       )}
     </div>
   );
@@ -273,7 +330,9 @@ function StatCard({
 }) {
   return (
     <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-      <Icon className={`h-5 w-5 ${highlight ? "text-green-600" : "text-brand-600"}`} />
+      <Icon
+        className={`h-5 w-5 ${highlight ? "text-green-600" : "text-brand-600"}`}
+      />
       <p className="mt-3 text-sm text-gray-500">{label}</p>
       <p className="mt-1 text-2xl font-bold text-gray-900">{value}</p>
       {sublabel && <p className="mt-0.5 text-xs text-gray-400">{sublabel}</p>}

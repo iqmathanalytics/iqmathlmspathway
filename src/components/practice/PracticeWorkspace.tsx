@@ -26,8 +26,8 @@ interface PracticeWorkspaceProps {
 }
 
 /**
- * Course module challenges only (/learn/.../challenges).
- * Never gated by Practice-hub premium — that applies only under /practice.
+ * Course module challenges (/learn/.../challenges).
+ * Sequential unlock only — not premium-gated (hub practice is).
  */
 export function PracticeWorkspace(props: PracticeWorkspaceProps) {
   return <PracticeWorkspaceEditor {...props} />;

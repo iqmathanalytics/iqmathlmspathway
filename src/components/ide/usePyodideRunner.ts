@@ -180,6 +180,27 @@ export function usePyodideRunner(options?: { autoload?: boolean }) {
         onStdinRequest: () => setStdinActive(true),
       });
       flushPendingOutput();
+      setLines((prev) => {
+        const hasIo = prev.some(
+          (l) =>
+            l.kind === "stdout" ||
+            l.kind === "stderr" ||
+            l.kind === "error" ||
+            l.kind === "info"
+        );
+        if (hasIo) return prev;
+        return [
+          ...prev,
+          {
+            id: nextId(),
+            kind: "info",
+            text:
+              "Program finished with no printed output.\n" +
+              "Function-style problems only define a function until you call it — " +
+              "use Run (example demo) or add print(...), or click Test to check answers.",
+          },
+        ];
+      });
     } catch (e) {
       flushPendingOutput();
       const msg = e instanceof Error ? e.message : String(e);

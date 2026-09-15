@@ -9,26 +9,37 @@ import clsx from "clsx";
 import { PLATFORM_LOGO, PLATFORM_NAME } from "@/data/platform";
 import { AuthNav } from "@/components/layout/AuthNav";
 import { useAuth } from "@/contexts/AuthContext";
+import { useAccessibleCourses } from "@/hooks/usePublishedCourses";
 import { isAdmin } from "@/lib/admin";
-
-const nav = [
-  { href: "/", label: "Home", icon: Home },
-  { href: "/practice", label: "Practice", icon: Terminal },
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-];
 
 export function Header() {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
-  const { profile } = useAuth();
+  const { user, profile } = useAuth();
+  const { accessibleCourses, loading: coursesLoading } = useAccessibleCourses();
   const admin = isAdmin(profile);
+  const hasPythonCourse =
+    admin || accessibleCourses.some((c) => c.id === "python");
+  const showPractice =
+    !mounted ||
+    !user ||
+    coursesLoading ||
+    hasPythonCourse;
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  const items =
-    mounted && admin ? [...nav, { href: "/admin", label: "Admin", icon: Shield }] : nav;
+  const items = [
+    { href: "/", label: "Home", icon: Home },
+    ...(showPractice
+      ? [{ href: "/practice", label: "Practice", icon: Terminal }]
+      : []),
+    { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+    ...(mounted && admin
+      ? [{ href: "/admin", label: "Admin", icon: Shield }]
+      : []),
+  ];
 
   return (
     <header className="sticky top-0 z-50 border-b border-brand-100/80 bg-white/90 backdrop-blur-md dark:border-slate-700 dark:bg-slate-950/90">
@@ -49,7 +60,8 @@ export function Header() {
         </Link>
         <nav className="flex min-w-0 flex-1 items-center justify-end gap-0.5 sm:gap-1">
           {items.map(({ href, label, icon: Icon }) => {
-            const isActive = mounted && (pathname === href || pathname.startsWith(`${href}/`));
+            const isActive =
+              mounted && (pathname === href || pathname.startsWith(`${href}/`));
             return (
               <Link
                 key={href}

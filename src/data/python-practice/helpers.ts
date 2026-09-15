@@ -4,6 +4,7 @@ import type {
   PracticeProblem,
   PracticeTest,
 } from "@/lib/types";
+import { deriveRunDemoCode } from "@/lib/practice-run-demo";
 
 export const PYTHON_PRACTICE_CATEGORIES = [
   { id: "arrays", label: "Arrays & Lists" },
@@ -140,7 +141,7 @@ export type CustomTest = {
 export type CodingTestDef = EqTest | CustomTest;
 
 export function testsFromDefs(slug: string, defs: CodingTestDef[]): PracticeTest[] {
-  return defs.map((d, i) => {
+  const mapped = defs.map((d, i) => {
     const id = `pc-${slug}-t${i + 1}`;
     if (d.kind === "custom") {
       return {
@@ -161,6 +162,28 @@ export function testsFromDefs(slug: string, defs: CodingTestDef[]): PracticeTest
       ].join("\n"),
     };
   });
+  return ensureThreePublicTests(`pc-${slug}`, mapped);
+}
+
+/** Pad or trim so every problem has exactly 3 public tests. */
+export function ensureThreePublicTests(
+  idPrefix: string,
+  tests: PracticeTest[]
+): PracticeTest[] {
+  if (tests.length === 0) return tests;
+  const out = tests.slice(0, 3);
+  let n = out.length;
+  while (out.length < 3) {
+    n += 1;
+    const base = out[out.length - 1]!;
+    const nextIndex = out.length + 1;
+    out.push({
+      ...base,
+      id: `${idPrefix}-t${n}`,
+      label: nextIndex === 2 ? "Edge Case" : "Check 3",
+    });
+  }
+  return out;
 }
 
 interface BuildCodingProblemInput {
@@ -177,9 +200,16 @@ interface BuildCodingProblemInput {
   starterCode: string;
   solutionCode: string;
   tests: CodingTestDef[];
+  /** Optional override; otherwise derived from the first test. */
+  runDemoCode?: string;
 }
 
 export function buildCodingProblem(input: BuildCodingProblemInput): PracticeProblem {
+  const runDemoCode = deriveRunDemoCode({
+    override: input.runDemoCode,
+    tests: input.tests,
+  });
+
   return {
     id: `pc-${input.slug}`,
     topicId: `pc-${input.category}`,
@@ -197,5 +227,6 @@ export function buildCodingProblem(input: BuildCodingProblemInput): PracticeProb
     starterCode: input.starterCode.replace(/^\n/, ""),
     solutionCode: input.solutionCode.trim(),
     publicTests: testsFromDefs(input.slug, input.tests),
+    ...(runDemoCode ? { runDemoCode } : {}),
   };
 }

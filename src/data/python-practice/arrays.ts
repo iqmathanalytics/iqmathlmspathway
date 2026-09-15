@@ -244,6 +244,10 @@ Return k after placing the final result in the first k slots of nums. Do not all
         code: `nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]\nk = removeDuplicates(nums)\nassert k == 5\nassert nums[:k] == [0, 1, 2, 3, 4]`,
       },
     ],
+    runDemoCode: `nums = [1, 1, 2]
+k = removeDuplicates(nums)
+print("k =", k)
+print("nums[:k] =", nums[:k] if isinstance(k, int) and k >= 0 else nums)`,
   }),
 
   buildCodingProblem({

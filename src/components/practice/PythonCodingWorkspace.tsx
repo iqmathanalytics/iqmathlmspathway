@@ -29,6 +29,7 @@ import type { PracticeProblem } from "@/lib/types";
 import { CodeEditor } from "@/components/ide/CodeEditor";
 import { usePyodideRunner } from "@/components/ide/usePyodideRunner";
 import { runPublicTests, type TestRunResult } from "@/lib/practice-runner";
+import { buildRunDemoFromAssertCode } from "@/lib/practice-run-demo";
 import { usePracticeProgress } from "@/hooks/usePracticeProgress";
 import { PYTHON_CHALLENGE_TRACK } from "@/data/python-practice";
 import { PYTHON_BASICS_TRACK } from "@/data/python-basics";
@@ -288,8 +289,24 @@ export function PythonCodingWorkspace({
     setAccepted(false);
     setConsoleCollapsed(false);
     setMobileTab("console");
-    void runCode(code);
-  }, [code, runCode, running, testing, submitting]);
+    const demo =
+      problem.runDemoCode?.trim() ||
+      (problem.publicTests?.[0]?.assertCode
+        ? buildRunDemoFromAssertCode(problem.publicTests[0].assertCode)
+        : "");
+    const toRun = demo
+      ? `${code.replace(/\s+$/, "")}\n\n# --- example run (console only) ---\n${demo}\n`
+      : code;
+    void runCode(toRun);
+  }, [
+    code,
+    problem.runDemoCode,
+    problem.publicTests,
+    runCode,
+    running,
+    testing,
+    submitting,
+  ]);
 
   const handleRunTests = useCallback(async () => {
     if (running || testing || submitting) return;

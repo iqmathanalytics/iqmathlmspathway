@@ -21,6 +21,11 @@ function LoadingShell() {
   );
 }
 
+/**
+ * Course module challenges (/learn/.../challenges).
+ * Premium is NOT required — only sequential unlock via CoursePracticeUnlockGate.
+ * Hub practice (/practice/python*) stays behind PracticeAccessGate.
+ */
 export function PracticeProblemShell(props: PracticeProblemShellProps) {
   return (
     <ClientOnly fallback={<LoadingShell />}>
