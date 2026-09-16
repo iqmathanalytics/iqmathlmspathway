@@ -4,982 +4,863 @@ export const module11Practice: PracticeProblem[] = [
   {
     "id": "m11-t1-p01",
     "topicId": "m11-t1",
-    "slug": "lc-basic",
+    "slug": "basic-list-comp",
     "title": "List Comprehension Syntax: Basic List Comp",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Print [x for x in range(3)].",
+    "description": "Build nums with a list comprehension: [x for x in range(4)]. Print nums.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# list comp",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "List comprehension: "
-        },
-        {
-          "type": "code",
-          "value": "[x for x in range(3)]"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Build nums with a list comprehension: [x for x in range(4)]. Print nums."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "[0, 1, 2]",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct! [x for x in ...] builds a list in one line.",
+      "requiresVariables": [
+        "nums"
+      ],
+      "requiresForLoop": true,
+      "requiresListAccess": true
     },
     "examples": [
       {
-        "output": "[0, 1, 2]"
+        "output": "[0, 1, 2, 3]"
       }
     ],
     "constraints": [
-      "Output must be exactly: [0, 1, 2]"
+      "Output must match: [0, 1, 2, 3]"
     ],
     "hints": [
-      "print([x for x in range(3)])"
+      "nums = [x for x in range(4)]\nprint(nums)"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t1-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "[0, 1, 2]",
+        "expectedStdout": "[0, 1, 2, 3]",
         "visibility": "public"
       },
       {
         "id": "m11-t1-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "[0, 1, 2]",
+        "label": "Required names and structure",
+        "assertCode": "assert \"nums\" in globals(), \"Expected a variable named nums\"",
         "visibility": "public"
       },
       {
         "id": "m11-t1-p01-t3",
         "label": "No Extra Output",
-        "expectedStdout": "[0, 1, 2]",
+        "expectedStdout": "[0, 1, 2, 3]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([x for x in range(3)])",
-    "approach": "Print [x for x in range(3)].\n\nKey points: print([x for x in range(3)])\n\nA correct solution looks like this:\nprint([x for x in range(3)])"
+    "solutionCode": "nums = [x for x in range(4)]\nprint(nums)",
+    "approach": "Build nums with a list comprehension: [x for x in range(4)]. Print nums.\n\nReference solution:\nnums = [x for x in range(4)]\nprint(nums)"
   },
   {
     "id": "m11-t1-p02",
     "topicId": "m11-t1",
-    "slug": "lc-squares",
+    "slug": "square-comp",
     "title": "List Comprehension Syntax: Squares",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Print [x*x for x in range(1,4)].",
+    "description": "Print [n * n for n in range(1, 5)].",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# squares",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Square each number in comprehension."
+          "value": "Print [n * n for n in range(1, 5)]."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "[1, 4, 9]",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresForLoop": true,
+      "requiresListAccess": true
     },
     "examples": [
       {
-        "output": "[1, 4, 9]"
+        "output": "[1, 4, 9, 16]"
       }
     ],
     "constraints": [
-      "Output must be exactly: [1, 4, 9]"
+      "Output must match: [1, 4, 9, 16]"
     ],
     "hints": [
-      "print([x*x for x in range(1,4)])"
+      "print([n * n for n in range(1, 5)])"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t1-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "[1, 4, 9]",
+        "expectedStdout": "[1, 4, 9, 16]",
         "visibility": "public"
       },
       {
         "id": "m11-t1-p02-t2",
         "label": "Exact Output",
-        "expectedStdout": "[1, 4, 9]",
+        "expectedStdout": "[1, 4, 9, 16]",
         "visibility": "public"
       },
       {
         "id": "m11-t1-p02-t3",
         "label": "No Extra Output",
-        "expectedStdout": "[1, 4, 9]",
+        "expectedStdout": "[1, 4, 9, 16]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([x*x for x in range(1,4)])",
-    "approach": "Print [x*x for x in range(1,4)].\n\nKey points: print([x*x for x in range(1,4)])\n\nA correct solution looks like this:\nprint([x*x for x in range(1,4)])"
+    "solutionCode": "print([n * n for n in range(1, 5)])",
+    "approach": "Print [n * n for n in range(1, 5)].\n\nReference solution:\nprint([n * n for n in range(1, 5)])"
   },
   {
     "id": "m11-t1-p03",
     "topicId": "m11-t1",
-    "slug": "lc-filter",
+    "slug": "filter-evens-comp",
     "title": "List Comprehension Syntax: Filter Evens",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "Print [x for x in range(6) if x%2==0].",
+    "description": "Print [n for n in range(8) if n % 2 == 0].",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# filter",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Add "
-        },
-        {
-          "type": "code",
-          "value": "if"
-        },
-        {
-          "type": "text",
-          "value": " to filter items."
+          "value": "Print [n for n in range(8) if n % 2 == 0]."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "[0, 2, 4]",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresForLoop": true,
+      "requiresIfCondition": true,
+      "requiresListAccess": true
     },
     "examples": [
       {
-        "output": "[0, 2, 4]"
+        "output": "[0, 2, 4, 6]"
       }
     ],
     "constraints": [
-      "Output must be exactly: [0, 2, 4]"
+      "Output must match: [0, 2, 4, 6]"
     ],
     "hints": [
-      "print([x for x in range(6) if x%2==0])"
+      "Put if n % 2 == 0 at the end of the comprehension."
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t1-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "[0, 2, 4]",
+        "expectedStdout": "[0, 2, 4, 6]",
         "visibility": "public"
       },
       {
         "id": "m11-t1-p03-t2",
         "label": "Exact Output",
-        "expectedStdout": "[0, 2, 4]",
+        "expectedStdout": "[0, 2, 4, 6]",
         "visibility": "public"
       },
       {
         "id": "m11-t1-p03-t3",
         "label": "No Extra Output",
-        "expectedStdout": "[0, 2, 4]",
+        "expectedStdout": "[0, 2, 4, 6]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([x for x in range(6) if x%2==0])",
-    "approach": "Print [x for x in range(6) if x%2==0].\n\nKey points: print([x for x in range(6) if x%2==0])\n\nA correct solution looks like this:\nprint([x for x in range(6) if x%2==0])"
+    "solutionCode": "print([n for n in range(8) if n % 2 == 0])",
+    "approach": "Print [n for n in range(8) if n % 2 == 0].\n\nReference solution:\nprint([n for n in range(8) if n % 2 == 0])"
   },
   {
     "id": "m11-t1-p04",
     "topicId": "m11-t1",
-    "slug": "lc-string",
+    "slug": "upper-comp",
     "title": "List Comprehension Syntax: Uppercase List",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Print [c.upper() for c in [\"a\",\"b\"]].",
+    "description": "Set words = [\"cat\", \"dog\"]. Print [w.upper() for w in words].",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# upper",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Transform each item in comprehension."
+          "value": "Set words = [\"cat\", \"dog\"]. Print [w.upper() for w in words]."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "['A', 'B']",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "words"
+      ],
+      "requiresForLoop": true,
+      "requiresListAccess": true
     },
     "examples": [
       {
-        "output": "['A', 'B']"
+        "output": "['CAT', 'DOG']"
       }
     ],
     "constraints": [
-      "Output must be exactly: ['A', 'B']"
+      "Output must match: ['CAT', 'DOG']"
     ],
     "hints": [
-      "print([c.upper() for c in [\"a\",\"b\"]])"
+      "words = [\"cat\", \"dog\"]\nprint([w.upper() for w in words])"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t1-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "['A', 'B']",
+        "expectedStdout": "['CAT', 'DOG']",
         "visibility": "public"
       },
       {
         "id": "m11-t1-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "['A', 'B']",
+        "label": "Required names and structure",
+        "assertCode": "assert \"words\" in globals(), \"Expected a variable named words\"",
         "visibility": "public"
       },
       {
         "id": "m11-t1-p04-t3",
         "label": "No Extra Output",
-        "expectedStdout": "['A', 'B']",
+        "expectedStdout": "['CAT', 'DOG']",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([c.upper() for c in [\"a\",\"b\"]])",
-    "approach": "Print [c.upper() for c in [\"a\",\"b\"]].\n\nKey points: print([c.upper() for c in [\"a\",\"b\"]])\n\nA correct solution looks like this:\nprint([c.upper() for c in [\"a\",\"b\"]])"
+    "solutionCode": "words = [\"cat\", \"dog\"]\nprint([w.upper() for w in words])",
+    "approach": "Set words = [\"cat\", \"dog\"]. Print [w.upper() for w in words].\n\nReference solution:\nwords = [\"cat\", \"dog\"]\nprint([w.upper() for w in words])"
   },
   {
     "id": "m11-t1-p05",
     "topicId": "m11-t1",
-    "slug": "lc-nested",
+    "slug": "nested-comp",
     "title": "List Comprehension Syntax: Nested Comp",
     "difficulty": "hard",
     "order": 5,
     "layout": "challenge",
-    "description": "Print [j for i in range(2) for j in range(2)].",
+    "description": "Print [j for i in range(1, 3) for j in range(i)]. The second for runs inside the first.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# nested",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Nested comprehension loops."
+          "value": "Print [j for i in range(1, 3) for j in range(i)]. The second for runs inside the first."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "[0, 1, 0, 1]",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresForLoop": true,
+      "requiresListAccess": true
     },
     "examples": [
       {
-        "output": "[0, 1, 0, 1]"
+        "output": "[0, 0, 1]"
       }
     ],
     "constraints": [
-      "Output must be exactly: [0, 1, 0, 1]"
+      "Output must match: [0, 0, 1]"
     ],
     "hints": [
-      "print([j for i in range(2) for j in range(2)])"
+      "i is 1 then 2, so range(i) is [0] then [0, 1]."
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t1-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "[0, 1, 0, 1]",
+        "expectedStdout": "[0, 0, 1]",
         "visibility": "public"
       },
       {
         "id": "m11-t1-p05-t2",
         "label": "Exact Output",
-        "expectedStdout": "[0, 1, 0, 1]",
+        "expectedStdout": "[0, 0, 1]",
         "visibility": "public"
       },
       {
         "id": "m11-t1-p05-t3",
         "label": "No Extra Output",
-        "expectedStdout": "[0, 1, 0, 1]",
+        "expectedStdout": "[0, 0, 1]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([j for i in range(2) for j in range(2)])",
-    "approach": "Print [j for i in range(2) for j in range(2)].\n\nKey points: print([j for i in range(2) for j in range(2)])\n\nA correct solution looks like this:\nprint([j for i in range(2) for j in range(2)])"
+    "solutionCode": "print([j for i in range(1, 3) for j in range(i)])",
+    "approach": "Print [j for i in range(1, 3) for j in range(i)]. The second for runs inside the first.\n\nReference solution:\nprint([j for i in range(1, 3) for j in range(i)])"
   },
   {
     "id": "m11-t1-p06",
     "topicId": "m11-t1",
-    "slug": "lc-len",
+    "slug": "length-comp",
     "title": "List Comprehension Syntax: Lengths",
     "difficulty": "hard",
     "order": 6,
     "layout": "challenge",
-    "description": "Print [len(w) for w in [\"hi\",\"hey\"]].",
+    "description": "Print [len(w) for w in [\"one\", \"three\", \"a\"]].",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# len comp",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Apply function in comprehension."
+          "value": "Print [len(w) for w in [\"one\", \"three\", \"a\"]]."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "[2, 3]",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresForLoop": true,
+      "requiresListAccess": true
     },
     "examples": [
       {
-        "output": "[2, 3]"
+        "output": "[3, 5, 1]"
       }
     ],
     "constraints": [
-      "Output must be exactly: [2, 3]"
+      "Output must match: [3, 5, 1]"
     ],
     "hints": [
-      "print([len(w) for w in [\"hi\",\"hey\"]])"
+      "print([len(w) for w in [\"one\", \"three\", \"a\"]])"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t1-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "[2, 3]",
+        "expectedStdout": "[3, 5, 1]",
         "visibility": "public"
       },
       {
         "id": "m11-t1-p06-t2",
         "label": "Exact Output",
-        "expectedStdout": "[2, 3]",
+        "expectedStdout": "[3, 5, 1]",
         "visibility": "public"
       },
       {
         "id": "m11-t1-p06-t3",
         "label": "No Extra Output",
-        "expectedStdout": "[2, 3]",
+        "expectedStdout": "[3, 5, 1]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([len(w) for w in [\"hi\",\"hey\"]])",
-    "approach": "Print [len(w) for w in [\"hi\",\"hey\"]].\n\nKey points: print([len(w) for w in [\"hi\",\"hey\"]])\n\nA correct solution looks like this:\nprint([len(w) for w in [\"hi\",\"hey\"]])"
+    "solutionCode": "print([len(w) for w in [\"one\", \"three\", \"a\"]])",
+    "approach": "Print [len(w) for w in [\"one\", \"three\", \"a\"]].\n\nReference solution:\nprint([len(w) for w in [\"one\", \"three\", \"a\"]])"
   },
   {
     "id": "m11-t1-p07",
     "topicId": "m11-t1",
-    "slug": "lc-condition",
+    "slug": "ternary-comp",
     "title": "List Comprehension Syntax: Conditional Expression",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Print [x if x%2==0 else -x for x in range(1,4)].",
+    "description": "Print [\"even\" if n % 2 == 0 else \"odd\" for n in range(3)]. The if/else is the value, not a filter.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# cond",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "if/else inside comprehension."
+          "value": "Print [\"even\" if n % 2 == 0 else \"odd\" for n in range(3)]. The if/else is the value, not a filter."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "[-1, 2, -3]",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresForLoop": true,
+      "requiresIfCondition": true,
+      "requiresListAccess": true
     },
     "examples": [
       {
-        "output": "[-1, 2, -3]"
+        "output": "['even', 'odd', 'even']"
       }
     ],
     "constraints": [
-      "Output must be exactly: [-1, 2, -3]"
+      "Output must match: ['even', 'odd', 'even']"
     ],
     "hints": [
-      "print([x if x%2==0 else -x for x in range(1,4)])"
+      "value_if_true if condition else value_if_false goes before for."
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t1-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "[-1, 2, -3]",
+        "expectedStdout": "['even', 'odd', 'even']",
         "visibility": "public"
       },
       {
         "id": "m11-t1-p07-t2",
         "label": "Exact Output",
-        "expectedStdout": "[-1, 2, -3]",
+        "expectedStdout": "['even', 'odd', 'even']",
         "visibility": "public"
       },
       {
         "id": "m11-t1-p07-t3",
         "label": "No Extra Output",
-        "expectedStdout": "[-1, 2, -3]",
+        "expectedStdout": "['even', 'odd', 'even']",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([x if x%2==0 else -x for x in range(1,4)])",
-    "approach": "Print [x if x%2==0 else -x for x in range(1,4)].\n\nKey points: print([x if x%2==0 else -x for x in range(1,4)])\n\nA correct solution looks like this:\nprint([x if x%2==0 else -x for x in range(1,4)])"
+    "solutionCode": "print([\"even\" if n % 2 == 0 else \"odd\" for n in range(3)])",
+    "approach": "Print [\"even\" if n % 2 == 0 else \"odd\" for n in range(3)]. The if/else is the value, not a filter.\n\nReference solution:\nprint([\"even\" if n % 2 == 0 else \"odd\" for n in range(3)])"
   },
   {
     "id": "m11-t2-p01",
     "topicId": "m11-t2",
-    "slug": "lc-basic",
-    "title": "Uses of Comprehensions: Basic List Comp",
+    "slug": "double-prices",
+    "title": "Uses of Comprehensions: Double Prices",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Print [x for x in range(3)].",
+    "description": "Set prices = [10, 20, 5]. Print [p * 2 for p in prices].",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# list comp",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "List comprehension: "
-        },
-        {
-          "type": "code",
-          "value": "[x for x in range(3)]"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Set prices = [10, 20, 5]. Print [p * 2 for p in prices]."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "[0, 1, 2]",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "prices"
+      ],
+      "requiresForLoop": true,
+      "requiresListAccess": true
     },
     "examples": [
       {
-        "output": "[0, 1, 2]"
+        "output": "[20, 40, 10]"
       }
     ],
     "constraints": [
-      "Output must be exactly: [0, 1, 2]"
+      "Output must match: [20, 40, 10]"
     ],
     "hints": [
-      "print([x for x in range(3)])"
+      "prices = [10, 20, 5]\nprint([p * 2 for p in prices])"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t2-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "[0, 1, 2]",
+        "expectedStdout": "[20, 40, 10]",
         "visibility": "public"
       },
       {
         "id": "m11-t2-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "[0, 1, 2]",
+        "label": "Required names and structure",
+        "assertCode": "assert \"prices\" in globals(), \"Expected a variable named prices\"",
         "visibility": "public"
       },
       {
         "id": "m11-t2-p01-t3",
         "label": "No Extra Output",
-        "expectedStdout": "[0, 1, 2]",
+        "expectedStdout": "[20, 40, 10]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([x for x in range(3)])",
-    "approach": "Print [x for x in range(3)].\n\nKey points: print([x for x in range(3)])\n\nA correct solution looks like this:\nprint([x for x in range(3)])"
+    "solutionCode": "prices = [10, 20, 5]\nprint([p * 2 for p in prices])",
+    "approach": "Set prices = [10, 20, 5]. Print [p * 2 for p in prices].\n\nReference solution:\nprices = [10, 20, 5]\nprint([p * 2 for p in prices])"
   },
   {
     "id": "m11-t2-p02",
     "topicId": "m11-t2",
-    "slug": "lc-squares",
-    "title": "Uses of Comprehensions: Squares",
+    "slug": "passing-scores",
+    "title": "Uses of Comprehensions: Passing Scores",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Print [x*x for x in range(1,4)].",
+    "description": "Set scores = [90, 40, 75, 55]. Print the scores that are at least 60 using a comprehension.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# squares",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Square each number in comprehension."
+          "value": "Set scores = [90, 40, 75, 55]. Print the scores that are at least 60 using a comprehension."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "[1, 4, 9]",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "scores"
+      ],
+      "requiresForLoop": true,
+      "requiresIfCondition": true,
+      "requiresListAccess": true
     },
     "examples": [
       {
-        "output": "[1, 4, 9]"
+        "output": "[90, 75]"
       }
     ],
     "constraints": [
-      "Output must be exactly: [1, 4, 9]"
+      "Output must match: [90, 75]"
     ],
     "hints": [
-      "print([x*x for x in range(1,4)])"
+      "print([s for s in scores if s >= 60])"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t2-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "[1, 4, 9]",
+        "expectedStdout": "[90, 75]",
         "visibility": "public"
       },
       {
         "id": "m11-t2-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "[1, 4, 9]",
+        "label": "Required names and structure",
+        "assertCode": "assert \"scores\" in globals(), \"Expected a variable named scores\"",
         "visibility": "public"
       },
       {
         "id": "m11-t2-p02-t3",
         "label": "No Extra Output",
-        "expectedStdout": "[1, 4, 9]",
+        "expectedStdout": "[90, 75]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([x*x for x in range(1,4)])",
-    "approach": "Print [x*x for x in range(1,4)].\n\nKey points: print([x*x for x in range(1,4)])\n\nA correct solution looks like this:\nprint([x*x for x in range(1,4)])"
+    "solutionCode": "scores = [90, 40, 75, 55]\nprint([s for s in scores if s >= 60])",
+    "approach": "Set scores = [90, 40, 75, 55]. Print the scores that are at least 60 using a comprehension.\n\nReference solution:\nscores = [90, 40, 75, 55]\nprint([s for s in scores if s >= 60])"
   },
   {
     "id": "m11-t2-p03",
     "topicId": "m11-t2",
-    "slug": "lc-filter",
-    "title": "Uses of Comprehensions: Filter Evens",
+    "slug": "first-letters",
+    "title": "Uses of Comprehensions: First Letters",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "Print [x for x in range(6) if x%2==0].",
+    "description": "Set names = [\"Ada\", \"Bob\", \"Cam\"]. Print the first letter of each name using a comprehension.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# filter",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Add "
-        },
-        {
-          "type": "code",
-          "value": "if"
-        },
-        {
-          "type": "text",
-          "value": " to filter items."
+          "value": "Set names = [\"Ada\", \"Bob\", \"Cam\"]. Print the first letter of each name using a comprehension."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "[0, 2, 4]",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "names"
+      ],
+      "requiresForLoop": true,
+      "requiresListAccess": true
     },
     "examples": [
       {
-        "output": "[0, 2, 4]"
+        "output": "['A', 'B', 'C']"
       }
     ],
     "constraints": [
-      "Output must be exactly: [0, 2, 4]"
+      "Output must match: ['A', 'B', 'C']"
     ],
     "hints": [
-      "print([x for x in range(6) if x%2==0])"
+      "print([name[0] for name in names])"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t2-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "[0, 2, 4]",
+        "expectedStdout": "['A', 'B', 'C']",
         "visibility": "public"
       },
       {
         "id": "m11-t2-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "[0, 2, 4]",
+        "label": "Required names and structure",
+        "assertCode": "assert \"names\" in globals(), \"Expected a variable named names\"",
         "visibility": "public"
       },
       {
         "id": "m11-t2-p03-t3",
         "label": "No Extra Output",
-        "expectedStdout": "[0, 2, 4]",
+        "expectedStdout": "['A', 'B', 'C']",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([x for x in range(6) if x%2==0])",
-    "approach": "Print [x for x in range(6) if x%2==0].\n\nKey points: print([x for x in range(6) if x%2==0])\n\nA correct solution looks like this:\nprint([x for x in range(6) if x%2==0])"
+    "solutionCode": "names = [\"Ada\", \"Bob\", \"Cam\"]\nprint([name[0] for name in names])",
+    "approach": "Set names = [\"Ada\", \"Bob\", \"Cam\"]. Print the first letter of each name using a comprehension.\n\nReference solution:\nnames = [\"Ada\", \"Bob\", \"Cam\"]\nprint([name[0] for name in names])"
   },
   {
     "id": "m11-t2-p04",
     "topicId": "m11-t2",
-    "slug": "lc-string",
-    "title": "Uses of Comprehensions: Uppercase List",
+    "slug": "flatten-rows",
+    "title": "Uses of Comprehensions: Flatten Rows",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Print [c.upper() for c in [\"a\",\"b\"]].",
+    "description": "Set matrix = [[1, 2], [3, 4]]. Flatten it with [x for row in matrix for x in row] and print the result.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# upper",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Transform each item in comprehension."
+          "value": "Set matrix = [[1, 2], [3, 4]]. Flatten it with [x for row in matrix for x in row] and print the result."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "['A', 'B']",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "matrix"
+      ],
+      "requiresForLoop": true,
+      "requiresListAccess": true
     },
     "examples": [
       {
-        "output": "['A', 'B']"
+        "output": "[1, 2, 3, 4]"
       }
     ],
     "constraints": [
-      "Output must be exactly: ['A', 'B']"
+      "Output must match: [1, 2, 3, 4]"
     ],
     "hints": [
-      "print([c.upper() for c in [\"a\",\"b\"]])"
+      "Two for clauses: outer rows, then items in each row."
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t2-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "['A', 'B']",
+        "expectedStdout": "[1, 2, 3, 4]",
         "visibility": "public"
       },
       {
         "id": "m11-t2-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "['A', 'B']",
+        "label": "Required names and structure",
+        "assertCode": "assert \"matrix\" in globals(), \"Expected a variable named matrix\"",
         "visibility": "public"
       },
       {
         "id": "m11-t2-p04-t3",
         "label": "No Extra Output",
-        "expectedStdout": "['A', 'B']",
+        "expectedStdout": "[1, 2, 3, 4]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([c.upper() for c in [\"a\",\"b\"]])",
-    "approach": "Print [c.upper() for c in [\"a\",\"b\"]].\n\nKey points: print([c.upper() for c in [\"a\",\"b\"]])\n\nA correct solution looks like this:\nprint([c.upper() for c in [\"a\",\"b\"]])"
+    "solutionCode": "matrix = [[1, 2], [3, 4]]\nprint([x for row in matrix for x in row])",
+    "approach": "Set matrix = [[1, 2], [3, 4]]. Flatten it with [x for row in matrix for x in row] and print the result.\n\nReference solution:\nmatrix = [[1, 2], [3, 4]]\nprint([x for row in matrix for x in row])"
   },
   {
     "id": "m11-t2-p05",
     "topicId": "m11-t2",
-    "slug": "lc-nested",
-    "title": "Uses of Comprehensions: Nested Comp",
+    "slug": "strip-words",
+    "title": "Uses of Comprehensions: Strip Spaces",
     "difficulty": "hard",
     "order": 5,
     "layout": "challenge",
-    "description": "Print [j for i in range(2) for j in range(2)].",
+    "description": "Set dirty = [\" a\", \"b \"]. Print [w.strip() for w in dirty].",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# nested",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Nested comprehension loops."
+          "value": "Set dirty = [\" a\", \"b \"]. Print [w.strip() for w in dirty]."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "[0, 1, 0, 1]",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "dirty"
+      ],
+      "requiresForLoop": true,
+      "requiresListAccess": true
     },
     "examples": [
       {
-        "output": "[0, 1, 0, 1]"
+        "output": "['a', 'b']"
       }
     ],
     "constraints": [
-      "Output must be exactly: [0, 1, 0, 1]"
+      "Output must match: ['a', 'b']"
     ],
     "hints": [
-      "print([j for i in range(2) for j in range(2)])"
+      "strip() removes leading and trailing spaces."
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t2-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "[0, 1, 0, 1]",
+        "expectedStdout": "['a', 'b']",
         "visibility": "public"
       },
       {
         "id": "m11-t2-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "[0, 1, 0, 1]",
+        "label": "Required names and structure",
+        "assertCode": "assert \"dirty\" in globals(), \"Expected a variable named dirty\"",
         "visibility": "public"
       },
       {
         "id": "m11-t2-p05-t3",
         "label": "No Extra Output",
-        "expectedStdout": "[0, 1, 0, 1]",
+        "expectedStdout": "['a', 'b']",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([j for i in range(2) for j in range(2)])",
-    "approach": "Print [j for i in range(2) for j in range(2)].\n\nKey points: print([j for i in range(2) for j in range(2)])\n\nA correct solution looks like this:\nprint([j for i in range(2) for j in range(2)])"
+    "solutionCode": "dirty = [\" a\", \"b \"]\nprint([w.strip() for w in dirty])",
+    "approach": "Set dirty = [\" a\", \"b \"]. Print [w.strip() for w in dirty].\n\nReference solution:\ndirty = [\" a\", \"b \"]\nprint([w.strip() for w in dirty])"
   },
   {
     "id": "m11-t2-p06",
     "topicId": "m11-t2",
-    "slug": "lc-len",
-    "title": "Uses of Comprehensions: Lengths",
+    "slug": "index-pairs",
+    "title": "Uses of Comprehensions: Index Pairs",
     "difficulty": "hard",
     "order": 6,
     "layout": "challenge",
-    "description": "Print [len(w) for w in [\"hi\",\"hey\"]].",
+    "description": "Set items = [\"x\", \"y\"]. Print [(i, v) for i, v in enumerate(items)].",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# len comp",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Apply function in comprehension."
+          "value": "Set items = [\"x\", \"y\"]. Print [(i, v) for i, v in enumerate(items)]."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "[2, 3]",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "items"
+      ],
+      "requiresForLoop": true,
+      "requiresListAccess": true
     },
     "examples": [
       {
-        "output": "[2, 3]"
+        "output": "[(0, 'x'), (1, 'y')]"
       }
     ],
     "constraints": [
-      "Output must be exactly: [2, 3]"
+      "Output must match: [(0, 'x'), (1, 'y')]"
     ],
     "hints": [
-      "print([len(w) for w in [\"hi\",\"hey\"]])"
+      "enumerate(items) gives (index, value) pairs."
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t2-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "[2, 3]",
+        "expectedStdout": "[(0, 'x'), (1, 'y')]",
         "visibility": "public"
       },
       {
         "id": "m11-t2-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "[2, 3]",
+        "label": "Required names and structure",
+        "assertCode": "assert \"items\" in globals(), \"Expected a variable named items\"",
         "visibility": "public"
       },
       {
         "id": "m11-t2-p06-t3",
         "label": "No Extra Output",
-        "expectedStdout": "[2, 3]",
+        "expectedStdout": "[(0, 'x'), (1, 'y')]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([len(w) for w in [\"hi\",\"hey\"]])",
-    "approach": "Print [len(w) for w in [\"hi\",\"hey\"]].\n\nKey points: print([len(w) for w in [\"hi\",\"hey\"]])\n\nA correct solution looks like this:\nprint([len(w) for w in [\"hi\",\"hey\"]])"
+    "solutionCode": "items = [\"x\", \"y\"]\nprint([(i, v) for i, v in enumerate(items)])",
+    "approach": "Set items = [\"x\", \"y\"]. Print [(i, v) for i, v in enumerate(items)].\n\nReference solution:\nitems = [\"x\", \"y\"]\nprint([(i, v) for i, v in enumerate(items)])"
   },
   {
     "id": "m11-t2-p07",
     "topicId": "m11-t2",
-    "slug": "lc-condition",
-    "title": "Uses of Comprehensions: Conditional Expression",
+    "slug": "cartesian-pairs",
+    "title": "Uses of Comprehensions: Cartesian Pairs",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Print [x if x%2==0 else -x for x in range(1,4)].",
+    "description": "Print [(left, right) for left in [1, 2] for right in [3, 4]].",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# cond",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "if/else inside comprehension."
+          "value": "Print [(left, right) for left in [1, 2] for right in [3, 4]]."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "[-1, 2, -3]",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresForLoop": true,
+      "requiresListAccess": true
     },
     "examples": [
       {
-        "output": "[-1, 2, -3]"
+        "output": "[(1, 3), (1, 4), (2, 3), (2, 4)]"
       }
     ],
     "constraints": [
-      "Output must be exactly: [-1, 2, -3]"
+      "Output must match: [(1, 3), (1, 4), (2, 3), (2, 4)]"
     ],
     "hints": [
-      "print([x if x%2==0 else -x for x in range(1,4)])"
+      "The second for runs fully for each value of the first."
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t2-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "[-1, 2, -3]",
+        "expectedStdout": "[(1, 3), (1, 4), (2, 3), (2, 4)]",
         "visibility": "public"
       },
       {
         "id": "m11-t2-p07-t2",
         "label": "Exact Output",
-        "expectedStdout": "[-1, 2, -3]",
+        "expectedStdout": "[(1, 3), (1, 4), (2, 3), (2, 4)]",
         "visibility": "public"
       },
       {
         "id": "m11-t2-p07-t3",
         "label": "No Extra Output",
-        "expectedStdout": "[-1, 2, -3]",
+        "expectedStdout": "[(1, 3), (1, 4), (2, 3), (2, 4)]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print([x if x%2==0 else -x for x in range(1,4)])",
-    "approach": "Print [x if x%2==0 else -x for x in range(1,4)].\n\nKey points: print([x if x%2==0 else -x for x in range(1,4)])\n\nA correct solution looks like this:\nprint([x if x%2==0 else -x for x in range(1,4)])"
+    "solutionCode": "print([(left, right) for left in [1, 2] for right in [3, 4]])",
+    "approach": "Print [(left, right) for left in [1, 2] for right in [3, 4]].\n\nReference solution:\nprint([(left, right) for left in [1, 2] for right in [3, 4]])"
   },
   {
     "id": "m11-t3-p01",
     "topicId": "m11-t3",
-    "slug": "dc-basic",
-    "title": "Dictionary Comprehensions: Basic Dict Comp",
+    "slug": "basic-dict-comp",
+    "title": "Dictionary Comprehensions: Doubled Values",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Print {x:x*2 for x in range(3)}.",
+    "description": "Print {x: x * 2 for x in range(3)}.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# dict comp",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Dict comprehension: "
-        },
-        {
-          "type": "code",
-          "value": "{k:v for ...}"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Print {x: x * 2 for x in range(3)}."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "{0: 0, 1: 2, 2: 4}",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresForLoop": true
     },
     "examples": [
       {
@@ -987,10 +868,10 @@ export const module11Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output must be exactly: {0: 0, 1: 2, 2: 4}"
+      "Output must match: {0: 0, 1: 2, 2: 4}"
     ],
     "hints": [
-      "print({x:x*2 for x in range(3)})"
+      "print({x: x * 2 for x in range(3)})"
     ],
     "starterCode": "",
     "publicTests": [
@@ -1013,168 +894,152 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({x:x*2 for x in range(3)})",
-    "approach": "Print {x:x*2 for x in range(3)}.\n\nKey points: print({x:x*2 for x in range(3)})\n\nA correct solution looks like this:\nprint({x:x*2 for x in range(3)})"
+    "solutionCode": "print({x: x * 2 for x in range(3)})",
+    "approach": "Print {x: x * 2 for x in range(3)}.\n\nReference solution:\nprint({x: x * 2 for x in range(3)})"
   },
   {
     "id": "m11-t3-p02",
     "topicId": "m11-t3",
-    "slug": "dc-keys",
-    "title": "Dictionary Comprehensions: From List",
+    "slug": "word-lengths-dict",
+    "title": "Dictionary Comprehensions: Word Lengths",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Print {c:len(c) for c in [\"a\",\"ab\"]}.",
+    "description": "Set words = [\"hi\", \"hey\"]. Print {w: len(w) for w in words}.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# from list",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Build dict from list."
+          "value": "Set words = [\"hi\", \"hey\"]. Print {w: len(w) for w in words}."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "{'a': 1, 'ab': 2}",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "words"
+      ],
+      "requiresForLoop": true
     },
     "examples": [
       {
-        "output": "{'a': 1, 'ab': 2}"
+        "output": "{'hi': 2, 'hey': 3}"
       }
     ],
     "constraints": [
-      "Output must be exactly: {'a': 1, 'ab': 2}"
+      "Output must match: {'hi': 2, 'hey': 3}"
     ],
     "hints": [
-      "print({c:len(c) for c in [\"a\",\"ab\"]})"
+      "print({w: len(w) for w in words})"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t3-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "{'a': 1, 'ab': 2}",
+        "expectedStdout": "{'hi': 2, 'hey': 3}",
         "visibility": "public"
       },
       {
         "id": "m11-t3-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "{'a': 1, 'ab': 2}",
+        "label": "Required names and structure",
+        "assertCode": "assert \"words\" in globals(), \"Expected a variable named words\"",
         "visibility": "public"
       },
       {
         "id": "m11-t3-p02-t3",
         "label": "No Extra Output",
-        "expectedStdout": "{'a': 1, 'ab': 2}",
+        "expectedStdout": "{'hi': 2, 'hey': 3}",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({c:len(c) for c in [\"a\",\"ab\"]})",
-    "approach": "Print {c:len(c) for c in [\"a\",\"ab\"]}.\n\nKey points: print({c:len(c) for c in [\"a\",\"ab\"]})\n\nA correct solution looks like this:\nprint({c:len(c) for c in [\"a\",\"ab\"]})"
+    "solutionCode": "words = [\"hi\", \"hey\"]\nprint({w: len(w) for w in words})",
+    "approach": "Set words = [\"hi\", \"hey\"]. Print {w: len(w) for w in words}.\n\nReference solution:\nwords = [\"hi\", \"hey\"]\nprint({w: len(w) for w in words})"
   },
   {
     "id": "m11-t3-p03",
     "topicId": "m11-t3",
-    "slug": "dc-filter",
-    "title": "Dictionary Comprehensions: Filter Dict Comp",
+    "slug": "odd-squares-dict",
+    "title": "Dictionary Comprehensions: Odd Squares",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "Print {x:x for x in range(5) if x%2==1}.",
+    "description": "Print {n: n * n for n in range(6) if n % 2 == 1}. Keep only odd keys.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# filter",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Filter in dict comprehension."
+          "value": "Print {n: n * n for n in range(6) if n % 2 == 1}. Keep only odd keys."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "{1: 1, 3: 3}",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresForLoop": true,
+      "requiresIfCondition": true
     },
     "examples": [
       {
-        "output": "{1: 1, 3: 3}"
+        "output": "{1: 1, 3: 9, 5: 25}"
       }
     ],
     "constraints": [
-      "Output must be exactly: {1: 1, 3: 3}"
+      "Output must match: {1: 1, 3: 9, 5: 25}"
     ],
     "hints": [
-      "print({x:x for x in range(5) if x%2==1})"
+      "The if at the end filters which keys are included."
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t3-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "{1: 1, 3: 3}",
+        "expectedStdout": "{1: 1, 3: 9, 5: 25}",
         "visibility": "public"
       },
       {
         "id": "m11-t3-p03-t2",
         "label": "Exact Output",
-        "expectedStdout": "{1: 1, 3: 3}",
+        "expectedStdout": "{1: 1, 3: 9, 5: 25}",
         "visibility": "public"
       },
       {
         "id": "m11-t3-p03-t3",
         "label": "No Extra Output",
-        "expectedStdout": "{1: 1, 3: 3}",
+        "expectedStdout": "{1: 1, 3: 9, 5: 25}",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({x:x for x in range(5) if x%2==1})",
-    "approach": "Print {x:x for x in range(5) if x%2==1}.\n\nKey points: print({x:x for x in range(5) if x%2==1})\n\nA correct solution looks like this:\nprint({x:x for x in range(5) if x%2==1})"
+    "solutionCode": "print({n: n * n for n in range(6) if n % 2 == 1})",
+    "approach": "Print {n: n * n for n in range(6) if n % 2 == 1}. Keep only odd keys.\n\nReference solution:\nprint({n: n * n for n in range(6) if n % 2 == 1})"
   },
   {
     "id": "m11-t3-p04",
     "topicId": "m11-t3",
-    "slug": "dc-invert",
-    "title": "Dictionary Comprehensions: Invert Keys Values",
+    "slug": "invert-dict",
+    "title": "Dictionary Comprehensions: Invert Keys",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Print {v:k for k,v in {\"a\":1,\"b\":2}.items()}.",
+    "description": "Set mapping = {\"a\": 1, \"b\": 2}. Print {v: k for k, v in mapping.items()}.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# invert",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Swap keys and values."
+          "value": "Set mapping = {\"a\": 1, \"b\": 2}. Print {v: k for k, v in mapping.items()}."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "{1: 'a', 2: 'b'}",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "mapping"
+      ],
+      "requiresForLoop": true,
+      "requiresDictKey": "a"
     },
     "examples": [
       {
@@ -1182,10 +1047,10 @@ export const module11Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output must be exactly: {1: 'a', 2: 'b'}"
+      "Output must match: {1: 'a', 2: 'b'}"
     ],
     "hints": [
-      "print({v:k for k,v in {\"a\":1,\"b\":2}.items()})"
+      "Swap value and key: {v: k for k, v in mapping.items()}."
     ],
     "starterCode": "",
     "publicTests": [
@@ -1197,8 +1062,8 @@ export const module11Practice: PracticeProblem[] = [
       },
       {
         "id": "m11-t3-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "{1: 'a', 2: 'b'}",
+        "label": "Required names and structure",
+        "assertCode": "assert \"mapping\" in globals(), \"Expected a variable named mapping\"",
         "visibility": "public"
       },
       {
@@ -1208,93 +1073,88 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({v:k for k,v in {\"a\":1,\"b\":2}.items()})",
-    "approach": "Print {v:k for k,v in {\"a\":1,\"b\":2}.items()}.\n\nKey points: print({v:k for k,v in {\"a\":1,\"b\":2}.items()})\n\nA correct solution looks like this:\nprint({v:k for k,v in {\"a\":1,\"b\":2}.items()})"
+    "solutionCode": "mapping = {\"a\": 1, \"b\": 2}\nprint({v: k for k, v in mapping.items()})",
+    "approach": "Set mapping = {\"a\": 1, \"b\": 2}. Print {v: k for k, v in mapping.items()}.\n\nReference solution:\nmapping = {\"a\": 1, \"b\": 2}\nprint({v: k for k, v in mapping.items()})"
   },
   {
     "id": "m11-t3-p05",
     "topicId": "m11-t3",
-    "slug": "dc-string",
-    "title": "Dictionary Comprehensions: Char Positions",
+    "slug": "char-index-dict",
+    "title": "Dictionary Comprehensions: Character Indexes",
     "difficulty": "hard",
     "order": 5,
     "layout": "challenge",
-    "description": "Print {c:i for i,c in enumerate(\"ab\")}.",
+    "description": "Print {ch: i for i, ch in enumerate(\"xy\")}.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# enum",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Dict comp with enumerate."
+          "value": "Print {ch: i for i, ch in enumerate(\"xy\")}."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "{'a': 0, 'b': 1}",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresForLoop": true
     },
     "examples": [
       {
-        "output": "{'a': 0, 'b': 1}"
+        "output": "{'x': 0, 'y': 1}"
       }
     ],
     "constraints": [
-      "Output must be exactly: {'a': 0, 'b': 1}"
+      "Output must match: {'x': 0, 'y': 1}"
     ],
     "hints": [
-      "print({c:i for i,c in enumerate(\"ab\")})"
+      "print({ch: i for i, ch in enumerate(\"xy\")})"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t3-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "{'a': 0, 'b': 1}",
+        "expectedStdout": "{'x': 0, 'y': 1}",
         "visibility": "public"
       },
       {
         "id": "m11-t3-p05-t2",
         "label": "Exact Output",
-        "expectedStdout": "{'a': 0, 'b': 1}",
+        "expectedStdout": "{'x': 0, 'y': 1}",
         "visibility": "public"
       },
       {
         "id": "m11-t3-p05-t3",
         "label": "No Extra Output",
-        "expectedStdout": "{'a': 0, 'b': 1}",
+        "expectedStdout": "{'x': 0, 'y': 1}",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({c:i for i,c in enumerate(\"ab\")})",
-    "approach": "Print {c:i for i,c in enumerate(\"ab\")}.\n\nKey points: print({c:i for i,c in enumerate(\"ab\")})\n\nA correct solution looks like this:\nprint({c:i for i,c in enumerate(\"ab\")})"
+    "solutionCode": "print({ch: i for i, ch in enumerate(\"xy\")})",
+    "approach": "Print {ch: i for i, ch in enumerate(\"xy\")}.\n\nReference solution:\nprint({ch: i for i, ch in enumerate(\"xy\")})"
   },
   {
     "id": "m11-t3-p06",
     "topicId": "m11-t3",
-    "slug": "dc-conditional",
-    "title": "Dictionary Comprehensions: Conditional Values",
+    "slug": "even-odd-labels",
+    "title": "Dictionary Comprehensions: Even Odd Labels",
     "difficulty": "hard",
     "order": 6,
     "layout": "challenge",
-    "description": "Print {x:(\"even\" if x%2==0 else \"odd\") for x in range(3)}.",
+    "description": "Print {n: (\"even\" if n % 2 == 0 else \"odd\") for n in range(3)}.",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Conditional expression in dict comp."
+          "value": "Print {n: (\"even\" if n % 2 == 0 else \"odd\") for n in range(3)}."
         }
       ],
-      "editorPlaceholder": "# cond dict",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresForLoop": true,
+      "requiresIfCondition": true
     },
     "examples": [
       {
@@ -1302,13 +1162,12 @@ export const module11Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Use dict comprehension"
+      "Output must match: {0: 'even', 1: 'odd', 2: 'even'}"
     ],
     "hints": [
-      "print({x:(\"even\" if x%2==0 else \"odd\") for x in range(3)})"
+      "The if/else chooses the value stored for each key."
     ],
     "starterCode": "",
-    "approach": "Print {x:(\"even\" if x%2==0 else \"odd\") for x in range(3)}. Key points: print({x:(\"even\" if x%2==0 else \"odd\") for x in range(3)}) A correct solution looks like this: print({x:(\"even\" if x%2==0 else \"odd\") for x in range(3)})",
     "publicTests": [
       {
         "id": "m11-t3-p06-t1",
@@ -1329,71 +1188,68 @@ export const module11Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({x:(\"even\" if x%2==0 else \"odd\") for x in range(3)})"
+    "solutionCode": "print({n: (\"even\" if n % 2 == 0 else \"odd\") for n in range(3)})",
+    "approach": "Print {n: (\"even\" if n % 2 == 0 else \"odd\") for n in range(3)}.\n\nReference solution:\nprint({n: (\"even\" if n % 2 == 0 else \"odd\") for n in range(3)})"
   },
   {
     "id": "m11-t3-p07",
     "topicId": "m11-t3",
-    "slug": "dc-merge",
-    "title": "Dictionary Comprehensions: Combine Two Lists",
+    "slug": "zip-dict",
+    "title": "Dictionary Comprehensions: Zip Two Lists",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Print {k:v for k,v in zip([\"a\",\"b\"],[1,2])}.",
+    "description": "Set keys = [\"a\", \"b\"] and vals = [10, 20]. Print {k: v for k, v in zip(keys, vals)}.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# zip",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Use zip in dict comprehension."
+          "value": "Set keys = [\"a\", \"b\"] and vals = [10, 20]. Print {k: v for k, v in zip(keys, vals)}."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "{'a': 1, 'b': 2}",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "keys",
+        "vals"
+      ],
+      "requiresForLoop": true
     },
     "examples": [
       {
-        "output": "{'a': 1, 'b': 2}"
+        "output": "{'a': 10, 'b': 20}"
       }
     ],
     "constraints": [
-      "Output must be exactly: {'a': 1, 'b': 2}"
+      "Output must match: {'a': 10, 'b': 20}"
     ],
     "hints": [
-      "print({k:v for k,v in zip([\"a\",\"b\"],[1,2])})"
+      "zip(keys, vals) pairs each key with a value."
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m11-t3-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "{'a': 1, 'b': 2}",
+        "expectedStdout": "{'a': 10, 'b': 20}",
         "visibility": "public"
       },
       {
         "id": "m11-t3-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "{'a': 1, 'b': 2}",
+        "label": "Required names and structure",
+        "assertCode": "assert \"keys\" in globals(), \"Expected a variable named keys\"\nassert \"vals\" in globals(), \"Expected a variable named vals\"",
         "visibility": "public"
       },
       {
         "id": "m11-t3-p07-t3",
         "label": "No Extra Output",
-        "expectedStdout": "{'a': 1, 'b': 2}",
+        "expectedStdout": "{'a': 10, 'b': 20}",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({k:v for k,v in zip([\"a\",\"b\"],[1,2])})",
-    "approach": "Print {k:v for k,v in zip([\"a\",\"b\"],[1,2])}.\n\nKey points: print({k:v for k,v in zip([\"a\",\"b\"],[1,2])})\n\nA correct solution looks like this:\nprint({k:v for k,v in zip([\"a\",\"b\"],[1,2])})"
+    "solutionCode": "keys = [\"a\", \"b\"]\nvals = [10, 20]\nprint({k: v for k, v in zip(keys, vals)})",
+    "approach": "Set keys = [\"a\", \"b\"] and vals = [10, 20]. Print {k: v for k, v in zip(keys, vals)}.\n\nReference solution:\nkeys = [\"a\", \"b\"]\nvals = [10, 20]\nprint({k: v for k, v in zip(keys, vals)})"
   }
 ];

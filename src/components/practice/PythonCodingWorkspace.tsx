@@ -945,7 +945,7 @@ export function PythonCodingWorkspace({
                 height="100%"
                 theme="light"
                 restrictClipboard={examMode}
-                className="h-full min-h-0 bg-sky-50 [&_.cm-editor]:h-full [&_.cm-editor]:bg-sky-50 [&_.cm-scroller]:h-full [&_.cm-scroller]:bg-sky-50"
+                className="h-full min-h-0 bg-sky-50 [&_.cm-editor]:h-full [&_.cm-editor]:max-h-full [&_.cm-editor]:bg-sky-50 [&_.cm-scroller]:overflow-auto [&_.cm-scroller]:bg-sky-50"
               />
             </div>
 

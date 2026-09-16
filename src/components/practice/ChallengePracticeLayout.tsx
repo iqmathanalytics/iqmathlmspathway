@@ -10,7 +10,7 @@ import { CodeEditor } from "@/components/ide/CodeEditor";
 import { ConsolePanel } from "@/components/ide/ConsolePanel";
 import { OpenInColabButton } from "@/components/ide/OpenInColabButton";
 import { usePyodideRunner } from "@/components/ide/usePyodideRunner";
-import { runPublicTests } from "@/lib/practice-runner";
+import { runPublicTests, type TestRunResult } from "@/lib/practice-runner";
 import {
   buildColabPracticeCell,
   isColabPracticeProblem,
@@ -82,6 +82,90 @@ function getPrintValues(code: string) {
     results.push(match[1] ?? match[2] ?? match[3] ?? "");
   }
   return results;
+}
+
+/** Teaching constraints that stdout tests cannot always express. */
+function structuralGateMessage(
+  code: string,
+  content: PracticeProblem["challengeContent"]
+): string | null {
+  const realCode = code.replace(/#.*$/gm, "").trim();
+
+  if (content?.requiresForLoop) {
+    if (!realCode.includes("for") || !realCode.includes("print")) {
+      return "Use a for loop with print().";
+    }
+  }
+
+  if (content?.requiresIfCondition) {
+    if (!realCode.includes("if")) {
+      return "Use an if condition.";
+    }
+  }
+
+  if (content?.requiresTry && !realCode.includes("try")) {
+    return "Use a try block.";
+  }
+  if (content?.requiresExcept && !realCode.includes("except")) {
+    return "Use an except block.";
+  }
+  if (content?.requiresFinally && !realCode.includes("finally")) {
+    return "Use a finally block.";
+  }
+  if (content?.requiresRaise && !realCode.includes("raise")) {
+    return "Use raise to throw an error.";
+  }
+
+  if (content?.requiresFunction) {
+    const fn = content.requiresFunction;
+    if (!realCode.includes("def") || !realCode.includes(fn)) {
+      return `Function ${fn}() is not defined properly.`;
+    }
+    const fnRefs = realCode.match(new RegExp(`\\b${fn}\\s*\\(`, "g")) ?? [];
+    if (fnRefs.length < 2) {
+      return `Don't forget to call ${fn}() after defining it.`;
+    }
+  }
+
+  if (content?.requiresVariables?.length) {
+    const missing = content.requiresVariables.filter((v) => !realCode.includes(v));
+    if (missing.length > 0) {
+      return `Create variable${missing.length > 1 ? "s" : ""}: ${missing.join(", ")}.`;
+    }
+  }
+
+  if (content?.requiresListAccess) {
+    if (!realCode.includes("[") || !realCode.includes("print")) {
+      return "Create a list and print one item using index notation, like items[1].";
+    }
+  }
+
+  if (content?.requiresDictKey) {
+    const key = content.requiresDictKey;
+    if (!realCode.includes("{") || !realCode.includes(key)) {
+      return `Create a dictionary with key "${key}" and print its value.`;
+    }
+  }
+
+  if (content?.expectCommaPrint) {
+    const printBody = realCode.match(/print\s*\(([\s\S]*?)\)/)?.[1] ?? "";
+    if (!printBody.includes(",") && !printBody.includes("sep")) {
+      return "Use a comma between two values in print(), or pass sep=\",\".";
+    }
+  }
+
+  if (
+    content?.requiresComment &&
+    !code.split("\n").some((line) => line.trim().startsWith("#"))
+  ) {
+    return "Add a comment line starting with # that describes your code.";
+  }
+
+  return null;
+}
+
+function firstFailedTest(results: TestRunResult[]): TestRunResult | undefined {
+  return results.find((r) => !r.passed) ?? results[0];
 }
 
 function evaluateLiveCheck(
@@ -343,194 +427,28 @@ export function ChallengePracticeLayout({
       return;
     }
 
-    if (content?.requiresForLoop) {
-      if (!realCode.includes("for") || !realCode.includes("print")) {
-        setCheckResult({
-          type: "error",
-          message: "Use a for loop with print().",
-        });
-        return;
-      }
-      if (!realCode.includes("range")) {
-        setCheckResult({
-          type: "error",
-          message: "Loop structure incorrect. Use range(1, 5).",
-        });
-        return;
-      }
-    }
-
-    if (content?.requiresIfCondition) {
-      if (!realCode.includes("score") || !realCode.includes("if")) {
-        setCheckResult({
-          type: "error",
-          message: "Define score and use an if condition.",
-        });
-        return;
-      }
-      if (
-        printValues.includes("Fail") &&
-        !printValues.includes("Pass") &&
-        printValues.length > 0
-      ) {
-        setCheckResult({
-          type: "error",
-          message: "Condition incorrect: expected Pass.",
-        });
-        return;
-      }
-    }
-
-    if (content?.requiresFunction) {
-      const fn = content.requiresFunction;
-      if (!realCode.includes("def") || !realCode.includes(fn)) {
-        setCheckResult({
-          type: "error",
-          message: `Function ${fn}() not defined properly.`,
-        });
-        return;
-      }
-      const fnPattern = new RegExp(`\\b${fn}\\s*\\(`, "g");
-      const fnRefs = realCode.match(fnPattern) ?? [];
-      if (fnRefs.length < 2) {
-        setCheckResult({
-          type: "error",
-          message: `Don't forget to call ${fn}() after defining it.`,
-        });
-        return;
-      }
-      if (
-        printValues.length > 0 &&
-        !printValues.includes("Hello") &&
-        example?.output
-      ) {
-        setCheckResult({
-          type: "error",
-          message: `Expected output: ${expectedOutput || example?.output || ""}`,
-        });
-        return;
-      }
-    }
-
-    if (content?.requiresVariables?.length) {
-      const missing = content.requiresVariables.filter(
-        (v) => !realCode.includes(v)
-      );
-      if (missing.length > 0) {
-        setCheckResult({
-          type: "error",
-          message: `Create variable${missing.length > 1 ? "s" : ""}: ${missing.join(", ")}.`,
-        });
-        return;
-      }
-    }
-
-    if (content?.requiresListAccess) {
-      if (!realCode.includes("[") || !realCode.includes("print")) {
-        setCheckResult({
-          type: "error",
-          message:
-            "Create a list and print one item using index notation, like items[1].",
-        });
-        return;
-      }
-    }
-
-    if (content?.requiresDictKey) {
-      const key = content.requiresDictKey;
-      if (!realCode.includes("{") || !realCode.includes(key)) {
-        setCheckResult({
-          type: "error",
-          message: `Create a dictionary with key "${key}" and print its value.`,
-        });
-        return;
-      }
-    }
-
-    if (content?.expectCommaPrint) {
-      const printBody = realCode.match(/print\s*\(([\s\S]*?)\)/)?.[1] ?? "";
-      if (!printBody.includes(",") && !printBody.includes("sep")) {
-        setCheckResult({
-          type: "error",
-          message: "Output mismatch. Expected format: A,B — use a comma between two values in print().",
-        });
-        return;
-      }
-    }
-
-    if (content?.requiresComment && !code.split("\n").some((line) => line.trim().startsWith("#"))) {
-      setCheckResult({
-        type: "warn",
-        message:
-          "Add a comment line starting with # that describes your print() statement.",
-      });
-      return;
-    }
-
-    const countRule = content?.liveCheckRules?.find(
-      (r) => r.kind === "print-count"
-    );
-    const sequenceRule = content?.liveCheckRules?.find(
-      (r) => r.kind === "print-sequence"
-    );
-    const expectedPrintCount =
-      countRule?.kind === "print-count"
-        ? countRule.expected
-        : sequenceRule?.kind === "print-sequence"
-          ? sequenceRule.expected.length
-          : null;
-
-    if (expectedPrintCount != null) {
-      const hint = content?.printCountHint
-        ? ` — ${content.printCountHint}`
-        : " — one for each line";
-      if (printCount < expectedPrintCount) {
-        setCheckResult({
-          type: "warn",
-          message: (
-            <>
-              Found <strong>{printCount}</strong> print() call
-              {printCount === 1 ? "" : "s"}. You need{" "}
-              <strong>{expectedPrintCount}</strong>
-              {hint}.
-            </>
-          ),
-        });
-        return;
-      }
-      if (printCount > expectedPrintCount) {
-        setCheckResult({
-          type: "warn",
-          message: (
-            <>
-              Found <strong>{printCount}</strong> print() calls. Use exactly{" "}
-              <strong>{expectedPrintCount}</strong>.
-            </>
-          ),
-        });
-        return;
-      }
-    }
-
-    const valueRules =
-      content?.liveCheckRules?.filter((r) => r.kind === "print-value") ?? [];
-    if (valueRules.length > 0 && printValues.length < valueRules.length) {
-      setCheckResult({
-        type: "error",
-        message:
-          "Make sure both print() calls have text in quotes inside them.",
-      });
-      return;
-    }
-
     setChecking(true);
     setCheckResult(null);
 
     const result = await runPublicTests(code, problem.publicTests);
-    const test = result.results[0];
+    const test = firstFailedTest(result.results);
 
     if (result.allPassed) {
-      const actualLines = (test?.actual ?? expectedOutput).split("\n");
+      const structural = structuralGateMessage(code, content);
+      if (structural) {
+        setCheckResult({
+          type: "warn",
+          message: (
+            <>
+              Output matches, but this problem also requires: {structural}
+            </>
+          ),
+        });
+        setChecking(false);
+        return;
+      }
+
+      const actualLines = (expectedOutput || test?.actual || "").split("\n");
       setCheckResult({
         type: "success",
         message: (
@@ -568,102 +486,37 @@ export function ChallengePracticeLayout({
           returnAfterSolve();
         }
       }
-    } else if (test && (test.expected !== undefined || test.actual !== undefined)) {
-      setCheckResult({
-        type: "error",
-        message: (
-          <>
-            <strong>Not quite — output does not match.</strong>
-            <br />
-            <br />
-            <span className="text-[11px] font-semibold uppercase tracking-wide text-gray-500">
-              Your output
-            </span>
-            <br />
-            <InlineCode>{test.actual || "(empty)"}</InlineCode>
-            <br />
-            <br />
-            <span className="text-[11px] font-semibold uppercase tracking-wide text-gray-500">
-              Expected output
-            </span>
-            <br />
-            <InlineCode>{test.expected || expectedOutput || "(empty)"}</InlineCode>
-            {test.input ? (
-              <>
-                <br />
-                <br />
-                <span className="text-[11px] font-semibold uppercase tracking-wide text-gray-500">
-                  Input
-                </span>
-                <br />
-                <InlineCode>{test.input}</InlineCode>
-              </>
-            ) : null}
-          </>
-        ),
-      });
-    } else if (test?.error) {
-      setCheckResult({ type: "error", message: test.error });
-    } else if (sequenceRule?.kind === "print-sequence") {
-      const msgs: React.ReactNode[] = ["Not quite."];
-      sequenceRule.expected.forEach((expected, i) => {
-        const actual = printValues[i];
-        if (actual !== expected) {
-          msgs.push(
-            <span key={i} className="block">
-              Line {i + 1}: got{" "}
-              <InlineCode>{actual || "?"}</InlineCode>, expected{" "}
-              <InlineCode>{expected}</InlineCode>.
-            </span>
-          );
-        }
-      });
-      setCheckResult({
-        type: "error",
-        message: <>{msgs}</>,
-      });
-    } else if (valueRules.length > 0) {
-      const msgs: React.ReactNode[] = ["Almost there!"];
-      for (const rule of valueRules) {
-        if (rule.kind !== "print-value") continue;
-        const actual = printValues[rule.index];
-        if (actual !== rule.expected) {
-          msgs.push(
-            <span key={rule.id} className="block">
-              Line {rule.index + 1}: got{" "}
-              <InlineCode>{actual || "(empty)"}</InlineCode>, expected{" "}
-              <InlineCode>{rule.expected}</InlineCode>
-            </span>
-          );
-        }
-      }
-      if (msgs.length === 1 && test) {
-        setCheckResult({
-          type: "error",
-          message: (
-            <>
-              Your output:
-              <br />
-              <InlineCode>{test.actual || "(empty)"}</InlineCode>
-              <br />
-              Expected:
-              <br />
-              <InlineCode>{test.expected || expectedOutput}</InlineCode>
-            </>
-          ),
-        });
-      } else {
-        setCheckResult({ type: "error", message: <>{msgs}</> });
-      }
     } else {
       setCheckResult({
         type: "error",
         message: (
           <>
-            Your output: <InlineCode>{test?.actual || "(empty)"}</InlineCode>
-            <br />
-            Expected:{" "}
-            <InlineCode>{test?.expected || expectedOutput || "(empty)"}</InlineCode>
+            <strong>Not quite — the solution does not pass all checks.</strong>
+            {test?.error ? (
+              <>
+                <br />
+                <br />
+                {test.error}
+              </>
+            ) : null}
+            {test && (test.actual !== undefined || test.expected !== undefined) ? (
+              <>
+                <br />
+                <br />
+                <span className="text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+                  Your output
+                </span>
+                <br />
+                <InlineCode>{test.actual || "(empty)"}</InlineCode>
+                <br />
+                <br />
+                <span className="text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+                  Expected output
+                </span>
+                <br />
+                <InlineCode>{test.expected || expectedOutput || "(empty)"}</InlineCode>
+              </>
+            ) : null}
           </>
         ),
       });
@@ -673,10 +526,7 @@ export function ChallengePracticeLayout({
   }, [
     code,
     content,
-    example,
     expectedOutput,
-    printCount,
-    printValues,
     problem,
     saveDraft,
     session,
@@ -726,7 +576,7 @@ export function ChallengePracticeLayout({
   }
 
   return (
-    <div className="flex min-h-[calc(100vh-8rem)] flex-col">
+    <div className="flex h-full min-h-0 flex-1 flex-col overflow-hidden">
       <PracticeBreadcrumb
         moduleSlug={moduleSlug}
         topicSlug={topicSlug}
@@ -1095,7 +945,7 @@ export function ChallengePracticeLayout({
               onRun={handleRun}
               height="100%"
               theme="light"
-              className="h-full min-h-[240px] bg-sky-50 [&_.cm-editor]:bg-sky-50 [&_.cm-scroller]:bg-sky-50"
+              className="h-full min-h-0 bg-sky-50 [&_.cm-editor]:h-full [&_.cm-editor]:max-h-full [&_.cm-editor]:bg-sky-50 [&_.cm-scroller]:overflow-auto [&_.cm-scroller]:bg-sky-50"
             />
           </div>
 

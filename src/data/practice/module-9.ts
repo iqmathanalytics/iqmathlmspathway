@@ -45,7 +45,7 @@ export const module9Practice: PracticeProblem[] = [
       "x = 10\\nif x > 5:\\n    print(\"yes\")"
     ],
     "starterCode": "",
-    "approach": "Set x=10, if x>5: print(\"yes\"). Key points: x = 10\\nif x > 5:\\n print(\"yes\") A correct solution looks like this: x = 10 if x > 5: print(\"yes\")",
+    "approach": "Set x=10, if x>5: print(\"yes\").\n\nReference solution:\nx = 10\nif x > 5:\n    print(\"yes\")",
     "publicTests": [
       {
         "id": "m9-t1-p01-t1",
@@ -55,8 +55,8 @@ export const module9Practice: PracticeProblem[] = [
       },
       {
         "id": "m9-t1-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "yes",
+        "label": "Required names and structure",
+        "assertCode": "assert \"x\" in globals(), \"Expected a variable named x\"",
         "visibility": "public"
       },
       {
@@ -103,7 +103,7 @@ export const module9Practice: PracticeProblem[] = [
       "x = 2\\nif x > 5:\\n    print(\"yes\")\\nprint(\"done\")"
     ],
     "starterCode": "",
-    "approach": "Set x=2, if x>5: print(\"yes\"). Print \"done\" after. Key points: x = 2\\nif x > 5:\\n print(\"yes\")\\nprint(\"done\") A correct solution looks like this: x = 2 if x > 5: print(\"yes\") print(\"done\")",
+    "approach": "Set x=2, if x>5: print(\"yes\"). Print \"done\" after.\n\nReference solution:\nx = 2\nif x > 5:\n    print(\"yes\")\nprint(\"done\")",
     "publicTests": [
       {
         "id": "m9-t1-p02-t1",
@@ -113,8 +113,8 @@ export const module9Practice: PracticeProblem[] = [
       },
       {
         "id": "m9-t1-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "done",
+        "label": "Required names and structure",
+        "assertCode": "assert \"x\" in globals(), \"Expected a variable named x\"",
         "visibility": "public"
       },
       {
@@ -145,7 +145,10 @@ export const module9Practice: PracticeProblem[] = [
         }
       ],
       "editorPlaceholder": "# if n",
-      "successDetail": "Correct!"
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "n"
+      ]
     },
     "examples": [
       {
@@ -159,7 +162,7 @@ export const module9Practice: PracticeProblem[] = [
       "n = 0\\nif n:\\n    print(\"nonzero\")\\nelse:\\n    print(\"zero\")"
     ],
     "starterCode": "",
-    "approach": "Set n=0, if n: print(\"nonzero\") else: print(\"zero\"). Key points: n = 0\\nif n:\\n print(\"nonzero\")\\nelse:\\n print(\"zero\") A correct solution looks like this: n = 0 if n: print(\"nonzero\") else: print(\"zero\")",
+    "approach": "Set n=0, if n: print(\"nonzero\") else: print(\"zero\").\n\nReference solution:\nn = 0\nif n:\n    print(\"nonzero\")\nelse:\n    print(\"zero\")",
     "publicTests": [
       {
         "id": "m9-t1-p03-t1",
@@ -169,8 +172,8 @@ export const module9Practice: PracticeProblem[] = [
       },
       {
         "id": "m9-t1-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "zero",
+        "label": "Required names and structure",
+        "assertCode": "assert \"n\" in globals(), \"Expected a variable named n\"",
         "visibility": "public"
       },
       {
@@ -209,7 +212,10 @@ export const module9Practice: PracticeProblem[] = [
         }
       ],
       "editorPlaceholder": "# if score",
-      "successDetail": "Correct!"
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "score"
+      ]
     },
     "examples": [
       {
@@ -223,7 +229,7 @@ export const module9Practice: PracticeProblem[] = [
       "score = 75\\nif score >= 60:\\n    print(\"Pass\")"
     ],
     "starterCode": "",
-    "approach": "Set score=75, if score>=60: print(\"Pass\"). Key points: score = 75\\nif score >= 60:\\n print(\"Pass\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\")",
+    "approach": "Set score=75, if score>=60: print(\"Pass\").\n\nReference solution:\nscore = 75\nif score >= 60:\n    print(\"Pass\")",
     "publicTests": [
       {
         "id": "m9-t1-p04-t1",
@@ -233,8 +239,8 @@ export const module9Practice: PracticeProblem[] = [
       },
       {
         "id": "m9-t1-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "Required names and structure",
+        "assertCode": "assert \"score\" in globals(), \"Expected a variable named score\"",
         "visibility": "public"
       },
       {
@@ -281,7 +287,7 @@ export const module9Practice: PracticeProblem[] = [
       "name = \"Ana\"\\nif name:\\n    print(\"Hello\")"
     ],
     "starterCode": "",
-    "approach": "Set name=\"Ana\", if name: print(\"Hello\"). Key points: name = \"Ana\"\\nif name:\\n print(\"Hello\") A correct solution looks like this: name = \"Ana\" if name: print(\"Hello\")",
+    "approach": "Set name=\"Ana\", if name: print(\"Hello\").\n\nReference solution:\nname = \"Ana\"\nif name:\n    print(\"Hello\")",
     "publicTests": [
       {
         "id": "m9-t1-p05-t1",
@@ -291,8 +297,8 @@ export const module9Practice: PracticeProblem[] = [
       },
       {
         "id": "m9-t1-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "Required names and structure",
+        "assertCode": "assert \"name\" in globals(), \"Expected a variable named name\"",
         "visibility": "public"
       },
       {
@@ -316,7 +322,8 @@ export const module9Practice: PracticeProblem[] = [
     "challengeContent": {
       "outputOnly": true,
       "requiresVariables": [
-        "age"
+        "age",
+        "score"
       ],
       "introSegments": [
         {
@@ -347,7 +354,7 @@ export const module9Practice: PracticeProblem[] = [
       "age=20\\nscore=80\\nif age>=18 and score>=60:\\n    print(\"ok\")"
     ],
     "starterCode": "",
-    "approach": "Set age=20, score=80, if age>=18 and score>=60: print(\"ok\"). Key points: age=20\\nscore=80\\nif age>=18 and score>=60:\\n print(\"ok\") A correct solution looks like this: age=20 score=80 if age>=18 and score>=60: print(\"ok\")",
+    "approach": "Set age=20, score=80, if age>=18 and score>=60: print(\"ok\").\n\nReference solution:\nage=20\nscore=80\nif age>=18 and score>=60:\n    print(\"ok\")",
     "publicTests": [
       {
         "id": "m9-t1-p06-t1",
@@ -357,8 +364,8 @@ export const module9Practice: PracticeProblem[] = [
       },
       {
         "id": "m9-t1-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "ok",
+        "label": "Required names and structure",
+        "assertCode": "assert \"age\" in globals(), \"Expected a variable named age\"\nassert \"score\" in globals(), \"Expected a variable named score\"",
         "visibility": "public"
       },
       {
@@ -406,7 +413,7 @@ export const module9Practice: PracticeProblem[] = [
       "items=[1,2]\\nif len(items)>0:\\n    print(\"has items\")"
     ],
     "starterCode": "",
-    "approach": "Set items=[1,2], if len(items)>0: print(\"has items\"). Key points: items=[1,2]\\nif len(items)>0:\\n print(\"has items\") A correct solution looks like this: items=[1,2] if len(items)>0: print(\"has items\")",
+    "approach": "Set items=[1,2], if len(items)>0: print(\"has items\").\n\nReference solution:\nitems=[1,2]\nif len(items)>0:\n    print(\"has items\")",
     "publicTests": [
       {
         "id": "m9-t1-p07-t1",
@@ -416,8 +423,8 @@ export const module9Practice: PracticeProblem[] = [
       },
       {
         "id": "m9-t1-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "has items",
+        "label": "Required names and structure",
+        "assertCode": "assert \"items\" in globals(), \"Expected a variable named items\"",
         "visibility": "public"
       },
       {
@@ -456,7 +463,10 @@ export const module9Practice: PracticeProblem[] = [
         }
       ],
       "editorPlaceholder": "# if else",
-      "successDetail": "Correct!"
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "score"
+      ]
     },
     "examples": [
       {
@@ -470,7 +480,7 @@ export const module9Practice: PracticeProblem[] = [
       "score=75\\nif score>=60:\\n    print(\"Pass\")\\nelse:\\n    print(\"Fail\")"
     ],
     "starterCode": "",
-    "approach": "Set score=75, if score>=60: print(\"Pass\") else: print(\"Fail\"). Key points: score=75\\nif score>=60:\\n print(\"Pass\")\\nelse:\\n print(\"Fail\") A correct solution looks like this: score=75 if score>=60: print(\"Pass\") else: print(\"Fail\")",
+    "approach": "Set score=75, if score>=60: print(\"Pass\") else: print(\"Fail\").\n\nReference solution:\nscore=75\nif score>=60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
     "publicTests": [
       {
         "id": "m9-t2-p01-t1",
@@ -480,8 +490,8 @@ export const module9Practice: PracticeProblem[] = [
       },
       {
         "id": "m9-t2-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "Required names and structure",
+        "assertCode": "assert \"score\" in globals(), \"Expected a variable named score\"",
         "visibility": "public"
       },
       {
@@ -520,7 +530,10 @@ export const module9Practice: PracticeProblem[] = [
         }
       ],
       "editorPlaceholder": "# even odd",
-      "successDetail": "Correct!"
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "n"
+      ]
     },
     "examples": [
       {
@@ -534,7 +547,7 @@ export const module9Practice: PracticeProblem[] = [
       "n=4\\nif n%2==0:\\n    print(\"even\")\\nelse:\\n    print(\"odd\")"
     ],
     "starterCode": "",
-    "approach": "Set n=4, if n%2==0: print(\"even\") else: print(\"odd\"). Key points: n=4\\nif n%2==0:\\n print(\"even\")\\nelse:\\n print(\"odd\") A correct solution looks like this: n=4 if n%2==0: print(\"even\") else: print(\"odd\")",
+    "approach": "Set n=4, if n%2==0: print(\"even\") else: print(\"odd\").\n\nReference solution:\nn=4\nif n%2==0:\n    print(\"even\")\nelse:\n    print(\"odd\")",
     "publicTests": [
       {
         "id": "m9-t2-p02-t1",
@@ -544,8 +557,8 @@ export const module9Practice: PracticeProblem[] = [
       },
       {
         "id": "m9-t2-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "even",
+        "label": "Required names and structure",
+        "assertCode": "assert \"n\" in globals(), \"Expected a variable named n\"",
         "visibility": "public"
       },
       {
@@ -576,7 +589,11 @@ export const module9Practice: PracticeProblem[] = [
         }
       ],
       "editorPlaceholder": "# compare",
-      "successDetail": "Correct!"
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "a",
+        "b"
+      ]
     },
     "examples": [
       {
@@ -590,7 +607,7 @@ export const module9Practice: PracticeProblem[] = [
       "a=5\\nb=3\\nif a>b:\\n    print(\"a wins\")\\nelse:\\n    print(\"b wins\")"
     ],
     "starterCode": "",
-    "approach": "Set a=5, b=3, if a>b: print(\"a wins\") else: print(\"b wins\"). Key points: a=5\\nb=3\\nif a>b:\\n print(\"a wins\")\\nelse:\\n print(\"b wins\") A correct solution looks like this: a=5 b=3 if a>b: print(\"a wins\") else: print(\"b wins\")",
+    "approach": "Set a=5, b=3, if a>b: print(\"a wins\") else: print(\"b wins\").\n\nReference solution:\na=5\nb=3\nif a>b:\n    print(\"a wins\")\nelse:\n    print(\"b wins\")",
     "publicTests": [
       {
         "id": "m9-t2-p03-t1",
@@ -600,8 +617,8 @@ export const module9Practice: PracticeProblem[] = [
       },
       {
         "id": "m9-t2-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "a wins",
+        "label": "Required names and structure",
+        "assertCode": "assert \"a\" in globals(), \"Expected a variable named a\"\nassert \"b\" in globals(), \"Expected a variable named b\"",
         "visibility": "public"
       },
       {
@@ -632,7 +649,10 @@ export const module9Practice: PracticeProblem[] = [
         }
       ],
       "editorPlaceholder": "# sign",
-      "successDetail": "Correct!"
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "x"
+      ]
     },
     "examples": [
       {
@@ -646,7 +666,7 @@ export const module9Practice: PracticeProblem[] = [
       "x=-3\\nif x>=0:\\n    print(\"pos\")\\nelse:\\n    print(\"neg\")"
     ],
     "starterCode": "",
-    "approach": "Set x=-3, if x>=0: print(\"pos\") else: print(\"neg\"). Key points: x=-3\\nif x>=0:\\n print(\"pos\")\\nelse:\\n print(\"neg\") A correct solution looks like this: x=-3 if x>=0: print(\"pos\") else: print(\"neg\")",
+    "approach": "Set x=-3, if x>=0: print(\"pos\") else: print(\"neg\").\n\nReference solution:\nx=-3\nif x>=0:\n    print(\"pos\")\nelse:\n    print(\"neg\")",
     "publicTests": [
       {
         "id": "m9-t2-p04-t1",
@@ -656,8 +676,8 @@ export const module9Practice: PracticeProblem[] = [
       },
       {
         "id": "m9-t2-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "neg",
+        "label": "Required names and structure",
+        "assertCode": "assert \"x\" in globals(), \"Expected a variable named x\"",
         "visibility": "public"
       },
       {
@@ -688,7 +708,10 @@ export const module9Practice: PracticeProblem[] = [
         }
       ],
       "editorPlaceholder": "# empty str",
-      "successDetail": "Correct!"
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "s"
+      ]
     },
     "examples": [
       {
@@ -702,7 +725,7 @@ export const module9Practice: PracticeProblem[] = [
       "s=\"\"\\nif s:\\n    print(\"has text\")\\nelse:\\n    print(\"empty\")"
     ],
     "starterCode": "",
-    "approach": "Set s=\"\", if s: print(\"has text\") else: print(\"empty\"). Key points: s=\"\"\\nif s:\\n print(\"has text\")\\nelse:\\n print(\"empty\") A correct solution looks like this: s=\"\" if s: print(\"has text\") else: print(\"empty\")",
+    "approach": "Set s=\"\", if s: print(\"has text\") else: print(\"empty\").\n\nReference solution:\ns=\"\"\nif s:\n    print(\"has text\")\nelse:\n    print(\"empty\")",
     "publicTests": [
       {
         "id": "m9-t2-p05-t1",
@@ -712,8 +735,8 @@ export const module9Practice: PracticeProblem[] = [
       },
       {
         "id": "m9-t2-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "empty",
+        "label": "Required names and structure",
+        "assertCode": "assert \"s\" in globals(), \"Expected a variable named s\"",
         "visibility": "public"
       },
       {
@@ -733,7 +756,7 @@ export const module9Practice: PracticeProblem[] = [
     "difficulty": "hard",
     "order": 6,
     "layout": "challenge",
-    "description": "Set x=10, if x>0: print(\"positive\") else: print(\"non-positive\").",
+    "description": "Set x = 10. Use nested if: if x > 0, then if x > 5 print \"positive\" else print \"small\"; otherwise print \"non-positive\".",
     "challengeContent": {
       "outputOnly": true,
       "requiresIfCondition": true,
@@ -744,7 +767,10 @@ export const module9Practice: PracticeProblem[] = [
         }
       ],
       "editorPlaceholder": "# nested",
-      "successDetail": "Correct!"
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "x"
+      ]
     },
     "examples": [
       {
@@ -755,10 +781,10 @@ export const module9Practice: PracticeProblem[] = [
       "Output: positive"
     ],
     "hints": [
-      "x=10\\nif x>0:\\n    print(\"positive\")\\nelse:\\n    print(\"non-positive\")"
+      "Put a second if/else inside the x > 0 branch."
     ],
     "starterCode": "",
-    "approach": "Set x=10, if x>0: print(\"positive\") else: print(\"non-positive\"). Key points: x=10\\nif x>0:\\n print(\"positive\")\\nelse:\\n print(\"non-positive\") A correct solution looks like this: x=10 if x>0: print(\"positive\") else: print(\"non-positive\")",
+    "approach": "Set x = 10. Use nested if: if x > 0, then if x > 5 print \"positive\" else print \"small\"; otherwise print \"non-positive\".\n\nReference solution:\nx = 10\nif x > 0:\n    if x > 5:\n        print(\"positive\")\n    else:\n        print(\"small\")\nelse:\n    print(\"non-positive\")",
     "publicTests": [
       {
         "id": "m9-t2-p06-t1",
@@ -768,8 +794,8 @@ export const module9Practice: PracticeProblem[] = [
       },
       {
         "id": "m9-t2-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "positive",
+        "label": "Required names and structure",
+        "assertCode": "assert \"x\" in globals(), \"Expected a variable named x\"",
         "visibility": "public"
       },
       {
@@ -779,7 +805,7 @@ export const module9Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "x=10\nif x>0:\n    print(\"positive\")\nelse:\n    print(\"non-positive\")"
+    "solutionCode": "x = 10\nif x > 0:\n    if x > 5:\n        print(\"positive\")\n    else:\n        print(\"small\")\nelse:\n    print(\"non-positive\")"
   },
   {
     "id": "m9-t2-p07",
@@ -800,7 +826,10 @@ export const module9Practice: PracticeProblem[] = [
         }
       ],
       "editorPlaceholder": "# login",
-      "successDetail": "Correct!"
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "user"
+      ]
     },
     "examples": [
       {
@@ -814,7 +843,7 @@ export const module9Practice: PracticeProblem[] = [
       "user=\"admin\"\\nif user==\"admin\":\\n    print(\"welcome\")\\nelse:\\n    print(\"denied\")"
     ],
     "starterCode": "",
-    "approach": "Set user=\"admin\", if user==\"admin\": print(\"welcome\") else: print(\"denied\"). Key points: user=\"admin\"\\nif user==\"admin\":\\n print(\"welcome\")\\nelse:\\n print(\"denied\") A correct solution looks like this: user=\"admin\" if user==\"admin\": print(\"welcome\") else: print(\"denied\")",
+    "approach": "Set user=\"admin\", if user==\"admin\": print(\"welcome\") else: print(\"denied\").\n\nReference solution:\nuser=\"admin\"\nif user==\"admin\":\n    print(\"welcome\")\nelse:\n    print(\"denied\")",
     "publicTests": [
       {
         "id": "m9-t2-p07-t1",
@@ -824,8 +853,8 @@ export const module9Practice: PracticeProblem[] = [
       },
       {
         "id": "m9-t2-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "welcome",
+        "label": "Required names and structure",
+        "assertCode": "assert \"user\" in globals(), \"Expected a variable named user\"",
         "visibility": "public"
       },
       {
@@ -864,7 +893,10 @@ export const module9Practice: PracticeProblem[] = [
         }
       ],
       "editorPlaceholder": "# elif grades",
-      "successDetail": "Correct!"
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "score"
+      ]
     },
     "examples": [
       {
@@ -878,7 +910,7 @@ export const module9Practice: PracticeProblem[] = [
       "score=90\\nif score>=90:\\n    print(\"A\")\\nelif score>=80:\\n    print(\"B\")\\nelse:\\n    print(\"C\")"
     ],
     "starterCode": "",
-    "approach": "Set score=90, if score>=90: print(\"A\") elif score>=80: print(\"B\") else: print(\"C\"). Key points: score=90\\nif score>=90:\\n print(\"A\")\\nelif score>=80:\\n print(\"B\")\\nelse:\\n print(\"C\") A correct solution looks like this: score=90 if score>=90: print(\"A\") elif score>=80: print(\"B\") else: print(\"C\")",
+    "approach": "Set score=90, if score>=90: print(\"A\") elif score>=80: print(\"B\") else: print(\"C\").\n\nReference solution:\nscore=90\nif score>=90:\n    print(\"A\")\nelif score>=80:\n    print(\"B\")\nelse:\n    print(\"C\")",
     "publicTests": [
       {
         "id": "m9-t3-p01-t1",
@@ -888,8 +920,8 @@ export const module9Practice: PracticeProblem[] = [
       },
       {
         "id": "m9-t3-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A",
+        "label": "Required names and structure",
+        "assertCode": "assert \"score\" in globals(), \"Expected a variable named score\"",
         "visibility": "public"
       },
       {
@@ -920,7 +952,10 @@ export const module9Practice: PracticeProblem[] = [
         }
       ],
       "editorPlaceholder": "# grade B",
-      "successDetail": "Correct!"
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "score"
+      ]
     },
     "examples": [
       {
@@ -934,7 +969,7 @@ export const module9Practice: PracticeProblem[] = [
       "score=85\\nif score>=90: print(\"A\")\\nelif score>=80: print(\"B\")\\nelse: print(\"C\")"
     ],
     "starterCode": "",
-    "approach": "Set score=85, use if/elif/else for grades, print B. Key points: score=85\\nif score>=90: print(\"A\")\\nelif score>=80: print(\"B\")\\nelse: print(\"C\") A correct solution looks like this: score=85 if score>=90: print(\"A\") elif score>=80: print(\"B\") else: print(\"C\")",
+    "approach": "Set score=85, use if/elif/else for grades, print B.\n\nReference solution:\nscore=85\nif score>=90: print(\"A\")\nelif score>=80: print(\"B\")\nelse: print(\"C\")",
     "publicTests": [
       {
         "id": "m9-t3-p02-t1",
@@ -944,8 +979,8 @@ export const module9Practice: PracticeProblem[] = [
       },
       {
         "id": "m9-t3-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "B",
+        "label": "Required names and structure",
+        "assertCode": "assert \"score\" in globals(), \"Expected a variable named score\"",
         "visibility": "public"
       },
       {
@@ -976,7 +1011,10 @@ export const module9Practice: PracticeProblem[] = [
         }
       ],
       "editorPlaceholder": "# grade C",
-      "successDetail": "Correct!"
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "score"
+      ]
     },
     "examples": [
       {
@@ -990,7 +1028,7 @@ export const module9Practice: PracticeProblem[] = [
       "score=70\\nif score>=90: print(\"A\")\\nelif score>=80: print(\"B\")\\nelse: print(\"C\")"
     ],
     "starterCode": "",
-    "approach": "Set score=70, use if/elif/else, print C. Key points: score=70\\nif score>=90: print(\"A\")\\nelif score>=80: print(\"B\")\\nelse: print(\"C\") A correct solution looks like this: score=70 if score>=90: print(\"A\") elif score>=80: print(\"B\") else: print(\"C\")",
+    "approach": "Set score=70, use if/elif/else, print C.\n\nReference solution:\nscore=70\nif score>=90: print(\"A\")\nelif score>=80: print(\"B\")\nelse: print(\"C\")",
     "publicTests": [
       {
         "id": "m9-t3-p03-t1",
@@ -1000,8 +1038,8 @@ export const module9Practice: PracticeProblem[] = [
       },
       {
         "id": "m9-t3-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "C",
+        "label": "Required names and structure",
+        "assertCode": "assert \"score\" in globals(), \"Expected a variable named score\"",
         "visibility": "public"
       },
       {
@@ -1032,7 +1070,10 @@ export const module9Practice: PracticeProblem[] = [
         }
       ],
       "editorPlaceholder": "# weather",
-      "successDetail": "Correct!"
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "temp"
+      ]
     },
     "examples": [
       {
@@ -1046,7 +1087,7 @@ export const module9Practice: PracticeProblem[] = [
       "temp=25\\nif temp>30: print(\"hot\")\\nelif temp>20: print(\"warm\")\\nelse: print(\"cool\")"
     ],
     "starterCode": "",
-    "approach": "Set temp=25, if temp>30: print(\"hot\") elif temp>20: print(\"warm\") else: print(\"cool\"). Key points: temp=25\\nif temp>30: print(\"hot\")\\nelif temp>20: print(\"warm\")\\nelse: print(\"cool\") A correct solution looks like this: temp=25 if temp>30: print(\"hot\") elif temp>20: print(\"warm\") else: print(\"cool\")",
+    "approach": "Set temp=25, if temp>30: print(\"hot\") elif temp>20: print(\"warm\") else: print(\"cool\").\n\nReference solution:\ntemp=25\nif temp>30: print(\"hot\")\nelif temp>20: print(\"warm\")\nelse: print(\"cool\")",
     "publicTests": [
       {
         "id": "m9-t3-p04-t1",
@@ -1056,8 +1097,8 @@ export const module9Practice: PracticeProblem[] = [
       },
       {
         "id": "m9-t3-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "warm",
+        "label": "Required names and structure",
+        "assertCode": "assert \"temp\" in globals(), \"Expected a variable named temp\"",
         "visibility": "public"
       },
       {
@@ -1088,7 +1129,10 @@ export const module9Practice: PracticeProblem[] = [
         }
       ],
       "editorPlaceholder": "# three way",
-      "successDetail": "Correct!"
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "n"
+      ]
     },
     "examples": [
       {
@@ -1102,7 +1146,7 @@ export const module9Practice: PracticeProblem[] = [
       "n=0\\nif n>0: print(\"pos\")\\nelif n<0: print(\"neg\")\\nelse: print(\"zero\")"
     ],
     "starterCode": "",
-    "approach": "Set n=0, if n>0: print(\"pos\") elif n<0: print(\"neg\") else: print(\"zero\"). Key points: n=0\\nif n>0: print(\"pos\")\\nelif n<0: print(\"neg\")\\nelse: print(\"zero\") A correct solution looks like this: n=0 if n>0: print(\"pos\") elif n<0: print(\"neg\") else: print(\"zero\")",
+    "approach": "Set n=0, if n>0: print(\"pos\") elif n<0: print(\"neg\") else: print(\"zero\").\n\nReference solution:\nn=0\nif n>0: print(\"pos\")\nelif n<0: print(\"neg\")\nelse: print(\"zero\")",
     "publicTests": [
       {
         "id": "m9-t3-p05-t1",
@@ -1112,8 +1156,8 @@ export const module9Practice: PracticeProblem[] = [
       },
       {
         "id": "m9-t3-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "zero",
+        "label": "Required names and structure",
+        "assertCode": "assert \"n\" in globals(), \"Expected a variable named n\"",
         "visibility": "public"
       },
       {
@@ -1144,7 +1188,10 @@ export const module9Practice: PracticeProblem[] = [
         }
       ],
       "editorPlaceholder": "# speed",
-      "successDetail": "Correct!"
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "speed"
+      ]
     },
     "examples": [
       {
@@ -1158,7 +1205,7 @@ export const module9Practice: PracticeProblem[] = [
       "speed=55\\nif speed>65: print(\"ticket\")\\nelif speed>50: print(\"warning\")\\nelse: print(\"ok\")"
     ],
     "starterCode": "",
-    "approach": "Set speed=55, if speed>65: print(\"ticket\") elif speed>50: print(\"warning\") else: print(\"ok\"). Key points: speed=55\\nif speed>65: print(\"ticket\")\\nelif speed>50: print(\"warning\")\\nelse: print(\"ok\") A correct solution looks like this: speed=55 if speed>65: print(\"ticket\") elif speed>50: print(\"warning\") else: print(\"ok\")",
+    "approach": "Set speed=55, if speed>65: print(\"ticket\") elif speed>50: print(\"warning\") else: print(\"ok\").\n\nReference solution:\nspeed=55\nif speed>65: print(\"ticket\")\nelif speed>50: print(\"warning\")\nelse: print(\"ok\")",
     "publicTests": [
       {
         "id": "m9-t3-p06-t1",
@@ -1168,8 +1215,8 @@ export const module9Practice: PracticeProblem[] = [
       },
       {
         "id": "m9-t3-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "warning",
+        "label": "Required names and structure",
+        "assertCode": "assert \"speed\" in globals(), \"Expected a variable named speed\"",
         "visibility": "public"
       },
       {
@@ -1200,7 +1247,10 @@ export const module9Practice: PracticeProblem[] = [
         }
       ],
       "editorPlaceholder": "# menu",
-      "successDetail": "Correct!"
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "choice"
+      ]
     },
     "examples": [
       {
@@ -1214,7 +1264,7 @@ export const module9Practice: PracticeProblem[] = [
       "choice=\"b\"\\nif choice==\"a\": print(\"add\")\\nelif choice==\"b\": print(\"view\")\\nelse: print(\"exit\")"
     ],
     "starterCode": "",
-    "approach": "Set choice=\"b\", if choice==\"a\": print(\"add\") elif choice==\"b\": print(\"view\") else: print(\"exit\"). Key points: choice=\"b\"\\nif choice==\"a\": print(\"add\")\\nelif choice==\"b\": print(\"view\")\\nelse: print(\"exit\") A correct solution looks like this: choice=\"b\" if choice==\"a\": print(\"add\") elif choice==\"b\": print(\"view\") else: print(\"exit\")",
+    "approach": "Set choice=\"b\", if choice==\"a\": print(\"add\") elif choice==\"b\": print(\"view\") else: print(\"exit\").\n\nReference solution:\nchoice=\"b\"\nif choice==\"a\": print(\"add\")\nelif choice==\"b\": print(\"view\")\nelse: print(\"exit\")",
     "publicTests": [
       {
         "id": "m9-t3-p07-t1",
@@ -1224,8 +1274,8 @@ export const module9Practice: PracticeProblem[] = [
       },
       {
         "id": "m9-t3-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "view",
+        "label": "Required names and structure",
+        "assertCode": "assert \"choice\" in globals(), \"Expected a variable named choice\"",
         "visibility": "public"
       },
       {

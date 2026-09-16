@@ -1694,29 +1694,13 @@ export const module15Practice: PracticeProblem[] = [
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Keep rows where revenue is above 35 and print the matching item names.",
+    "description": "Define high_items(frame) that returns item names where revenue is above 35. Print high_items(df).",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Filter with "
-        },
-        {
-          "type": "code",
-          "value": "df[df[\"revenue\"] > 35]"
-        },
-        {
-          "type": "text",
-          "value": " and print the "
-        },
-        {
-          "type": "code",
-          "value": "item"
-        },
-        {
-          "type": "text",
-          "value": " column of the result as a list."
+          "value": "Define high_items(frame) that returns item names where revenue is above 35. Print high_items(df)."
         }
       ],
       "editorPlaceholder": "# high = df[df[\"revenue\"] > 35]",
@@ -1733,7 +1717,8 @@ export const module15Practice: PracticeProblem[] = [
           "Passing the mask back into df keeps only the True rows.",
           "This is boolean indexing, the same idea as in NumPy."
         ]
-      }
+      },
+      "requiresFunction": "high_items"
     },
     "examples": [
       {
@@ -1741,37 +1726,36 @@ export const module15Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Use boolean indexing — no loop",
-      "Do not modify df",
+      "Define high_items(frame)",
+      "Filter with revenue > 35",
       "Output must be exactly: ['book', 'bag']"
     ],
     "hints": [
-      "high = df[df[\"revenue\"] > 35]",
-      "print(high[\"item\"].tolist())"
+      "return frame[frame[\"revenue\"] > 35][\"item\"].tolist()"
     ],
-    "starterCode": "# TODO: keep the high-revenue rows\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n",
-    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nhigh = df[df[\"revenue\"] > 35]\nprint(high[\"item\"].tolist())",
+    "starterCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ndef high_items(frame):\n    pass\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ndef high_items(frame):\n    return frame[frame[\"revenue\"] > 35][\"item\"].tolist()\n\nprint(high_items(df))",
     "publicTests": [
       {
         "id": "m15-t3-p04-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "['book', 'bag']",
-        "visibility": "public"
+        "expectedStdout": "['book', 'bag']"
       },
       {
         "id": "m15-t3-p04-t2",
-        "label": "only rows above 35 kept",
-        "assertCode": "assert (df[df[\"revenue\"] > 35][\"item\"].tolist()) == ([\"book\", \"bag\"]), \"Expected \" + repr([\"book\", \"bag\"]) + \", got \" + repr(df[df[\"revenue\"] > 35][\"item\"].tolist())",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "sample frame",
+        "assertCode": "assert high_items(df) == [\"book\", \"bag\"], \"Expected ['book', 'bag'] for the sample frame\""
       },
       {
         "id": "m15-t3-p04-t3",
-        "label": "the original frame is unchanged",
-        "assertCode": "assert (len(df)) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(df))",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "another frame",
+        "assertCode": "other = pd.DataFrame({\"item\": [\"a\", \"b\"], \"revenue\": [10, 50]})\nassert high_items(other) == [\"b\"], \"Filter the argument, do not hardcode the sample items\""
       }
     ],
-    "approach": "Keep rows where revenue is above 35 and print the matching item names.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nhigh = df[df[\"revenue\"] > 35]\nprint(high[\"item\"].tolist())"
+    "approach": "Define high_items(frame) that returns item names where revenue is above 35. Print high_items(df).\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ndef high_items(frame):\n    return frame[frame[\"revenue\"] > 35][\"item\"].tolist()\n\nprint(high_items(df))"
   },
   {
     "id": "m15-t3-p05",
@@ -1781,21 +1765,13 @@ export const module15Practice: PracticeProblem[] = [
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Use .isin() to count how many rows are in the South region and print the count.",
+    "description": "Define south_count(frame) that uses .isin([\"South\"]) and returns how many rows match. Print south_count(df).",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use "
-        },
-        {
-          "type": "code",
-          "value": "df[\"region\"].isin([\"South\"])"
-        },
-        {
-          "type": "text",
-          "value": " to filter, then print how many rows matched."
+          "value": "Define south_count(frame) that uses .isin([\"South\"]) and returns how many rows match. Print south_count(df)."
         }
       ],
       "editorPlaceholder": "# south = df[df[\"region\"].isin([\"South\"])]",
@@ -1812,7 +1788,8 @@ export const module15Practice: PracticeProblem[] = [
           "It is much cleaner than chaining several == checks with |.",
           "len() of the filtered frame gives the count."
         ]
-      }
+      },
+      "requiresFunction": "south_count"
     },
     "examples": [
       {
@@ -1820,36 +1797,36 @@ export const module15Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Use .isin()",
+      "Define south_count(frame)",
+      "Use .isin([\"South\"])",
       "Output must be exactly: 2"
     ],
     "hints": [
-      "south = df[df[\"region\"].isin([\"South\"])]",
-      "print(len(south))"
+      "return len(frame[frame[\"region\"].isin([\"South\"])])"
     ],
-    "starterCode": "# TODO: count the South rows with isin\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n",
-    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nsouth = df[df[\"region\"].isin([\"South\"])]\nprint(len(south))",
+    "starterCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ndef south_count(frame):\n    pass\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ndef south_count(frame):\n    return len(frame[frame[\"region\"].isin([\"South\"])])\n\nprint(south_count(df))",
     "publicTests": [
       {
         "id": "m15-t3-p05-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "2",
-        "visibility": "public"
+        "expectedStdout": "2"
       },
       {
         "id": "m15-t3-p05-t2",
-        "label": "two South rows",
-        "assertCode": "assert (len(df[df[\"region\"].isin([\"South\"])])) == (2), \"Expected \" + repr(2) + \", got \" + repr(len(df[df[\"region\"].isin([\"South\"])]))",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "sample frame",
+        "assertCode": "assert south_count(df) == 2, \"Expected 2 South rows in the sample\""
       },
       {
         "id": "m15-t3-p05-t3",
-        "label": "isin also matches several values",
-        "assertCode": "assert (len(df[df[\"region\"].isin([\"South\", \"North\"])])) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(df[df[\"region\"].isin([\"South\", \"North\"])]))",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "another frame",
+        "assertCode": "other = pd.DataFrame({\"region\": [\"East\", \"South\"]})\nassert south_count(other) == 1, \"Count the argument, do not hardcode 2\""
       }
     ],
-    "approach": "Use .isin() to count how many rows are in the South region and print the count.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nsouth = df[df[\"region\"].isin([\"South\"])]\nprint(len(south))"
+    "approach": "Define south_count(frame) that uses .isin([\"South\"]) and returns how many rows match. Print south_count(df).\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ndef south_count(frame):\n    return len(frame[frame[\"region\"].isin([\"South\"])])\n\nprint(south_count(df))"
   },
   {
     "id": "m15-t3-p06",
@@ -1859,37 +1836,13 @@ export const module15Practice: PracticeProblem[] = [
     "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Combine two conditions with & to keep South rows above 25 revenue, then print the item names.",
+    "description": "Define south_above(frame, floor) that keeps South rows with revenue above floor using &. Print south_above(df, 25).",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Combine "
-        },
-        {
-          "type": "code",
-          "value": "df[\"revenue\"] > 25"
-        },
-        {
-          "type": "text",
-          "value": " and "
-        },
-        {
-          "type": "code",
-          "value": "df[\"region\"] == \"South\""
-        },
-        {
-          "type": "text",
-          "value": " with "
-        },
-        {
-          "type": "code",
-          "value": "&"
-        },
-        {
-          "type": "text",
-          "value": ", then print the matching item names."
+          "value": "Define south_above(frame, floor) that keeps South rows with revenue above floor using &. Print south_above(df, 25)."
         }
       ],
       "editorPlaceholder": "# matches = df[( ... ) & ( ... )]",
@@ -1905,7 +1858,8 @@ export const module15Practice: PracticeProblem[] = [
           "Use & for and, | for or — the words and/or do not work on Series.",
           "Wrap each condition in its own brackets, or precedence will bite you."
         ]
-      }
+      },
+      "requiresFunction": "south_above"
     },
     "examples": [
       {
@@ -1913,36 +1867,36 @@ export const module15Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
+      "Define south_above(frame, floor)",
       "Use & with each condition in brackets",
       "Output must be exactly: ['pen', 'bag']"
     ],
     "hints": [
-      "matches = df[(df[\"revenue\"] > 25) & (df[\"region\"] == \"South\")]",
-      "print(matches[\"item\"].tolist())"
+      "matches = frame[(frame[\"revenue\"] > floor) & (frame[\"region\"] == \"South\")]"
     ],
-    "starterCode": "# TODO: combine both conditions\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n",
-    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nmatches = df[(df[\"revenue\"] > 25) & (df[\"region\"] == \"South\")]\nprint(matches[\"item\"].tolist())",
+    "starterCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ndef south_above(frame, floor):\n    pass\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ndef south_above(frame, floor):\n    matches = frame[(frame[\"revenue\"] > floor) & (frame[\"region\"] == \"South\")]\n    return matches[\"item\"].tolist()\n\nprint(south_above(df, 25))",
     "publicTests": [
       {
         "id": "m15-t3-p06-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "['pen', 'bag']",
-        "visibility": "public"
+        "expectedStdout": "['pen', 'bag']"
       },
       {
         "id": "m15-t3-p06-t2",
-        "label": "both conditions applied",
-        "assertCode": "assert ((df[(df[\"revenue\"] > 25) & (df[\"region\"] == \"South\")])[\"item\"].tolist()) == ([\"pen\", \"bag\"]), \"Expected \" + repr([\"pen\", \"bag\"]) + \", got \" + repr((df[(df[\"revenue\"] > 25) & (df[\"region\"] == \"South\")])[\"item\"].tolist())",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "sample frame",
+        "assertCode": "assert south_above(df, 25) == [\"pen\", \"bag\"], \"Expected ['pen', 'bag'] for floor 25\""
       },
       {
         "id": "m15-t3-p06-t3",
-        "label": "the North row was excluded",
-        "assertCode": "assert (len(df[(df[\"revenue\"] > 25) & (df[\"region\"] == \"South\")])) == (2), \"Expected \" + repr(2) + \", got \" + repr(len(df[(df[\"revenue\"] > 25) & (df[\"region\"] == \"South\")]))",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "a higher floor",
+        "assertCode": "assert south_above(df, 50) == [\"bag\"], \"Only bag is South and above 50\""
       }
     ],
-    "approach": "Combine two conditions with & to keep South rows above 25 revenue, then print the item names.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nmatches = df[(df[\"revenue\"] > 25) & (df[\"region\"] == \"South\")]\nprint(matches[\"item\"].tolist())"
+    "approach": "Define south_above(frame, floor) that keeps South rows with revenue above floor using &. Print south_above(df, 25).\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ndef south_above(frame, floor):\n    matches = frame[(frame[\"revenue\"] > floor) & (frame[\"region\"] == \"South\")]\n    return matches[\"item\"].tolist()\n\nprint(south_above(df, 25))"
   },
   {
     "id": "m15-t3-p07",
@@ -2663,29 +2617,13 @@ export const module15Practice: PracticeProblem[] = [
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Group by region, sum the revenue, and print the result as a dict of ints.",
+    "description": "Define region_totals(frame) that groups by region, sums revenue, and returns a dict of ints. Print region_totals(df).",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Group with "
-        },
-        {
-          "type": "code",
-          "value": "df.groupby(\"region\")[\"revenue\"].sum()"
-        },
-        {
-          "type": "text",
-          "value": ", then print "
-        },
-        {
-          "type": "code",
-          "value": "{k: int(v) for k, v in totals.items()}"
-        },
-        {
-          "type": "text",
-          "value": " so the numbers print as plain ints."
+          "value": "Define region_totals(frame) that groups by region, sums revenue, and returns a dict of ints. Print region_totals(df)."
         }
       ],
       "editorPlaceholder": "# totals = df.groupby(\"region\")[\"revenue\"].sum()",
@@ -2693,8 +2631,7 @@ export const module15Practice: PracticeProblem[] = [
       "successDetail": "Correct!",
       "requiresVariables": [
         "pd",
-        "df",
-        "totals"
+        "df"
       ],
       "steps": {
         "title": "What you need to know",
@@ -2703,7 +2640,8 @@ export const module15Practice: PracticeProblem[] = [
           "Groups come back sorted by key, so North comes before South.",
           "int(v) keeps the printed dict free of NumPy types."
         ]
-      }
+      },
+      "requiresFunction": "region_totals"
     },
     "examples": [
       {
@@ -2711,43 +2649,36 @@ export const module15Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
+      "Define region_totals(frame)",
       "Use groupby",
-      "Convert values with int() when printing",
       "Output must be exactly: {'North': 40, 'South': 100}"
     ],
     "hints": [
-      "totals = df.groupby(\"region\")[\"revenue\"].sum()",
-      "print({k: int(v) for k, v in totals.items()})"
+      "totals = frame.groupby(\"region\")[\"revenue\"].sum()"
     ],
-    "starterCode": "# TODO: sum revenue per region\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ntotals = None\n",
-    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ntotals = df.groupby(\"region\")[\"revenue\"].sum()\nprint({k: int(v) for k, v in totals.items()})",
+    "starterCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ndef region_totals(frame):\n    pass\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ndef region_totals(frame):\n    totals = frame.groupby(\"region\")[\"revenue\"].sum()\n    return {k: int(v) for k, v in totals.items()}\n\nprint(region_totals(df))",
     "publicTests": [
       {
         "id": "m15-t5-p01-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "{'North': 40, 'South': 100}",
-        "visibility": "public"
+        "expectedStdout": "{'North': 40, 'South': 100}"
       },
       {
         "id": "m15-t5-p01-t2",
-        "label": "South total",
-        "assertCode": "assert (int(totals[\"South\"])) == (100), \"Expected \" + repr(100) + \", got \" + repr(int(totals[\"South\"]))",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "sample frame",
+        "assertCode": "assert region_totals(df) == {\"North\": 40, \"South\": 100}"
       },
       {
         "id": "m15-t5-p01-t3",
-        "label": "North total",
-        "assertCode": "assert (int(totals[\"North\"])) == (40), \"Expected \" + repr(40) + \", got \" + repr(int(totals[\"North\"]))",
-        "visibility": "public"
-      },
-      {
-        "id": "m15-t5-p01-t4",
-        "label": "one row per region",
-        "assertCode": "assert (len(totals)) == (2), \"Expected \" + repr(2) + \", got \" + repr(len(totals))",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "another frame",
+        "assertCode": "other = pd.DataFrame({\"region\": [\"East\", \"East\"], \"revenue\": [5, 7]})\nassert region_totals(other) == {\"East\": 12}, \"Group the argument, do not hardcode North/South\""
       }
     ],
-    "approach": "Group by region, sum the revenue, and print the result as a dict of ints.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ntotals = df.groupby(\"region\")[\"revenue\"].sum()\nprint({k: int(v) for k, v in totals.items()})"
+    "approach": "Define region_totals(frame) that groups by region, sums revenue, and returns a dict of ints. Print region_totals(df).\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ndef region_totals(frame):\n    totals = frame.groupby(\"region\")[\"revenue\"].sum()\n    return {k: int(v) for k, v in totals.items()}\n\nprint(region_totals(df))"
   },
   {
     "id": "m15-t5-p02",

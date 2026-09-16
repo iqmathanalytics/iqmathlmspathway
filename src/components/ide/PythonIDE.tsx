@@ -161,7 +161,7 @@ export function PythonIDE({
       <div
         className={
           fill
-            ? "min-h-0 flex-[1.35] border-b border-sky-200 bg-sky-50"
+            ? "min-h-0 flex-[1.35] overflow-hidden border-b border-sky-200 bg-sky-50"
             : "border-b border-sky-200 bg-sky-50"
         }
       >
@@ -175,7 +175,7 @@ export function PythonIDE({
           theme="light"
           className={
             fill
-              ? "h-full bg-sky-50 [&_.cm-editor]:h-full [&_.cm-editor]:bg-sky-50 [&_.cm-scroller]:bg-sky-50"
+              ? "h-full min-h-0 bg-sky-50 [&_.cm-editor]:h-full [&_.cm-editor]:bg-sky-50 [&_.cm-scroller]:overflow-auto [&_.cm-scroller]:bg-sky-50"
               : "bg-sky-50 [&_.cm-editor]:bg-sky-50 [&_.cm-scroller]:bg-sky-50"
           }
         />

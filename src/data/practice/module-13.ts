@@ -281,61 +281,18 @@ export const module13Practice: PracticeProblem[] = [
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Write a small CSV with a header, then read it back skipping the header and print the total amount.",
+    "description": "Write sales.csv with a header plus two amount rows. Define total_amount(path) that skips the header and returns the sum. Print total_amount(\"sales.csv\").",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write this CSV to "
-        },
-        {
-          "type": "code",
-          "value": "sales.csv"
-        },
-        {
-          "type": "text",
-          "value": ": header "
-        },
-        {
-          "type": "code",
-          "value": "item,amount"
-        },
-        {
-          "type": "text",
-          "value": ", then "
-        },
-        {
-          "type": "code",
-          "value": "pen,30"
-        },
-        {
-          "type": "text",
-          "value": " and "
-        },
-        {
-          "type": "code",
-          "value": "book,70"
-        },
-        {
-          "type": "text",
-          "value": ". Read it back, skip the header, and print the total in "
-        },
-        {
-          "type": "code",
-          "value": "total"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Write sales.csv with a header plus two amount rows. Define total_amount(path) that skips the header and returns the sum. Print total_amount(\"sales.csv\")."
         }
       ],
       "editorPlaceholder": "# total = 0",
       "emptyMessage": "Write your solution, then print the result.",
       "successDetail": "Correct!",
-      "requiresVariables": [
-        "total"
-      ],
       "steps": {
         "title": "What you need to know",
         "items": [
@@ -343,7 +300,9 @@ export const module13Practice: PracticeProblem[] = [
           "The amount is the second field, so index 1 — convert it with int().",
           "Skip the header row before adding anything up."
         ]
-      }
+      },
+      "requiresFunction": "total_amount",
+      "requiresForLoop": true
     },
     "examples": [
       {
@@ -351,43 +310,36 @@ export const module13Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
+      "Define total_amount(path)",
       "Skip the header row",
-      "Convert each amount with int()",
-      "Store the running total in total"
+      "Output must be exactly: 100"
     ],
     "hints": [
-      "rows = f.read().splitlines()[1:] drops the header",
-      "total += int(row.split(\",\")[1])"
+      "rows = f.read().splitlines()[1:] drops the header"
     ],
-    "starterCode": "# TODO: write the CSV, then total the amount column\nwith open(\"sales.csv\", \"w\") as f:\n    f.write(\"item,amount\\npen,30\\nbook,70\\n\")\n\ntotal = 0\n",
-    "solutionCode": "with open(\"sales.csv\", \"w\") as f:\n    f.write(\"item,amount\\npen,30\\nbook,70\\n\")\n\ntotal = 0\nwith open(\"sales.csv\") as f:\n    rows = f.read().splitlines()[1:]\n\nfor row in rows:\n    total += int(row.split(\",\")[1])\n\nprint(total)",
+    "starterCode": "# TODO: write the CSV, then total the amount column\ndef total_amount(path):\n    pass\n",
+    "solutionCode": "with open(\"sales.csv\", \"w\") as f:\n    f.write(\"item,amount\\npen,30\\nbook,70\\n\")\n\ndef total_amount(path):\n    with open(path) as f:\n        rows = f.read().splitlines()[1:]\n    return sum(int(row.split(\",\")[1]) for row in rows)\n\nprint(total_amount(\"sales.csv\"))",
     "publicTests": [
       {
         "id": "m13-t1-p04-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "100",
-        "visibility": "public"
+        "expectedStdout": "100"
       },
       {
         "id": "m13-t1-p04-t2",
-        "label": "total is the sum of the column",
-        "assertCode": "assert (total) == (100), \"Expected \" + repr(100) + \", got \" + repr(total)",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "totals the sample file",
+        "assertCode": "assert total_amount(\"sales.csv\") == 100, \"Expected 100 for sales.csv\""
       },
       {
         "id": "m13-t1-p04-t3",
-        "label": "total has the right type",
-        "assertCode": "assert \"total\" in globals(), \"Expected a variable named total\"\nassert isinstance(total, int), \"Expected total to be int, got \" + type(total).__name__",
-        "visibility": "public"
-      },
-      {
-        "id": "m13-t1-p04-t4",
-        "label": "the CSV still has a header plus two rows",
-        "assertCode": "assert (len(open(\"sales.csv\").read().splitlines())) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(open(\"sales.csv\").read().splitlines()))",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "totals a different CSV too",
+        "assertCode": "open(\"extra.csv\", \"w\").write(\"item,amount\\na,1\\nb,2\\n\")\nassert total_amount(\"extra.csv\") == 3, \"Expected 3 for extra.csv\""
       }
     ],
-    "approach": "Write a small CSV with a header, then read it back skipping the header and print the total amount.\n\nReference solution:\nwith open(\"sales.csv\", \"w\") as f:\n    f.write(\"item,amount\\npen,30\\nbook,70\\n\")\n\ntotal = 0\nwith open(\"sales.csv\") as f:\n    rows = f.read().splitlines()[1:]\n\nfor row in rows:\n    total += int(row.split(\",\")[1])\n\nprint(total)"
+    "approach": "Write sales.csv with a header plus two amount rows. Define total_amount(path) that skips the header and returns the sum. Print total_amount(\"sales.csv\").\n\nReference solution:\nwith open(\"sales.csv\", \"w\") as f:\n    f.write(\"item,amount\\npen,30\\nbook,70\\n\")\n\ndef total_amount(path):\n    with open(path) as f:\n        rows = f.read().splitlines()[1:]\n    return sum(int(row.split(\",\")[1]) for row in rows)\n\nprint(total_amount(\"sales.csv\"))"
   },
   {
     "id": "m13-t1-p05",
@@ -520,23 +472,7 @@ export const module13Practice: PracticeProblem[] = [
       "introSegments": [
         {
           "type": "text",
-          "value": "Write "
-        },
-        {
-          "type": "code",
-          "value": "pen, book, bag"
-        },
-        {
-          "type": "text",
-          "value": " as three lines in "
-        },
-        {
-          "type": "code",
-          "value": "products.txt"
-        },
-        {
-          "type": "text",
-          "value": ", then loop over the file object and print each name uppercased."
+          "value": "Write three product names to products.txt, then loop over the file object and print each name in uppercase."
         }
       ],
       "editorPlaceholder": "# for line in f:",
@@ -548,7 +484,8 @@ export const module13Practice: PracticeProblem[] = [
           "for line in f: reads one line at a time — memory friendly for big files.",
           "Each line ends with a newline, so call .strip() before .upper()."
         ]
-      }
+      },
+      "requiresForLoop": true
     },
     "examples": [
       {
@@ -561,23 +498,22 @@ export const module13Practice: PracticeProblem[] = [
       "One uppercase name per line"
     ],
     "hints": [
-      "for line in f:",
-      "print(line.strip().upper())"
+      "for line in f:"
     ],
     "starterCode": "# TODO: write the products, then print each in uppercase\nwith open(\"products.txt\", \"w\") as f:\n    f.write(\"pen\\nbook\\nbag\\n\")\n",
     "solutionCode": "with open(\"products.txt\", \"w\") as f:\n    f.write(\"pen\\nbook\\nbag\\n\")\n\nwith open(\"products.txt\") as f:\n    for line in f:\n        print(line.strip().upper())",
     "publicTests": [
       {
         "id": "m13-t1-p06-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "PEN\nBOOK\nBAG",
-        "visibility": "public"
+        "expectedStdout": "PEN\nBOOK\nBAG"
       },
       {
         "id": "m13-t1-p06-t2",
-        "label": "file holds the three products in order",
-        "assertCode": "assert (open(\"products.txt\").read().splitlines()) == ([\"pen\", \"book\", \"bag\"]), \"Expected \" + repr([\"pen\", \"book\", \"bag\"]) + \", got \" + repr(open(\"products.txt\").read().splitlines())",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "the file holds the original names",
+        "assertCode": "assert open(\"products.txt\").read().splitlines() == [\"pen\", \"book\", \"bag\"], \"Write the lowercase names to the file, then upper them while printing\""
       }
     ],
     "approach": "Write three product names to products.txt, then loop over the file object and print each name in uppercase.\n\nReference solution:\nwith open(\"products.txt\", \"w\") as f:\n    f.write(\"pen\\nbook\\nbag\\n\")\n\nwith open(\"products.txt\") as f:\n    for line in f:\n        print(line.strip().upper())"
@@ -1350,60 +1286,28 @@ export const module13Practice: PracticeProblem[] = [
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Divide 10 by 0 inside try, set message to \"Cannot divide by zero\" in the except block, and print it.",
+    "description": "Define describe_divide(a, b) that returns a / b, or \"Cannot divide by zero\" when ZeroDivisionError is raised. Print describe_divide(10, 0).",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Put "
-        },
-        {
-          "type": "code",
-          "value": "10 / 0"
-        },
-        {
-          "type": "text",
-          "value": " inside a "
-        },
-        {
-          "type": "code",
-          "value": "try"
-        },
-        {
-          "type": "text",
-          "value": " block. In "
-        },
-        {
-          "type": "code",
-          "value": "except ZeroDivisionError"
-        },
-        {
-          "type": "text",
-          "value": ", set "
-        },
-        {
-          "type": "code",
-          "value": "message"
-        },
-        {
-          "type": "text",
-          "value": " to \"Cannot divide by zero\", then print it."
+          "value": "Define describe_divide(a, b) that returns a / b, or \"Cannot divide by zero\" when ZeroDivisionError is raised. Print describe_divide(10, 0)."
         }
       ],
       "editorPlaceholder": "# try: 10 / 0",
       "emptyMessage": "Write your solution, then print the result.",
       "successDetail": "Correct!",
-      "requiresVariables": [
-        "message"
-      ],
       "steps": {
         "title": "What you need to know",
         "items": [
           "An uncaught error stops the whole program — catching it keeps you running.",
           "Name the specific error type so unrelated bugs still surface."
         ]
-      }
+      },
+      "requiresFunction": "describe_divide",
+      "requiresTry": true,
+      "requiresExcept": true
     },
     "examples": [
       {
@@ -1411,37 +1315,36 @@ export const module13Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Use try / except ZeroDivisionError",
-      "Set message inside the except block",
+      "Define describe_divide(a, b)",
+      "Catch ZeroDivisionError",
       "Output must be exactly: Cannot divide by zero"
     ],
     "hints": [
-      "try:\n    value = 10 / 0",
-      "except ZeroDivisionError:\n    message = \"Cannot divide by zero\""
+      "try:\n    return a / b\nexcept ZeroDivisionError:"
     ],
-    "starterCode": "# TODO: catch the division error and set message\nmessage = \"\"\n\ntry:\n    pass\nexcept ZeroDivisionError:\n    pass\n",
-    "solutionCode": "message = \"\"\n\ntry:\n    value = 10 / 0\nexcept ZeroDivisionError:\n    message = \"Cannot divide by zero\"\n\nprint(message)",
+    "starterCode": "# TODO: return the quotient, or a message when b is 0\ndef describe_divide(a, b):\n    pass\n",
+    "solutionCode": "def describe_divide(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return \"Cannot divide by zero\"\n\nprint(describe_divide(10, 0))",
     "publicTests": [
       {
         "id": "m13-t3-p01-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "Cannot divide by zero",
-        "visibility": "public"
+        "expectedStdout": "Cannot divide by zero"
       },
       {
         "id": "m13-t3-p01-t2",
-        "label": "message was set by the except block",
-        "assertCode": "assert (message) == (\"Cannot divide by zero\"), \"Expected \" + repr(\"Cannot divide by zero\") + \", got \" + repr(message)",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "zero divisor is handled",
+        "assertCode": "assert describe_divide(10, 0) == \"Cannot divide by zero\", \"Expected the error message when dividing by zero\""
       },
       {
         "id": "m13-t3-p01-t3",
-        "label": "ZeroDivisionError really is the right error",
-        "assertCode": "assert issubclass(ZeroDivisionError, ArithmeticError), \"ZeroDivisionError is the error Python raises for x / 0\"",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "normal division still works",
+        "assertCode": "assert describe_divide(10, 2) == 5.0, \"Expected 5.0 for 10 / 2\""
       }
     ],
-    "approach": "Divide 10 by 0 inside try, set message to \"Cannot divide by zero\" in the except block, and print it.\n\nReference solution:\nmessage = \"\"\n\ntry:\n    value = 10 / 0\nexcept ZeroDivisionError:\n    message = \"Cannot divide by zero\"\n\nprint(message)"
+    "approach": "Define describe_divide(a, b) that returns a / b, or \"Cannot divide by zero\" when ZeroDivisionError is raised. Print describe_divide(10, 0).\n\nReference solution:\ndef describe_divide(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return \"Cannot divide by zero\"\n\nprint(describe_divide(10, 0))"
   },
   {
     "id": "m13-t3-p02",
@@ -1451,53 +1354,28 @@ export const module13Practice: PracticeProblem[] = [
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Convert \"abc\" with int() inside try and set status to \"invalid number\" when ValueError is raised.",
+    "description": "Define parse_number(raw) that returns int(raw), or \"invalid number\" when ValueError is raised. Print parse_number(\"abc\").",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Calling "
-        },
-        {
-          "type": "code",
-          "value": "int(\"abc\")"
-        },
-        {
-          "type": "text",
-          "value": " raises "
-        },
-        {
-          "type": "code",
-          "value": "ValueError"
-        },
-        {
-          "type": "text",
-          "value": ". Catch it and set "
-        },
-        {
-          "type": "code",
-          "value": "status"
-        },
-        {
-          "type": "text",
-          "value": " to \"invalid number\", then print status."
+          "value": "Define parse_number(raw) that returns int(raw), or \"invalid number\" when ValueError is raised. Print parse_number(\"abc\")."
         }
       ],
       "editorPlaceholder": "# try: int(raw)",
       "emptyMessage": "Write your solution, then print the result.",
       "successDetail": "Correct!",
-      "requiresVariables": [
-        "raw",
-        "status"
-      ],
       "steps": {
         "title": "What you need to know",
         "items": [
           "Dirty data is the usual source of ValueError when casting.",
           "Catching it lets you flag the row instead of crashing the run."
         ]
-      }
+      },
+      "requiresFunction": "parse_number",
+      "requiresTry": true,
+      "requiresExcept": true
     },
     "examples": [
       {
@@ -1505,37 +1383,36 @@ export const module13Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Use try / except ValueError",
-      "Convert raw with int() inside the try",
+      "Define parse_number(raw)",
+      "Catch ValueError",
       "Output must be exactly: invalid number"
     ],
     "hints": [
-      "try:\n    number = int(raw)",
-      "except ValueError:\n    status = \"invalid number\""
+      "try:\n    return int(raw)\nexcept ValueError:"
     ],
-    "starterCode": "# TODO: catch the bad conversion\nraw = \"abc\"\nstatus = \"ok\"\n\ntry:\n    pass\nexcept ValueError:\n    pass\n",
-    "solutionCode": "raw = \"abc\"\nstatus = \"ok\"\n\ntry:\n    number = int(raw)\nexcept ValueError:\n    status = \"invalid number\"\n\nprint(status)",
+    "starterCode": "# TODO: convert raw to int, or report invalid number\ndef parse_number(raw):\n    pass\n",
+    "solutionCode": "def parse_number(raw):\n    try:\n        return int(raw)\n    except ValueError:\n        return \"invalid number\"\n\nprint(parse_number(\"abc\"))",
     "publicTests": [
       {
         "id": "m13-t3-p02-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "invalid number",
-        "visibility": "public"
+        "expectedStdout": "invalid number"
       },
       {
         "id": "m13-t3-p02-t2",
-        "label": "status was flipped by the except block",
-        "assertCode": "assert (status) == (\"invalid number\"), \"Expected \" + repr(\"invalid number\") + \", got \" + repr(status)",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "bad text is handled",
+        "assertCode": "assert parse_number(\"abc\") == \"invalid number\", \"Expected invalid number for abc\""
       },
       {
         "id": "m13-t3-p02-t3",
-        "label": "the raw value is untouched",
-        "assertCode": "assert (raw) == (\"abc\"), \"Expected \" + repr(\"abc\") + \", got \" + repr(raw)",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "digits still parse",
+        "assertCode": "assert parse_number(\"42\") == 42, \"Expected 42 for \\\"42\\\"\""
       }
     ],
-    "approach": "Convert \"abc\" with int() inside try and set status to \"invalid number\" when ValueError is raised.\n\nReference solution:\nraw = \"abc\"\nstatus = \"ok\"\n\ntry:\n    number = int(raw)\nexcept ValueError:\n    status = \"invalid number\"\n\nprint(status)"
+    "approach": "Define parse_number(raw) that returns int(raw), or \"invalid number\" when ValueError is raised. Print parse_number(\"abc\").\n\nReference solution:\ndef parse_number(raw):\n    try:\n        return int(raw)\n    except ValueError:\n        return \"invalid number\"\n\nprint(parse_number(\"abc\"))"
   },
   {
     "id": "m13-t3-p03",
@@ -1545,68 +1422,30 @@ export const module13Practice: PracticeProblem[] = [
     "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Record the order of a try block and a finally block in a list named steps, then print the list.",
+    "description": "Define record_steps(fail=False) that appends open, appends error if fail is True, and always appends close in finally. Print record_steps().",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Append "
-        },
-        {
-          "type": "code",
-          "value": "\"open\""
-        },
-        {
-          "type": "text",
-          "value": " inside "
-        },
-        {
-          "type": "code",
-          "value": "try"
-        },
-        {
-          "type": "text",
-          "value": " and "
-        },
-        {
-          "type": "code",
-          "value": "\"close\""
-        },
-        {
-          "type": "text",
-          "value": " inside "
-        },
-        {
-          "type": "code",
-          "value": "finally"
-        },
-        {
-          "type": "text",
-          "value": ", then print "
-        },
-        {
-          "type": "code",
-          "value": "steps"
-        },
-        {
-          "type": "text",
-          "value": " to prove cleanup ran."
+          "value": "Define record_steps(fail=False) that appends open, appends error if fail is True, and always appends close in finally. Print record_steps()."
         }
       ],
       "editorPlaceholder": "# try: steps.append('open')",
       "emptyMessage": "Write your solution, then print the result.",
       "successDetail": "Correct!",
-      "requiresVariables": [
-        "steps"
-      ],
       "steps": {
         "title": "What you need to know",
         "items": [
           "finally runs whether or not an error happened.",
           "That is why it is the right place to close files and connections."
         ]
-      }
+      },
+      "requiresFunction": "record_steps",
+      "requiresIfCondition": true,
+      "requiresTry": true,
+      "requiresExcept": true,
+      "requiresFinally": true
     },
     "examples": [
       {
@@ -1614,37 +1453,36 @@ export const module13Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Use try / finally",
-      "Append \"open\" in try and \"close\" in finally",
+      "Define record_steps(fail=False)",
+      "Use try, except, and finally",
       "Output must be exactly: ['open', 'close']"
     ],
     "hints": [
-      "steps.append(\"open\") inside try",
-      "steps.append(\"close\") inside finally"
+      "finally:\n    steps.append(\"close\")"
     ],
-    "starterCode": "# TODO: record both steps in order\nsteps = []\n\ntry:\n    pass\nfinally:\n    pass\n",
-    "solutionCode": "steps = []\n\ntry:\n    steps.append(\"open\")\nfinally:\n    steps.append(\"close\")\n\nprint(steps)",
+    "starterCode": "# TODO: try / except / finally around the step list\ndef record_steps(fail=False):\n    pass\n",
+    "solutionCode": "def record_steps(fail=False):\n    steps = []\n    try:\n        steps.append(\"open\")\n        if fail:\n            raise RuntimeError(\"boom\")\n    except RuntimeError:\n        steps.append(\"error\")\n    finally:\n        steps.append(\"close\")\n    return steps\n\nprint(record_steps())",
     "publicTests": [
       {
         "id": "m13-t3-p03-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "['open', 'close']",
-        "visibility": "public"
+        "expectedStdout": "['open', 'close']"
       },
       {
         "id": "m13-t3-p03-t2",
-        "label": "both blocks ran in order",
-        "assertCode": "assert (steps) == ([\"open\", \"close\"]), \"Expected \" + repr([\"open\", \"close\"]) + \", got \" + repr(steps)",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "happy path records open then close",
+        "assertCode": "assert record_steps() == [\"open\", \"close\"], \"Expected ['open', 'close'] when fail is False\""
       },
       {
         "id": "m13-t3-p03-t3",
-        "label": "steps has the right type",
-        "assertCode": "assert \"steps\" in globals(), \"Expected a variable named steps\"\nassert isinstance(steps, list), \"Expected steps to be list, got \" + type(steps).__name__",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "finally still runs after an error",
+        "assertCode": "assert record_steps(True) == [\"open\", \"error\", \"close\"], \"finally must append close even when fail is True\""
       }
     ],
-    "approach": "Record the order of a try block and a finally block in a list named steps, then print the list.\n\nReference solution:\nsteps = []\n\ntry:\n    steps.append(\"open\")\nfinally:\n    steps.append(\"close\")\n\nprint(steps)"
+    "approach": "Define record_steps(fail=False) that appends open, appends error if fail is True, and always appends close in finally. Print record_steps().\n\nReference solution:\ndef record_steps(fail=False):\n    steps = []\n    try:\n        steps.append(\"open\")\n        if fail:\n            raise RuntimeError(\"boom\")\n    except RuntimeError:\n        steps.append(\"error\")\n    finally:\n        steps.append(\"close\")\n    return steps\n\nprint(record_steps())"
   },
   {
     "id": "m13-t3-p04",
@@ -1654,53 +1492,28 @@ export const module13Practice: PracticeProblem[] = [
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Read a missing key from a dict inside try and set region to \"unknown\" when KeyError is raised.",
+    "description": "Define region_of(row) that returns row[\"region\"], or \"unknown\" when KeyError is raised. Print region_of({\"item\": \"pen\", \"revenue\": 30}).",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Read "
-        },
-        {
-          "type": "code",
-          "value": "row[\"region\"]"
-        },
-        {
-          "type": "text",
-          "value": " from a row that has no region. Catch "
-        },
-        {
-          "type": "code",
-          "value": "KeyError"
-        },
-        {
-          "type": "text",
-          "value": " and set "
-        },
-        {
-          "type": "code",
-          "value": "region"
-        },
-        {
-          "type": "text",
-          "value": " to \"unknown\", then print it."
+          "value": "Define region_of(row) that returns row[\"region\"], or \"unknown\" when KeyError is raised. Print region_of({\"item\": \"pen\", \"revenue\": 30})."
         }
       ],
       "editorPlaceholder": "# try: row['region']",
       "emptyMessage": "Write your solution, then print the result.",
       "successDetail": "Correct!",
-      "requiresVariables": [
-        "row",
-        "region"
-      ],
       "steps": {
         "title": "What you need to know",
         "items": [
           "Square-bracket access raises KeyError when the key is absent.",
           "Catching it is how you survive incomplete records."
         ]
-      }
+      },
+      "requiresFunction": "region_of",
+      "requiresTry": true,
+      "requiresExcept": true
     },
     "examples": [
       {
@@ -1708,37 +1521,36 @@ export const module13Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Use try / except KeyError",
-      "Do not add the missing key to the dict",
+      "Define region_of(row)",
+      "Catch KeyError — do not add a region key",
       "Output must be exactly: unknown"
     ],
     "hints": [
-      "try:\n    region = row[\"region\"]",
-      "except KeyError:\n    region = \"unknown\""
+      "try:\n    return row[\"region\"]\nexcept KeyError:"
     ],
-    "starterCode": "# TODO: handle the missing key\nrow = {\"item\": \"pen\", \"revenue\": 30}\nregion = \"\"\n\ntry:\n    pass\nexcept KeyError:\n    pass\n",
-    "solutionCode": "row = {\"item\": \"pen\", \"revenue\": 30}\nregion = \"\"\n\ntry:\n    region = row[\"region\"]\nexcept KeyError:\n    region = \"unknown\"\n\nprint(region)",
+    "starterCode": "# TODO: read region, or unknown if the key is missing\ndef region_of(row):\n    pass\n",
+    "solutionCode": "def region_of(row):\n    try:\n        return row[\"region\"]\n    except KeyError:\n        return \"unknown\"\n\nprint(region_of({\"item\": \"pen\", \"revenue\": 30}))",
     "publicTests": [
       {
         "id": "m13-t3-p04-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "unknown",
-        "visibility": "public"
+        "expectedStdout": "unknown"
       },
       {
         "id": "m13-t3-p04-t2",
-        "label": "region fell back to unknown",
-        "assertCode": "assert (region) == (\"unknown\"), \"Expected \" + repr(\"unknown\") + \", got \" + repr(region)",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "missing key is handled",
+        "assertCode": "assert region_of({\"item\": \"pen\"}) == \"unknown\", \"Expected unknown when region is missing\""
       },
       {
         "id": "m13-t3-p04-t3",
-        "label": "the row really has no region key",
-        "assertCode": "assert \"region\" not in row, \"Do not add a region key to the row — handle the KeyError instead\"",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "present key is returned",
+        "assertCode": "assert region_of({\"region\": \"South\"}) == \"South\", \"Expected South when the key exists\""
       }
     ],
-    "approach": "Read a missing key from a dict inside try and set region to \"unknown\" when KeyError is raised.\n\nReference solution:\nrow = {\"item\": \"pen\", \"revenue\": 30}\nregion = \"\"\n\ntry:\n    region = row[\"region\"]\nexcept KeyError:\n    region = \"unknown\"\n\nprint(region)"
+    "approach": "Define region_of(row) that returns row[\"region\"], or \"unknown\" when KeyError is raised. Print region_of({\"item\": \"pen\", \"revenue\": 30}).\n\nReference solution:\ndef region_of(row):\n    try:\n        return row[\"region\"]\n    except KeyError:\n        return \"unknown\"\n\nprint(region_of({\"item\": \"pen\", \"revenue\": 30}))"
   },
   {
     "id": "m13-t3-p05",
@@ -1748,69 +1560,28 @@ export const module13Practice: PracticeProblem[] = [
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Use try / except / else so the else branch reports a successful conversion of \"42\".",
+    "description": "Define parse_outcome(raw) using try / except / else: return \"invalid\" on ValueError, otherwise return f\"parsed {number}\". Print parse_outcome(\"42\").",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Convert "
-        },
-        {
-          "type": "code",
-          "value": "\"42\""
-        },
-        {
-          "type": "text",
-          "value": " with "
-        },
-        {
-          "type": "code",
-          "value": "int()"
-        },
-        {
-          "type": "text",
-          "value": ". Set "
-        },
-        {
-          "type": "code",
-          "value": "outcome"
-        },
-        {
-          "type": "text",
-          "value": " to \"invalid\" in except and to "
-        },
-        {
-          "type": "code",
-          "value": "f\"parsed {number}\""
-        },
-        {
-          "type": "text",
-          "value": " in the "
-        },
-        {
-          "type": "code",
-          "value": "else"
-        },
-        {
-          "type": "text",
-          "value": " branch, then print it."
+          "value": "Define parse_outcome(raw) using try / except / else: return \"invalid\" on ValueError, otherwise return f\"parsed {number}\". Print parse_outcome(\"42\")."
         }
       ],
       "editorPlaceholder": "# else: outcome = ...",
       "emptyMessage": "Write your solution, then print the result.",
       "successDetail": "Correct!",
-      "requiresVariables": [
-        "raw",
-        "outcome"
-      ],
       "steps": {
         "title": "What you need to know",
         "items": [
           "else runs only when the try block raised nothing.",
           "Keeping the success path in else makes the happy path obvious."
         ]
-      }
+      },
+      "requiresFunction": "parse_outcome",
+      "requiresTry": true,
+      "requiresExcept": true
     },
     "examples": [
       {
@@ -1818,42 +1589,36 @@ export const module13Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Use try / except ValueError / else",
-      "Build the message with an f-string in else",
+      "Define parse_outcome(raw)",
+      "Use the else branch for the success message",
       "Output must be exactly: parsed 42"
     ],
     "hints": [
-      "else:\n    outcome = f\"parsed {number}\""
+      "else:\n        return f\"parsed {number}\""
     ],
-    "starterCode": "# TODO: report success from the else branch\nraw = \"42\"\noutcome = \"\"\n\ntry:\n    pass\nexcept ValueError:\n    pass\nelse:\n    pass\n",
-    "solutionCode": "raw = \"42\"\noutcome = \"\"\n\ntry:\n    number = int(raw)\nexcept ValueError:\n    outcome = \"invalid\"\nelse:\n    outcome = f\"parsed {number}\"\n\nprint(outcome)",
+    "starterCode": "# TODO: use try / except / else\ndef parse_outcome(raw):\n    pass\n",
+    "solutionCode": "def parse_outcome(raw):\n    try:\n        number = int(raw)\n    except ValueError:\n        return \"invalid\"\n    else:\n        return f\"parsed {number}\"\n\nprint(parse_outcome(\"42\"))",
     "publicTests": [
       {
         "id": "m13-t3-p05-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "parsed 42",
-        "visibility": "public"
+        "expectedStdout": "parsed 42"
       },
       {
         "id": "m13-t3-p05-t2",
-        "label": "else branch produced the message",
-        "assertCode": "assert (outcome) == (\"parsed 42\"), \"Expected \" + repr(\"parsed 42\") + \", got \" + repr(outcome)",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "digits use the else branch",
+        "assertCode": "assert parse_outcome(\"42\") == \"parsed 42\", \"Expected parsed 42\""
       },
       {
         "id": "m13-t3-p05-t3",
-        "label": "the conversion really happened",
-        "assertCode": "assert (number) == (42), \"Expected \" + repr(42) + \", got \" + repr(number)",
-        "visibility": "public"
-      },
-      {
-        "id": "m13-t3-p05-t4",
-        "label": "number has the right type",
-        "assertCode": "assert \"number\" in globals(), \"Expected a variable named number\"\nassert isinstance(number, int), \"Expected number to be int, got \" + type(number).__name__",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "bad text uses except",
+        "assertCode": "assert parse_outcome(\"x\") == \"invalid\", \"Expected invalid for x\""
       }
     ],
-    "approach": "Use try / except / else so the else branch reports a successful conversion of \"42\".\n\nReference solution:\nraw = \"42\"\noutcome = \"\"\n\ntry:\n    number = int(raw)\nexcept ValueError:\n    outcome = \"invalid\"\nelse:\n    outcome = f\"parsed {number}\"\n\nprint(outcome)"
+    "approach": "Define parse_outcome(raw) using try / except / else: return \"invalid\" on ValueError, otherwise return f\"parsed {number}\". Print parse_outcome(\"42\").\n\nReference solution:\ndef parse_outcome(raw):\n    try:\n        number = int(raw)\n    except ValueError:\n        return \"invalid\"\n    else:\n        return f\"parsed {number}\"\n\nprint(parse_outcome(\"42\"))"
   },
   {
     "id": "m13-t3-p06",
@@ -1863,61 +1628,29 @@ export const module13Practice: PracticeProblem[] = [
     "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Convert [\"4\", \"x\", \"7\"] to ints, skipping values that raise ValueError, and print the clean list.",
+    "description": "Define clean_ints(raw_values) that converts each item with int(), skips ValueError, and returns the clean list. Print clean_ints([\"4\", \"x\", \"7\"]).",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Loop over "
-        },
-        {
-          "type": "code",
-          "value": "[\"4\", \"x\", \"7\"]"
-        },
-        {
-          "type": "text",
-          "value": " and convert each with "
-        },
-        {
-          "type": "code",
-          "value": "int()"
-        },
-        {
-          "type": "text",
-          "value": ". Collect successful values in "
-        },
-        {
-          "type": "code",
-          "value": "clean"
-        },
-        {
-          "type": "text",
-          "value": " and skip the ones that raise "
-        },
-        {
-          "type": "code",
-          "value": "ValueError"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Define clean_ints(raw_values) that converts each item with int(), skips ValueError, and returns the clean list. Print clean_ints([\"4\", \"x\", \"7\"])."
         }
       ],
       "editorPlaceholder": "# for raw in raw_values:",
       "emptyMessage": "Write your solution, then print the result.",
       "successDetail": "Correct!",
-      "requiresVariables": [
-        "raw_values",
-        "clean"
-      ],
       "steps": {
         "title": "What you need to know",
         "items": [
           "Put the try block inside the loop so one bad value does not stop the rest.",
           "continue (or simply pass) skips the failing row."
         ]
-      }
+      },
+      "requiresFunction": "clean_ints",
+      "requiresForLoop": true,
+      "requiresTry": true,
+      "requiresExcept": true
     },
     "examples": [
       {
@@ -1925,43 +1658,36 @@ export const module13Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Handle the error inside the loop",
-      "Do not remove items from raw_values",
+      "Define clean_ints(raw_values)",
+      "Catch ValueError and continue",
       "Output must be exactly: [4, 7]"
     ],
     "hints": [
-      "for raw in raw_values:\n    try:\n        clean.append(int(raw))",
-      "except ValueError:\n        continue"
+      "for raw in raw_values:\n    try:\n        clean.append(int(raw))"
     ],
-    "starterCode": "# TODO: keep only the values that convert\nraw_values = [\"4\", \"x\", \"7\"]\nclean = []\n",
-    "solutionCode": "raw_values = [\"4\", \"x\", \"7\"]\nclean = []\n\nfor raw in raw_values:\n    try:\n        clean.append(int(raw))\n    except ValueError:\n        continue\n\nprint(clean)",
+    "starterCode": "# TODO: skip values that cannot be converted\ndef clean_ints(raw_values):\n    pass\n",
+    "solutionCode": "def clean_ints(raw_values):\n    clean = []\n    for raw in raw_values:\n        try:\n            clean.append(int(raw))\n        except ValueError:\n            continue\n    return clean\n\nprint(clean_ints([\"4\", \"x\", \"7\"]))",
     "publicTests": [
       {
         "id": "m13-t3-p06-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "[4, 7]",
-        "visibility": "public"
+        "expectedStdout": "[4, 7]"
       },
       {
         "id": "m13-t3-p06-t2",
-        "label": "only convertible values kept",
-        "assertCode": "assert (clean) == ([4, 7]), \"Expected \" + repr([4, 7]) + \", got \" + repr(clean)",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "sample list is cleaned",
+        "assertCode": "assert clean_ints([\"4\", \"x\", \"7\"]) == [4, 7], \"Expected [4, 7]\""
       },
       {
         "id": "m13-t3-p06-t3",
-        "label": "the source list is unchanged",
-        "assertCode": "assert (raw_values) == ([\"4\", \"x\", \"7\"]), \"Expected \" + repr([\"4\", \"x\", \"7\"]) + \", got \" + repr(raw_values)",
-        "visibility": "public"
-      },
-      {
-        "id": "m13-t3-p06-t4",
-        "label": "values were converted to int",
-        "assertCode": "assert all(isinstance(v, int) for v in clean), \"Expected clean to hold integers, not strings\"",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "another mixed list is cleaned too",
+        "assertCode": "assert clean_ints([\"a\", \"2\", \"3\"]) == [2, 3], \"Expected [2, 3]\""
       }
     ],
-    "approach": "Convert [\"4\", \"x\", \"7\"] to ints, skipping values that raise ValueError, and print the clean list.\n\nReference solution:\nraw_values = [\"4\", \"x\", \"7\"]\nclean = []\n\nfor raw in raw_values:\n    try:\n        clean.append(int(raw))\n    except ValueError:\n        continue\n\nprint(clean)"
+    "approach": "Define clean_ints(raw_values) that converts each item with int(), skips ValueError, and returns the clean list. Print clean_ints([\"4\", \"x\", \"7\"]).\n\nReference solution:\ndef clean_ints(raw_values):\n    clean = []\n    for raw in raw_values:\n        try:\n            clean.append(int(raw))\n        except ValueError:\n            continue\n    return clean\n\nprint(clean_ints([\"4\", \"x\", \"7\"]))"
   },
   {
     "id": "m13-t3-p07",
@@ -2038,7 +1764,10 @@ export const module13Practice: PracticeProblem[] = [
           "Returning None lets the caller decide what a failed division means.",
           "10 / 2 is 5.0 — true division always returns a float."
         ]
-      }
+      },
+      "requiresFunction": "safe_divide",
+      "requiresTry": true,
+      "requiresExcept": true
     },
     "examples": [
       {
@@ -2098,53 +1827,18 @@ export const module13Practice: PracticeProblem[] = [
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Raise ValueError(\"Age cannot be negative\"), catch it, and print the message with str(e).",
+    "description": "Define check_age(age) that raises ValueError(\"Age cannot be negative\") when age is negative and otherwise returns age. Catch check_age(-1) and print str(e).",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use "
-        },
-        {
-          "type": "code",
-          "value": "raise ValueError(\"Age cannot be negative\")"
-        },
-        {
-          "type": "text",
-          "value": " inside a try block, catch it as "
-        },
-        {
-          "type": "code",
-          "value": "e"
-        },
-        {
-          "type": "text",
-          "value": ", store "
-        },
-        {
-          "type": "code",
-          "value": "str(e)"
-        },
-        {
-          "type": "text",
-          "value": " in "
-        },
-        {
-          "type": "code",
-          "value": "message"
-        },
-        {
-          "type": "text",
-          "value": ", and print it."
+          "value": "Define check_age(age) that raises ValueError(\"Age cannot be negative\") when age is negative and otherwise returns age. Catch check_age(-1) and print str(e)."
         }
       ],
       "editorPlaceholder": "# raise ValueError(...)",
       "emptyMessage": "Write your solution, then print the result.",
       "successDetail": "Correct!",
-      "requiresVariables": [
-        "message"
-      ],
       "steps": {
         "title": "What you need to know",
         "items": [
@@ -2152,7 +1846,12 @@ export const module13Practice: PracticeProblem[] = [
           "except ValueError as e binds the exception object to e.",
           "str(e) is the message you passed in."
         ]
-      }
+      },
+      "requiresFunction": "check_age",
+      "requiresIfCondition": true,
+      "requiresTry": true,
+      "requiresExcept": true,
+      "requiresRaise": true
     },
     "examples": [
       {
@@ -2160,37 +1859,36 @@ export const module13Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Raise the error yourself with raise",
-      "Read the text with str(e)",
+      "Define check_age(age)",
+      "Raise ValueError with that exact message",
       "Output must be exactly: Age cannot be negative"
     ],
     "hints": [
-      "raise ValueError(\"Age cannot be negative\")",
-      "except ValueError as e:\n    message = str(e)"
+      "if age < 0:\n        raise ValueError(\"Age cannot be negative\")"
     ],
-    "starterCode": "# TODO: raise, catch, and read the message\nmessage = \"\"\n\ntry:\n    pass\nexcept ValueError as e:\n    pass\n",
-    "solutionCode": "message = \"\"\n\ntry:\n    raise ValueError(\"Age cannot be negative\")\nexcept ValueError as e:\n    message = str(e)\n\nprint(message)",
+    "starterCode": "# TODO: raise when age is negative\ndef check_age(age):\n    pass\n",
+    "solutionCode": "def check_age(age):\n    if age < 0:\n        raise ValueError(\"Age cannot be negative\")\n    return age\n\ntry:\n    check_age(-1)\nexcept ValueError as e:\n    print(e)",
     "publicTests": [
       {
         "id": "m13-t4-p01-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "Age cannot be negative",
-        "visibility": "public"
+        "expectedStdout": "Age cannot be negative"
       },
       {
         "id": "m13-t4-p01-t2",
-        "label": "message came from the exception",
-        "assertCode": "assert (message) == (\"Age cannot be negative\"), \"Expected \" + repr(\"Age cannot be negative\") + \", got \" + repr(message)",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "valid age is returned",
+        "assertCode": "assert check_age(10) == 10, \"Expected 10 for a valid age\""
       },
       {
         "id": "m13-t4-p01-t3",
-        "label": "message has the right type",
-        "assertCode": "assert \"message\" in globals(), \"Expected a variable named message\"\nassert isinstance(message, str), \"Expected message to be str, got \" + type(message).__name__",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "negative age raises ValueError",
+        "assertCode": "try:\n    check_age(-1)\n    raise AssertionError(\"Expected ValueError for -1\")\nexcept ValueError as e:\n    assert str(e) == \"Age cannot be negative\""
       }
     ],
-    "approach": "Raise ValueError(\"Age cannot be negative\"), catch it, and print the message with str(e).\n\nReference solution:\nmessage = \"\"\n\ntry:\n    raise ValueError(\"Age cannot be negative\")\nexcept ValueError as e:\n    message = str(e)\n\nprint(message)"
+    "approach": "Define check_age(age) that raises ValueError(\"Age cannot be negative\") when age is negative and otherwise returns age. Catch check_age(-1) and print str(e).\n\nReference solution:\ndef check_age(age):\n    if age < 0:\n        raise ValueError(\"Age cannot be negative\")\n    return age\n\ntry:\n    check_age(-1)\nexcept ValueError as e:\n    print(e)"
   },
   {
     "id": "m13-t4-p02",
@@ -2243,7 +1941,10 @@ export const module13Practice: PracticeProblem[] = [
           "pass is a valid body when the class adds no new behaviour.",
           "Named errors let callers catch exactly your failure and nothing else."
         ]
-      }
+      },
+      "requiresTry": true,
+      "requiresExcept": true,
+      "requiresRaise": true
     },
     "examples": [
       {
@@ -2336,7 +2037,10 @@ export const module13Practice: PracticeProblem[] = [
           "type(e) is the exception class; .__name__ is its name as a string.",
           "This is what appears in a traceback's last line."
         ]
-      }
+      },
+      "requiresTry": true,
+      "requiresExcept": true,
+      "requiresRaise": true
     },
     "examples": [
       {
@@ -2440,7 +2144,12 @@ export const module13Practice: PracticeProblem[] = [
           "Validate first, then return — a guard clause keeps the happy path flat.",
           "The caller decides how to handle the error, so raise instead of printing."
         ]
-      }
+      },
+      "requiresFunction": "check_units",
+      "requiresIfCondition": true,
+      "requiresTry": true,
+      "requiresExcept": true,
+      "requiresRaise": true
     },
     "examples": [
       {
@@ -2552,7 +2261,10 @@ export const module13Practice: PracticeProblem[] = [
           "Call super().__init__(message) so the exception still has readable text.",
           "Extra attributes let the handler react without parsing the message."
         ]
-      }
+      },
+      "requiresTry": true,
+      "requiresExcept": true,
+      "requiresRaise": true
     },
     "examples": [
       {
@@ -2657,7 +2369,10 @@ export const module13Practice: PracticeProblem[] = [
           "Catching the base still catches every subclass.",
           "type(e).__name__ reveals which specific error was raised."
         ]
-      }
+      },
+      "requiresTry": true,
+      "requiresExcept": true,
+      "requiresRaise": true
     },
     "examples": [
       {
@@ -2770,7 +2485,13 @@ export const module13Practice: PracticeProblem[] = [
           "Raise as soon as one is missing — fail fast on bad rows.",
           "Print the caught error as f\"missing {e}\" for the second line."
         ]
-      }
+      },
+      "requiresFunction": "validate",
+      "requiresForLoop": true,
+      "requiresIfCondition": true,
+      "requiresTry": true,
+      "requiresExcept": true,
+      "requiresRaise": true
     },
     "examples": [
       {
@@ -2824,53 +2545,20 @@ export const module13Practice: PracticeProblem[] = [
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Parse an API response with json.loads and print the \"status\" field.",
+    "description": "Define parse_status(text) that uses json.loads and returns the \"status\" field. Print parse_status('{\"status\": \"ok\", \"count\": 3}').",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "An API replies with JSON text. Parse "
-        },
-        {
-          "type": "code",
-          "value": "response"
-        },
-        {
-          "type": "text",
-          "value": " using "
-        },
-        {
-          "type": "code",
-          "value": "json.loads"
-        },
-        {
-          "type": "text",
-          "value": " into "
-        },
-        {
-          "type": "code",
-          "value": "data"
-        },
-        {
-          "type": "text",
-          "value": " and print the "
-        },
-        {
-          "type": "code",
-          "value": "status"
-        },
-        {
-          "type": "text",
-          "value": " field."
+          "value": "Define parse_status(text) that uses json.loads and returns the \"status\" field. Print parse_status('{\"status\": \"ok\", \"count\": 3}')."
         }
       ],
       "editorPlaceholder": "# data = json.loads(response)",
       "emptyMessage": "Write your solution, then print the result.",
       "successDetail": "Correct!",
       "requiresVariables": [
-        "json",
-        "data"
+        "json"
       ],
       "steps": {
         "title": "What you need to know",
@@ -2879,7 +2567,8 @@ export const module13Practice: PracticeProblem[] = [
           "After parsing, it is an ordinary dict — use square brackets.",
           "The browser runtime has no network, so the response text is given to you."
         ]
-      }
+      },
+      "requiresFunction": "parse_status"
     },
     "examples": [
       {
@@ -2887,43 +2576,36 @@ export const module13Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Use json.loads — do not build the dict by hand",
-      "Store the parsed dict in data",
+      "Use json.loads inside parse_status",
+      "Return the status field",
       "Output must be exactly: ok"
     ],
     "hints": [
-      "data = json.loads(response)",
-      "print(data[\"status\"])"
+      "data = json.loads(text)"
     ],
-    "starterCode": "# TODO: parse the response text\nimport json\n\nresponse = '{\"status\": \"ok\", \"count\": 3}'\ndata = {}\n",
-    "solutionCode": "import json\n\nresponse = '{\"status\": \"ok\", \"count\": 3}'\ndata = json.loads(response)\n\nprint(data[\"status\"])",
+    "starterCode": "# TODO: parse status from a JSON string\nimport json\n\ndef parse_status(text):\n    pass\n",
+    "solutionCode": "import json\n\ndef parse_status(text):\n    data = json.loads(text)\n    return data[\"status\"]\n\nprint(parse_status('{\"status\": \"ok\", \"count\": 3}'))",
     "publicTests": [
       {
         "id": "m13-t5-p01-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "ok",
-        "visibility": "public"
+        "expectedStdout": "ok"
       },
       {
         "id": "m13-t5-p01-t2",
-        "label": "data has the right type",
-        "assertCode": "assert \"data\" in globals(), \"Expected a variable named data\"\nassert isinstance(data, dict), \"Expected data to be dict, got \" + type(data).__name__",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "sample payload",
+        "assertCode": "assert parse_status('{\"status\": \"ok\", \"count\": 3}') == \"ok\""
       },
       {
         "id": "m13-t5-p01-t3",
-        "label": "status was parsed",
-        "assertCode": "assert (data[\"status\"]) == (\"ok\"), \"Expected \" + repr(\"ok\") + \", got \" + repr(data[\"status\"])",
-        "visibility": "public"
-      },
-      {
-        "id": "m13-t5-p01-t4",
-        "label": "count parsed as an int",
-        "assertCode": "assert (data[\"count\"]) == (3), \"Expected \" + repr(3) + \", got \" + repr(data[\"count\"])",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "another payload",
+        "assertCode": "assert parse_status('{\"status\": \"fail\"}') == \"fail\", \"Parse the argument, do not hardcode ok\""
       }
     ],
-    "approach": "Parse an API response with json.loads and print the \"status\" field.\n\nReference solution:\nimport json\n\nresponse = '{\"status\": \"ok\", \"count\": 3}'\ndata = json.loads(response)\n\nprint(data[\"status\"])"
+    "approach": "Define parse_status(text) that uses json.loads and returns the \"status\" field. Print parse_status('{\"status\": \"ok\", \"count\": 3}').\n\nReference solution:\nimport json\n\ndef parse_status(text):\n    data = json.loads(text)\n    return data[\"status\"]\n\nprint(parse_status('{\"status\": \"ok\", \"count\": 3}'))"
   },
   {
     "id": "m13-t5-p02",
@@ -2933,29 +2615,20 @@ export const module13Practice: PracticeProblem[] = [
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Parse a nested JSON response and print the user's name from inside the nested object.",
+    "description": "Define user_name(text) that parses nested JSON and returns data[\"user\"][\"name\"]. Print user_name('{\"user\": {\"name\": \"Asha\", \"city\": \"Pune\"}}').",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Parse the response and print "
-        },
-        {
-          "type": "code",
-          "value": "data[\"user\"][\"name\"]"
-        },
-        {
-          "type": "text",
-          "value": " — real payloads nest objects inside objects."
+          "value": "Define user_name(text) that parses nested JSON and returns data[\"user\"][\"name\"]. Print user_name('{\"user\": {\"name\": \"Asha\", \"city\": \"Pune\"}}')."
         }
       ],
       "editorPlaceholder": "# print(data['user']['name'])",
       "emptyMessage": "Write your solution, then print the result.",
       "successDetail": "Correct!",
       "requiresVariables": [
-        "json",
-        "data"
+        "json"
       ],
       "steps": {
         "title": "What you need to know",
@@ -2963,7 +2636,8 @@ export const module13Practice: PracticeProblem[] = [
           "Chain the keys to walk down one level at a time.",
           "Each level is just another dict."
         ]
-      }
+      },
+      "requiresFunction": "user_name"
     },
     "examples": [
       {
@@ -2976,37 +2650,31 @@ export const module13Practice: PracticeProblem[] = [
       "Output must be exactly: Asha"
     ],
     "hints": [
-      "print(data[\"user\"][\"name\"])"
+      "return data[\"user\"][\"name\"]"
     ],
-    "starterCode": "# TODO: reach the nested name\nimport json\n\nresponse = '{\"user\": {\"name\": \"Asha\", \"city\": \"Pune\"}}'\ndata = {}\n",
-    "solutionCode": "import json\n\nresponse = '{\"user\": {\"name\": \"Asha\", \"city\": \"Pune\"}}'\ndata = json.loads(response)\n\nprint(data[\"user\"][\"name\"])",
+    "starterCode": "# TODO: read the nested name\nimport json\n\ndef user_name(text):\n    pass\n",
+    "solutionCode": "import json\n\ndef user_name(text):\n    data = json.loads(text)\n    return data[\"user\"][\"name\"]\n\nprint(user_name('{\"user\": {\"name\": \"Asha\", \"city\": \"Pune\"}}'))",
     "publicTests": [
       {
         "id": "m13-t5-p02-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "Asha",
-        "visibility": "public"
+        "expectedStdout": "Asha"
       },
       {
         "id": "m13-t5-p02-t2",
-        "label": "data has the right type",
-        "assertCode": "assert \"data\" in globals(), \"Expected a variable named data\"\nassert isinstance(data, dict), \"Expected data to be dict, got \" + type(data).__name__",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "sample user",
+        "assertCode": "assert user_name('{\"user\": {\"name\": \"Asha\", \"city\": \"Pune\"}}') == \"Asha\""
       },
       {
         "id": "m13-t5-p02-t3",
-        "label": "nested name read",
-        "assertCode": "assert (data[\"user\"][\"name\"]) == (\"Asha\"), \"Expected \" + repr(\"Asha\") + \", got \" + repr(data[\"user\"][\"name\"])",
-        "visibility": "public"
-      },
-      {
-        "id": "m13-t5-p02-t4",
-        "label": "the nested object is a dict",
-        "assertCode": "assert (type(data[\"user\"]).__name__) == (\"dict\"), \"Expected \" + repr(\"dict\") + \", got \" + repr(type(data[\"user\"]).__name__)",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "another user",
+        "assertCode": "assert user_name('{\"user\": {\"name\": \"Ravi\"}}') == \"Ravi\""
       }
     ],
-    "approach": "Parse a nested JSON response and print the user's name from inside the nested object.\n\nReference solution:\nimport json\n\nresponse = '{\"user\": {\"name\": \"Asha\", \"city\": \"Pune\"}}'\ndata = json.loads(response)\n\nprint(data[\"user\"][\"name\"])"
+    "approach": "Define user_name(text) that parses nested JSON and returns data[\"user\"][\"name\"]. Print user_name('{\"user\": {\"name\": \"Asha\", \"city\": \"Pune\"}}').\n\nReference solution:\nimport json\n\ndef user_name(text):\n    data = json.loads(text)\n    return data[\"user\"][\"name\"]\n\nprint(user_name('{\"user\": {\"name\": \"Asha\", \"city\": \"Pune\"}}'))"
   },
   {
     "id": "m13-t5-p03",
@@ -3016,29 +2684,20 @@ export const module13Practice: PracticeProblem[] = [
     "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Parse a JSON list of records and print how many records the response returned.",
+    "description": "Define record_count(text) that parses JSON and returns len(data[\"results\"]). Print record_count('{\"results\": [{\"id\": 1}, {\"id\": 2}, {\"id\": 3}]}').",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "The "
-        },
-        {
-          "type": "code",
-          "value": "results"
-        },
-        {
-          "type": "text",
-          "value": " key holds a list. Parse the response and print how many records it contains."
+          "value": "Define record_count(text) that parses JSON and returns len(data[\"results\"]). Print record_count('{\"results\": [{\"id\": 1}, {\"id\": 2}, {\"id\": 3}]}')."
         }
       ],
       "editorPlaceholder": "# print(len(data['results']))",
       "emptyMessage": "Write your solution, then print the result.",
       "successDetail": "Correct!",
       "requiresVariables": [
-        "json",
-        "data"
+        "json"
       ],
       "steps": {
         "title": "What you need to know",
@@ -3046,7 +2705,8 @@ export const module13Practice: PracticeProblem[] = [
           "A JSON array becomes a Python list.",
           "len(data[\"results\"]) counts the records."
         ]
-      }
+      },
+      "requiresFunction": "record_count"
     },
     "examples": [
       {
@@ -3058,31 +2718,31 @@ export const module13Practice: PracticeProblem[] = [
       "Output must be exactly: 3"
     ],
     "hints": [
-      "print(len(data[\"results\"]))"
+      "return len(data[\"results\"])"
     ],
-    "starterCode": "# TODO: count the returned records\nimport json\n\nresponse = '{\"results\": [{\"id\": 1}, {\"id\": 2}, {\"id\": 3}]}'\ndata = {}\n",
-    "solutionCode": "import json\n\nresponse = '{\"results\": [{\"id\": 1}, {\"id\": 2}, {\"id\": 3}]}'\ndata = json.loads(response)\n\nprint(len(data[\"results\"]))",
+    "starterCode": "# TODO: count the results list\nimport json\n\ndef record_count(text):\n    pass\n",
+    "solutionCode": "import json\n\ndef record_count(text):\n    data = json.loads(text)\n    return len(data[\"results\"])\n\nprint(record_count('{\"results\": [{\"id\": 1}, {\"id\": 2}, {\"id\": 3}]}'))",
     "publicTests": [
       {
         "id": "m13-t5-p03-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "3",
-        "visibility": "public"
+        "expectedStdout": "3"
       },
       {
         "id": "m13-t5-p03-t2",
-        "label": "results parsed as a list",
-        "assertCode": "assert (type(data[\"results\"]).__name__) == (\"list\"), \"Expected \" + repr(\"list\") + \", got \" + repr(type(data[\"results\"]).__name__)",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "sample count",
+        "assertCode": "assert record_count('{\"results\": [{\"id\": 1}, {\"id\": 2}, {\"id\": 3}]}') == 3"
       },
       {
         "id": "m13-t5-p03-t3",
-        "label": "three records found",
-        "assertCode": "assert (len(data[\"results\"])) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(data[\"results\"]))",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "another count",
+        "assertCode": "assert record_count('{\"results\": [{\"id\": 1}]}') == 1"
       }
     ],
-    "approach": "Parse a JSON list of records and print how many records the response returned.\n\nReference solution:\nimport json\n\nresponse = '{\"results\": [{\"id\": 1}, {\"id\": 2}, {\"id\": 3}]}'\ndata = json.loads(response)\n\nprint(len(data[\"results\"]))"
+    "approach": "Define record_count(text) that parses JSON and returns len(data[\"results\"]). Print record_count('{\"results\": [{\"id\": 1}, {\"id\": 2}, {\"id\": 3}]}').\n\nReference solution:\nimport json\n\ndef record_count(text):\n    data = json.loads(text)\n    return len(data[\"results\"])\n\nprint(record_count('{\"results\": [{\"id\": 1}, {\"id\": 2}, {\"id\": 3}]}'))"
   },
   {
     "id": "m13-t5-p04",
@@ -3130,7 +2790,8 @@ export const module13Practice: PracticeProblem[] = [
           "Each item in the list is a dict.",
           "Inside the loop, read record[\"city\"]."
         ]
-      }
+      },
+      "requiresForLoop": true
     },
     "examples": [
       {
@@ -3171,46 +2832,20 @@ export const module13Practice: PracticeProblem[] = [
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Use .get() with a default so a response without an email prints \"not provided\".",
+    "description": "Define email_of(text) that parses JSON and returns data.get(\"email\", \"not provided\"). Print email_of('{\"name\": \"Asha\", \"city\": \"Pune\"}').",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "This response has no "
-        },
-        {
-          "type": "code",
-          "value": "email"
-        },
-        {
-          "type": "text",
-          "value": " key. Read it with "
-        },
-        {
-          "type": "code",
-          "value": "data.get(\"email\", \"not provided\")"
-        },
-        {
-          "type": "text",
-          "value": " into "
-        },
-        {
-          "type": "code",
-          "value": "email"
-        },
-        {
-          "type": "text",
-          "value": " and print it."
+          "value": "Define email_of(text) that parses JSON and returns data.get(\"email\", \"not provided\"). Print email_of('{\"name\": \"Asha\", \"city\": \"Pune\"}')."
         }
       ],
       "editorPlaceholder": "# email = data.get('email', 'not provided')",
       "emptyMessage": "Write your solution, then print the result.",
       "successDetail": "Correct!",
       "requiresVariables": [
-        "json",
-        "data",
-        "email"
+        "json"
       ],
       "steps": {
         "title": "What you need to know",
@@ -3218,7 +2853,8 @@ export const module13Practice: PracticeProblem[] = [
           "Optional fields are normal in APIs — square brackets would raise KeyError.",
           ".get(key, default) returns the default instead of raising."
         ]
-      }
+      },
+      "requiresFunction": "email_of"
     },
     "examples": [
       {
@@ -3231,37 +2867,31 @@ export const module13Practice: PracticeProblem[] = [
       "Output must be exactly: not provided"
     ],
     "hints": [
-      "email = data.get(\"email\", \"not provided\")"
+      "return data.get(\"email\", \"not provided\")"
     ],
-    "starterCode": "# TODO: read email safely\nimport json\n\nresponse = '{\"name\": \"Asha\", \"city\": \"Pune\"}'\ndata = json.loads(response)\nemail = \"\"\n",
-    "solutionCode": "import json\n\nresponse = '{\"name\": \"Asha\", \"city\": \"Pune\"}'\ndata = json.loads(response)\n\nemail = data.get(\"email\", \"not provided\")\nprint(email)",
+    "starterCode": "# TODO: read email with a default\nimport json\n\ndef email_of(text):\n    pass\n",
+    "solutionCode": "import json\n\ndef email_of(text):\n    data = json.loads(text)\n    return data.get(\"email\", \"not provided\")\n\nprint(email_of('{\"name\": \"Asha\", \"city\": \"Pune\"}'))",
     "publicTests": [
       {
         "id": "m13-t5-p05-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "not provided",
-        "visibility": "public"
+        "expectedStdout": "not provided"
       },
       {
         "id": "m13-t5-p05-t2",
-        "label": "the default was used",
-        "assertCode": "assert (email) == (\"not provided\"), \"Expected \" + repr(\"not provided\") + \", got \" + repr(email)",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "missing email uses the default",
+        "assertCode": "assert email_of('{\"name\": \"Asha\"}') == \"not provided\""
       },
       {
         "id": "m13-t5-p05-t3",
-        "label": "the response really has no email key",
-        "assertCode": "assert \"email\" not in data, \"Do not add an email key — use .get() with a default\"",
-        "visibility": "public"
-      },
-      {
-        "id": "m13-t5-p05-t4",
-        "label": "present keys still read normally",
-        "assertCode": "assert (data.get(\"name\")) == (\"Asha\"), \"Expected \" + repr(\"Asha\") + \", got \" + repr(data.get(\"name\"))",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "present email is returned",
+        "assertCode": "assert email_of('{\"email\": \"asha@example.com\"}') == \"asha@example.com\""
       }
     ],
-    "approach": "Use .get() with a default so a response without an email prints \"not provided\".\n\nReference solution:\nimport json\n\nresponse = '{\"name\": \"Asha\", \"city\": \"Pune\"}'\ndata = json.loads(response)\n\nemail = data.get(\"email\", \"not provided\")\nprint(email)"
+    "approach": "Define email_of(text) that parses JSON and returns data.get(\"email\", \"not provided\"). Print email_of('{\"name\": \"Asha\", \"city\": \"Pune\"}').\n\nReference solution:\nimport json\n\ndef email_of(text):\n    data = json.loads(text)\n    return data.get(\"email\", \"not provided\")\n\nprint(email_of('{\"name\": \"Asha\", \"city\": \"Pune\"}'))"
   },
   {
     "id": "m13-t5-p06",
@@ -3372,29 +3002,13 @@ export const module13Practice: PracticeProblem[] = [
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Parse a users response, keep only active users, print their names sorted and then the count.",
+    "description": "Define active_names(text) that parses a users response, returns the sorted names of active users, print the list then the count.",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Parse the response, keep records where "
-        },
-        {
-          "type": "code",
-          "value": "active"
-        },
-        {
-          "type": "text",
-          "value": " is true, collect their names into "
-        },
-        {
-          "type": "code",
-          "value": "active_names"
-        },
-        {
-          "type": "text",
-          "value": " sorted alphabetically, print the list, then print how many there are."
+          "value": "Define active_names(text) that parses a users response, returns the sorted names of active users, print the list then the count."
         }
       ],
       "editorPlaceholder": "# active_names = sorted(...)",
@@ -3402,8 +3016,7 @@ export const module13Practice: PracticeProblem[] = [
       "successDetail": "Correct!",
       "requiresVariables": [
         "json",
-        "data",
-        "active_names"
+        "names"
       ],
       "steps": {
         "title": "What you need to know",
@@ -3412,7 +3025,9 @@ export const module13Practice: PracticeProblem[] = [
           "Filter with a comprehension, then wrap it in sorted().",
           "Print the list first, then len(active_names)."
         ]
-      }
+      },
+      "requiresFunction": "active_names",
+      "requiresIfCondition": true
     },
     "examples": [
       {
@@ -3425,37 +3040,30 @@ export const module13Practice: PracticeProblem[] = [
       "Print the list, then the count"
     ],
     "hints": [
-      "active_names = sorted(u[\"name\"] for u in data[\"users\"] if u[\"active\"])",
-      "print(active_names) then print(len(active_names))"
+      "return sorted(u[\"name\"] for u in data[\"users\"] if u[\"active\"])"
     ],
-    "starterCode": "# TODO: keep active users, sort their names\nimport json\n\nresponse = '{\"users\": [{\"name\": \"Ravi\", \"active\": true}, {\"name\": \"Meera\", \"active\": false}, {\"name\": \"Asha\", \"active\": true}]}'\ndata = json.loads(response)\nactive_names = []\n",
-    "solutionCode": "import json\n\nresponse = '{\"users\": [{\"name\": \"Ravi\", \"active\": true}, {\"name\": \"Meera\", \"active\": false}, {\"name\": \"Asha\", \"active\": true}]}'\ndata = json.loads(response)\n\nactive_names = sorted(u[\"name\"] for u in data[\"users\"] if u[\"active\"])\n\nprint(active_names)\nprint(len(active_names))",
+    "starterCode": "# TODO: keep active users, then sort their names\nimport json\n\ndef active_names(text):\n    pass\n",
+    "solutionCode": "import json\n\ndef active_names(text):\n    data = json.loads(text)\n    return sorted(u[\"name\"] for u in data[\"users\"] if u[\"active\"])\n\nnames = active_names('{\"users\": [{\"name\": \"Ravi\", \"active\": true}, {\"name\": \"Meera\", \"active\": false}, {\"name\": \"Asha\", \"active\": true}]}')\nprint(names)\nprint(len(names))",
     "publicTests": [
       {
         "id": "m13-t5-p07-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "['Asha', 'Ravi']\n2",
-        "visibility": "public"
+        "expectedStdout": "['Asha', 'Ravi']\n2"
       },
       {
         "id": "m13-t5-p07-t2",
-        "label": "only active users, sorted",
-        "assertCode": "assert (active_names) == ([\"Asha\", \"Ravi\"]), \"Expected \" + repr([\"Asha\", \"Ravi\"]) + \", got \" + repr(active_names)",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "sample users",
+        "assertCode": "assert active_names('{\"users\": [{\"name\": \"Ravi\", \"active\": true}, {\"name\": \"Meera\", \"active\": false}, {\"name\": \"Asha\", \"active\": true}]}') == [\"Asha\", \"Ravi\"]"
       },
       {
         "id": "m13-t5-p07-t3",
-        "label": "inactive users were dropped",
-        "assertCode": "assert \"Meera\" not in active_names, \"Meera is inactive and should not appear\"",
-        "visibility": "public"
-      },
-      {
-        "id": "m13-t5-p07-t4",
-        "label": "all three users were parsed",
-        "assertCode": "assert (len(data[\"users\"])) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(data[\"users\"]))",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "another users list",
+        "assertCode": "assert active_names('{\"users\": [{\"name\": \"Dev\", \"active\": true}, {\"name\": \"Nia\", \"active\": false}]}') == [\"Dev\"]"
       }
     ],
-    "approach": "Parse a users response, keep only active users, print their names sorted and then the count.\n\nReference solution:\nimport json\n\nresponse = '{\"users\": [{\"name\": \"Ravi\", \"active\": true}, {\"name\": \"Meera\", \"active\": false}, {\"name\": \"Asha\", \"active\": true}]}'\ndata = json.loads(response)\n\nactive_names = sorted(u[\"name\"] for u in data[\"users\"] if u[\"active\"])\n\nprint(active_names)\nprint(len(active_names))"
+    "approach": "Define active_names(text) that parses a users response, returns the sorted names of active users, print the list then the count.\n\nReference solution:\nimport json\n\ndef active_names(text):\n    data = json.loads(text)\n    return sorted(u[\"name\"] for u in data[\"users\"] if u[\"active\"])\n\nnames = active_names('{\"users\": [{\"name\": \"Ravi\", \"active\": true}, {\"name\": \"Meera\", \"active\": false}, {\"name\": \"Asha\", \"active\": true}]}')\nprint(names)\nprint(len(names))"
   }
 ];

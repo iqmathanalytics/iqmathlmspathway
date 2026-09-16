@@ -9,158 +9,133 @@ export const module7Practice: PracticeProblem[] = [
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Create s = {1, 2, 3} and print s (order may vary).",
+    "description": "Create s = {1, 2, 3} and print sorted(s) so the order is stable.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "s"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Curly braces create a set (no key:value)."
+          "value": "Create s = {1, 2, 3} and print sorted(s) so the order is stable."
         }
       ],
-      "editorPlaceholder": "# s = {1,2,3}",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct! sorted() turns the set into a list in number order.",
+      "requiresVariables": [
+        "s"
+      ]
     },
     "examples": [
       {
-        "output": "{1, 2, 3}"
+        "output": "[1, 2, 3]"
       }
     ],
     "constraints": [
-      "Create set {1,2,3}"
+      "Output must match: [1, 2, 3]"
     ],
     "hints": [
-      "s = {1, 2, 3}\\nprint(s)"
+      "s = {1, 2, 3}\nprint(sorted(s))"
     ],
     "starterCode": "",
-    "approach": "Create s = {1, 2, 3} and print s (order may vary). Key points: s = {1, 2, 3}\\nprint(s) A correct solution looks like this: print(\"{1, 2, 3}\")",
     "publicTests": [
       {
         "id": "m7-t1-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "{1, 2, 3}",
+        "expectedStdout": "[1, 2, 3]",
         "visibility": "public"
       },
       {
         "id": "m7-t1-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "{1, 2, 3}",
+        "label": "Required names and structure",
+        "assertCode": "assert \"s\" in globals(), \"Expected a variable named s\"",
         "visibility": "public"
       },
       {
         "id": "m7-t1-p01-t3",
         "label": "No Extra Output",
-        "expectedStdout": "{1, 2, 3}",
+        "expectedStdout": "[1, 2, 3]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{1, 2, 3}\")"
+    "solutionCode": "s = {1, 2, 3}\nprint(sorted(s))",
+    "approach": "Create s = {1, 2, 3} and print sorted(s) so the order is stable.\n\nReference solution:\ns = {1, 2, 3}\nprint(sorted(s))"
   },
   {
     "id": "m7-t1-p02",
     "topicId": "m7-t1",
-    "slug": "set-func",
+    "slug": "set-function",
     "title": "Set Syntax: set() Function",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Print set([1,2,2,3]).",
+    "description": "Print sorted(set([1, 2, 2, 3])). Duplicates are removed.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# set()",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct! Sets remove duplicates.",
       "introSegments": [
         {
           "type": "text",
-          "value": "Use "
-        },
-        {
-          "type": "code",
-          "value": "set()"
-        },
-        {
-          "type": "text",
-          "value": " to remove duplicates."
+          "value": "Print sorted(set([1, 2, 2, 3])). Duplicates are removed."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "{1, 2, 3}",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!"
     },
     "examples": [
       {
-        "output": "{1, 2, 3}"
+        "output": "[1, 2, 3]"
       }
     ],
     "constraints": [
-      "Output must be exactly: {1, 2, 3}"
+      "Output must match: [1, 2, 3]"
     ],
     "hints": [
-      "print(set([1,2,2,3]))"
+      "print(sorted(set([1, 2, 2, 3])))"
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t1-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "{1, 2, 3}",
+        "expectedStdout": "[1, 2, 3]",
         "visibility": "public"
       },
       {
         "id": "m7-t1-p02-t2",
         "label": "Exact Output",
-        "expectedStdout": "{1, 2, 3}",
+        "expectedStdout": "[1, 2, 3]",
         "visibility": "public"
       },
       {
         "id": "m7-t1-p02-t3",
         "label": "No Extra Output",
-        "expectedStdout": "{1, 2, 3}",
+        "expectedStdout": "[1, 2, 3]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{1, 2, 3}\")",
-    "approach": "Print set([1,2,2,3]).\n\nKey points: print(set([1,2,2,3]))\n\nA correct solution looks like this:\nprint(\"{1, 2, 3}\")"
+    "solutionCode": "print(sorted(set([1, 2, 2, 3])))",
+    "approach": "Print sorted(set([1, 2, 2, 3])). Duplicates are removed.\n\nReference solution:\nprint(sorted(set([1, 2, 2, 3])))"
   },
   {
     "id": "m7-t1-p03",
     "topicId": "m7-t1",
-    "slug": "unique",
+    "slug": "unique-len",
     "title": "Set Syntax: Unique Values",
     "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Print len({1,1,2,2,3}).",
+    "description": "Print len({1, 1, 2, 2, 3}).",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# unique",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Sets only keep unique values."
+          "value": "Print len({1, 1, 2, 2, 3})."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "3",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!"
     },
     "examples": [
       {
@@ -168,10 +143,10 @@ export const module7Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output must be exactly: 3"
+      "Output must match: 3"
     ],
     "hints": [
-      "print(len({1,1,2,2,3}))"
+      "A set keeps each value once, so the length is 3."
     ],
     "starterCode": "",
     "publicTests": [
@@ -194,39 +169,32 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(len({1,1,2,2,3}))",
-    "approach": "Print len({1,1,2,2,3}).\n\nKey points: print(len({1,1,2,2,3}))\n\nA correct solution looks like this:\nprint(len({1,1,2,2,3}))"
+    "solutionCode": "print(len({1, 1, 2, 2, 3}))",
+    "approach": "Print len({1, 1, 2, 2, 3}).\n\nReference solution:\nprint(len({1, 1, 2, 2, 3}))"
   },
   {
     "id": "m7-t1-p04",
     "topicId": "m7-t1",
     "slug": "empty-set",
     "title": "Set Syntax: Empty Set",
-    "difficulty": "medium",
+    "difficulty": "easy",
     "order": 4,
     "layout": "challenge",
-    "description": "Create s = set(), print len(s).",
+    "description": "Create s = set() and print len(s). Use set(), not {}.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "s"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Use "
-        },
-        {
-          "type": "code",
-          "value": "set()"
-        },
-        {
-          "type": "text",
-          "value": " for empty set — not {}."
+          "value": "Create s = set() and print len(s). Use set(), not {}."
         }
       ],
-      "editorPlaceholder": "# set()",
-      "successDetail": "Correct! {} is a dict, not empty set."
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "s"
+      ]
     },
     "examples": [
       {
@@ -234,13 +202,12 @@ export const module7Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output: 0"
+      "Output must match: 0"
     ],
     "hints": [
-      "s = set()\\nprint(len(s))"
+      "{} is an empty dict. An empty set is set()."
     ],
     "starterCode": "",
-    "approach": "Create s = set(), print len(s). Key points: s = set()\\nprint(len(s)) A correct solution looks like this: s = set() print(len(s))",
     "publicTests": [
       {
         "id": "m7-t1-p04-t1",
@@ -250,8 +217,8 @@ export const module7Practice: PracticeProblem[] = [
       },
       {
         "id": "m7-t1-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "0",
+        "label": "Required names and structure",
+        "assertCode": "assert \"s\" in globals(), \"Expected a variable named s\"",
         "visibility": "public"
       },
       {
@@ -261,45 +228,29 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "s = set()\nprint(len(s))"
+    "solutionCode": "s = set()\nprint(len(s))",
+    "approach": "Create s = set() and print len(s). Use set(), not {}.\n\nReference solution:\ns = set()\nprint(len(s))"
   },
   {
     "id": "m7-t1-p05",
     "topicId": "m7-t1",
-    "slug": "in-set",
+    "slug": "membership",
     "title": "Set Syntax: Membership",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Print 2 in {1,2,3}.",
+    "description": "Print 2 in {1, 2, 3}.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# in set",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Check membership with "
-        },
-        {
-          "type": "code",
-          "value": "in"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Print 2 in {1, 2, 3}."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "True",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!"
     },
     "examples": [
       {
@@ -307,10 +258,10 @@ export const module7Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output must be exactly: True"
+      "Output must match: True"
     ],
     "hints": [
-      "print(2 in {1,2,3})"
+      "print(2 in {1, 2, 3})"
     ],
     "starterCode": "",
     "publicTests": [
@@ -333,118 +284,120 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(2 in {1,2,3})",
-    "approach": "Print 2 in {1,2,3}.\n\nKey points: print(2 in {1,2,3})\n\nA correct solution looks like this:\nprint(2 in {1,2,3})"
+    "solutionCode": "print(2 in {1, 2, 3})",
+    "approach": "Print 2 in {1, 2, 3}.\n\nReference solution:\nprint(2 in {1, 2, 3})"
   },
   {
     "id": "m7-t1-p06",
     "topicId": "m7-t1",
-    "slug": "mixed-set",
+    "slug": "mixed-types",
     "title": "Set Syntax: Mixed Types",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Print {1, \"a\"} — sets can mix types.",
+    "description": "Print 1 in {1, \"a\"} — sets can mix types.",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Sets can hold different types."
+          "value": "Print 1 in {1, \"a\"} — sets can mix types."
         }
       ],
-      "editorPlaceholder": "# mixed set",
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
       "successDetail": "Correct!"
     },
     "examples": [
       {
-        "output": "{'a', 1}"
+        "output": "True"
       }
     ],
     "constraints": [
-      "Create set with int and str"
+      "Output must match: True"
     ],
     "hints": [
-      "print({1, \"a\"})"
+      "print(1 in {1, \"a\"})"
     ],
     "starterCode": "",
-    "approach": "Print {1, \"a\"} — sets can mix types. Key points: print({1, \"a\"}) A correct solution looks like this: print(\"{'a', 1}\")",
     "publicTests": [
       {
         "id": "m7-t1-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "{'a', 1}",
+        "expectedStdout": "True",
         "visibility": "public"
       },
       {
         "id": "m7-t1-p06-t2",
         "label": "Exact Output",
-        "expectedStdout": "{'a', 1}",
+        "expectedStdout": "True",
         "visibility": "public"
       },
       {
         "id": "m7-t1-p06-t3",
         "label": "No Extra Output",
-        "expectedStdout": "{'a', 1}",
+        "expectedStdout": "True",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{'a', 1}\")"
+    "solutionCode": "print(1 in {1, \"a\"})",
+    "approach": "Print 1 in {1, \"a\"} — sets can mix types.\n\nReference solution:\nprint(1 in {1, \"a\"})"
   },
   {
     "id": "m7-t1-p07",
     "topicId": "m7-t1",
-    "slug": "from-string",
+    "slug": "set-from-string",
     "title": "Set Syntax: Set from String",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Print set(\"hello\") — unique letters.",
+    "description": "Print sorted(set(\"hello\")) — unique letters in order.",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "set(string) gives unique characters."
+          "value": "Print sorted(set(\"hello\")) — unique letters in order."
         }
       ],
-      "editorPlaceholder": "# set(\"hello\")",
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
       "successDetail": "Correct!"
     },
     "examples": [
       {
-        "output": "{'h', 'e', 'l', 'o'}"
+        "output": "['e', 'h', 'l', 'o']"
       }
     ],
     "constraints": [
-      "Use set on a string"
+      "Output must match: ['e', 'h', 'l', 'o']"
     ],
     "hints": [
-      "print(set(\"hello\"))"
+      "print(sorted(set(\"hello\")))"
     ],
     "starterCode": "",
-    "approach": "Print set(\"hello\") — unique letters. Key points: print(set(\"hello\")) A correct solution looks like this: print(\"{'h', 'e', 'l', 'o'}\")",
     "publicTests": [
       {
         "id": "m7-t1-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "{'h', 'e', 'l', 'o'}",
+        "expectedStdout": "['e', 'h', 'l', 'o']",
         "visibility": "public"
       },
       {
         "id": "m7-t1-p07-t2",
         "label": "Exact Output",
-        "expectedStdout": "{'h', 'e', 'l', 'o'}",
+        "expectedStdout": "['e', 'h', 'l', 'o']",
         "visibility": "public"
       },
       {
         "id": "m7-t1-p07-t3",
         "label": "No Extra Output",
-        "expectedStdout": "{'h', 'e', 'l', 'o'}",
+        "expectedStdout": "['e', 'h', 'l', 'o']",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{'h', 'e', 'l', 'o'}\")"
+    "solutionCode": "print(sorted(set(\"hello\")))",
+    "approach": "Print sorted(set(\"hello\")) — unique letters in order.\n\nReference solution:\nprint(sorted(set(\"hello\")))"
   },
   {
     "id": "m7-t2-p01",
@@ -454,63 +407,56 @@ export const module7Practice: PracticeProblem[] = [
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Set s={1}, s.add(2), print s.",
+    "description": "Set s = {1}, then s.add(2), then print sorted(s).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "s"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Use "
-        },
-        {
-          "type": "code",
-          "value": ".add()"
-        },
-        {
-          "type": "text",
-          "value": " to add one item."
+          "value": "Set s = {1}, then s.add(2), then print sorted(s)."
         }
       ],
-      "editorPlaceholder": "# add",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "s"
+      ]
     },
     "examples": [
       {
-        "output": "{1, 2}"
+        "output": "[1, 2]"
       }
     ],
     "constraints": [
-      "Output contains 1 and 2"
+      "Output must match: [1, 2]"
     ],
     "hints": [
-      "s = {1}\\ns.add(2)\\nprint(s)"
+      "s = {1}\ns.add(2)\nprint(sorted(s))"
     ],
     "starterCode": "",
-    "approach": "Set s={1}, s.add(2), print s. Key points: s = {1}\\ns.add(2)\\nprint(s) A correct solution looks like this: print(\"{1, 2}\")",
     "publicTests": [
       {
         "id": "m7-t2-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "{1, 2}",
+        "expectedStdout": "[1, 2]",
         "visibility": "public"
       },
       {
         "id": "m7-t2-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "{1, 2}",
+        "label": "Required names and structure",
+        "assertCode": "assert \"s\" in globals(), \"Expected a variable named s\"",
         "visibility": "public"
       },
       {
         "id": "m7-t2-p01-t3",
         "label": "No Extra Output",
-        "expectedStdout": "{1, 2}",
+        "expectedStdout": "[1, 2]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{1, 2}\")"
+    "solutionCode": "s = {1}\ns.add(2)\nprint(sorted(s))",
+    "approach": "Set s = {1}, then s.add(2), then print sorted(s).\n\nReference solution:\ns = {1}\ns.add(2)\nprint(sorted(s))"
   },
   {
     "id": "m7-t2-p02",
@@ -520,121 +466,115 @@ export const module7Practice: PracticeProblem[] = [
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Set s={1,2,3}, s.remove(2), print s.",
+    "description": "Set s = {1, 2, 3}, then s.remove(2), then print sorted(s).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "s"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Use "
-        },
-        {
-          "type": "code",
-          "value": ".remove()"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Set s = {1, 2, 3}, then s.remove(2), then print sorted(s)."
         }
       ],
-      "editorPlaceholder": "# remove",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "s"
+      ]
     },
     "examples": [
       {
-        "output": "{1, 3}"
+        "output": "[1, 3]"
       }
     ],
     "constraints": [
-      "Output: {1, 3}"
+      "Output must match: [1, 3]"
     ],
     "hints": [
-      "s = {1,2,3}\\ns.remove(2)\\nprint(s)"
+      "remove() deletes a value that must already be in the set."
     ],
     "starterCode": "",
-    "approach": "Set s={1,2,3}, s.remove(2), print s. Key points: s = {1,2,3}\\ns.remove(2)\\nprint(s) A correct solution looks like this: print(\"{1, 3}\")",
     "publicTests": [
       {
         "id": "m7-t2-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "{1, 3}",
+        "expectedStdout": "[1, 3]",
         "visibility": "public"
       },
       {
         "id": "m7-t2-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "{1, 3}",
+        "label": "Required names and structure",
+        "assertCode": "assert \"s\" in globals(), \"Expected a variable named s\"",
         "visibility": "public"
       },
       {
         "id": "m7-t2-p02-t3",
         "label": "No Extra Output",
-        "expectedStdout": "{1, 3}",
+        "expectedStdout": "[1, 3]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{1, 3}\")"
+    "solutionCode": "s = {1, 2, 3}\ns.remove(2)\nprint(sorted(s))",
+    "approach": "Set s = {1, 2, 3}, then s.remove(2), then print sorted(s).\n\nReference solution:\ns = {1, 2, 3}\ns.remove(2)\nprint(sorted(s))"
   },
   {
     "id": "m7-t2-p03",
     "topicId": "m7-t2",
     "slug": "discard",
     "title": "Updating Sets: discard()",
-    "difficulty": "medium",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Set s={1,2}, s.discard(3), print s.",
+    "description": "Set s = {1, 2}, then s.discard(3), then print sorted(s).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "s"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "discard() removes if present, no error if missing."
+          "value": "Set s = {1, 2}, then s.discard(3), then print sorted(s)."
         }
       ],
-      "editorPlaceholder": "# discard",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "s"
+      ]
     },
     "examples": [
       {
-        "output": "{1, 2}"
+        "output": "[1, 2]"
       }
     ],
     "constraints": [
-      "Output: {1, 2}"
+      "Output must match: [1, 2]"
     ],
     "hints": [
-      "s = {1,2}\\ns.discard(3)\\nprint(s)"
+      "discard() does nothing if the value is missing — no error."
     ],
     "starterCode": "",
-    "approach": "Set s={1,2}, s.discard(3), print s. Key points: s = {1,2}\\ns.discard(3)\\nprint(s) A correct solution looks like this: print(\"{1, 2}\")",
     "publicTests": [
       {
         "id": "m7-t2-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "{1, 2}",
+        "expectedStdout": "[1, 2]",
         "visibility": "public"
       },
       {
         "id": "m7-t2-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "{1, 2}",
+        "label": "Required names and structure",
+        "assertCode": "assert \"s\" in globals(), \"Expected a variable named s\"",
         "visibility": "public"
       },
       {
         "id": "m7-t2-p03-t3",
         "label": "No Extra Output",
-        "expectedStdout": "{1, 2}",
+        "expectedStdout": "[1, 2]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{1, 2}\")"
+    "solutionCode": "s = {1, 2}\ns.discard(3)\nprint(sorted(s))",
+    "approach": "Set s = {1, 2}, then s.discard(3), then print sorted(s).\n\nReference solution:\ns = {1, 2}\ns.discard(3)\nprint(sorted(s))"
   },
   {
     "id": "m7-t2-p04",
@@ -644,144 +584,139 @@ export const module7Practice: PracticeProblem[] = [
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set s={1}, s.update({2,3}), print s.",
+    "description": "Set s = {1}, then s.update({2, 3}), then print sorted(s).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "s"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Use "
-        },
-        {
-          "type": "code",
-          "value": ".update()"
-        },
-        {
-          "type": "text",
-          "value": " to add multiple."
+          "value": "Set s = {1}, then s.update({2, 3}), then print sorted(s)."
         }
       ],
-      "editorPlaceholder": "# update",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "s"
+      ]
     },
     "examples": [
       {
-        "output": "{1, 2, 3}"
+        "output": "[1, 2, 3]"
       }
     ],
     "constraints": [
-      "Output: {1, 2, 3}"
+      "Output must match: [1, 2, 3]"
     ],
     "hints": [
-      "s = {1}\\ns.update({2,3})\\nprint(s)"
+      "update() adds every item from another set."
     ],
     "starterCode": "",
-    "approach": "Set s={1}, s.update({2,3}), print s. Key points: s = {1}\\ns.update({2,3})\\nprint(s) A correct solution looks like this: print(\"{1, 2, 3}\")",
     "publicTests": [
       {
         "id": "m7-t2-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "{1, 2, 3}",
+        "expectedStdout": "[1, 2, 3]",
         "visibility": "public"
       },
       {
         "id": "m7-t2-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "{1, 2, 3}",
+        "label": "Required names and structure",
+        "assertCode": "assert \"s\" in globals(), \"Expected a variable named s\"",
         "visibility": "public"
       },
       {
         "id": "m7-t2-p04-t3",
         "label": "No Extra Output",
-        "expectedStdout": "{1, 2, 3}",
+        "expectedStdout": "[1, 2, 3]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{1, 2, 3}\")"
+    "solutionCode": "s = {1}\ns.update({2, 3})\nprint(sorted(s))",
+    "approach": "Set s = {1}, then s.update({2, 3}), then print sorted(s).\n\nReference solution:\ns = {1}\ns.update({2, 3})\nprint(sorted(s))"
   },
   {
     "id": "m7-t2-p05",
     "topicId": "m7-t2",
-    "slug": "pop-set",
+    "slug": "pop-one",
     "title": "Updating Sets: pop()",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Set s={1,2,3}, print s.pop() — removes arbitrary item.",
+    "description": "Set s = {9}, then print s.pop(). A one-item set makes pop() predictable.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "s"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "pop() removes and returns any item."
+          "value": "Set s = {9}, then print s.pop(). A one-item set makes pop() predictable."
         }
       ],
-      "editorPlaceholder": "# pop",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "s"
+      ]
     },
     "examples": [
       {
-        "output": "1"
+        "output": "9"
       }
     ],
     "constraints": [
-      "Print one item from set"
+      "Output must match: 9"
     ],
     "hints": [
-      "s = {1,2,3}\\nprint(s.pop())"
+      "pop() removes and returns an arbitrary item. With one item, the result is that item."
     ],
     "starterCode": "",
-    "approach": "Set s={1,2,3}, print s.pop() — removes arbitrary item. Key points: s = {1,2,3}\\nprint(s.pop()) A correct solution looks like this: s = {1,2,3} print(s.pop())",
     "publicTests": [
       {
         "id": "m7-t2-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "1",
+        "expectedStdout": "9",
         "visibility": "public"
       },
       {
         "id": "m7-t2-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1",
+        "label": "Required names and structure",
+        "assertCode": "assert \"s\" in globals(), \"Expected a variable named s\"",
         "visibility": "public"
       },
       {
         "id": "m7-t2-p05-t3",
         "label": "No Extra Output",
-        "expectedStdout": "1",
+        "expectedStdout": "9",
         "visibility": "public"
       }
     ],
-    "solutionCode": "s = {1,2,3}\nprint(s.pop())"
+    "solutionCode": "s = {9}\nprint(s.pop())",
+    "approach": "Set s = {9}, then print s.pop(). A one-item set makes pop() predictable.\n\nReference solution:\ns = {9}\nprint(s.pop())"
   },
   {
     "id": "m7-t2-p06",
     "topicId": "m7-t2",
-    "slug": "clear-set",
+    "slug": "clear",
     "title": "Updating Sets: clear()",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Set s={1,2}, s.clear(), print s.",
+    "description": "Set s = {1, 2}, then s.clear(), then print s.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "s"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "clear() empties the set."
+          "value": "Set s = {1, 2}, then s.clear(), then print s."
         }
       ],
-      "editorPlaceholder": "# clear",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "s"
+      ]
     },
     "examples": [
       {
@@ -789,13 +724,12 @@ export const module7Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output: set()"
+      "Output must match: set()"
     ],
     "hints": [
-      "s = {1,2}\\ns.clear()\\nprint(s)"
+      "An empty set prints as set(), not {}."
     ],
     "starterCode": "",
-    "approach": "Set s={1,2}, s.clear(), print s. Key points: s = {1,2}\\ns.clear()\\nprint(s) A correct solution looks like this: s = {1,2} s.clear() print(s)",
     "publicTests": [
       {
         "id": "m7-t2-p06-t1",
@@ -805,8 +739,8 @@ export const module7Practice: PracticeProblem[] = [
       },
       {
         "id": "m7-t2-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "set()",
+        "label": "Required names and structure",
+        "assertCode": "assert \"s\" in globals(), \"Expected a variable named s\"",
         "visibility": "public"
       },
       {
@@ -816,65 +750,67 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "s = {1,2}\ns.clear()\nprint(s)"
+    "solutionCode": "s = {1, 2}\ns.clear()\nprint(s)",
+    "approach": "Set s = {1, 2}, then s.clear(), then print s.\n\nReference solution:\ns = {1, 2}\ns.clear()\nprint(s)"
   },
   {
     "id": "m7-t2-p07",
     "topicId": "m7-t2",
-    "slug": "add-dup",
+    "slug": "add-duplicate",
     "title": "Updating Sets: Add Duplicate",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Set s={1,2}, s.add(2), print s.",
+    "description": "Set s = {1, 2}, then s.add(2), then print sorted(s).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "s"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Adding duplicate has no effect."
+          "value": "Set s = {1, 2}, then s.add(2), then print sorted(s)."
         }
       ],
-      "editorPlaceholder": "# add dup",
-      "successDetail": "Correct! Sets ignore duplicates."
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "s"
+      ]
     },
     "examples": [
       {
-        "output": "{1, 2}"
+        "output": "[1, 2]"
       }
     ],
     "constraints": [
-      "Output: {1, 2}"
+      "Output must match: [1, 2]"
     ],
     "hints": [
-      "s = {1,2}\\ns.add(2)\\nprint(s)"
+      "Adding a value that is already present leaves the set unchanged."
     ],
     "starterCode": "",
-    "approach": "Set s={1,2}, s.add(2), print s. Key points: s = {1,2}\\ns.add(2)\\nprint(s) A correct solution looks like this: print(\"{1, 2}\")",
     "publicTests": [
       {
         "id": "m7-t2-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "{1, 2}",
+        "expectedStdout": "[1, 2]",
         "visibility": "public"
       },
       {
         "id": "m7-t2-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "{1, 2}",
+        "label": "Required names and structure",
+        "assertCode": "assert \"s\" in globals(), \"Expected a variable named s\"",
         "visibility": "public"
       },
       {
         "id": "m7-t2-p07-t3",
         "label": "No Extra Output",
-        "expectedStdout": "{1, 2}",
+        "expectedStdout": "[1, 2]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{1, 2}\")"
+    "solutionCode": "s = {1, 2}\ns.add(2)\nprint(sorted(s))",
+    "approach": "Set s = {1, 2}, then s.add(2), then print sorted(s).\n\nReference solution:\ns = {1, 2}\ns.add(2)\nprint(sorted(s))"
   },
   {
     "id": "m7-t3-p01",
@@ -884,70 +820,53 @@ export const module7Practice: PracticeProblem[] = [
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Print {1,2} | {2,3}.",
+    "description": "Print sorted({1, 2} | {2, 3}).",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# {1,2} | {2,3}",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct! {1,2} | {2,3} = {1, 2, 3}.",
       "introSegments": [
         {
           "type": "text",
-          "value": "Print "
-        },
-        {
-          "type": "code",
-          "value": "{1,2} | {2,3}"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Print sorted({1, 2} | {2, 3})."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "{1, 2, 3}",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!"
     },
     "examples": [
       {
-        "output": "{1, 2, 3}"
+        "output": "[1, 2, 3]"
       }
     ],
     "constraints": [
-      "Output must be exactly: {1, 2, 3}"
+      "Output must match: [1, 2, 3]"
     ],
     "hints": [
-      "print({1,2} | {2,3})"
+      "| is union: items in either set."
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t3-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "{1, 2, 3}",
+        "expectedStdout": "[1, 2, 3]",
         "visibility": "public"
       },
       {
         "id": "m7-t3-p01-t2",
         "label": "Exact Output",
-        "expectedStdout": "{1, 2, 3}",
+        "expectedStdout": "[1, 2, 3]",
         "visibility": "public"
       },
       {
         "id": "m7-t3-p01-t3",
         "label": "No Extra Output",
-        "expectedStdout": "{1, 2, 3}",
+        "expectedStdout": "[1, 2, 3]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{1, 2, 3}\")",
-    "approach": "Print {1,2} | {2,3}.\n\nKey points: print({1,2} | {2,3})\n\nA correct solution looks like this:\nprint(\"{1, 2, 3}\")"
+    "solutionCode": "print(sorted({1, 2} | {2, 3}))",
+    "approach": "Print sorted({1, 2} | {2, 3}).\n\nReference solution:\nprint(sorted({1, 2} | {2, 3}))"
   },
   {
     "id": "m7-t3-p02",
@@ -957,143 +876,109 @@ export const module7Practice: PracticeProblem[] = [
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Print {1,2,3} & {2,3,4}.",
+    "description": "Print sorted({1, 2, 3} & {2, 3, 4}).",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# {1,2,3} & {2,3,4}",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct! {1,2,3} & {2,3,4} = {2, 3}.",
       "introSegments": [
         {
           "type": "text",
-          "value": "Print "
-        },
-        {
-          "type": "code",
-          "value": "{1,2,3} & {2,3,4}"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Print sorted({1, 2, 3} & {2, 3, 4})."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "{2, 3}",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!"
     },
     "examples": [
       {
-        "output": "{2, 3}"
+        "output": "[2, 3]"
       }
     ],
     "constraints": [
-      "Output must be exactly: {2, 3}"
+      "Output must match: [2, 3]"
     ],
     "hints": [
-      "print({1,2,3} & {2,3,4})"
+      "& is intersection: items in both sets."
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t3-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "{2, 3}",
+        "expectedStdout": "[2, 3]",
         "visibility": "public"
       },
       {
         "id": "m7-t3-p02-t2",
         "label": "Exact Output",
-        "expectedStdout": "{2, 3}",
+        "expectedStdout": "[2, 3]",
         "visibility": "public"
       },
       {
         "id": "m7-t3-p02-t3",
         "label": "No Extra Output",
-        "expectedStdout": "{2, 3}",
+        "expectedStdout": "[2, 3]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{2, 3}\")",
-    "approach": "Print {1,2,3} & {2,3,4}.\n\nKey points: print({1,2,3} & {2,3,4})\n\nA correct solution looks like this:\nprint(\"{2, 3}\")"
+    "solutionCode": "print(sorted({1, 2, 3} & {2, 3, 4}))",
+    "approach": "Print sorted({1, 2, 3} & {2, 3, 4}).\n\nReference solution:\nprint(sorted({1, 2, 3} & {2, 3, 4}))"
   },
   {
     "id": "m7-t3-p03",
     "topicId": "m7-t3",
     "slug": "difference",
     "title": "Set Operations: Difference -",
-    "difficulty": "medium",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Print {1,2,3} - {2}.",
+    "description": "Print sorted({1, 2, 3} - {2}).",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# {1,2,3} - {2}",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct! {1,2,3} - {2} = {1, 3}.",
       "introSegments": [
         {
           "type": "text",
-          "value": "Print "
-        },
-        {
-          "type": "code",
-          "value": "{1,2,3} - {2}"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Print sorted({1, 2, 3} - {2})."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "{1, 3}",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!"
     },
     "examples": [
       {
-        "output": "{1, 3}"
+        "output": "[1, 3]"
       }
     ],
     "constraints": [
-      "Output must be exactly: {1, 3}"
+      "Output must match: [1, 3]"
     ],
     "hints": [
-      "print({1,2,3} - {2})"
+      "- keeps items in the first set that are not in the second."
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t3-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "{1, 3}",
+        "expectedStdout": "[1, 3]",
         "visibility": "public"
       },
       {
         "id": "m7-t3-p03-t2",
         "label": "Exact Output",
-        "expectedStdout": "{1, 3}",
+        "expectedStdout": "[1, 3]",
         "visibility": "public"
       },
       {
         "id": "m7-t3-p03-t3",
         "label": "No Extra Output",
-        "expectedStdout": "{1, 3}",
+        "expectedStdout": "[1, 3]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{1, 3}\")",
-    "approach": "Print {1,2,3} - {2}.\n\nKey points: print({1,2,3} - {2})\n\nA correct solution looks like this:\nprint(\"{1, 3}\")"
+    "solutionCode": "print(sorted({1, 2, 3} - {2}))",
+    "approach": "Print sorted({1, 2, 3} - {2}).\n\nReference solution:\nprint(sorted({1, 2, 3} - {2}))"
   },
   {
     "id": "m7-t3-p04",
@@ -1103,70 +988,53 @@ export const module7Practice: PracticeProblem[] = [
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Print {1,2} ^ {2,3}.",
+    "description": "Print sorted({1, 2} ^ {2, 3}).",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# {1,2} ^ {2,3}",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct! {1,2} ^ {2,3} = {1, 3}.",
       "introSegments": [
         {
           "type": "text",
-          "value": "Print "
-        },
-        {
-          "type": "code",
-          "value": "{1,2} ^ {2,3}"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Print sorted({1, 2} ^ {2, 3})."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "{1, 3}",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!"
     },
     "examples": [
       {
-        "output": "{1, 3}"
+        "output": "[1, 3]"
       }
     ],
     "constraints": [
-      "Output must be exactly: {1, 3}"
+      "Output must match: [1, 3]"
     ],
     "hints": [
-      "print({1,2} ^ {2,3})"
+      "^ keeps items in one set or the other, but not both."
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t3-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "{1, 3}",
+        "expectedStdout": "[1, 3]",
         "visibility": "public"
       },
       {
         "id": "m7-t3-p04-t2",
         "label": "Exact Output",
-        "expectedStdout": "{1, 3}",
+        "expectedStdout": "[1, 3]",
         "visibility": "public"
       },
       {
         "id": "m7-t3-p04-t3",
         "label": "No Extra Output",
-        "expectedStdout": "{1, 3}",
+        "expectedStdout": "[1, 3]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{1, 3}\")",
-    "approach": "Print {1,2} ^ {2,3}.\n\nKey points: print({1,2} ^ {2,3})\n\nA correct solution looks like this:\nprint(\"{1, 3}\")"
+    "solutionCode": "print(sorted({1, 2} ^ {2, 3}))",
+    "approach": "Print sorted({1, 2} ^ {2, 3}).\n\nReference solution:\nprint(sorted({1, 2} ^ {2, 3}))"
   },
   {
     "id": "m7-t3-p05",
@@ -1176,35 +1044,18 @@ export const module7Practice: PracticeProblem[] = [
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Print {1,2} <= {1,2,3}.",
+    "description": "Print {1, 2} <= {1, 2, 3}.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# {1,2} <= {1,2,3}",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct! {1,2} <= {1,2,3} = True.",
       "introSegments": [
         {
           "type": "text",
-          "value": "Print "
-        },
-        {
-          "type": "code",
-          "value": "{1,2} <= {1,2,3}"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Print {1, 2} <= {1, 2, 3}."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "True",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!"
     },
     "examples": [
       {
@@ -1212,10 +1063,10 @@ export const module7Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output must be exactly: True"
+      "Output must match: True"
     ],
     "hints": [
-      "print({1,2} <= {1,2,3})"
+      "<= is True when every item of the left set is in the right set."
     ],
     "starterCode": "",
     "publicTests": [
@@ -1238,46 +1089,29 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({1,2} <= {1,2,3})",
-    "approach": "Print {1,2} <= {1,2,3}.\n\nKey points: print({1,2} <= {1,2,3})\n\nA correct solution looks like this:\nprint({1,2} <= {1,2,3})"
+    "solutionCode": "print({1, 2} <= {1, 2, 3})",
+    "approach": "Print {1, 2} <= {1, 2, 3}.\n\nReference solution:\nprint({1, 2} <= {1, 2, 3})"
   },
   {
     "id": "m7-t3-p06",
     "topicId": "m7-t3",
     "slug": "superset",
     "title": "Set Operations: Superset >=",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Print {1,2,3} >= {1,2}.",
+    "description": "Print {1, 2, 3} >= {1, 2}.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# {1,2,3} >= {1,2}",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct! {1,2,3} >= {1,2} = True.",
       "introSegments": [
         {
           "type": "text",
-          "value": "Print "
-        },
-        {
-          "type": "code",
-          "value": "{1,2,3} >= {1,2}"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Print {1, 2, 3} >= {1, 2}."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "True",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!"
     },
     "examples": [
       {
@@ -1285,10 +1119,10 @@ export const module7Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output must be exactly: True"
+      "Output must match: True"
     ],
     "hints": [
-      "print({1,2,3} >= {1,2})"
+      ">= is True when the left set contains every item of the right set."
     ],
     "starterCode": "",
     "publicTests": [
@@ -1311,46 +1145,29 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({1,2,3} >= {1,2})",
-    "approach": "Print {1,2,3} >= {1,2}.\n\nKey points: print({1,2,3} >= {1,2})\n\nA correct solution looks like this:\nprint({1,2,3} >= {1,2})"
+    "solutionCode": "print({1, 2, 3} >= {1, 2})",
+    "approach": "Print {1, 2, 3} >= {1, 2}.\n\nReference solution:\nprint({1, 2, 3} >= {1, 2})"
   },
   {
     "id": "m7-t3-p07",
     "topicId": "m7-t3",
     "slug": "disjoint",
-    "title": "Set Operations: Disjoint isdisjoint",
+    "title": "Set Operations: isdisjoint",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Print {1,2}.isdisjoint({3,4}).",
+    "description": "Print {1, 2}.isdisjoint({3, 4}).",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# {1,2}.isdisjoint({3,4})",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct! {1,2}.isdisjoint({3,4}) = True.",
       "introSegments": [
         {
           "type": "text",
-          "value": "Print "
-        },
-        {
-          "type": "code",
-          "value": "{1,2}.isdisjoint({3,4})"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Print {1, 2}.isdisjoint({3, 4})."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "True",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!"
     },
     "examples": [
       {
@@ -1358,10 +1175,10 @@ export const module7Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output must be exactly: True"
+      "Output must match: True"
     ],
     "hints": [
-      "print({1,2}.isdisjoint({3,4}))"
+      "isdisjoint is True when the sets share no items."
     ],
     "starterCode": "",
     "publicTests": [
@@ -1384,338 +1201,253 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({1,2}.isdisjoint({3,4}))",
-    "approach": "Print {1,2}.isdisjoint({3,4}).\n\nKey points: print({1,2}.isdisjoint({3,4}))\n\nA correct solution looks like this:\nprint({1,2}.isdisjoint({3,4}))"
+    "solutionCode": "print({1, 2}.isdisjoint({3, 4}))",
+    "approach": "Print {1, 2}.isdisjoint({3, 4}).\n\nReference solution:\nprint({1, 2}.isdisjoint({3, 4}))"
   },
   {
     "id": "m7-t4-p01",
     "topicId": "m7-t4",
-    "slug": "union",
-    "title": "Set Methods: Union |",
+    "slug": "union-method",
+    "title": "Set Methods: union()",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Print {1,2} | {2,3}.",
+    "description": "Print sorted({1, 2}.union({2, 3})).",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# {1,2} | {2,3}",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct! {1,2} | {2,3} = {1, 2, 3}.",
       "introSegments": [
         {
           "type": "text",
-          "value": "Print "
-        },
-        {
-          "type": "code",
-          "value": "{1,2} | {2,3}"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Print sorted({1, 2}.union({2, 3}))."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "{1, 2, 3}",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!"
     },
     "examples": [
       {
-        "output": "{1, 2, 3}"
+        "output": "[1, 2, 3]"
       }
     ],
     "constraints": [
-      "Output must be exactly: {1, 2, 3}"
+      "Output must match: [1, 2, 3]"
     ],
     "hints": [
-      "print({1,2} | {2,3})"
+      "union() is the method form of |."
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t4-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "{1, 2, 3}",
+        "expectedStdout": "[1, 2, 3]",
         "visibility": "public"
       },
       {
         "id": "m7-t4-p01-t2",
         "label": "Exact Output",
-        "expectedStdout": "{1, 2, 3}",
+        "expectedStdout": "[1, 2, 3]",
         "visibility": "public"
       },
       {
         "id": "m7-t4-p01-t3",
         "label": "No Extra Output",
-        "expectedStdout": "{1, 2, 3}",
+        "expectedStdout": "[1, 2, 3]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{1, 2, 3}\")",
-    "approach": "Print {1,2} | {2,3}.\n\nKey points: print({1,2} | {2,3})\n\nA correct solution looks like this:\nprint(\"{1, 2, 3}\")"
+    "solutionCode": "print(sorted({1, 2}.union({2, 3})))",
+    "approach": "Print sorted({1, 2}.union({2, 3})).\n\nReference solution:\nprint(sorted({1, 2}.union({2, 3})))"
   },
   {
     "id": "m7-t4-p02",
     "topicId": "m7-t4",
-    "slug": "intersection",
-    "title": "Set Methods: Intersection &",
+    "slug": "intersection-method",
+    "title": "Set Methods: intersection()",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Print {1,2,3} & {2,3,4}.",
+    "description": "Print sorted({1, 2, 3}.intersection({2, 3, 4})).",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# {1,2,3} & {2,3,4}",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct! {1,2,3} & {2,3,4} = {2, 3}.",
       "introSegments": [
         {
           "type": "text",
-          "value": "Print "
-        },
-        {
-          "type": "code",
-          "value": "{1,2,3} & {2,3,4}"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Print sorted({1, 2, 3}.intersection({2, 3, 4}))."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "{2, 3}",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!"
     },
     "examples": [
       {
-        "output": "{2, 3}"
+        "output": "[2, 3]"
       }
     ],
     "constraints": [
-      "Output must be exactly: {2, 3}"
+      "Output must match: [2, 3]"
     ],
     "hints": [
-      "print({1,2,3} & {2,3,4})"
+      "intersection() is the method form of &."
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t4-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "{2, 3}",
+        "expectedStdout": "[2, 3]",
         "visibility": "public"
       },
       {
         "id": "m7-t4-p02-t2",
         "label": "Exact Output",
-        "expectedStdout": "{2, 3}",
+        "expectedStdout": "[2, 3]",
         "visibility": "public"
       },
       {
         "id": "m7-t4-p02-t3",
         "label": "No Extra Output",
-        "expectedStdout": "{2, 3}",
+        "expectedStdout": "[2, 3]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{2, 3}\")",
-    "approach": "Print {1,2,3} & {2,3,4}.\n\nKey points: print({1,2,3} & {2,3,4})\n\nA correct solution looks like this:\nprint(\"{2, 3}\")"
+    "solutionCode": "print(sorted({1, 2, 3}.intersection({2, 3, 4})))",
+    "approach": "Print sorted({1, 2, 3}.intersection({2, 3, 4})).\n\nReference solution:\nprint(sorted({1, 2, 3}.intersection({2, 3, 4})))"
   },
   {
     "id": "m7-t4-p03",
     "topicId": "m7-t4",
-    "slug": "difference",
-    "title": "Set Methods: Difference -",
-    "difficulty": "medium",
+    "slug": "difference-method",
+    "title": "Set Methods: difference()",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Print {1,2,3} - {2}.",
+    "description": "Print sorted({1, 2, 3}.difference({2})).",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# {1,2,3} - {2}",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct! {1,2,3} - {2} = {1, 3}.",
       "introSegments": [
         {
           "type": "text",
-          "value": "Print "
-        },
-        {
-          "type": "code",
-          "value": "{1,2,3} - {2}"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Print sorted({1, 2, 3}.difference({2}))."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "{1, 3}",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!"
     },
     "examples": [
       {
-        "output": "{1, 3}"
+        "output": "[1, 3]"
       }
     ],
     "constraints": [
-      "Output must be exactly: {1, 3}"
+      "Output must match: [1, 3]"
     ],
     "hints": [
-      "print({1,2,3} - {2})"
+      "difference() is the method form of -."
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t4-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "{1, 3}",
+        "expectedStdout": "[1, 3]",
         "visibility": "public"
       },
       {
         "id": "m7-t4-p03-t2",
         "label": "Exact Output",
-        "expectedStdout": "{1, 3}",
+        "expectedStdout": "[1, 3]",
         "visibility": "public"
       },
       {
         "id": "m7-t4-p03-t3",
         "label": "No Extra Output",
-        "expectedStdout": "{1, 3}",
+        "expectedStdout": "[1, 3]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{1, 3}\")",
-    "approach": "Print {1,2,3} - {2}.\n\nKey points: print({1,2,3} - {2})\n\nA correct solution looks like this:\nprint(\"{1, 3}\")"
+    "solutionCode": "print(sorted({1, 2, 3}.difference({2})))",
+    "approach": "Print sorted({1, 2, 3}.difference({2})).\n\nReference solution:\nprint(sorted({1, 2, 3}.difference({2})))"
   },
   {
     "id": "m7-t4-p04",
     "topicId": "m7-t4",
-    "slug": "symmetric",
-    "title": "Set Methods: Symmetric ^",
+    "slug": "symmetric-method",
+    "title": "Set Methods: symmetric_difference()",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Print {1,2} ^ {2,3}.",
+    "description": "Print sorted({1, 2}.symmetric_difference({2, 3})).",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# {1,2} ^ {2,3}",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct! {1,2} ^ {2,3} = {1, 3}.",
       "introSegments": [
         {
           "type": "text",
-          "value": "Print "
-        },
-        {
-          "type": "code",
-          "value": "{1,2} ^ {2,3}"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Print sorted({1, 2}.symmetric_difference({2, 3}))."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "{1, 3}",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!"
     },
     "examples": [
       {
-        "output": "{1, 3}"
+        "output": "[1, 3]"
       }
     ],
     "constraints": [
-      "Output must be exactly: {1, 3}"
+      "Output must match: [1, 3]"
     ],
     "hints": [
-      "print({1,2} ^ {2,3})"
+      "symmetric_difference() is the method form of ^."
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t4-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "{1, 3}",
+        "expectedStdout": "[1, 3]",
         "visibility": "public"
       },
       {
         "id": "m7-t4-p04-t2",
         "label": "Exact Output",
-        "expectedStdout": "{1, 3}",
+        "expectedStdout": "[1, 3]",
         "visibility": "public"
       },
       {
         "id": "m7-t4-p04-t3",
         "label": "No Extra Output",
-        "expectedStdout": "{1, 3}",
+        "expectedStdout": "[1, 3]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"{1, 3}\")",
-    "approach": "Print {1,2} ^ {2,3}.\n\nKey points: print({1,2} ^ {2,3})\n\nA correct solution looks like this:\nprint(\"{1, 3}\")"
+    "solutionCode": "print(sorted({1, 2}.symmetric_difference({2, 3})))",
+    "approach": "Print sorted({1, 2}.symmetric_difference({2, 3})).\n\nReference solution:\nprint(sorted({1, 2}.symmetric_difference({2, 3})))"
   },
   {
     "id": "m7-t4-p05",
     "topicId": "m7-t4",
-    "slug": "subset",
-    "title": "Set Methods: Subset <=",
+    "slug": "issubset",
+    "title": "Set Methods: issubset()",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Print {1,2} <= {1,2,3}.",
+    "description": "Print {1, 2}.issubset({1, 2, 3}).",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# {1,2} <= {1,2,3}",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct! {1,2} <= {1,2,3} = True.",
       "introSegments": [
         {
           "type": "text",
-          "value": "Print "
-        },
-        {
-          "type": "code",
-          "value": "{1,2} <= {1,2,3}"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Print {1, 2}.issubset({1, 2, 3})."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "True",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!"
     },
     "examples": [
       {
@@ -1723,10 +1455,10 @@ export const module7Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output must be exactly: True"
+      "Output must match: True"
     ],
     "hints": [
-      "print({1,2} <= {1,2,3})"
+      "issubset() is the method form of <=."
     ],
     "starterCode": "",
     "publicTests": [
@@ -1749,46 +1481,29 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({1,2} <= {1,2,3})",
-    "approach": "Print {1,2} <= {1,2,3}.\n\nKey points: print({1,2} <= {1,2,3})\n\nA correct solution looks like this:\nprint({1,2} <= {1,2,3})"
+    "solutionCode": "print({1, 2}.issubset({1, 2, 3}))",
+    "approach": "Print {1, 2}.issubset({1, 2, 3}).\n\nReference solution:\nprint({1, 2}.issubset({1, 2, 3}))"
   },
   {
     "id": "m7-t4-p06",
     "topicId": "m7-t4",
-    "slug": "superset",
-    "title": "Set Methods: Superset >=",
-    "difficulty": "hard",
+    "slug": "issuperset",
+    "title": "Set Methods: issuperset()",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Print {1,2,3} >= {1,2}.",
+    "description": "Print {1, 2, 3}.issuperset({1, 2}).",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# {1,2,3} >= {1,2}",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct! {1,2,3} >= {1,2} = True.",
       "introSegments": [
         {
           "type": "text",
-          "value": "Print "
-        },
-        {
-          "type": "code",
-          "value": "{1,2,3} >= {1,2}"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Print {1, 2, 3}.issuperset({1, 2})."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "True",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!"
     },
     "examples": [
       {
@@ -1796,10 +1511,10 @@ export const module7Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output must be exactly: True"
+      "Output must match: True"
     ],
     "hints": [
-      "print({1,2,3} >= {1,2})"
+      "issuperset() is the method form of >=."
     ],
     "starterCode": "",
     "publicTests": [
@@ -1822,80 +1537,67 @@ export const module7Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({1,2,3} >= {1,2})",
-    "approach": "Print {1,2,3} >= {1,2}.\n\nKey points: print({1,2,3} >= {1,2})\n\nA correct solution looks like this:\nprint({1,2,3} >= {1,2})"
+    "solutionCode": "print({1, 2, 3}.issuperset({1, 2}))",
+    "approach": "Print {1, 2, 3}.issuperset({1, 2}).\n\nReference solution:\nprint({1, 2, 3}.issuperset({1, 2}))"
   },
   {
     "id": "m7-t4-p07",
     "topicId": "m7-t4",
-    "slug": "disjoint",
-    "title": "Set Methods: Disjoint isdisjoint",
+    "slug": "copy-set",
+    "title": "Set Methods: copy()",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Print {1,2}.isdisjoint({3,4}).",
+    "description": "Set a = {1, 2}, b = a.copy(), then b.add(3). Print sorted(a) then sorted(b) on separate lines.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# {1,2}.isdisjoint({3,4})",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct! {1,2}.isdisjoint({3,4}) = True.",
       "introSegments": [
         {
           "type": "text",
-          "value": "Print "
-        },
-        {
-          "type": "code",
-          "value": "{1,2}.isdisjoint({3,4})"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Set a = {1, 2}, b = a.copy(), then b.add(3). Print sorted(a) then sorted(b) on separate lines."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "True",
-          "label": "output"
-        }
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "a",
+        "b"
       ]
     },
     "examples": [
       {
-        "output": "True"
+        "output": "[1, 2]\n[1, 2, 3]"
       }
     ],
     "constraints": [
-      "Output must be exactly: True"
+      "Output must match: [1, 2] / [1, 2, 3]"
     ],
     "hints": [
-      "print({1,2}.isdisjoint({3,4}))"
+      "copy() makes a new set, so changing b does not change a."
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m7-t4-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "True",
+        "expectedStdout": "[1, 2]\n[1, 2, 3]",
         "visibility": "public"
       },
       {
         "id": "m7-t4-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "True",
+        "label": "Required names and structure",
+        "assertCode": "assert \"a\" in globals(), \"Expected a variable named a\"\nassert \"b\" in globals(), \"Expected a variable named b\"",
         "visibility": "public"
       },
       {
         "id": "m7-t4-p07-t3",
         "label": "No Extra Output",
-        "expectedStdout": "True",
+        "expectedStdout": "[1, 2]\n[1, 2, 3]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print({1,2}.isdisjoint({3,4}))",
-    "approach": "Print {1,2}.isdisjoint({3,4}).\n\nKey points: print({1,2}.isdisjoint({3,4}))\n\nA correct solution looks like this:\nprint({1,2}.isdisjoint({3,4}))"
+    "solutionCode": "a = {1, 2}\nb = a.copy()\nb.add(3)\nprint(sorted(a))\nprint(sorted(b))",
+    "approach": "Set a = {1, 2}, b = a.copy(), then b.add(3). Print sorted(a) then sorted(b) on separate lines.\n\nReference solution:\na = {1, 2}\nb = a.copy()\nb.add(3)\nprint(sorted(a))\nprint(sorted(b))"
   }
 ];

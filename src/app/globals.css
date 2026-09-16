@@ -226,6 +226,33 @@ body.papc-exam-lock footer {
   background: #64748b;
 }
 
+.ide-console-scroll-light,
+.ide-console-scroll-light * {
+  user-select: text;
+}
+
+.ide-console-scroll-light::selection,
+.ide-console-scroll-light *::selection {
+  background-color: rgba(15, 117, 189, 0.4);
+  color: #0f172a;
+}
+
+/* Practice IDE: selection draws behind .cm-content; keep that layer visible
+   and let the scroller handle extra lines inside a fixed-height workspace. */
+.ide-light-locked .cm-editor {
+  height: 100%;
+  max-height: 100%;
+}
+.ide-light-locked .cm-scroller {
+  overflow: auto !important;
+}
+.ide-light-locked .cm-content {
+  background-color: transparent !important;
+}
+.ide-light-locked .cm-selectionBackground {
+  background-color: rgba(15, 117, 189, 0.38) !important;
+}
+
 /*
  * Coding IDE / practice surfaces stay light even when the site theme is dark.
  * html.dark remaps many Tailwind utilities site-wide — this lock undoes those

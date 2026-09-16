@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef } from "react";
+import clsx from "clsx";
 import CodeMirror from "@uiw/react-codemirror";
 import { python } from "@codemirror/lang-python";
 import { oneDark } from "@codemirror/theme-one-dark";
@@ -25,8 +26,12 @@ interface CodeEditorProps {
 }
 
 const darkEditorTheme = EditorView.theme({
-  "&": { fontSize: "13px" },
-  ".cm-scroller": { fontFamily: "Consolas, Monaco, ui-monospace, monospace" },
+  "&": { fontSize: "13px", height: "100%", maxHeight: "100%" },
+  ".cm-scroller": {
+    fontFamily: "Consolas, Monaco, ui-monospace, monospace",
+    overflow: "auto",
+  },
+  ".cm-content": { backgroundColor: "transparent" },
   ".cm-gutters": {
     backgroundColor: "#0d1117",
     color: "#6e7681",
@@ -40,17 +45,21 @@ const lightEditorTheme = EditorView.theme(
   {
     "&": {
       fontSize: "13.5px",
+      height: "100%",
+      maxHeight: "100%",
       backgroundColor: "#f0f7fc",
       color: "#0f172a",
     },
     ".cm-scroller": {
       fontFamily: "Consolas, Monaco, ui-monospace, monospace",
       backgroundColor: "#f0f7fc",
+      overflow: "auto",
     },
+    // Transparent so CodeMirror's selection layer (behind content) stays visible.
     ".cm-content": {
       caretColor: "#0f75bd",
       color: "#0f172a",
-      backgroundColor: "#f0f7fc",
+      backgroundColor: "transparent",
     },
     ".cm-gutters": {
       backgroundColor: "#e7f1fa",
@@ -59,8 +68,17 @@ const lightEditorTheme = EditorView.theme(
     },
     ".cm-activeLineGutter": { backgroundColor: "#d9ebf8", color: "#0f75bd" },
     ".cm-activeLine": { backgroundColor: "rgba(15, 117, 189, 0.08)" },
-    ".cm-selectionBackground, &.cm-focused .cm-selectionBackground": {
-      backgroundColor: "rgba(15, 117, 189, 0.2) !important",
+    ".cm-selectionBackground": {
+      backgroundColor: "rgba(15, 117, 189, 0.38) !important",
+    },
+    ".cm-selectionLayer .cm-selectionBackground": {
+      backgroundColor: "rgba(15, 117, 189, 0.38) !important",
+    },
+    "&.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground": {
+      backgroundColor: "rgba(15, 117, 189, 0.42) !important",
+    },
+    ".cm-content ::selection, .cm-line ::selection": {
+      backgroundColor: "rgba(15, 117, 189, 0.38) !important",
     },
     ".cm-cursor, .cm-cursor-primary": { borderLeftColor: "#0f75bd" },
     ".cm-line": { color: "#0f172a" },
@@ -176,10 +194,13 @@ export function CodeEditor({
   );
 
   return (
-    <div className={className}>
+    <div className={clsx("h-full min-h-0 overflow-hidden", className)}>
       <CodeMirror
         value={value}
         height={height ?? minHeight}
+        minHeight={height ? "0px" : minHeight}
+        maxHeight={height ? "100%" : undefined}
+        className="h-full min-h-0"
         theme={isLight ? "light" : oneDark}
         extensions={extensions}
         onChange={onChange}

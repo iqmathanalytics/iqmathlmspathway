@@ -27,7 +27,10 @@ export const module10Practice: PracticeProblem[] = [
         }
       ],
       "editorPlaceholder": "# while loop",
-      "successDetail": "Correct!"
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "n"
+      ]
     },
     "examples": [
       {
@@ -42,7 +45,7 @@ export const module10Practice: PracticeProblem[] = [
       "n=1\\nwhile n<=3:\\n    print(n)\\n    n+=1"
     ],
     "starterCode": "",
-    "approach": "Use while to print 1, 2, 3 on separate lines. Key points: n=1\\nwhile n<=3:\\n print(n)\\n n+=1 A correct solution looks like this: n=1 while n<=3: print(n) n+=1",
+    "approach": "Use while to print 1, 2, 3 on separate lines.\n\nReference solution:\nn=1\nwhile n<=3:\n    print(n)\n    n+=1",
     "publicTests": [
       {
         "id": "m10-t1-p01-t1",
@@ -52,8 +55,8 @@ export const module10Practice: PracticeProblem[] = [
       },
       {
         "id": "m10-t1-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3",
+        "label": "Required names and structure",
+        "assertCode": "assert \"n\" in globals(), \"Expected a variable named n\"",
         "visibility": "public"
       },
       {
@@ -97,7 +100,7 @@ export const module10Practice: PracticeProblem[] = [
       "total=0\\nn=1\\nwhile n<=5:\\n    total+=n\\n    n+=1\\nprint(total)"
     ],
     "starterCode": "",
-    "approach": "Use while to print 1+2+3+4+5 result: 15. Key points: total=0\\nn=1\\nwhile n<=5:\\n total+=n\\n n+=1\\nprint(total) A correct solution looks like this: total=0 n=1 while n<=5: total+=n n+=1 print(total)",
+    "approach": "Use while to print 1+2+3+4+5 result: 15.\n\nReference solution:\ntotal=0\nn=1\nwhile n<=5:\n    total+=n\n    n+=1\nprint(total)",
     "publicTests": [
       {
         "id": "m10-t1-p02-t1",
@@ -152,7 +155,7 @@ export const module10Practice: PracticeProblem[] = [
       "x=3\\nwhile x>0:\\n    print(x)\\n    x-=1"
     ],
     "starterCode": "",
-    "approach": "Set x=3, while x>0: print(x); x-=1. Output 3,2,1. Key points: x=3\\nwhile x>0:\\n print(x)\\n x-=1 A correct solution looks like this: x=3 while x>0: print(x) x-=1",
+    "approach": "Set x=3, while x>0: print(x); x-=1. Output 3,2,1.\n\nReference solution:\nx=3\nwhile x>0:\n    print(x)\n    x-=1",
     "publicTests": [
       {
         "id": "m10-t1-p03-t1",
@@ -215,7 +218,7 @@ export const module10Practice: PracticeProblem[] = [
       "n=0\\nwhile True:\\n    n+=1\\n    print(n)\\n    if n==2: break"
     ],
     "starterCode": "",
-    "approach": "Use while True, print 1,2 then break. Key points: n=0\\nwhile True:\\n n+=1\\n print(n)\\n if n==2: break A correct solution looks like this: n=0 while True: n+=1 print(n) if n==2: break",
+    "approach": "Use while True, print 1,2 then break.\n\nReference solution:\nn=0\nwhile True:\n    n+=1\n    print(n)\n    if n==2: break",
     "publicTests": [
       {
         "id": "m10-t1-p04-t1",
@@ -270,7 +273,7 @@ export const module10Practice: PracticeProblem[] = [
       "count=0\\nwhile count<3:\\n    print(\"tick\")\\n    count+=1"
     ],
     "starterCode": "",
-    "approach": "Set count=0, while count<3: print(\"tick\"); count+=1. Key points: count=0\\nwhile count<3:\\n print(\"tick\")\\n count+=1 A correct solution looks like this: count=0 while count<3: print(\"tick\") count+=1",
+    "approach": "Set count=0, while count<3: print(\"tick\"); count+=1.\n\nReference solution:\ncount=0\nwhile count<3:\n    print(\"tick\")\n    count+=1",
     "publicTests": [
       {
         "id": "m10-t1-p05-t1",
@@ -325,7 +328,7 @@ export const module10Practice: PracticeProblem[] = [
       "n=4\\nresult=1\\nwhile n>0:\\n    result*=n\\n    n-=1\\nprint(result)"
     ],
     "starterCode": "",
-    "approach": "Use while to compute 4! = 24 and print it. Key points: n=4\\nresult=1\\nwhile n>0:\\n result*=n\\n n-=1\\nprint(result) A correct solution looks like this: n=4 result=1 while n>0: result*=n n-=1 print(result)",
+    "approach": "Use while to compute 4! = 24 and print it.\n\nReference solution:\nn=4\nresult=1\nwhile n>0:\n    result*=n\n    n-=1\nprint(result)",
     "publicTests": [
       {
         "id": "m10-t1-p06-t1",
@@ -380,7 +383,7 @@ export const module10Practice: PracticeProblem[] = [
       "running=True\\nn=0\\nwhile running:\\n    print(n)\\n    n+=1\\n    if n>=3: running=False"
     ],
     "starterCode": "",
-    "approach": "Set running=True, n=0, while running: print(n); n+=1; if n>=3: running=False. Key points: running=True\\nn=0\\nwhile running:\\n print(n)\\n n+=1\\n if n>=3: running=False A correct solution looks like this: running=True n=0 while running: print(n) n+=1 if n>=3: running=False",
+    "approach": "Set running=True, n=0, while running: print(n); n+=1; if n>=3: running=False.\n\nReference solution:\nrunning=True\nn=0\nwhile running:\n    print(n)\n    n+=1\n    if n>=3: running=False",
     "publicTests": [
       {
         "id": "m10-t1-p07-t1",
@@ -444,7 +447,7 @@ export const module10Practice: PracticeProblem[] = [
       "for i in range(1,4):\\n    print(i)"
     ],
     "starterCode": "",
-    "approach": "Use for i in range(1,4): print(i). Key points: for i in range(1,4):\\n print(i) A correct solution looks like this: for i in range(1,4): print(i)",
+    "approach": "Use for i in range(1,4): print(i).\n\nReference solution:\nfor i in range(1,4):\n    print(i)",
     "publicTests": [
       {
         "id": "m10-t2-p01-t1",
@@ -500,7 +503,7 @@ export const module10Practice: PracticeProblem[] = [
       "for item in [\"a\",\"b\",\"c\"]:\\n    print(item)"
     ],
     "starterCode": "",
-    "approach": "For item in [\"a\",\"b\",\"c\"]: print(item). Key points: for item in [\"a\",\"b\",\"c\"]:\\n print(item) A correct solution looks like this: for item in [\"a\",\"b\",\"c\"]: print(item)",
+    "approach": "For item in [\"a\",\"b\",\"c\"]: print(item).\n\nReference solution:\nfor item in [\"a\",\"b\",\"c\"]:\n    print(item)",
     "publicTests": [
       {
         "id": "m10-t2-p02-t1",
@@ -556,7 +559,7 @@ export const module10Practice: PracticeProblem[] = [
       "for char in \"hi\":\\n    print(char)"
     ],
     "starterCode": "",
-    "approach": "For char in \"hi\": print(char). Key points: for char in \"hi\":\\n print(char) A correct solution looks like this: for char in \"hi\": print(char)",
+    "approach": "For char in \"hi\": print(char).\n\nReference solution:\nfor char in \"hi\":\n    print(char)",
     "publicTests": [
       {
         "id": "m10-t2-p03-t1",
@@ -612,7 +615,7 @@ export const module10Practice: PracticeProblem[] = [
       "total=0\\nfor n in [1,2,3,4]:\\n    total+=n\\nprint(total)"
     ],
     "starterCode": "",
-    "approach": "Use for to sum [1,2,3,4] and print 10. Key points: total=0\\nfor n in [1,2,3,4]:\\n total+=n\\nprint(total) A correct solution looks like this: total=0 for n in [1,2,3,4]: total+=n print(total)",
+    "approach": "Use for to sum [1,2,3,4] and print 10.\n\nReference solution:\ntotal=0\nfor n in [1,2,3,4]:\n    total+=n\nprint(total)",
     "publicTests": [
       {
         "id": "m10-t2-p04-t1",
@@ -668,7 +671,7 @@ export const module10Practice: PracticeProblem[] = [
       "items=[\"x\",\"y\"]\\nfor i in range(len(items)):\\n    print(f\"{i}:{items[i]}\")"
     ],
     "starterCode": "",
-    "approach": "Print index:value for [\"x\",\"y\"] as 0:x and 1:y. Key points: items=[\"x\",\"y\"]\\nfor i in range(len(items)):\\n print(f\"{i}:{items[i]}\") A correct solution looks like this: items=[\"x\",\"y\"] for i in range(len(items)): print(f\"{i}:{items[i]}\")",
+    "approach": "Print index:value for [\"x\",\"y\"] as 0:x and 1:y.\n\nReference solution:\nitems=[\"x\",\"y\"]\nfor i in range(len(items)):\n    print(f\"{i}:{items[i]}\")",
     "publicTests": [
       {
         "id": "m10-t2-p05-t1",
@@ -724,7 +727,7 @@ export const module10Practice: PracticeProblem[] = [
       "for _ in range(2):\\n    for n in [1,2]:\\n        print(n)"
     ],
     "starterCode": "",
-    "approach": "Use nested for to print 1,2 for two rows. Key points: for _ in range(2):\\n for n in [1,2]:\\n print(n) A correct solution looks like this: for _ in range(2): for n in [1,2]: print(n)",
+    "approach": "Use nested for to print 1,2 for two rows.\n\nReference solution:\nfor _ in range(2):\n    for n in [1,2]:\n        print(n)",
     "publicTests": [
       {
         "id": "m10-t2-p06-t1",
@@ -780,7 +783,7 @@ export const module10Practice: PracticeProblem[] = [
       "for n in [1,2,3]:\\n    print(n)"
     ],
     "starterCode": "",
-    "approach": "Loop [1,2,3] printing each — just print all items. Key points: for n in [1,2,3]:\\n print(n) A correct solution looks like this: for n in [1,2,3]: print(n)",
+    "approach": "Loop [1,2,3] printing each — just print all items.\n\nReference solution:\nfor n in [1,2,3]:\n    print(n)",
     "publicTests": [
       {
         "id": "m10-t2-p07-t1",
@@ -844,7 +847,7 @@ export const module10Practice: PracticeProblem[] = [
       "for i in range(1,6):\\n    if i==3: break\\n    print(i)"
     ],
     "starterCode": "",
-    "approach": "Loop 1-5, break at 3, print numbers before break: 1,2. Key points: for i in range(1,6):\\n if i==3: break\\n print(i) A correct solution looks like this: for i in range(1,6): if i==3: break print(i)",
+    "approach": "Loop 1-5, break at 3, print numbers before break: 1,2.\n\nReference solution:\nfor i in range(1,6):\n    if i==3: break\n    print(i)",
     "publicTests": [
       {
         "id": "m10-t3-p01-t1",
@@ -908,7 +911,7 @@ export const module10Practice: PracticeProblem[] = [
       "for i in range(1,5):\\n    if i==2: continue\\n    print(i)"
     ],
     "starterCode": "",
-    "approach": "Loop 1-4, skip 2 with continue, print 1,3,4. Key points: for i in range(1,5):\\n if i==2: continue\\n print(i) A correct solution looks like this: for i in range(1,5): if i==2: continue print(i)",
+    "approach": "Loop 1-4, skip 2 with continue, print 1,3,4.\n\nReference solution:\nfor i in range(1,5):\n    if i==2: continue\n    print(i)",
     "publicTests": [
       {
         "id": "m10-t3-p02-t1",
@@ -964,7 +967,7 @@ export const module10Practice: PracticeProblem[] = [
       "for n in [1,2,3,4]:\\n    if n==3:\\n        print(\"found\")\\n        break"
     ],
     "starterCode": "",
-    "approach": "Find 3 in [1,2,3,4], print \"found\" when found. Key points: for n in [1,2,3,4]:\\n if n==3:\\n print(\"found\")\\n break A correct solution looks like this: for n in [1,2,3,4]: if n==3: print(\"found\") break",
+    "approach": "Find 3 in [1,2,3,4], print \"found\" when found.\n\nReference solution:\nfor n in [1,2,3,4]:\n    if n==3:\n        print(\"found\")\n        break",
     "publicTests": [
       {
         "id": "m10-t3-p03-t1",
@@ -1020,7 +1023,7 @@ export const module10Practice: PracticeProblem[] = [
       "for i in range(1,5):\\n    if i%2!=0: continue\\n    print(i)"
     ],
     "starterCode": "",
-    "approach": "Print even numbers 2,4 from range(1,5) using continue. Key points: for i in range(1,5):\\n if i%2!=0: continue\\n print(i) A correct solution looks like this: for i in range(1,5): if i%2!=0: continue print(i)",
+    "approach": "Print even numbers 2,4 from range(1,5) using continue.\n\nReference solution:\nfor i in range(1,5):\n    if i%2!=0: continue\n    print(i)",
     "publicTests": [
       {
         "id": "m10-t3-p04-t1",
@@ -1075,7 +1078,7 @@ export const module10Practice: PracticeProblem[] = [
       "n=0\\nwhile True:\\n    n+=1\\n    if n==3: break\\n    print(n)"
     ],
     "starterCode": "",
-    "approach": "Use while with break when n reaches 3. Key points: n=0\\nwhile True:\\n n+=1\\n if n==3: break\\n print(n) A correct solution looks like this: n=0 while True: n+=1 if n==3: break print(n)",
+    "approach": "Use while with break when n reaches 3.\n\nReference solution:\nn=0\nwhile True:\n    n+=1\n    if n==3: break\n    print(n)",
     "publicTests": [
       {
         "id": "m10-t3-p05-t1",
@@ -1131,7 +1134,7 @@ export const module10Practice: PracticeProblem[] = [
       "for c in \"a b\":\\n    if c==\" \": continue\\n    print(c)"
     ],
     "starterCode": "",
-    "approach": "For c in \"a b\", skip spaces with continue, print a and b. Key points: for c in \"a b\":\\n if c==\" \": continue\\n print(c) A correct solution looks like this: for c in \"a b\": if c==\" \": continue print(c)",
+    "approach": "For c in \"a b\", skip spaces with continue, print a and b.\n\nReference solution:\nfor c in \"a b\":\n    if c==\" \": continue\n    print(c)",
     "publicTests": [
       {
         "id": "m10-t3-p06-t1",
@@ -1162,7 +1165,7 @@ export const module10Practice: PracticeProblem[] = [
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Nested loop, break inner at j=2, print pairs until break.",
+    "description": "Use nested loops: for i in range(1, 3) and for j in range(1, 4). Break the inner loop when j == 3. Print j otherwise.",
     "challengeContent": {
       "outputOnly": true,
       "requiresForLoop": true,
@@ -1177,38 +1180,38 @@ export const module10Practice: PracticeProblem[] = [
     },
     "examples": [
       {
-        "output": "1\n1\n2"
+        "output": "1\n2\n1\n2"
       }
     ],
     "constraints": [
       "Use break in inner loop"
     ],
     "hints": [
-      "for i in range(1,3):\\n    for j in range(1,4):\\n        if j==3: break\\n        print(j)"
+      "The inner break only stops the inner loop, so the outer loop still runs twice."
     ],
     "starterCode": "",
-    "approach": "Nested loop, break inner at j=2, print pairs until break. Key points: for i in range(1,3):\\n for j in range(1,4):\\n if j==3: break\\n print(j) A correct solution looks like this: d = {\"topic\": \"1\\n1\\n2\"} print(d[\"topic\"])",
+    "approach": "Use nested loops: for i in range(1, 3) and for j in range(1, 4). Break the inner loop when j == 3. Print j otherwise.\n\nReference solution:\nfor i in range(1, 3):\n    for j in range(1, 4):\n        if j == 3:\n            break\n        print(j)",
     "publicTests": [
       {
         "id": "m10-t3-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n1\n2",
+        "expectedStdout": "1\n2\n1\n2",
         "visibility": "public"
       },
       {
         "id": "m10-t3-p07-t2",
         "label": "Exact Output",
-        "expectedStdout": "1\n1\n2",
+        "expectedStdout": "1\n2\n1\n2",
         "visibility": "public"
       },
       {
         "id": "m10-t3-p07-t3",
         "label": "Multi-line Format",
-        "expectedStdout": "1\n1\n2",
+        "expectedStdout": "1\n2\n1\n2",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"1\\n1\\n2\"}\nprint(d[\"topic\"])"
+    "solutionCode": "for i in range(1, 3):\n    for j in range(1, 4):\n        if j == 3:\n            break\n        print(j)"
   },
   {
     "id": "m10-t4-p01",
@@ -1250,7 +1253,7 @@ export const module10Practice: PracticeProblem[] = [
       "x=5\\nif x>0:\\n    pass\\nprint(\"ok\")"
     ],
     "starterCode": "",
-    "approach": "Set x=5, if x>0: pass, then print \"ok\". Key points: x=5\\nif x>0:\\n pass\\nprint(\"ok\") A correct solution looks like this: x=5 if x>0: pass print(\"ok\")",
+    "approach": "Set x=5, if x>0: pass, then print \"ok\".\n\nReference solution:\nx=5\nif x>0:\n    pass\nprint(\"ok\")",
     "publicTests": [
       {
         "id": "m10-t4-p01-t1",
@@ -1305,7 +1308,7 @@ export const module10Practice: PracticeProblem[] = [
       "x=0\\nif x:\\n    print(\"yes\")\\nelse:\\n    pass\\nprint(\"done\")"
     ],
     "starterCode": "",
-    "approach": "Set x=0, if x: print(\"yes\") else: pass, print \"done\". Key points: x=0\\nif x:\\n print(\"yes\")\\nelse:\\n pass\\nprint(\"done\") A correct solution looks like this: x=0 if x: print(\"yes\") else: pass print(\"done\")",
+    "approach": "Set x=0, if x: print(\"yes\") else: pass, print \"done\".\n\nReference solution:\nx=0\nif x:\n    print(\"yes\")\nelse:\n    pass\nprint(\"done\")",
     "publicTests": [
       {
         "id": "m10-t4-p02-t1",
@@ -1361,7 +1364,7 @@ export const module10Practice: PracticeProblem[] = [
       "for i in range(3):\\n    pass\\nprint(\"finished\")"
     ],
     "starterCode": "",
-    "approach": "for i in range(3): pass, then print \"finished\". Key points: for i in range(3):\\n pass\\nprint(\"finished\") A correct solution looks like this: for i in range(3): pass print(\"finished\")",
+    "approach": "for i in range(3): pass, then print \"finished\".\n\nReference solution:\nfor i in range(3):\n    pass\nprint(\"finished\")",
     "publicTests": [
       {
         "id": "m10-t4-p03-t1",
@@ -1417,7 +1420,7 @@ export const module10Practice: PracticeProblem[] = [
       "def todo():\\n    pass\\ntodo()\\nprint(\"called\")"
     ],
     "starterCode": "",
-    "approach": "Define def todo(): pass, call todo(), print \"called\". Key points: def todo():\\n pass\\ntodo()\\nprint(\"called\") A correct solution looks like this: def todo(): pass todo() print(\"called\")",
+    "approach": "Define def todo(): pass, call todo(), print \"called\".\n\nReference solution:\ndef todo():\n    pass\ntodo()\nprint(\"called\")",
     "publicTests": [
       {
         "id": "m10-t4-p04-t1",
@@ -1427,8 +1430,8 @@ export const module10Practice: PracticeProblem[] = [
       },
       {
         "id": "m10-t4-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "called",
+        "label": "Required names and structure",
+        "assertCode": "assert \"todo\" in globals() and callable(globals()[\"todo\"]), \"Expected a function named todo\"",
         "visibility": "public"
       },
       {
@@ -1472,7 +1475,7 @@ export const module10Practice: PracticeProblem[] = [
       "show=False\\nif show:\\n    pass\\nprint(\"ready\")"
     ],
     "starterCode": "",
-    "approach": "Set show=False, if show: pass, print \"ready\". Key points: show=False\\nif show:\\n pass\\nprint(\"ready\") A correct solution looks like this: show=False if show: pass print(\"ready\")",
+    "approach": "Set show=False, if show: pass, print \"ready\".\n\nReference solution:\nshow=False\nif show:\n    pass\nprint(\"ready\")",
     "publicTests": [
       {
         "id": "m10-t4-p05-t1",
@@ -1503,7 +1506,7 @@ export const module10Practice: PracticeProblem[] = [
     "difficulty": "hard",
     "order": 6,
     "layout": "challenge",
-    "description": "Use try/except with pass in except, print \"safe\".",
+    "description": "Use try/except with pass in the except block, then print safe.",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
@@ -1524,10 +1527,10 @@ export const module10Practice: PracticeProblem[] = [
       "Output: safe"
     ],
     "hints": [
-      "try:\\n    x=1\\nexcept:\\n    pass\\nprint(\"safe\")"
+      "try:\n    x = 1\nexcept Exception:\n    pass\nprint(\"safe\")"
     ],
     "starterCode": "",
-    "approach": "Use try/except with pass in except, print \"safe\". Key points: try:\\n x=1\\nexcept:\\n pass\\nprint(\"safe\") A correct solution looks like this: print(\"safe\")",
+    "approach": "Use try/except with pass in the except block, then print safe.\n\nReference solution:\ntry:\n    x = 1\nexcept Exception:\n    pass\nprint(\"safe\")",
     "publicTests": [
       {
         "id": "m10-t4-p06-t1",
@@ -1548,7 +1551,7 @@ export const module10Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"safe\")"
+    "solutionCode": "try:\n    x = 1\nexcept Exception:\n    pass\nprint(\"safe\")"
   },
   {
     "id": "m10-t4-p07",
@@ -1582,7 +1585,7 @@ export const module10Practice: PracticeProblem[] = [
       "def a(): pass\\ndef b(): pass\\nprint(\"stubs\")"
     ],
     "starterCode": "",
-    "approach": "Define def a(): pass and def b(): pass, print \"stubs\". Key points: def a(): pass\\ndef b(): pass\\nprint(\"stubs\") A correct solution looks like this: def a(): pass def b(): pass print(\"stubs\")",
+    "approach": "Define def a(): pass and def b(): pass, print \"stubs\".\n\nReference solution:\ndef a(): pass\ndef b(): pass\nprint(\"stubs\")",
     "publicTests": [
       {
         "id": "m10-t4-p07-t1",
@@ -1668,7 +1671,7 @@ export const module10Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(list(range(5)))",
-    "approach": "Print list(range(5)).\n\nKey points: print(list(range(5)))\n\nA correct solution looks like this:\nprint(list(range(5)))"
+    "approach": "Print list(range(5)).\n\nReference solution:\nprint(list(range(5)))"
   },
   {
     "id": "m10-t5-p02",
@@ -1733,7 +1736,7 @@ export const module10Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(list(range(2,6)))",
-    "approach": "Print list(range(2,6)).\n\nKey points: print(list(range(2,6)))\n\nA correct solution looks like this:\nprint(list(range(2,6)))"
+    "approach": "Print list(range(2,6)).\n\nReference solution:\nprint(list(range(2,6)))"
   },
   {
     "id": "m10-t5-p03",
@@ -1798,7 +1801,7 @@ export const module10Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(list(range(0,10,2)))",
-    "approach": "Print list(range(0,10,2)).\n\nKey points: print(list(range(0,10,2)))\n\nA correct solution looks like this:\nprint(list(range(0,10,2)))"
+    "approach": "Print list(range(0,10,2)).\n\nReference solution:\nprint(list(range(0,10,2)))"
   },
   {
     "id": "m10-t5-p04",
@@ -1833,7 +1836,7 @@ export const module10Practice: PracticeProblem[] = [
       "for i in range(1,4):\\n    print(i)"
     ],
     "starterCode": "",
-    "approach": "for i in range(1,4): print(i). Key points: for i in range(1,4):\\n print(i) A correct solution looks like this: for i in range(1,4): print(i)",
+    "approach": "for i in range(1,4): print(i).\n\nReference solution:\nfor i in range(1,4):\n    print(i)",
     "publicTests": [
       {
         "id": "m10-t5-p04-t1",
@@ -1876,7 +1879,10 @@ export const module10Practice: PracticeProblem[] = [
         }
       ],
       "editorPlaceholder": "# range len",
-      "successDetail": "Correct!"
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "a"
+      ]
     },
     "examples": [
       {
@@ -1890,7 +1896,7 @@ export const module10Practice: PracticeProblem[] = [
       "a=[10,20,30]\\nfor i in range(len(a)):\\n    print(a[i])"
     ],
     "starterCode": "",
-    "approach": "Set a=[10,20,30], for i in range(len(a)): print(a[i]). Key points: a=[10,20,30]\\nfor i in range(len(a)):\\n print(a[i]) A correct solution looks like this: a=[10,20,30] for i in range(len(a)): print(a[i])",
+    "approach": "Set a=[10,20,30], for i in range(len(a)): print(a[i]).\n\nReference solution:\na=[10,20,30]\nfor i in range(len(a)):\n    print(a[i])",
     "publicTests": [
       {
         "id": "m10-t5-p05-t1",
@@ -1900,8 +1906,8 @@ export const module10Practice: PracticeProblem[] = [
       },
       {
         "id": "m10-t5-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "10\n20\n30",
+        "label": "Required names and structure",
+        "assertCode": "assert \"a\" in globals(), \"Expected a variable named a\"",
         "visibility": "public"
       },
       {
@@ -1976,7 +1982,7 @@ export const module10Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(list(range(5,0,-1)))",
-    "approach": "Print list(range(5,0,-1)).\n\nKey points: print(list(range(5,0,-1)))\n\nA correct solution looks like this:\nprint(list(range(5,0,-1)))"
+    "approach": "Print list(range(5,0,-1)).\n\nReference solution:\nprint(list(range(5,0,-1)))"
   },
   {
     "id": "m10-t5-p07",
@@ -2010,7 +2016,7 @@ export const module10Practice: PracticeProblem[] = [
       "total=0\\nfor i in range(1,6):\\n    total+=i\\nprint(total)"
     ],
     "starterCode": "",
-    "approach": "Sum range(1,6) and print 15. Key points: total=0\\nfor i in range(1,6):\\n total+=i\\nprint(total) A correct solution looks like this: total=0 for i in range(1,6): total+=i print(total)",
+    "approach": "Sum range(1,6) and print 15.\n\nReference solution:\ntotal=0\nfor i in range(1,6):\n    total+=i\nprint(total)",
     "publicTests": [
       {
         "id": "m10-t5-p07-t1",

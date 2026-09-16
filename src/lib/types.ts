@@ -399,6 +399,10 @@ export interface PracticeChallengeContent {
   requiresForLoop?: boolean;
   requiresIfCondition?: boolean;
   requiresFunction?: string;
+  requiresTry?: boolean;
+  requiresExcept?: boolean;
+  requiresFinally?: boolean;
+  requiresRaise?: boolean;
   requiresVariables?: string[];
   requiresListAccess?: boolean;
   requiresDictKey?: string;

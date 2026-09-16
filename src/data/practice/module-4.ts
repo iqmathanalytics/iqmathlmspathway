@@ -72,7 +72,7 @@ export const module4Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(\"Hello\")",
-    "approach": "Print \"Hello\" using double quotes.\n\nKey points: print(\"Hello\")\n\nA correct solution looks like this:\nprint(\"Hello\")"
+    "approach": "Print \"Hello\" using double quotes.\n\nReference solution:\nprint(\"Hello\")"
   },
   {
     "id": "m4-t1-p02",
@@ -137,7 +137,7 @@ export const module4Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print('Python')",
-    "approach": "Print 'Python' using single quotes.\n\nKey points: print('Python')\n\nA correct solution looks like this:\nprint('Python')"
+    "approach": "Print 'Python' using single quotes.\n\nReference solution:\nprint('Python')"
   },
   {
     "id": "m4-t1-p03",
@@ -210,7 +210,7 @@ export const module4Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(\"Py\" + \"thon\")",
-    "approach": "Print \"Py\" + \"thon\".\n\nKey points: print(\"Py\" + \"thon\")\n\nA correct solution looks like this:\nprint(\"Py\" + \"thon\")"
+    "approach": "Print \"Py\" + \"thon\".\n\nReference solution:\nprint(\"Py\" + \"thon\")"
   },
   {
     "id": "m4-t1-p04",
@@ -283,7 +283,7 @@ export const module4Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(\"Ha\" * 3)",
-    "approach": "Print \"Ha\" * 3.\n\nKey points: print(\"Ha\" * 3)\n\nA correct solution looks like this:\nprint(\"Ha\" * 3)"
+    "approach": "Print \"Ha\" * 3.\n\nReference solution:\nprint(\"Ha\" * 3)"
   },
   {
     "id": "m4-t1-p05",
@@ -326,7 +326,7 @@ export const module4Practice: PracticeProblem[] = [
       "print(\"Line1\\nLine2\")"
     ],
     "starterCode": "",
-    "approach": "Print \"Line1\\nLine2\" (two lines). Key points: print(\"Line1\\nLine2\") A correct solution looks like this: print(\"Line1\") print(\"Line2\")",
+    "approach": "Print \"Line1\\nLine2\" (two lines).\n\nReference solution:\nprint(\"Line1\\nLine2\")",
     "publicTests": [
       {
         "id": "m4-t1-p05-t1",
@@ -347,7 +347,7 @@ export const module4Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Line1\")\nprint(\"Line2\")"
+    "solutionCode": "print(\"Line1\\nLine2\")"
   },
   {
     "id": "m4-t1-p06",
@@ -420,7 +420,7 @@ export const module4Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(len(\"\"))",
-    "approach": "Print len(\"\") — length of empty string.\n\nKey points: print(len(\"\"))\n\nA correct solution looks like this:\nprint(len(\"\"))"
+    "approach": "Print len(\"\") — length of empty string.\n\nReference solution:\nprint(len(\"\"))"
   },
   {
     "id": "m4-t1-p07",
@@ -493,7 +493,7 @@ export const module4Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(\"Data\" + \" \" + \"Science\")",
-    "approach": "Print \"Data\" + \" \" + \"Science\".\n\nKey points: print(\"Data\" + \" \" + \"Science\")\n\nA correct solution looks like this:\nprint(\"Data\" + \" \" + \"Science\")"
+    "approach": "Print \"Data\" + \" \" + \"Science\".\n\nReference solution:\nprint(\"Data\" + \" \" + \"Science\")"
   },
   {
     "id": "m4-t2-p01",
@@ -547,7 +547,7 @@ export const module4Practice: PracticeProblem[] = [
       "name = \"Ana\"\\nprint(f\"Hello, {name}\")"
     ],
     "starterCode": "",
-    "approach": "Set name=\"Ana\", print f\"Hello, {name}\". Key points: name = \"Ana\"\\nprint(f\"Hello, {name}\") A correct solution looks like this: name = \"Ana\" print(f\"Hello, {name}\")",
+    "approach": "Set name=\"Ana\", print f\"Hello, {name}\".\n\nReference solution:\nname = \"Ana\"\nprint(f\"Hello, {name}\")",
     "publicTests": [
       {
         "id": "m4-t2-p01-t1",
@@ -557,8 +557,8 @@ export const module4Practice: PracticeProblem[] = [
       },
       {
         "id": "m4-t2-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello, Ana",
+        "label": "Required names and structure",
+        "assertCode": "assert \"name\" in globals(), \"Expected a variable named name\"",
         "visibility": "public"
       },
       {
@@ -641,7 +641,7 @@ export const module4Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(f\"2 + 3 = {2 + 3}\")",
-    "approach": "Print f\"2 + 3 = {2 + 3}\".\n\nKey points: print(f\"2 + 3 = {2 + 3}\")\n\nA correct solution looks like this:\nprint(f\"2 + 3 = {2 + 3}\")"
+    "approach": "Print f\"2 + 3 = {2 + 3}\".\n\nReference solution:\nprint(f\"2 + 3 = {2 + 3}\")"
   },
   {
     "id": "m4-t2-p03",
@@ -714,7 +714,7 @@ export const module4Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(\"Score: {}\".format(90))",
-    "approach": "Print \"Score: {}\".format(90).\n\nKey points: print(\"Score: {}\".format(90))\n\nA correct solution looks like this:\nprint(\"Score: {}\".format(90))"
+    "approach": "Print \"Score: {}\".format(90).\n\nReference solution:\nprint(\"Score: {}\".format(90))"
   },
   {
     "id": "m4-t2-p04",
@@ -768,7 +768,7 @@ export const module4Practice: PracticeProblem[] = [
       "x = 3\\ny = 4\\nprint(f\"{x} + {y} = {x+y}\")"
     ],
     "starterCode": "",
-    "approach": "Set x=3, y=4, print f\"{x} + {y} = {x+y}\". Key points: x = 3\\ny = 4\\nprint(f\"{x} + {y} = {x+y}\") A correct solution looks like this: x = 3 y = 4 print(f\"{x} + {y} = {x+y}\")",
+    "approach": "Set x=3, y=4, print f\"{x} + {y} = {x+y}\".\n\nReference solution:\nx = 3\ny = 4\nprint(f\"{x} + {y} = {x+y}\")",
     "publicTests": [
       {
         "id": "m4-t2-p04-t1",
@@ -778,8 +778,8 @@ export const module4Practice: PracticeProblem[] = [
       },
       {
         "id": "m4-t2-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "3 + 4 = 7",
+        "label": "Required names and structure",
+        "assertCode": "assert \"x\" in globals(), \"Expected a variable named x\"\nassert \"y\" in globals(), \"Expected a variable named y\"",
         "visibility": "public"
       },
       {
@@ -862,7 +862,7 @@ export const module4Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(\"{1} {0}\".format(\"World\", \"Hello\"))",
-    "approach": "Print \"{1} {0}\".format(\"World\", \"Hello\").\n\nKey points: print(\"{1} {0}\".format(\"World\", \"Hello\"))\n\nA correct solution looks like this:\nprint(\"{1} {0}\".format(\"World\", \"Hello\"))"
+    "approach": "Print \"{1} {0}\".format(\"World\", \"Hello\").\n\nReference solution:\nprint(\"{1} {0}\".format(\"World\", \"Hello\"))"
   },
   {
     "id": "m4-t2-p06",
@@ -935,7 +935,7 @@ export const module4Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(f\"Pi is {3.14159:.2f}\")",
-    "approach": "Print f\"Pi is {3.14159:.2f}\".\n\nKey points: print(f\"Pi is {3.14159:.2f}\")\n\nA correct solution looks like this:\nprint(f\"Pi is {3.14159:.2f}\")"
+    "approach": "Print f\"Pi is {3.14159:.2f}\".\n\nReference solution:\nprint(f\"Pi is {3.14159:.2f}\")"
   },
   {
     "id": "m4-t2-p07",
@@ -1008,7 +1008,7 @@ export const module4Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(\"Value: %d\" % 42)",
-    "approach": "Print \"Value: %d\" % 42.\n\nKey points: print(\"Value: %d\" % 42)\n\nA correct solution looks like this:\nprint(\"Value: %d\" % 42)"
+    "approach": "Print \"Value: %d\" % 42.\n\nReference solution:\nprint(\"Value: %d\" % 42)"
   },
   {
     "id": "m4-t3-p01",
@@ -1054,7 +1054,7 @@ export const module4Practice: PracticeProblem[] = [
       "s = \"Python\"\\nprint(s[0])"
     ],
     "starterCode": "",
-    "approach": "Set s=\"Python\", print s[0]. Key points: s = \"Python\"\\nprint(s[0]) A correct solution looks like this: s = \"Python\" print(s[0])",
+    "approach": "Set s=\"Python\", print s[0].\n\nReference solution:\ns = \"Python\"\nprint(s[0])",
     "publicTests": [
       {
         "id": "m4-t3-p01-t1",
@@ -1064,8 +1064,8 @@ export const module4Practice: PracticeProblem[] = [
       },
       {
         "id": "m4-t3-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "P",
+        "label": "Required names and structure",
+        "assertCode": "assert \"s\" in globals(), \"Expected a variable named s\"",
         "visibility": "public"
       },
       {
@@ -1121,7 +1121,7 @@ export const module4Practice: PracticeProblem[] = [
       "s = \"Python\"\\nprint(s[5])"
     ],
     "starterCode": "",
-    "approach": "Set s=\"Python\", print s[5]. Key points: s = \"Python\"\\nprint(s[5]) A correct solution looks like this: s = \"Python\" print(s[5])",
+    "approach": "Set s=\"Python\", print s[5].\n\nReference solution:\ns = \"Python\"\nprint(s[5])",
     "publicTests": [
       {
         "id": "m4-t3-p02-t1",
@@ -1131,8 +1131,8 @@ export const module4Practice: PracticeProblem[] = [
       },
       {
         "id": "m4-t3-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "n",
+        "label": "Required names and structure",
+        "assertCode": "assert \"s\" in globals(), \"Expected a variable named s\"",
         "visibility": "public"
       },
       {
@@ -1187,7 +1187,7 @@ export const module4Practice: PracticeProblem[] = [
       "s = \"Python\"\\nprint(s[-1])"
     ],
     "starterCode": "",
-    "approach": "Set s=\"Python\", print s[-1] (last char). Key points: s = \"Python\"\\nprint(s[-1]) A correct solution looks like this: s = \"Python\" print(s[-1])",
+    "approach": "Set s=\"Python\", print s[-1] (last char).\n\nReference solution:\ns = \"Python\"\nprint(s[-1])",
     "publicTests": [
       {
         "id": "m4-t3-p03-t1",
@@ -1197,8 +1197,8 @@ export const module4Practice: PracticeProblem[] = [
       },
       {
         "id": "m4-t3-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "n",
+        "label": "Required names and structure",
+        "assertCode": "assert \"s\" in globals(), \"Expected a variable named s\"",
         "visibility": "public"
       },
       {
@@ -1253,7 +1253,7 @@ export const module4Practice: PracticeProblem[] = [
       "word = \"code\"\\nprint(word[1])"
     ],
     "starterCode": "",
-    "approach": "Set word=\"code\", print word[1]. Key points: word = \"code\"\\nprint(word[1]) A correct solution looks like this: word = \"code\" print(word[1])",
+    "approach": "Set word=\"code\", print word[1].\n\nReference solution:\nword = \"code\"\nprint(word[1])",
     "publicTests": [
       {
         "id": "m4-t3-p04-t1",
@@ -1263,8 +1263,8 @@ export const module4Practice: PracticeProblem[] = [
       },
       {
         "id": "m4-t3-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "o",
+        "label": "Required names and structure",
+        "assertCode": "assert \"word\" in globals(), \"Expected a variable named word\"",
         "visibility": "public"
       },
       {
@@ -1311,7 +1311,7 @@ export const module4Practice: PracticeProblem[] = [
       "s = \"hello\"\\nprint(s[2])"
     ],
     "starterCode": "",
-    "approach": "Set s=\"hello\", print s[2]. Key points: s = \"hello\"\\nprint(s[2]) A correct solution looks like this: s = \"hello\" print(s[2])",
+    "approach": "Set s=\"hello\", print s[2].\n\nReference solution:\ns = \"hello\"\nprint(s[2])",
     "publicTests": [
       {
         "id": "m4-t3-p05-t1",
@@ -1321,8 +1321,8 @@ export const module4Practice: PracticeProblem[] = [
       },
       {
         "id": "m4-t3-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "l",
+        "label": "Required names and structure",
+        "assertCode": "assert \"s\" in globals(), \"Expected a variable named s\"",
         "visibility": "public"
       },
       {
@@ -1370,7 +1370,7 @@ export const module4Practice: PracticeProblem[] = [
       "s = \"Python\"\\nprint(s[0])\\nprint(s[2])"
     ],
     "starterCode": "",
-    "approach": "Set s=\"Python\", print s[0] and s[2] on separate lines. Key points: s = \"Python\"\\nprint(s[0])\\nprint(s[2]) A correct solution looks like this: s = \"Python\" print(s[0]) print(s[2])",
+    "approach": "Set s=\"Python\", print s[0] and s[2] on separate lines.\n\nReference solution:\ns = \"Python\"\nprint(s[0])\nprint(s[2])",
     "publicTests": [
       {
         "id": "m4-t3-p06-t1",
@@ -1380,8 +1380,8 @@ export const module4Practice: PracticeProblem[] = [
       },
       {
         "id": "m4-t3-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "P\nt",
+        "label": "Required names and structure",
+        "assertCode": "assert \"s\" in globals(), \"Expected a variable named s\"",
         "visibility": "public"
       },
       {
@@ -1444,7 +1444,7 @@ export const module4Practice: PracticeProblem[] = [
       "s = \"Hi\"\\nprint(s[0] + s[1])"
     ],
     "starterCode": "",
-    "approach": "Set s=\"Hi\", print s[0] + s[1] using concatenation. Key points: s = \"Hi\"\\nprint(s[0] + s[1]) A correct solution looks like this: s = \"Hi\" print(s[0] + s[1])",
+    "approach": "Set s=\"Hi\", print s[0] + s[1] using concatenation.\n\nReference solution:\ns = \"Hi\"\nprint(s[0] + s[1])",
     "publicTests": [
       {
         "id": "m4-t3-p07-t1",
@@ -1454,8 +1454,8 @@ export const module4Practice: PracticeProblem[] = [
       },
       {
         "id": "m4-t3-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hi",
+        "label": "Required names and structure",
+        "assertCode": "assert \"s\" in globals(), \"Expected a variable named s\"",
         "visibility": "public"
       },
       {
@@ -1510,7 +1510,7 @@ export const module4Practice: PracticeProblem[] = [
       "s = \"Python\"\\nprint(s[0:2])"
     ],
     "starterCode": "",
-    "approach": "Set s=\"Python\", print s[0:2]. Key points: s = \"Python\"\\nprint(s[0:2]) A correct solution looks like this: s = \"Python\" print(s[0:2])",
+    "approach": "Set s=\"Python\", print s[0:2].\n\nReference solution:\ns = \"Python\"\nprint(s[0:2])",
     "publicTests": [
       {
         "id": "m4-t4-p01-t1",
@@ -1520,8 +1520,8 @@ export const module4Practice: PracticeProblem[] = [
       },
       {
         "id": "m4-t4-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Py",
+        "label": "Required names and structure",
+        "assertCode": "assert \"s\" in globals(), \"Expected a variable named s\"",
         "visibility": "public"
       },
       {
@@ -1576,7 +1576,7 @@ export const module4Practice: PracticeProblem[] = [
       "s = \"Python\"\\nprint(s[2:])"
     ],
     "starterCode": "",
-    "approach": "Set s=\"Python\", print s[2:]. Key points: s = \"Python\"\\nprint(s[2:]) A correct solution looks like this: s = \"Python\" print(s[2:])",
+    "approach": "Set s=\"Python\", print s[2:].\n\nReference solution:\ns = \"Python\"\nprint(s[2:])",
     "publicTests": [
       {
         "id": "m4-t4-p02-t1",
@@ -1586,8 +1586,8 @@ export const module4Practice: PracticeProblem[] = [
       },
       {
         "id": "m4-t4-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "thon",
+        "label": "Required names and structure",
+        "assertCode": "assert \"s\" in globals(), \"Expected a variable named s\"",
         "visibility": "public"
       },
       {
@@ -1642,7 +1642,7 @@ export const module4Practice: PracticeProblem[] = [
       "s = \"Python\"\\nprint(s[:3])"
     ],
     "starterCode": "",
-    "approach": "Set s=\"Python\", print s[:3]. Key points: s = \"Python\"\\nprint(s[:3]) A correct solution looks like this: s = \"Python\" print(s[:3])",
+    "approach": "Set s=\"Python\", print s[:3].\n\nReference solution:\ns = \"Python\"\nprint(s[:3])",
     "publicTests": [
       {
         "id": "m4-t4-p03-t1",
@@ -1652,8 +1652,8 @@ export const module4Practice: PracticeProblem[] = [
       },
       {
         "id": "m4-t4-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pyt",
+        "label": "Required names and structure",
+        "assertCode": "assert \"s\" in globals(), \"Expected a variable named s\"",
         "visibility": "public"
       },
       {
@@ -1708,7 +1708,7 @@ export const module4Practice: PracticeProblem[] = [
       "s = \"Python\"\\nprint(s[::2])"
     ],
     "starterCode": "",
-    "approach": "Set s=\"Python\", print s[::2]. Key points: s = \"Python\"\\nprint(s[::2]) A correct solution looks like this: s = \"Python\" print(s[::2])",
+    "approach": "Set s=\"Python\", print s[::2].\n\nReference solution:\ns = \"Python\"\nprint(s[::2])",
     "publicTests": [
       {
         "id": "m4-t4-p04-t1",
@@ -1718,8 +1718,8 @@ export const module4Practice: PracticeProblem[] = [
       },
       {
         "id": "m4-t4-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pto",
+        "label": "Required names and structure",
+        "assertCode": "assert \"s\" in globals(), \"Expected a variable named s\"",
         "visibility": "public"
       },
       {
@@ -1774,7 +1774,7 @@ export const module4Practice: PracticeProblem[] = [
       "s = \"Python\"\\nprint(s[::-1])"
     ],
     "starterCode": "",
-    "approach": "Set s=\"Python\", print s[::-1]. Key points: s = \"Python\"\\nprint(s[::-1]) A correct solution looks like this: s = \"Python\" print(s[::-1])",
+    "approach": "Set s=\"Python\", print s[::-1].\n\nReference solution:\ns = \"Python\"\nprint(s[::-1])",
     "publicTests": [
       {
         "id": "m4-t4-p05-t1",
@@ -1784,8 +1784,8 @@ export const module4Practice: PracticeProblem[] = [
       },
       {
         "id": "m4-t4-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "nohtyP",
+        "label": "Required names and structure",
+        "assertCode": "assert \"s\" in globals(), \"Expected a variable named s\"",
         "visibility": "public"
       },
       {
@@ -1832,7 +1832,7 @@ export const module4Practice: PracticeProblem[] = [
       "w = \"Data\"\\nprint(w[1:])"
     ],
     "starterCode": "",
-    "approach": "Set w=\"Data\", print w[1:]. Key points: w = \"Data\"\\nprint(w[1:]) A correct solution looks like this: w = \"Data\" print(w[1:])",
+    "approach": "Set w=\"Data\", print w[1:].\n\nReference solution:\nw = \"Data\"\nprint(w[1:])",
     "publicTests": [
       {
         "id": "m4-t4-p06-t1",
@@ -1842,8 +1842,8 @@ export const module4Practice: PracticeProblem[] = [
       },
       {
         "id": "m4-t4-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "ata",
+        "label": "Required names and structure",
+        "assertCode": "assert \"w\" in globals(), \"Expected a variable named w\"",
         "visibility": "public"
       },
       {
@@ -1898,7 +1898,7 @@ export const module4Practice: PracticeProblem[] = [
       "s = \"hello\"\\nprint(s[1:4])"
     ],
     "starterCode": "",
-    "approach": "Set s=\"hello\", print s[1:4]. Key points: s = \"hello\"\\nprint(s[1:4]) A correct solution looks like this: s = \"hello\" print(s[1:4])",
+    "approach": "Set s=\"hello\", print s[1:4].\n\nReference solution:\ns = \"hello\"\nprint(s[1:4])",
     "publicTests": [
       {
         "id": "m4-t4-p07-t1",
@@ -1908,8 +1908,8 @@ export const module4Practice: PracticeProblem[] = [
       },
       {
         "id": "m4-t4-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "ell",
+        "label": "Required names and structure",
+        "assertCode": "assert \"s\" in globals(), \"Expected a variable named s\"",
         "visibility": "public"
       },
       {
@@ -1992,7 +1992,7 @@ export const module4Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(\"hello\".upper())",
-    "approach": "Print \"hello\".upper().\n\nKey points: print(\"hello\".upper())\n\nA correct solution looks like this:\nprint(\"hello\".upper())"
+    "approach": "Print \"hello\".upper().\n\nReference solution:\nprint(\"hello\".upper())"
   },
   {
     "id": "m4-t5-p02",
@@ -2065,7 +2065,7 @@ export const module4Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(\"HELLO\".lower())",
-    "approach": "Print \"HELLO\".lower().\n\nKey points: print(\"HELLO\".lower())\n\nA correct solution looks like this:\nprint(\"HELLO\".lower())"
+    "approach": "Print \"HELLO\".lower().\n\nReference solution:\nprint(\"HELLO\".lower())"
   },
   {
     "id": "m4-t5-p03",
@@ -2138,7 +2138,7 @@ export const module4Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(\"  hi  \".strip())",
-    "approach": "Print \"  hi  \".strip().\n\nKey points: print(\" hi \".strip())\n\nA correct solution looks like this:\nprint(\"  hi  \".strip())"
+    "approach": "Print \"  hi  \".strip().\n\nReference solution:\nprint(\"  hi  \".strip())"
   },
   {
     "id": "m4-t5-p04",
@@ -2211,7 +2211,7 @@ export const module4Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(\"a,b,c\".split(\",\"))",
-    "approach": "Print \"a,b,c\".split(\",\").\n\nKey points: print(\"a,b,c\".split(\",\"))\n\nA correct solution looks like this:\nprint(\"a,b,c\".split(\",\"))"
+    "approach": "Print \"a,b,c\".split(\",\").\n\nReference solution:\nprint(\"a,b,c\".split(\",\"))"
   },
   {
     "id": "m4-t5-p05",
@@ -2284,7 +2284,7 @@ export const module4Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(\"-\".join([\"a\", \"b\", \"c\"]))",
-    "approach": "Print \"-\".join([\"a\",\"b\",\"c\"]).\n\nKey points: print(\"-\".join([\"a\", \"b\", \"c\"]))\n\nA correct solution looks like this:\nprint(\"-\".join([\"a\", \"b\", \"c\"]))"
+    "approach": "Print \"-\".join([\"a\",\"b\",\"c\"]).\n\nReference solution:\nprint(\"-\".join([\"a\", \"b\", \"c\"]))"
   },
   {
     "id": "m4-t5-p06",
@@ -2357,7 +2357,7 @@ export const module4Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(\"hello\".replace(\"l\", \"L\"))",
-    "approach": "Print \"hello\".replace(\"l\",\"L\").\n\nKey points: print(\"hello\".replace(\"l\", \"L\"))\n\nA correct solution looks like this:\nprint(\"hello\".replace(\"l\", \"L\"))"
+    "approach": "Print \"hello\".replace(\"l\",\"L\").\n\nReference solution:\nprint(\"hello\".replace(\"l\", \"L\"))"
   },
   {
     "id": "m4-t5-p07",
@@ -2430,6 +2430,6 @@ export const module4Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(\"banana\".count(\"a\"))",
-    "approach": "Print \"banana\".count(\"a\").\n\nKey points: print(\"banana\".count(\"a\"))\n\nA correct solution looks like this:\nprint(\"banana\".count(\"a\"))"
+    "approach": "Print \"banana\".count(\"a\").\n\nReference solution:\nprint(\"banana\".count(\"a\"))"
   }
 ];

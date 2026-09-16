@@ -81,7 +81,7 @@ export const module2Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(\"Jordan\")",
-    "approach": "Use print() to display your name on one line.\n\nKey points: Try: print(\"Jordan\")\n\nA correct solution looks like this:\nprint(\"Jordan\")"
+    "approach": "Use print() to display your name on one line.\n\nReference solution:\nprint(\"Jordan\")"
   },
   {
     "id": "m2-t1-p02",
@@ -130,15 +130,6 @@ export const module2Practice: PracticeProblem[] = [
       },
       "outputOnly": true,
       "editorPlaceholder": "# print the sum of 10 and 5",
-      "liveCheckRules": [
-        {
-          "id": "sum",
-          "label": "prints 15",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "15"
-        }
-      ],
       "emptyMessage": "Use print() with an addition like 10 + 5.",
       "successDetail": "Correct! 10 + 5 equals 15."
     },
@@ -176,7 +167,7 @@ export const module2Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(10 + 5)",
-    "approach": "1. Python can add numbers inside print() — no quotes around numbers. 2. print(10 + 5) calculates the sum and prints the answer.\n\nA correct solution looks like this:\nprint(10 + 5)"
+    "approach": "Print the result of 10 + 5.\n\n1. Python can add numbers inside print() — no quotes around numbers.\n2. print(10 + 5) calculates the sum and prints the answer.\n\nReference solution:\nprint(10 + 5)"
   },
   {
     "id": "m2-t1-p03",
@@ -295,7 +286,7 @@ export const module2Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(\"Hello\")\nprint(\"Python\")",
-    "approach": "Print Hello on line 1 and Python on line 2.\n\nKey points: First: print(\"Hello\"), then: print(\"Python\")\n\nA correct solution looks like this:\nprint(\"Hello\")\nprint(\"Python\")"
+    "approach": "Print Hello on line 1 and Python on line 2.\n\nReference solution:\nprint(\"Hello\")\nprint(\"Python\")"
   },
   {
     "id": "m2-t1-p04",
@@ -377,8 +368,8 @@ export const module2Practice: PracticeProblem[] = [
       },
       {
         "id": "m2-t1-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello, Mia",
+        "label": "Required names and structure",
+        "assertCode": "assert \"name\" in globals(), \"Expected a variable named name\"",
         "visibility": "public"
       },
       {
@@ -388,8 +379,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Hello, Mia\")",
-    "approach": "Set name = \"Mia\" then print Hello, Mia using concatenation.\n\nKey points: Try: name = \"Mia\" then print(\"Hello, \" + name)\n\nA correct solution looks like this:\nprint(\"Hello, Mia\")"
+    "solutionCode": "name = \"Mia\"\nprint(\"Hello, \" + name)",
+    "approach": "Set name = \"Mia\" then print Hello, Mia using concatenation.\n\nReference solution:\nname = \"Mia\"\nprint(\"Hello, \" + name)"
   },
   {
     "id": "m2-t1-p05",
@@ -441,15 +432,6 @@ export const module2Practice: PracticeProblem[] = [
         "age"
       ],
       "editorPlaceholder": "# use an f-string to format output",
-      "liveCheckRules": [
-        {
-          "id": "fmt",
-          "label": "prints Name: Leo, Age: 20",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Name: Leo, Age: 20"
-        }
-      ],
       "emptyMessage": "Create name and age, then print with an f-string.",
       "successDetail": "Correct! Your f-string formatted the output."
     },
@@ -476,8 +458,8 @@ export const module2Practice: PracticeProblem[] = [
       },
       {
         "id": "m2-t1-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Name: Leo, Age: 20",
+        "label": "Required names and structure",
+        "assertCode": "assert \"name\" in globals(), \"Expected a variable named name\"\nassert \"age\" in globals(), \"Expected a variable named age\"",
         "visibility": "public"
       },
       {
@@ -487,8 +469,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Name: Leo, Age: 20\")",
-    "approach": "Use f-string: name = \"Leo\", age = 20, print Name: Leo, Age: 20\n\nKey points: Try: print(f\"Name: {name}, Age: {age}\")\n\nA correct solution looks like this:\nprint(\"Name: Leo, Age: 20\")"
+    "solutionCode": "name = \"Leo\"\nage = 20\nprint(f\"Name: {name}, Age: {age}\")",
+    "approach": "Use f-string: name = \"Leo\", age = 20, print Name: Leo, Age: 20\n\nReference solution:\nname = \"Leo\"\nage = 20\nprint(f\"Name: {name}, Age: {age}\")"
   },
   {
     "id": "m2-t1-p06",
@@ -540,15 +522,6 @@ export const module2Practice: PracticeProblem[] = [
       ],
       "outputOnly": true,
       "editorPlaceholder": "# print 1, 2, 3 in one print() call",
-      "liveCheckRules": [
-        {
-          "id": "vals",
-          "label": "prints 1 2 3",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "1 2 3"
-        }
-      ],
       "emptyMessage": "Use one print() with three values: print(1, 2, 3).",
       "successDetail": "Correct! One print() showed all three values."
     },
@@ -586,7 +559,7 @@ export const module2Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(1, 2, 3)",
-    "approach": "Print 1, 2, 3 using one print with default separator.\n\nKey points: Try: print(1, 2, 3) — commas add spaces between values\n\nA correct solution looks like this:\nprint(1, 2, 3)"
+    "approach": "Print 1, 2, 3 using one print with default separator.\n\nReference solution:\nprint(1, 2, 3)"
   },
   {
     "id": "m2-t1-p07",
@@ -684,7 +657,7 @@ export const module2Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(\"a\", \"b\", \"c\", sep=\"-\")",
-    "approach": "Print a, b, c separated by dashes using sep='-'.\n\nKey points: Try: print(\"a\", \"b\", \"c\", sep=\"-\")\n\nA correct solution looks like this:\nprint(\"a\", \"b\", \"c\", sep=\"-\")"
+    "approach": "Print a, b, c separated by dashes using sep='-'.\n\nReference solution:\nprint(\"a\", \"b\", \"c\", sep=\"-\")"
   },
   {
     "id": "m2-t2-p01",
@@ -737,7 +710,7 @@ export const module2Practice: PracticeProblem[] = [
       "Example: # greeting message\\nprint(\"Hi\")"
     ],
     "starterCode": "",
-    "approach": "Add a comment line starting with #, then print Hi. Key points: Example: # greeting message\\nprint(\"Hi\") A correct solution looks like this: # greeting message print(\"Hi\")",
+    "approach": "Add a comment line starting with #, then print Hi.\n\nReference solution:\n# greeting message\nprint(\"Hi\")",
     "publicTests": [
       {
         "id": "m2-t2-p01-t1",
@@ -811,7 +784,7 @@ export const module2Practice: PracticeProblem[] = [
       "Add # then print(\"Line1\") and print(\"Line2\")"
     ],
     "starterCode": "",
-    "approach": "Add one comment, then print Line1 and Line2 on separate lines. Key points: Add # then print(\"Line1\") and print(\"Line2\") A correct solution looks like this: print(\"Line1\") print(\"Line2\")",
+    "approach": "Add one comment, then print Line1 and Line2 on separate lines.\n\nReference solution:\n# two lines of output\nprint(\"Line1\")\nprint(\"Line2\")",
     "publicTests": [
       {
         "id": "m2-t2-p02-t1",
@@ -832,7 +805,7 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Line1\")\nprint(\"Line2\")"
+    "solutionCode": "# two lines of output\nprint(\"Line1\")\nprint(\"Line2\")"
   },
   {
     "id": "m2-t2-p03",
@@ -888,7 +861,7 @@ export const module2Practice: PracticeProblem[] = [
       "# store a number\\nx = 5\\nprint(x)"
     ],
     "starterCode": "",
-    "approach": "Add a comment above x = 5, then print x. Key points: # store a number\\nx = 5\\nprint(x) A correct solution looks like this: # store a number x = 5 print(x)",
+    "approach": "Add a comment above x = 5, then print x.\n\nReference solution:\n# store a number\nx = 5\nprint(x)",
     "publicTests": [
       {
         "id": "m2-t2-p03-t1",
@@ -898,8 +871,8 @@ export const module2Practice: PracticeProblem[] = [
       },
       {
         "id": "m2-t2-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "5",
+        "label": "Required names and structure",
+        "assertCode": "assert \"x\" in globals(), \"Expected a variable named x\"",
         "visibility": "public"
       },
       {
@@ -940,7 +913,7 @@ export const module2Practice: PracticeProblem[] = [
       "# first value\\nprint(\"A\")\\n# second value\\nprint(\"B\")"
     ],
     "starterCode": "",
-    "approach": "Use two comment lines — one before each print statement. Print A then B. Key points: # first value\\nprint(\"A\")\\n# second value\\nprint(\"B\") A correct solution looks like this: # first value print(\"A\") # second value print(\"B\")",
+    "approach": "Use two comment lines — one before each print statement. Print A then B.\n\nReference solution:\n# first value\nprint(\"A\")\n# second value\nprint(\"B\")",
     "publicTests": [
       {
         "id": "m2-t2-p04-t1",
@@ -994,7 +967,7 @@ export const module2Practice: PracticeProblem[] = [
       "# print numbers 1 to 3\\nfor i in range(1, 4):\\n    print(i)"
     ],
     "starterCode": "",
-    "approach": "Add a comment explaining the loop, then use for i in range(1, 4): print(i). Key points: # print numbers 1 to 3\\nfor i in range(1, 4):\\n print(i) A correct solution looks like this: # print numbers 1 to 3 for i in range(1, 4): print(i)",
+    "approach": "Add a comment explaining the loop, then use for i in range(1, 4): print(i).\n\nReference solution:\n# print numbers 1 to 3\nfor i in range(1, 4):\n    print(i)",
     "publicTests": [
       {
         "id": "m2-t2-p05-t1",
@@ -1048,7 +1021,7 @@ export const module2Practice: PracticeProblem[] = [
       "# says hello\\ndef greet():\\n    print(\"Hello\")\\ngreet()"
     ],
     "starterCode": "",
-    "approach": "Add a comment above def greet():, print Hello inside, call greet(). Key points: # says hello\\ndef greet():\\n print(\"Hello\")\\ngreet() A correct solution looks like this: # says hello def greet(): print(\"Hello\") greet()",
+    "approach": "Add a comment above def greet():, print Hello inside, call greet().\n\nReference solution:\n# says hello\ndef greet():\n    print(\"Hello\")\ngreet()",
     "publicTests": [
       {
         "id": "m2-t2-p06-t1",
@@ -1058,8 +1031,8 @@ export const module2Practice: PracticeProblem[] = [
       },
       {
         "id": "m2-t2-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "Required names and structure",
+        "assertCode": "assert \"greet\" in globals() and callable(globals()[\"greet\"]), \"Expected a function named greet\"",
         "visibility": "public"
       },
       {
@@ -1102,7 +1075,7 @@ export const module2Practice: PracticeProblem[] = [
       "Add comments before score=80 and before the if statement"
     ],
     "starterCode": "",
-    "approach": "Add comments for: variable setup, condition, and output. Set score=80, if score>=60 print Pass else Fail. Key points: Add comments before score=80 and before the if statement A correct solution looks like this: d = {\"topic\": \"Pass\"} print(d[\"topic\"])",
+    "approach": "Add comments for: variable setup, condition, and output. Set score=80, if score>=60 print Pass else Fail.\n\nReference solution:\n# set the score\nscore = 80\n# check the pass mark\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
     "publicTests": [
       {
         "id": "m2-t2-p07-t1",
@@ -1112,8 +1085,8 @@ export const module2Practice: PracticeProblem[] = [
       },
       {
         "id": "m2-t2-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "Required names and structure",
+        "assertCode": "assert \"score\" in globals(), \"Expected a variable named score\"",
         "visibility": "public"
       },
       {
@@ -1123,7 +1096,7 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Pass\"}\nprint(d[\"topic\"])"
+    "solutionCode": "# set the score\nscore = 80\n# check the pass mark\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
   },
   {
     "id": "m2-t3-p01",
@@ -1162,15 +1135,6 @@ export const module2Practice: PracticeProblem[] = [
         "age"
       ],
       "editorPlaceholder": "# create age and print it",
-      "liveCheckRules": [
-        {
-          "id": "age",
-          "label": "prints 21",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "21"
-        }
-      ],
       "emptyMessage": "Create age = 21 and print(age).",
       "successDetail": "Correct! You stored and printed an integer."
     },
@@ -1196,8 +1160,8 @@ export const module2Practice: PracticeProblem[] = [
       },
       {
         "id": "m2-t3-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "21",
+        "label": "Required names and structure",
+        "assertCode": "assert \"age\" in globals(), \"Expected a variable named age\"",
         "visibility": "public"
       },
       {
@@ -1207,8 +1171,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"21\")",
-    "approach": "Create age = 21 and print age.\n\nKey points: Try: age = 21 then print(age)\n\nA correct solution looks like this:\nprint(\"21\")"
+    "solutionCode": "age = 21\nprint(age)",
+    "approach": "Create age = 21 and print age.\n\nReference solution:\nage = 21\nprint(age)"
   },
   {
     "id": "m2-t3-p02",
@@ -1247,15 +1211,6 @@ export const module2Practice: PracticeProblem[] = [
         "city"
       ],
       "editorPlaceholder": "# create city and print it",
-      "liveCheckRules": [
-        {
-          "id": "city",
-          "label": "prints Pune",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Pune"
-        }
-      ],
       "emptyMessage": "Create city = \"Pune\" and print(city).",
       "successDetail": "Correct! You stored and printed a string."
     },
@@ -1281,8 +1236,8 @@ export const module2Practice: PracticeProblem[] = [
       },
       {
         "id": "m2-t3-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pune",
+        "label": "Required names and structure",
+        "assertCode": "assert \"city\" in globals(), \"Expected a variable named city\"",
         "visibility": "public"
       },
       {
@@ -1292,8 +1247,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Pune\")",
-    "approach": "Create city = \"Pune\" and print city.\n\nKey points: Try: city = \"Pune\" then print(city)\n\nA correct solution looks like this:\nprint(\"Pune\")"
+    "solutionCode": "city = \"Pune\"\nprint(city)",
+    "approach": "Create city = \"Pune\" and print city.\n\nReference solution:\ncity = \"Pune\"\nprint(city)"
   },
   {
     "id": "m2-t3-p03",
@@ -1340,15 +1295,6 @@ export const module2Practice: PracticeProblem[] = [
         "x"
       ],
       "editorPlaceholder": "# assign x twice and print",
-      "liveCheckRules": [
-        {
-          "id": "x",
-          "label": "prints 2",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "2"
-        }
-      ],
       "emptyMessage": "Set x = 1, then x = 2, then print(x).",
       "successDetail": "Correct! Reassigning changed the value to 2."
     },
@@ -1374,8 +1320,8 @@ export const module2Practice: PracticeProblem[] = [
       },
       {
         "id": "m2-t3-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "2",
+        "label": "Required names and structure",
+        "assertCode": "assert \"x\" in globals(), \"Expected a variable named x\"",
         "visibility": "public"
       },
       {
@@ -1385,8 +1331,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"2\")",
-    "approach": "Set x = 1, then x = 2, print x.\n\nKey points: Try: x = 1, x = 2, print(x) — the last assignment wins\n\nA correct solution looks like this:\nprint(\"2\")"
+    "solutionCode": "x = 1\nx = 2\nprint(x)",
+    "approach": "Set x = 1, then x = 2, print x.\n\nReference solution:\nx = 1\nx = 2\nprint(x)"
   },
   {
     "id": "m2-t3-p04",
@@ -1434,15 +1380,6 @@ export const module2Practice: PracticeProblem[] = [
         "height"
       ],
       "editorPlaceholder": "# width, height, then print product",
-      "liveCheckRules": [
-        {
-          "id": "prod",
-          "label": "prints 15",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "15"
-        }
-      ],
       "emptyMessage": "Create width and height, then print(width * height).",
       "successDetail": "Correct! 5 × 3 = 15."
     },
@@ -1469,8 +1406,8 @@ export const module2Practice: PracticeProblem[] = [
       },
       {
         "id": "m2-t3-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "15",
+        "label": "Required names and structure",
+        "assertCode": "assert \"width\" in globals(), \"Expected a variable named width\"\nassert \"height\" in globals(), \"Expected a variable named height\"",
         "visibility": "public"
       },
       {
@@ -1480,8 +1417,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"15\")",
-    "approach": "Create width = 5 and height = 3, print width * height.\n\nKey points: Try: width = 5, height = 3, print(width * height)\n\nA correct solution looks like this:\nprint(\"15\")"
+    "solutionCode": "width = 5\nheight = 3\nprint(width * height)",
+    "approach": "Create width = 5 and height = 3, print width * height.\n\nReference solution:\nwidth = 5\nheight = 3\nprint(width * height)"
   },
   {
     "id": "m2-t3-p05",
@@ -1545,20 +1482,6 @@ export const module2Practice: PracticeProblem[] = [
           "expected": 2
         },
         {
-          "id": "a",
-          "label": "prints 2",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "2"
-        },
-        {
-          "id": "b",
-          "label": "prints 1",
-          "kind": "print-value",
-          "index": 1,
-          "expected": "1"
-        },
-        {
           "id": "order",
           "label": "correct order",
           "kind": "print-sequence",
@@ -1594,8 +1517,8 @@ export const module2Practice: PracticeProblem[] = [
       },
       {
         "id": "m2-t3-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "2\n1",
+        "label": "Required names and structure",
+        "assertCode": "assert \"a\" in globals(), \"Expected a variable named a\"\nassert \"b\" in globals(), \"Expected a variable named b\"",
         "visibility": "public"
       },
       {
@@ -1605,8 +1528,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"2\")\nprint(\"1\")",
-    "approach": "Swap a and b. Start a=1, b=2. Print a then b.\n\nKey points: Try: a, b = 1, 2 then a, b = b, a then print(a) and print(b)\n\nA correct solution looks like this:\nprint(\"2\")\nprint(\"1\")"
+    "solutionCode": "a, b = 1, 2\na, b = b, a\nprint(a)\nprint(b)",
+    "approach": "Swap a and b. Start a=1, b=2. Print a then b.\n\nReference solution:\na, b = 1, 2\na, b = b, a\nprint(a)\nprint(b)"
   },
   {
     "id": "m2-t3-p06",
@@ -1645,15 +1568,6 @@ export const module2Practice: PracticeProblem[] = [
         "total_score"
       ],
       "editorPlaceholder": "# use total_score variable",
-      "liveCheckRules": [
-        {
-          "id": "score",
-          "label": "prints 88",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "88"
-        }
-      ],
       "emptyMessage": "Create total_score = 88 and print it.",
       "successDetail": "Correct! Descriptive names make code easier to read."
     },
@@ -1679,8 +1593,8 @@ export const module2Practice: PracticeProblem[] = [
       },
       {
         "id": "m2-t3-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "88",
+        "label": "Required names and structure",
+        "assertCode": "assert \"total_score\" in globals(), \"Expected a variable named total_score\"",
         "visibility": "public"
       },
       {
@@ -1690,8 +1604,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"88\")",
-    "approach": "Use total_score = 88 and print it.\n\nKey points: Try: total_score = 88 then print(total_score)\n\nA correct solution looks like this:\nprint(\"88\")"
+    "solutionCode": "total_score = 88\nprint(total_score)",
+    "approach": "Use total_score = 88 and print it.\n\nReference solution:\ntotal_score = 88\nprint(total_score)"
   },
   {
     "id": "m2-t3-p07",
@@ -1732,15 +1646,6 @@ export const module2Practice: PracticeProblem[] = [
         "z"
       ],
       "editorPlaceholder": "# multiple assignment, then print sum",
-      "liveCheckRules": [
-        {
-          "id": "sum",
-          "label": "prints 6",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "6"
-        }
-      ],
       "emptyMessage": "Use x, y, z = 1, 2, 3 then print(x + y + z).",
       "successDetail": "Correct! 1 + 2 + 3 = 6."
     },
@@ -1767,8 +1672,8 @@ export const module2Practice: PracticeProblem[] = [
       },
       {
         "id": "m2-t3-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "6",
+        "label": "Required names and structure",
+        "assertCode": "assert \"x\" in globals(), \"Expected a variable named x\"\nassert \"y\" in globals(), \"Expected a variable named y\"\nassert \"z\" in globals(), \"Expected a variable named z\"",
         "visibility": "public"
       },
       {
@@ -1778,8 +1683,8 @@ export const module2Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"6\"}\nprint(d[\"topic\"])",
-    "approach": "Use x, y, z = 1, 2, 3 and print their sum.\n\nKey points: Try: x, y, z = 1, 2, 3 then print(x + y + z)\n\nA correct solution looks like this:\nd = {\"topic\": \"6\"}\nprint(d[\"topic\"])"
+    "solutionCode": "x, y, z = 1, 2, 3\nprint(x + y + z)",
+    "approach": "Use x, y, z = 1, 2, 3 and print their sum.\n\nReference solution:\nx, y, z = 1, 2, 3\nprint(x + y + z)"
   },
   {
     "id": "m2-t4-p01",
@@ -1809,15 +1714,6 @@ export const module2Practice: PracticeProblem[] = [
           "value": " and print it."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints 21",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "21"
-        }
-      ],
       "requiresVariables": [
         "age"
       ]
@@ -1843,8 +1739,8 @@ export const module2Practice: PracticeProblem[] = [
       },
       {
         "id": "m2-t4-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "21",
+        "label": "Required names and structure",
+        "assertCode": "assert \"age\" in globals(), \"Expected a variable named age\"",
         "visibility": "public"
       },
       {
@@ -1855,7 +1751,7 @@ export const module2Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "age = 21\nprint(age)",
-    "approach": "Create age = 21 and print age.\n\nKey points: age = 21\\nprint(age)\n\nA correct solution looks like this:\nage = 21\nprint(age)"
+    "approach": "Create age = 21 and print age.\n\nReference solution:\nage = 21\nprint(age)"
   },
   {
     "id": "m2-t4-p02",
@@ -1885,15 +1781,6 @@ export const module2Practice: PracticeProblem[] = [
           "value": " and print it."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints 3.14",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "3.14"
-        }
-      ],
       "requiresVariables": [
         "pi"
       ]
@@ -1919,8 +1806,8 @@ export const module2Practice: PracticeProblem[] = [
       },
       {
         "id": "m2-t4-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "3.14",
+        "label": "Required names and structure",
+        "assertCode": "assert \"pi\" in globals(), \"Expected a variable named pi\"",
         "visibility": "public"
       },
       {
@@ -1931,7 +1818,7 @@ export const module2Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "pi = 3.14\nprint(pi)",
-    "approach": "Create pi = 3.14 and print pi.\n\nKey points: pi = 3.14\\nprint(pi)\n\nA correct solution looks like this:\npi = 3.14\nprint(pi)"
+    "approach": "Create pi = 3.14 and print pi.\n\nReference solution:\npi = 3.14\nprint(pi)"
   },
   {
     "id": "m2-t4-p03",
@@ -1961,15 +1848,6 @@ export const module2Practice: PracticeProblem[] = [
           "value": " and print it."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints Ana",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ana"
-        }
-      ],
       "requiresVariables": [
         "name"
       ]
@@ -1995,8 +1873,8 @@ export const module2Practice: PracticeProblem[] = [
       },
       {
         "id": "m2-t4-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ana",
+        "label": "Required names and structure",
+        "assertCode": "assert \"name\" in globals(), \"Expected a variable named name\"",
         "visibility": "public"
       },
       {
@@ -2007,7 +1885,7 @@ export const module2Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "name = \"Ana\"\nprint(name)",
-    "approach": "Create name = \"Ana\" and print name.\n\nKey points: name = \"Ana\"\\nprint(name)\n\nA correct solution looks like this:\nname = \"Ana\"\nprint(name)"
+    "approach": "Create name = \"Ana\" and print name.\n\nReference solution:\nname = \"Ana\"\nprint(name)"
   },
   {
     "id": "m2-t4-p04",
@@ -2037,15 +1915,6 @@ export const module2Practice: PracticeProblem[] = [
           "value": " and print it."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints True",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "True"
-        }
-      ],
       "requiresVariables": [
         "active"
       ]
@@ -2071,8 +1940,8 @@ export const module2Practice: PracticeProblem[] = [
       },
       {
         "id": "m2-t4-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "True",
+        "label": "Required names and structure",
+        "assertCode": "assert \"active\" in globals(), \"Expected a variable named active\"",
         "visibility": "public"
       },
       {
@@ -2083,7 +1952,7 @@ export const module2Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "active = True\nprint(active)",
-    "approach": "Create active = True and print active.\n\nKey points: active = True\\nprint(active)\n\nA correct solution looks like this:\nactive = True\nprint(active)"
+    "approach": "Create active = True and print active.\n\nReference solution:\nactive = True\nprint(active)"
   },
   {
     "id": "m2-t4-p05",
@@ -2120,15 +1989,6 @@ export const module2Practice: PracticeProblem[] = [
           "type": "text",
           "value": "."
         }
-      ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints <class 'int'>",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "<class 'int'>"
-        }
       ]
     },
     "examples": [
@@ -2164,7 +2024,7 @@ export const module2Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(type(42))",
-    "approach": "Print the type of 42 using type().\n\nKey points: print(type(42))\n\nA correct solution looks like this:\nprint(type(42))"
+    "approach": "Print the type of 42 using type().\n\nReference solution:\nprint(type(42))"
   },
   {
     "id": "m2-t4-p06",
@@ -2192,15 +2052,6 @@ export const module2Practice: PracticeProblem[] = [
         {
           "type": "text",
           "value": " using type()."
-        }
-      ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints <class 'str'>",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "<class 'str'>"
         }
       ]
     },
@@ -2237,7 +2088,7 @@ export const module2Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(type(\"hello\"))",
-    "approach": "Print the type of \"hello\" using type().\n\nKey points: print(type(\"hello\"))\n\nA correct solution looks like this:\nprint(type(\"hello\"))"
+    "approach": "Print the type of \"hello\" using type().\n\nReference solution:\nprint(type(\"hello\"))"
   },
   {
     "id": "m2-t4-p07",
@@ -2252,23 +2103,7 @@ export const module2Practice: PracticeProblem[] = [
       "outputOnly": true,
       "editorPlaceholder": "# print two types",
       "emptyMessage": "Print type(10) then type(3.5) on separate lines.",
-      "successDetail": "Correct! int and float are different types.",
-      "liveCheckRules": [
-        {
-          "id": "l1",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "<class 'int'>",
-          "label": "int type"
-        },
-        {
-          "id": "l2",
-          "kind": "print-value",
-          "index": 1,
-          "expected": "<class 'float'>",
-          "label": "float type"
-        }
-      ]
+      "successDetail": "Correct! int and float are different types."
     },
     "examples": [
       {
@@ -2305,7 +2140,7 @@ export const module2Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(type(10))\nprint(type(3.5))",
-    "approach": "Print type(10) on line 1 and type(3.5) on line 2.\n\nKey points: print(type(10))\\nprint(type(3.5))\n\nA correct solution looks like this:\nprint(type(10))\nprint(type(3.5))"
+    "approach": "Print type(10) on line 1 and type(3.5) on line 2.\n\nReference solution:\nprint(type(10))\nprint(type(3.5))"
   },
   {
     "id": "m2-t5-p01",
@@ -2333,15 +2168,6 @@ export const module2Practice: PracticeProblem[] = [
         {
           "type": "text",
           "value": " and print the result."
-        }
-      ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints 7",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "7"
         }
       ]
     },
@@ -2378,7 +2204,7 @@ export const module2Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(int(\"7\"))",
-    "approach": "Convert \"7\" to an integer and print it.\n\nKey points: print(int(\"7\"))\n\nA correct solution looks like this:\nprint(int(\"7\"))"
+    "approach": "Convert \"7\" to an integer and print it.\n\nReference solution:\nprint(int(\"7\"))"
   },
   {
     "id": "m2-t5-p02",
@@ -2406,15 +2232,6 @@ export const module2Practice: PracticeProblem[] = [
         {
           "type": "text",
           "value": " and print the result."
-        }
-      ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints 3.5",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "3.5"
         }
       ]
     },
@@ -2451,7 +2268,7 @@ export const module2Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(float(\"3.5\"))",
-    "approach": "Convert \"3.5\" to float and print it.\n\nKey points: print(float(\"3.5\"))\n\nA correct solution looks like this:\nprint(float(\"3.5\"))"
+    "approach": "Convert \"3.5\" to float and print it.\n\nReference solution:\nprint(float(\"3.5\"))"
   },
   {
     "id": "m2-t5-p03",
@@ -2479,15 +2296,6 @@ export const module2Practice: PracticeProblem[] = [
         {
           "type": "text",
           "value": " and print the result."
-        }
-      ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints 42",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "42"
         }
       ]
     },
@@ -2524,7 +2332,7 @@ export const module2Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(str(42))",
-    "approach": "Convert 42 to a string and print it.\n\nKey points: print(str(42))\n\nA correct solution looks like this:\nprint(str(42))"
+    "approach": "Convert 42 to a string and print it.\n\nReference solution:\nprint(str(42))"
   },
   {
     "id": "m2-t5-p04",
@@ -2552,15 +2360,6 @@ export const module2Practice: PracticeProblem[] = [
         {
           "type": "text",
           "value": " — Python drops the decimal part."
-        }
-      ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints 9",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "9"
         }
       ]
     },
@@ -2597,7 +2396,7 @@ export const module2Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(int(9.9))",
-    "approach": "Convert 9.9 to int and print it (truncates to 9).\n\nKey points: print(int(9.9))\n\nA correct solution looks like this:\nprint(int(9.9))"
+    "approach": "Convert 9.9 to int and print it (truncates to 9).\n\nReference solution:\nprint(int(9.9))"
   },
   {
     "id": "m2-t5-p05",
@@ -2634,15 +2433,6 @@ export const module2Practice: PracticeProblem[] = [
           "type": "text",
           "value": " to ints and add them."
         }
-      ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints 8",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "8"
-        }
       ]
     },
     "examples": [
@@ -2678,7 +2468,7 @@ export const module2Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(int(\"5\") + int(\"3\"))",
-    "approach": "Print int(\"5\") + int(\"3\").\n\nKey points: print(int(\"5\") + int(\"3\"))\n\nA correct solution looks like this:\nprint(int(\"5\") + int(\"3\"))"
+    "approach": "Print int(\"5\") + int(\"3\").\n\nReference solution:\nprint(int(\"5\") + int(\"3\"))"
   },
   {
     "id": "m2-t5-p06",
@@ -2751,7 +2541,7 @@ export const module2Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(\"Score: \" + str(100))",
-    "approach": "Print \"Score: \" + str(100).\n\nKey points: print(\"Score: \" + str(100))\n\nA correct solution looks like this:\nprint(\"Score: \" + str(100))"
+    "approach": "Print \"Score: \" + str(100).\n\nReference solution:\nprint(\"Score: \" + str(100))"
   },
   {
     "id": "m2-t5-p07",
@@ -2804,7 +2594,7 @@ export const module2Practice: PracticeProblem[] = [
       "print(int(True))\\nprint(int(False))"
     ],
     "starterCode": "",
-    "approach": "Print int(True) and int(False) on separate lines. Key points: print(int(True))\\nprint(int(False)) A correct solution looks like this: print(int(True)) print(int(False))",
+    "approach": "Print int(True) and int(False) on separate lines.\n\nReference solution:\nprint(int(True))\nprint(int(False))",
     "publicTests": [
       {
         "id": "m2-t5-p07-t1",

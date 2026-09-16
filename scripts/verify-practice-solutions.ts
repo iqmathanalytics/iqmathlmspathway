@@ -99,7 +99,21 @@ function staticGateFailures(problem: PracticeProblem): string[] {
 
   if (content?.requiresForLoop) {
     if (!realCode.includes("for")) problems.push("gate: requiresForLoop but no for");
-    if (!realCode.includes("range")) problems.push("gate: requiresForLoop needs range()");
+  }
+  if (content?.requiresIfCondition) {
+    if (!realCode.includes("if")) problems.push("gate: requiresIfCondition but no if");
+  }
+  if (content?.requiresTry && !realCode.includes("try")) {
+    problems.push("gate: requiresTry but no try");
+  }
+  if (content?.requiresExcept && !realCode.includes("except")) {
+    problems.push("gate: requiresExcept but no except");
+  }
+  if (content?.requiresFinally && !realCode.includes("finally")) {
+    problems.push("gate: requiresFinally but no finally");
+  }
+  if (content?.requiresRaise && !realCode.includes("raise")) {
+    problems.push("gate: requiresRaise but no raise");
   }
   if (content?.requiresFunction) {
     const fn = content.requiresFunction;
@@ -131,26 +145,7 @@ function staticGateFailures(problem: PracticeProblem): string[] {
     }
   }
 
-  // print-count / print-sequence gates compare against literal print() calls.
-  const printCount = (code.match(/print\s*\(/g) || []).length;
-  const literalPrints = [...code.matchAll(/print\s*\(\s*(?:"([^"]*)"|'([^']*)'|(\d+))\s*\)/g)];
-  const rules = content?.liveCheckRules ?? [];
-  for (const rule of rules) {
-    if (rule.kind === "print-count" && printCount !== rule.expected) {
-      problems.push(`gate: print-count expects ${rule.expected}, solution has ${printCount}`);
-    }
-    if (rule.kind === "print-sequence" && printCount !== rule.expected.length) {
-      problems.push(
-        `gate: print-sequence expects ${rule.expected.length} prints, solution has ${printCount}`
-      );
-    }
-  }
-  const valueRules = rules.filter((r) => r.kind === "print-value");
-  if (valueRules.length > 0 && literalPrints.length < valueRules.length) {
-    problems.push(
-      `gate: ${valueRules.length} print-value rules but solution has ${literalPrints.length} literal print()s`
-    );
-  }
+  // liveCheckRules are UI hints only; Submit grades publicTests then structural gates.
 
   return problems;
 }

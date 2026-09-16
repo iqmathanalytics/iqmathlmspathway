@@ -9,45 +9,20 @@ export const module17Practice: PracticeProblem[] = [
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Use statistics.mean to print the average of five daily sales figures.",
+    "description": "Define mean_of(values) using statistics.mean. Print mean_of([12, 15, 20, 25, 28]).",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Import "
-        },
-        {
-          "type": "code",
-          "value": "statistics"
-        },
-        {
-          "type": "text",
-          "value": " and print "
-        },
-        {
-          "type": "code",
-          "value": "statistics.mean(sales)"
-        },
-        {
-          "type": "text",
-          "value": " for "
-        },
-        {
-          "type": "code",
-          "value": "[12, 15, 20, 25, 28]"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Define mean_of(values) using statistics.mean. Print mean_of([12, 15, 20, 25, 28])."
         }
       ],
       "editorPlaceholder": "# print(statistics.mean(sales))",
       "emptyMessage": "Write your solution, then print the result.",
       "successDetail": "Correct!",
       "requiresVariables": [
-        "statistics",
-        "sales"
+        "statistics"
       ],
       "steps": {
         "title": "What you need to know",
@@ -56,7 +31,8 @@ export const module17Practice: PracticeProblem[] = [
           "statistics is in the standard library — no install needed.",
           "It returns an int when the result is whole."
         ]
-      }
+      },
+      "requiresFunction": "mean_of"
     },
     "examples": [
       {
@@ -68,37 +44,31 @@ export const module17Practice: PracticeProblem[] = [
       "Output must be exactly: 20"
     ],
     "hints": [
-      "print(statistics.mean(sales))"
+      "return statistics.mean(values)"
     ],
-    "starterCode": "# TODO: print the mean\nimport statistics\n\nsales = [12, 15, 20, 25, 28]\n",
-    "solutionCode": "import statistics\n\nsales = [12, 15, 20, 25, 28]\nprint(statistics.mean(sales))",
+    "starterCode": "import statistics\n\ndef mean_of(values):\n    pass\n",
+    "solutionCode": "import statistics\n\ndef mean_of(values):\n    return statistics.mean(values)\n\nprint(mean_of([12, 15, 20, 25, 28]))",
     "publicTests": [
       {
         "id": "m17-t1-p01-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "20",
-        "visibility": "public"
+        "expectedStdout": "20"
       },
       {
         "id": "m17-t1-p01-t2",
-        "label": "statistics was imported",
-        "assertCode": "assert \"statistics\" in globals(), \"Import statistics first\"",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "sample list",
+        "assertCode": "assert mean_of([12, 15, 20, 25, 28]) == 20"
       },
       {
         "id": "m17-t1-p01-t3",
-        "label": "mean is correct",
-        "assertCode": "assert (statistics.mean(sales)) == (20), \"Expected \" + repr(20) + \", got \" + repr(statistics.mean(sales))",
-        "visibility": "public"
-      },
-      {
-        "id": "m17-t1-p01-t4",
-        "label": "the data is unchanged",
-        "assertCode": "assert (sales) == ([12, 15, 20, 25, 28]), \"Expected \" + repr([12, 15, 20, 25, 28]) + \", got \" + repr(sales)",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "another list",
+        "assertCode": "assert mean_of([10, 10]) == 10, \"Average the argument, do not hardcode 20\""
       }
     ],
-    "approach": "Use statistics.mean to print the average of five daily sales figures.\n\nReference solution:\nimport statistics\n\nsales = [12, 15, 20, 25, 28]\nprint(statistics.mean(sales))"
+    "approach": "Define mean_of(values) using statistics.mean. Print mean_of([12, 15, 20, 25, 28]).\n\nReference solution:\nimport statistics\n\ndef mean_of(values):\n    return statistics.mean(values)\n\nprint(mean_of([12, 15, 20, 25, 28]))"
   },
   {
     "id": "m17-t1-p02",
@@ -108,29 +78,20 @@ export const module17Practice: PracticeProblem[] = [
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Use statistics.median to print the middle value of the sales list.",
+    "description": "Define median_of(values) using statistics.median. Print median_of([12, 15, 20, 25, 28]).",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Print "
-        },
-        {
-          "type": "code",
-          "value": "statistics.median(sales)"
-        },
-        {
-          "type": "text",
-          "value": ". With five sorted values, the median is the third one."
+          "value": "Define median_of(values) using statistics.median. Print median_of([12, 15, 20, 25, 28])."
         }
       ],
       "editorPlaceholder": "# print(statistics.median(sales))",
       "emptyMessage": "Write your solution, then print the result.",
       "successDetail": "Correct!",
       "requiresVariables": [
-        "statistics",
-        "sales"
+        "statistics"
       ],
       "steps": {
         "title": "What you need to know",
@@ -138,7 +99,8 @@ export const module17Practice: PracticeProblem[] = [
           "The median splits the data in half.",
           "It barely moves when one value is extreme, unlike the mean."
         ]
-      }
+      },
+      "requiresFunction": "median_of"
     },
     "examples": [
       {
@@ -150,31 +112,31 @@ export const module17Practice: PracticeProblem[] = [
       "Output must be exactly: 20"
     ],
     "hints": [
-      "print(statistics.median(sales))"
+      "return statistics.median(values)"
     ],
-    "starterCode": "# TODO: print the median\nimport statistics\n\nsales = [12, 15, 20, 25, 28]\n",
-    "solutionCode": "import statistics\n\nsales = [12, 15, 20, 25, 28]\nprint(statistics.median(sales))",
+    "starterCode": "import statistics\n\ndef median_of(values):\n    pass\n",
+    "solutionCode": "import statistics\n\ndef median_of(values):\n    return statistics.median(values)\n\nprint(median_of([12, 15, 20, 25, 28]))",
     "publicTests": [
       {
         "id": "m17-t1-p02-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "20",
-        "visibility": "public"
+        "expectedStdout": "20"
       },
       {
         "id": "m17-t1-p02-t2",
-        "label": "median is correct",
-        "assertCode": "assert (statistics.median(sales)) == (20), \"Expected \" + repr(20) + \", got \" + repr(statistics.median(sales))",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "sample list",
+        "assertCode": "assert median_of([12, 15, 20, 25, 28]) == 20"
       },
       {
         "id": "m17-t1-p02-t3",
-        "label": "median resists an outlier",
-        "assertCode": "assert statistics.median(sales + [500]) < statistics.mean(sales + [500]), \"Adding a huge value should move the mean far more than the median\"",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "even count",
+        "assertCode": "assert median_of([1, 2, 3, 4]) == 2.5, \"Median of four values is the average of the middle two\""
       }
     ],
-    "approach": "Use statistics.median to print the middle value of the sales list.\n\nReference solution:\nimport statistics\n\nsales = [12, 15, 20, 25, 28]\nprint(statistics.median(sales))"
+    "approach": "Define median_of(values) using statistics.median. Print median_of([12, 15, 20, 25, 28]).\n\nReference solution:\nimport statistics\n\ndef median_of(values):\n    return statistics.median(values)\n\nprint(median_of([12, 15, 20, 25, 28]))"
   },
   {
     "id": "m17-t1-p03",
@@ -184,37 +146,20 @@ export const module17Practice: PracticeProblem[] = [
     "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Use statistics.mode to print the most common customer rating.",
+    "description": "Define mode_of(values) using statistics.mode. Print mode_of([4, 5, 5, 3, 5]).",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "For ratings "
-        },
-        {
-          "type": "code",
-          "value": "[4, 5, 5, 3, 5]"
-        },
-        {
-          "type": "text",
-          "value": " print "
-        },
-        {
-          "type": "code",
-          "value": "statistics.mode(ratings)"
-        },
-        {
-          "type": "text",
-          "value": " — the value that appears most often."
+          "value": "Define mode_of(values) using statistics.mode. Print mode_of([4, 5, 5, 3, 5])."
         }
       ],
       "editorPlaceholder": "# print(statistics.mode(ratings))",
       "emptyMessage": "Write your solution, then print the result.",
       "successDetail": "Correct!",
       "requiresVariables": [
-        "statistics",
-        "ratings"
+        "statistics"
       ],
       "steps": {
         "title": "What you need to know",
@@ -222,7 +167,8 @@ export const module17Practice: PracticeProblem[] = [
           "The mode is the only average that works on categories.",
           "Use it for ratings, regions, and product names."
         ]
-      }
+      },
+      "requiresFunction": "mode_of"
     },
     "examples": [
       {
@@ -234,31 +180,31 @@ export const module17Practice: PracticeProblem[] = [
       "Output must be exactly: 5"
     ],
     "hints": [
-      "print(statistics.mode(ratings))"
+      "return statistics.mode(values)"
     ],
-    "starterCode": "# TODO: print the most common rating\nimport statistics\n\nratings = [4, 5, 5, 3, 5]\n",
-    "solutionCode": "import statistics\n\nratings = [4, 5, 5, 3, 5]\nprint(statistics.mode(ratings))",
+    "starterCode": "import statistics\n\ndef mode_of(values):\n    pass\n",
+    "solutionCode": "import statistics\n\ndef mode_of(values):\n    return statistics.mode(values)\n\nprint(mode_of([4, 5, 5, 3, 5]))",
     "publicTests": [
       {
         "id": "m17-t1-p03-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "5",
-        "visibility": "public"
+        "expectedStdout": "5"
       },
       {
         "id": "m17-t1-p03-t2",
-        "label": "mode is the most frequent value",
-        "assertCode": "assert (statistics.mode(ratings)) == (5), \"Expected \" + repr(5) + \", got \" + repr(statistics.mode(ratings))",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "sample list",
+        "assertCode": "assert mode_of([4, 5, 5, 3, 5]) == 5"
       },
       {
         "id": "m17-t1-p03-t3",
-        "label": "5 really appears three times",
-        "assertCode": "assert (ratings.count(5)) == (3), \"Expected \" + repr(3) + \", got \" + repr(ratings.count(5))",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "another list",
+        "assertCode": "assert mode_of([1, 1, 2]) == 1, \"Return the mode of the argument\""
       }
     ],
-    "approach": "Use statistics.mode to print the most common customer rating.\n\nReference solution:\nimport statistics\n\nratings = [4, 5, 5, 3, 5]\nprint(statistics.mode(ratings))"
+    "approach": "Define mode_of(values) using statistics.mode. Print mode_of([4, 5, 5, 3, 5]).\n\nReference solution:\nimport statistics\n\ndef mode_of(values):\n    return statistics.mode(values)\n\nprint(mode_of([4, 5, 5, 3, 5]))"
   },
   {
     "id": "m17-t1-p04",
@@ -1297,46 +1243,20 @@ export const module17Practice: PracticeProblem[] = [
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Use np.corrcoef on two arrays that move together exactly and print the coefficient.",
+    "description": "Define corr_of(left, right) using np.corrcoef. Print round(corr_of([1, 2, 3], [2, 4, 6]), 2).",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "For "
-        },
-        {
-          "type": "code",
-          "value": "[1, 2, 3]"
-        },
-        {
-          "type": "text",
-          "value": " and "
-        },
-        {
-          "type": "code",
-          "value": "[2, 4, 6]"
-        },
-        {
-          "type": "text",
-          "value": " print "
-        },
-        {
-          "type": "code",
-          "value": "round(float(np.corrcoef(a, b)[0, 1]), 2)"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Define corr_of(left, right) using np.corrcoef. Print round(corr_of([1, 2, 3], [2, 4, 6]), 2)."
         }
       ],
       "editorPlaceholder": "# print(round(float(np.corrcoef(a, b)[0, 1]), 2))",
       "emptyMessage": "Write your solution, then print the result.",
       "successDetail": "Correct!",
       "requiresVariables": [
-        "np",
-        "a",
-        "b"
+        "np"
       ],
       "steps": {
         "title": "What you need to know",
@@ -1345,7 +1265,8 @@ export const module17Practice: PracticeProblem[] = [
           "1.0 means a perfect straight-line relationship.",
           "Correlation has no units, so it always sits between -1 and 1."
         ]
-      }
+      },
+      "requiresFunction": "corr_of"
     },
     "examples": [
       {
@@ -1357,31 +1278,31 @@ export const module17Practice: PracticeProblem[] = [
       "Output must be exactly: 1.0"
     ],
     "hints": [
-      "print(round(float(np.corrcoef(a, b)[0, 1]), 2))"
+      "return float(np.corrcoef(left, right)[0, 1])"
     ],
-    "starterCode": "# TODO: print the correlation\nimport numpy as np\n\na = [1, 2, 3]\nb = [2, 4, 6]\n",
-    "solutionCode": "import numpy as np\n\na = [1, 2, 3]\nb = [2, 4, 6]\nprint(round(float(np.corrcoef(a, b)[0, 1]), 2))",
+    "starterCode": "import numpy as np\n\ndef corr_of(left, right):\n    pass\n",
+    "solutionCode": "import numpy as np\n\ndef corr_of(left, right):\n    return float(np.corrcoef(left, right)[0, 1])\n\nprint(round(corr_of([1, 2, 3], [2, 4, 6]), 2))",
     "publicTests": [
       {
         "id": "m17-t3-p01-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "1.0",
-        "visibility": "public"
+        "expectedStdout": "1.0"
       },
       {
         "id": "m17-t3-p01-t2",
-        "label": "correlation is 1.0",
-        "assertCode": "assert (round(float(np.corrcoef(a, b)[0, 1]), 2)) == (1.0), \"Expected \" + repr(1.0) + \", got \" + repr(round(float(np.corrcoef(a, b)[0, 1]), 2))",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "perfect positive",
+        "assertCode": "assert round(corr_of([1, 2, 3], [2, 4, 6]), 2) == 1.0"
       },
       {
         "id": "m17-t3-p01-t3",
-        "label": "the matrix is 2 by 2",
-        "assertCode": "assert (np.corrcoef(a, b).shape) == ((2, 2)), \"Expected \" + repr((2, 2)) + \", got \" + repr(np.corrcoef(a, b).shape)",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "perfect negative",
+        "assertCode": "assert round(corr_of([1, 2, 3], [6, 4, 2]), 2) == -1.0, \"Correlate the arguments, do not hardcode 1.0\""
       }
     ],
-    "approach": "Use np.corrcoef on two arrays that move together exactly and print the coefficient.\n\nReference solution:\nimport numpy as np\n\na = [1, 2, 3]\nb = [2, 4, 6]\nprint(round(float(np.corrcoef(a, b)[0, 1]), 2))"
+    "approach": "Define corr_of(left, right) using np.corrcoef. Print round(corr_of([1, 2, 3], [2, 4, 6]), 2).\n\nReference solution:\nimport numpy as np\n\ndef corr_of(left, right):\n    return float(np.corrcoef(left, right)[0, 1])\n\nprint(round(corr_of([1, 2, 3], [2, 4, 6]), 2))"
   },
   {
     "id": "m17-t3-p02",
@@ -2205,37 +2126,20 @@ export const module17Practice: PracticeProblem[] = [
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Count how many orders fall outside the IQR fences and print the count.",
+    "description": "Define outlier_count(values) using 1.5x IQR fences. Print outlier_count([12, 14, 15, 16, 18, 60]).",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Count the orders outside "
-        },
-        {
-          "type": "code",
-          "value": "[lower, upper]"
-        },
-        {
-          "type": "text",
-          "value": " into "
-        },
-        {
-          "type": "code",
-          "value": "outlier_count"
-        },
-        {
-          "type": "text",
-          "value": " and print it."
+          "value": "Define outlier_count(values) using 1.5x IQR fences. Print outlier_count([12, 14, 15, 16, 18, 60])."
         }
       ],
       "editorPlaceholder": "# outlier_count = len([...])",
       "emptyMessage": "Write your solution, then print the result.",
       "successDetail": "Correct!",
       "requiresVariables": [
-        "np",
-        "outlier_count"
+        "np"
       ],
       "steps": {
         "title": "What you need to know",
@@ -2243,7 +2147,8 @@ export const module17Practice: PracticeProblem[] = [
           "Invert the earlier condition: below lower or above upper.",
           "Reporting the count is how you justify cleaning the data."
         ]
-      }
+      },
+      "requiresFunction": "outlier_count"
     },
     "examples": [
       {
@@ -2256,31 +2161,31 @@ export const module17Practice: PracticeProblem[] = [
       "Output must be exactly: 1"
     ],
     "hints": [
-      "outlier_count = len([v for v in orders if v < lower or v > upper])"
+      "Count values below lower or above upper."
     ],
-    "starterCode": "# TODO: count the outliers\nimport numpy as np\n\norders = [12, 14, 15, 16, 18, 60]\nq1, q3 = np.percentile(orders, [25, 75])\niqr = q3 - q1\nlower = q1 - 1.5 * iqr\nupper = q3 + 1.5 * iqr\noutlier_count = 0\n",
-    "solutionCode": "import numpy as np\n\norders = [12, 14, 15, 16, 18, 60]\nq1, q3 = np.percentile(orders, [25, 75])\niqr = q3 - q1\nlower = q1 - 1.5 * iqr\nupper = q3 + 1.5 * iqr\n\noutlier_count = len([value for value in orders if value < lower or value > upper])\nprint(outlier_count)",
+    "starterCode": "import numpy as np\n\ndef outlier_count(values):\n    pass\n",
+    "solutionCode": "import numpy as np\n\ndef outlier_count(values):\n    q1, q3 = np.percentile(values, [25, 75])\n    iqr = q3 - q1\n    lower = q1 - 1.5 * iqr\n    upper = q3 + 1.5 * iqr\n    return len([v for v in values if v < lower or v > upper])\n\nprint(outlier_count([12, 14, 15, 16, 18, 60]))",
     "publicTests": [
       {
         "id": "m17-t4-p04-t1",
+        "visibility": "public",
         "label": "Sample Case",
-        "expectedStdout": "1",
-        "visibility": "public"
+        "expectedStdout": "1"
       },
       {
         "id": "m17-t4-p04-t2",
-        "label": "one outlier found",
-        "assertCode": "assert (outlier_count) == (1), \"Expected \" + repr(1) + \", got \" + repr(outlier_count)",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "sample list",
+        "assertCode": "assert outlier_count([12, 14, 15, 16, 18, 60]) == 1"
       },
       {
         "id": "m17-t4-p04-t3",
-        "label": "outlier_count has the right type",
-        "assertCode": "assert \"outlier_count\" in globals(), \"Expected a variable named outlier_count\"\nassert isinstance(outlier_count, int), \"Expected outlier_count to be int, got \" + type(outlier_count).__name__",
-        "visibility": "public"
+        "visibility": "public",
+        "label": "no outliers",
+        "assertCode": "assert outlier_count([10, 11, 12, 13, 14]) == 0, \"Count outliers in the argument\""
       }
     ],
-    "approach": "Count how many orders fall outside the IQR fences and print the count.\n\nReference solution:\nimport numpy as np\n\norders = [12, 14, 15, 16, 18, 60]\nq1, q3 = np.percentile(orders, [25, 75])\niqr = q3 - q1\nlower = q1 - 1.5 * iqr\nupper = q3 + 1.5 * iqr\n\noutlier_count = len([value for value in orders if value < lower or value > upper])\nprint(outlier_count)"
+    "approach": "Define outlier_count(values) using 1.5x IQR fences. Print outlier_count([12, 14, 15, 16, 18, 60]).\n\nReference solution:\nimport numpy as np\n\ndef outlier_count(values):\n    q1, q3 = np.percentile(values, [25, 75])\n    iqr = q3 - q1\n    lower = q1 - 1.5 * iqr\n    upper = q3 + 1.5 * iqr\n    return len([v for v in values if v < lower or v > upper])\n\nprint(outlier_count([12, 14, 15, 16, 18, 60]))"
   },
   {
     "id": "m17-t4-p05",

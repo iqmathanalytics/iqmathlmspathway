@@ -198,7 +198,7 @@ export function PracticeWorkspaceEditor({
   }
 
   return (
-    <div className="flex min-h-[calc(100vh-8rem)] flex-col">
+    <div className="flex h-full min-h-0 flex-1 flex-col overflow-hidden">
       <PracticeBreadcrumb
         moduleSlug={moduleSlug}
         topicSlug={topicSlug}
@@ -243,7 +243,7 @@ export function PracticeWorkspaceEditor({
               onRun={handleRun}
               height="100%"
               theme="light"
-              className="h-full min-h-[240px] bg-sky-50 [&_.cm-editor]:bg-sky-50 [&_.cm-scroller]:bg-sky-50"
+              className="h-full min-h-0 bg-sky-50 [&_.cm-editor]:h-full [&_.cm-editor]:max-h-full [&_.cm-editor]:bg-sky-50 [&_.cm-scroller]:overflow-auto [&_.cm-scroller]:bg-sky-50"
             />
           </div>
 

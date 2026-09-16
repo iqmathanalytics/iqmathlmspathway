@@ -1745,56 +1745,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m6-t3": [
     {
       "id": "m6-t3-p01",
-      "slug": "create",
-      "title": "Indexing Tuples: Create a Tuple",
+      "slug": "first-item",
+      "title": "Indexing Tuples: First Item",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m6-t3"
     },
     {
       "id": "m6-t3-p02",
-      "slug": "index",
-      "title": "Indexing Tuples: Index a Tuple",
+      "slug": "last-item",
+      "title": "Indexing Tuples: Last Item",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m6-t3"
     },
     {
       "id": "m6-t3-p03",
-      "slug": "immutable",
-      "title": "Indexing Tuples: Tuple Immutability",
-      "difficulty": "medium",
+      "slug": "middle-item",
+      "title": "Indexing Tuples: Middle Item",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m6-t3"
     },
     {
       "id": "m6-t3-p04",
-      "slug": "len-t",
-      "title": "Indexing Tuples: Tuple Length",
+      "slug": "nested-index",
+      "title": "Indexing Tuples: Nested Index",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m6-t3"
     },
     {
       "id": "m6-t3-p05",
-      "slug": "slice-t",
-      "title": "Indexing Tuples: Slice a Tuple",
+      "slug": "two-indexes",
+      "title": "Indexing Tuples: Two Indexes",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m6-t3"
     },
     {
       "id": "m6-t3-p06",
-      "slug": "count-t",
-      "title": "Indexing Tuples: count()",
-      "difficulty": "hard",
+      "slug": "last-via-len",
+      "title": "Indexing Tuples: Last via len",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m6-t3"
     },
     {
       "id": "m6-t3-p07",
-      "slug": "index-t",
-      "title": "Indexing Tuples: index()",
+      "slug": "second-last",
+      "title": "Indexing Tuples: Second-Last Item",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m6-t3"
@@ -1803,56 +1803,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m6-t4": [
     {
       "id": "m6-t4-p01",
-      "slug": "create",
-      "title": "Slicing Tuples: Create a Tuple",
+      "slug": "basic-slice",
+      "title": "Slicing Tuples: Basic Slice",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m6-t4"
     },
     {
       "id": "m6-t4-p02",
-      "slug": "index",
-      "title": "Slicing Tuples: Index a Tuple",
+      "slug": "from-start",
+      "title": "Slicing Tuples: From Start",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m6-t4"
     },
     {
       "id": "m6-t4-p03",
-      "slug": "immutable",
-      "title": "Slicing Tuples: Tuple Immutability",
-      "difficulty": "medium",
+      "slug": "to-end",
+      "title": "Slicing Tuples: To End",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m6-t4"
     },
     {
       "id": "m6-t4-p04",
-      "slug": "len-t",
-      "title": "Slicing Tuples: Tuple Length",
+      "slug": "step-slice",
+      "title": "Slicing Tuples: Step Slice",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m6-t4"
     },
     {
       "id": "m6-t4-p05",
-      "slug": "slice-t",
-      "title": "Slicing Tuples: Slice a Tuple",
+      "slug": "reverse-tuple",
+      "title": "Slicing Tuples: Reverse",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m6-t4"
     },
     {
       "id": "m6-t4-p06",
-      "slug": "count-t",
-      "title": "Slicing Tuples: count()",
-      "difficulty": "hard",
+      "slug": "copy-slice",
+      "title": "Slicing Tuples: Copy a Slice",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m6-t4"
     },
     {
       "id": "m6-t4-p07",
-      "slug": "index-t",
-      "title": "Slicing Tuples: index()",
+      "slug": "empty-slice",
+      "title": "Slicing Tuples: Empty Slice",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m6-t4"
@@ -1861,56 +1861,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m6-t5": [
     {
       "id": "m6-t5-p01",
-      "slug": "create",
-      "title": "Tuple Methods: Create a Tuple",
+      "slug": "count-named",
+      "title": "Tuple Methods: count()",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m6-t5"
     },
     {
       "id": "m6-t5-p02",
-      "slug": "index",
-      "title": "Tuple Methods: Index a Tuple",
+      "slug": "index-named",
+      "title": "Tuple Methods: index()",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m6-t5"
     },
     {
       "id": "m6-t5-p03",
-      "slug": "immutable",
-      "title": "Tuple Methods: Tuple Immutability",
-      "difficulty": "medium",
+      "slug": "count-missing",
+      "title": "Tuple Methods: count Missing Value",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m6-t5"
     },
     {
       "id": "m6-t5-p04",
-      "slug": "len-t",
-      "title": "Tuple Methods: Tuple Length",
+      "slug": "index-first",
+      "title": "Tuple Methods: index First Match",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m6-t5"
     },
     {
       "id": "m6-t5-p05",
-      "slug": "slice-t",
-      "title": "Tuple Methods: Slice a Tuple",
+      "slug": "count-letters",
+      "title": "Tuple Methods: count Letters",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m6-t5"
     },
     {
       "id": "m6-t5-p06",
-      "slug": "count-t",
-      "title": "Tuple Methods: count()",
-      "difficulty": "hard",
+      "slug": "count-and-index",
+      "title": "Tuple Methods: count and index",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m6-t5"
     },
     {
       "id": "m6-t5-p07",
-      "slug": "index-t",
-      "title": "Tuple Methods: index()",
+      "slug": "index-letter",
+      "title": "Tuple Methods: index a Letter",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m6-t5"
@@ -1927,7 +1927,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m7-t1-p02",
-      "slug": "set-func",
+      "slug": "set-function",
       "title": "Set Syntax: set() Function",
       "difficulty": "easy",
       "order": 2,
@@ -1935,7 +1935,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m7-t1-p03",
-      "slug": "unique",
+      "slug": "unique-len",
       "title": "Set Syntax: Unique Values",
       "difficulty": "easy",
       "order": 3,
@@ -1945,13 +1945,13 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
       "id": "m7-t1-p04",
       "slug": "empty-set",
       "title": "Set Syntax: Empty Set",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "order": 4,
       "topicId": "m7-t1"
     },
     {
       "id": "m7-t1-p05",
-      "slug": "in-set",
+      "slug": "membership",
       "title": "Set Syntax: Membership",
       "difficulty": "medium",
       "order": 5,
@@ -1959,15 +1959,15 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m7-t1-p06",
-      "slug": "mixed-set",
+      "slug": "mixed-types",
       "title": "Set Syntax: Mixed Types",
-      "difficulty": "hard",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m7-t1"
     },
     {
       "id": "m7-t1-p07",
-      "slug": "from-string",
+      "slug": "set-from-string",
       "title": "Set Syntax: Set from String",
       "difficulty": "hard",
       "order": 7,
@@ -1995,7 +1995,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
       "id": "m7-t2-p03",
       "slug": "discard",
       "title": "Updating Sets: discard()",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m7-t2"
     },
@@ -2009,23 +2009,23 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m7-t2-p05",
-      "slug": "pop-set",
+      "slug": "pop-one",
       "title": "Updating Sets: pop()",
-      "difficulty": "hard",
+      "difficulty": "medium",
       "order": 5,
       "topicId": "m7-t2"
     },
     {
       "id": "m7-t2-p06",
-      "slug": "clear-set",
+      "slug": "clear",
       "title": "Updating Sets: clear()",
-      "difficulty": "hard",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m7-t2"
     },
     {
       "id": "m7-t2-p07",
-      "slug": "add-dup",
+      "slug": "add-duplicate",
       "title": "Updating Sets: Add Duplicate",
       "difficulty": "hard",
       "order": 7,
@@ -2053,7 +2053,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
       "id": "m7-t3-p03",
       "slug": "difference",
       "title": "Set Operations: Difference -",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m7-t3"
     },
@@ -2077,14 +2077,14 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
       "id": "m7-t3-p06",
       "slug": "superset",
       "title": "Set Operations: Superset >=",
-      "difficulty": "hard",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m7-t3"
     },
     {
       "id": "m7-t3-p07",
       "slug": "disjoint",
-      "title": "Set Operations: Disjoint isdisjoint",
+      "title": "Set Operations: isdisjoint",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m7-t3"
@@ -2093,56 +2093,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m7-t4": [
     {
       "id": "m7-t4-p01",
-      "slug": "union",
-      "title": "Set Methods: Union |",
+      "slug": "union-method",
+      "title": "Set Methods: union()",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m7-t4"
     },
     {
       "id": "m7-t4-p02",
-      "slug": "intersection",
-      "title": "Set Methods: Intersection &",
+      "slug": "intersection-method",
+      "title": "Set Methods: intersection()",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m7-t4"
     },
     {
       "id": "m7-t4-p03",
-      "slug": "difference",
-      "title": "Set Methods: Difference -",
-      "difficulty": "medium",
+      "slug": "difference-method",
+      "title": "Set Methods: difference()",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m7-t4"
     },
     {
       "id": "m7-t4-p04",
-      "slug": "symmetric",
-      "title": "Set Methods: Symmetric ^",
+      "slug": "symmetric-method",
+      "title": "Set Methods: symmetric_difference()",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m7-t4"
     },
     {
       "id": "m7-t4-p05",
-      "slug": "subset",
-      "title": "Set Methods: Subset <=",
+      "slug": "issubset",
+      "title": "Set Methods: issubset()",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m7-t4"
     },
     {
       "id": "m7-t4-p06",
-      "slug": "superset",
-      "title": "Set Methods: Superset >=",
-      "difficulty": "hard",
+      "slug": "issuperset",
+      "title": "Set Methods: issuperset()",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m7-t4"
     },
     {
       "id": "m7-t4-p07",
-      "slug": "disjoint",
-      "title": "Set Methods: Disjoint isdisjoint",
+      "slug": "copy-set",
+      "title": "Set Methods: copy()",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m7-t4"
@@ -2257,8 +2257,8 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m8-t2-p07",
-      "slug": "topic-lookup",
-      "title": "Keys and Values: Topic Lookup",
+      "slug": "lookup-lang",
+      "title": "Keys and Values: Look Up a Key",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m8-t2"
@@ -2267,56 +2267,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m8-t3": [
     {
       "id": "m8-t3-p01",
-      "slug": "keys",
-      "title": "Accessing Dictionaries: keys()",
+      "slug": "bracket-access",
+      "title": "Accessing Dictionaries: Bracket Access",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m8-t3"
     },
     {
       "id": "m8-t3-p02",
-      "slug": "values",
-      "title": "Accessing Dictionaries: values()",
+      "slug": "get-existing",
+      "title": "Accessing Dictionaries: get() Existing Key",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m8-t3"
     },
     {
       "id": "m8-t3-p03",
-      "slug": "items",
-      "title": "Accessing Dictionaries: items()",
-      "difficulty": "medium",
+      "slug": "get-default",
+      "title": "Accessing Dictionaries: get() Default",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m8-t3"
     },
     {
       "id": "m8-t3-p04",
-      "slug": "get",
-      "title": "Accessing Dictionaries: get()",
+      "slug": "nested-access",
+      "title": "Accessing Dictionaries: Nested Access",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m8-t3"
     },
     {
       "id": "m8-t3-p05",
-      "slug": "in-dict",
-      "title": "Accessing Dictionaries: Key Membership",
+      "slug": "two-keys",
+      "title": "Accessing Dictionaries: Two Keys",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m8-t3"
     },
     {
       "id": "m8-t3-p06",
-      "slug": "len-dict",
-      "title": "Accessing Dictionaries: Dict Length",
-      "difficulty": "hard",
+      "slug": "get-none",
+      "title": "Accessing Dictionaries: get() Missing",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m8-t3"
     },
     {
       "id": "m8-t3-p07",
-      "slug": "topic-lookup",
-      "title": "Accessing Dictionaries: Topic Lookup",
+      "slug": "safe-nested-get",
+      "title": "Accessing Dictionaries: Safe Nested get()",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m8-t3"
@@ -2325,56 +2325,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m8-t4": [
     {
       "id": "m8-t4-p01",
-      "slug": "keys",
-      "title": "Dictionary Methods: keys()",
+      "slug": "update",
+      "title": "Dictionary Methods: update()",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m8-t4"
     },
     {
       "id": "m8-t4-p02",
-      "slug": "values",
-      "title": "Dictionary Methods: values()",
+      "slug": "pop",
+      "title": "Dictionary Methods: pop()",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m8-t4"
     },
     {
       "id": "m8-t4-p03",
-      "slug": "items",
-      "title": "Dictionary Methods: items()",
-      "difficulty": "medium",
+      "slug": "pop-default",
+      "title": "Dictionary Methods: pop() Default",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m8-t4"
     },
     {
       "id": "m8-t4-p04",
-      "slug": "get",
-      "title": "Dictionary Methods: get()",
+      "slug": "clear-dict",
+      "title": "Dictionary Methods: clear()",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m8-t4"
     },
     {
       "id": "m8-t4-p05",
-      "slug": "in-dict",
-      "title": "Dictionary Methods: Key Membership",
+      "slug": "setdefault",
+      "title": "Dictionary Methods: setdefault()",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m8-t4"
     },
     {
       "id": "m8-t4-p06",
-      "slug": "len-dict",
-      "title": "Dictionary Methods: Dict Length",
-      "difficulty": "hard",
+      "slug": "copy-dict",
+      "title": "Dictionary Methods: copy()",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m8-t4"
     },
     {
       "id": "m8-t4-p07",
-      "slug": "topic-lookup",
-      "title": "Dictionary Methods: Topic Lookup",
+      "slug": "pop-then-len",
+      "title": "Dictionary Methods: pop then len",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m8-t4"
@@ -2383,56 +2383,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m8-t5": [
     {
       "id": "m8-t5-p01",
-      "slug": "keys",
-      "title": "Nested Dictionaries: keys()",
+      "slug": "read-nested",
+      "title": "Nested Dictionaries: Read Inner Value",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m8-t5"
     },
     {
       "id": "m8-t5-p02",
-      "slug": "values",
-      "title": "Nested Dictionaries: values()",
+      "slug": "change-nested",
+      "title": "Nested Dictionaries: Change Inner Value",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m8-t5"
     },
     {
       "id": "m8-t5-p03",
-      "slug": "items",
-      "title": "Nested Dictionaries: items()",
+      "slug": "add-inner-key",
+      "title": "Nested Dictionaries: Add Inner Key",
       "difficulty": "medium",
       "order": 3,
       "topicId": "m8-t5"
     },
     {
       "id": "m8-t5-p04",
-      "slug": "get",
-      "title": "Nested Dictionaries: get()",
+      "slug": "list-of-dicts",
+      "title": "Nested Dictionaries: List of Dicts",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m8-t5"
     },
     {
       "id": "m8-t5-p05",
-      "slug": "in-dict",
-      "title": "Nested Dictionaries: Key Membership",
+      "slug": "three-level",
+      "title": "Nested Dictionaries: Three Levels",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m8-t5"
     },
     {
       "id": "m8-t5-p06",
-      "slug": "len-dict",
-      "title": "Nested Dictionaries: Dict Length",
+      "slug": "inner-keys",
+      "title": "Nested Dictionaries: Inner keys()",
       "difficulty": "hard",
       "order": 6,
       "topicId": "m8-t5"
     },
     {
       "id": "m8-t5-p07",
-      "slug": "topic-lookup",
-      "title": "Nested Dictionaries: Topic Lookup",
+      "slug": "safe-inner-get",
+      "title": "Nested Dictionaries: Safe Inner get()",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m8-t5"
@@ -2905,7 +2905,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m11-t1": [
     {
       "id": "m11-t1-p01",
-      "slug": "lc-basic",
+      "slug": "basic-list-comp",
       "title": "List Comprehension Syntax: Basic List Comp",
       "difficulty": "easy",
       "order": 1,
@@ -2913,7 +2913,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m11-t1-p02",
-      "slug": "lc-squares",
+      "slug": "square-comp",
       "title": "List Comprehension Syntax: Squares",
       "difficulty": "easy",
       "order": 2,
@@ -2921,7 +2921,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m11-t1-p03",
-      "slug": "lc-filter",
+      "slug": "filter-evens-comp",
       "title": "List Comprehension Syntax: Filter Evens",
       "difficulty": "medium",
       "order": 3,
@@ -2929,7 +2929,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m11-t1-p04",
-      "slug": "lc-string",
+      "slug": "upper-comp",
       "title": "List Comprehension Syntax: Uppercase List",
       "difficulty": "medium",
       "order": 4,
@@ -2937,7 +2937,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m11-t1-p05",
-      "slug": "lc-nested",
+      "slug": "nested-comp",
       "title": "List Comprehension Syntax: Nested Comp",
       "difficulty": "hard",
       "order": 5,
@@ -2945,7 +2945,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m11-t1-p06",
-      "slug": "lc-len",
+      "slug": "length-comp",
       "title": "List Comprehension Syntax: Lengths",
       "difficulty": "hard",
       "order": 6,
@@ -2953,7 +2953,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m11-t1-p07",
-      "slug": "lc-condition",
+      "slug": "ternary-comp",
       "title": "List Comprehension Syntax: Conditional Expression",
       "difficulty": "hard",
       "order": 7,
@@ -2963,56 +2963,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m11-t2": [
     {
       "id": "m11-t2-p01",
-      "slug": "lc-basic",
-      "title": "Uses of Comprehensions: Basic List Comp",
+      "slug": "double-prices",
+      "title": "Uses of Comprehensions: Double Prices",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m11-t2"
     },
     {
       "id": "m11-t2-p02",
-      "slug": "lc-squares",
-      "title": "Uses of Comprehensions: Squares",
+      "slug": "passing-scores",
+      "title": "Uses of Comprehensions: Passing Scores",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m11-t2"
     },
     {
       "id": "m11-t2-p03",
-      "slug": "lc-filter",
-      "title": "Uses of Comprehensions: Filter Evens",
+      "slug": "first-letters",
+      "title": "Uses of Comprehensions: First Letters",
       "difficulty": "medium",
       "order": 3,
       "topicId": "m11-t2"
     },
     {
       "id": "m11-t2-p04",
-      "slug": "lc-string",
-      "title": "Uses of Comprehensions: Uppercase List",
+      "slug": "flatten-rows",
+      "title": "Uses of Comprehensions: Flatten Rows",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m11-t2"
     },
     {
       "id": "m11-t2-p05",
-      "slug": "lc-nested",
-      "title": "Uses of Comprehensions: Nested Comp",
+      "slug": "strip-words",
+      "title": "Uses of Comprehensions: Strip Spaces",
       "difficulty": "hard",
       "order": 5,
       "topicId": "m11-t2"
     },
     {
       "id": "m11-t2-p06",
-      "slug": "lc-len",
-      "title": "Uses of Comprehensions: Lengths",
+      "slug": "index-pairs",
+      "title": "Uses of Comprehensions: Index Pairs",
       "difficulty": "hard",
       "order": 6,
       "topicId": "m11-t2"
     },
     {
       "id": "m11-t2-p07",
-      "slug": "lc-condition",
-      "title": "Uses of Comprehensions: Conditional Expression",
+      "slug": "cartesian-pairs",
+      "title": "Uses of Comprehensions: Cartesian Pairs",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m11-t2"
@@ -3021,56 +3021,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m11-t3": [
     {
       "id": "m11-t3-p01",
-      "slug": "dc-basic",
-      "title": "Dictionary Comprehensions: Basic Dict Comp",
+      "slug": "basic-dict-comp",
+      "title": "Dictionary Comprehensions: Doubled Values",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m11-t3"
     },
     {
       "id": "m11-t3-p02",
-      "slug": "dc-keys",
-      "title": "Dictionary Comprehensions: From List",
+      "slug": "word-lengths-dict",
+      "title": "Dictionary Comprehensions: Word Lengths",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m11-t3"
     },
     {
       "id": "m11-t3-p03",
-      "slug": "dc-filter",
-      "title": "Dictionary Comprehensions: Filter Dict Comp",
+      "slug": "odd-squares-dict",
+      "title": "Dictionary Comprehensions: Odd Squares",
       "difficulty": "medium",
       "order": 3,
       "topicId": "m11-t3"
     },
     {
       "id": "m11-t3-p04",
-      "slug": "dc-invert",
-      "title": "Dictionary Comprehensions: Invert Keys Values",
+      "slug": "invert-dict",
+      "title": "Dictionary Comprehensions: Invert Keys",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m11-t3"
     },
     {
       "id": "m11-t3-p05",
-      "slug": "dc-string",
-      "title": "Dictionary Comprehensions: Char Positions",
+      "slug": "char-index-dict",
+      "title": "Dictionary Comprehensions: Character Indexes",
       "difficulty": "hard",
       "order": 5,
       "topicId": "m11-t3"
     },
     {
       "id": "m11-t3-p06",
-      "slug": "dc-conditional",
-      "title": "Dictionary Comprehensions: Conditional Values",
+      "slug": "even-odd-labels",
+      "title": "Dictionary Comprehensions: Even Odd Labels",
       "difficulty": "hard",
       "order": 6,
       "topicId": "m11-t3"
     },
     {
       "id": "m11-t3-p07",
-      "slug": "dc-merge",
-      "title": "Dictionary Comprehensions: Combine Two Lists",
+      "slug": "zip-dict",
+      "title": "Dictionary Comprehensions: Zip Two Lists",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m11-t3"
@@ -3079,7 +3079,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m12-t1": [
     {
       "id": "m12-t1-p01",
-      "slug": "def-basic",
+      "slug": "define-hello",
       "title": "Creating Functions: Define a Function",
       "difficulty": "easy",
       "order": 1,
@@ -3087,7 +3087,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m12-t1-p02",
-      "slug": "def-return",
+      "slug": "return-add",
       "title": "Creating Functions: Return Value",
       "difficulty": "easy",
       "order": 2,
@@ -3095,7 +3095,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m12-t1-p03",
-      "slug": "def-param",
+      "slug": "shout-param",
       "title": "Creating Functions: Parameter",
       "difficulty": "medium",
       "order": 3,
@@ -3103,7 +3103,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m12-t1-p04",
-      "slug": "def-default",
+      "slug": "default-greet",
       "title": "Creating Functions: Default Parameter",
       "difficulty": "medium",
       "order": 4,
@@ -3111,7 +3111,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m12-t1-p05",
-      "slug": "def-multiple-return",
+      "slug": "two-returns",
       "title": "Creating Functions: Multiple Returns",
       "difficulty": "hard",
       "order": 5,
@@ -3119,7 +3119,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m12-t1-p06",
-      "slug": "def-scope",
+      "slug": "local-return",
       "title": "Creating Functions: Local Variable",
       "difficulty": "hard",
       "order": 6,
@@ -3127,7 +3127,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m12-t1-p07",
-      "slug": "def-nested",
+      "slug": "compose-fns",
       "title": "Creating Functions: Function Calling Function",
       "difficulty": "hard",
       "order": 7,
@@ -3137,56 +3137,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m12-t2": [
     {
       "id": "m12-t2-p01",
-      "slug": "def-basic",
-      "title": "Calling Functions: Define a Function",
+      "slug": "call-len",
+      "title": "Calling Functions: Call len",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m12-t2"
     },
     {
       "id": "m12-t2-p02",
-      "slug": "def-return",
-      "title": "Calling Functions: Return Value",
+      "slug": "call-max",
+      "title": "Calling Functions: Call max",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m12-t2"
     },
     {
       "id": "m12-t2-p03",
-      "slug": "def-param",
-      "title": "Calling Functions: Parameter",
+      "slug": "call-twice",
+      "title": "Calling Functions: Call Twice",
       "difficulty": "medium",
       "order": 3,
       "topicId": "m12-t2"
     },
     {
       "id": "m12-t2-p04",
-      "slug": "def-default",
-      "title": "Calling Functions: Default Parameter",
+      "slug": "call-with-variable",
+      "title": "Calling Functions: Pass a Variable",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m12-t2"
     },
     {
       "id": "m12-t2-p05",
-      "slug": "def-multiple-return",
-      "title": "Calling Functions: Multiple Returns",
+      "slug": "keyword-call",
+      "title": "Calling Functions: Keyword Arguments",
       "difficulty": "hard",
       "order": 5,
       "topicId": "m12-t2"
     },
     {
       "id": "m12-t2-p06",
-      "slug": "def-scope",
-      "title": "Calling Functions: Local Variable",
+      "slug": "store-return",
+      "title": "Calling Functions: Store the Return",
       "difficulty": "hard",
       "order": 6,
       "topicId": "m12-t2"
     },
     {
       "id": "m12-t2-p07",
-      "slug": "def-nested",
-      "title": "Calling Functions: Function Calling Function",
+      "slug": "nested-calls",
+      "title": "Calling Functions: Nested Calls",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m12-t2"
@@ -3195,56 +3195,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m12-t3": [
     {
       "id": "m12-t3-p01",
-      "slug": "def-basic",
-      "title": "Function Arguments: Define a Function",
+      "slug": "positional-args",
+      "title": "Function Arguments: Positional Args",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m12-t3"
     },
     {
       "id": "m12-t3-p02",
-      "slug": "def-return",
-      "title": "Function Arguments: Return Value",
+      "slug": "keyword-args",
+      "title": "Function Arguments: Keyword Args",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m12-t3"
     },
     {
       "id": "m12-t3-p03",
-      "slug": "def-param",
-      "title": "Function Arguments: Parameter",
+      "slug": "mixed-args",
+      "title": "Function Arguments: Mixed Args",
       "difficulty": "medium",
       "order": 3,
       "topicId": "m12-t3"
     },
     {
       "id": "m12-t3-p04",
-      "slug": "def-default",
-      "title": "Function Arguments: Default Parameter",
+      "slug": "default-power",
+      "title": "Function Arguments: Default Argument",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m12-t3"
     },
     {
       "id": "m12-t3-p05",
-      "slug": "def-multiple-return",
-      "title": "Function Arguments: Multiple Returns",
+      "slug": "star-args",
+      "title": "Function Arguments: *args",
       "difficulty": "hard",
       "order": 5,
       "topicId": "m12-t3"
     },
     {
       "id": "m12-t3-p06",
-      "slug": "def-scope",
-      "title": "Function Arguments: Local Variable",
+      "slug": "star-kwargs",
+      "title": "Function Arguments: **kwargs",
       "difficulty": "hard",
       "order": 6,
       "topicId": "m12-t3"
     },
     {
       "id": "m12-t3-p07",
-      "slug": "def-nested",
-      "title": "Function Arguments: Function Calling Function",
+      "slug": "join-args",
+      "title": "Function Arguments: Join *args",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m12-t3"
@@ -3253,56 +3253,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m12-t4": [
     {
       "id": "m12-t4-p01",
-      "slug": "def-basic",
-      "title": "Variables in Functions: Define a Function",
+      "slug": "local-print",
+      "title": "Variables in Functions: Local Variable",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m12-t4"
     },
     {
       "id": "m12-t4-p02",
-      "slug": "def-return",
-      "title": "Variables in Functions: Return Value",
+      "slug": "read-global",
+      "title": "Variables in Functions: Read a Global",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m12-t4"
     },
     {
       "id": "m12-t4-p03",
-      "slug": "def-param",
-      "title": "Variables in Functions: Parameter",
+      "slug": "shadow-global",
+      "title": "Variables in Functions: Local Shadows Global",
       "difficulty": "medium",
       "order": 3,
       "topicId": "m12-t4"
     },
     {
       "id": "m12-t4-p04",
-      "slug": "def-default",
-      "title": "Variables in Functions: Default Parameter",
+      "slug": "global-keyword",
+      "title": "Variables in Functions: global Keyword",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m12-t4"
     },
     {
       "id": "m12-t4-p05",
-      "slug": "def-multiple-return",
-      "title": "Variables in Functions: Multiple Returns",
+      "slug": "param-is-local",
+      "title": "Variables in Functions: Parameter Is Local",
       "difficulty": "hard",
       "order": 5,
       "topicId": "m12-t4"
     },
     {
       "id": "m12-t4-p06",
-      "slug": "def-scope",
-      "title": "Variables in Functions: Local Variable",
+      "slug": "return-local",
+      "title": "Variables in Functions: Return a Local",
       "difficulty": "hard",
       "order": 6,
       "topicId": "m12-t4"
     },
     {
       "id": "m12-t4-p07",
-      "slug": "def-nested",
-      "title": "Variables in Functions: Function Calling Function",
+      "slug": "nested-read",
+      "title": "Variables in Functions: Nested Function",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m12-t4"
@@ -3311,7 +3311,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m12-t5": [
     {
       "id": "m12-t5-p01",
-      "slug": "rec-base",
+      "slug": "countdown-rec",
       "title": "Recursion: Base Case",
       "difficulty": "easy",
       "order": 1,
@@ -3319,7 +3319,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m12-t5-p02",
-      "slug": "rec-factorial",
+      "slug": "factorial-rec",
       "title": "Recursion: Factorial",
       "difficulty": "easy",
       "order": 2,
@@ -3327,7 +3327,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m12-t5-p03",
-      "slug": "rec-sum",
+      "slug": "sum-rec",
       "title": "Recursion: Recursive Sum",
       "difficulty": "medium",
       "order": 3,
@@ -3335,15 +3335,15 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m12-t5-p04",
-      "slug": "rec-fib",
-      "title": "Recursion: Fibonacci Step",
+      "slug": "fib-rec",
+      "title": "Recursion: Fibonacci",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m12-t5"
     },
     {
       "id": "m12-t5-p05",
-      "slug": "rec-power",
+      "slug": "power-rec",
       "title": "Recursion: Power",
       "difficulty": "hard",
       "order": 5,
@@ -3351,7 +3351,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m12-t5-p06",
-      "slug": "rec-len",
+      "slug": "rlen-rec",
       "title": "Recursion: Recursive Length",
       "difficulty": "hard",
       "order": 6,
@@ -3359,7 +3359,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m12-t5-p07",
-      "slug": "rec-countdown-silent",
+      "slug": "print-down-rec",
       "title": "Recursion: Silent Base",
       "difficulty": "hard",
       "order": 7,
@@ -3369,7 +3369,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m12-t6": [
     {
       "id": "m12-t6-p01",
-      "slug": "lambda-basic",
+      "slug": "basic-lambda",
       "title": "Lambda Functions: Basic Lambda",
       "difficulty": "easy",
       "order": 1,
@@ -3393,7 +3393,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m12-t6-p04",
-      "slug": "lambda-map",
+      "slug": "map-lambda",
       "title": "Lambda Functions: map with Lambda",
       "difficulty": "medium",
       "order": 4,
@@ -3401,15 +3401,15 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m12-t6-p05",
-      "slug": "lambda-filter",
+      "slug": "filter-lambda",
       "title": "Lambda Functions: filter with Lambda",
-      "difficulty": "medium",
+      "difficulty": "hard",
       "order": 5,
       "topicId": "m12-t6"
     },
     {
       "id": "m12-t6-p06",
-      "slug": "lambda-sorted",
+      "slug": "sorted-lambda",
       "title": "Lambda Functions: sorted with Lambda",
       "difficulty": "hard",
       "order": 6,
@@ -3417,7 +3417,7 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
     },
     {
       "id": "m12-t6-p07",
-      "slug": "lambda-immediate",
+      "slug": "immediate-lambda",
       "title": "Lambda Functions: Immediate Call",
       "difficulty": "hard",
       "order": 7,
@@ -4935,248 +4935,288 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m18-t1": [
     {
       "id": "m18-t1-p01",
-      "slug": "fp-preview",
-      "title": "Project Overview: Preview Report",
+      "slug": "retail-question",
+      "title": "Project Overview: The Question",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m18-t1"
     },
     {
       "id": "m18-t1-p02",
-      "slug": "fp-shape",
-      "title": "Project Overview: Data Shape",
+      "slug": "retail-columns",
+      "title": "Project Overview: Column List",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m18-t1"
     },
     {
       "id": "m18-t1-p03",
-      "slug": "fp-concepts",
-      "title": "Project Overview: Module Map",
-      "difficulty": "medium",
+      "slug": "retail-row-count",
+      "title": "Project Overview: How Many Rows",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m18-t1"
     },
     {
       "id": "m18-t1-p04",
-      "slug": "fp-subjects",
-      "title": "Project Overview: Subject Set",
+      "slug": "retail-first-region",
+      "title": "Project Overview: First Region",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m18-t1"
     },
     {
       "id": "m18-t1-p05",
-      "slug": "fp-plan",
-      "title": "Project Overview: Build Order",
-      "difficulty": "hard",
+      "slug": "retail-unique-regions",
+      "title": "Project Overview: Unique Regions",
+      "difficulty": "medium",
       "order": 5,
+      "topicId": "m18-t1"
+    },
+    {
+      "id": "m18-t1-p06",
+      "slug": "retail-metric",
+      "title": "Project Overview: The Metric",
+      "difficulty": "hard",
+      "order": 6,
+      "topicId": "m18-t1"
+    },
+    {
+      "id": "m18-t1-p07",
+      "slug": "retail-report-title",
+      "title": "Project Overview: Report Title",
+      "difficulty": "hard",
+      "order": 7,
       "topicId": "m18-t1"
     }
   ],
   "m18-t2": [
     {
       "id": "m18-t2-p01",
-      "slug": "fp-dict",
-      "title": "Step 1 Data Model: Student Dict",
+      "slug": "sale-dict",
+      "title": "Data Model: One Sale Dict",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m18-t2"
     },
     {
       "id": "m18-t2-p02",
-      "slug": "fp-set",
-      "title": "Step 1 Data Model: Subject Set",
+      "slug": "sale-records",
+      "title": "Data Model: A List of Records",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m18-t2"
     },
     {
       "id": "m18-t2-p03",
-      "slug": "fp-tuple",
-      "title": "Step 1 Data Model: Grade Record",
-      "difficulty": "easy",
+      "slug": "sale-class",
+      "title": "Data Model: A Sale Class",
+      "difficulty": "medium",
       "order": 3,
       "topicId": "m18-t2"
     },
     {
       "id": "m18-t2-p04",
-      "slug": "fp-append",
-      "title": "Step 1 Data Model: Append Grade",
+      "slug": "append-sale",
+      "title": "Data Model: Append a Sale",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m18-t2"
     },
     {
       "id": "m18-t2-p05",
-      "slug": "fp-add-student",
-      "title": "Step 1 Data Model: Add Student",
-      "difficulty": "medium",
+      "slug": "unpack-record",
+      "title": "Data Model: Unpack a Record",
+      "difficulty": "hard",
       "order": 5,
       "topicId": "m18-t2"
     },
     {
       "id": "m18-t2-p06",
-      "slug": "fp-challenge-data",
-      "title": "Step 1 Data Model: Merge Grades",
+      "slug": "sales-frame",
+      "title": "Data Model: DataFrame From Rows",
       "difficulty": "hard",
       "order": 6,
+      "topicId": "m18-t2"
+    },
+    {
+      "id": "m18-t2-p07",
+      "slug": "missing-revenue",
+      "title": "Data Model: Missing Revenue",
+      "difficulty": "hard",
+      "order": 7,
       "topicId": "m18-t2"
     }
   ],
   "m18-t3": [
     {
       "id": "m18-t3-p01",
-      "slug": "fp-avg",
-      "title": "Step 2 Logic and Loops: Average Loop",
+      "slug": "sum-revenue-loop",
+      "title": "Logic: Total Known Revenue",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m18-t3"
     },
     {
       "id": "m18-t3-p02",
-      "slug": "fp-pass",
-      "title": "Step 2 Logic and Loops: Pass or Fail",
+      "slug": "count-south",
+      "title": "Logic: Count South Rows",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m18-t3"
     },
     {
       "id": "m18-t3-p03",
-      "slug": "fp-dict-loop",
-      "title": "Step 2 Logic and Loops: Loop Students",
+      "slug": "fill-missing-loop",
+      "title": "Logic: Fill Missing Revenue",
       "difficulty": "medium",
       "order": 3,
       "topicId": "m18-t3"
     },
     {
       "id": "m18-t3-p04",
-      "slug": "fp-comp",
-      "title": "Step 2 Logic and Loops: Passing List",
+      "slug": "max-revenue-category",
+      "title": "Logic: Category With Max Revenue",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m18-t3"
     },
     {
       "id": "m18-t3-p05",
-      "slug": "fp-elif",
-      "title": "Step 2 Logic and Loops: Letter Band",
-      "difficulty": "medium",
+      "slug": "sum-units-loop",
+      "title": "Logic: Total Units",
+      "difficulty": "hard",
       "order": 5,
       "topicId": "m18-t3"
     },
     {
       "id": "m18-t3-p06",
-      "slug": "fp-challenge-logic",
-      "title": "Step 2 Logic and Loops: Class Average",
+      "slug": "high-revenue-categories",
+      "title": "Logic: High Revenue Categories",
       "difficulty": "hard",
       "order": 6,
+      "topicId": "m18-t3"
+    },
+    {
+      "id": "m18-t3-p07",
+      "slug": "region-counts",
+      "title": "Logic: Rows per Region",
+      "difficulty": "hard",
+      "order": 7,
       "topicId": "m18-t3"
     }
   ],
   "m18-t4": [
     {
       "id": "m18-t4-p01",
-      "slug": "fp-fn-avg",
-      "title": "Step 3 Functions and Report: average()",
+      "slug": "fn-total-revenue",
+      "title": "Functions: total_revenue",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m18-t4"
     },
     {
       "id": "m18-t4-p02",
-      "slug": "fp-fn-grade",
-      "title": "Step 3 Functions and Report: letter_grade()",
+      "slug": "fn-region-total",
+      "title": "Functions: region_total",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m18-t4"
     },
     {
       "id": "m18-t4-p03",
-      "slug": "fp-fstring",
-      "title": "Step 3 Functions and Report: Report Line",
+      "slug": "fn-top-region",
+      "title": "Functions: top_region",
       "difficulty": "medium",
       "order": 3,
       "topicId": "m18-t4"
     },
     {
       "id": "m18-t4-p04",
-      "slug": "fp-lambda-sort",
-      "title": "Step 3 Functions and Report: Top Student",
+      "slug": "fn-format-line",
+      "title": "Functions: format_line",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m18-t4"
     },
     {
       "id": "m18-t4-p05",
-      "slug": "fp-status",
-      "title": "Step 3 Functions and Report: status()",
-      "difficulty": "medium",
+      "slug": "fn-clean-rows",
+      "title": "Functions: clean_rows",
+      "difficulty": "hard",
       "order": 5,
       "topicId": "m18-t4"
     },
     {
       "id": "m18-t4-p06",
-      "slug": "fp-challenge-fn",
-      "title": "Step 3 Functions and Report: Full Line",
+      "slug": "fn-average-units",
+      "title": "Functions: average_units",
       "difficulty": "hard",
       "order": 6,
+      "topicId": "m18-t4"
+    },
+    {
+      "id": "m18-t4-p07",
+      "slug": "fn-report-lines",
+      "title": "Functions: report_lines",
+      "difficulty": "hard",
+      "order": 7,
       "topicId": "m18-t4"
     }
   ],
   "m18-t5": [
     {
       "id": "m18-t5-p01",
-      "slug": "fp-cap-header",
-      "title": "Capstone Build: Report Header",
+      "slug": "load-sales-csv",
+      "title": "Capstone: Load the CSV",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m18-t5"
     },
     {
       "id": "m18-t5-p02",
-      "slug": "fp-cap-avg",
-      "title": "Capstone Build: One Student Line",
-      "difficulty": "medium",
+      "slug": "fill-revenue",
+      "title": "Capstone: Fill Missing Revenue",
+      "difficulty": "easy",
       "order": 2,
       "topicId": "m18-t5"
     },
     {
       "id": "m18-t5-p03",
-      "slug": "fp-cap-top",
-      "title": "Capstone Build: Find Top",
+      "slug": "region-totals-frame",
+      "title": "Capstone: Revenue by Region",
       "difficulty": "medium",
       "order": 3,
       "topicId": "m18-t5"
     },
     {
       "id": "m18-t5-p04",
-      "slug": "fp-cap-extend",
-      "title": "Capstone Build: Add Dan",
+      "slug": "units-revenue-corr",
+      "title": "Capstone: Units vs Revenue",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m18-t5"
     },
     {
       "id": "m18-t5-p05",
-      "slug": "fp-cap-passing",
-      "title": "Capstone Build: Passing Count",
+      "slug": "region-bar-chart",
+      "title": "Capstone: Bar Chart of Regions",
       "difficulty": "hard",
       "order": 5,
       "topicId": "m18-t5"
     },
     {
       "id": "m18-t5-p06",
-      "slug": "fp-cap-grade-count",
-      "title": "Capstone Build: Grade Histogram",
+      "slug": "three-line-summary",
+      "title": "Capstone: Three-Line Summary",
       "difficulty": "hard",
       "order": 6,
       "topicId": "m18-t5"
     },
     {
       "id": "m18-t5-p07",
-      "slug": "fp-cap-challenge",
-      "title": "Capstone Build: Mini Capstone",
+      "slug": "run-report",
+      "title": "Capstone: run_report",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m18-t5"

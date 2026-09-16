@@ -4,1778 +4,2038 @@ export const module18Practice: PracticeProblem[] = [
   {
     "id": "m18-t1-p01",
     "topicId": "m18-t1",
-    "slug": "fp-preview",
-    "title": "Project Overview: Preview Report",
+    "slug": "retail-question",
+    "title": "Project Overview: The Question",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Print \"=== Class Report ===\" on one line.",
+    "description": "Store the project question in a variable named question: \"Which region earns the most revenue?\" Then print question.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# print header",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Preview the capstone report header."
+          "value": "Store the project question in a variable named question: \"Which region earns the most revenue?\" Then print question."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "=== Class Report ===",
-          "label": "output"
-        }
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "question"
       ]
     },
     "examples": [
       {
-        "output": "=== Class Report ==="
+        "output": "Which region earns the most revenue?"
       }
     ],
     "constraints": [
-      "Output must be exactly: === Class Report ==="
+      "Output must match: Which region earns the most revenue?"
     ],
     "hints": [
-      "print(\"=== Class Report ===\")"
+      "question = \"Which region earns the most revenue?\""
     ],
     "starterCode": "",
     "publicTests": [
       {
         "id": "m18-t1-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "=== Class Report ===",
+        "expectedStdout": "Which region earns the most revenue?",
         "visibility": "public"
       },
       {
         "id": "m18-t1-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "=== Class Report ===",
+        "label": "Required names and structure",
+        "assertCode": "assert \"question\" in globals(), \"Expected a variable named question\"",
         "visibility": "public"
       },
       {
         "id": "m18-t1-p01-t3",
         "label": "No Extra Output",
-        "expectedStdout": "=== Class Report ===",
+        "expectedStdout": "Which region earns the most revenue?",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"=== Class Report ===\")",
-    "approach": "Print \"=== Class Report ===\" on one line.\n\nKey points: print(\"=== Class Report ===\")\n\nA correct solution looks like this:\nprint(\"=== Class Report ===\")"
+    "solutionCode": "question = \"Which region earns the most revenue?\"\nprint(question)",
+    "approach": "Store the project question in a variable named question: \"Which region earns the most revenue?\" Then print question.\n\nReference solution:\nquestion = \"Which region earns the most revenue?\"\nprint(question)"
   },
   {
     "id": "m18-t1-p02",
     "topicId": "m18-t1",
-    "slug": "fp-shape",
-    "title": "Project Overview: Data Shape",
+    "slug": "retail-columns",
+    "title": "Project Overview: Column List",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create students = {\"Alice\": [85, 92]}, print students[\"Alice\"][0].",
+    "description": "Create columns = [\"region\", \"category\", \"units\", \"revenue\"] and print it.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresDictKey": "Alice",
       "introSegments": [
         {
           "type": "text",
-          "value": "Dict maps names to grade lists."
+          "value": "Create columns = [\"region\", \"category\", \"units\", \"revenue\"] and print it."
         }
       ],
-      "editorPlaceholder": "# students dict",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "columns"
+      ],
+      "requiresListAccess": true
     },
     "examples": [
       {
-        "output": "85"
+        "output": "['region', 'category', 'units', 'revenue']"
       }
     ],
     "constraints": [
-      "Output: 85"
+      "Output must match: ['region', 'category', 'units', 'revenue']"
     ],
     "hints": [
-      "students = {\"Alice\": [85, 92]}\\nprint(students[\"Alice\"][0])"
+      "columns = [\"region\", \"category\", \"units\", \"revenue\"]"
     ],
     "starterCode": "",
-    "approach": "Create students = {\"Alice\": [85, 92]}, print students[\"Alice\"][0]. Key points: students = {\"Alice\": [85, 92]}\\nprint(students[\"Alice\"][0]) A correct solution looks like this: students = {\"Alice\": [85, 92]} print(students[\"Alice\"][0])",
     "publicTests": [
       {
         "id": "m18-t1-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "85",
+        "expectedStdout": "['region', 'category', 'units', 'revenue']",
         "visibility": "public"
       },
       {
         "id": "m18-t1-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "85",
+        "label": "Required names and structure",
+        "assertCode": "assert \"columns\" in globals(), \"Expected a variable named columns\"",
         "visibility": "public"
       },
       {
         "id": "m18-t1-p02-t3",
         "label": "No Extra Output",
-        "expectedStdout": "85",
+        "expectedStdout": "['region', 'category', 'units', 'revenue']",
         "visibility": "public"
       }
     ],
-    "solutionCode": "students = {\"Alice\": [85, 92]}\nprint(students[\"Alice\"][0])"
+    "solutionCode": "columns = [\"region\", \"category\", \"units\", \"revenue\"]\nprint(columns)",
+    "approach": "Create columns = [\"region\", \"category\", \"units\", \"revenue\"] and print it.\n\nReference solution:\ncolumns = [\"region\", \"category\", \"units\", \"revenue\"]\nprint(columns)"
   },
   {
     "id": "m18-t1-p03",
     "topicId": "m18-t1",
-    "slug": "fp-concepts",
-    "title": "Project Overview: Module Map",
-    "difficulty": "medium",
+    "slug": "retail-row-count",
+    "title": "Project Overview: How Many Rows",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Print len([\"dict\",\"list\",\"set\",\"tuple\"]).",
+    "description": "Build the five sample sales rows and print len(rows).",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# collections",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Four core collection types in the project."
+          "value": "Build the five sample sales rows and print len(rows)."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "4",
-          "label": "output"
-        }
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "rows"
       ]
     },
     "examples": [
       {
-        "output": "4"
+        "output": "5"
       }
     ],
     "constraints": [
-      "Output must be exactly: 4"
+      "Output must match: 5"
     ],
     "hints": [
-      "print(len([\"dict\",\"list\",\"set\",\"tuple\"]))"
+      "print(len(rows))"
     ],
-    "starterCode": "",
+    "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n",
     "publicTests": [
       {
         "id": "m18-t1-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "4",
+        "expectedStdout": "5",
         "visibility": "public"
       },
       {
         "id": "m18-t1-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "4",
+        "label": "Required names and structure",
+        "assertCode": "assert \"rows\" in globals(), \"Expected a variable named rows\"",
         "visibility": "public"
       },
       {
         "id": "m18-t1-p03-t3",
         "label": "No Extra Output",
-        "expectedStdout": "4",
+        "expectedStdout": "5",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(len([\"dict\",\"list\",\"set\",\"tuple\"]))",
-    "approach": "Print len([\"dict\",\"list\",\"set\",\"tuple\"]).\n\nKey points: print(len([\"dict\",\"list\",\"set\",\"tuple\"]))\n\nA correct solution looks like this:\nprint(len([\"dict\",\"list\",\"set\",\"tuple\"]))"
+    "solutionCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\nprint(len(rows))",
+    "approach": "Build the five sample sales rows and print len(rows).\n\nReference solution:\nrows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\nprint(len(rows))"
   },
   {
     "id": "m18-t1-p04",
     "topicId": "m18-t1",
-    "slug": "fp-subjects",
-    "title": "Project Overview: Subject Set",
+    "slug": "retail-first-region",
+    "title": "Project Overview: First Region",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Create s = {\"Math\",\"Science\",\"Math\"}, print len(s).",
+    "description": "Print the region of the first sample row: rows[0][\"region\"].",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Sets keep unique subjects only."
+          "value": "Print the region of the first sample row: rows[0][\"region\"]."
         }
       ],
-      "editorPlaceholder": "# set of subjects",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "rows"
+      ],
+      "requiresListAccess": true,
+      "requiresDictKey": "region"
     },
     "examples": [
       {
-        "output": "2"
+        "output": "South"
       }
     ],
     "constraints": [
-      "Output: 2"
+      "Output must match: South"
     ],
     "hints": [
-      "s = {\"Math\",\"Science\",\"Math\"}\\nprint(len(s))"
+      "print(rows[0][\"region\"])"
     ],
-    "starterCode": "",
-    "approach": "Create s = {\"Math\",\"Science\",\"Math\"}, print len(s). Key points: s = {\"Math\",\"Science\",\"Math\"}\\nprint(len(s)) A correct solution looks like this: s = {\"Math\",\"Science\",\"Math\"} print(len(s))",
+    "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n",
     "publicTests": [
       {
         "id": "m18-t1-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "2",
+        "expectedStdout": "South",
         "visibility": "public"
       },
       {
         "id": "m18-t1-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "2",
+        "label": "Required names and structure",
+        "assertCode": "assert \"rows\" in globals(), \"Expected a variable named rows\"",
         "visibility": "public"
       },
       {
         "id": "m18-t1-p04-t3",
         "label": "No Extra Output",
-        "expectedStdout": "2",
+        "expectedStdout": "South",
         "visibility": "public"
       }
     ],
-    "solutionCode": "s = {\"Math\",\"Science\",\"Math\"}\nprint(len(s))"
+    "solutionCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\nprint(rows[0][\"region\"])",
+    "approach": "Print the region of the first sample row: rows[0][\"region\"].\n\nReference solution:\nrows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\nprint(rows[0][\"region\"])"
   },
   {
     "id": "m18-t1-p05",
     "topicId": "m18-t1",
-    "slug": "fp-plan",
-    "title": "Project Overview: Build Order",
-    "difficulty": "hard",
+    "slug": "retail-unique-regions",
+    "title": "Project Overview: Unique Regions",
+    "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Print \"data,logic,functions,capstone\" (comma-separated steps).",
+    "description": "Print the sorted unique region names from the sample rows.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# steps",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Print the four build steps in order."
+          "value": "Print the sorted unique region names from the sample rows."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "data,logic,functions,capstone",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "rows"
+      ],
+      "requiresForLoop": true
     },
     "examples": [
       {
-        "output": "data,logic,functions,capstone"
+        "output": "['East', 'North', 'South']"
       }
     ],
     "constraints": [
-      "Output must be exactly: data,logic,functions,capstone"
+      "Output must match: ['East', 'North', 'South']"
     ],
     "hints": [
-      "print(\"data,logic,functions,capstone\")"
+      "print(sorted({row[\"region\"] for row in rows}))"
     ],
-    "starterCode": "",
+    "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n",
     "publicTests": [
       {
         "id": "m18-t1-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "data,logic,functions,capstone",
+        "expectedStdout": "['East', 'North', 'South']",
         "visibility": "public"
       },
       {
         "id": "m18-t1-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "data,logic,functions,capstone",
+        "label": "Required names and structure",
+        "assertCode": "assert \"rows\" in globals(), \"Expected a variable named rows\"",
         "visibility": "public"
       },
       {
         "id": "m18-t1-p05-t3",
         "label": "No Extra Output",
-        "expectedStdout": "data,logic,functions,capstone",
+        "expectedStdout": "['East', 'North', 'South']",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"data,logic,functions,capstone\")",
-    "approach": "Print \"data,logic,functions,capstone\" (comma-separated steps).\n\nKey points: print(\"data,logic,functions,capstone\")\n\nA correct solution looks like this:\nprint(\"data,logic,functions,capstone\")"
+    "solutionCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\nprint(sorted({row[\"region\"] for row in rows}))",
+    "approach": "Print the sorted unique region names from the sample rows.\n\nReference solution:\nrows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\nprint(sorted({row[\"region\"] for row in rows}))"
+  },
+  {
+    "id": "m18-t1-p06",
+    "topicId": "m18-t1",
+    "slug": "retail-metric",
+    "title": "Project Overview: The Metric",
+    "difficulty": "hard",
+    "order": 6,
+    "layout": "challenge",
+    "description": "Store metric = \"revenue\" — that is the column the report will total — and print it.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Store metric = \"revenue\" — that is the column the report will total — and print it."
+        }
+      ],
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "metric"
+      ]
+    },
+    "examples": [
+      {
+        "output": "revenue"
+      }
+    ],
+    "constraints": [
+      "Output must match: revenue"
+    ],
+    "hints": [
+      "metric = \"revenue\"\nprint(metric)"
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m18-t1-p06-t1",
+        "label": "Sample Case",
+        "expectedStdout": "revenue",
+        "visibility": "public"
+      },
+      {
+        "id": "m18-t1-p06-t2",
+        "label": "Required names and structure",
+        "assertCode": "assert \"metric\" in globals(), \"Expected a variable named metric\"",
+        "visibility": "public"
+      },
+      {
+        "id": "m18-t1-p06-t3",
+        "label": "No Extra Output",
+        "expectedStdout": "revenue",
+        "visibility": "public"
+      }
+    ],
+    "solutionCode": "metric = \"revenue\"\nprint(metric)",
+    "approach": "Store metric = \"revenue\" — that is the column the report will total — and print it.\n\nReference solution:\nmetric = \"revenue\"\nprint(metric)"
+  },
+  {
+    "id": "m18-t1-p07",
+    "topicId": "m18-t1",
+    "slug": "retail-report-title",
+    "title": "Project Overview: Report Title",
+    "difficulty": "hard",
+    "order": 7,
+    "layout": "challenge",
+    "description": "Store title = \"=== Retail Sales Report ===\" and print title.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Store title = \"=== Retail Sales Report ===\" and print title."
+        }
+      ],
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "title"
+      ]
+    },
+    "examples": [
+      {
+        "output": "=== Retail Sales Report ==="
+      }
+    ],
+    "constraints": [
+      "Output must match: === Retail Sales Report ==="
+    ],
+    "hints": [
+      "title = \"=== Retail Sales Report ===\""
+    ],
+    "starterCode": "",
+    "publicTests": [
+      {
+        "id": "m18-t1-p07-t1",
+        "label": "Sample Case",
+        "expectedStdout": "=== Retail Sales Report ===",
+        "visibility": "public"
+      },
+      {
+        "id": "m18-t1-p07-t2",
+        "label": "Required names and structure",
+        "assertCode": "assert \"title\" in globals(), \"Expected a variable named title\"",
+        "visibility": "public"
+      },
+      {
+        "id": "m18-t1-p07-t3",
+        "label": "No Extra Output",
+        "expectedStdout": "=== Retail Sales Report ===",
+        "visibility": "public"
+      }
+    ],
+    "solutionCode": "title = \"=== Retail Sales Report ===\"\nprint(title)",
+    "approach": "Store title = \"=== Retail Sales Report ===\" and print title.\n\nReference solution:\ntitle = \"=== Retail Sales Report ===\"\nprint(title)"
   },
   {
     "id": "m18-t2-p01",
     "topicId": "m18-t2",
-    "slug": "fp-dict",
-    "title": "Step 1 Data Model: Student Dict",
+    "slug": "sale-dict",
+    "title": "Data Model: One Sale Dict",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "students = {\"Alice\": [85], \"Bob\": [70]}, print len(students).",
+    "description": "Create sale = {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100} and print sale[\"revenue\"].",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "students"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Main database is a dict of names → grade lists."
+          "value": "Create sale = {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100} and print sale[\"revenue\"]."
         }
       ],
-      "editorPlaceholder": "# students = {}",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "sale"
+      ],
+      "requiresDictKey": "revenue"
     },
     "examples": [
       {
-        "output": "2"
+        "output": "100"
       }
     ],
     "constraints": [
-      "Output: 2"
+      "Output must match: 100"
     ],
     "hints": [
-      "students = {\"Alice\": [85], \"Bob\": [70]}\\nprint(len(students))"
+      "print(sale[\"revenue\"])"
     ],
     "starterCode": "",
-    "approach": "students = {\"Alice\": [85], \"Bob\": [70]}, print len(students). Key points: students = {\"Alice\": [85], \"Bob\": [70]}\\nprint(len(students)) A correct solution looks like this: students = {\"Alice\": [85], \"Bob\": [70]} print(len(students))",
     "publicTests": [
       {
         "id": "m18-t2-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "2",
+        "expectedStdout": "100",
         "visibility": "public"
       },
       {
         "id": "m18-t2-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "2",
+        "label": "Required names and structure",
+        "assertCode": "assert \"sale\" in globals(), \"Expected a variable named sale\"",
         "visibility": "public"
       },
       {
         "id": "m18-t2-p01-t3",
         "label": "No Extra Output",
-        "expectedStdout": "2",
+        "expectedStdout": "100",
         "visibility": "public"
       }
     ],
-    "solutionCode": "students = {\"Alice\": [85], \"Bob\": [70]}\nprint(len(students))"
+    "solutionCode": "sale = {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100}\nprint(sale[\"revenue\"])",
+    "approach": "Create sale = {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100} and print sale[\"revenue\"].\n\nReference solution:\nsale = {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100}\nprint(sale[\"revenue\"])"
   },
   {
     "id": "m18-t2-p02",
     "topicId": "m18-t2",
-    "slug": "fp-set",
-    "title": "Step 1 Data Model: Subject Set",
+    "slug": "sale-records",
+    "title": "Data Model: A List of Records",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "subjects = set(); subjects.add(\"Math\"); print \"Math\" in subjects.",
+    "description": "Build the five sample rows and print how many records you stored.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "subjects"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a set for unique subject names."
+          "value": "Build the five sample rows and print how many records you stored."
         }
       ],
-      "editorPlaceholder": "# subjects = set()",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "rows"
+      ]
     },
     "examples": [
       {
-        "output": "True"
+        "output": "5"
       }
     ],
     "constraints": [
-      "Output: True"
+      "Output must match: 5"
     ],
     "hints": [
-      "subjects = set()\\nsubjects.add(\"Math\")\\nprint(\"Math\" in subjects)"
+      "print(len(rows))"
     ],
-    "starterCode": "",
-    "approach": "subjects = set(); subjects.add(\"Math\"); print \"Math\" in subjects. Key points: subjects = set()\\nsubjects.add(\"Math\")\\nprint(\"Math\" in subjects) A correct solution looks like this: subjects = set() subjects.add(\"Math\") print(\"Math\" in subjects)",
+    "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n",
     "publicTests": [
       {
         "id": "m18-t2-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "True",
+        "expectedStdout": "5",
         "visibility": "public"
       },
       {
         "id": "m18-t2-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "True",
+        "label": "Required names and structure",
+        "assertCode": "assert \"rows\" in globals(), \"Expected a variable named rows\"",
         "visibility": "public"
       },
       {
         "id": "m18-t2-p02-t3",
         "label": "No Extra Output",
-        "expectedStdout": "True",
+        "expectedStdout": "5",
         "visibility": "public"
       }
     ],
-    "solutionCode": "subjects = set()\nsubjects.add(\"Math\")\nprint(\"Math\" in subjects)"
+    "solutionCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\nprint(len(rows))",
+    "approach": "Build the five sample rows and print how many records you stored.\n\nReference solution:\nrows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\nprint(len(rows))"
   },
   {
     "id": "m18-t2-p03",
     "topicId": "m18-t2",
-    "slug": "fp-tuple",
-    "title": "Step 1 Data Model: Grade Record",
-    "difficulty": "easy",
+    "slug": "sale-class",
+    "title": "Data Model: A Sale Class",
+    "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "record = (\"Science\", 88); subject, score = record; print score.",
+    "description": "Define class Sale with region, category, units, and revenue. Create item = Sale(\"South\", \"pen\", 10, 100) and print item.revenue.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "record"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Unpack a (subject, score) tuple."
+          "value": "Define class Sale with region, category, units, and revenue. Create item = Sale(\"South\", \"pen\", 10, 100) and print item.revenue."
         }
       ],
-      "editorPlaceholder": "# tuple unpack",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "item"
+      ]
     },
     "examples": [
       {
-        "output": "88"
+        "output": "100"
       }
     ],
     "constraints": [
-      "Output: 88"
+      "Output must match: 100"
     ],
     "hints": [
-      "record = (\"Science\", 88)\\nsubject, score = record\\nprint(score)"
+      "Store each argument on self in __init__."
     ],
     "starterCode": "",
-    "approach": "record = (\"Science\", 88); subject, score = record; print score. Key points: record = (\"Science\", 88)\\nsubject, score = record\\nprint(score) A correct solution looks like this: record = (\"Science\", 88) subject, score = record print(score)",
     "publicTests": [
       {
-        "id": "m18-t2-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "88",
-        "visibility": "public"
+        "expectedStdout": "100"
       },
       {
-        "id": "m18-t2-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "88",
-        "visibility": "public"
-      },
-      {
-        "id": "m18-t2-p03-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "88",
-        "visibility": "public"
+        "label": "Sale stores revenue",
+        "assertCode": "assert Sale(\"East\", \"bag\", 3, 50).revenue == 50, \"Sale should store the constructor arguments\""
       }
     ],
-    "solutionCode": "record = (\"Science\", 88)\nsubject, score = record\nprint(score)"
+    "solutionCode": "class Sale:\n    def __init__(self, region, category, units, revenue):\n        self.region = region\n        self.category = category\n        self.units = units\n        self.revenue = revenue\n\nitem = Sale(\"South\", \"pen\", 10, 100)\nprint(item.revenue)",
+    "approach": "Define class Sale with region, category, units, and revenue. Create item = Sale(\"South\", \"pen\", 10, 100) and print item.revenue.\n\nReference solution:\nclass Sale:\n    def __init__(self, region, category, units, revenue):\n        self.region = region\n        self.category = category\n        self.units = units\n        self.revenue = revenue\n\nitem = Sale(\"South\", \"pen\", 10, 100)\nprint(item.revenue)"
   },
   {
     "id": "m18-t2-p04",
     "topicId": "m18-t2",
-    "slug": "fp-append",
-    "title": "Step 1 Data Model: Append Grade",
+    "slug": "append-sale",
+    "title": "Data Model: Append a Sale",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "students = {\"Alice\": [85]}; students[\"Alice\"].append(92); print students[\"Alice\"][-1].",
+    "description": "Start with rows = [{\"region\": \"South\", \"revenue\": 100}]. Append {\"region\": \"East\", \"revenue\": 120} and print len(rows).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "students"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Use "
-        },
-        {
-          "type": "code",
-          "value": ".append()"
-        },
-        {
-          "type": "text",
-          "value": " to add a score."
+          "value": "Start with rows = [{\"region\": \"South\", \"revenue\": 100}]. Append {\"region\": \"East\", \"revenue\": 120} and print len(rows)."
         }
       ],
-      "editorPlaceholder": "# append grade",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "rows"
+      ]
     },
     "examples": [
       {
-        "output": "92"
+        "output": "2"
       }
     ],
     "constraints": [
-      "Output: 92"
+      "Output must match: 2"
     ],
     "hints": [
-      "students = {\"Alice\": [85]}\\nstudents[\"Alice\"].append(92)\\nprint(students[\"Alice\"][-1])"
+      "rows.append({...})"
     ],
     "starterCode": "",
-    "approach": "students = {\"Alice\": [85]}; students[\"Alice\"].append(92); print students[\"Alice\"][-1]. Key points: students = {\"Alice\": [85]}\\nstudents[\"Alice\"].append(92)\\nprint(students[\"Alice\"][-1]) A correct solution looks like this: students = {\"Alice\": [85]} students[\"Alice\"].append(92) print(students[\"Alice\"][-1])",
     "publicTests": [
       {
         "id": "m18-t2-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "92",
+        "expectedStdout": "2",
         "visibility": "public"
       },
       {
         "id": "m18-t2-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "92",
+        "label": "Required names and structure",
+        "assertCode": "assert \"rows\" in globals(), \"Expected a variable named rows\"",
         "visibility": "public"
       },
       {
         "id": "m18-t2-p04-t3",
         "label": "No Extra Output",
-        "expectedStdout": "92",
+        "expectedStdout": "2",
         "visibility": "public"
       }
     ],
-    "solutionCode": "students = {\"Alice\": [85]}\nstudents[\"Alice\"].append(92)\nprint(students[\"Alice\"][-1])"
+    "solutionCode": "rows = [{\"region\": \"South\", \"revenue\": 100}]\nrows.append({\"region\": \"East\", \"revenue\": 120})\nprint(len(rows))",
+    "approach": "Start with rows = [{\"region\": \"South\", \"revenue\": 100}]. Append {\"region\": \"East\", \"revenue\": 120} and print len(rows).\n\nReference solution:\nrows = [{\"region\": \"South\", \"revenue\": 100}]\nrows.append({\"region\": \"East\", \"revenue\": 120})\nprint(len(rows))"
   },
   {
     "id": "m18-t2-p05",
     "topicId": "m18-t2",
-    "slug": "fp-add-student",
-    "title": "Step 1 Data Model: Add Student",
-    "difficulty": "medium",
+    "slug": "unpack-record",
+    "title": "Data Model: Unpack a Record",
+    "difficulty": "hard",
     "order": 5,
     "layout": "challenge",
-    "description": "students = {}; students[\"Cara\"] = [55, 48]; print students[\"Cara\"][1].",
+    "description": "record = (\"South\", 100). Unpack into region, revenue and print revenue.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "students"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Add a new student key with a grade list."
+          "value": "record = (\"South\", 100). Unpack into region, revenue and print revenue."
         }
       ],
-      "editorPlaceholder": "# add Cara",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "record",
+        "revenue"
+      ]
     },
     "examples": [
       {
-        "output": "48"
+        "output": "100"
       }
     ],
     "constraints": [
-      "Output: 48"
+      "Output must match: 100"
     ],
     "hints": [
-      "students = {}\\nstudents[\"Cara\"] = [55, 48]\\nprint(students[\"Cara\"][1])"
+      "region, revenue = record"
     ],
     "starterCode": "",
-    "approach": "students = {}; students[\"Cara\"] = [55, 48]; print students[\"Cara\"][1]. Key points: students = {}\\nstudents[\"Cara\"] = [55, 48]\\nprint(students[\"Cara\"][1]) A correct solution looks like this: students = {} students[\"Cara\"] = [55, 48] print(students[\"Cara\"][1])",
     "publicTests": [
       {
         "id": "m18-t2-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "48",
+        "expectedStdout": "100",
         "visibility": "public"
       },
       {
         "id": "m18-t2-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "48",
+        "label": "Required names and structure",
+        "assertCode": "assert \"record\" in globals(), \"Expected a variable named record\"\nassert \"revenue\" in globals(), \"Expected a variable named revenue\"",
         "visibility": "public"
       },
       {
         "id": "m18-t2-p05-t3",
         "label": "No Extra Output",
-        "expectedStdout": "48",
+        "expectedStdout": "100",
         "visibility": "public"
       }
     ],
-    "solutionCode": "students = {}\nstudents[\"Cara\"] = [55, 48]\nprint(students[\"Cara\"][1])"
+    "solutionCode": "record = (\"South\", 100)\nregion, revenue = record\nprint(revenue)",
+    "approach": "record = (\"South\", 100). Unpack into region, revenue and print revenue.\n\nReference solution:\nrecord = (\"South\", 100)\nregion, revenue = record\nprint(revenue)"
   },
   {
     "id": "m18-t2-p06",
     "topicId": "m18-t2",
-    "slug": "fp-challenge-data",
-    "title": "Step 1 Data Model: Merge Grades",
+    "slug": "sales-frame",
+    "title": "Data Model: DataFrame From Rows",
     "difficulty": "hard",
     "order": 6,
     "layout": "challenge",
-    "description": "students = {\"Bob\": [70]}; students[\"Bob\"].extend([88, 91]); print sum(students[\"Bob\"]).",
+    "description": "Build a pandas DataFrame from the sample rows and print df.shape.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "students"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Use "
-        },
-        {
-          "type": "code",
-          "value": ".extend()"
-        },
-        {
-          "type": "text",
-          "value": " then sum the list."
+          "value": "Build a pandas DataFrame from the sample rows and print df.shape."
         }
       ],
-      "editorPlaceholder": "# extend grades",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
+      ]
     },
     "examples": [
       {
-        "output": "249"
+        "output": "(5, 4)"
       }
     ],
     "constraints": [
-      "Output: 249"
+      "Output must match: (5, 4)"
     ],
     "hints": [
-      "students = {\"Bob\": [70]}\\nstudents[\"Bob\"].extend([88, 91])\\nprint(sum(students[\"Bob\"]))"
+      "df = pd.DataFrame(rows)"
     ],
-    "starterCode": "",
-    "approach": "students = {\"Bob\": [70]}; students[\"Bob\"].extend([88, 91]); print sum(students[\"Bob\"]). Key points: students = {\"Bob\": [70]}\\nstudents[\"Bob\"].extend([88, 91])\\nprint(sum(students[\"Bob\"])) A correct solution looks like this: students = {\"Bob\": [70]} students[\"Bob\"].extend([88, 91]) print(sum(students[\"Bob\"]))",
+    "starterCode": "import pandas as pd\n\nrows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n",
     "publicTests": [
       {
         "id": "m18-t2-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "249",
+        "expectedStdout": "(5, 4)",
         "visibility": "public"
       },
       {
         "id": "m18-t2-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "249",
+        "label": "Required names and structure",
+        "assertCode": "assert \"pd\" in globals(), \"Expected a variable named pd\"\nassert \"df\" in globals(), \"Expected a variable named df\"",
         "visibility": "public"
       },
       {
         "id": "m18-t2-p06-t3",
         "label": "No Extra Output",
-        "expectedStdout": "249",
+        "expectedStdout": "(5, 4)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "students = {\"Bob\": [70]}\nstudents[\"Bob\"].extend([88, 91])\nprint(sum(students[\"Bob\"]))"
+    "solutionCode": "import pandas as pd\n\nrows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\ndf = pd.DataFrame(rows)\nprint(df.shape)",
+    "approach": "Build a pandas DataFrame from the sample rows and print df.shape.\n\nReference solution:\nimport pandas as pd\n\nrows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\ndf = pd.DataFrame(rows)\nprint(df.shape)"
+  },
+  {
+    "id": "m18-t2-p07",
+    "topicId": "m18-t2",
+    "slug": "missing-revenue",
+    "title": "Data Model: Missing Revenue",
+    "difficulty": "hard",
+    "order": 7,
+    "layout": "challenge",
+    "description": "From the sample rows, print how many records have revenue equal to None.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "From the sample rows, print how many records have revenue equal to None."
+        }
+      ],
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "rows",
+        "missing"
+      ],
+      "requiresForLoop": true,
+      "requiresIfCondition": true
+    },
+    "examples": [
+      {
+        "output": "1"
+      }
+    ],
+    "constraints": [
+      "Output must match: 1"
+    ],
+    "hints": [
+      "row[\"revenue\"] is None"
+    ],
+    "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n",
+    "publicTests": [
+      {
+        "id": "m18-t2-p07-t1",
+        "label": "Sample Case",
+        "expectedStdout": "1",
+        "visibility": "public"
+      },
+      {
+        "id": "m18-t2-p07-t2",
+        "label": "Required names and structure",
+        "assertCode": "assert \"rows\" in globals(), \"Expected a variable named rows\"\nassert \"missing\" in globals(), \"Expected a variable named missing\"",
+        "visibility": "public"
+      },
+      {
+        "id": "m18-t2-p07-t3",
+        "label": "No Extra Output",
+        "expectedStdout": "1",
+        "visibility": "public"
+      }
+    ],
+    "solutionCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\nmissing = sum(1 for row in rows if row[\"revenue\"] is None)\nprint(missing)",
+    "approach": "From the sample rows, print how many records have revenue equal to None.\n\nReference solution:\nrows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\nmissing = sum(1 for row in rows if row[\"revenue\"] is None)\nprint(missing)"
   },
   {
     "id": "m18-t3-p01",
     "topicId": "m18-t3",
-    "slug": "fp-avg",
-    "title": "Step 2 Logic and Loops: Average Loop",
+    "slug": "sum-revenue-loop",
+    "title": "Logic: Total Known Revenue",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "grades = [85, 92, 78]; print sum(grades) / len(grades).",
+    "description": "Loop the sample rows and add revenue when it is not None. Print the total.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "grades"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Average = sum / len."
+          "value": "Loop the sample rows and add revenue when it is not None. Print the total."
         }
       ],
-      "editorPlaceholder": "# average",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "rows",
+        "total"
+      ],
+      "requiresForLoop": true,
+      "requiresIfCondition": true
     },
     "examples": [
       {
-        "output": "85.0"
+        "output": "460.0"
       }
     ],
     "constraints": [
-      "Output: 85.0"
+      "Output must match: 460.0"
     ],
     "hints": [
-      "grades = [85, 92, 78]\\nprint(sum(grades) / len(grades))"
+      "Skip None values inside the loop."
     ],
-    "starterCode": "",
-    "approach": "grades = [85, 92, 78]; print sum(grades) / len(grades). Key points: grades = [85, 92, 78]\\nprint(sum(grades) / len(grades)) A correct solution looks like this: grades = [85, 92, 78] print(sum(grades) / len(grades))",
+    "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n",
     "publicTests": [
       {
         "id": "m18-t3-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "85.0",
+        "expectedStdout": "460.0",
         "visibility": "public"
       },
       {
         "id": "m18-t3-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "85.0",
+        "label": "Required names and structure",
+        "assertCode": "assert \"rows\" in globals(), \"Expected a variable named rows\"\nassert \"total\" in globals(), \"Expected a variable named total\"",
         "visibility": "public"
       },
       {
         "id": "m18-t3-p01-t3",
         "label": "No Extra Output",
-        "expectedStdout": "85.0",
+        "expectedStdout": "460.0",
         "visibility": "public"
       }
     ],
-    "solutionCode": "grades = [85, 92, 78]\nprint(sum(grades) / len(grades))"
+    "solutionCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\ntotal = 0\nfor row in rows:\n    if row[\"revenue\"] is not None:\n        total += row[\"revenue\"]\nprint(total)",
+    "approach": "Loop the sample rows and add revenue when it is not None. Print the total.\n\nReference solution:\nrows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\ntotal = 0\nfor row in rows:\n    if row[\"revenue\"] is not None:\n        total += row[\"revenue\"]\nprint(total)"
   },
   {
     "id": "m18-t3-p02",
     "topicId": "m18-t3",
-    "slug": "fp-pass",
-    "title": "Step 2 Logic and Loops: Pass or Fail",
+    "slug": "count-south",
+    "title": "Logic: Count South Rows",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "avg = 75; print \"PASS\" if avg >= 60 else \"FAIL\".",
+    "description": "Count how many sample rows have region == \"South\" and print the count.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresIfCondition": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Compare average to 60."
+          "value": "Count how many sample rows have region == \"South\" and print the count."
         }
       ],
-      "editorPlaceholder": "# if avg >= 60",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "rows",
+        "south"
+      ],
+      "requiresForLoop": true,
+      "requiresIfCondition": true
     },
     "examples": [
       {
-        "output": "PASS"
+        "output": "2"
       }
     ],
     "constraints": [
-      "Output: PASS"
+      "Output must match: 2"
     ],
     "hints": [
-      "avg = 75\\nprint(\"PASS\" if avg >= 60 else \"FAIL\")"
+      "south = [row for row in rows if row[\"region\"] == \"South\"]"
     ],
-    "starterCode": "",
-    "approach": "avg = 75; print \"PASS\" if avg >= 60 else \"FAIL\". Key points: avg = 75\\nprint(\"PASS\" if avg >= 60 else \"FAIL\") A correct solution looks like this: avg = 75 print(\"PASS\" if avg >= 60 else \"FAIL\")",
+    "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n",
     "publicTests": [
       {
         "id": "m18-t3-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "PASS",
+        "expectedStdout": "2",
         "visibility": "public"
       },
       {
         "id": "m18-t3-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "PASS",
+        "label": "Required names and structure",
+        "assertCode": "assert \"rows\" in globals(), \"Expected a variable named rows\"\nassert \"south\" in globals(), \"Expected a variable named south\"",
         "visibility": "public"
       },
       {
         "id": "m18-t3-p02-t3",
         "label": "No Extra Output",
-        "expectedStdout": "PASS",
+        "expectedStdout": "2",
         "visibility": "public"
       }
     ],
-    "solutionCode": "avg = 75\nprint(\"PASS\" if avg >= 60 else \"FAIL\")"
+    "solutionCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\nsouth = [row for row in rows if row[\"region\"] == \"South\"]\nprint(len(south))",
+    "approach": "Count how many sample rows have region == \"South\" and print the count.\n\nReference solution:\nrows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\nsouth = [row for row in rows if row[\"region\"] == \"South\"]\nprint(len(south))"
   },
   {
     "id": "m18-t3-p03",
     "topicId": "m18-t3",
-    "slug": "fp-dict-loop",
-    "title": "Step 2 Logic and Loops: Loop Students",
+    "slug": "fill-missing-loop",
+    "title": "Logic: Fill Missing Revenue",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "students = {\"Alice\": [90]}; print list(students.keys())[0].",
+    "description": "Loop the sample rows. If revenue is None, set it to 0. Print the revenue values as a list.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "students"
-      ],
-      "requiresForLoop": false,
       "introSegments": [
         {
           "type": "text",
-          "value": "Access the first student name from the dict."
+          "value": "Loop the sample rows. If revenue is None, set it to 0. Print the revenue values as a list."
         }
       ],
-      "editorPlaceholder": "# students.keys()",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "rows"
+      ],
+      "requiresForLoop": true,
+      "requiresIfCondition": true
     },
     "examples": [
       {
-        "output": "Alice"
+        "output": "[100.0, 150.0, 0, 120.0, 90.0]"
       }
     ],
     "constraints": [
-      "Output: Alice"
+      "Output must match: [100.0, 150.0, 0, 120.0, 90.0]"
     ],
     "hints": [
-      "students = {\"Alice\": [90]}\\nprint(list(students.keys())[0])"
+      "if row[\"revenue\"] is None: row[\"revenue\"] = 0"
     ],
-    "starterCode": "",
-    "approach": "students = {\"Alice\": [90]}; print list(students.keys())[0]. Key points: students = {\"Alice\": [90]}\\nprint(list(students.keys())[0]) A correct solution looks like this: students = {\"Alice\": [90]} print(list(students.keys())[0])",
+    "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n",
     "publicTests": [
       {
         "id": "m18-t3-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "Alice",
+        "expectedStdout": "[100.0, 150.0, 0, 120.0, 90.0]",
         "visibility": "public"
       },
       {
         "id": "m18-t3-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Alice",
+        "label": "Required names and structure",
+        "assertCode": "assert \"rows\" in globals(), \"Expected a variable named rows\"",
         "visibility": "public"
       },
       {
         "id": "m18-t3-p03-t3",
         "label": "No Extra Output",
-        "expectedStdout": "Alice",
+        "expectedStdout": "[100.0, 150.0, 0, 120.0, 90.0]",
         "visibility": "public"
       }
     ],
-    "solutionCode": "students = {\"Alice\": [90]}\nprint(list(students.keys())[0])"
+    "solutionCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\nfor row in rows:\n    if row[\"revenue\"] is None:\n        row[\"revenue\"] = 0\nprint([row[\"revenue\"] for row in rows])",
+    "approach": "Loop the sample rows. If revenue is None, set it to 0. Print the revenue values as a list.\n\nReference solution:\nrows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\nfor row in rows:\n    if row[\"revenue\"] is None:\n        row[\"revenue\"] = 0\nprint([row[\"revenue\"] for row in rows])"
   },
   {
     "id": "m18-t3-p04",
     "topicId": "m18-t3",
-    "slug": "fp-comp",
-    "title": "Step 2 Logic and Loops: Passing List",
+    "slug": "max-revenue-category",
+    "title": "Logic: Category With Max Revenue",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "averages = {\"Alice\": 85, \"Bob\": 55}; print [n for n,a in averages.items() if a >= 60][0].",
+    "description": "Loop the sample rows, skip None revenue, and print the category of the row with the highest revenue.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "averages"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "List comprehension filters passing students."
+          "value": "Loop the sample rows, skip None revenue, and print the category of the row with the highest revenue."
         }
       ],
-      "editorPlaceholder": "# comprehension",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "rows",
+        "best"
+      ],
+      "requiresForLoop": true,
+      "requiresIfCondition": true
     },
     "examples": [
       {
-        "output": "Alice"
+        "output": "book"
       }
     ],
     "constraints": [
-      "Output: Alice"
+      "Output must match: book"
     ],
     "hints": [
-      "averages = {\"Alice\": 85, \"Bob\": 55}\\nprint([n for n,a in averages.items() if a >= 60][0])"
+      "Keep a best row and replace it when you see a larger revenue."
     ],
-    "starterCode": "",
-    "approach": "averages = {\"Alice\": 85, \"Bob\": 55}; print [n for n,a in averages.items() if a >= 60][0]. Key points: averages = {\"Alice\": 85, \"Bob\": 55}\\nprint([n for n,a in averages.items() if a >= 60][0]) A correct solution looks like this: averages = {\"Alice\": 85, \"Bob\": 55} print([n for n,a in averages.items() if a >= 60][0])",
+    "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n",
     "publicTests": [
       {
         "id": "m18-t3-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Alice",
+        "expectedStdout": "book",
         "visibility": "public"
       },
       {
         "id": "m18-t3-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Alice",
+        "label": "Required names and structure",
+        "assertCode": "assert \"rows\" in globals(), \"Expected a variable named rows\"\nassert \"best\" in globals(), \"Expected a variable named best\"",
         "visibility": "public"
       },
       {
         "id": "m18-t3-p04-t3",
         "label": "No Extra Output",
-        "expectedStdout": "Alice",
+        "expectedStdout": "book",
         "visibility": "public"
       }
     ],
-    "solutionCode": "averages = {\"Alice\": 85, \"Bob\": 55}\nprint([n for n,a in averages.items() if a >= 60][0])"
+    "solutionCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\nbest = None\nfor row in rows:\n    if row[\"revenue\"] is None:\n        continue\n    if best is None or row[\"revenue\"] > best[\"revenue\"]:\n        best = row\nprint(best[\"category\"])",
+    "approach": "Loop the sample rows, skip None revenue, and print the category of the row with the highest revenue.\n\nReference solution:\nrows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\nbest = None\nfor row in rows:\n    if row[\"revenue\"] is None:\n        continue\n    if best is None or row[\"revenue\"] > best[\"revenue\"]:\n        best = row\nprint(best[\"category\"])"
   },
   {
     "id": "m18-t3-p05",
     "topicId": "m18-t3",
-    "slug": "fp-elif",
-    "title": "Step 2 Logic and Loops: Letter Band",
-    "difficulty": "medium",
+    "slug": "sum-units-loop",
+    "title": "Logic: Total Units",
+    "difficulty": "hard",
     "order": 5,
     "layout": "challenge",
-    "description": "avg = 55; print RETAKE if 50 <= avg < 60 else PASS.",
+    "description": "Loop the sample rows and print the sum of units.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresIfCondition": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use elif bands for retake vs pass."
+          "value": "Loop the sample rows and print the sum of units."
         }
       ],
-      "editorPlaceholder": "# elif bands",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "rows",
+        "total_units"
+      ],
+      "requiresForLoop": true
     },
     "examples": [
       {
-        "output": "RETAKE"
+        "output": "41"
       }
     ],
     "constraints": [
-      "Output: RETAKE"
+      "Output must match: 41"
     ],
     "hints": [
-      "avg = 55\\nif avg >= 60: print(\"PASS\")\\nelif avg >= 50: print(\"RETAKE\")\\nelse: print(\"FAIL\")"
+      "total_units += row[\"units\"]"
     ],
-    "starterCode": "",
-    "approach": "avg = 55; print RETAKE if 50 <= avg < 60 else PASS. Key points: avg = 55\\nif avg >= 60: print(\"PASS\")\\nelif avg >= 50: print(\"RETAKE\")\\nelse: print(\"FAIL\") A correct solution looks like this: avg = 55 if avg >= 60: print(\"PASS\") elif avg >= 50: print(\"RETAKE\") else: print(\"FAIL\")",
+    "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n",
     "publicTests": [
       {
         "id": "m18-t3-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "RETAKE",
+        "expectedStdout": "41",
         "visibility": "public"
       },
       {
         "id": "m18-t3-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "RETAKE",
+        "label": "Required names and structure",
+        "assertCode": "assert \"rows\" in globals(), \"Expected a variable named rows\"\nassert \"total_units\" in globals(), \"Expected a variable named total_units\"",
         "visibility": "public"
       },
       {
         "id": "m18-t3-p05-t3",
         "label": "No Extra Output",
-        "expectedStdout": "RETAKE",
+        "expectedStdout": "41",
         "visibility": "public"
       }
     ],
-    "solutionCode": "avg = 55\nif avg >= 60: print(\"PASS\")\nelif avg >= 50: print(\"RETAKE\")\nelse: print(\"FAIL\")"
+    "solutionCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\ntotal_units = 0\nfor row in rows:\n    total_units += row[\"units\"]\nprint(total_units)",
+    "approach": "Loop the sample rows and print the sum of units.\n\nReference solution:\nrows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\ntotal_units = 0\nfor row in rows:\n    total_units += row[\"units\"]\nprint(total_units)"
   },
   {
     "id": "m18-t3-p06",
     "topicId": "m18-t3",
-    "slug": "fp-challenge-logic",
-    "title": "Step 2 Logic and Loops: Class Average",
+    "slug": "high-revenue-categories",
+    "title": "Logic: High Revenue Categories",
     "difficulty": "hard",
     "order": 6,
     "layout": "challenge",
-    "description": "students = {\"A\": [80, 90], \"B\": [70, 70]}; print sum(sum(g) for g in students.values()) / sum(len(g) for g in students.values()).",
+    "description": "Print the categories of rows whose revenue is at least 120. Skip None.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "students"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Compute overall class average across all grades."
+          "value": "Print the categories of rows whose revenue is at least 120. Skip None."
         }
       ],
-      "editorPlaceholder": "# class average",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "rows",
+        "high"
+      ],
+      "requiresForLoop": true,
+      "requiresIfCondition": true
     },
     "examples": [
       {
-        "output": "77.5"
+        "output": "['book', 'pen']"
       }
     ],
     "constraints": [
-      "Output: 77.5"
+      "Output must match: ['book', 'pen']"
     ],
     "hints": [
-      "students = {\"A\": [80, 90], \"B\": [70, 70]}\\ntotal = sum(sum(g) for g in students.values())\\ncount = sum(len(g) for g in students.values())\\nprint(total / count)"
+      "Keep rows with revenue >= 120."
     ],
-    "starterCode": "",
-    "approach": "students = {\"A\": [80, 90], \"B\": [70, 70]}; print sum(sum(g) for g in students.values()) / sum(len(g) for g in students.values()). Key points: students = {\"A\": [80, 90], \"B\": [70, 70]}\\ntotal = sum(sum(g) for g in students.values())\\ncount = sum(len(g) for g in students.values())\\nprint(total / count) A correct solution looks like this: students = {\"A\": [80, 90], \"B\": [70, 70]} total = sum(sum(g) for g in students.values()) count = sum(len(g) for g in students.values()) print(total / count)",
+    "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n",
     "publicTests": [
       {
         "id": "m18-t3-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "77.5",
+        "expectedStdout": "['book', 'pen']",
         "visibility": "public"
       },
       {
         "id": "m18-t3-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "77.5",
+        "label": "Required names and structure",
+        "assertCode": "assert \"rows\" in globals(), \"Expected a variable named rows\"\nassert \"high\" in globals(), \"Expected a variable named high\"",
         "visibility": "public"
       },
       {
         "id": "m18-t3-p06-t3",
         "label": "No Extra Output",
-        "expectedStdout": "77.5",
+        "expectedStdout": "['book', 'pen']",
         "visibility": "public"
       }
     ],
-    "solutionCode": "students = {\"A\": [80, 90], \"B\": [70, 70]}\ntotal = sum(sum(g) for g in students.values())\ncount = sum(len(g) for g in students.values())\nprint(total / count)"
+    "solutionCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\nhigh = [row[\"category\"] for row in rows if row[\"revenue\"] is not None and row[\"revenue\"] >= 120]\nprint(high)",
+    "approach": "Print the categories of rows whose revenue is at least 120. Skip None.\n\nReference solution:\nrows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\nhigh = [row[\"category\"] for row in rows if row[\"revenue\"] is not None and row[\"revenue\"] >= 120]\nprint(high)"
+  },
+  {
+    "id": "m18-t3-p07",
+    "topicId": "m18-t3",
+    "slug": "region-counts",
+    "title": "Logic: Rows per Region",
+    "difficulty": "hard",
+    "order": 7,
+    "layout": "challenge",
+    "description": "Loop the sample rows, count how many times each region appears, and print dict(sorted(counts.items())).",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Loop the sample rows, count how many times each region appears, and print dict(sorted(counts.items()))."
+        }
+      ],
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "rows",
+        "counts"
+      ],
+      "requiresForLoop": true
+    },
+    "examples": [
+      {
+        "output": "{'East': 1, 'North': 2, 'South': 2}"
+      }
+    ],
+    "constraints": [
+      "Output must match: {'East': 1, 'North': 2, 'South': 2}"
+    ],
+    "hints": [
+      "counts[region] = counts.get(region, 0) + 1"
+    ],
+    "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n",
+    "publicTests": [
+      {
+        "id": "m18-t3-p07-t1",
+        "label": "Sample Case",
+        "expectedStdout": "{'East': 1, 'North': 2, 'South': 2}",
+        "visibility": "public"
+      },
+      {
+        "id": "m18-t3-p07-t2",
+        "label": "Required names and structure",
+        "assertCode": "assert \"rows\" in globals(), \"Expected a variable named rows\"\nassert \"counts\" in globals(), \"Expected a variable named counts\"",
+        "visibility": "public"
+      },
+      {
+        "id": "m18-t3-p07-t3",
+        "label": "No Extra Output",
+        "expectedStdout": "{'East': 1, 'North': 2, 'South': 2}",
+        "visibility": "public"
+      }
+    ],
+    "solutionCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\ncounts = {}\nfor row in rows:\n    region = row[\"region\"]\n    counts[region] = counts.get(region, 0) + 1\nprint(dict(sorted(counts.items())))",
+    "approach": "Loop the sample rows, count how many times each region appears, and print dict(sorted(counts.items())).\n\nReference solution:\nrows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\ncounts = {}\nfor row in rows:\n    region = row[\"region\"]\n    counts[region] = counts.get(region, 0) + 1\nprint(dict(sorted(counts.items())))"
   },
   {
     "id": "m18-t4-p01",
     "topicId": "m18-t4",
-    "slug": "fp-fn-avg",
-    "title": "Step 3 Functions and Report: average()",
+    "slug": "fn-total-revenue",
+    "title": "Functions: total_revenue",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "def average(s): return sum(s)/len(s)\nprint average([85, 92, 78]).",
+    "description": "Define total_revenue(records) that sums revenue, skipping None. Print total_revenue(rows).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "average",
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
-        },
-        {
-          "type": "code",
-          "value": "average(scores)"
-        },
-        {
-          "type": "text",
-          "value": " with return."
+          "value": "Define total_revenue(records) that sums revenue, skipping None. Print total_revenue(rows)."
         }
       ],
-      "editorPlaceholder": "# def average",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "rows"
+      ],
+      "requiresFunction": "total_revenue"
     },
     "examples": [
       {
-        "output": "85.0"
+        "output": "460.0"
       }
     ],
     "constraints": [
-      "Output: 85.0"
+      "Output must match: 460.0"
     ],
     "hints": [
-      "def average(s):\\n    return sum(s)/len(s)\\nprint(average([85, 92, 78]))"
+      "Skip None with a generator if."
     ],
-    "starterCode": "",
-    "approach": "def average(s): return sum(s)/len(s) print average([85, 92, 78]). Key points: def average(s):\\n return sum(s)/len(s)\\nprint(average([85, 92, 78])) A correct solution looks like this: def average(s): return sum(s)/len(s) print(average([85, 92, 78]))",
+    "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef total_revenue(records):\n    pass\n",
     "publicTests": [
       {
-        "id": "m18-t4-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "85.0",
-        "visibility": "public"
+        "expectedStdout": "460.0"
       },
       {
-        "id": "m18-t4-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "85.0",
-        "visibility": "public"
+        "label": "sample rows",
+        "assertCode": "assert total_revenue(rows) == 460.0"
       },
       {
-        "id": "m18-t4-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "85.0",
-        "visibility": "public"
+        "label": "another list",
+        "assertCode": "assert total_revenue([{\"revenue\": 10}, {\"revenue\": None}]) == 10, \"Skip None in the argument\""
       }
     ],
-    "solutionCode": "def average(s):\n    return sum(s)/len(s)\nprint(average([85, 92, 78]))"
+    "solutionCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef total_revenue(records):\n    return sum(row[\"revenue\"] for row in records if row[\"revenue\"] is not None)\n\nprint(total_revenue(rows))",
+    "approach": "Define total_revenue(records) that sums revenue, skipping None. Print total_revenue(rows).\n\nReference solution:\nrows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef total_revenue(records):\n    return sum(row[\"revenue\"] for row in records if row[\"revenue\"] is not None)\n\nprint(total_revenue(rows))"
   },
   {
     "id": "m18-t4-p02",
     "topicId": "m18-t4",
-    "slug": "fp-fn-grade",
-    "title": "Step 3 Functions and Report: letter_grade()",
+    "slug": "fn-region-total",
+    "title": "Functions: region_total",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "def letter_grade(a):\n    if a >= 80: return \"B\"\n    return \"F\"\nprint letter_grade(85).",
+    "description": "Define region_total(records, region) that sums that region's known revenue. Print region_total(rows, \"North\").",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "letter_grade",
       "introSegments": [
         {
           "type": "text",
-          "value": "Map numeric average to a letter."
+          "value": "Define region_total(records, region) that sums that region's known revenue. Print region_total(rows, \"North\")."
         }
       ],
-      "editorPlaceholder": "# def letter_grade",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "rows"
+      ],
+      "requiresFunction": "region_total"
     },
     "examples": [
       {
-        "output": "B"
+        "output": "240.0"
       }
     ],
     "constraints": [
-      "Output: B"
+      "Output must match: 240.0"
     ],
     "hints": [
-      "def letter_grade(a):\\n    if a >= 80: return \"B\"\\n    return \"F\"\\nprint(letter_grade(85))"
+      "Filter by region and skip None."
     ],
-    "starterCode": "",
-    "approach": "def letter_grade(a): if a >= 80: return \"B\" return \"F\" print letter_grade(85). Key points: def letter_grade(a):\\n if a >= 80: return \"B\"\\n return \"F\"\\nprint(letter_grade(85)) A correct solution looks like this: def letter_grade(a): if a >= 80: return \"B\" return \"F\" print(letter_grade(85))",
+    "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef region_total(records, region):\n    pass\n",
     "publicTests": [
       {
-        "id": "m18-t4-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "B",
-        "visibility": "public"
+        "expectedStdout": "240.0"
       },
       {
-        "id": "m18-t4-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "B",
-        "visibility": "public"
+        "label": "North",
+        "assertCode": "assert region_total(rows, \"North\") == 240.0"
       },
       {
-        "id": "m18-t4-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "B",
-        "visibility": "public"
+        "label": "East",
+        "assertCode": "assert region_total(rows, \"East\") == 120.0"
       }
     ],
-    "solutionCode": "def letter_grade(a):\n    if a >= 80: return \"B\"\n    return \"F\"\nprint(letter_grade(85))"
+    "solutionCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef region_total(records, region):\n    return sum(row[\"revenue\"] for row in records if row[\"region\"] == region and row[\"revenue\"] is not None)\n\nprint(region_total(rows, \"North\"))",
+    "approach": "Define region_total(records, region) that sums that region's known revenue. Print region_total(rows, \"North\").\n\nReference solution:\nrows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef region_total(records, region):\n    return sum(row[\"revenue\"] for row in records if row[\"region\"] == region and row[\"revenue\"] is not None)\n\nprint(region_total(rows, \"North\"))"
   },
   {
     "id": "m18-t4-p03",
     "topicId": "m18-t4",
-    "slug": "fp-fstring",
-    "title": "Step 3 Functions and Report: Report Line",
+    "slug": "fn-top-region",
+    "title": "Functions: top_region",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "name=\"Alice\"; avg=85.333; print f\"{name}: avg {avg:.1f}\".",
+    "description": "Define top_region(records) that returns the region with the largest known revenue total. Print top_region(rows).",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Format report lines with f-strings."
+          "value": "Define top_region(records) that returns the region with the largest known revenue total. Print top_region(rows)."
         }
       ],
-      "editorPlaceholder": "# f-string",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "rows"
+      ],
+      "requiresFunction": "top_region",
+      "requiresForLoop": true,
+      "requiresIfCondition": true
     },
     "examples": [
       {
-        "output": "Alice: avg 85.3"
+        "output": "North"
       }
     ],
     "constraints": [
-      "Output: Alice: avg 85.3"
+      "Output must match: North"
     ],
     "hints": [
-      "name = \"Alice\"\\navg = 85.333\\nprint(f\"{name}: avg {avg:.1f}\")"
+      "Build a totals dict, then max(..., key=totals.get)."
     ],
-    "starterCode": "",
-    "approach": "name=\"Alice\"; avg=85.333; print f\"{name}: avg {avg:.1f}\". Key points: name = \"Alice\"\\navg = 85.333\\nprint(f\"{name}: avg {avg:.1f}\") A correct solution looks like this: name = \"Alice\" avg = 85.333 print(f\"{name}: avg {avg:.1f}\")",
+    "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef top_region(records):\n    pass\n",
     "publicTests": [
       {
-        "id": "m18-t4-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "Alice: avg 85.3",
-        "visibility": "public"
+        "expectedStdout": "North"
       },
       {
-        "id": "m18-t4-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Alice: avg 85.3",
-        "visibility": "public"
+        "label": "sample rows",
+        "assertCode": "assert top_region(rows) == \"North\""
       },
       {
-        "id": "m18-t4-p03-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Alice: avg 85.3",
-        "visibility": "public"
+        "label": "another list",
+        "assertCode": "assert top_region([{\"region\": \"West\", \"revenue\": 9}, {\"region\": \"East\", \"revenue\": 3}]) == \"West\""
       }
     ],
-    "solutionCode": "name = \"Alice\"\navg = 85.333\nprint(f\"{name}: avg {avg:.1f}\")"
+    "solutionCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef top_region(records):\n    totals = {}\n    for row in records:\n        if row[\"revenue\"] is None:\n            continue\n        totals[row[\"region\"]] = totals.get(row[\"region\"], 0) + row[\"revenue\"]\n    return max(totals, key=totals.get)\n\nprint(top_region(rows))",
+    "approach": "Define top_region(records) that returns the region with the largest known revenue total. Print top_region(rows).\n\nReference solution:\nrows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef top_region(records):\n    totals = {}\n    for row in records:\n        if row[\"revenue\"] is None:\n            continue\n        totals[row[\"region\"]] = totals.get(row[\"region\"], 0) + row[\"revenue\"]\n    return max(totals, key=totals.get)\n\nprint(top_region(rows))"
   },
   {
     "id": "m18-t4-p04",
     "topicId": "m18-t4",
-    "slug": "fp-lambda-sort",
-    "title": "Step 3 Functions and Report: Top Student",
+    "slug": "fn-format-line",
+    "title": "Functions: format_line",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "ranking = [(\"Alice\", 85), (\"Bob\", 91)]; ranking.sort(key=lambda x: x[1], reverse=True); print ranking[0][0].",
+    "description": "Define format_line(region, total) that returns f\"{region}: {total}\". Print format_line(\"North\", 240.0).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "ranking"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Sort by average with "
-        },
-        {
-          "type": "code",
-          "value": "key=lambda"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Define format_line(region, total) that returns f\"{region}: {total}\". Print format_line(\"North\", 240.0)."
         }
       ],
-      "editorPlaceholder": "# lambda sort",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "format_line"
     },
     "examples": [
       {
-        "output": "Bob"
+        "output": "North: 240.0"
       }
     ],
     "constraints": [
-      "Output: Bob"
+      "Output must match: North: 240.0"
     ],
     "hints": [
-      "ranking = [(\"Alice\", 85), (\"Bob\", 91)]\\nranking.sort(key=lambda x: x[1], reverse=True)\\nprint(ranking[0][0])"
+      "return f\"{region}: {total}\""
     ],
     "starterCode": "",
-    "approach": "ranking = [(\"Alice\", 85), (\"Bob\", 91)]; ranking.sort(key=lambda x: x[1], reverse=True); print ranking[0][0]. Key points: ranking = [(\"Alice\", 85), (\"Bob\", 91)]\\nranking.sort(key=lambda x: x[1], reverse=True)\\nprint(ranking[0][0]) A correct solution looks like this: ranking = [(\"Alice\", 85), (\"Bob\", 91)] ranking.sort(key=lambda x: x[1], reverse=True) print(ranking[0][0])",
     "publicTests": [
       {
-        "id": "m18-t4-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Bob",
-        "visibility": "public"
+        "expectedStdout": "North: 240.0"
       },
       {
-        "id": "m18-t4-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Bob",
-        "visibility": "public"
+        "label": "sample call",
+        "assertCode": "assert format_line(\"North\", 240.0) == \"North: 240.0\""
       },
       {
-        "id": "m18-t4-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Bob",
-        "visibility": "public"
+        "label": "another call",
+        "assertCode": "assert format_line(\"East\", 10) == \"East: 10\""
       }
     ],
-    "solutionCode": "ranking = [(\"Alice\", 85), (\"Bob\", 91)]\nranking.sort(key=lambda x: x[1], reverse=True)\nprint(ranking[0][0])"
+    "solutionCode": "def format_line(region, total):\n    return f\"{region}: {total}\"\n\nprint(format_line(\"North\", 240.0))",
+    "approach": "Define format_line(region, total) that returns f\"{region}: {total}\". Print format_line(\"North\", 240.0).\n\nReference solution:\ndef format_line(region, total):\n    return f\"{region}: {total}\"\n\nprint(format_line(\"North\", 240.0))"
   },
   {
     "id": "m18-t4-p05",
     "topicId": "m18-t4",
-    "slug": "fp-status",
-    "title": "Step 3 Functions and Report: status()",
-    "difficulty": "medium",
+    "slug": "fn-clean-rows",
+    "title": "Functions: clean_rows",
+    "difficulty": "hard",
     "order": 5,
     "layout": "challenge",
-    "description": "def status(a): return \"PASS\" if a >= 60 else \"FAIL\"\nprint status(72).",
+    "description": "Define clean_rows(records) that returns a new list with None revenue replaced by 0. Print the cleaned revenue values.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "status",
       "introSegments": [
         {
           "type": "text",
-          "value": "Return PASS or FAIL from a function."
+          "value": "Define clean_rows(records) that returns a new list with None revenue replaced by 0. Print the cleaned revenue values."
         }
       ],
-      "editorPlaceholder": "# def status",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "rows"
+      ],
+      "requiresFunction": "clean_rows",
+      "requiresForLoop": true,
+      "requiresIfCondition": true
     },
     "examples": [
       {
-        "output": "PASS"
+        "output": "[100.0, 150.0, 0, 120.0, 90.0]"
       }
     ],
     "constraints": [
-      "Output: PASS"
+      "Output must match: [100.0, 150.0, 0, 120.0, 90.0]"
     ],
     "hints": [
-      "def status(a):\\n    return \"PASS\" if a >= 60 else \"FAIL\"\\nprint(status(72))"
+      "Copy each dict so the original rows stay unchanged."
     ],
-    "starterCode": "",
-    "approach": "def status(a): return \"PASS\" if a >= 60 else \"FAIL\" print status(72). Key points: def status(a):\\n return \"PASS\" if a >= 60 else \"FAIL\"\\nprint(status(72)) A correct solution looks like this: def status(a): return \"PASS\" if a >= 60 else \"FAIL\" print(status(72))",
+    "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef clean_rows(records):\n    pass\n",
     "publicTests": [
       {
-        "id": "m18-t4-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "PASS",
-        "visibility": "public"
+        "expectedStdout": "[100.0, 150.0, 0, 120.0, 90.0]"
       },
       {
-        "id": "m18-t4-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "PASS",
-        "visibility": "public"
+        "label": "fills None",
+        "assertCode": "assert [row[\"revenue\"] for row in clean_rows(rows)] == [100.0, 150.0, 0, 120.0, 90.0]"
       },
       {
-        "id": "m18-t4-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "PASS",
-        "visibility": "public"
+        "label": "leaves the original None",
+        "assertCode": "assert rows[2][\"revenue\"] is None, \"Do not mutate the original rows\""
       }
     ],
-    "solutionCode": "def status(a):\n    return \"PASS\" if a >= 60 else \"FAIL\"\nprint(status(72))"
+    "solutionCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef clean_rows(records):\n    cleaned = []\n    for row in records:\n        copy = dict(row)\n        if copy[\"revenue\"] is None:\n            copy[\"revenue\"] = 0\n        cleaned.append(copy)\n    return cleaned\n\nprint([row[\"revenue\"] for row in clean_rows(rows)])",
+    "approach": "Define clean_rows(records) that returns a new list with None revenue replaced by 0. Print the cleaned revenue values.\n\nReference solution:\nrows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef clean_rows(records):\n    cleaned = []\n    for row in records:\n        copy = dict(row)\n        if copy[\"revenue\"] is None:\n            copy[\"revenue\"] = 0\n        cleaned.append(copy)\n    return cleaned\n\nprint([row[\"revenue\"] for row in clean_rows(rows)])"
   },
   {
     "id": "m18-t4-p06",
     "topicId": "m18-t4",
-    "slug": "fp-challenge-fn",
-    "title": "Step 3 Functions and Report: Full Line",
+    "slug": "fn-average-units",
+    "title": "Functions: average_units",
     "difficulty": "hard",
     "order": 6,
     "layout": "challenge",
-    "description": "def line(n,a): return f\"{n}: avg {a:.1f}\"\nprint line(\"Cara\", 72.5).",
+    "description": "Define average_units(records) that returns the mean units as a float. Print average_units(rows).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "line",
       "introSegments": [
         {
           "type": "text",
-          "value": "Combine function + f-string for one report line."
+          "value": "Define average_units(records) that returns the mean units as a float. Print average_units(rows)."
         }
       ],
-      "editorPlaceholder": "# def line",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "rows"
+      ],
+      "requiresFunction": "average_units"
     },
     "examples": [
       {
-        "output": "Cara: avg 72.5"
+        "output": "8.2"
       }
     ],
     "constraints": [
-      "Output: Cara: avg 72.5"
+      "Output must match: 8.2"
     ],
     "hints": [
-      "def line(n,a):\\n    return f\"{n}: avg {a:.1f}\"\\nprint(line(\"Cara\", 72.5))"
+      "41 units across 5 rows is 8.2"
     ],
-    "starterCode": "",
-    "approach": "def line(n,a): return f\"{n}: avg {a:.1f}\" print line(\"Cara\", 72.5). Key points: def line(n,a):\\n return f\"{n}: avg {a:.1f}\"\\nprint(line(\"Cara\", 72.5)) A correct solution looks like this: def line(n,a): return f\"{n}: avg {a:.1f}\" print(line(\"Cara\", 72.5))",
+    "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef average_units(records):\n    pass\n",
     "publicTests": [
       {
-        "id": "m18-t4-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "Cara: avg 72.5",
-        "visibility": "public"
+        "expectedStdout": "8.2"
       },
       {
-        "id": "m18-t4-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Cara: avg 72.5",
-        "visibility": "public"
+        "label": "sample rows",
+        "assertCode": "assert average_units(rows) == 8.2"
       },
       {
-        "id": "m18-t4-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Cara: avg 72.5",
-        "visibility": "public"
+        "label": "another list",
+        "assertCode": "assert average_units([{\"units\": 2}, {\"units\": 4}]) == 3.0"
       }
     ],
-    "solutionCode": "def line(n,a):\n    return f\"{n}: avg {a:.1f}\"\nprint(line(\"Cara\", 72.5))"
+    "solutionCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef average_units(records):\n    return sum(row[\"units\"] for row in records) / len(records)\n\nprint(average_units(rows))",
+    "approach": "Define average_units(records) that returns the mean units as a float. Print average_units(rows).\n\nReference solution:\nrows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef average_units(records):\n    return sum(row[\"units\"] for row in records) / len(records)\n\nprint(average_units(rows))"
+  },
+  {
+    "id": "m18-t4-p07",
+    "topicId": "m18-t4",
+    "slug": "fn-report-lines",
+    "title": "Functions: report_lines",
+    "difficulty": "hard",
+    "order": 7,
+    "layout": "challenge",
+    "description": "Define report_lines(records) that returns [\"=== Retail Sales Report ===\", top region, str(total)]. Print the list.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Define report_lines(records) that returns [\"=== Retail Sales Report ===\", top region, str(total)]. Print the list."
+        }
+      ],
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "rows"
+      ],
+      "requiresFunction": "report_lines"
+    },
+    "examples": [
+      {
+        "output": "['=== Retail Sales Report ===', 'North', '460.0']"
+      }
+    ],
+    "constraints": [
+      "Output must match: ['=== Retail Sales Report ===', 'North', '460.0']"
+    ],
+    "hints": [
+      "Reuse totals to build the three strings."
+    ],
+    "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef report_lines(records):\n    pass\n",
+    "publicTests": [
+      {
+        "label": "Sample Case",
+        "expectedStdout": "['=== Retail Sales Report ===', 'North', '460.0']"
+      },
+      {
+        "label": "sample report",
+        "assertCode": "assert report_lines(rows) == [\"=== Retail Sales Report ===\", \"North\", \"460.0\"]"
+      }
+    ],
+    "solutionCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef total_revenue(records):\n    return sum(row[\"revenue\"] for row in records if row[\"revenue\"] is not None)\n\ndef top_region(records):\n    totals = {}\n    for row in records:\n        if row[\"revenue\"] is None:\n            continue\n        totals[row[\"region\"]] = totals.get(row[\"region\"], 0) + row[\"revenue\"]\n    return max(totals, key=totals.get)\n\ndef report_lines(records):\n    return [\"=== Retail Sales Report ===\", top_region(records), str(total_revenue(records))]\n\nprint(report_lines(rows))",
+    "approach": "Define report_lines(records) that returns [\"=== Retail Sales Report ===\", top region, str(total)]. Print the list.\n\nReference solution:\nrows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef total_revenue(records):\n    return sum(row[\"revenue\"] for row in records if row[\"revenue\"] is not None)\n\ndef top_region(records):\n    totals = {}\n    for row in records:\n        if row[\"revenue\"] is None:\n            continue\n        totals[row[\"region\"]] = totals.get(row[\"region\"], 0) + row[\"revenue\"]\n    return max(totals, key=totals.get)\n\ndef report_lines(records):\n    return [\"=== Retail Sales Report ===\", top_region(records), str(total_revenue(records))]\n\nprint(report_lines(rows))"
   },
   {
     "id": "m18-t5-p01",
     "topicId": "m18-t5",
-    "slug": "fp-cap-header",
-    "title": "Capstone Build: Report Header",
+    "slug": "load-sales-csv",
+    "title": "Capstone: Load the CSV",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "print \"=== Class Report ===\"",
+    "description": "Use StringIO and pd.read_csv to load the sales CSV text, then print df.shape.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# header",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Start the capstone with the report header."
+          "value": "Use StringIO and pd.read_csv to load the sales CSV text, then print df.shape."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "=== Class Report ===",
-          "label": "output"
-        }
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
       ]
     },
     "examples": [
       {
-        "output": "=== Class Report ==="
+        "output": "(5, 4)"
       }
     ],
     "constraints": [
-      "Output must be exactly: === Class Report ==="
+      "Output must match: (5, 4)"
     ],
     "hints": [
-      "print(\"=== Class Report ===\")"
+      "df = pd.read_csv(StringIO(csv_text))"
     ],
-    "starterCode": "",
+    "starterCode": "import pandas as pd\nfrom io import StringIO\n\ncsv_text = \"\"\"item,region,units,revenue\npen,South,10,100\nbook,North,5,150\nbag,South,8,\npen,East,12,120\nbag,North,6,90\n\"\"\"\n",
     "publicTests": [
       {
         "id": "m18-t5-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "=== Class Report ===",
+        "expectedStdout": "(5, 4)",
         "visibility": "public"
       },
       {
         "id": "m18-t5-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "=== Class Report ===",
+        "label": "Required names and structure",
+        "assertCode": "assert \"pd\" in globals(), \"Expected a variable named pd\"\nassert \"df\" in globals(), \"Expected a variable named df\"",
         "visibility": "public"
       },
       {
         "id": "m18-t5-p01-t3",
         "label": "No Extra Output",
-        "expectedStdout": "=== Class Report ===",
+        "expectedStdout": "(5, 4)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"=== Class Report ===\")",
-    "approach": "print \"=== Class Report ===\"\n\nKey points: print(\"=== Class Report ===\")\n\nA correct solution looks like this:\nprint(\"=== Class Report ===\")"
+    "solutionCode": "import pandas as pd\nfrom io import StringIO\n\ncsv_text = \"\"\"item,region,units,revenue\npen,South,10,100\nbook,North,5,150\nbag,South,8,\npen,East,12,120\nbag,North,6,90\n\"\"\"\ndf = pd.read_csv(StringIO(csv_text))\nprint(df.shape)",
+    "approach": "Use StringIO and pd.read_csv to load the sales CSV text, then print df.shape.\n\nReference solution:\nimport pandas as pd\nfrom io import StringIO\n\ncsv_text = \"\"\"item,region,units,revenue\npen,South,10,100\nbook,North,5,150\nbag,South,8,\npen,East,12,120\nbag,North,6,90\n\"\"\"\ndf = pd.read_csv(StringIO(csv_text))\nprint(df.shape)"
   },
   {
     "id": "m18-t5-p02",
     "topicId": "m18-t5",
-    "slug": "fp-cap-avg",
-    "title": "Capstone Build: One Student Line",
-    "difficulty": "medium",
+    "slug": "fill-revenue",
+    "title": "Capstone: Fill Missing Revenue",
+    "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "def average(s): return sum(s)/len(s)\ngrades=[85,92,78]; print round(average(grades),1).",
+    "description": "Load the sales CSV, fill missing revenue with 0, and print the total as a float.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "average",
       "introSegments": [
         {
           "type": "text",
-          "value": "Compute one student's average."
+          "value": "Load the sales CSV, fill missing revenue with 0, and print the total as a float."
         }
       ],
-      "editorPlaceholder": "# average + print",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
+      ]
     },
     "examples": [
       {
-        "output": "85.0"
+        "output": "460.0"
       }
     ],
     "constraints": [
-      "Output: 85.0"
+      "Output must match: 460.0"
     ],
     "hints": [
-      "def average(s): return sum(s)/len(s)\\ngrades = [85,92,78]\\nprint(round(average(grades),1))"
+      "df[\"revenue\"] = df[\"revenue\"].fillna(0)"
     ],
-    "starterCode": "",
-    "approach": "def average(s): return sum(s)/len(s) grades=[85,92,78]; print round(average(grades),1). Key points: def average(s): return sum(s)/len(s)\\ngrades = [85,92,78]\\nprint(round(average(grades),1)) A correct solution looks like this: def average(s): return sum(s)/len(s) grades = [85,92,78] print(round(average(grades),1))",
+    "starterCode": "import pandas as pd\nfrom io import StringIO\n\ncsv_text = \"\"\"item,region,units,revenue\npen,South,10,100\nbook,North,5,150\nbag,South,8,\npen,East,12,120\nbag,North,6,90\n\"\"\"\ndf = pd.read_csv(StringIO(csv_text))\n",
     "publicTests": [
       {
         "id": "m18-t5-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "85.0",
+        "expectedStdout": "460.0",
         "visibility": "public"
       },
       {
         "id": "m18-t5-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "85.0",
+        "label": "Required names and structure",
+        "assertCode": "assert \"pd\" in globals(), \"Expected a variable named pd\"\nassert \"df\" in globals(), \"Expected a variable named df\"",
         "visibility": "public"
       },
       {
         "id": "m18-t5-p02-t3",
         "label": "No Extra Output",
-        "expectedStdout": "85.0",
+        "expectedStdout": "460.0",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def average(s): return sum(s)/len(s)\ngrades = [85,92,78]\nprint(round(average(grades),1))"
+    "solutionCode": "import pandas as pd\nfrom io import StringIO\n\ncsv_text = \"\"\"item,region,units,revenue\npen,South,10,100\nbook,North,5,150\nbag,South,8,\npen,East,12,120\nbag,North,6,90\n\"\"\"\ndf = pd.read_csv(StringIO(csv_text))\ndf[\"revenue\"] = df[\"revenue\"].fillna(0)\nprint(float(df[\"revenue\"].sum()))",
+    "approach": "Load the sales CSV, fill missing revenue with 0, and print the total as a float.\n\nReference solution:\nimport pandas as pd\nfrom io import StringIO\n\ncsv_text = \"\"\"item,region,units,revenue\npen,South,10,100\nbook,North,5,150\nbag,South,8,\npen,East,12,120\nbag,North,6,90\n\"\"\"\ndf = pd.read_csv(StringIO(csv_text))\ndf[\"revenue\"] = df[\"revenue\"].fillna(0)\nprint(float(df[\"revenue\"].sum()))"
   },
   {
     "id": "m18-t5-p03",
     "topicId": "m18-t5",
-    "slug": "fp-cap-top",
-    "title": "Capstone Build: Find Top",
+    "slug": "region-totals-frame",
+    "title": "Capstone: Revenue by Region",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "averages={\"Alice\":85,\"Bob\":91}; print max(averages.items(), key=lambda x:x[1])[0].",
+    "description": "After filling missing revenue with 0, group by region, sum revenue, and print a dict of ints.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "averages"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Use max + lambda to find top student."
+          "value": "After filling missing revenue with 0, group by region, sum revenue, and print a dict of ints."
         }
       ],
-      "editorPlaceholder": "# max lambda",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df",
+        "totals"
+      ]
     },
     "examples": [
       {
-        "output": "Bob"
+        "output": "{'East': 120, 'North': 240, 'South': 100}"
       }
     ],
     "constraints": [
-      "Output: Bob"
+      "Output must match: {'East': 120, 'North': 240, 'South': 100}"
     ],
     "hints": [
-      "averages = {\"Alice\": 85, \"Bob\": 91}\\nprint(max(averages.items(), key=lambda x: x[1])[0])"
+      "totals = df.groupby(\"region\")[\"revenue\"].sum()"
     ],
-    "starterCode": "",
-    "approach": "averages={\"Alice\":85,\"Bob\":91}; print max(averages.items(), key=lambda x:x[1])[0]. Key points: averages = {\"Alice\": 85, \"Bob\": 91}\\nprint(max(averages.items(), key=lambda x: x[1])[0]) A correct solution looks like this: averages = {\"Alice\": 85, \"Bob\": 91} print(max(averages.items(), key=lambda x: x[1])[0])",
+    "starterCode": "import pandas as pd\nfrom io import StringIO\n\ncsv_text = \"\"\"item,region,units,revenue\npen,South,10,100\nbook,North,5,150\nbag,South,8,\npen,East,12,120\nbag,North,6,90\n\"\"\"\ndf = pd.read_csv(StringIO(csv_text))\ndf[\"revenue\"] = df[\"revenue\"].fillna(0)\n",
     "publicTests": [
       {
         "id": "m18-t5-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "Bob",
+        "expectedStdout": "{'East': 120, 'North': 240, 'South': 100}",
         "visibility": "public"
       },
       {
         "id": "m18-t5-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Bob",
+        "label": "Required names and structure",
+        "assertCode": "assert \"pd\" in globals(), \"Expected a variable named pd\"\nassert \"df\" in globals(), \"Expected a variable named df\"\nassert \"totals\" in globals(), \"Expected a variable named totals\"",
         "visibility": "public"
       },
       {
         "id": "m18-t5-p03-t3",
         "label": "No Extra Output",
-        "expectedStdout": "Bob",
+        "expectedStdout": "{'East': 120, 'North': 240, 'South': 100}",
         "visibility": "public"
       }
     ],
-    "solutionCode": "averages = {\"Alice\": 85, \"Bob\": 91}\nprint(max(averages.items(), key=lambda x: x[1])[0])"
+    "solutionCode": "import pandas as pd\nfrom io import StringIO\n\ncsv_text = \"\"\"item,region,units,revenue\npen,South,10,100\nbook,North,5,150\nbag,South,8,\npen,East,12,120\nbag,North,6,90\n\"\"\"\ndf = pd.read_csv(StringIO(csv_text))\ndf[\"revenue\"] = df[\"revenue\"].fillna(0)\ntotals = df.groupby(\"region\")[\"revenue\"].sum()\nprint({k: int(v) for k, v in totals.items()})",
+    "approach": "After filling missing revenue with 0, group by region, sum revenue, and print a dict of ints.\n\nReference solution:\nimport pandas as pd\nfrom io import StringIO\n\ncsv_text = \"\"\"item,region,units,revenue\npen,South,10,100\nbook,North,5,150\nbag,South,8,\npen,East,12,120\nbag,North,6,90\n\"\"\"\ndf = pd.read_csv(StringIO(csv_text))\ndf[\"revenue\"] = df[\"revenue\"].fillna(0)\ntotals = df.groupby(\"region\")[\"revenue\"].sum()\nprint({k: int(v) for k, v in totals.items()})"
   },
   {
     "id": "m18-t5-p04",
     "topicId": "m18-t5",
-    "slug": "fp-cap-extend",
-    "title": "Capstone Build: Add Dan",
+    "slug": "units-revenue-corr",
+    "title": "Capstone: Units vs Revenue",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "students={\"Alice\":[85]}; students[\"Dan\"]=[88,76,94]; print len(students).",
+    "description": "After filling missing revenue with 0, print the correlation of units and revenue rounded to two decimals.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "students"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Extend the project with a new student."
+          "value": "After filling missing revenue with 0, print the correlation of units and revenue rounded to two decimals."
         }
       ],
-      "editorPlaceholder": "# add Dan",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
+      ]
     },
     "examples": [
       {
-        "output": "2"
+        "output": "-0.07"
       }
     ],
     "constraints": [
-      "Output: 2"
+      "Output must match: -0.07"
     ],
     "hints": [
-      "students = {\"Alice\": [85]}\\nstudents[\"Dan\"] = [88, 76, 94]\\nprint(len(students))"
+      "df[[\"units\", \"revenue\"]].corr()"
     ],
-    "starterCode": "",
-    "approach": "students={\"Alice\":[85]}; students[\"Dan\"]=[88,76,94]; print len(students). Key points: students = {\"Alice\": [85]}\\nstudents[\"Dan\"] = [88, 76, 94]\\nprint(len(students)) A correct solution looks like this: students = {\"Alice\": [85]} students[\"Dan\"] = [88, 76, 94] print(len(students))",
+    "starterCode": "import pandas as pd\nfrom io import StringIO\n\ncsv_text = \"\"\"item,region,units,revenue\npen,South,10,100\nbook,North,5,150\nbag,South,8,\npen,East,12,120\nbag,North,6,90\n\"\"\"\ndf = pd.read_csv(StringIO(csv_text))\ndf[\"revenue\"] = df[\"revenue\"].fillna(0)\n",
     "publicTests": [
       {
         "id": "m18-t5-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "2",
+        "expectedStdout": "-0.07",
         "visibility": "public"
       },
       {
         "id": "m18-t5-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "2",
+        "label": "Required names and structure",
+        "assertCode": "assert \"pd\" in globals(), \"Expected a variable named pd\"\nassert \"df\" in globals(), \"Expected a variable named df\"",
         "visibility": "public"
       },
       {
         "id": "m18-t5-p04-t3",
         "label": "No Extra Output",
-        "expectedStdout": "2",
+        "expectedStdout": "-0.07",
         "visibility": "public"
       }
     ],
-    "solutionCode": "students = {\"Alice\": [85]}\nstudents[\"Dan\"] = [88, 76, 94]\nprint(len(students))"
+    "solutionCode": "import pandas as pd\nfrom io import StringIO\n\ncsv_text = \"\"\"item,region,units,revenue\npen,South,10,100\nbook,North,5,150\nbag,South,8,\npen,East,12,120\nbag,North,6,90\n\"\"\"\ndf = pd.read_csv(StringIO(csv_text))\ndf[\"revenue\"] = df[\"revenue\"].fillna(0)\nprint(round(float(df[[\"units\", \"revenue\"]].corr().loc[\"units\", \"revenue\"]), 2))",
+    "approach": "After filling missing revenue with 0, print the correlation of units and revenue rounded to two decimals.\n\nReference solution:\nimport pandas as pd\nfrom io import StringIO\n\ncsv_text = \"\"\"item,region,units,revenue\npen,South,10,100\nbook,North,5,150\nbag,South,8,\npen,East,12,120\nbag,North,6,90\n\"\"\"\ndf = pd.read_csv(StringIO(csv_text))\ndf[\"revenue\"] = df[\"revenue\"].fillna(0)\nprint(round(float(df[[\"units\", \"revenue\"]].corr().loc[\"units\", \"revenue\"]), 2))"
   },
   {
     "id": "m18-t5-p05",
     "topicId": "m18-t5",
-    "slug": "fp-cap-passing",
-    "title": "Capstone Build: Passing Count",
+    "slug": "region-bar-chart",
+    "title": "Capstone: Bar Chart of Regions",
     "difficulty": "hard",
     "order": 5,
     "layout": "challenge",
-    "description": "averages={\"Alice\":85,\"Bob\":55,\"Cara\":72}; print len([a for a in averages.values() if a>=60]).",
+    "description": "Fill missing revenue, group by region, draw a bar chart of the totals, and print a confirmation.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "averages"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Count how many students passed."
+          "value": "Fill missing revenue, group by region, draw a bar chart of the totals, and print a confirmation."
         }
       ],
-      "editorPlaceholder": "# passing count",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "pd",
+        "ax",
+        "totals"
+      ]
     },
-    "examples": [
-      {
-        "output": "2"
-      }
-    ],
-    "constraints": [
-      "Output: 2"
-    ],
+    "examples": [],
+    "constraints": [],
     "hints": [
-      "averages = {\"Alice\": 85, \"Bob\": 55, \"Cara\": 72}\\nprint(len([a for a in averages.values() if a >= 60]))"
+      "ax.bar(totals.index, totals.values)"
     ],
     "starterCode": "",
-    "approach": "averages={\"Alice\":85,\"Bob\":55,\"Cara\":72}; print len([a for a in averages.values() if a>=60]). Key points: averages = {\"Alice\": 85, \"Bob\": 55, \"Cara\": 72}\\nprint(len([a for a in averages.values() if a >= 60])) A correct solution looks like this: averages = {\"Alice\": 85, \"Bob\": 55, \"Cara\": 72} print(len([a for a in averages.values() if a >= 60]))",
     "publicTests": [
       {
-        "id": "m18-t5-p05-t1",
-        "label": "Sample Case",
-        "expectedStdout": "2",
-        "visibility": "public"
+        "label": "axes exist",
+        "assertCode": "assert \"ax\" in globals() and hasattr(ax, \"bar\"), \"Create fig, ax = plt.subplots() and draw bars\""
       },
       {
-        "id": "m18-t5-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "2",
-        "visibility": "public"
+        "label": "three region bars",
+        "assertCode": "assert len(ax.patches) == 3, \"Expected one bar per region\""
       },
       {
-        "id": "m18-t5-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "2",
-        "visibility": "public"
+        "label": "North is the tallest",
+        "assertCode": "heights = [round(p.get_height(), 2) for p in ax.patches]\nassert max(heights) == 240.0, \"North should total 240 after filling missing revenue\""
       }
     ],
-    "solutionCode": "averages = {\"Alice\": 85, \"Bob\": 55, \"Cara\": 72}\nprint(len([a for a in averages.values() if a >= 60]))"
+    "solutionCode": "import matplotlib.pyplot as plt\nimport pandas as pd\nfrom io import StringIO\n\ncsv_text = \"\"\"item,region,units,revenue\npen,South,10,100\nbook,North,5,150\nbag,South,8,\npen,East,12,120\nbag,North,6,90\n\"\"\"\ndf = pd.read_csv(StringIO(csv_text))\ndf[\"revenue\"] = df[\"revenue\"].fillna(0)\ntotals = df.groupby(\"region\")[\"revenue\"].sum().sort_index()\n\nfig, ax = plt.subplots()\nax.bar(totals.index, totals.values)\nprint(\"region bars drawn\")",
+    "approach": "Fill missing revenue, group by region, draw a bar chart of the totals, and print a confirmation.\n\nReference solution:\nimport matplotlib.pyplot as plt\nimport pandas as pd\nfrom io import StringIO\n\ncsv_text = \"\"\"item,region,units,revenue\npen,South,10,100\nbook,North,5,150\nbag,South,8,\npen,East,12,120\nbag,North,6,90\n\"\"\"\ndf = pd.read_csv(StringIO(csv_text))\ndf[\"revenue\"] = df[\"revenue\"].fillna(0)\ntotals = df.groupby(\"region\")[\"revenue\"].sum().sort_index()\n\nfig, ax = plt.subplots()\nax.bar(totals.index, totals.values)\nprint(\"region bars drawn\")"
   },
   {
     "id": "m18-t5-p06",
     "topicId": "m18-t5",
-    "slug": "fp-cap-grade-count",
-    "title": "Capstone Build: Grade Histogram",
+    "slug": "three-line-summary",
+    "title": "Capstone: Three-Line Summary",
     "difficulty": "hard",
     "order": 6,
     "layout": "challenge",
-    "description": "def lg(a):\n    if a>=90: return \"A\"\n    if a>=80: return \"B\"\n    return \"F\"\naverages={\"Alice\":85,\"Cara\":92}; print sum(1 for v in averages.values() if lg(v)==\"B\").",
+    "description": "After filling missing revenue, print rows, the top region, and total revenue as three labelled lines.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "lg",
       "introSegments": [
         {
           "type": "text",
-          "value": "Count students with grade B using a helper function."
+          "value": "After filling missing revenue, print rows, the top region, and total revenue as three labelled lines."
         }
       ],
-      "editorPlaceholder": "# grade count",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df",
+        "rows",
+        "top_region",
+        "total_revenue"
+      ]
     },
     "examples": [
       {
-        "output": "1"
+        "output": "rows=5\ntop_region=North\ntotal_revenue=460.0"
       }
     ],
     "constraints": [
-      "Output: 1"
+      "Output must match: rows=5 / top_region=North / total_revenue=460.0"
     ],
     "hints": [
-      "def lg(a):\\n    if a >= 90: return \"A\"\\n    if a >= 80: return \"B\"\\n    return \"F\"\\naverages = {\"Alice\": 85, \"Cara\": 92}\\nprint(sum(1 for v in averages.values() if lg(v) == \"B\"))"
+      "idxmax() returns the region with the largest total."
     ],
-    "starterCode": "",
-    "approach": "def lg(a): if a>=90: return \"A\" if a>=80: return \"B\" return \"F\" averages={\"Alice\":85,\"Cara\":92}; print sum(1 for v in averages.values() if lg(v)==\"B\"). Key points: def lg(a):\\n if a >= 90: return \"A\"\\n if a >= 80: return \"B\"\\n return \"F\"\\naverages = {\"Alice\": 85, \"Cara\": 92}\\nprint(sum(1 for v in averages.values() if lg(v) == \"B\")) A correct solution looks like this: def lg(a): if a >= 90: return \"A\" if a >= 80: return \"B\" return \"F\" averages = {\"Alice\": 85, \"Cara\": 92} print(sum(1 for v in averages.values() if lg(v) == \"B\"))",
+    "starterCode": "import pandas as pd\nfrom io import StringIO\n\ncsv_text = \"\"\"item,region,units,revenue\npen,South,10,100\nbook,North,5,150\nbag,South,8,\npen,East,12,120\nbag,North,6,90\n\"\"\"\ndf = pd.read_csv(StringIO(csv_text))\ndf[\"revenue\"] = df[\"revenue\"].fillna(0)\n",
     "publicTests": [
       {
         "id": "m18-t5-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "1",
+        "expectedStdout": "rows=5\ntop_region=North\ntotal_revenue=460.0",
         "visibility": "public"
       },
       {
         "id": "m18-t5-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1",
+        "label": "Required names and structure",
+        "assertCode": "assert \"pd\" in globals(), \"Expected a variable named pd\"\nassert \"df\" in globals(), \"Expected a variable named df\"\nassert \"rows\" in globals(), \"Expected a variable named rows\"\nassert \"top_region\" in globals(), \"Expected a variable named top_region\"\nassert \"total_revenue\" in globals(), \"Expected a variable named total_revenue\"",
         "visibility": "public"
       },
       {
         "id": "m18-t5-p06-t3",
         "label": "No Extra Output",
-        "expectedStdout": "1",
+        "expectedStdout": "rows=5\ntop_region=North\ntotal_revenue=460.0",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def lg(a):\n    if a >= 90: return \"A\"\n    if a >= 80: return \"B\"\n    return \"F\"\naverages = {\"Alice\": 85, \"Cara\": 92}\nprint(sum(1 for v in averages.values() if lg(v) == \"B\"))"
+    "solutionCode": "import pandas as pd\nfrom io import StringIO\n\ncsv_text = \"\"\"item,region,units,revenue\npen,South,10,100\nbook,North,5,150\nbag,South,8,\npen,East,12,120\nbag,North,6,90\n\"\"\"\ndf = pd.read_csv(StringIO(csv_text))\ndf[\"revenue\"] = df[\"revenue\"].fillna(0)\nrows = len(df)\ntop_region = df.groupby(\"region\")[\"revenue\"].sum().idxmax()\ntotal_revenue = float(df[\"revenue\"].sum())\nprint(f\"rows={rows}\")\nprint(f\"top_region={top_region}\")\nprint(f\"total_revenue={total_revenue}\")",
+    "approach": "After filling missing revenue, print rows, the top region, and total revenue as three labelled lines.\n\nReference solution:\nimport pandas as pd\nfrom io import StringIO\n\ncsv_text = \"\"\"item,region,units,revenue\npen,South,10,100\nbook,North,5,150\nbag,South,8,\npen,East,12,120\nbag,North,6,90\n\"\"\"\ndf = pd.read_csv(StringIO(csv_text))\ndf[\"revenue\"] = df[\"revenue\"].fillna(0)\nrows = len(df)\ntop_region = df.groupby(\"region\")[\"revenue\"].sum().idxmax()\ntotal_revenue = float(df[\"revenue\"].sum())\nprint(f\"rows={rows}\")\nprint(f\"top_region={top_region}\")\nprint(f\"total_revenue={total_revenue}\")"
   },
   {
     "id": "m18-t5-p07",
     "topicId": "m18-t5",
-    "slug": "fp-cap-challenge",
-    "title": "Capstone Build: Mini Capstone",
+    "slug": "run-report",
+    "title": "Capstone: run_report",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "students={\"A\":[90],\"B\":[50]}; print sum(1 for g in students.values() if sum(g)/len(g)>=60).",
+    "description": "Define run_report(frame) that prints the title, the top region, and the total. Call it on the cleaned sales frame.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresVariables": [
-        "students"
-      ],
       "introSegments": [
         {
           "type": "text",
-          "value": "Count passing students from raw grade lists."
+          "value": "Define run_report(frame) that prints the title, the top region, and the total. Call it on the cleaned sales frame."
         }
       ],
-      "editorPlaceholder": "# mini capstone",
-      "successDetail": "Correct! You built a mini grade manager."
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
+      ],
+      "requiresFunction": "run_report"
     },
     "examples": [
       {
-        "output": "1"
+        "output": "=== Retail Sales Report ===\nNorth\n460.0"
       }
     ],
     "constraints": [
-      "Output: 1"
+      "Output must match: === Retail Sales Report === / North / 460.0"
     ],
     "hints": [
-      "students = {\"A\": [90], \"B\": [50]}\\nprint(sum(1 for g in students.values() if sum(g)/len(g) >= 60))"
+      "Print three lines: title, idxmax(), then the total."
     ],
-    "starterCode": "",
-    "approach": "students={\"A\":[90],\"B\":[50]}; print sum(1 for g in students.values() if sum(g)/len(g)>=60). Key points: students = {\"A\": [90], \"B\": [50]}\\nprint(sum(1 for g in students.values() if sum(g)/len(g) >= 60)) A correct solution looks like this: students = {\"A\": [90], \"B\": [50]} print(sum(1 for g in students.values() if sum(g)/len(g) >= 60))",
+    "starterCode": "import pandas as pd\nfrom io import StringIO\n\ncsv_text = \"\"\"item,region,units,revenue\npen,South,10,100\nbook,North,5,150\nbag,South,8,\npen,East,12,120\nbag,North,6,90\n\"\"\"\ndf = pd.read_csv(StringIO(csv_text))\ndf[\"revenue\"] = df[\"revenue\"].fillna(0)\n\ndef run_report(frame):\n    pass\n",
     "publicTests": [
       {
-        "id": "m18-t5-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "1",
-        "visibility": "public"
+        "expectedStdout": "=== Retail Sales Report ===\nNorth\n460.0"
       },
       {
-        "id": "m18-t5-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1",
-        "visibility": "public"
-      },
-      {
-        "id": "m18-t5-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "1",
-        "visibility": "public"
+        "label": "callable",
+        "assertCode": "assert callable(run_report), \"Define run_report\""
       }
     ],
-    "solutionCode": "students = {\"A\": [90], \"B\": [50]}\nprint(sum(1 for g in students.values() if sum(g)/len(g) >= 60))"
+    "solutionCode": "import pandas as pd\nfrom io import StringIO\n\ncsv_text = \"\"\"item,region,units,revenue\npen,South,10,100\nbook,North,5,150\nbag,South,8,\npen,East,12,120\nbag,North,6,90\n\"\"\"\ndf = pd.read_csv(StringIO(csv_text))\ndf[\"revenue\"] = df[\"revenue\"].fillna(0)\n\ndef run_report(frame):\n    totals = frame.groupby(\"region\")[\"revenue\"].sum()\n    print(\"=== Retail Sales Report ===\")\n    print(totals.idxmax())\n    print(float(frame[\"revenue\"].sum()))\n\nrun_report(df)",
+    "approach": "Define run_report(frame) that prints the title, the top region, and the total. Call it on the cleaned sales frame.\n\nReference solution:\nimport pandas as pd\nfrom io import StringIO\n\ncsv_text = \"\"\"item,region,units,revenue\npen,South,10,100\nbook,North,5,150\nbag,South,8,\npen,East,12,120\nbag,North,6,90\n\"\"\"\ndf = pd.read_csv(StringIO(csv_text))\ndf[\"revenue\"] = df[\"revenue\"].fillna(0)\n\ndef run_report(frame):\n    totals = frame.groupby(\"region\")[\"revenue\"].sum()\n    print(\"=== Retail Sales Report ===\")\n    print(totals.idxmax())\n    print(float(frame[\"revenue\"].sum()))\n\nrun_report(df)"
   }
 ];

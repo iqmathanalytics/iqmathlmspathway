@@ -72,7 +72,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(10 + 3)",
-    "approach": "Print 10 + 3.\n\nKey points: print(10 + 3)\n\nA correct solution looks like this:\nprint(10 + 3)"
+    "approach": "Print 10 + 3.\n\nReference solution:\nprint(10 + 3)"
   },
   {
     "id": "m3-t1-p02",
@@ -145,7 +145,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(20 - 5)",
-    "approach": "Print 20 - 5.\n\nKey points: print(20 - 5)\n\nA correct solution looks like this:\nprint(20 - 5)"
+    "approach": "Print 20 - 5.\n\nReference solution:\nprint(20 - 5)"
   },
   {
     "id": "m3-t1-p03",
@@ -218,7 +218,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(4 * 6)",
-    "approach": "Print 4 * 6.\n\nKey points: print(4 * 6)\n\nA correct solution looks like this:\nprint(4 * 6)"
+    "approach": "Print 4 * 6.\n\nReference solution:\nprint(4 * 6)"
   },
   {
     "id": "m3-t1-p04",
@@ -291,7 +291,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(20 / 4)",
-    "approach": "Print 20 / 4.\n\nKey points: print(20 / 4)\n\nA correct solution looks like this:\nprint(20 / 4)"
+    "approach": "Print 20 / 4.\n\nReference solution:\nprint(20 / 4)"
   },
   {
     "id": "m3-t1-p05",
@@ -364,7 +364,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(17 // 5)",
-    "approach": "Print 17 // 5 (whole number division).\n\nKey points: print(17 // 5)\n\nA correct solution looks like this:\nprint(17 // 5)"
+    "approach": "Print 17 // 5 (whole number division).\n\nReference solution:\nprint(17 // 5)"
   },
   {
     "id": "m3-t1-p06",
@@ -437,7 +437,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(17 % 5)",
-    "approach": "Print 17 % 5 (remainder).\n\nKey points: print(17 % 5)\n\nA correct solution looks like this:\nprint(17 % 5)"
+    "approach": "Print 17 % 5 (remainder).\n\nReference solution:\nprint(17 % 5)"
   },
   {
     "id": "m3-t1-p07",
@@ -510,7 +510,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(2 ** 3)",
-    "approach": "Print 2 ** 3 (2 to the power of 3).\n\nKey points: print(2 ** 3)\n\nA correct solution looks like this:\nprint(2 ** 3)"
+    "approach": "Print 2 ** 3 (2 to the power of 3).\n\nReference solution:\nprint(2 ** 3)"
   },
   {
     "id": "m3-t2-p01",
@@ -549,7 +549,7 @@ export const module3Practice: PracticeProblem[] = [
       "Start with x = a number, use x = 10, then print(x)"
     ],
     "starterCode": "",
-    "approach": "Set x = 10, then print x. Key points: Start with x = a number, use x = 10, then print(x) A correct solution looks like this: print(\"10\")",
+    "approach": "Set x = 10, then print x.\n\nReference solution:\nx = 10\nprint(x)",
     "publicTests": [
       {
         "id": "m3-t2-p01-t1",
@@ -559,8 +559,8 @@ export const module3Practice: PracticeProblem[] = [
       },
       {
         "id": "m3-t2-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "10",
+        "label": "Required names and structure",
+        "assertCode": "assert \"x\" in globals(), \"Expected a variable named x\"",
         "visibility": "public"
       },
       {
@@ -570,7 +570,7 @@ export const module3Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"10\")"
+    "solutionCode": "x = 10\nprint(x)"
   },
   {
     "id": "m3-t2-p02",
@@ -609,7 +609,7 @@ export const module3Practice: PracticeProblem[] = [
       "Start with x = a number, use x += 5, then print(x)"
     ],
     "starterCode": "",
-    "approach": "Set x = 10, then x += 5, print x. Key points: Start with x = a number, use x += 5, then print(x) A correct solution looks like this: print(\"15\")",
+    "approach": "Set x = 10, then x += 5, print x.\n\nReference solution:\nx = 10\nx += 5\nprint(x)",
     "publicTests": [
       {
         "id": "m3-t2-p02-t1",
@@ -619,8 +619,8 @@ export const module3Practice: PracticeProblem[] = [
       },
       {
         "id": "m3-t2-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "15",
+        "label": "Required names and structure",
+        "assertCode": "assert \"x\" in globals(), \"Expected a variable named x\"",
         "visibility": "public"
       },
       {
@@ -630,7 +630,7 @@ export const module3Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"15\")"
+    "solutionCode": "x = 10\nx += 5\nprint(x)"
   },
   {
     "id": "m3-t2-p03",
@@ -669,7 +669,7 @@ export const module3Practice: PracticeProblem[] = [
       "Start with x = a number, use x -= 3, then print(x)"
     ],
     "starterCode": "",
-    "approach": "Set x = 10, then x -= 3, print x. Key points: Start with x = a number, use x -= 3, then print(x) A correct solution looks like this: print(\"7\")",
+    "approach": "Set x = 10, then x -= 3, print x.\n\nReference solution:\nx = 10\nx -= 3\nprint(x)",
     "publicTests": [
       {
         "id": "m3-t2-p03-t1",
@@ -679,8 +679,8 @@ export const module3Practice: PracticeProblem[] = [
       },
       {
         "id": "m3-t2-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "7",
+        "label": "Required names and structure",
+        "assertCode": "assert \"x\" in globals(), \"Expected a variable named x\"",
         "visibility": "public"
       },
       {
@@ -690,7 +690,7 @@ export const module3Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"7\")"
+    "solutionCode": "x = 10\nx -= 3\nprint(x)"
   },
   {
     "id": "m3-t2-p04",
@@ -729,7 +729,7 @@ export const module3Practice: PracticeProblem[] = [
       "Start with x = a number, use x *= 3, then print(x)"
     ],
     "starterCode": "",
-    "approach": "Set x = 4, then x *= 3, print x. Key points: Start with x = a number, use x *= 3, then print(x) A correct solution looks like this: print(\"12\")",
+    "approach": "Set x = 4, then x *= 3, print x.\n\nReference solution:\nx = 4\nx *= 3\nprint(x)",
     "publicTests": [
       {
         "id": "m3-t2-p04-t1",
@@ -739,8 +739,8 @@ export const module3Practice: PracticeProblem[] = [
       },
       {
         "id": "m3-t2-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "12",
+        "label": "Required names and structure",
+        "assertCode": "assert \"x\" in globals(), \"Expected a variable named x\"",
         "visibility": "public"
       },
       {
@@ -750,7 +750,7 @@ export const module3Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"12\")"
+    "solutionCode": "x = 4\nx *= 3\nprint(x)"
   },
   {
     "id": "m3-t2-p05",
@@ -789,7 +789,7 @@ export const module3Practice: PracticeProblem[] = [
       "Start with x = a number, use x /= 4, then print(x)"
     ],
     "starterCode": "",
-    "approach": "Set x = 20, then x /= 4, print x. Key points: Start with x = a number, use x /= 4, then print(x) A correct solution looks like this: print(\"5.0\")",
+    "approach": "Set x = 20, then x /= 4, print x.\n\nReference solution:\nx = 20\nx /= 4\nprint(x)",
     "publicTests": [
       {
         "id": "m3-t2-p05-t1",
@@ -799,8 +799,8 @@ export const module3Practice: PracticeProblem[] = [
       },
       {
         "id": "m3-t2-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "5.0",
+        "label": "Required names and structure",
+        "assertCode": "assert \"x\" in globals(), \"Expected a variable named x\"",
         "visibility": "public"
       },
       {
@@ -810,7 +810,7 @@ export const module3Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"5.0\")"
+    "solutionCode": "x = 20\nx /= 4\nprint(x)"
   },
   {
     "id": "m3-t2-p06",
@@ -849,7 +849,7 @@ export const module3Practice: PracticeProblem[] = [
       "Start with x = a number, use x %= 5, then print(x)"
     ],
     "starterCode": "",
-    "approach": "Set x = 17, then x %= 5, print x. Key points: Start with x = a number, use x %= 5, then print(x) A correct solution looks like this: print(\"2\")",
+    "approach": "Set x = 17, then x %= 5, print x.\n\nReference solution:\nx = 17\nx %= 5\nprint(x)",
     "publicTests": [
       {
         "id": "m3-t2-p06-t1",
@@ -859,8 +859,8 @@ export const module3Practice: PracticeProblem[] = [
       },
       {
         "id": "m3-t2-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "2",
+        "label": "Required names and structure",
+        "assertCode": "assert \"x\" in globals(), \"Expected a variable named x\"",
         "visibility": "public"
       },
       {
@@ -870,7 +870,7 @@ export const module3Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"2\")"
+    "solutionCode": "x = 17\nx %= 5\nprint(x)"
   },
   {
     "id": "m3-t2-p07",
@@ -909,7 +909,7 @@ export const module3Practice: PracticeProblem[] = [
       "Start with x = a number, use x **= 3, then print(x)"
     ],
     "starterCode": "",
-    "approach": "Set x = 2, then x **= 3, print x. Key points: Start with x = a number, use x **= 3, then print(x) A correct solution looks like this: d = {\"topic\": \"8\"} print(d[\"topic\"])",
+    "approach": "Set x = 2, then x **= 3, print x.\n\nReference solution:\nx = 2\nx **= 3\nprint(x)",
     "publicTests": [
       {
         "id": "m3-t2-p07-t1",
@@ -919,8 +919,8 @@ export const module3Practice: PracticeProblem[] = [
       },
       {
         "id": "m3-t2-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "8",
+        "label": "Required names and structure",
+        "assertCode": "assert \"x\" in globals(), \"Expected a variable named x\"",
         "visibility": "public"
       },
       {
@@ -930,7 +930,7 @@ export const module3Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"8\"}\nprint(d[\"topic\"])"
+    "solutionCode": "x = 2\nx **= 3\nprint(x)"
   },
   {
     "id": "m3-t3-p01",
@@ -1003,7 +1003,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(5 > 3)",
-    "approach": "Print whether 5 > 3 is true.\n\nKey points: print(5 > 3)\n\nA correct solution looks like this:\nprint(5 > 3)"
+    "approach": "Print whether 5 > 3 is true.\n\nReference solution:\nprint(5 > 3)"
   },
   {
     "id": "m3-t3-p02",
@@ -1076,7 +1076,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(2 == 2)",
-    "approach": "Print whether 2 == 2 is true.\n\nKey points: print(2 == 2)\n\nA correct solution looks like this:\nprint(2 == 2)"
+    "approach": "Print whether 2 == 2 is true.\n\nReference solution:\nprint(2 == 2)"
   },
   {
     "id": "m3-t3-p03",
@@ -1149,7 +1149,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(1 != 0)",
-    "approach": "Print whether 1 != 0 is true.\n\nKey points: print(1 != 0)\n\nA correct solution looks like this:\nprint(1 != 0)"
+    "approach": "Print whether 1 != 0 is true.\n\nReference solution:\nprint(1 != 0)"
   },
   {
     "id": "m3-t3-p04",
@@ -1222,7 +1222,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(4 <= 4)",
-    "approach": "Print whether 4 <= 4 is true.\n\nKey points: print(4 <= 4)\n\nA correct solution looks like this:\nprint(4 <= 4)"
+    "approach": "Print whether 4 <= 4 is true.\n\nReference solution:\nprint(4 <= 4)"
   },
   {
     "id": "m3-t3-p05",
@@ -1295,7 +1295,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(10 < 5)",
-    "approach": "Print whether 10 < 5 is false.\n\nKey points: print(10 < 5)\n\nA correct solution looks like this:\nprint(10 < 5)"
+    "approach": "Print whether 10 < 5 is false.\n\nReference solution:\nprint(10 < 5)"
   },
   {
     "id": "m3-t3-p06",
@@ -1368,7 +1368,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(7 >= 7)",
-    "approach": "Print whether 7 >= 7 is true.\n\nKey points: print(7 >= 7)\n\nA correct solution looks like this:\nprint(7 >= 7)"
+    "approach": "Print whether 7 >= 7 is true.\n\nReference solution:\nprint(7 >= 7)"
   },
   {
     "id": "m3-t3-p07",
@@ -1406,6 +1406,10 @@ export const module3Practice: PracticeProblem[] = [
           "index": 0,
           "expected": "True"
         }
+      ],
+      "requiresVariables": [
+        "a",
+        "b"
       ]
     },
     "examples": [
@@ -1429,8 +1433,8 @@ export const module3Practice: PracticeProblem[] = [
       },
       {
         "id": "m3-t3-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "True",
+        "label": "Required names and structure",
+        "assertCode": "assert \"a\" in globals(), \"Expected a variable named a\"\nassert \"b\" in globals(), \"Expected a variable named b\"",
         "visibility": "public"
       },
       {
@@ -1440,8 +1444,8 @@ export const module3Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"True\"}\nprint(d[\"topic\"])",
-    "approach": "Set a=10, b=5, print a > b.\n\nKey points: print(a > b)\n\nA correct solution looks like this:\nd = {\"topic\": \"True\"}\nprint(d[\"topic\"])"
+    "solutionCode": "a = 10\nb = 5\nprint(a > b)",
+    "approach": "Set a=10, b=5, print a > b.\n\nReference solution:\na = 10\nb = 5\nprint(a > b)"
   },
   {
     "id": "m3-t4-p01",
@@ -1514,7 +1518,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(True and True)",
-    "approach": "Print True and True.\n\nKey points: print(True and True)\n\nA correct solution looks like this:\nprint(True and True)"
+    "approach": "Print True and True.\n\nReference solution:\nprint(True and True)"
   },
   {
     "id": "m3-t4-p02",
@@ -1587,7 +1591,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(True and False)",
-    "approach": "Print True and False.\n\nKey points: print(True and False)\n\nA correct solution looks like this:\nprint(True and False)"
+    "approach": "Print True and False.\n\nReference solution:\nprint(True and False)"
   },
   {
     "id": "m3-t4-p03",
@@ -1660,7 +1664,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(False or True)",
-    "approach": "Print False or True.\n\nKey points: print(False or True)\n\nA correct solution looks like this:\nprint(False or True)"
+    "approach": "Print False or True.\n\nReference solution:\nprint(False or True)"
   },
   {
     "id": "m3-t4-p04",
@@ -1733,7 +1737,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(not False)",
-    "approach": "Print not False.\n\nKey points: print(not False)\n\nA correct solution looks like this:\nprint(not False)"
+    "approach": "Print not False.\n\nReference solution:\nprint(not False)"
   },
   {
     "id": "m3-t4-p05",
@@ -1806,7 +1810,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(not True)",
-    "approach": "Print not True.\n\nKey points: print(not True)\n\nA correct solution looks like this:\nprint(not True)"
+    "approach": "Print not True.\n\nReference solution:\nprint(not True)"
   },
   {
     "id": "m3-t4-p06",
@@ -1879,7 +1883,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(5 > 3 and 2 < 4)",
-    "approach": "Print 5 > 3 and 2 < 4.\n\nKey points: print(5 > 3 and 2 < 4)\n\nA correct solution looks like this:\nprint(5 > 3 and 2 < 4)"
+    "approach": "Print 5 > 3 and 2 < 4.\n\nReference solution:\nprint(5 > 3 and 2 < 4)"
   },
   {
     "id": "m3-t4-p07",
@@ -1952,7 +1956,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(5 > 10 or 3 == 3)",
-    "approach": "Print 5 > 10 or 3 == 3.\n\nKey points: print(5 > 10 or 3 == 3)\n\nA correct solution looks like this:\nprint(5 > 10 or 3 == 3)"
+    "approach": "Print 5 > 10 or 3 == 3.\n\nReference solution:\nprint(5 > 10 or 3 == 3)"
   },
   {
     "id": "m3-t5-p01",
@@ -2016,8 +2020,8 @@ export const module3Practice: PracticeProblem[] = [
       },
       {
         "id": "m3-t5-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "True",
+        "label": "Required names and structure",
+        "assertCode": "assert \"x\" in globals(), \"Expected a variable named x\"",
         "visibility": "public"
       },
       {
@@ -2028,7 +2032,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "x = None\nprint(x is None)",
-    "approach": "Set x = None, print x is None.\n\nKey points: x = None\\nprint(x is None)\n\nA correct solution looks like this:\nx = None\nprint(x is None)"
+    "approach": "Set x = None, print x is None.\n\nReference solution:\nx = None\nprint(x is None)"
   },
   {
     "id": "m3-t5-p02",
@@ -2066,6 +2070,10 @@ export const module3Practice: PracticeProblem[] = [
           "index": 0,
           "expected": "True"
         }
+      ],
+      "requiresVariables": [
+        "a",
+        "b"
       ]
     },
     "examples": [
@@ -2089,8 +2097,8 @@ export const module3Practice: PracticeProblem[] = [
       },
       {
         "id": "m3-t5-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "True",
+        "label": "Required names and structure",
+        "assertCode": "assert \"a\" in globals(), \"Expected a variable named a\"\nassert \"b\" in globals(), \"Expected a variable named b\"",
         "visibility": "public"
       },
       {
@@ -2101,7 +2109,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "a = [1, 2]\nb = a\nprint(a is b)",
-    "approach": "Set a = [1,2]; b = a; print a is b.\n\nKey points: a = [1, 2]\\nb = a\\nprint(a is b)\n\nA correct solution looks like this:\na = [1, 2]\nb = a\nprint(a is b)"
+    "approach": "Set a = [1,2]; b = a; print a is b.\n\nReference solution:\na = [1, 2]\nb = a\nprint(a is b)"
   },
   {
     "id": "m3-t5-p03",
@@ -2139,6 +2147,10 @@ export const module3Practice: PracticeProblem[] = [
           "index": 0,
           "expected": "False"
         }
+      ],
+      "requiresVariables": [
+        "a",
+        "b"
       ]
     },
     "examples": [
@@ -2162,8 +2174,8 @@ export const module3Practice: PracticeProblem[] = [
       },
       {
         "id": "m3-t5-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "False",
+        "label": "Required names and structure",
+        "assertCode": "assert \"a\" in globals(), \"Expected a variable named a\"\nassert \"b\" in globals(), \"Expected a variable named b\"",
         "visibility": "public"
       },
       {
@@ -2174,7 +2186,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "a = [1]\nb = [1]\nprint(a is b)",
-    "approach": "Set a = [1]; b = [1]; print a is b.\n\nKey points: a = [1]\\nb = [1]\\nprint(a is b)\n\nA correct solution looks like this:\na = [1]\nb = [1]\nprint(a is b)"
+    "approach": "Set a = [1]; b = [1]; print a is b.\n\nReference solution:\na = [1]\nb = [1]\nprint(a is b)"
   },
   {
     "id": "m3-t5-p04",
@@ -2212,6 +2224,9 @@ export const module3Practice: PracticeProblem[] = [
           "index": 0,
           "expected": "True"
         }
+      ],
+      "requiresVariables": [
+        "x"
       ]
     },
     "examples": [
@@ -2235,8 +2250,8 @@ export const module3Practice: PracticeProblem[] = [
       },
       {
         "id": "m3-t5-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "True",
+        "label": "Required names and structure",
+        "assertCode": "assert \"x\" in globals(), \"Expected a variable named x\"",
         "visibility": "public"
       },
       {
@@ -2247,7 +2262,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "x = 5\nprint(x is not None)",
-    "approach": "Set x = 5, print x is not None.\n\nKey points: x = 5\\nprint(x is not None)\n\nA correct solution looks like this:\nx = 5\nprint(x is not None)"
+    "approach": "Set x = 5, print x is not None.\n\nReference solution:\nx = 5\nprint(x is not None)"
   },
   {
     "id": "m3-t5-p05",
@@ -2320,7 +2335,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(5 is 5)",
-    "approach": "Print 5 is 5.\n\nKey points: print(5 is 5)\n\nA correct solution looks like this:\nprint(5 is 5)"
+    "approach": "Print 5 is 5.\n\nReference solution:\nprint(5 is 5)"
   },
   {
     "id": "m3-t5-p06",
@@ -2358,6 +2373,10 @@ export const module3Practice: PracticeProblem[] = [
           "index": 0,
           "expected": "True"
         }
+      ],
+      "requiresVariables": [
+        "a",
+        "b"
       ]
     },
     "examples": [
@@ -2381,8 +2400,8 @@ export const module3Practice: PracticeProblem[] = [
       },
       {
         "id": "m3-t5-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "True",
+        "label": "Required names and structure",
+        "assertCode": "assert \"a\" in globals(), \"Expected a variable named a\"\nassert \"b\" in globals(), \"Expected a variable named b\"",
         "visibility": "public"
       },
       {
@@ -2393,7 +2412,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "a = [1, 2]\nb = [1, 2]\nprint(a is not b)",
-    "approach": "Set a = [1,2]; b = [1,2]; print a is not b.\n\nKey points: a = [1, 2]\\nb = [1, 2]\\nprint(a is not b)\n\nA correct solution looks like this:\na = [1, 2]\nb = [1, 2]\nprint(a is not b)"
+    "approach": "Set a = [1,2]; b = [1,2]; print a is not b.\n\nReference solution:\na = [1, 2]\nb = [1, 2]\nprint(a is not b)"
   },
   {
     "id": "m3-t5-p07",
@@ -2447,7 +2466,7 @@ export const module3Practice: PracticeProblem[] = [
       "def f():\\n    return None\\nprint(f() is None)"
     ],
     "starterCode": "",
-    "approach": "Define f() returning None, print f() is None. Key points: def f():\\n return None\\nprint(f() is None) A correct solution looks like this: def f(): return None print(f() is None)",
+    "approach": "Define f() returning None, print f() is None.\n\nReference solution:\ndef f():\n    return None\nprint(f() is None)",
     "publicTests": [
       {
         "id": "m3-t5-p07-t1",
@@ -2457,8 +2476,8 @@ export const module3Practice: PracticeProblem[] = [
       },
       {
         "id": "m3-t5-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "True",
+        "label": "Required names and structure",
+        "assertCode": "assert \"f\" in globals() and callable(globals()[\"f\"]), \"Expected a function named f\"",
         "visibility": "public"
       },
       {
@@ -2541,7 +2560,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(\"a\" in \"abc\")",
-    "approach": "Print \"a\" in \"abc\".\n\nKey points: print(\"a\" in \"abc\")\n\nA correct solution looks like this:\nprint(\"a\" in \"abc\")"
+    "approach": "Print \"a\" in \"abc\".\n\nReference solution:\nprint(\"a\" in \"abc\")"
   },
   {
     "id": "m3-t6-p02",
@@ -2614,7 +2633,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(\"z\" not in \"abc\")",
-    "approach": "Print \"z\" not in \"abc\".\n\nKey points: print(\"z\" not in \"abc\")\n\nA correct solution looks like this:\nprint(\"z\" not in \"abc\")"
+    "approach": "Print \"z\" not in \"abc\".\n\nReference solution:\nprint(\"z\" not in \"abc\")"
   },
   {
     "id": "m3-t6-p03",
@@ -2687,7 +2706,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(2 in [1, 2, 3])",
-    "approach": "Print 2 in [1, 2, 3].\n\nKey points: print(2 in [1, 2, 3])\n\nA correct solution looks like this:\nprint(2 in [1, 2, 3])"
+    "approach": "Print 2 in [1, 2, 3].\n\nReference solution:\nprint(2 in [1, 2, 3])"
   },
   {
     "id": "m3-t6-p04",
@@ -2760,7 +2779,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(5 not in [1, 2, 3])",
-    "approach": "Print 5 not in [1, 2, 3].\n\nKey points: print(5 not in [1, 2, 3])\n\nA correct solution looks like this:\nprint(5 not in [1, 2, 3])"
+    "approach": "Print 5 not in [1, 2, 3].\n\nReference solution:\nprint(5 not in [1, 2, 3])"
   },
   {
     "id": "m3-t6-p05",
@@ -2833,7 +2852,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(3 in {1, 2, 3})",
-    "approach": "Print 3 in {1, 2, 3}.\n\nKey points: print(3 in {1, 2, 3})\n\nA correct solution looks like this:\nprint(3 in {1, 2, 3})"
+    "approach": "Print 3 in {1, 2, 3}.\n\nReference solution:\nprint(3 in {1, 2, 3})"
   },
   {
     "id": "m3-t6-p06",
@@ -2906,7 +2925,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(\"name\" in {\"name\": \"Ana\", \"age\": 20})",
-    "approach": "Print \"name\" in {\"name\": \"Ana\", \"age\": 20}.\n\nKey points: print(\"name\" in {\"name\": \"Ana\", \"age\": 20})\n\nA correct solution looks like this:\nprint(\"name\" in {\"name\": \"Ana\", \"age\": 20})"
+    "approach": "Print \"name\" in {\"name\": \"Ana\", \"age\": 20}.\n\nReference solution:\nprint(\"name\" in {\"name\": \"Ana\", \"age\": 20})"
   },
   {
     "id": "m3-t6-p07",
@@ -2959,7 +2978,7 @@ export const module3Practice: PracticeProblem[] = [
       "print(2 in [1, 2, 3])\\nprint(5 in [1, 2, 3])"
     ],
     "starterCode": "",
-    "approach": "Print 2 in [1,2,3] and 5 in [1,2,3] on separate lines. Key points: print(2 in [1, 2, 3])\\nprint(5 in [1, 2, 3]) A correct solution looks like this: print(2 in [1, 2, 3]) print(5 in [1, 2, 3])",
+    "approach": "Print 2 in [1,2,3] and 5 in [1,2,3] on separate lines.\n\nReference solution:\nprint(2 in [1, 2, 3])\nprint(5 in [1, 2, 3])",
     "publicTests": [
       {
         "id": "m3-t6-p07-t1",
@@ -3053,7 +3072,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(5 & 1)",
-    "approach": "Print 5 & 1.\n\nKey points: print(5 & 1)\n\nA correct solution looks like this:\nprint(5 & 1)"
+    "approach": "Print 5 & 1.\n\nReference solution:\nprint(5 & 1)"
   },
   {
     "id": "m3-t7-p02",
@@ -3126,7 +3145,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(5 | 2)",
-    "approach": "Print 5 | 2.\n\nKey points: print(5 | 2)\n\nA correct solution looks like this:\nprint(5 | 2)"
+    "approach": "Print 5 | 2.\n\nReference solution:\nprint(5 | 2)"
   },
   {
     "id": "m3-t7-p03",
@@ -3199,7 +3218,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(5 ^ 1)",
-    "approach": "Print 5 ^ 1.\n\nKey points: print(5 ^ 1)\n\nA correct solution looks like this:\nprint(5 ^ 1)"
+    "approach": "Print 5 ^ 1.\n\nReference solution:\nprint(5 ^ 1)"
   },
   {
     "id": "m3-t7-p04",
@@ -3272,7 +3291,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(3 << 1)",
-    "approach": "Print 3 << 1.\n\nKey points: print(3 << 1)\n\nA correct solution looks like this:\nprint(3 << 1)"
+    "approach": "Print 3 << 1.\n\nReference solution:\nprint(3 << 1)"
   },
   {
     "id": "m3-t7-p05",
@@ -3345,7 +3364,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(8 >> 1)",
-    "approach": "Print 8 >> 1.\n\nKey points: print(8 >> 1)\n\nA correct solution looks like this:\nprint(8 >> 1)"
+    "approach": "Print 8 >> 1.\n\nReference solution:\nprint(8 >> 1)"
   },
   {
     "id": "m3-t7-p06",
@@ -3418,7 +3437,7 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print(12 & 10)",
-    "approach": "Print 12 & 10.\n\nKey points: print(12 & 10)\n\nA correct solution looks like this:\nprint(12 & 10)"
+    "approach": "Print 12 & 10.\n\nReference solution:\nprint(12 & 10)"
   },
   {
     "id": "m3-t7-p07",
@@ -3491,6 +3510,6 @@ export const module3Practice: PracticeProblem[] = [
       }
     ],
     "solutionCode": "print((5 & 3) | 2)",
-    "approach": "Print (5 & 3) | 2.\n\nKey points: print((5 & 3) | 2)\n\nA correct solution looks like this:\nprint((5 & 3) | 2)"
+    "approach": "Print (5 & 3) | 2.\n\nReference solution:\nprint((5 & 3) | 2)"
   }
 ];

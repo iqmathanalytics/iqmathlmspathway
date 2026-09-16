@@ -4,255 +4,252 @@ export const module12Practice: PracticeProblem[] = [
   {
     "id": "m12-t1-p01",
     "topicId": "m12-t1",
-    "slug": "def-basic",
+    "slug": "define-hello",
     "title": "Creating Functions: Define a Function",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Define def greet(): print(\"Hi\"), call it.",
+    "description": "Define def hello(): print(\"hello\"), then call hello().",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "greet",
       "introSegments": [
         {
           "type": "text",
-          "value": "Define and call a simple function."
+          "value": "Define def hello(): print(\"hello\"), then call hello()."
         }
       ],
-      "editorPlaceholder": "# def greet",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "hello"
     },
     "examples": [
       {
-        "output": "Hi"
+        "output": "hello"
       }
     ],
     "constraints": [
-      "Output: Hi"
+      "Output must match: hello"
     ],
     "hints": [
-      "def greet():\\n    print(\"Hi\")\\ngreet()"
+      "def hello():\n    print(\"hello\")\nhello()"
     ],
     "starterCode": "",
-    "approach": "Define def greet(): print(\"Hi\"), call it. Key points: def greet():\\n print(\"Hi\")\\ngreet() A correct solution looks like this: def greet(): print(\"Hi\") greet()",
     "publicTests": [
       {
         "id": "m12-t1-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hi",
+        "expectedStdout": "hello",
         "visibility": "public"
       },
       {
         "id": "m12-t1-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hi",
+        "label": "Required names and structure",
+        "assertCode": "assert \"hello\" in globals() and callable(globals()[\"hello\"]), \"Expected a function named hello\"",
         "visibility": "public"
       },
       {
         "id": "m12-t1-p01-t3",
         "label": "No Extra Output",
-        "expectedStdout": "Hi",
+        "expectedStdout": "hello",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hi\")\ngreet()"
+    "solutionCode": "def hello():\n    print(\"hello\")\nhello()",
+    "approach": "Define def hello(): print(\"hello\"), then call hello().\n\nReference solution:\ndef hello():\n    print(\"hello\")\nhello()"
   },
   {
     "id": "m12-t1-p02",
     "topicId": "m12-t1",
-    "slug": "def-return",
+    "slug": "return-add",
     "title": "Creating Functions: Return Value",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Define def add(a,b): return a+b, print add(2,3).",
+    "description": "Define def add(left, right): return left + right, then print add(4, 6).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "add",
       "introSegments": [
         {
           "type": "text",
-          "value": "Use "
-        },
-        {
-          "type": "code",
-          "value": "return"
-        },
-        {
-          "type": "text",
-          "value": " to send back a value."
+          "value": "Define def add(left, right): return left + right, then print add(4, 6)."
         }
       ],
-      "editorPlaceholder": "# return",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "add"
     },
     "examples": [
       {
-        "output": "5"
+        "output": "10"
       }
     ],
     "constraints": [
-      "Output: 5"
+      "Output must match: 10"
     ],
     "hints": [
-      "def add(a,b):\\n    return a+b\\nprint(add(2,3))"
+      "Use return, then print the function call."
     ],
     "starterCode": "",
-    "approach": "Define def add(a,b): return a+b, print add(2,3). Key points: def add(a,b):\\n return a+b\\nprint(add(2,3)) A correct solution looks like this: def add(a,b): return a+b print(add(2,3))",
     "publicTests": [
       {
         "id": "m12-t1-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "5",
+        "expectedStdout": "10",
         "visibility": "public"
       },
       {
         "id": "m12-t1-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "5",
+        "label": "Required names and structure",
+        "assertCode": "assert \"add\" in globals() and callable(globals()[\"add\"]), \"Expected a function named add\"",
         "visibility": "public"
       },
       {
         "id": "m12-t1-p02-t3",
         "label": "No Extra Output",
-        "expectedStdout": "5",
+        "expectedStdout": "10",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def add(a,b):\n    return a+b\nprint(add(2,3))"
+    "solutionCode": "def add(left, right):\n    return left + right\nprint(add(4, 6))",
+    "approach": "Define def add(left, right): return left + right, then print add(4, 6).\n\nReference solution:\ndef add(left, right):\n    return left + right\nprint(add(4, 6))"
   },
   {
     "id": "m12-t1-p03",
     "topicId": "m12-t1",
-    "slug": "def-param",
+    "slug": "shout-param",
     "title": "Creating Functions: Parameter",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "Define def shout(name): print(name.upper()), call shout(\"hi\").",
+    "description": "Define def shout(word): print(word.upper()), then call shout(\"go\").",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "shout",
       "introSegments": [
         {
           "type": "text",
-          "value": "Pass an argument to a function."
+          "value": "Define def shout(word): print(word.upper()), then call shout(\"go\")."
         }
       ],
-      "editorPlaceholder": "# param",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "shout"
     },
     "examples": [
       {
-        "output": "HI"
+        "output": "GO"
       }
     ],
     "constraints": [
-      "Output: HI"
+      "Output must match: GO"
     ],
     "hints": [
-      "def shout(name):\\n    print(name.upper())\\nshout(\"hi\")"
+      "def shout(word):\n    print(word.upper())\nshout(\"go\")"
     ],
     "starterCode": "",
-    "approach": "Define def shout(name): print(name.upper()), call shout(\"hi\"). Key points: def shout(name):\\n print(name.upper())\\nshout(\"hi\") A correct solution looks like this: def shout(name): print(name.upper()) shout(\"hi\")",
     "publicTests": [
       {
         "id": "m12-t1-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "HI",
+        "expectedStdout": "GO",
         "visibility": "public"
       },
       {
         "id": "m12-t1-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "HI",
+        "label": "Required names and structure",
+        "assertCode": "assert \"shout\" in globals() and callable(globals()[\"shout\"]), \"Expected a function named shout\"",
         "visibility": "public"
       },
       {
         "id": "m12-t1-p03-t3",
         "label": "No Extra Output",
-        "expectedStdout": "HI",
+        "expectedStdout": "GO",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def shout(name):\n    print(name.upper())\nshout(\"hi\")"
+    "solutionCode": "def shout(word):\n    print(word.upper())\nshout(\"go\")",
+    "approach": "Define def shout(word): print(word.upper()), then call shout(\"go\").\n\nReference solution:\ndef shout(word):\n    print(word.upper())\nshout(\"go\")"
   },
   {
     "id": "m12-t1-p04",
     "topicId": "m12-t1",
-    "slug": "def-default",
+    "slug": "default-greet",
     "title": "Creating Functions: Default Parameter",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Define def greet(name=\"Guest\"): print(f\"Hi {name}\"), call greet().",
+    "description": "Define def greet(name=\"there\"): print(f\"Hi {name}\"), then call greet() with no argument.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "greet",
       "introSegments": [
         {
           "type": "text",
-          "value": "Default parameter values."
+          "value": "Define def greet(name=\"there\"): print(f\"Hi {name}\"), then call greet() with no argument."
         }
       ],
-      "editorPlaceholder": "# default",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "greet"
     },
     "examples": [
       {
-        "output": "Hi Guest"
+        "output": "Hi there"
       }
     ],
     "constraints": [
-      "Output: Hi Guest"
+      "Output must match: Hi there"
     ],
     "hints": [
-      "def greet(name=\"Guest\"):\\n    print(f\"Hi {name}\")\\ngreet()"
+      "The default is used when you call greet() with no argument."
     ],
     "starterCode": "",
-    "approach": "Define def greet(name=\"Guest\"): print(f\"Hi {name}\"), call greet(). Key points: def greet(name=\"Guest\"):\\n print(f\"Hi {name}\")\\ngreet() A correct solution looks like this: def greet(name=\"Guest\"): print(f\"Hi {name}\") greet()",
     "publicTests": [
       {
         "id": "m12-t1-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hi Guest",
+        "expectedStdout": "Hi there",
         "visibility": "public"
       },
       {
         "id": "m12-t1-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hi Guest",
+        "label": "Required names and structure",
+        "assertCode": "assert \"greet\" in globals() and callable(globals()[\"greet\"]), \"Expected a function named greet\"",
         "visibility": "public"
       },
       {
         "id": "m12-t1-p04-t3",
         "label": "No Extra Output",
-        "expectedStdout": "Hi Guest",
+        "expectedStdout": "Hi there",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet(name=\"Guest\"):\n    print(f\"Hi {name}\")\ngreet()"
+    "solutionCode": "def greet(name=\"there\"):\n    print(f\"Hi {name}\")\ngreet()",
+    "approach": "Define def greet(name=\"there\"): print(f\"Hi {name}\"), then call greet() with no argument.\n\nReference solution:\ndef greet(name=\"there\"):\n    print(f\"Hi {name}\")\ngreet()"
   },
   {
     "id": "m12-t1-p05",
     "topicId": "m12-t1",
-    "slug": "def-multiple-return",
+    "slug": "two-returns",
     "title": "Creating Functions: Multiple Returns",
     "difficulty": "hard",
     "order": 5,
     "layout": "challenge",
-    "description": "Define def minmax(a,b): return min(a,b), max(a,b), print minmax(3,7)[0].",
+    "description": "Define def bounds(left, right): return min(left, right), max(left, right). Print bounds(8, 3)[0].",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "minmax",
       "introSegments": [
         {
           "type": "text",
-          "value": "Return multiple values as tuple."
+          "value": "Define def bounds(left, right): return min(left, right), max(left, right). Print bounds(8, 3)[0]."
         }
       ],
-      "editorPlaceholder": "# multi return",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "bounds"
     },
     "examples": [
       {
@@ -260,13 +257,12 @@ export const module12Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output: 3"
+      "Output must match: 3"
     ],
     "hints": [
-      "def minmax(a,b):\\n    return min(a,b), max(a,b)\\nprint(minmax(3,7)[0])"
+      "return a, b makes a tuple. Index 0 is the smaller value."
     ],
     "starterCode": "",
-    "approach": "Define def minmax(a,b): return min(a,b), max(a,b), print minmax(3,7)[0]. Key points: def minmax(a,b):\\n return min(a,b), max(a,b)\\nprint(minmax(3,7)[0]) A correct solution looks like this: def minmax(a,b): return min(a,b), max(a,b) print(minmax(3,7)[0])",
     "publicTests": [
       {
         "id": "m12-t1-p05-t1",
@@ -276,8 +272,8 @@ export const module12Practice: PracticeProblem[] = [
       },
       {
         "id": "m12-t1-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "3",
+        "label": "Required names and structure",
+        "assertCode": "assert \"bounds\" in globals() and callable(globals()[\"bounds\"]), \"Expected a function named bounds\"",
         "visibility": "public"
       },
       {
@@ -287,28 +283,30 @@ export const module12Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "def minmax(a,b):\n    return min(a,b), max(a,b)\nprint(minmax(3,7)[0])"
+    "solutionCode": "def bounds(left, right):\n    return min(left, right), max(left, right)\nprint(bounds(8, 3)[0])",
+    "approach": "Define def bounds(left, right): return min(left, right), max(left, right). Print bounds(8, 3)[0].\n\nReference solution:\ndef bounds(left, right):\n    return min(left, right), max(left, right)\nprint(bounds(8, 3)[0])"
   },
   {
     "id": "m12-t1-p06",
     "topicId": "m12-t1",
-    "slug": "def-scope",
+    "slug": "local-return",
     "title": "Creating Functions: Local Variable",
     "difficulty": "hard",
     "order": 6,
     "layout": "challenge",
-    "description": "Define def f(): x=10; return x, print f().",
+    "description": "Define def local_ten(): value = 10; return value. Print local_ten().",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "f",
       "introSegments": [
         {
           "type": "text",
-          "value": "Variables inside functions are local."
+          "value": "Define def local_ten(): value = 10; return value. Print local_ten()."
         }
       ],
-      "editorPlaceholder": "# local",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "local_ten"
     },
     "examples": [
       {
@@ -316,13 +314,12 @@ export const module12Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output: 10"
+      "Output must match: 10"
     ],
     "hints": [
-      "def f():\\n    x=10\\n    return x\\nprint(f())"
+      "value lives inside the function. return it, then print the call."
     ],
     "starterCode": "",
-    "approach": "Define def f(): x=10; return x, print f(). Key points: def f():\\n x=10\\n return x\\nprint(f()) A correct solution looks like this: def f(): x=10 return x print(f())",
     "publicTests": [
       {
         "id": "m12-t1-p06-t1",
@@ -332,8 +329,8 @@ export const module12Practice: PracticeProblem[] = [
       },
       {
         "id": "m12-t1-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "10",
+        "label": "Required names and structure",
+        "assertCode": "assert \"local_ten\" in globals() and callable(globals()[\"local_ten\"]), \"Expected a function named local_ten\"",
         "visibility": "public"
       },
       {
@@ -343,1284 +340,1304 @@ export const module12Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "def f():\n    x=10\n    return x\nprint(f())"
+    "solutionCode": "def local_ten():\n    value = 10\n    return value\nprint(local_ten())",
+    "approach": "Define def local_ten(): value = 10; return value. Print local_ten().\n\nReference solution:\ndef local_ten():\n    value = 10\n    return value\nprint(local_ten())"
   },
   {
     "id": "m12-t1-p07",
     "topicId": "m12-t1",
-    "slug": "def-nested",
+    "slug": "compose-fns",
     "title": "Creating Functions: Function Calling Function",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Define def double(x): return x*2, def quad(x): return double(double(x)), print quad(2).",
+    "description": "Define def double(n): return n * 2 and def quadruple(n): return double(double(n)). Print quadruple(3).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "quad",
       "introSegments": [
         {
           "type": "text",
-          "value": "One function can call another."
+          "value": "Define def double(n): return n * 2 and def quadruple(n): return double(double(n)). Print quadruple(3)."
         }
       ],
-      "editorPlaceholder": "# nested fn",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "quadruple"
     },
     "examples": [
       {
-        "output": "8"
+        "output": "12"
       }
     ],
     "constraints": [
-      "Output: 8"
+      "Output must match: 12"
     ],
     "hints": [
-      "def double(x): return x*2\\ndef quad(x): return double(double(x))\\nprint(quad(2))"
+      "quadruple should call double twice."
     ],
     "starterCode": "",
-    "approach": "Define def double(x): return x*2, def quad(x): return double(double(x)), print quad(2). Key points: def double(x): return x*2\\ndef quad(x): return double(double(x))\\nprint(quad(2)) A correct solution looks like this: def double(x): return x*2 def quad(x): return double(double(x)) print(quad(2))",
     "publicTests": [
       {
         "id": "m12-t1-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "8",
+        "expectedStdout": "12",
         "visibility": "public"
       },
       {
         "id": "m12-t1-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "8",
+        "label": "Required names and structure",
+        "assertCode": "assert \"quadruple\" in globals() and callable(globals()[\"quadruple\"]), \"Expected a function named quadruple\"",
         "visibility": "public"
       },
       {
         "id": "m12-t1-p07-t3",
         "label": "No Extra Output",
-        "expectedStdout": "8",
+        "expectedStdout": "12",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def double(x): return x*2\ndef quad(x): return double(double(x))\nprint(quad(2))"
+    "solutionCode": "def double(n):\n    return n * 2\ndef quadruple(n):\n    return double(double(n))\nprint(quadruple(3))",
+    "approach": "Define def double(n): return n * 2 and def quadruple(n): return double(double(n)). Print quadruple(3).\n\nReference solution:\ndef double(n):\n    return n * 2\ndef quadruple(n):\n    return double(double(n))\nprint(quadruple(3))"
   },
   {
     "id": "m12-t2-p01",
     "topicId": "m12-t2",
-    "slug": "def-basic",
-    "title": "Calling Functions: Define a Function",
+    "slug": "call-len",
+    "title": "Calling Functions: Call len",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Define def greet(): print(\"Hi\"), call it.",
+    "description": "Print len(\"code\"). This calls a built-in function.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "greet",
       "introSegments": [
         {
           "type": "text",
-          "value": "Define and call a simple function."
+          "value": "Print len(\"code\"). This calls a built-in function."
         }
       ],
-      "editorPlaceholder": "# def greet",
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
       "successDetail": "Correct!"
     },
     "examples": [
       {
-        "output": "Hi"
+        "output": "4"
       }
     ],
     "constraints": [
-      "Output: Hi"
+      "Output must match: 4"
     ],
     "hints": [
-      "def greet():\\n    print(\"Hi\")\\ngreet()"
+      "print(len(\"code\"))"
     ],
     "starterCode": "",
-    "approach": "Define def greet(): print(\"Hi\"), call it. Key points: def greet():\\n print(\"Hi\")\\ngreet() A correct solution looks like this: def greet(): print(\"Hi\") greet()",
     "publicTests": [
       {
         "id": "m12-t2-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hi",
+        "expectedStdout": "4",
         "visibility": "public"
       },
       {
         "id": "m12-t2-p01-t2",
         "label": "Exact Output",
-        "expectedStdout": "Hi",
+        "expectedStdout": "4",
         "visibility": "public"
       },
       {
         "id": "m12-t2-p01-t3",
         "label": "No Extra Output",
-        "expectedStdout": "Hi",
+        "expectedStdout": "4",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hi\")\ngreet()"
+    "solutionCode": "print(len(\"code\"))",
+    "approach": "Print len(\"code\"). This calls a built-in function.\n\nReference solution:\nprint(len(\"code\"))"
   },
   {
     "id": "m12-t2-p02",
     "topicId": "m12-t2",
-    "slug": "def-return",
-    "title": "Calling Functions: Return Value",
+    "slug": "call-max",
+    "title": "Calling Functions: Call max",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Define def add(a,b): return a+b, print add(2,3).",
+    "description": "Print max(3, 9, 5).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "add",
       "introSegments": [
         {
           "type": "text",
-          "value": "Use "
-        },
-        {
-          "type": "code",
-          "value": "return"
-        },
-        {
-          "type": "text",
-          "value": " to send back a value."
+          "value": "Print max(3, 9, 5)."
         }
       ],
-      "editorPlaceholder": "# return",
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
       "successDetail": "Correct!"
     },
     "examples": [
       {
-        "output": "5"
+        "output": "9"
       }
     ],
     "constraints": [
-      "Output: 5"
+      "Output must match: 9"
     ],
     "hints": [
-      "def add(a,b):\\n    return a+b\\nprint(add(2,3))"
+      "print(max(3, 9, 5))"
     ],
     "starterCode": "",
-    "approach": "Define def add(a,b): return a+b, print add(2,3). Key points: def add(a,b):\\n return a+b\\nprint(add(2,3)) A correct solution looks like this: def add(a,b): return a+b print(add(2,3))",
     "publicTests": [
       {
         "id": "m12-t2-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "5",
+        "expectedStdout": "9",
         "visibility": "public"
       },
       {
         "id": "m12-t2-p02-t2",
         "label": "Exact Output",
-        "expectedStdout": "5",
+        "expectedStdout": "9",
         "visibility": "public"
       },
       {
         "id": "m12-t2-p02-t3",
         "label": "No Extra Output",
-        "expectedStdout": "5",
+        "expectedStdout": "9",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def add(a,b):\n    return a+b\nprint(add(2,3))"
+    "solutionCode": "print(max(3, 9, 5))",
+    "approach": "Print max(3, 9, 5).\n\nReference solution:\nprint(max(3, 9, 5))"
   },
   {
     "id": "m12-t2-p03",
     "topicId": "m12-t2",
-    "slug": "def-param",
-    "title": "Calling Functions: Parameter",
+    "slug": "call-twice",
+    "title": "Calling Functions: Call Twice",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "Define def shout(name): print(name.upper()), call shout(\"hi\").",
+    "description": "Define def show(msg): print(msg). Call it twice: show(\"ready\") then show(\"go\").",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "shout",
       "introSegments": [
         {
           "type": "text",
-          "value": "Pass an argument to a function."
+          "value": "Define def show(msg): print(msg). Call it twice: show(\"ready\") then show(\"go\")."
         }
       ],
-      "editorPlaceholder": "# param",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "show"
     },
     "examples": [
       {
-        "output": "HI"
+        "output": "ready\ngo"
       }
     ],
     "constraints": [
-      "Output: HI"
+      "Output must match: ready / go"
     ],
     "hints": [
-      "def shout(name):\\n    print(name.upper())\\nshout(\"hi\")"
+      "Define once, then call the same function twice."
     ],
     "starterCode": "",
-    "approach": "Define def shout(name): print(name.upper()), call shout(\"hi\"). Key points: def shout(name):\\n print(name.upper())\\nshout(\"hi\") A correct solution looks like this: def shout(name): print(name.upper()) shout(\"hi\")",
     "publicTests": [
       {
         "id": "m12-t2-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "HI",
+        "expectedStdout": "ready\ngo",
         "visibility": "public"
       },
       {
         "id": "m12-t2-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "HI",
+        "label": "Required names and structure",
+        "assertCode": "assert \"show\" in globals() and callable(globals()[\"show\"]), \"Expected a function named show\"",
         "visibility": "public"
       },
       {
         "id": "m12-t2-p03-t3",
         "label": "No Extra Output",
-        "expectedStdout": "HI",
+        "expectedStdout": "ready\ngo",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def shout(name):\n    print(name.upper())\nshout(\"hi\")"
+    "solutionCode": "def show(msg):\n    print(msg)\nshow(\"ready\")\nshow(\"go\")",
+    "approach": "Define def show(msg): print(msg). Call it twice: show(\"ready\") then show(\"go\").\n\nReference solution:\ndef show(msg):\n    print(msg)\nshow(\"ready\")\nshow(\"go\")"
   },
   {
     "id": "m12-t2-p04",
     "topicId": "m12-t2",
-    "slug": "def-default",
-    "title": "Calling Functions: Default Parameter",
+    "slug": "call-with-variable",
+    "title": "Calling Functions: Pass a Variable",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Define def greet(name=\"Guest\"): print(f\"Hi {name}\"), call greet().",
+    "description": "Set name = \"Ada\". Define def greet(who): print(\"Hi \" + who). Call greet(name).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "greet",
       "introSegments": [
         {
           "type": "text",
-          "value": "Default parameter values."
+          "value": "Set name = \"Ada\". Define def greet(who): print(\"Hi \" + who). Call greet(name)."
         }
       ],
-      "editorPlaceholder": "# default",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "name"
+      ],
+      "requiresFunction": "greet"
     },
     "examples": [
       {
-        "output": "Hi Guest"
+        "output": "Hi Ada"
       }
     ],
     "constraints": [
-      "Output: Hi Guest"
+      "Output must match: Hi Ada"
     ],
     "hints": [
-      "def greet(name=\"Guest\"):\\n    print(f\"Hi {name}\")\\ngreet()"
+      "Pass the variable name into greet, not the string again."
     ],
     "starterCode": "",
-    "approach": "Define def greet(name=\"Guest\"): print(f\"Hi {name}\"), call greet(). Key points: def greet(name=\"Guest\"):\\n print(f\"Hi {name}\")\\ngreet() A correct solution looks like this: def greet(name=\"Guest\"): print(f\"Hi {name}\") greet()",
     "publicTests": [
       {
         "id": "m12-t2-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hi Guest",
+        "expectedStdout": "Hi Ada",
         "visibility": "public"
       },
       {
         "id": "m12-t2-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hi Guest",
+        "label": "Required names and structure",
+        "assertCode": "assert \"name\" in globals(), \"Expected a variable named name\"\nassert \"greet\" in globals() and callable(globals()[\"greet\"]), \"Expected a function named greet\"",
         "visibility": "public"
       },
       {
         "id": "m12-t2-p04-t3",
         "label": "No Extra Output",
-        "expectedStdout": "Hi Guest",
+        "expectedStdout": "Hi Ada",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet(name=\"Guest\"):\n    print(f\"Hi {name}\")\ngreet()"
+    "solutionCode": "name = \"Ada\"\ndef greet(who):\n    print(\"Hi \" + who)\ngreet(name)",
+    "approach": "Set name = \"Ada\". Define def greet(who): print(\"Hi \" + who). Call greet(name).\n\nReference solution:\nname = \"Ada\"\ndef greet(who):\n    print(\"Hi \" + who)\ngreet(name)"
   },
   {
     "id": "m12-t2-p05",
     "topicId": "m12-t2",
-    "slug": "def-multiple-return",
-    "title": "Calling Functions: Multiple Returns",
+    "slug": "keyword-call",
+    "title": "Calling Functions: Keyword Arguments",
     "difficulty": "hard",
     "order": 5,
     "layout": "challenge",
-    "description": "Define def minmax(a,b): return min(a,b), max(a,b), print minmax(3,7)[0].",
+    "description": "Define def pair(left, right): print(left, right). Call pair(right=2, left=1).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "minmax",
       "introSegments": [
         {
           "type": "text",
-          "value": "Return multiple values as tuple."
+          "value": "Define def pair(left, right): print(left, right). Call pair(right=2, left=1)."
         }
       ],
-      "editorPlaceholder": "# multi return",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "pair"
     },
     "examples": [
       {
-        "output": "3"
+        "output": "1 2"
       }
     ],
     "constraints": [
-      "Output: 3"
+      "Output must match: 1 2"
     ],
     "hints": [
-      "def minmax(a,b):\\n    return min(a,b), max(a,b)\\nprint(minmax(3,7)[0])"
+      "Keyword names pick the parameters even if the order is swapped."
     ],
     "starterCode": "",
-    "approach": "Define def minmax(a,b): return min(a,b), max(a,b), print minmax(3,7)[0]. Key points: def minmax(a,b):\\n return min(a,b), max(a,b)\\nprint(minmax(3,7)[0]) A correct solution looks like this: def minmax(a,b): return min(a,b), max(a,b) print(minmax(3,7)[0])",
     "publicTests": [
       {
         "id": "m12-t2-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "3",
+        "expectedStdout": "1 2",
         "visibility": "public"
       },
       {
         "id": "m12-t2-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "3",
+        "label": "Required names and structure",
+        "assertCode": "assert \"pair\" in globals() and callable(globals()[\"pair\"]), \"Expected a function named pair\"",
         "visibility": "public"
       },
       {
         "id": "m12-t2-p05-t3",
         "label": "No Extra Output",
-        "expectedStdout": "3",
+        "expectedStdout": "1 2",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def minmax(a,b):\n    return min(a,b), max(a,b)\nprint(minmax(3,7)[0])"
+    "solutionCode": "def pair(left, right):\n    print(left, right)\npair(right=2, left=1)",
+    "approach": "Define def pair(left, right): print(left, right). Call pair(right=2, left=1).\n\nReference solution:\ndef pair(left, right):\n    print(left, right)\npair(right=2, left=1)"
   },
   {
     "id": "m12-t2-p06",
     "topicId": "m12-t2",
-    "slug": "def-scope",
-    "title": "Calling Functions: Local Variable",
+    "slug": "store-return",
+    "title": "Calling Functions: Store the Return",
     "difficulty": "hard",
     "order": 6,
     "layout": "challenge",
-    "description": "Define def f(): x=10; return x, print f().",
+    "description": "Define def triple(n): return n * 3. Set result = triple(5), then print result.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "f",
       "introSegments": [
         {
           "type": "text",
-          "value": "Variables inside functions are local."
+          "value": "Define def triple(n): return n * 3. Set result = triple(5), then print result."
         }
       ],
-      "editorPlaceholder": "# local",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "result"
+      ],
+      "requiresFunction": "triple"
     },
     "examples": [
       {
-        "output": "10"
+        "output": "15"
       }
     ],
     "constraints": [
-      "Output: 10"
+      "Output must match: 15"
     ],
     "hints": [
-      "def f():\\n    x=10\\n    return x\\nprint(f())"
+      "Save the return value in result before printing."
     ],
     "starterCode": "",
-    "approach": "Define def f(): x=10; return x, print f(). Key points: def f():\\n x=10\\n return x\\nprint(f()) A correct solution looks like this: def f(): x=10 return x print(f())",
     "publicTests": [
       {
         "id": "m12-t2-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "10",
+        "expectedStdout": "15",
         "visibility": "public"
       },
       {
         "id": "m12-t2-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "10",
+        "label": "Required names and structure",
+        "assertCode": "assert \"result\" in globals(), \"Expected a variable named result\"\nassert \"triple\" in globals() and callable(globals()[\"triple\"]), \"Expected a function named triple\"",
         "visibility": "public"
       },
       {
         "id": "m12-t2-p06-t3",
         "label": "No Extra Output",
-        "expectedStdout": "10",
+        "expectedStdout": "15",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def f():\n    x=10\n    return x\nprint(f())"
+    "solutionCode": "def triple(n):\n    return n * 3\nresult = triple(5)\nprint(result)",
+    "approach": "Define def triple(n): return n * 3. Set result = triple(5), then print result.\n\nReference solution:\ndef triple(n):\n    return n * 3\nresult = triple(5)\nprint(result)"
   },
   {
     "id": "m12-t2-p07",
     "topicId": "m12-t2",
-    "slug": "def-nested",
-    "title": "Calling Functions: Function Calling Function",
+    "slug": "nested-calls",
+    "title": "Calling Functions: Nested Calls",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Define def double(x): return x*2, def quad(x): return double(double(x)), print quad(2).",
+    "description": "Define def inc(n): return n + 1 and def twice(n): return n * 2. Print twice(inc(4)).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "quad",
       "introSegments": [
         {
           "type": "text",
-          "value": "One function can call another."
+          "value": "Define def inc(n): return n + 1 and def twice(n): return n * 2. Print twice(inc(4))."
         }
       ],
-      "editorPlaceholder": "# nested fn",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "twice"
     },
     "examples": [
       {
-        "output": "8"
+        "output": "10"
       }
     ],
     "constraints": [
-      "Output: 8"
+      "Output must match: 10"
     ],
     "hints": [
-      "def double(x): return x*2\\ndef quad(x): return double(double(x))\\nprint(quad(2))"
+      "inc(4) is 5, then twice(5) is 10."
     ],
     "starterCode": "",
-    "approach": "Define def double(x): return x*2, def quad(x): return double(double(x)), print quad(2). Key points: def double(x): return x*2\\ndef quad(x): return double(double(x))\\nprint(quad(2)) A correct solution looks like this: def double(x): return x*2 def quad(x): return double(double(x)) print(quad(2))",
     "publicTests": [
       {
         "id": "m12-t2-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "8",
+        "expectedStdout": "10",
         "visibility": "public"
       },
       {
         "id": "m12-t2-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "8",
+        "label": "Required names and structure",
+        "assertCode": "assert \"twice\" in globals() and callable(globals()[\"twice\"]), \"Expected a function named twice\"",
         "visibility": "public"
       },
       {
         "id": "m12-t2-p07-t3",
         "label": "No Extra Output",
-        "expectedStdout": "8",
+        "expectedStdout": "10",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def double(x): return x*2\ndef quad(x): return double(double(x))\nprint(quad(2))"
+    "solutionCode": "def inc(n):\n    return n + 1\ndef twice(n):\n    return n * 2\nprint(twice(inc(4)))",
+    "approach": "Define def inc(n): return n + 1 and def twice(n): return n * 2. Print twice(inc(4)).\n\nReference solution:\ndef inc(n):\n    return n + 1\ndef twice(n):\n    return n * 2\nprint(twice(inc(4)))"
   },
   {
     "id": "m12-t3-p01",
     "topicId": "m12-t3",
-    "slug": "def-basic",
-    "title": "Function Arguments: Define a Function",
+    "slug": "positional-args",
+    "title": "Function Arguments: Positional Args",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Define def greet(): print(\"Hi\"), call it.",
+    "description": "Define def product(left, right): return left * right. Print product(6, 7).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "greet",
       "introSegments": [
         {
           "type": "text",
-          "value": "Define and call a simple function."
+          "value": "Define def product(left, right): return left * right. Print product(6, 7)."
         }
       ],
-      "editorPlaceholder": "# def greet",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "product"
     },
     "examples": [
       {
-        "output": "Hi"
+        "output": "42"
       }
     ],
     "constraints": [
-      "Output: Hi"
+      "Output must match: 42"
     ],
     "hints": [
-      "def greet():\\n    print(\"Hi\")\\ngreet()"
+      "The first argument fills left, the second fills right."
     ],
     "starterCode": "",
-    "approach": "Define def greet(): print(\"Hi\"), call it. Key points: def greet():\\n print(\"Hi\")\\ngreet() A correct solution looks like this: def greet(): print(\"Hi\") greet()",
     "publicTests": [
       {
         "id": "m12-t3-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hi",
+        "expectedStdout": "42",
         "visibility": "public"
       },
       {
         "id": "m12-t3-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hi",
+        "label": "Required names and structure",
+        "assertCode": "assert \"product\" in globals() and callable(globals()[\"product\"]), \"Expected a function named product\"",
         "visibility": "public"
       },
       {
         "id": "m12-t3-p01-t3",
         "label": "No Extra Output",
-        "expectedStdout": "Hi",
+        "expectedStdout": "42",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hi\")\ngreet()"
+    "solutionCode": "def product(left, right):\n    return left * right\nprint(product(6, 7))",
+    "approach": "Define def product(left, right): return left * right. Print product(6, 7).\n\nReference solution:\ndef product(left, right):\n    return left * right\nprint(product(6, 7))"
   },
   {
     "id": "m12-t3-p02",
     "topicId": "m12-t3",
-    "slug": "def-return",
-    "title": "Function Arguments: Return Value",
+    "slug": "keyword-args",
+    "title": "Function Arguments: Keyword Args",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Define def add(a,b): return a+b, print add(2,3).",
+    "description": "Define def label(title, year): print(f\"{title} {year}\"). Call label(title=\"Py\", year=1991).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "add",
       "introSegments": [
         {
           "type": "text",
-          "value": "Use "
-        },
-        {
-          "type": "code",
-          "value": "return"
-        },
-        {
-          "type": "text",
-          "value": " to send back a value."
+          "value": "Define def label(title, year): print(f\"{title} {year}\"). Call label(title=\"Py\", year=1991)."
         }
       ],
-      "editorPlaceholder": "# return",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "label"
     },
     "examples": [
       {
-        "output": "5"
+        "output": "Py 1991"
       }
     ],
     "constraints": [
-      "Output: 5"
+      "Output must match: Py 1991"
     ],
     "hints": [
-      "def add(a,b):\\n    return a+b\\nprint(add(2,3))"
+      "Pass arguments by name: title=..., year=..."
     ],
     "starterCode": "",
-    "approach": "Define def add(a,b): return a+b, print add(2,3). Key points: def add(a,b):\\n return a+b\\nprint(add(2,3)) A correct solution looks like this: def add(a,b): return a+b print(add(2,3))",
     "publicTests": [
       {
         "id": "m12-t3-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "5",
+        "expectedStdout": "Py 1991",
         "visibility": "public"
       },
       {
         "id": "m12-t3-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "5",
+        "label": "Required names and structure",
+        "assertCode": "assert \"label\" in globals() and callable(globals()[\"label\"]), \"Expected a function named label\"",
         "visibility": "public"
       },
       {
         "id": "m12-t3-p02-t3",
         "label": "No Extra Output",
-        "expectedStdout": "5",
+        "expectedStdout": "Py 1991",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def add(a,b):\n    return a+b\nprint(add(2,3))"
+    "solutionCode": "def label(title, year):\n    print(f\"{title} {year}\")\nlabel(title=\"Py\", year=1991)",
+    "approach": "Define def label(title, year): print(f\"{title} {year}\"). Call label(title=\"Py\", year=1991).\n\nReference solution:\ndef label(title, year):\n    print(f\"{title} {year}\")\nlabel(title=\"Py\", year=1991)"
   },
   {
     "id": "m12-t3-p03",
     "topicId": "m12-t3",
-    "slug": "def-param",
-    "title": "Function Arguments: Parameter",
+    "slug": "mixed-args",
+    "title": "Function Arguments: Mixed Args",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "Define def shout(name): print(name.upper()), call shout(\"hi\").",
+    "description": "Define def meet(first, last): print(first, last). Call meet(\"Ada\", last=\"Lovelace\").",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "shout",
       "introSegments": [
         {
           "type": "text",
-          "value": "Pass an argument to a function."
+          "value": "Define def meet(first, last): print(first, last). Call meet(\"Ada\", last=\"Lovelace\")."
         }
       ],
-      "editorPlaceholder": "# param",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "meet"
     },
     "examples": [
       {
-        "output": "HI"
+        "output": "Ada Lovelace"
       }
     ],
     "constraints": [
-      "Output: HI"
+      "Output must match: Ada Lovelace"
     ],
     "hints": [
-      "def shout(name):\\n    print(name.upper())\\nshout(\"hi\")"
+      "Positional first, then a keyword for last."
     ],
     "starterCode": "",
-    "approach": "Define def shout(name): print(name.upper()), call shout(\"hi\"). Key points: def shout(name):\\n print(name.upper())\\nshout(\"hi\") A correct solution looks like this: def shout(name): print(name.upper()) shout(\"hi\")",
     "publicTests": [
       {
         "id": "m12-t3-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "HI",
+        "expectedStdout": "Ada Lovelace",
         "visibility": "public"
       },
       {
         "id": "m12-t3-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "HI",
+        "label": "Required names and structure",
+        "assertCode": "assert \"meet\" in globals() and callable(globals()[\"meet\"]), \"Expected a function named meet\"",
         "visibility": "public"
       },
       {
         "id": "m12-t3-p03-t3",
         "label": "No Extra Output",
-        "expectedStdout": "HI",
+        "expectedStdout": "Ada Lovelace",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def shout(name):\n    print(name.upper())\nshout(\"hi\")"
+    "solutionCode": "def meet(first, last):\n    print(first, last)\nmeet(\"Ada\", last=\"Lovelace\")",
+    "approach": "Define def meet(first, last): print(first, last). Call meet(\"Ada\", last=\"Lovelace\").\n\nReference solution:\ndef meet(first, last):\n    print(first, last)\nmeet(\"Ada\", last=\"Lovelace\")"
   },
   {
     "id": "m12-t3-p04",
     "topicId": "m12-t3",
-    "slug": "def-default",
-    "title": "Function Arguments: Default Parameter",
+    "slug": "default-power",
+    "title": "Function Arguments: Default Argument",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Define def greet(name=\"Guest\"): print(f\"Hi {name}\"), call greet().",
+    "description": "Define def power(base, exp=2): return base ** exp. Print power(5) then print power(2, 3).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "greet",
       "introSegments": [
         {
           "type": "text",
-          "value": "Default parameter values."
+          "value": "Define def power(base, exp=2): return base ** exp. Print power(5) then print power(2, 3)."
         }
       ],
-      "editorPlaceholder": "# default",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "power"
     },
     "examples": [
       {
-        "output": "Hi Guest"
+        "output": "25\n8"
       }
     ],
     "constraints": [
-      "Output: Hi Guest"
+      "Output must match: 25 / 8"
     ],
     "hints": [
-      "def greet(name=\"Guest\"):\\n    print(f\"Hi {name}\")\\ngreet()"
+      "power(5) uses exp=2. power(2, 3) overrides the default."
     ],
     "starterCode": "",
-    "approach": "Define def greet(name=\"Guest\"): print(f\"Hi {name}\"), call greet(). Key points: def greet(name=\"Guest\"):\\n print(f\"Hi {name}\")\\ngreet() A correct solution looks like this: def greet(name=\"Guest\"): print(f\"Hi {name}\") greet()",
     "publicTests": [
       {
         "id": "m12-t3-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hi Guest",
+        "expectedStdout": "25\n8",
         "visibility": "public"
       },
       {
         "id": "m12-t3-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hi Guest",
+        "label": "Required names and structure",
+        "assertCode": "assert \"power\" in globals() and callable(globals()[\"power\"]), \"Expected a function named power\"",
         "visibility": "public"
       },
       {
         "id": "m12-t3-p04-t3",
         "label": "No Extra Output",
-        "expectedStdout": "Hi Guest",
+        "expectedStdout": "25\n8",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet(name=\"Guest\"):\n    print(f\"Hi {name}\")\ngreet()"
+    "solutionCode": "def power(base, exp=2):\n    return base ** exp\nprint(power(5))\nprint(power(2, 3))",
+    "approach": "Define def power(base, exp=2): return base ** exp. Print power(5) then print power(2, 3).\n\nReference solution:\ndef power(base, exp=2):\n    return base ** exp\nprint(power(5))\nprint(power(2, 3))"
   },
   {
     "id": "m12-t3-p05",
     "topicId": "m12-t3",
-    "slug": "def-multiple-return",
-    "title": "Function Arguments: Multiple Returns",
+    "slug": "star-args",
+    "title": "Function Arguments: *args",
     "difficulty": "hard",
     "order": 5,
     "layout": "challenge",
-    "description": "Define def minmax(a,b): return min(a,b), max(a,b), print minmax(3,7)[0].",
+    "description": "Define def total(*nums): return sum(nums). Print total(1, 2, 3, 4).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "minmax",
       "introSegments": [
         {
           "type": "text",
-          "value": "Return multiple values as tuple."
+          "value": "Define def total(*nums): return sum(nums). Print total(1, 2, 3, 4)."
         }
       ],
-      "editorPlaceholder": "# multi return",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "total"
     },
     "examples": [
       {
-        "output": "3"
+        "output": "10"
       }
     ],
     "constraints": [
-      "Output: 3"
+      "Output must match: 10"
     ],
     "hints": [
-      "def minmax(a,b):\\n    return min(a,b), max(a,b)\\nprint(minmax(3,7)[0])"
+      "*nums collects extra positional arguments into a tuple."
     ],
     "starterCode": "",
-    "approach": "Define def minmax(a,b): return min(a,b), max(a,b), print minmax(3,7)[0]. Key points: def minmax(a,b):\\n return min(a,b), max(a,b)\\nprint(minmax(3,7)[0]) A correct solution looks like this: def minmax(a,b): return min(a,b), max(a,b) print(minmax(3,7)[0])",
     "publicTests": [
       {
         "id": "m12-t3-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "3",
+        "expectedStdout": "10",
         "visibility": "public"
       },
       {
         "id": "m12-t3-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "3",
+        "label": "Required names and structure",
+        "assertCode": "assert \"total\" in globals() and callable(globals()[\"total\"]), \"Expected a function named total\"",
         "visibility": "public"
       },
       {
         "id": "m12-t3-p05-t3",
         "label": "No Extra Output",
-        "expectedStdout": "3",
+        "expectedStdout": "10",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def minmax(a,b):\n    return min(a,b), max(a,b)\nprint(minmax(3,7)[0])"
+    "solutionCode": "def total(*nums):\n    return sum(nums)\nprint(total(1, 2, 3, 4))",
+    "approach": "Define def total(*nums): return sum(nums). Print total(1, 2, 3, 4).\n\nReference solution:\ndef total(*nums):\n    return sum(nums)\nprint(total(1, 2, 3, 4))"
   },
   {
     "id": "m12-t3-p06",
     "topicId": "m12-t3",
-    "slug": "def-scope",
-    "title": "Function Arguments: Local Variable",
+    "slug": "star-kwargs",
+    "title": "Function Arguments: **kwargs",
     "difficulty": "hard",
     "order": 6,
     "layout": "challenge",
-    "description": "Define def f(): x=10; return x, print f().",
+    "description": "Define def show_info(**data): print(data[\"role\"]). Call show_info(name=\"Ada\", role=\"analyst\").",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "f",
       "introSegments": [
         {
           "type": "text",
-          "value": "Variables inside functions are local."
+          "value": "Define def show_info(**data): print(data[\"role\"]). Call show_info(name=\"Ada\", role=\"analyst\")."
         }
       ],
-      "editorPlaceholder": "# local",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "show_info"
     },
     "examples": [
       {
-        "output": "10"
+        "output": "analyst"
       }
     ],
     "constraints": [
-      "Output: 10"
+      "Output must match: analyst"
     ],
     "hints": [
-      "def f():\\n    x=10\\n    return x\\nprint(f())"
+      "**data collects keyword arguments into a dict."
     ],
     "starterCode": "",
-    "approach": "Define def f(): x=10; return x, print f(). Key points: def f():\\n x=10\\n return x\\nprint(f()) A correct solution looks like this: def f(): x=10 return x print(f())",
     "publicTests": [
       {
         "id": "m12-t3-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "10",
+        "expectedStdout": "analyst",
         "visibility": "public"
       },
       {
         "id": "m12-t3-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "10",
+        "label": "Required names and structure",
+        "assertCode": "assert \"show_info\" in globals() and callable(globals()[\"show_info\"]), \"Expected a function named show_info\"",
         "visibility": "public"
       },
       {
         "id": "m12-t3-p06-t3",
         "label": "No Extra Output",
-        "expectedStdout": "10",
+        "expectedStdout": "analyst",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def f():\n    x=10\n    return x\nprint(f())"
+    "solutionCode": "def show_info(**data):\n    print(data[\"role\"])\nshow_info(name=\"Ada\", role=\"analyst\")",
+    "approach": "Define def show_info(**data): print(data[\"role\"]). Call show_info(name=\"Ada\", role=\"analyst\").\n\nReference solution:\ndef show_info(**data):\n    print(data[\"role\"])\nshow_info(name=\"Ada\", role=\"analyst\")"
   },
   {
     "id": "m12-t3-p07",
     "topicId": "m12-t3",
-    "slug": "def-nested",
-    "title": "Function Arguments: Function Calling Function",
+    "slug": "join-args",
+    "title": "Function Arguments: Join *args",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Define def double(x): return x*2, def quad(x): return double(double(x)), print quad(2).",
+    "description": "Define def join_words(*words): return \"-\".join(words). Print join_words(\"a\", \"b\", \"c\").",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "quad",
       "introSegments": [
         {
           "type": "text",
-          "value": "One function can call another."
+          "value": "Define def join_words(*words): return \"-\".join(words). Print join_words(\"a\", \"b\", \"c\")."
         }
       ],
-      "editorPlaceholder": "# nested fn",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "join_words"
     },
     "examples": [
       {
-        "output": "8"
+        "output": "a-b-c"
       }
     ],
     "constraints": [
-      "Output: 8"
+      "Output must match: a-b-c"
     ],
     "hints": [
-      "def double(x): return x*2\\ndef quad(x): return double(double(x))\\nprint(quad(2))"
+      "\"-\".join(words) glues the collected arguments together."
     ],
     "starterCode": "",
-    "approach": "Define def double(x): return x*2, def quad(x): return double(double(x)), print quad(2). Key points: def double(x): return x*2\\ndef quad(x): return double(double(x))\\nprint(quad(2)) A correct solution looks like this: def double(x): return x*2 def quad(x): return double(double(x)) print(quad(2))",
     "publicTests": [
       {
         "id": "m12-t3-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "8",
+        "expectedStdout": "a-b-c",
         "visibility": "public"
       },
       {
         "id": "m12-t3-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "8",
+        "label": "Required names and structure",
+        "assertCode": "assert \"join_words\" in globals() and callable(globals()[\"join_words\"]), \"Expected a function named join_words\"",
         "visibility": "public"
       },
       {
         "id": "m12-t3-p07-t3",
         "label": "No Extra Output",
-        "expectedStdout": "8",
+        "expectedStdout": "a-b-c",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def double(x): return x*2\ndef quad(x): return double(double(x))\nprint(quad(2))"
+    "solutionCode": "def join_words(*words):\n    return \"-\".join(words)\nprint(join_words(\"a\", \"b\", \"c\"))",
+    "approach": "Define def join_words(*words): return \"-\".join(words). Print join_words(\"a\", \"b\", \"c\").\n\nReference solution:\ndef join_words(*words):\n    return \"-\".join(words)\nprint(join_words(\"a\", \"b\", \"c\"))"
   },
   {
     "id": "m12-t4-p01",
     "topicId": "m12-t4",
-    "slug": "def-basic",
-    "title": "Variables in Functions: Define a Function",
+    "slug": "local-print",
+    "title": "Variables in Functions: Local Variable",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Define def greet(): print(\"Hi\"), call it.",
+    "description": "Define def demo(): count = 7; print(count). Call demo(). count stays inside the function.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "greet",
       "introSegments": [
         {
           "type": "text",
-          "value": "Define and call a simple function."
+          "value": "Define def demo(): count = 7; print(count). Call demo(). count stays inside the function."
         }
       ],
-      "editorPlaceholder": "# def greet",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "demo"
     },
     "examples": [
       {
-        "output": "Hi"
+        "output": "7"
       }
     ],
     "constraints": [
-      "Output: Hi"
+      "Output must match: 7"
     ],
     "hints": [
-      "def greet():\\n    print(\"Hi\")\\ngreet()"
+      "Create count inside the function, then print it there."
     ],
     "starterCode": "",
-    "approach": "Define def greet(): print(\"Hi\"), call it. Key points: def greet():\\n print(\"Hi\")\\ngreet() A correct solution looks like this: def greet(): print(\"Hi\") greet()",
     "publicTests": [
       {
         "id": "m12-t4-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hi",
+        "expectedStdout": "7",
         "visibility": "public"
       },
       {
         "id": "m12-t4-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hi",
+        "label": "Required names and structure",
+        "assertCode": "assert \"demo\" in globals() and callable(globals()[\"demo\"]), \"Expected a function named demo\"",
         "visibility": "public"
       },
       {
         "id": "m12-t4-p01-t3",
         "label": "No Extra Output",
-        "expectedStdout": "Hi",
+        "expectedStdout": "7",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hi\")\ngreet()"
+    "solutionCode": "def demo():\n    count = 7\n    print(count)\ndemo()",
+    "approach": "Define def demo(): count = 7; print(count). Call demo(). count stays inside the function.\n\nReference solution:\ndef demo():\n    count = 7\n    print(count)\ndemo()"
   },
   {
     "id": "m12-t4-p02",
     "topicId": "m12-t4",
-    "slug": "def-return",
-    "title": "Variables in Functions: Return Value",
+    "slug": "read-global",
+    "title": "Variables in Functions: Read a Global",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Define def add(a,b): return a+b, print add(2,3).",
+    "description": "Set message = \"outside\". Define def show(): print(message). Call show().",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "add",
       "introSegments": [
         {
           "type": "text",
-          "value": "Use "
-        },
-        {
-          "type": "code",
-          "value": "return"
-        },
-        {
-          "type": "text",
-          "value": " to send back a value."
+          "value": "Set message = \"outside\". Define def show(): print(message). Call show()."
         }
       ],
-      "editorPlaceholder": "# return",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "message"
+      ],
+      "requiresFunction": "show"
     },
     "examples": [
       {
-        "output": "5"
+        "output": "outside"
       }
     ],
     "constraints": [
-      "Output: 5"
+      "Output must match: outside"
     ],
     "hints": [
-      "def add(a,b):\\n    return a+b\\nprint(add(2,3))"
+      "Functions can read a name defined outside if they do not assign to it."
     ],
     "starterCode": "",
-    "approach": "Define def add(a,b): return a+b, print add(2,3). Key points: def add(a,b):\\n return a+b\\nprint(add(2,3)) A correct solution looks like this: def add(a,b): return a+b print(add(2,3))",
     "publicTests": [
       {
         "id": "m12-t4-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "5",
+        "expectedStdout": "outside",
         "visibility": "public"
       },
       {
         "id": "m12-t4-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "5",
+        "label": "Required names and structure",
+        "assertCode": "assert \"message\" in globals(), \"Expected a variable named message\"\nassert \"show\" in globals() and callable(globals()[\"show\"]), \"Expected a function named show\"",
         "visibility": "public"
       },
       {
         "id": "m12-t4-p02-t3",
         "label": "No Extra Output",
-        "expectedStdout": "5",
+        "expectedStdout": "outside",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def add(a,b):\n    return a+b\nprint(add(2,3))"
+    "solutionCode": "message = \"outside\"\ndef show():\n    print(message)\nshow()",
+    "approach": "Set message = \"outside\". Define def show(): print(message). Call show().\n\nReference solution:\nmessage = \"outside\"\ndef show():\n    print(message)\nshow()"
   },
   {
     "id": "m12-t4-p03",
     "topicId": "m12-t4",
-    "slug": "def-param",
-    "title": "Variables in Functions: Parameter",
+    "slug": "shadow-global",
+    "title": "Variables in Functions: Local Shadows Global",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "Define def shout(name): print(name.upper()), call shout(\"hi\").",
+    "description": "Set value = 1. Inside def demo(): set value = 2 and print it. Call demo(), then print value again.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "shout",
       "introSegments": [
         {
           "type": "text",
-          "value": "Pass an argument to a function."
+          "value": "Set value = 1. Inside def demo(): set value = 2 and print it. Call demo(), then print value again."
         }
       ],
-      "editorPlaceholder": "# param",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "value"
+      ],
+      "requiresFunction": "demo"
     },
     "examples": [
       {
-        "output": "HI"
+        "output": "2\n1"
       }
     ],
     "constraints": [
-      "Output: HI"
+      "Output must match: 2 / 1"
     ],
     "hints": [
-      "def shout(name):\\n    print(name.upper())\\nshout(\"hi\")"
+      "The assignment inside demo makes a local value. The global stays 1."
     ],
     "starterCode": "",
-    "approach": "Define def shout(name): print(name.upper()), call shout(\"hi\"). Key points: def shout(name):\\n print(name.upper())\\nshout(\"hi\") A correct solution looks like this: def shout(name): print(name.upper()) shout(\"hi\")",
     "publicTests": [
       {
         "id": "m12-t4-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "HI",
+        "expectedStdout": "2\n1",
         "visibility": "public"
       },
       {
         "id": "m12-t4-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "HI",
+        "label": "Required names and structure",
+        "assertCode": "assert \"value\" in globals(), \"Expected a variable named value\"\nassert \"demo\" in globals() and callable(globals()[\"demo\"]), \"Expected a function named demo\"",
         "visibility": "public"
       },
       {
         "id": "m12-t4-p03-t3",
         "label": "No Extra Output",
-        "expectedStdout": "HI",
+        "expectedStdout": "2\n1",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def shout(name):\n    print(name.upper())\nshout(\"hi\")"
+    "solutionCode": "value = 1\ndef demo():\n    value = 2\n    print(value)\ndemo()\nprint(value)",
+    "approach": "Set value = 1. Inside def demo(): set value = 2 and print it. Call demo(), then print value again.\n\nReference solution:\nvalue = 1\ndef demo():\n    value = 2\n    print(value)\ndemo()\nprint(value)"
   },
   {
     "id": "m12-t4-p04",
     "topicId": "m12-t4",
-    "slug": "def-default",
-    "title": "Variables in Functions: Default Parameter",
+    "slug": "global-keyword",
+    "title": "Variables in Functions: global Keyword",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Define def greet(name=\"Guest\"): print(f\"Hi {name}\"), call greet().",
+    "description": "Set score = 0. Define def add_one(): use global score, then score = score + 1. Call add_one() and print score.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "greet",
       "introSegments": [
         {
           "type": "text",
-          "value": "Default parameter values."
+          "value": "Set score = 0. Define def add_one(): use global score, then score = score + 1. Call add_one() and print score."
         }
       ],
-      "editorPlaceholder": "# default",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "score"
+      ],
+      "requiresFunction": "add_one"
     },
     "examples": [
       {
-        "output": "Hi Guest"
+        "output": "1"
       }
     ],
     "constraints": [
-      "Output: Hi Guest"
+      "Output must match: 1"
     ],
     "hints": [
-      "def greet(name=\"Guest\"):\\n    print(f\"Hi {name}\")\\ngreet()"
+      "global score lets the function update the outer name."
     ],
     "starterCode": "",
-    "approach": "Define def greet(name=\"Guest\"): print(f\"Hi {name}\"), call greet(). Key points: def greet(name=\"Guest\"):\\n print(f\"Hi {name}\")\\ngreet() A correct solution looks like this: def greet(name=\"Guest\"): print(f\"Hi {name}\") greet()",
     "publicTests": [
       {
         "id": "m12-t4-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hi Guest",
+        "expectedStdout": "1",
         "visibility": "public"
       },
       {
         "id": "m12-t4-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hi Guest",
+        "label": "Required names and structure",
+        "assertCode": "assert \"score\" in globals(), \"Expected a variable named score\"\nassert \"add_one\" in globals() and callable(globals()[\"add_one\"]), \"Expected a function named add_one\"",
         "visibility": "public"
       },
       {
         "id": "m12-t4-p04-t3",
         "label": "No Extra Output",
-        "expectedStdout": "Hi Guest",
+        "expectedStdout": "1",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet(name=\"Guest\"):\n    print(f\"Hi {name}\")\ngreet()"
+    "solutionCode": "score = 0\ndef add_one():\n    global score\n    score = score + 1\nadd_one()\nprint(score)",
+    "approach": "Set score = 0. Define def add_one(): use global score, then score = score + 1. Call add_one() and print score.\n\nReference solution:\nscore = 0\ndef add_one():\n    global score\n    score = score + 1\nadd_one()\nprint(score)"
   },
   {
     "id": "m12-t4-p05",
     "topicId": "m12-t4",
-    "slug": "def-multiple-return",
-    "title": "Variables in Functions: Multiple Returns",
+    "slug": "param-is-local",
+    "title": "Variables in Functions: Parameter Is Local",
     "difficulty": "hard",
     "order": 5,
     "layout": "challenge",
-    "description": "Define def minmax(a,b): return min(a,b), max(a,b), print minmax(3,7)[0].",
+    "description": "Set count = 5. Define def bump(count): count = count + 10; print(count). Call bump(count), then print count.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "minmax",
       "introSegments": [
         {
           "type": "text",
-          "value": "Return multiple values as tuple."
+          "value": "Set count = 5. Define def bump(count): count = count + 10; print(count). Call bump(count), then print count."
         }
       ],
-      "editorPlaceholder": "# multi return",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "count"
+      ],
+      "requiresFunction": "bump"
     },
     "examples": [
       {
-        "output": "3"
+        "output": "15\n5"
       }
     ],
     "constraints": [
-      "Output: 3"
+      "Output must match: 15 / 5"
     ],
     "hints": [
-      "def minmax(a,b):\\n    return min(a,b), max(a,b)\\nprint(minmax(3,7)[0])"
+      "The parameter count is local, so the outer count stays 5."
     ],
     "starterCode": "",
-    "approach": "Define def minmax(a,b): return min(a,b), max(a,b), print minmax(3,7)[0]. Key points: def minmax(a,b):\\n return min(a,b), max(a,b)\\nprint(minmax(3,7)[0]) A correct solution looks like this: def minmax(a,b): return min(a,b), max(a,b) print(minmax(3,7)[0])",
     "publicTests": [
       {
         "id": "m12-t4-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "3",
+        "expectedStdout": "15\n5",
         "visibility": "public"
       },
       {
         "id": "m12-t4-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "3",
+        "label": "Required names and structure",
+        "assertCode": "assert \"count\" in globals(), \"Expected a variable named count\"\nassert \"bump\" in globals() and callable(globals()[\"bump\"]), \"Expected a function named bump\"",
         "visibility": "public"
       },
       {
         "id": "m12-t4-p05-t3",
         "label": "No Extra Output",
-        "expectedStdout": "3",
+        "expectedStdout": "15\n5",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def minmax(a,b):\n    return min(a,b), max(a,b)\nprint(minmax(3,7)[0])"
+    "solutionCode": "count = 5\ndef bump(count):\n    count = count + 10\n    print(count)\nbump(count)\nprint(count)",
+    "approach": "Set count = 5. Define def bump(count): count = count + 10; print(count). Call bump(count), then print count.\n\nReference solution:\ncount = 5\ndef bump(count):\n    count = count + 10\n    print(count)\nbump(count)\nprint(count)"
   },
   {
     "id": "m12-t4-p06",
     "topicId": "m12-t4",
-    "slug": "def-scope",
-    "title": "Variables in Functions: Local Variable",
+    "slug": "return-local",
+    "title": "Variables in Functions: Return a Local",
     "difficulty": "hard",
     "order": 6,
     "layout": "challenge",
-    "description": "Define def f(): x=10; return x, print f().",
+    "description": "Define def make(): inner = 42; return inner. Set result = make(), then print result.",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "f",
       "introSegments": [
         {
           "type": "text",
-          "value": "Variables inside functions are local."
+          "value": "Define def make(): inner = 42; return inner. Set result = make(), then print result."
         }
       ],
-      "editorPlaceholder": "# local",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "result"
+      ],
+      "requiresFunction": "make"
     },
     "examples": [
       {
-        "output": "10"
+        "output": "42"
       }
     ],
     "constraints": [
-      "Output: 10"
+      "Output must match: 42"
     ],
     "hints": [
-      "def f():\\n    x=10\\n    return x\\nprint(f())"
+      "return sends the local value out. Store it in result."
     ],
     "starterCode": "",
-    "approach": "Define def f(): x=10; return x, print f(). Key points: def f():\\n x=10\\n return x\\nprint(f()) A correct solution looks like this: def f(): x=10 return x print(f())",
     "publicTests": [
       {
         "id": "m12-t4-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "10",
+        "expectedStdout": "42",
         "visibility": "public"
       },
       {
         "id": "m12-t4-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "10",
+        "label": "Required names and structure",
+        "assertCode": "assert \"result\" in globals(), \"Expected a variable named result\"\nassert \"make\" in globals() and callable(globals()[\"make\"]), \"Expected a function named make\"",
         "visibility": "public"
       },
       {
         "id": "m12-t4-p06-t3",
         "label": "No Extra Output",
-        "expectedStdout": "10",
+        "expectedStdout": "42",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def f():\n    x=10\n    return x\nprint(f())"
+    "solutionCode": "def make():\n    inner = 42\n    return inner\nresult = make()\nprint(result)",
+    "approach": "Define def make(): inner = 42; return inner. Set result = make(), then print result.\n\nReference solution:\ndef make():\n    inner = 42\n    return inner\nresult = make()\nprint(result)"
   },
   {
     "id": "m12-t4-p07",
     "topicId": "m12-t4",
-    "slug": "def-nested",
-    "title": "Variables in Functions: Function Calling Function",
+    "slug": "nested-read",
+    "title": "Variables in Functions: Nested Function",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Define def double(x): return x*2, def quad(x): return double(double(x)), print quad(2).",
+    "description": "Define def outer(): set label = \"ok\", then def inner(): print(label). Call inner() from outer, then call outer().",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "quad",
       "introSegments": [
         {
           "type": "text",
-          "value": "One function can call another."
+          "value": "Define def outer(): set label = \"ok\", then def inner(): print(label). Call inner() from outer, then call outer()."
         }
       ],
-      "editorPlaceholder": "# nested fn",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "outer"
     },
     "examples": [
       {
-        "output": "8"
+        "output": "ok"
       }
     ],
     "constraints": [
-      "Output: 8"
+      "Output must match: ok"
     ],
     "hints": [
-      "def double(x): return x*2\\ndef quad(x): return double(double(x))\\nprint(quad(2))"
+      "inner can read label from the enclosing outer function."
     ],
     "starterCode": "",
-    "approach": "Define def double(x): return x*2, def quad(x): return double(double(x)), print quad(2). Key points: def double(x): return x*2\\ndef quad(x): return double(double(x))\\nprint(quad(2)) A correct solution looks like this: def double(x): return x*2 def quad(x): return double(double(x)) print(quad(2))",
     "publicTests": [
       {
         "id": "m12-t4-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "8",
+        "expectedStdout": "ok",
         "visibility": "public"
       },
       {
         "id": "m12-t4-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "8",
+        "label": "Required names and structure",
+        "assertCode": "assert \"outer\" in globals() and callable(globals()[\"outer\"]), \"Expected a function named outer\"",
         "visibility": "public"
       },
       {
         "id": "m12-t4-p07-t3",
         "label": "No Extra Output",
-        "expectedStdout": "8",
+        "expectedStdout": "ok",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def double(x): return x*2\ndef quad(x): return double(double(x))\nprint(quad(2))"
+    "solutionCode": "def outer():\n    label = \"ok\"\n    def inner():\n        print(label)\n    inner()\nouter()",
+    "approach": "Define def outer(): set label = \"ok\", then def inner(): print(label). Call inner() from outer, then call outer().\n\nReference solution:\ndef outer():\n    label = \"ok\"\n    def inner():\n        print(label)\n    inner()\nouter()"
   },
   {
     "id": "m12-t5-p01",
     "topicId": "m12-t5",
-    "slug": "rec-base",
+    "slug": "countdown-rec",
     "title": "Recursion: Base Case",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Define def countdown(n): print(n); if n>1: countdown(n-1), call countdown(3).",
+    "description": "Define def countdown(n): print(n); if n > 1: countdown(n - 1). Call countdown(3).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "countdown",
       "introSegments": [
         {
           "type": "text",
-          "value": "Recursion calls itself with a base case."
+          "value": "Define def countdown(n): print(n); if n > 1: countdown(n - 1). Call countdown(3)."
         }
       ],
-      "editorPlaceholder": "# countdown",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "countdown",
+      "requiresIfCondition": true
     },
     "examples": [
       {
@@ -1628,13 +1645,12 @@ export const module12Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Print 3, 2, 1"
+      "Output must match: 3 / 2 / 1"
     ],
     "hints": [
-      "def countdown(n):\\n    print(n)\\n    if n>1:\\n        countdown(n-1)\\ncountdown(3)"
+      "Print first, then recurse while n is still greater than 1."
     ],
     "starterCode": "",
-    "approach": "Define def countdown(n): print(n); if n>1: countdown(n-1), call countdown(3). Key points: def countdown(n):\\n print(n)\\n if n>1:\\n countdown(n-1)\\ncountdown(3) A correct solution looks like this: def countdown(n): print(n) if n>1: countdown(n-1) countdown(3)",
     "publicTests": [
       {
         "id": "m12-t5-p01-t1",
@@ -1644,39 +1660,42 @@ export const module12Practice: PracticeProblem[] = [
       },
       {
         "id": "m12-t5-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "3\n2\n1",
+        "label": "Required names and structure",
+        "assertCode": "assert \"countdown\" in globals() and callable(globals()[\"countdown\"]), \"Expected a function named countdown\"",
         "visibility": "public"
       },
       {
         "id": "m12-t5-p01-t3",
-        "label": "Multi-line Format",
+        "label": "No Extra Output",
         "expectedStdout": "3\n2\n1",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def countdown(n):\n    print(n)\n    if n>1:\n        countdown(n-1)\ncountdown(3)"
+    "solutionCode": "def countdown(n):\n    print(n)\n    if n > 1:\n        countdown(n - 1)\ncountdown(3)",
+    "approach": "Define def countdown(n): print(n); if n > 1: countdown(n - 1). Call countdown(3).\n\nReference solution:\ndef countdown(n):\n    print(n)\n    if n > 1:\n        countdown(n - 1)\ncountdown(3)"
   },
   {
     "id": "m12-t5-p02",
     "topicId": "m12-t5",
-    "slug": "rec-factorial",
+    "slug": "factorial-rec",
     "title": "Recursion: Factorial",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Define def fact(n): return 1 if n<=1 else n*fact(n-1), print fact(5).",
+    "description": "Define def fact(n): return 1 if n <= 1 else n * fact(n - 1). Print fact(5).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "fact",
       "introSegments": [
         {
           "type": "text",
-          "value": "Classic recursive factorial."
+          "value": "Define def fact(n): return 1 if n <= 1 else n * fact(n - 1). Print fact(5)."
         }
       ],
-      "editorPlaceholder": "# factorial",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "fact",
+      "requiresIfCondition": true
     },
     "examples": [
       {
@@ -1684,13 +1703,12 @@ export const module12Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output: 120"
+      "Output must match: 120"
     ],
     "hints": [
-      "def fact(n):\\n    return 1 if n<=1 else n*fact(n-1)\\nprint(fact(5))"
+      "Stop at 1, otherwise multiply n by fact(n - 1)."
     ],
     "starterCode": "",
-    "approach": "Define def fact(n): return 1 if n<=1 else n*fact(n-1), print fact(5). Key points: def fact(n):\\n return 1 if n<=1 else n*fact(n-1)\\nprint(fact(5)) A correct solution looks like this: def fact(n): return 1 if n<=1 else n*fact(n-1) print(fact(5))",
     "publicTests": [
       {
         "id": "m12-t5-p02-t1",
@@ -1700,8 +1718,8 @@ export const module12Practice: PracticeProblem[] = [
       },
       {
         "id": "m12-t5-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "120",
+        "label": "Required names and structure",
+        "assertCode": "assert \"fact\" in globals() and callable(globals()[\"fact\"]), \"Expected a function named fact\"",
         "visibility": "public"
       },
       {
@@ -1711,28 +1729,31 @@ export const module12Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "def fact(n):\n    return 1 if n<=1 else n*fact(n-1)\nprint(fact(5))"
+    "solutionCode": "def fact(n):\n    return 1 if n <= 1 else n * fact(n - 1)\nprint(fact(5))",
+    "approach": "Define def fact(n): return 1 if n <= 1 else n * fact(n - 1). Print fact(5).\n\nReference solution:\ndef fact(n):\n    return 1 if n <= 1 else n * fact(n - 1)\nprint(fact(5))"
   },
   {
     "id": "m12-t5-p03",
     "topicId": "m12-t5",
-    "slug": "rec-sum",
+    "slug": "sum-rec",
     "title": "Recursion: Recursive Sum",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "Define def rsum(n): return 0 if n<=0 else n+rsum(n-1), print rsum(5).",
+    "description": "Define def rsum(n): return 0 if n <= 0 else n + rsum(n - 1). Print rsum(5).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "rsum",
       "introSegments": [
         {
           "type": "text",
-          "value": "Sum 1 to n recursively."
+          "value": "Define def rsum(n): return 0 if n <= 0 else n + rsum(n - 1). Print rsum(5)."
         }
       ],
-      "editorPlaceholder": "# rsum",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "rsum",
+      "requiresIfCondition": true
     },
     "examples": [
       {
@@ -1740,13 +1761,12 @@ export const module12Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output: 15"
+      "Output must match: 15"
     ],
     "hints": [
-      "def rsum(n):\\n    return 0 if n<=0 else n+rsum(n-1)\\nprint(rsum(5))"
+      "1+2+3+4+5 = 15. The base case is 0."
     ],
     "starterCode": "",
-    "approach": "Define def rsum(n): return 0 if n<=0 else n+rsum(n-1), print rsum(5). Key points: def rsum(n):\\n return 0 if n<=0 else n+rsum(n-1)\\nprint(rsum(5)) A correct solution looks like this: def rsum(n): return 0 if n<=0 else n+rsum(n-1) print(rsum(5))",
     "publicTests": [
       {
         "id": "m12-t5-p03-t1",
@@ -1756,8 +1776,8 @@ export const module12Practice: PracticeProblem[] = [
       },
       {
         "id": "m12-t5-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "15",
+        "label": "Required names and structure",
+        "assertCode": "assert \"rsum\" in globals() and callable(globals()[\"rsum\"]), \"Expected a function named rsum\"",
         "visibility": "public"
       },
       {
@@ -1767,28 +1787,31 @@ export const module12Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "def rsum(n):\n    return 0 if n<=0 else n+rsum(n-1)\nprint(rsum(5))"
+    "solutionCode": "def rsum(n):\n    return 0 if n <= 0 else n + rsum(n - 1)\nprint(rsum(5))",
+    "approach": "Define def rsum(n): return 0 if n <= 0 else n + rsum(n - 1). Print rsum(5).\n\nReference solution:\ndef rsum(n):\n    return 0 if n <= 0 else n + rsum(n - 1)\nprint(rsum(5))"
   },
   {
     "id": "m12-t5-p04",
     "topicId": "m12-t5",
-    "slug": "rec-fib",
-    "title": "Recursion: Fibonacci Step",
+    "slug": "fib-rec",
+    "title": "Recursion: Fibonacci",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Define def fib(n): return n if n<=1 else fib(n-1)+fib(n-2), print fib(6).",
+    "description": "Define def fib(n): return n if n <= 1 else fib(n - 1) + fib(n - 2). Print fib(6).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "fib",
       "introSegments": [
         {
           "type": "text",
-          "value": "Fibonacci uses two recursive calls."
+          "value": "Define def fib(n): return n if n <= 1 else fib(n - 1) + fib(n - 2). Print fib(6)."
         }
       ],
-      "editorPlaceholder": "# fib",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "fib",
+      "requiresIfCondition": true
     },
     "examples": [
       {
@@ -1796,13 +1819,12 @@ export const module12Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output: 8"
+      "Output must match: 8"
     ],
     "hints": [
-      "def fib(n):\\n    return n if n<=1 else fib(n-1)+fib(n-2)\\nprint(fib(6))"
+      "fib(6) is 8: 0, 1, 1, 2, 3, 5, 8."
     ],
     "starterCode": "",
-    "approach": "Define def fib(n): return n if n<=1 else fib(n-1)+fib(n-2), print fib(6). Key points: def fib(n):\\n return n if n<=1 else fib(n-1)+fib(n-2)\\nprint(fib(6)) A correct solution looks like this: def fib(n): return n if n<=1 else fib(n-1)+fib(n-2) print(fib(6))",
     "publicTests": [
       {
         "id": "m12-t5-p04-t1",
@@ -1812,8 +1834,8 @@ export const module12Practice: PracticeProblem[] = [
       },
       {
         "id": "m12-t5-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "8",
+        "label": "Required names and structure",
+        "assertCode": "assert \"fib\" in globals() and callable(globals()[\"fib\"]), \"Expected a function named fib\"",
         "visibility": "public"
       },
       {
@@ -1823,28 +1845,31 @@ export const module12Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "def fib(n):\n    return n if n<=1 else fib(n-1)+fib(n-2)\nprint(fib(6))"
+    "solutionCode": "def fib(n):\n    return n if n <= 1 else fib(n - 1) + fib(n - 2)\nprint(fib(6))",
+    "approach": "Define def fib(n): return n if n <= 1 else fib(n - 1) + fib(n - 2). Print fib(6).\n\nReference solution:\ndef fib(n):\n    return n if n <= 1 else fib(n - 1) + fib(n - 2)\nprint(fib(6))"
   },
   {
     "id": "m12-t5-p05",
     "topicId": "m12-t5",
-    "slug": "rec-power",
+    "slug": "power-rec",
     "title": "Recursion: Power",
     "difficulty": "hard",
     "order": 5,
     "layout": "challenge",
-    "description": "Define def power(b,e): return 1 if e==0 else b*power(b,e-1), print power(2,3).",
+    "description": "Define def power(base, exp): return 1 if exp == 0 else base * power(base, exp - 1). Print power(2, 3).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "power",
       "introSegments": [
         {
           "type": "text",
-          "value": "Recursive exponentiation."
+          "value": "Define def power(base, exp): return 1 if exp == 0 else base * power(base, exp - 1). Print power(2, 3)."
         }
       ],
-      "editorPlaceholder": "# power",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "power",
+      "requiresIfCondition": true
     },
     "examples": [
       {
@@ -1852,13 +1877,12 @@ export const module12Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output: 8"
+      "Output must match: 8"
     ],
     "hints": [
-      "def power(b,e):\\n    return 1 if e==0 else b*power(b,e-1)\\nprint(power(2,3))"
+      "Anything to the power 0 is 1. Otherwise multiply base by a smaller power."
     ],
     "starterCode": "",
-    "approach": "Define def power(b,e): return 1 if e==0 else b*power(b,e-1), print power(2,3). Key points: def power(b,e):\\n return 1 if e==0 else b*power(b,e-1)\\nprint(power(2,3)) A correct solution looks like this: def power(b,e): return 1 if e==0 else b*power(b,e-1) print(power(2,3))",
     "publicTests": [
       {
         "id": "m12-t5-p05-t1",
@@ -1868,8 +1892,8 @@ export const module12Practice: PracticeProblem[] = [
       },
       {
         "id": "m12-t5-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "8",
+        "label": "Required names and structure",
+        "assertCode": "assert \"power\" in globals() and callable(globals()[\"power\"]), \"Expected a function named power\"",
         "visibility": "public"
       },
       {
@@ -1879,28 +1903,32 @@ export const module12Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "def power(b,e):\n    return 1 if e==0 else b*power(b,e-1)\nprint(power(2,3))"
+    "solutionCode": "def power(base, exp):\n    return 1 if exp == 0 else base * power(base, exp - 1)\nprint(power(2, 3))",
+    "approach": "Define def power(base, exp): return 1 if exp == 0 else base * power(base, exp - 1). Print power(2, 3).\n\nReference solution:\ndef power(base, exp):\n    return 1 if exp == 0 else base * power(base, exp - 1)\nprint(power(2, 3))"
   },
   {
     "id": "m12-t5-p06",
     "topicId": "m12-t5",
-    "slug": "rec-len",
+    "slug": "rlen-rec",
     "title": "Recursion: Recursive Length",
     "difficulty": "hard",
     "order": 6,
     "layout": "challenge",
-    "description": "Define def rlen(s): return 0 if s==\"\" else 1+rlen(s[1:]), print rlen(\"abc\").",
+    "description": "Define def rlen(text): return 0 if text == \"\" else 1 + rlen(text[1:]). Print rlen(\"abc\").",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "rlen",
       "introSegments": [
         {
           "type": "text",
-          "value": "Count string length recursively."
+          "value": "Define def rlen(text): return 0 if text == \"\" else 1 + rlen(text[1:]). Print rlen(\"abc\")."
         }
       ],
-      "editorPlaceholder": "# rlen",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "rlen",
+      "requiresIfCondition": true,
+      "requiresListAccess": true
     },
     "examples": [
       {
@@ -1908,13 +1936,12 @@ export const module12Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output: 3"
+      "Output must match: 3"
     ],
     "hints": [
-      "def rlen(s):\\n    return 0 if s==\"\" else 1+rlen(s[1:])\\nprint(rlen(\"abc\"))"
+      "Each call peels off one character until the string is empty."
     ],
     "starterCode": "",
-    "approach": "Define def rlen(s): return 0 if s==\"\" else 1+rlen(s[1:]), print rlen(\"abc\"). Key points: def rlen(s):\\n return 0 if s==\"\" else 1+rlen(s[1:])\\nprint(rlen(\"abc\")) A correct solution looks like this: def rlen(s): return 0 if s==\"\" else 1+rlen(s[1:]) print(rlen(\"abc\"))",
     "publicTests": [
       {
         "id": "m12-t5-p06-t1",
@@ -1924,8 +1951,8 @@ export const module12Practice: PracticeProblem[] = [
       },
       {
         "id": "m12-t5-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "3",
+        "label": "Required names and structure",
+        "assertCode": "assert \"rlen\" in globals() and callable(globals()[\"rlen\"]), \"Expected a function named rlen\"",
         "visibility": "public"
       },
       {
@@ -1935,28 +1962,31 @@ export const module12Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "def rlen(s):\n    return 0 if s==\"\" else 1+rlen(s[1:])\nprint(rlen(\"abc\"))"
+    "solutionCode": "def rlen(text):\n    return 0 if text == \"\" else 1 + rlen(text[1:])\nprint(rlen(\"abc\"))",
+    "approach": "Define def rlen(text): return 0 if text == \"\" else 1 + rlen(text[1:]). Print rlen(\"abc\").\n\nReference solution:\ndef rlen(text):\n    return 0 if text == \"\" else 1 + rlen(text[1:])\nprint(rlen(\"abc\"))"
   },
   {
     "id": "m12-t5-p07",
     "topicId": "m12-t5",
-    "slug": "rec-countdown-silent",
+    "slug": "print-down-rec",
     "title": "Recursion: Silent Base",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Define def print_down(n): if n>=1: print(n); print_down(n-1), call print_down(2).",
+    "description": "Define def print_down(n): if n >= 1: print(n); print_down(n - 1). Call print_down(2).",
     "challengeContent": {
       "outputOnly": true,
-      "requiresFunction": "print_down",
       "introSegments": [
         {
           "type": "text",
-          "value": "Base case when n < 1 stops recursion."
+          "value": "Define def print_down(n): if n >= 1: print(n); print_down(n - 1). Call print_down(2)."
         }
       ],
-      "editorPlaceholder": "# print_down",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresFunction": "print_down",
+      "requiresIfCondition": true
     },
     "examples": [
       {
@@ -1964,13 +1994,12 @@ export const module12Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Print 2, 1"
+      "Output must match: 2 / 1"
     ],
     "hints": [
-      "def print_down(n):\\n    if n>=1:\\n        print(n)\\n        print_down(n-1)\\nprint_down(2)"
+      "When n is 0 the if is false, so recursion stops without printing."
     ],
     "starterCode": "",
-    "approach": "Define def print_down(n): if n>=1: print(n); print_down(n-1), call print_down(2). Key points: def print_down(n):\\n if n>=1:\\n print(n)\\n print_down(n-1)\\nprint_down(2) A correct solution looks like this: def print_down(n): if n>=1: print(n) print_down(n-1) print_down(2)",
     "publicTests": [
       {
         "id": "m12-t5-p07-t1",
@@ -1980,38 +2009,43 @@ export const module12Practice: PracticeProblem[] = [
       },
       {
         "id": "m12-t5-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "2\n1",
+        "label": "Required names and structure",
+        "assertCode": "assert \"print_down\" in globals() and callable(globals()[\"print_down\"]), \"Expected a function named print_down\"",
         "visibility": "public"
       },
       {
         "id": "m12-t5-p07-t3",
-        "label": "Multi-line Format",
+        "label": "No Extra Output",
         "expectedStdout": "2\n1",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def print_down(n):\n    if n>=1:\n        print(n)\n        print_down(n-1)\nprint_down(2)"
+    "solutionCode": "def print_down(n):\n    if n >= 1:\n        print(n)\n        print_down(n - 1)\nprint_down(2)",
+    "approach": "Define def print_down(n): if n >= 1: print(n); print_down(n - 1). Call print_down(2).\n\nReference solution:\ndef print_down(n):\n    if n >= 1:\n        print(n)\n        print_down(n - 1)\nprint_down(2)"
   },
   {
     "id": "m12-t6-p01",
     "topicId": "m12-t6",
-    "slug": "lambda-basic",
+    "slug": "basic-lambda",
     "title": "Lambda Functions: Basic Lambda",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Set f = lambda x: x*2, print f(5).",
+    "description": "Set double = lambda x: x * 2, then print double(5).",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Lambda is a small anonymous function."
+          "value": "Set double = lambda x: x * 2, then print double(5)."
         }
       ],
-      "editorPlaceholder": "# lambda x: x*2",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "double"
+      ]
     },
     "examples": [
       {
@@ -2019,13 +2053,12 @@ export const module12Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output: 10"
+      "Output must match: 10"
     ],
     "hints": [
-      "f = lambda x: x*2\\nprint(f(5))"
+      "double = lambda x: x * 2\nprint(double(5))"
     ],
     "starterCode": "",
-    "approach": "Set f = lambda x: x*2, print f(5). Key points: f = lambda x: x*2\\nprint(f(5)) A correct solution looks like this: f = lambda x: x*2 print(f(5))",
     "publicTests": [
       {
         "id": "m12-t6-p01-t1",
@@ -2035,8 +2068,8 @@ export const module12Practice: PracticeProblem[] = [
       },
       {
         "id": "m12-t6-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "10",
+        "label": "Required names and structure",
+        "assertCode": "assert \"double\" in globals(), \"Expected a variable named double\"",
         "visibility": "public"
       },
       {
@@ -2046,7 +2079,8 @@ export const module12Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "f = lambda x: x*2\nprint(f(5))"
+    "solutionCode": "double = lambda x: x * 2\nprint(double(5))",
+    "approach": "Set double = lambda x: x * 2, then print double(5).\n\nReference solution:\ndouble = lambda x: x * 2\nprint(double(5))"
   },
   {
     "id": "m12-t6-p02",
@@ -2056,17 +2090,21 @@ export const module12Practice: PracticeProblem[] = [
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Set add = lambda a,b: a+b, print add(3,4).",
+    "description": "Set add = lambda left, right: left + right, then print add(3, 4).",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Lambda with two parameters."
+          "value": "Set add = lambda left, right: left + right, then print add(3, 4)."
         }
       ],
-      "editorPlaceholder": "# lambda add",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "add"
+      ]
     },
     "examples": [
       {
@@ -2074,13 +2112,12 @@ export const module12Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output: 7"
+      "Output must match: 7"
     ],
     "hints": [
-      "add = lambda a,b: a+b\\nprint(add(3,4))"
+      "add = lambda left, right: left + right\nprint(add(3, 4))"
     ],
     "starterCode": "",
-    "approach": "Set add = lambda a,b: a+b, print add(3,4). Key points: add = lambda a,b: a+b\\nprint(add(3,4)) A correct solution looks like this: add = lambda a,b: a+b print(add(3,4))",
     "publicTests": [
       {
         "id": "m12-t6-p02-t1",
@@ -2090,8 +2127,8 @@ export const module12Practice: PracticeProblem[] = [
       },
       {
         "id": "m12-t6-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "7",
+        "label": "Required names and structure",
+        "assertCode": "assert \"add\" in globals(), \"Expected a variable named add\"",
         "visibility": "public"
       },
       {
@@ -2101,7 +2138,8 @@ export const module12Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "add = lambda a,b: a+b\nprint(add(3,4))"
+    "solutionCode": "add = lambda left, right: left + right\nprint(add(3, 4))",
+    "approach": "Set add = lambda left, right: left + right, then print add(3, 4).\n\nReference solution:\nadd = lambda left, right: left + right\nprint(add(3, 4))"
   },
   {
     "id": "m12-t6-p03",
@@ -2111,17 +2149,21 @@ export const module12Practice: PracticeProblem[] = [
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "Set sq = lambda x: x**2, print sq(4).",
+    "description": "Set square = lambda x: x ** 2, then print square(4).",
     "challengeContent": {
       "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use lambda for short operations."
+          "value": "Set square = lambda x: x ** 2, then print square(4)."
         }
       ],
-      "editorPlaceholder": "# lambda square",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "square"
+      ]
     },
     "examples": [
       {
@@ -2129,13 +2171,12 @@ export const module12Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output: 16"
+      "Output must match: 16"
     ],
     "hints": [
-      "sq = lambda x: x**2\\nprint(sq(4))"
+      "square = lambda x: x ** 2\nprint(square(4))"
     ],
     "starterCode": "",
-    "approach": "Set sq = lambda x: x**2, print sq(4). Key points: sq = lambda x: x**2\\nprint(sq(4)) A correct solution looks like this: sq = lambda x: x**2 print(sq(4))",
     "publicTests": [
       {
         "id": "m12-t6-p03-t1",
@@ -2145,8 +2186,8 @@ export const module12Practice: PracticeProblem[] = [
       },
       {
         "id": "m12-t6-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "16",
+        "label": "Required names and structure",
+        "assertCode": "assert \"square\" in globals(), \"Expected a variable named square\"",
         "visibility": "public"
       },
       {
@@ -2156,44 +2197,31 @@ export const module12Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "sq = lambda x: x**2\nprint(sq(4))"
+    "solutionCode": "square = lambda x: x ** 2\nprint(square(4))",
+    "approach": "Set square = lambda x: x ** 2, then print square(4).\n\nReference solution:\nsquare = lambda x: x ** 2\nprint(square(4))"
   },
   {
     "id": "m12-t6-p04",
     "topicId": "m12-t6",
-    "slug": "lambda-map",
+    "slug": "map-lambda",
     "title": "Lambda Functions: map with Lambda",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Print list(map(lambda x: x*2, [1,2,3])).",
+    "description": "Set doubled = list(map(lambda x: x * 2, [1, 2, 3])). Print doubled.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# map lambda",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Use "
-        },
-        {
-          "type": "code",
-          "value": "map()"
-        },
-        {
-          "type": "text",
-          "value": " with lambda."
+          "value": "Set doubled = list(map(lambda x: x * 2, [1, 2, 3])). Print doubled."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "[2, 4, 6]",
-          "label": "output"
-        }
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "doubled"
       ]
     },
     "examples": [
@@ -2202,10 +2230,10 @@ export const module12Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output must be exactly: [2, 4, 6]"
+      "Output must match: [2, 4, 6]"
     ],
     "hints": [
-      "print(list(map(lambda x: x*2, [1,2,3])))"
+      "map applies the lambda to each item. Wrap it in list()."
     ],
     "starterCode": "",
     "publicTests": [
@@ -2217,8 +2245,8 @@ export const module12Practice: PracticeProblem[] = [
       },
       {
         "id": "m12-t6-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "[2, 4, 6]",
+        "label": "Required names and structure",
+        "assertCode": "assert \"doubled\" in globals(), \"Expected a variable named doubled\"",
         "visibility": "public"
       },
       {
@@ -2228,45 +2256,31 @@ export const module12Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(list(map(lambda x: x*2, [1,2,3])))",
-    "approach": "Print list(map(lambda x: x*2, [1,2,3])).\n\nKey points: print(list(map(lambda x: x*2, [1,2,3])))\n\nA correct solution looks like this:\nprint(list(map(lambda x: x*2, [1,2,3])))"
+    "solutionCode": "doubled = list(map(lambda x: x * 2, [1, 2, 3]))\nprint(doubled)",
+    "approach": "Set doubled = list(map(lambda x: x * 2, [1, 2, 3])). Print doubled.\n\nReference solution:\ndoubled = list(map(lambda x: x * 2, [1, 2, 3]))\nprint(doubled)"
   },
   {
     "id": "m12-t6-p05",
     "topicId": "m12-t6",
-    "slug": "lambda-filter",
+    "slug": "filter-lambda",
     "title": "Lambda Functions: filter with Lambda",
-    "difficulty": "medium",
+    "difficulty": "hard",
     "order": 5,
     "layout": "challenge",
-    "description": "Print list(filter(lambda x: x>2, [1,2,3,4])).",
+    "description": "Set big = list(filter(lambda x: x > 2, [1, 2, 3, 4])). Print big.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# filter",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Use "
-        },
-        {
-          "type": "code",
-          "value": "filter()"
-        },
-        {
-          "type": "text",
-          "value": " with lambda."
+          "value": "Set big = list(filter(lambda x: x > 2, [1, 2, 3, 4])). Print big."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "[3, 4]",
-          "label": "output"
-        }
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "big"
       ]
     },
     "examples": [
@@ -2275,10 +2289,10 @@ export const module12Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output must be exactly: [3, 4]"
+      "Output must match: [3, 4]"
     ],
     "hints": [
-      "print(list(filter(lambda x: x>2, [1,2,3,4])))"
+      "filter keeps items where the lambda is True."
     ],
     "starterCode": "",
     "publicTests": [
@@ -2290,8 +2304,8 @@ export const module12Practice: PracticeProblem[] = [
       },
       {
         "id": "m12-t6-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "[3, 4]",
+        "label": "Required names and structure",
+        "assertCode": "assert \"big\" in globals(), \"Expected a variable named big\"",
         "visibility": "public"
       },
       {
@@ -2301,37 +2315,31 @@ export const module12Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(list(filter(lambda x: x>2, [1,2,3,4])))",
-    "approach": "Print list(filter(lambda x: x>2, [1,2,3,4])).\n\nKey points: print(list(filter(lambda x: x>2, [1,2,3,4])))\n\nA correct solution looks like this:\nprint(list(filter(lambda x: x>2, [1,2,3,4])))"
+    "solutionCode": "big = list(filter(lambda x: x > 2, [1, 2, 3, 4]))\nprint(big)",
+    "approach": "Set big = list(filter(lambda x: x > 2, [1, 2, 3, 4])). Print big.\n\nReference solution:\nbig = list(filter(lambda x: x > 2, [1, 2, 3, 4]))\nprint(big)"
   },
   {
     "id": "m12-t6-p06",
     "topicId": "m12-t6",
-    "slug": "lambda-sorted",
+    "slug": "sorted-lambda",
     "title": "Lambda Functions: sorted with Lambda",
     "difficulty": "hard",
     "order": 6,
     "layout": "challenge",
-    "description": "Print sorted(['bb','a','ccc'], key=lambda s: len(s)).",
+    "description": "Set ordered = sorted([\"bb\", \"a\", \"ccc\"], key=lambda word: len(word)). Print ordered.",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# sorted",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Sort by length using lambda key."
+          "value": "Set ordered = sorted([\"bb\", \"a\", \"ccc\"], key=lambda word: len(word)). Print ordered."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "['a', 'bb', 'ccc']",
-          "label": "output"
-        }
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "ordered"
       ]
     },
     "examples": [
@@ -2340,10 +2348,10 @@ export const module12Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output must be exactly: ['a', 'bb', 'ccc']"
+      "Output must match: ['a', 'bb', 'ccc']"
     ],
     "hints": [
-      "print(sorted(['bb','a','ccc'], key=lambda s: len(s)))"
+      "key=lambda word: len(word) sorts by string length."
     ],
     "starterCode": "",
     "publicTests": [
@@ -2355,8 +2363,8 @@ export const module12Practice: PracticeProblem[] = [
       },
       {
         "id": "m12-t6-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "['a', 'bb', 'ccc']",
+        "label": "Required names and structure",
+        "assertCode": "assert \"ordered\" in globals(), \"Expected a variable named ordered\"",
         "visibility": "public"
       },
       {
@@ -2366,46 +2374,29 @@ export const module12Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(sorted(['bb','a','ccc'], key=lambda s: len(s)))",
-    "approach": "Print sorted(['bb','a','ccc'], key=lambda s: len(s)).\n\nKey points: print(sorted(['bb','a','ccc'], key=lambda s: len(s)))\n\nA correct solution looks like this:\nprint(sorted(['bb','a','ccc'], key=lambda s: len(s)))"
+    "solutionCode": "ordered = sorted([\"bb\", \"a\", \"ccc\"], key=lambda word: len(word))\nprint(ordered)",
+    "approach": "Set ordered = sorted([\"bb\", \"a\", \"ccc\"], key=lambda word: len(word)). Print ordered.\n\nReference solution:\nordered = sorted([\"bb\", \"a\", \"ccc\"], key=lambda word: len(word))\nprint(ordered)"
   },
   {
     "id": "m12-t6-p07",
     "topicId": "m12-t6",
-    "slug": "lambda-immediate",
+    "slug": "immediate-lambda",
     "title": "Lambda Functions: Immediate Call",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Print (lambda x: x+1)(9).",
+    "description": "Print (lambda x: x + 1)(9).",
     "challengeContent": {
       "outputOnly": true,
-      "editorPlaceholder": "# IIFE",
-      "emptyMessage": "Use print() to show the result.",
-      "successDetail": "Correct!",
       "introSegments": [
         {
           "type": "text",
-          "value": "Call lambda immediately: "
-        },
-        {
-          "type": "code",
-          "value": "(lambda x: x+1)(9)"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": "Print (lambda x: x + 1)(9)."
         }
       ],
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "10",
-          "label": "output"
-        }
-      ]
+      "editorPlaceholder": "# write your solution",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!"
     },
     "examples": [
       {
@@ -2413,10 +2404,10 @@ export const module12Practice: PracticeProblem[] = [
       }
     ],
     "constraints": [
-      "Output must be exactly: 10"
+      "Output must match: 10"
     ],
     "hints": [
-      "print((lambda x: x+1)(9))"
+      "The extra parentheses call the lambda right away with 9."
     ],
     "starterCode": "",
     "publicTests": [
@@ -2439,7 +2430,7 @@ export const module12Practice: PracticeProblem[] = [
         "visibility": "public"
       }
     ],
-    "solutionCode": "print((lambda x: x+1)(9))",
-    "approach": "Print (lambda x: x+1)(9).\n\nKey points: print((lambda x: x+1)(9))\n\nA correct solution looks like this:\nprint((lambda x: x+1)(9))"
+    "solutionCode": "print((lambda x: x + 1)(9))",
+    "approach": "Print (lambda x: x + 1)(9).\n\nReference solution:\nprint((lambda x: x + 1)(9))"
   }
 ];
