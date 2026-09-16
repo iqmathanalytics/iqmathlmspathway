@@ -575,10 +575,14 @@ export const module18Practice: PracticeProblem[] = [
     "starterCode": "",
     "publicTests": [
       {
+        "visibility": "public",
+        "id": "m18-t2-p03-t1",
         "label": "Sample Case",
         "expectedStdout": "100"
       },
       {
+        "visibility": "public",
+        "id": "m18-t2-p03-t2",
         "label": "Sale stores revenue",
         "assertCode": "assert Sale(\"East\", \"bag\", 3, 50).revenue == 50, \"Sale should store the constructor arguments\""
       }
@@ -1297,14 +1301,20 @@ export const module18Practice: PracticeProblem[] = [
     "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef total_revenue(records):\n    pass\n",
     "publicTests": [
       {
+        "visibility": "public",
+        "id": "m18-t4-p01-t1",
         "label": "Sample Case",
         "expectedStdout": "460.0"
       },
       {
+        "visibility": "public",
+        "id": "m18-t4-p01-t2",
         "label": "sample rows",
         "assertCode": "assert total_revenue(rows) == 460.0"
       },
       {
+        "visibility": "public",
+        "id": "m18-t4-p01-t3",
         "label": "another list",
         "assertCode": "assert total_revenue([{\"revenue\": 10}, {\"revenue\": None}]) == 10, \"Skip None in the argument\""
       }
@@ -1351,14 +1361,20 @@ export const module18Practice: PracticeProblem[] = [
     "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef region_total(records, region):\n    pass\n",
     "publicTests": [
       {
+        "visibility": "public",
+        "id": "m18-t4-p02-t1",
         "label": "Sample Case",
         "expectedStdout": "240.0"
       },
       {
+        "visibility": "public",
+        "id": "m18-t4-p02-t2",
         "label": "North",
         "assertCode": "assert region_total(rows, \"North\") == 240.0"
       },
       {
+        "visibility": "public",
+        "id": "m18-t4-p02-t3",
         "label": "East",
         "assertCode": "assert region_total(rows, \"East\") == 120.0"
       }
@@ -1407,14 +1423,20 @@ export const module18Practice: PracticeProblem[] = [
     "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef top_region(records):\n    pass\n",
     "publicTests": [
       {
+        "visibility": "public",
+        "id": "m18-t4-p03-t1",
         "label": "Sample Case",
         "expectedStdout": "North"
       },
       {
+        "visibility": "public",
+        "id": "m18-t4-p03-t2",
         "label": "sample rows",
         "assertCode": "assert top_region(rows) == \"North\""
       },
       {
+        "visibility": "public",
+        "id": "m18-t4-p03-t3",
         "label": "another list",
         "assertCode": "assert top_region([{\"region\": \"West\", \"revenue\": 9}, {\"region\": \"East\", \"revenue\": 3}]) == \"West\""
       }
@@ -1458,14 +1480,20 @@ export const module18Practice: PracticeProblem[] = [
     "starterCode": "",
     "publicTests": [
       {
+        "visibility": "public",
+        "id": "m18-t4-p04-t1",
         "label": "Sample Case",
         "expectedStdout": "North: 240.0"
       },
       {
+        "visibility": "public",
+        "id": "m18-t4-p04-t2",
         "label": "sample call",
         "assertCode": "assert format_line(\"North\", 240.0) == \"North: 240.0\""
       },
       {
+        "visibility": "public",
+        "id": "m18-t4-p04-t3",
         "label": "another call",
         "assertCode": "assert format_line(\"East\", 10) == \"East: 10\""
       }
@@ -1514,14 +1542,20 @@ export const module18Practice: PracticeProblem[] = [
     "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef clean_rows(records):\n    pass\n",
     "publicTests": [
       {
+        "visibility": "public",
+        "id": "m18-t4-p05-t1",
         "label": "Sample Case",
         "expectedStdout": "[100.0, 150.0, 0, 120.0, 90.0]"
       },
       {
+        "visibility": "public",
+        "id": "m18-t4-p05-t2",
         "label": "fills None",
         "assertCode": "assert [row[\"revenue\"] for row in clean_rows(rows)] == [100.0, 150.0, 0, 120.0, 90.0]"
       },
       {
+        "visibility": "public",
+        "id": "m18-t4-p05-t3",
         "label": "leaves the original None",
         "assertCode": "assert rows[2][\"revenue\"] is None, \"Do not mutate the original rows\""
       }
@@ -1568,14 +1602,20 @@ export const module18Practice: PracticeProblem[] = [
     "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef average_units(records):\n    pass\n",
     "publicTests": [
       {
+        "visibility": "public",
+        "id": "m18-t4-p06-t1",
         "label": "Sample Case",
         "expectedStdout": "8.2"
       },
       {
+        "visibility": "public",
+        "id": "m18-t4-p06-t2",
         "label": "sample rows",
         "assertCode": "assert average_units(rows) == 8.2"
       },
       {
+        "visibility": "public",
+        "id": "m18-t4-p06-t3",
         "label": "another list",
         "assertCode": "assert average_units([{\"units\": 2}, {\"units\": 4}]) == 3.0"
       }
@@ -1622,10 +1662,14 @@ export const module18Practice: PracticeProblem[] = [
     "starterCode": "rows = [\n    {\"region\": \"South\", \"category\": \"pen\", \"units\": 10, \"revenue\": 100.0},\n    {\"region\": \"North\", \"category\": \"book\", \"units\": 5, \"revenue\": 150.0},\n    {\"region\": \"South\", \"category\": \"bag\", \"units\": 8, \"revenue\": None},\n    {\"region\": \"East\", \"category\": \"pen\", \"units\": 12, \"revenue\": 120.0},\n    {\"region\": \"North\", \"category\": \"bag\", \"units\": 6, \"revenue\": 90.0},\n]\n\ndef report_lines(records):\n    pass\n",
     "publicTests": [
       {
+        "visibility": "public",
+        "id": "m18-t4-p07-t1",
         "label": "Sample Case",
         "expectedStdout": "['=== Retail Sales Report ===', 'North', '460.0']"
       },
       {
+        "visibility": "public",
+        "id": "m18-t4-p07-t2",
         "label": "sample report",
         "assertCode": "assert report_lines(rows) == [\"=== Retail Sales Report ===\", \"North\", \"460.0\"]"
       }
@@ -1909,14 +1953,20 @@ export const module18Practice: PracticeProblem[] = [
     "starterCode": "",
     "publicTests": [
       {
+        "visibility": "public",
+        "id": "m18-t5-p05-t1",
         "label": "axes exist",
         "assertCode": "assert \"ax\" in globals() and hasattr(ax, \"bar\"), \"Create fig, ax = plt.subplots() and draw bars\""
       },
       {
+        "visibility": "public",
+        "id": "m18-t5-p05-t2",
         "label": "three region bars",
         "assertCode": "assert len(ax.patches) == 3, \"Expected one bar per region\""
       },
       {
+        "visibility": "public",
+        "id": "m18-t5-p05-t3",
         "label": "North is the tallest",
         "assertCode": "heights = [round(p.get_height(), 2) for p in ax.patches]\nassert max(heights) == 240.0, \"North should total 240 after filling missing revenue\""
       }
@@ -2027,10 +2077,14 @@ export const module18Practice: PracticeProblem[] = [
     "starterCode": "import pandas as pd\nfrom io import StringIO\n\ncsv_text = \"\"\"item,region,units,revenue\npen,South,10,100\nbook,North,5,150\nbag,South,8,\npen,East,12,120\nbag,North,6,90\n\"\"\"\ndf = pd.read_csv(StringIO(csv_text))\ndf[\"revenue\"] = df[\"revenue\"].fillna(0)\n\ndef run_report(frame):\n    pass\n",
     "publicTests": [
       {
+        "visibility": "public",
+        "id": "m18-t5-p07-t1",
         "label": "Sample Case",
         "expectedStdout": "=== Retail Sales Report ===\nNorth\n460.0"
       },
       {
+        "visibility": "public",
+        "id": "m18-t5-p07-t2",
         "label": "callable",
         "assertCode": "assert callable(run_report), \"Define run_report\""
       }
