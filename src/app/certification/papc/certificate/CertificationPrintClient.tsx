@@ -5,9 +5,10 @@ import { useEffect, useState } from "react";
 import { Loader2, Printer } from "lucide-react";
 import { ClientOnly } from "@/components/ui/ClientOnly";
 import { CertificationAccessGate } from "@/components/certification/CertificationAccessGate";
-import { CertificateView } from "@/components/certification/CertificateView";
+import { IssuedCertificate } from "@/components/certification/IssuedCertificate";
 import { useAuth } from "@/contexts/AuthContext";
-import { fetchPapcCertificate, verifyUrl } from "@/lib/certification";
+import { fetchPapcCertificate } from "@/lib/certification";
+import { PAPC_ASSESSMENT_TITLE } from "@/data/certification/papc-config";
 import type { CertificateRow } from "@/lib/types";
 
 export function CertificationPrintClient() {
@@ -54,19 +55,19 @@ function PrintBody() {
     return (
       <div className="mx-auto max-w-lg px-4 py-16 text-center">
         <h1 className="text-2xl font-bold text-gray-900">No certificate yet</h1>
-        <p className="mt-2 text-gray-600">Pass the quiz at 70% or higher to issue one.</p>
+        <p className="mt-2 text-gray-600">
+          Pass the {PAPC_ASSESSMENT_TITLE} at 70% or higher to issue one.
+        </p>
         <Link href="/certification/papc/quiz" className="mt-6 inline-block font-semibold text-brand-700">
-          Go to quiz
+          Go to assessment
         </Link>
       </div>
     );
   }
 
-  const url = verifyUrl(certificate.verification_code);
-
   return (
     <div className="px-4 py-10 print:px-0 print:py-0">
-      <div className="mx-auto mb-6 flex max-w-3xl items-center justify-between print:hidden">
+      <div className="mx-auto mb-6 flex max-w-[1100px] items-center justify-between print:hidden">
         <Link href="/certification/papc" className="text-sm font-medium text-brand-700">
           Back to PAPC
         </Link>
@@ -79,7 +80,7 @@ function PrintBody() {
           Print / Save PDF
         </button>
       </div>
-      <CertificateView certificate={certificate} verifyUrl={url} />
+      <IssuedCertificate certificate={certificate} />
     </div>
   );
 }

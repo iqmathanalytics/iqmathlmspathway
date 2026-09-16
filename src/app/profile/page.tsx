@@ -12,7 +12,7 @@ import { cleanMobile, isValidMobile } from "@/lib/mobile";
 import { resolveCollegeIdForProfile } from "@/lib/resolve-college";
 import { isCatalogCollegeId } from "@/data/tamil-nadu-colleges";
 import type { CourseId } from "@/lib/types";
-import { Loader2 } from "lucide-react";
+import { CheckCircle2, Loader2 } from "lucide-react";
 
 const inputClass =
   "mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500";
@@ -101,7 +101,7 @@ export default function ProfilePage() {
       return;
     }
     await refreshProfile();
-    setMessage("Profile saved.");
+    setMessage("Profile saved successfully.");
   }
 
   return (
@@ -213,8 +213,26 @@ export default function ProfilePage() {
             </div>
           </div>
 
-          {error && <p className="text-sm text-red-600">{error}</p>}
-          {message && <p className="text-sm text-emerald-700">{message}</p>}
+          {error && (
+            <p role="alert" className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+              {error}
+            </p>
+          )}
+          {message && (
+            <div
+              role="status"
+              aria-live="polite"
+              className="flex items-start gap-2.5 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900"
+            >
+              <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" />
+              <div>
+                <p className="font-semibold">{message}</p>
+                <p className="mt-0.5 text-emerald-800">
+                  Your name, mobile, college, and department are up to date.
+                </p>
+              </div>
+            </div>
+          )}
 
           <button
             type="submit"
@@ -222,7 +240,7 @@ export default function ProfilePage() {
             className="inline-flex items-center gap-2 rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-brand-700 disabled:opacity-50"
           >
             {saving && <Loader2 className="h-4 w-4 animate-spin" />}
-            Save profile
+            {saving ? "Saving…" : message ? "Saved" : "Save profile"}
           </button>
         </form>
       </div>

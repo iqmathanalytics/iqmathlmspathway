@@ -9,6 +9,7 @@ import { CertificationAccessGate } from "@/components/certification/Certificatio
 import { PythonCodingWorkspace } from "@/components/practice/PythonCodingWorkspace";
 import { useAuth } from "@/contexts/AuthContext";
 import {
+  PAPC_ASSESSMENT_TITLE,
   PAPC_QUIZ_QUESTION_COUNT,
   PAPC_QUIZ_MINUTES,
   PAPC_RETAKE_DAYS,
@@ -50,7 +51,7 @@ export function CertificationQuizClient() {
       }
     >
       <CertificationAccessGate
-        title="Quiz locked"
+        title={`${PAPC_ASSESSMENT_TITLE} locked`}
         loginNext="/certification/papc/quiz"
         backHref="/certification/papc"
       >
@@ -67,8 +68,8 @@ function formatRemaining(ms: number): string {
   return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 }
 
-const LEAVE_CONFIRM = `End this exam now? Your answers will be submitted as-is. If you do not pass, you must wait ${PAPC_RETAKE_DAYS} days to retake.`;
-const SUBMIT_CONFIRM = `Submit the exam now? You cannot change code after submitting. If you do not pass, you must wait ${PAPC_RETAKE_DAYS} days to retake.`;
+const LEAVE_CONFIRM = `End this assessment now? Your answers will be submitted as-is. If you do not pass, you must wait ${PAPC_RETAKE_DAYS} days to retake.`;
+const SUBMIT_CONFIRM = `Submit the assessment now? You cannot change code after submitting. If you do not pass, you must wait ${PAPC_RETAKE_DAYS} days to retake.`;
 
 function QuizBody() {
   const { user, profile } = useAuth();
@@ -144,7 +145,7 @@ function QuizBody() {
       const { attempts, schemaError } = await fetchPapcAttempts(user.id);
       if (cancelled) return;
       if (schemaError) {
-        setError("Run RUN_CERTIFICATION.sql in Supabase so quiz attempts can be saved.");
+        setError("Run RUN_CERTIFICATION.sql in Supabase so assessment attempts can be saved.");
         setLoading(false);
         return;
       }
@@ -309,7 +310,7 @@ function QuizBody() {
     if (root) {
       const ok = await enterExamFullscreen(root);
       if (!ok) {
-        setError("Allow full screen to start the exam.");
+        setError("Allow full screen to start the assessment.");
         setStarting(false);
         return;
       }
@@ -324,7 +325,7 @@ function QuizBody() {
     if (!root) return;
     const ok = await enterExamFullscreen(root);
     if (!ok) {
-      setError("Allow full screen to continue the exam.");
+      setError("Allow full screen to continue the assessment.");
       return;
     }
     setNeedsFullscreen(false);
@@ -396,10 +397,10 @@ function QuizBody() {
           <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
             <ShieldAlert className="h-10 w-10 text-brand-700" />
             <h1 className="mt-4 text-2xl font-bold text-gray-900">
-              {attempt ? "Resume full-screen exam" : "Locked full-screen exam"}
+              {attempt ? `Resume ${PAPC_ASSESSMENT_TITLE}` : PAPC_ASSESSMENT_TITLE}
             </h1>
             <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-gray-600">
-              <li>The exam runs in full screen only.</li>
+              <li>The assessment runs in full screen only.</li>
               <li>Switching tabs or windows submits the attempt.</li>
               <li>Copy, cut, and paste are blocked.</li>
               <li>
@@ -419,7 +420,7 @@ function QuizBody() {
               ) : (
                 <Maximize2 className="h-4 w-4" />
               )}
-              {attempt ? "Resume in full screen" : "Start full-screen exam"}
+              {attempt ? "Resume in full screen" : "Start assessment"}
             </button>
           </div>
         </div>
@@ -427,7 +428,7 @@ function QuizBody() {
         <>
       <div className="flex shrink-0 flex-wrap items-center justify-between gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-3 shadow-sm">
         <div>
-          <p className="text-sm font-semibold text-gray-900">PAPC coding exam</p>
+          <p className="text-sm font-semibold text-gray-900">{PAPC_ASSESSMENT_TITLE}</p>
           <p className="text-xs text-gray-500">
             {passedCount}/{answers.length || PAPC_QUIZ_QUESTION_COUNT} accepted ·{" "}
             {PAPC_TOTAL_POINTS} points · Full screen · No copy / tab switch
@@ -545,7 +546,7 @@ function QuizBody() {
               onClick={() => setConfirm("submit")}
               className="w-full rounded-xl bg-brand-600 px-3 py-2.5 text-sm font-semibold text-white hover:bg-brand-700 disabled:opacity-60"
             >
-              {submitting ? "Submitting…" : "Submit exam"}
+              {submitting ? "Submitting…" : "Submit assessment"}
             </button>
           </div>
         </aside>
@@ -566,7 +567,7 @@ function QuizBody() {
           onClick={() => setConfirm("submit")}
           className="rounded-xl bg-brand-600 px-4 py-2 text-sm font-semibold text-white"
         >
-          Submit exam
+          Submit assessment
         </button>
         <button
           type="button"
@@ -579,7 +580,7 @@ function QuizBody() {
       </div>
         </>
       ) : (
-        <p className="text-center text-gray-600">{error ?? "Could not start the quiz."}</p>
+        <p className="text-center text-gray-600">{error ?? "Could not start the assessment."}</p>
       )}
 
       {examLive && needsFullscreen && !confirm && (
@@ -588,7 +589,7 @@ function QuizBody() {
             <Maximize2 className="mx-auto h-8 w-8 text-brand-700" />
             <h2 className="mt-3 text-lg font-bold text-gray-900">Full screen required</h2>
             <p className="mt-2 text-sm text-gray-600">
-              Return to full screen to continue, or end the exam. Ending submits your
+              Return to full screen to continue, or end the assessment. Ending submits your
               attempt. If you do not pass, wait {PAPC_RETAKE_DAYS} days to retake.
             </p>
             <div className="mt-5 grid gap-2 sm:grid-cols-2">
@@ -604,7 +605,7 @@ function QuizBody() {
                 onClick={() => setConfirm("exit")}
                 className="rounded-xl border border-gray-200 px-4 py-2.5 text-sm font-semibold text-gray-800"
               >
-                End exam
+                End assessment
               </button>
             </div>
           </div>
@@ -615,7 +616,7 @@ function QuizBody() {
         <div className="fixed inset-0 z-[90] flex items-center justify-center bg-slate-950/70 p-4">
           <div className="w-full max-w-md rounded-2xl bg-white p-6 text-center shadow-xl">
             <h2 className="text-lg font-bold text-gray-900">
-              {confirm === "submit" ? "Submit exam?" : "End exam?"}
+              {confirm === "submit" ? "Submit assessment?" : "End assessment?"}
             </h2>
             <p className="mt-2 text-sm text-gray-600">
               {confirm === "submit" ? SUBMIT_CONFIRM : LEAVE_CONFIRM}

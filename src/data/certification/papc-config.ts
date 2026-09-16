@@ -1,6 +1,7 @@
 export const PAPC_ID = "papc";
 export const PAPC_TITLE = "Python Advanced Proficiency Certification";
 export const PAPC_SHORT = "PAPC";
+export const PAPC_ASSESSMENT_TITLE = "Professional Achievement Assessment";
 export const PAPC_PASS_PCT = 70;
 export const PAPC_PASS_POINTS = 28;
 export const PAPC_TOTAL_POINTS = 40;

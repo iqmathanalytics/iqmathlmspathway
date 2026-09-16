@@ -71,7 +71,7 @@ export function CertificationCatalogClient({
         </h2>
         <p className="mt-3 text-sm leading-6">
           Additional IQmath certifications will appear here as their own programs —
-          same Get Certified hub, separate practice and exam paths.
+          same Get Certified hub, separate practice and assessment paths.
         </p>
       </article>
     </div>

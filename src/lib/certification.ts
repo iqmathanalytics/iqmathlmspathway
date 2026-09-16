@@ -3,25 +3,57 @@ import {
   PAPC_ID,
   PAPC_QUIZ_MINUTES,
   PAPC_RETAKE_DAYS,
+  PAPC_TITLE,
   PAPC_VALIDITY_YEARS,
 } from "@/data/certification/papc-config";
 import {
   buildShuffledPapcQuiz,
   scorePapcAnswers,
 } from "@/data/certification/papc-quiz";
+import { courses } from "@/data/courses";
+import { fetchEnrolledCourseIds } from "@/lib/course-visibility";
 import { getSupabase } from "@/lib/supabase/client";
 import { schemaMissing } from "@/lib/admin";
+import { buildCertificateId, isCertificateId } from "@/lib/certificate-id";
 import type { CertificateRow, CertificationQuizAttemptRow } from "@/lib/types";
 
-export function generateVerificationCode(): string {
-  const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-  const bytes = new Uint8Array(10);
-  if (typeof crypto !== "undefined" && crypto.getRandomValues) {
-    crypto.getRandomValues(bytes);
-  } else {
-    for (let i = 0; i < bytes.length; i++) bytes[i] = Math.floor(Math.random() * 256);
+export { buildCertificateId, isCertificateId } from "@/lib/certificate-id";
+
+export async function allocateUniqueCertificateId(): Promise<string> {
+  const sb = getSupabase();
+  for (let i = 0; i < 80; i++) {
+    const code = buildCertificateId();
+    if (!isCertificateId(code)) continue;
+    if (!sb) return code;
+    const { data } = await sb
+      .from("certificates")
+      .select("id")
+      .eq("verification_code", code)
+      .maybeSingle();
+    if (!data) return code;
   }
-  return Array.from(bytes, (b) => alphabet[b % alphabet.length]).join("");
+  throw new Error("Could not allocate a unique Certificate ID.");
+}
+
+export function generateVerificationCode(): string {
+  return buildCertificateId();
+}
+
+export function formatEnrolledProgramName(courseIds: Iterable<string>): string {
+  const enrolled = new Set(courseIds);
+  const names = courses
+    .filter((course) => enrolled.has(course.id))
+    .map((course) => course.name);
+  if (names.length === 0) return PAPC_TITLE;
+  if (names.length === 1) return names[0]!;
+  if (names.length === 2) return `${names[0]} and ${names[1]}`;
+  return `${names.slice(0, -1).join(", ")}, and ${names[names.length - 1]}`;
+}
+
+export async function fetchCertificateProgramName(userId: string): Promise<string> {
+  const enrolled = await fetchEnrolledCourseIds(userId);
+  if (!enrolled || enrolled.size === 0) return PAPC_TITLE;
+  return formatEnrolledProgramName(enrolled);
 }
 
 export function quizDeadline(startedAt: string): Date {
@@ -234,6 +266,17 @@ export async function submitPapcAttempt(options: {
   }
 
   const issued = new Date();
+  let verificationCode: string;
+  try {
+    verificationCode = await allocateUniqueCertificateId();
+  } catch (e) {
+    return {
+      ...scored,
+      certificate: null,
+      error: e instanceof Error ? e.message : "Could not allocate a unique Certificate ID.",
+      schemaError: false,
+    };
+  }
   const payload = {
     user_id: options.userId,
     certification_id: PAPC_ID,
@@ -242,7 +285,7 @@ export async function submitPapcAttempt(options: {
     score_pct: scored.scorePct,
     issued_at: issued.toISOString(),
     expires_at: certificateExpiresAt(issued).toISOString(),
-    verification_code: generateVerificationCode(),
+    verification_code: verificationCode,
   };
 
   const { data: existing } = await sb
@@ -253,7 +296,19 @@ export async function submitPapcAttempt(options: {
     .maybeSingle();
 
   if (existing) {
-    const keepCode = String((existing as { verification_code?: string }).verification_code ?? payload.verification_code);
+    let keepCode = String((existing as { verification_code?: string }).verification_code ?? payload.verification_code);
+    if (!isCertificateId(keepCode)) {
+      try {
+        keepCode = await allocateUniqueCertificateId();
+      } catch (e) {
+        return {
+          ...scored,
+          certificate: null,
+          error: e instanceof Error ? e.message : "Could not allocate a unique Certificate ID.",
+          schemaError: false,
+        };
+      }
+    }
     const { data, error: upErr } = await sb
       .from("certificates")
       .update({
@@ -262,6 +317,7 @@ export async function submitPapcAttempt(options: {
         score_pct: payload.score_pct,
         issued_at: payload.issued_at,
         expires_at: payload.expires_at,
+        verification_code: keepCode,
       })
       .eq("user_id", options.userId)
       .eq("certification_id", PAPC_ID)
@@ -274,17 +330,36 @@ export async function submitPapcAttempt(options: {
     return { ...scored, certificate: cert, error: null, schemaError: false };
   }
 
-  const { data, error: insErr } = await sb
-    .from("certificates")
-    .insert(payload)
-    .select("*")
-    .single();
+  let data = null as Record<string, unknown> | null;
+  let insErr: { message?: string; code?: string } | null = null;
+  for (let attempt = 0; attempt < 8; attempt++) {
+    let tryPayload = payload;
+    if (attempt > 0) {
+      try {
+        tryPayload = { ...payload, verification_code: await allocateUniqueCertificateId() };
+      } catch (e) {
+        insErr = { message: e instanceof Error ? e.message : "Could not allocate a unique Certificate ID." };
+        break;
+      }
+    }
+    const inserted = await sb.from("certificates").insert(tryPayload).select("*").single();
+    if (!inserted.error && inserted.data) {
+      data = inserted.data as Record<string, unknown>;
+      insErr = null;
+      break;
+    }
+    insErr = inserted.error;
+    const uniqueClash =
+      inserted.error?.code === "23505" ||
+      /duplicate|unique/i.test(inserted.error?.message ?? "");
+    if (!uniqueClash) break;
+  }
   if (insErr || !data) {
     return { ...scored, certificate: null, error: insErr?.message ?? "Could not issue certificate.", schemaError: false };
   }
   return {
     ...scored,
-    certificate: asCertificate(data as Record<string, unknown>),
+    certificate: asCertificate(data),
     error: null,
     schemaError: false,
   };

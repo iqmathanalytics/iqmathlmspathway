@@ -3,8 +3,8 @@
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Loader2, ShieldCheck, ShieldX } from "lucide-react";
-import { CertificateView } from "@/components/certification/CertificateView";
-import { fetchCertificateByCode, verifyUrl } from "@/lib/certification";
+import { IssuedCertificate } from "@/components/certification/IssuedCertificate";
+import { fetchCertificateByCode } from "@/lib/certification";
 import type { CertificateRow } from "@/lib/types";
 
 export function CertificationVerifyClient() {
@@ -90,10 +90,7 @@ function VerifyBody() {
             <ShieldCheck className="h-5 w-5" />
             Valid IQmath Technologies certificate
           </p>
-          <CertificateView
-            certificate={certificate}
-            verifyUrl={verifyUrl(certificate.verification_code)}
-          />
+          <IssuedCertificate certificate={certificate} />
         </div>
       )}
     </div>

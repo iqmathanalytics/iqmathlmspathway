@@ -15,6 +15,7 @@ import { CertificationAccessGate } from "@/components/certification/Certificatio
 import { ClientOnly } from "@/components/ui/ClientOnly";
 import { useAuth } from "@/contexts/AuthContext";
 import {
+  PAPC_ASSESSMENT_TITLE,
   PAPC_PASS_POINTS,
   PAPC_PRACTICE_COUNT,
   PAPC_QUIZ_MINUTES,
@@ -26,7 +27,6 @@ import {
   fetchPapcCertificate,
   getInProgressAttempt,
   getLockUntil,
-  verifyUrl,
 } from "@/lib/certification";
 import { getSupabase } from "@/lib/supabase/client";
 import type { CertificateRow, CertificationQuizAttemptRow } from "@/lib/types";
@@ -109,18 +109,18 @@ function HubBody() {
       ? "/certification/papc/results"
       : "/certification/papc/quiz";
   const quizLabel = inProgress
-    ? "Resume quiz"
+    ? "Resume assessment"
     : lockUntil
       ? `Retake in ${daysUntil(lockUntil)} day${daysUntil(lockUntil) === 1 ? "" : "s"}`
       : certificate
         ? "View results"
-        : "Start quiz";
+        : "Start assessment";
 
   return (
     <div className="mt-8 space-y-8">
       {schemaError && (
         <p className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-          Quiz and certificates need the Supabase script{" "}
+          Assessment and certificates need the Supabase script{" "}
           <code className="font-mono">RUN_CERTIFICATION.sql</code> once. Practice
           still works.
         </p>
@@ -137,7 +137,7 @@ function HubBody() {
         </div>
         <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
           <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
-            Last quiz
+            Last assessment
           </p>
           {loading ? (
             <Loader2 className="mt-3 h-5 w-5 animate-spin text-brand-600" />
@@ -173,7 +173,7 @@ function HubBody() {
           <h2 className="mt-3 text-xl font-semibold text-gray-900">Practice problems</h2>
           <p className="mt-2 text-sm text-gray-600">
             {PAPC_PRACTICE_COUNT} IDE challenges, unlimited attempts, any order. Optional prep — you
-            can take the quiz anytime.
+            can take the assessment anytime.
           </p>
           <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-700">
             Open problem list
@@ -183,7 +183,9 @@ function HubBody() {
 
         <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
           <Clock className="h-8 w-8 text-brand-700" />
-          <h2 className="mt-3 text-xl font-semibold text-gray-900">Certification quiz</h2>
+          <h2 className="mt-3 text-xl font-semibold text-gray-900">
+            {PAPC_ASSESSMENT_TITLE}
+          </h2>
           <p className="mt-2 text-sm text-gray-600">
             Locked full-screen IDE, {PAPC_QUIZ_MINUTES} minutes, {PAPC_PASS_POINTS}/40
             to pass. No copy or tab switching. Submit or exit asks for confirmation.
@@ -214,8 +216,7 @@ function HubBody() {
                 PAPC certified
               </p>
               <p className="mt-1 text-sm text-emerald-900/80">
-                Issued for {profile?.full_name || user?.email}. Share the verify
-                link or print a PDF.
+                Issued for {profile?.full_name || user?.email}. Print or save a PDF.
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -226,17 +227,6 @@ function HubBody() {
                 <Printer className="h-4 w-4" />
                 Print / PDF
               </Link>
-              <button
-                type="button"
-                className="rounded-lg border border-emerald-300 bg-white px-3 py-2 text-sm font-semibold text-emerald-900"
-                onClick={() =>
-                  void navigator.clipboard.writeText(
-                    verifyUrl(certificate.verification_code)
-                  )
-                }
-              >
-                Copy verify URL
-              </button>
             </div>
           </div>
         </div>

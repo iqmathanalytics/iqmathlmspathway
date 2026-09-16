@@ -3,6 +3,7 @@ import { PAGE_CONTAINER } from "@/lib/layout";
 import { CertificationHubClient } from "./CertificationHubClient";
 import { CERT_CATALOG_PATH } from "@/data/certification/catalog";
 import {
+  PAPC_ASSESSMENT_TITLE,
   PAPC_PASS_PCT,
   PAPC_PRACTICE_COUNT,
   PAPC_QUIZ_MINUTES,
@@ -33,7 +34,7 @@ export default function PapcProgramPage() {
         <h1 className="mt-2 text-3xl font-bold text-gray-900">{PAPC_TITLE}</h1>
         <p className="mt-3 text-gray-600">
           Optional IDE practice ({PAPC_PRACTICE_COUNT} problems) plus a locked{" "}
-          {PAPC_QUIZ_MINUTES}-minute full-screen coding exam ({PAPC_TOTAL_POINTS}{" "}
+          {PAPC_QUIZ_MINUTES}-minute {PAPC_ASSESSMENT_TITLE} ({PAPC_TOTAL_POINTS}{" "}
           points, pass {PAPC_PASS_PCT}%). Leaving or failing waits {PAPC_RETAKE_DAYS}{" "}
           days. Same access as Practice: Python for Data Science and premium.
         </p>

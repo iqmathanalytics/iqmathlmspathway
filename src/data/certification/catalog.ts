@@ -1,4 +1,5 @@
 import {
+  PAPC_ASSESSMENT_TITLE,
   PAPC_ID,
   PAPC_PRACTICE_COUNT,
   PAPC_QUIZ_MINUTES,
@@ -48,13 +49,13 @@ export const CERTIFICATION_PROGRAMS: CertificationProgram[] = [
     title: PAPC_TITLE,
     short: PAPC_SHORT,
     tagline:
-      "Advanced Python algorithms, a timed exam, and a verified IQmath certificate.",
+      "Advanced Python algorithms, a timed Professional Achievement Assessment, and a verified IQmath certificate.",
     status: "live",
     href: PAPC_PATHS.hub,
     audience: "Python for Data Science + premium",
     highlights: [
       `${PAPC_PRACTICE_COUNT} IDE practice problems`,
-      `${PAPC_QUIZ_MINUTES}-minute locked coding exam`,
+      `${PAPC_QUIZ_MINUTES}-minute ${PAPC_ASSESSMENT_TITLE}`,
       "2-year verified certificate",
     ],
   },

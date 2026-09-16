@@ -36,8 +36,8 @@ export default function CertificationPracticeListPage() {
           <h1 className="text-3xl font-bold text-gray-900">PAPC practice problems</h1>
           <p className="mt-2 max-w-2xl text-gray-600">
             {PAPC_PRACTICE_COUNT} problems. Unlimited attempts, any order. Run, test, and
-            submit in the Python IDE. The quiz does not require finishing all of
-            these first.
+            submit in the Python IDE. The Professional Achievement Assessment does
+            not require finishing all of these first.
           </p>
           <div className="mt-4 flex flex-wrap gap-2 text-xs font-medium">
             <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-emerald-700">

@@ -5,9 +5,11 @@ import { useEffect, useState } from "react";
 import { Award, CheckCircle2, Loader2, Printer, XCircle } from "lucide-react";
 import { ClientOnly } from "@/components/ui/ClientOnly";
 import { CertificationAccessGate } from "@/components/certification/CertificationAccessGate";
+import { IssuedCertificate } from "@/components/certification/IssuedCertificate";
 import { useAuth } from "@/contexts/AuthContext";
 import { scorePapcAnswers } from "@/data/certification/papc-quiz";
 import {
+  PAPC_ASSESSMENT_TITLE,
   PAPC_PASS_POINTS,
   PAPC_TOTAL_POINTS,
 } from "@/data/certification/papc-config";
@@ -16,7 +18,6 @@ import {
   fetchPapcAttempts,
   fetchPapcCertificate,
   getLockUntil,
-  verifyUrl,
 } from "@/lib/certification";
 import type { CertificateRow, CertificationQuizAttemptRow } from "@/lib/types";
 
@@ -66,13 +67,15 @@ function ResultsBody() {
   if (!attempt) {
     return (
       <div className="mx-auto max-w-lg px-4 py-16 text-center">
-        <h1 className="text-2xl font-bold text-gray-900">No quiz submitted yet</h1>
-        <p className="mt-2 text-gray-600">Start the 90-minute coding exam when you are ready.</p>
+        <h1 className="text-2xl font-bold text-gray-900">No assessment submitted yet</h1>
+        <p className="mt-2 text-gray-600">
+          Start the {PAPC_ASSESSMENT_TITLE} when you are ready.
+        </p>
         <Link
           href="/certification/papc/quiz"
           className="mt-6 inline-flex rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white"
         >
-          Start exam
+          Start assessment
         </Link>
       </div>
     );
@@ -82,8 +85,8 @@ function ResultsBody() {
   const passed = Boolean(attempt.passed);
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6">
-      <nav className="text-sm text-gray-500">
+    <div className="mx-auto w-full max-w-[1100px] px-4 py-10 sm:px-6">
+      <nav className="mx-auto max-w-3xl text-sm text-gray-500">
         <Link href="/certification" className="hover:text-brand-700">
           Get Certified
         </Link>
@@ -95,7 +98,7 @@ function ResultsBody() {
         <span className="text-gray-800">Results</span>
       </nav>
 
-      <div className="mt-6 rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm">
+      <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm">
         {passed ? (
           <CheckCircle2 className="mx-auto h-12 w-12 text-emerald-600" />
         ) : (
@@ -123,17 +126,6 @@ function ResultsBody() {
               <Printer className="h-4 w-4" />
               Print certificate
             </Link>
-            <button
-              type="button"
-              className="rounded-xl border border-gray-200 px-4 py-2.5 text-sm font-semibold text-gray-800"
-              onClick={() =>
-                void navigator.clipboard.writeText(
-                  verifyUrl(certificate.verification_code)
-                )
-              }
-            >
-              Copy verify URL
-            </button>
           </div>
         ) : (
           <p className="mt-4 text-sm text-amber-800">
@@ -144,7 +136,13 @@ function ResultsBody() {
         )}
       </div>
 
-      <section className="mt-8">
+      {passed && certificate ? (
+        <section className="mt-8">
+          <IssuedCertificate certificate={certificate} />
+        </section>
+      ) : null}
+
+      <section className="mx-auto mt-8 max-w-3xl">
         <h2 className="text-lg font-semibold text-gray-900">Problem breakdown</h2>
         <ul className="mt-3 space-y-2">
           {breakdown.map((row, i) => (

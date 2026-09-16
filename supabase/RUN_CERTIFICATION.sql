@@ -26,7 +26,7 @@ create table if not exists public.certificates (
   score_pct numeric not null,
   issued_at timestamptz not null default now(),
   expires_at timestamptz not null,
-  verification_code text not null unique,
+  verification_code text not null unique, -- IQ-LMS-{4 digits}, unique
   unique (user_id, certification_id)
 );
 
