@@ -6,6 +6,7 @@ import { useProgress } from "@/contexts/ProgressContext";
 import { markTopicCompleteAsync } from "@/lib/progress-service";
 import { isIdeRan, isQuizDone } from "@/lib/progress";
 import { CheckCircle2, Circle, Lock } from "lucide-react";
+import { unlocksAllContent } from "@/lib/admin";
 
 interface MarkCompleteButtonProps {
   topicId: string;
@@ -17,14 +18,14 @@ interface MarkCompleteButtonProps {
 const TEMPORARILY_DISABLE_TOPIC_LOCK = false;
 
 export function MarkCompleteButton({ topicId, hasQuiz, hasIde = true }: MarkCompleteButtonProps) {
-  const { user } = useAuth();
+  const { user, profile } = useAuth();
   const { progress, ready } = useProgress();
   const [saving, setSaving] = useState(false);
 
   const done      = ready && progress.completedTopics.includes(topicId);
   const ideDone   = !hasIde || (ready && isIdeRan(progress, topicId));
   const quizDone  = ready && (!hasQuiz || isQuizDone(progress, topicId));
-  const canMark   = TEMPORARILY_DISABLE_TOPIC_LOCK || (ideDone && quizDone);
+  const canMark   = TEMPORARILY_DISABLE_TOPIC_LOCK || unlocksAllContent(profile, user?.email) || (ideDone && quizDone);
 
   async function handleClick() {
     if (!user || !canMark) return;

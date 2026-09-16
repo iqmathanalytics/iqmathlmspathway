@@ -26,6 +26,8 @@ In Supabase Dashboard → **SQL Editor** → **New query**, paste and run the fu
 
 This creates profiles, progress tables, RLS policies, and seeds hidden tests for all practice problems.
 
+Then paste and run **[`RUN_NO_AUTO_ENROLL.sql`](./RUN_NO_AUTO_ENROLL.sql)** so new students are not auto-enrolled in every published course. They enroll from Programs.
+
 ## 3. Auth settings (fix “email rate limit exceeded” / 429 on signup)
 
 Supabase’s **built-in email** allows only a few signup/reset emails per hour. Repeated signups hit `429 email rate limit exceeded`.

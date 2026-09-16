@@ -4,2901 +4,3242 @@ export const module16Practice: PracticeProblem[] = [
   {
     "id": "m16-t1-p01",
     "topicId": "m16-t1",
-    "slug": "m16_t1-1",
-    "title": "Introduction to Matplotlib: Warm-up",
+    "slug": "plt-first-chart",
+    "title": "Matplotlib: Your First Line Chart",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Introduction to Matplotlib. Print Ready on one line.",
+    "description": "Create a figure with plt.subplots, plot three months of revenue as a line, and print a confirmation.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Create "
         },
         {
           "type": "code",
-          "value": "Introduction to Matplotlib"
+          "value": "fig, ax = plt.subplots()"
         },
         {
           "type": "text",
-          "value": ". Print the word "
+          "value": ", plot "
         },
         {
           "type": "code",
-          "value": "Ready"
+          "value": "[1, 2, 3]"
         },
         {
           "type": "text",
-          "value": " on one line."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": " against "
+        },
         {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
+          "type": "code",
+          "value": "[10, 20, 30]"
+        },
+        {
+          "type": "text",
+          "value": " with "
+        },
+        {
+          "type": "code",
+          "value": "ax.plot"
+        },
+        {
+          "type": "text",
+          "value": ", then print "
+        },
+        {
+          "type": "code",
+          "value": "chart ready"
+        },
+        {
+          "type": "text",
+          "value": ". The tests inspect the chart you built, not the text."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "editorPlaceholder": "# fig, ax = plt.subplots()",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct! The tests read the real line data off your axes.",
+      "requiresVariables": [
+        "plt",
+        "ax"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "plt.subplots() returns a figure and an axes — draw on the axes.",
+          "ax.plot(x, y) adds a line to the axes.",
+          "The preview pane cannot show images, so print a line to confirm it ran."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "chart ready"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Use fig, ax = plt.subplots()",
+      "Draw with ax.plot()",
+      "Print a confirmation line"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "fig, ax = plt.subplots()",
+      "ax.plot([1, 2, 3], [10, 20, 30])"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: build a line chart on ax\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30])\n\nprint(\"chart ready\")",
     "publicTests": [
       {
         "id": "m16-t1-p01-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t1-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "exactly one line was drawn",
+        "assertCode": "assert (len(ax.lines)) == (1), \"Expected \" + repr(1) + \", got \" + repr(len(ax.lines))",
         "visibility": "public"
       },
       {
         "id": "m16-t1-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "the y values are plotted",
+        "assertCode": "assert (ax.lines[0].get_ydata().tolist()) == ([10, 20, 30]), \"Expected \" + repr([10, 20, 30]) + \", got \" + repr(ax.lines[0].get_ydata().tolist())",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t1-p01-t4",
+        "label": "the x values are plotted",
+        "assertCode": "assert (ax.lines[0].get_xdata().tolist()) == ([1, 2, 3]), \"Expected \" + repr([1, 2, 3]) + \", got \" + repr(ax.lines[0].get_xdata().tolist())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Introduction to Matplotlib. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Create a figure with plt.subplots, plot three months of revenue as a line, and print a confirmation.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30])\n\nprint(\"chart ready\")"
   },
   {
     "id": "m16-t1-p02",
     "topicId": "m16-t1",
-    "slug": "m16_t1-2",
-    "title": "Introduction to Matplotlib: Output Two Values",
+    "slug": "plt-title",
+    "title": "Matplotlib: Give the Chart a Title",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Introduction to Matplotlib and print them comma-separated.",
+    "description": "Plot the revenue line and set the chart title to \"Monthly Revenue\" with ax.set_title.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Introduction to Matplotlib and print them separated by a comma."
+          "value": "Add "
+        },
+        {
+          "type": "code",
+          "value": "ax.set_title(\"Monthly Revenue\")"
+        },
+        {
+          "type": "text",
+          "value": " to your chart. An untitled chart is unreadable in a report."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# ax.set_title(\"Monthly Revenue\")",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "ax.set_title(text) sets the heading above the axes.",
+          "ax.get_title() reads it back — that is what the test checks."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "titled"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Title must be exactly \"Monthly Revenue\"",
+      "Keep the line on the chart"
     ],
     "hints": [
-      "Create two variables related to Introduction to Matplotlib",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "ax.set_title(\"Monthly Revenue\")"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Introduction to Matplotlib and print them comma-separated. Key points: Create two variables related to Introduction to Matplotlib Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: plot and add a title\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30])\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30])\nax.set_title(\"Monthly Revenue\")\n\nprint(\"titled\")",
     "publicTests": [
       {
         "id": "m16-t1-p02-t1",
-        "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t1-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "the title is set",
+        "assertCode": "assert (ax.get_title()) == (\"Monthly Revenue\"), \"Expected \" + repr(\"Monthly Revenue\") + \", got \" + repr(ax.get_title())",
         "visibility": "public"
       },
       {
         "id": "m16-t1-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "the line is still drawn",
+        "assertCode": "assert (len(ax.lines)) == (1), \"Expected \" + repr(1) + \", got \" + repr(len(ax.lines))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Plot the revenue line and set the chart title to \"Monthly Revenue\" with ax.set_title.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30])\nax.set_title(\"Monthly Revenue\")\n\nprint(\"titled\")"
   },
   {
     "id": "m16-t1-p03",
     "topicId": "m16-t1",
-    "slug": "m16_t1-3",
-    "title": "Introduction to Matplotlib: Simple Loop",
-    "difficulty": "medium",
+    "slug": "plt-axis-labels",
+    "title": "Matplotlib: Label Both Axes",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Introduction to Matplotlib.",
+    "description": "Set the x label to \"Month\" and the y label to \"Revenue\" on your chart.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Use "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "ax.set_xlabel(\"Month\")"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Introduction to Matplotlib."
+          "value": " and "
+        },
+        {
+          "type": "code",
+          "value": "ax.set_ylabel(\"Revenue\")"
+        },
+        {
+          "type": "text",
+          "value": ". Axis labels tell the reader what the numbers mean."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# ax.set_xlabel(\"Month\")",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "set_xlabel and set_ylabel take plain strings.",
+          "Always state the unit if there is one."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "labelled"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "x label \"Month\"",
+      "y label \"Revenue\""
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "ax.set_xlabel(\"Month\")",
+      "ax.set_ylabel(\"Revenue\")"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Introduction to Matplotlib. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: label both axes\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30])\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30])\nax.set_xlabel(\"Month\")\nax.set_ylabel(\"Revenue\")\n\nprint(\"labelled\")",
     "publicTests": [
       {
         "id": "m16-t1-p03-t1",
-        "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t1-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "x label is set",
+        "assertCode": "assert (ax.get_xlabel()) == (\"Month\"), \"Expected \" + repr(\"Month\") + \", got \" + repr(ax.get_xlabel())",
         "visibility": "public"
       },
       {
         "id": "m16-t1-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "y label is set",
+        "assertCode": "assert (ax.get_ylabel()) == (\"Revenue\"), \"Expected \" + repr(\"Revenue\") + \", got \" + repr(ax.get_ylabel())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Set the x label to \"Month\" and the y label to \"Revenue\" on your chart.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30])\nax.set_xlabel(\"Month\")\nax.set_ylabel(\"Revenue\")\n\nprint(\"labelled\")"
   },
   {
     "id": "m16-t1-p04",
     "topicId": "m16-t1",
-    "slug": "m16_t1-4",
-    "title": "Introduction to Matplotlib: Condition",
+    "slug": "plt-figure-size",
+    "title": "Matplotlib: Set the Figure Size",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Create the figure with figsize=(6, 4) and print the size Matplotlib reports.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "Pass "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "figsize=(6, 4)"
         },
         {
           "type": "text",
-          "value": ". If "
+          "value": " to "
         },
         {
           "type": "code",
-          "value": "score >= 60"
+          "value": "plt.subplots"
         },
         {
           "type": "text",
-          "value": ", print "
+          "value": ", plot the line, then print "
         },
         {
           "type": "code",
-          "value": "Pass"
-        },
-        {
-          "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
+          "value": "fig.get_size_inches().tolist()"
         },
         {
           "type": "text",
           "value": "."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# fig, ax = plt.subplots(figsize=(6, 4))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "fig",
+        "ax"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "figsize is measured in inches, width first.",
+          "Sizing the figure is how you stop labels from overlapping."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "[6.0, 4.0]"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Pass figsize=(6, 4)",
+      "Print the reported size as a list"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "fig, ax = plt.subplots(figsize=(6, 4))",
+      "print(fig.get_size_inches().tolist())"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: size the figure 6 by 4 inches\nimport matplotlib.pyplot as plt\n\nfig, ax = None, None\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nfig, ax = plt.subplots(figsize=(6, 4))\nax.plot([1, 2, 3], [10, 20, 30])\n\nprint(fig.get_size_inches().tolist())",
     "publicTests": [
       {
         "id": "m16-t1-p04-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t1-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "figure is 6 by 4 inches",
+        "assertCode": "assert (fig.get_size_inches().tolist()) == ([6.0, 4.0]), \"Expected \" + repr([6.0, 4.0]) + \", got \" + repr(fig.get_size_inches().tolist())",
         "visibility": "public"
       },
       {
         "id": "m16-t1-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "the line was drawn",
+        "assertCode": "assert (len(ax.lines)) == (1), \"Expected \" + repr(1) + \", got \" + repr(len(ax.lines))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Create the figure with figsize=(6, 4) and print the size Matplotlib reports.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots(figsize=(6, 4))\nax.plot([1, 2, 3], [10, 20, 30])\n\nprint(fig.get_size_inches().tolist())"
   },
   {
     "id": "m16-t1-p05",
     "topicId": "m16-t1",
-    "slug": "m16_t1-5",
-    "title": "Introduction to Matplotlib: Function Stub",
+    "slug": "plt-two-lines",
+    "title": "Matplotlib: Compare Two Series",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Plot two labelled lines on the same axes and add a legend so they can be told apart.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "Plot "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "[10, 20, 30]"
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": " labelled \"2024\" and "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": "[15, 18, 40]"
         },
         {
           "type": "text",
-          "value": " and call it once."
+          "value": " labelled \"2025\" on the same "
+        },
+        {
+          "type": "code",
+          "value": "ax"
+        },
+        {
+          "type": "text",
+          "value": ", then call "
+        },
+        {
+          "type": "code",
+          "value": "ax.legend()"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# ax.plot(..., label='2024')",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Call ax.plot twice — both lines land on the same axes.",
+          "Pass label= on each call, then ax.legend() picks the labels up.",
+          "Without a legend, two lines are meaningless."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "two lines"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Both lines on the same axes",
+      "Labels \"2024\" and \"2025\" in that order",
+      "Call ax.legend()"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "ax.plot([1, 2, 3], [10, 20, 30], label=\"2024\")",
+      "ax.legend()"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: plot both years and add a legend\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30], label=\"2024\")\nax.plot([1, 2, 3], [15, 18, 40], label=\"2025\")\nax.legend()\n\nprint(\"two lines\")",
     "publicTests": [
       {
         "id": "m16-t1-p05-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t1-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "two lines were drawn",
+        "assertCode": "assert (len(ax.lines)) == (2), \"Expected \" + repr(2) + \", got \" + repr(len(ax.lines))",
         "visibility": "public"
       },
       {
         "id": "m16-t1-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "a legend was added",
+        "assertCode": "assert ax.get_legend() is not None, \"Call ax.legend() after plotting both lines\"",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t1-p05-t4",
+        "label": "both series are labelled",
+        "assertCode": "assert ([t.get_text() for t in ax.get_legend().get_texts()]) == ([\"2024\", \"2025\"]), \"Expected \" + repr([\"2024\", \"2025\"]) + \", got \" + repr([t.get_text() for t in ax.get_legend().get_texts()])",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Plot two labelled lines on the same axes and add a legend so they can be told apart.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30], label=\"2024\")\nax.plot([1, 2, 3], [15, 18, 40], label=\"2025\")\nax.legend()\n\nprint(\"two lines\")"
   },
   {
     "id": "m16-t1-p06",
     "topicId": "m16-t1",
-    "slug": "m16_t1-6",
-    "title": "Introduction to Matplotlib: List Practice",
-    "difficulty": "hard",
+    "slug": "plt-savefig",
+    "title": "Matplotlib: Save the Chart to a File",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Plot the line, save the figure to chart.png with fig.savefig, and print a confirmation.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Introduction to Matplotlib. Print the "
+          "value": "Save your chart with "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "fig.savefig(\"chart.png\")"
         },
         {
           "type": "text",
-          "value": " using index "
-        },
-        {
-          "type": "code",
-          "value": "1"
-        },
-        {
-          "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": " — that is how a chart gets into a report or an email."
         }
+      ],
+      "editorPlaceholder": "# fig.savefig(\"chart.png\")",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "fig",
+        "ax"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "savefig writes an image file from the figure.",
+          "The extension chooses the format: .png, .pdf, .svg.",
+          "In a script, save instead of show."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "saved"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "File name must be chart.png",
+      "Use fig.savefig()"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "fig.savefig(\"chart.png\")"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: plot and save the figure\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30])\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30])\nfig.savefig(\"chart.png\")\n\nprint(\"saved\")",
     "publicTests": [
       {
         "id": "m16-t1-p06-t1",
-        "label": "Sample Case",
-        "expectedStdout": "middle",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t1-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "chart.png was written",
+        "assertCode": "assert __import__(\"os\").path.exists(\"chart.png\"), \"Expected fig.savefig to create chart.png\"",
         "visibility": "public"
       },
       {
         "id": "m16-t1-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "the file is not empty",
+        "assertCode": "assert __import__(\"os\").path.getsize(\"chart.png\") > 0, \"The saved image should contain data\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Plot the line, save the figure to chart.png with fig.savefig, and print a confirmation.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30])\nfig.savefig(\"chart.png\")\n\nprint(\"saved\")"
   },
   {
     "id": "m16-t1-p07",
     "topicId": "m16-t1",
-    "slug": "m16_t1-7",
-    "title": "Introduction to Matplotlib: Dict Lookup",
+    "slug": "plt-complete-chart",
+    "title": "Matplotlib: A Report-Ready Chart",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Build one chart with a line, a title, both axis labels, and save it to report.png.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Put it all together: plot the revenue line, set the title "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "Q1 Revenue"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": ", label the axes "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "Month"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
+          "value": " and "
         },
         {
           "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "Revenue"
+        },
+        {
+          "type": "text",
+          "value": ", then save to "
+        },
+        {
+          "type": "code",
+          "value": "report.png"
         },
         {
           "type": "text",
           "value": "."
         }
       ],
+      "editorPlaceholder": "# plot, title, labels, savefig",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "fig",
+        "ax"
+      ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "Order does not matter — plot, then decorate, then save.",
+          "Save last so the file includes every change.",
+          "A chart is only finished when a stranger can read it."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "report chart ready"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Title \"Q1 Revenue\", labels \"Month\" and \"Revenue\"",
+      "Save to report.png"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "ax.set_title(\"Q1 Revenue\")",
+      "fig.savefig(\"report.png\")"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: build the full chart and save it\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [120, 150, 170])\nax.set_title(\"Q1 Revenue\")\nax.set_xlabel(\"Month\")\nax.set_ylabel(\"Revenue\")\nfig.savefig(\"report.png\")\n\nprint(\"report chart ready\")",
     "publicTests": [
       {
         "id": "m16-t1-p07-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Python",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t1-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "title is set",
+        "assertCode": "assert (ax.get_title()) == (\"Q1 Revenue\"), \"Expected \" + repr(\"Q1 Revenue\") + \", got \" + repr(ax.get_title())",
         "visibility": "public"
       },
       {
         "id": "m16-t1-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "x label is set",
+        "assertCode": "assert (ax.get_xlabel()) == (\"Month\"), \"Expected \" + repr(\"Month\") + \", got \" + repr(ax.get_xlabel())",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t1-p07-t4",
+        "label": "y label is set",
+        "assertCode": "assert (ax.get_ylabel()) == (\"Revenue\"), \"Expected \" + repr(\"Revenue\") + \", got \" + repr(ax.get_ylabel())",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t1-p07-t5",
+        "label": "a line was plotted",
+        "assertCode": "assert (len(ax.lines)) == (1), \"Expected \" + repr(1) + \", got \" + repr(len(ax.lines))",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t1-p07-t6",
+        "label": "report.png was saved",
+        "assertCode": "assert __import__(\"os\").path.exists(\"report.png\"), \"Save the finished chart to report.png\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Build one chart with a line, a title, both axis labels, and save it to report.png.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [120, 150, 170])\nax.set_title(\"Q1 Revenue\")\nax.set_xlabel(\"Month\")\nax.set_ylabel(\"Revenue\")\nfig.savefig(\"report.png\")\n\nprint(\"report chart ready\")"
   },
   {
     "id": "m16-t2-p01",
     "topicId": "m16-t2",
-    "slug": "m16_t2-1",
-    "title": "Line Bar Scatter and Histogram: Warm-up",
+    "slug": "chart-line-trend",
+    "title": "Charts: A Line for Trends",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Line Bar Scatter and Histogram. Print Ready on one line.",
+    "description": "Use a line chart to show revenue rising over four weeks and check the plotted values.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Line charts are for change over time. Plot weeks "
         },
         {
           "type": "code",
-          "value": "Line Bar Scatter and Histogram"
+          "value": "[1, 2, 3, 4]"
         },
         {
           "type": "text",
-          "value": ". Print the word "
+          "value": " against "
         },
         {
           "type": "code",
-          "value": "Ready"
+          "value": "[10, 14, 13, 20]"
         },
         {
           "type": "text",
-          "value": " on one line."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": " with "
+        },
         {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
+          "type": "code",
+          "value": "ax.plot"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "editorPlaceholder": "# ax.plot(weeks, revenue)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Use a line when the x axis is ordered — dates, weeks, months.",
+          "The line implies the points are connected in sequence."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "line drawn"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Use ax.plot",
+      "Plot all four weeks"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "ax.plot([1, 2, 3, 4], [10, 14, 13, 20])"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: plot the weekly trend\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3, 4], [10, 14, 13, 20])\n\nprint(\"line drawn\")",
     "publicTests": [
       {
         "id": "m16-t2-p01-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t2-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "one line",
+        "assertCode": "assert (len(ax.lines)) == (1), \"Expected \" + repr(1) + \", got \" + repr(len(ax.lines))",
         "visibility": "public"
       },
       {
         "id": "m16-t2-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "four weeks of values",
+        "assertCode": "assert (ax.lines[0].get_ydata().tolist()) == ([10, 14, 13, 20]), \"Expected \" + repr([10, 14, 13, 20]) + \", got \" + repr(ax.lines[0].get_ydata().tolist())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Line Bar Scatter and Histogram. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Use a line chart to show revenue rising over four weeks and check the plotted values.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3, 4], [10, 14, 13, 20])\n\nprint(\"line drawn\")"
   },
   {
     "id": "m16-t2-p02",
     "topicId": "m16-t2",
-    "slug": "m16_t2-2",
-    "title": "Line Bar Scatter and Histogram: Output Two Values",
+    "slug": "chart-bar-categories",
+    "title": "Charts: A Bar for Categories",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Line Bar Scatter and Histogram and print them comma-separated.",
+    "description": "Use ax.bar to compare revenue across three product categories and check the bar heights.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Line Bar Scatter and Histogram and print them separated by a comma."
+          "value": "Bar charts compare separate categories. Use "
+        },
+        {
+          "type": "code",
+          "value": "ax.bar([\"pen\", \"book\", \"bag\"], [30, 70, 40])"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# ax.bar(categories, values)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Use bars when the x axis has no natural order.",
+          "Each bar becomes a patch you can inspect afterwards.",
+          "Bars must start at zero or they mislead."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "bars drawn"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Use ax.bar",
+      "Three categories in the given order"
     ],
     "hints": [
-      "Create two variables related to Line Bar Scatter and Histogram",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "ax.bar([\"pen\", \"book\", \"bag\"], [30, 70, 40])"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Line Bar Scatter and Histogram and print them comma-separated. Key points: Create two variables related to Line Bar Scatter and Histogram Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: draw one bar per category\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.bar([\"pen\", \"book\", \"bag\"], [30, 70, 40])\n\nprint(\"bars drawn\")",
     "publicTests": [
       {
         "id": "m16-t2-p02-t1",
-        "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t2-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "three bars",
+        "assertCode": "assert (len(ax.patches)) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(ax.patches))",
         "visibility": "public"
       },
       {
         "id": "m16-t2-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "bar heights match the revenue",
+        "assertCode": "assert ([p.get_height() for p in ax.patches]) == ([30.0, 70.0, 40.0]), \"Expected \" + repr([30.0, 70.0, 40.0]) + \", got \" + repr([p.get_height() for p in ax.patches])",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Use ax.bar to compare revenue across three product categories and check the bar heights.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.bar([\"pen\", \"book\", \"bag\"], [30, 70, 40])\n\nprint(\"bars drawn\")"
   },
   {
     "id": "m16-t2-p03",
     "topicId": "m16-t2",
-    "slug": "m16_t2-3",
-    "title": "Line Bar Scatter and Histogram: Simple Loop",
-    "difficulty": "medium",
+    "slug": "chart-scatter-relationship",
+    "title": "Charts: A Scatter for Relationships",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Line Bar Scatter and Histogram.",
+    "description": "Use ax.scatter to show how units sold relates to revenue and confirm the points were added.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Scatter plots show how two numeric variables move together. Use "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "ax.scatter([2, 4, 6], [20, 38, 61])"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Line Bar Scatter and Histogram."
+          "value": "."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# ax.scatter(units, revenue)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Scatter draws unconnected points — no order is implied.",
+          "It is the first chart to reach for when checking correlation.",
+          "Points are stored as a collection, not as lines."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "points drawn"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Use ax.scatter, not ax.plot",
+      "Three points"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "ax.scatter([2, 4, 6], [20, 38, 61])"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Line Bar Scatter and Histogram. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: scatter units against revenue\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.scatter([2, 4, 6], [20, 38, 61])\n\nprint(\"points drawn\")",
     "publicTests": [
       {
         "id": "m16-t2-p03-t1",
-        "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t2-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "one scatter collection",
+        "assertCode": "assert (len(ax.collections)) == (1), \"Expected \" + repr(1) + \", got \" + repr(len(ax.collections))",
         "visibility": "public"
       },
       {
         "id": "m16-t2-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "no lines were drawn",
+        "assertCode": "assert (len(ax.lines)) == (0), \"Expected \" + repr(0) + \", got \" + repr(len(ax.lines))",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t2-p03-t4",
+        "label": "three points",
+        "assertCode": "assert (len(ax.collections[0].get_offsets())) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(ax.collections[0].get_offsets()))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Use ax.scatter to show how units sold relates to revenue and confirm the points were added.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.scatter([2, 4, 6], [20, 38, 61])\n\nprint(\"points drawn\")"
   },
   {
     "id": "m16-t2-p04",
     "topicId": "m16-t2",
-    "slug": "m16_t2-4",
-    "title": "Line Bar Scatter and Histogram: Condition",
+    "slug": "chart-histogram-bins",
+    "title": "Charts: A Histogram for Distributions",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Use ax.hist with 4 bins to show how order values are distributed and check the bin count.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "Histograms show the shape of one numeric column. Use "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "ax.hist(values, bins=4)"
         },
         {
           "type": "text",
-          "value": ". If "
+          "value": " on "
         },
         {
           "type": "code",
-          "value": "score >= 60"
-        },
-        {
-          "type": "text",
-          "value": ", print "
-        },
-        {
-          "type": "code",
-          "value": "Pass"
-        },
-        {
-          "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
+          "value": "[5, 7, 8, 12, 13, 15, 21, 22]"
         },
         {
           "type": "text",
           "value": "."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# ax.hist(values, bins=4)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A histogram groups values into bins and counts them.",
+          "bins=4 gives four bars — the bin count changes the story, so choose it deliberately.",
+          "A bar chart compares categories; a histogram shows a distribution."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "histogram drawn"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Use ax.hist with bins=4",
+      "Plot all eight values"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "ax.hist(values, bins=4)"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: draw a 4-bin histogram\nimport matplotlib.pyplot as plt\n\nvalues = [5, 7, 8, 12, 13, 15, 21, 22]\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nvalues = [5, 7, 8, 12, 13, 15, 21, 22]\nfig, ax = plt.subplots()\nax.hist(values, bins=4)\n\nprint(\"histogram drawn\")",
     "publicTests": [
       {
         "id": "m16-t2-p04-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t2-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "four bins were drawn",
+        "assertCode": "assert (len(ax.patches)) == (4), \"Expected \" + repr(4) + \", got \" + repr(len(ax.patches))",
         "visibility": "public"
       },
       {
         "id": "m16-t2-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "every value was counted",
+        "assertCode": "assert (sum(p.get_height() for p in ax.patches)) == (8.0), \"Expected \" + repr(8.0) + \", got \" + repr(sum(p.get_height() for p in ax.patches))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Use ax.hist with 4 bins to show how order values are distributed and check the bin count.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nvalues = [5, 7, 8, 12, 13, 15, 21, 22]\nfig, ax = plt.subplots()\nax.hist(values, bins=4)\n\nprint(\"histogram drawn\")"
   },
   {
     "id": "m16-t2-p05",
     "topicId": "m16-t2",
-    "slug": "m16_t2-5",
-    "title": "Line Bar Scatter and Histogram: Function Stub",
+    "slug": "chart-horizontal-bar",
+    "title": "Charts: Horizontal Bars for Long Labels",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Use ax.barh so long category names stay readable, then check the bar widths.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "When labels are long, turn the bars sideways with "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "ax.barh"
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": ". Plot "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": "[\"stationery\", \"media\"]"
         },
         {
           "type": "text",
-          "value": " and call it once."
+          "value": " against "
+        },
+        {
+          "type": "code",
+          "value": "[50, 70]"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# ax.barh(categories, values)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "barh takes the categories first, then the widths.",
+          "Horizontal bars are measured with get_width(), not get_height()."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "horizontal bars drawn"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Use ax.barh",
+      "Two categories in the given order"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "ax.barh([\"stationery\", \"media\"], [50, 70])"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: draw horizontal bars\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.barh([\"stationery\", \"media\"], [50, 70])\n\nprint(\"horizontal bars drawn\")",
     "publicTests": [
       {
         "id": "m16-t2-p05-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t2-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "two bars",
+        "assertCode": "assert (len(ax.patches)) == (2), \"Expected \" + repr(2) + \", got \" + repr(len(ax.patches))",
         "visibility": "public"
       },
       {
         "id": "m16-t2-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "widths carry the values",
+        "assertCode": "assert ([p.get_width() for p in ax.patches]) == ([50.0, 70.0]), \"Expected \" + repr([50.0, 70.0]) + \", got \" + repr([p.get_width() for p in ax.patches])",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Use ax.barh so long category names stay readable, then check the bar widths.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.barh([\"stationery\", \"media\"], [50, 70])\n\nprint(\"horizontal bars drawn\")"
   },
   {
     "id": "m16-t2-p06",
     "topicId": "m16-t2",
-    "slug": "m16_t2-6",
-    "title": "Line Bar Scatter and Histogram: List Practice",
-    "difficulty": "hard",
+    "slug": "chart-pie-share",
+    "title": "Charts: A Pie for Shares of a Whole",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Use ax.pie to show each region's share of revenue and confirm three wedges were drawn.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Line Bar Scatter and Histogram. Print the "
+          "value": "Pie charts show parts of one total. Use "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "ax.pie([50, 30, 20], labels=[\"South\", \"North\", \"East\"])"
         },
         {
           "type": "text",
-          "value": " using index "
-        },
-        {
-          "type": "code",
-          "value": "1"
-        },
-        {
-          "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": "."
         }
+      ],
+      "editorPlaceholder": "# ax.pie(values, labels=[...])",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "The values are converted to percentages of their sum.",
+          "Only use a pie when the parts really add up to a meaningful whole.",
+          "Each wedge is a patch on the axes."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "pie drawn"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Use ax.pie with labels=",
+      "Three wedges"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "ax.pie([50, 30, 20], labels=[\"South\", \"North\", \"East\"])"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: draw the revenue share pie\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.pie([50, 30, 20], labels=[\"South\", \"North\", \"East\"])\n\nprint(\"pie drawn\")",
     "publicTests": [
       {
         "id": "m16-t2-p06-t1",
-        "label": "Sample Case",
-        "expectedStdout": "middle",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t2-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "three wedges",
+        "assertCode": "assert (len(ax.patches)) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(ax.patches))",
         "visibility": "public"
       },
       {
         "id": "m16-t2-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "the regions are labelled",
+        "assertCode": "assert \"South\" in [t.get_text() for t in ax.texts], \"Pass labels= so each wedge is named\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Use ax.pie to show each region's share of revenue and confirm three wedges were drawn.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.pie([50, 30, 20], labels=[\"South\", \"North\", \"East\"])\n\nprint(\"pie drawn\")"
   },
   {
     "id": "m16-t2-p07",
     "topicId": "m16-t2",
-    "slug": "m16_t2-7",
-    "title": "Line Bar Scatter and Histogram: Dict Lookup",
+    "slug": "chart-pick-the-right-one",
+    "title": "Charts: Pick the Right Chart",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Given category totals, choose a bar chart, sort the bars from largest to smallest, and label the axes.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "You have revenue per category in a dict. Categories are unordered, so a "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "bar"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": " chart is right. Sort the categories from largest to smallest, plot them, and label the y axis "
         },
         {
           "type": "code",
-          "value": "Python"
-        },
-        {
-          "type": "text",
-          "value": ". Print the value using "
-        },
-        {
-          "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "Revenue"
         },
         {
           "type": "text",
           "value": "."
         }
       ],
+      "editorPlaceholder": "# names = sorted(totals, key=totals.get, reverse=True)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax",
+        "names"
+      ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "sorted(totals, key=totals.get, reverse=True) ranks the keys by value.",
+          "Ranked bars let the reader compare at a glance.",
+          "Build the matching value list in the same order."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "ranked bars drawn"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Sort the categories by revenue, largest first",
+      "Store the sorted names in names",
+      "Label the y axis \"Revenue\""
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "names = sorted(totals, key=totals.get, reverse=True)",
+      "values = [totals[name] for name in names]"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: rank the categories, then plot bars\nimport matplotlib.pyplot as plt\n\ntotals = {\"pen\": 30, \"book\": 70, \"bag\": 40}\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\ntotals = {\"pen\": 30, \"book\": 70, \"bag\": 40}\nnames = sorted(totals, key=totals.get, reverse=True)\nvalues = [totals[name] for name in names]\n\nfig, ax = plt.subplots()\nax.bar(names, values)\nax.set_ylabel(\"Revenue\")\n\nprint(\"ranked bars drawn\")",
     "publicTests": [
       {
         "id": "m16-t2-p07-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Python",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t2-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "categories are ranked",
+        "assertCode": "assert (names) == ([\"book\", \"bag\", \"pen\"]), \"Expected \" + repr([\"book\", \"bag\", \"pen\"]) + \", got \" + repr(names)",
         "visibility": "public"
       },
       {
         "id": "m16-t2-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "three bars",
+        "assertCode": "assert (len(ax.patches)) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(ax.patches))",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t2-p07-t4",
+        "label": "bars follow the ranking",
+        "assertCode": "assert ([p.get_height() for p in ax.patches]) == ([70.0, 40.0, 30.0]), \"Expected \" + repr([70.0, 40.0, 30.0]) + \", got \" + repr([p.get_height() for p in ax.patches])",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t2-p07-t5",
+        "label": "y axis is labelled",
+        "assertCode": "assert (ax.get_ylabel()) == (\"Revenue\"), \"Expected \" + repr(\"Revenue\") + \", got \" + repr(ax.get_ylabel())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Given category totals, choose a bar chart, sort the bars from largest to smallest, and label the axes.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\ntotals = {\"pen\": 30, \"book\": 70, \"bag\": 40}\nnames = sorted(totals, key=totals.get, reverse=True)\nvalues = [totals[name] for name in names]\n\nfig, ax = plt.subplots()\nax.bar(names, values)\nax.set_ylabel(\"Revenue\")\n\nprint(\"ranked bars drawn\")"
   },
   {
     "id": "m16-t3-p01",
     "topicId": "m16-t3",
-    "slug": "m16_t3-1",
-    "title": "Customizing Plots: Warm-up",
+    "slug": "custom-color",
+    "title": "Custom: Set the Line Colour",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Customizing Plots. Print Ready on one line.",
+    "description": "Plot the line in green by passing color=\"green\" to ax.plot.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Pass "
         },
         {
           "type": "code",
-          "value": "Customizing Plots"
+          "value": "color=\"green\""
         },
         {
           "type": "text",
-          "value": ". Print the word "
+          "value": " to "
         },
         {
           "type": "code",
-          "value": "Ready"
+          "value": "ax.plot"
         },
         {
           "type": "text",
-          "value": " on one line."
+          "value": ". Colour should carry meaning — green for growth, red for loss."
         }
       ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
-        }
+      "editorPlaceholder": "# ax.plot(..., color=\"green\")",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax"
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "color accepts names, hex codes, or RGB tuples."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "green line"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Use color=\"green\"",
+      "One line on the chart"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "ax.plot([1, 2, 3], [10, 20, 30], color=\"green\")"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: make the line green\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30], color=\"green\")\n\nprint(\"green line\")",
     "publicTests": [
       {
         "id": "m16-t3-p01-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t3-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
-        "visibility": "public"
-      },
-      {
-        "id": "m16-t3-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "line colour is green",
+        "assertCode": "assert (ax.lines[0].get_color()) == (\"green\"), \"Expected \" + repr(\"green\") + \", got \" + repr(ax.lines[0].get_color())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Customizing Plots. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Plot the line in green by passing color=\"green\" to ax.plot.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30], color=\"green\")\n\nprint(\"green line\")"
   },
   {
     "id": "m16-t3-p02",
     "topicId": "m16-t3",
-    "slug": "m16_t3-2",
-    "title": "Customizing Plots: Output Two Values",
+    "slug": "custom-linestyle",
+    "title": "Custom: Dash the Line",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Customizing Plots and print them comma-separated.",
+    "description": "Draw the line as dashes by passing linestyle=\"--\".",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Customizing Plots and print them separated by a comma."
+          "value": "Pass "
+        },
+        {
+          "type": "code",
+          "value": "linestyle=\"--\""
+        },
+        {
+          "type": "text",
+          "value": " to draw dashes. Dashed lines usually mean a forecast or a target."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# ax.plot(..., linestyle=\"--\")",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Common styles: \"-\" solid, \"--\" dashed, \":\" dotted."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "dashed line"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Use linestyle=\"--\""
     ],
     "hints": [
-      "Create two variables related to Customizing Plots",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "ax.plot([1, 2, 3], [10, 20, 30], linestyle=\"--\")"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Customizing Plots and print them comma-separated. Key points: Create two variables related to Customizing Plots Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: dash the line\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30], linestyle=\"--\")\n\nprint(\"dashed line\")",
     "publicTests": [
       {
         "id": "m16-t3-p02-t1",
-        "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t3-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
-        "visibility": "public"
-      },
-      {
-        "id": "m16-t3-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "line style is dashed",
+        "assertCode": "assert (ax.lines[0].get_linestyle()) == (\"--\"), \"Expected \" + repr(\"--\") + \", got \" + repr(ax.lines[0].get_linestyle())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Draw the line as dashes by passing linestyle=\"--\".\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30], linestyle=\"--\")\n\nprint(\"dashed line\")"
   },
   {
     "id": "m16-t3-p03",
     "topicId": "m16-t3",
-    "slug": "m16_t3-3",
-    "title": "Customizing Plots: Simple Loop",
-    "difficulty": "medium",
+    "slug": "custom-marker",
+    "title": "Custom: Mark Each Data Point",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Customizing Plots.",
+    "description": "Show the individual data points by passing marker=\"o\".",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Pass "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "marker=\"o\""
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Customizing Plots."
+          "value": " so each measured point is visible, not just the connecting line."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# ax.plot(..., marker=\"o\")",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Markers matter when you have few points — they show what was measured."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "markers added"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Use marker=\"o\""
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "ax.plot([1, 2, 3], [10, 20, 30], marker=\"o\")"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Customizing Plots. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: add circular markers\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30], marker=\"o\")\n\nprint(\"markers added\")",
     "publicTests": [
       {
         "id": "m16-t3-p03-t1",
-        "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t3-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "marker is a circle",
+        "assertCode": "assert (ax.lines[0].get_marker()) == (\"o\"), \"Expected \" + repr(\"o\") + \", got \" + repr(ax.lines[0].get_marker())",
         "visibility": "public"
       },
       {
         "id": "m16-t3-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "the line is still there",
+        "assertCode": "assert (len(ax.lines)) == (1), \"Expected \" + repr(1) + \", got \" + repr(len(ax.lines))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Show the individual data points by passing marker=\"o\".\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30], marker=\"o\")\n\nprint(\"markers added\")"
   },
   {
     "id": "m16-t3-p04",
     "topicId": "m16-t3",
-    "slug": "m16_t3-4",
-    "title": "Customizing Plots: Condition",
+    "slug": "custom-legend",
+    "title": "Custom: Add a Legend",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Label the line \"Revenue\" and show a legend so the reader knows what it is.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "Pass "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "label=\"Revenue\""
         },
         {
           "type": "text",
-          "value": ". If "
+          "value": " to "
         },
         {
           "type": "code",
-          "value": "score >= 60"
+          "value": "ax.plot"
         },
         {
           "type": "text",
-          "value": ", print "
+          "value": ", then call "
         },
         {
           "type": "code",
-          "value": "Pass"
+          "value": "ax.legend()"
         },
         {
           "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": ". The label alone does nothing until the legend is drawn."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# ax.plot(..., label=\"Revenue\")",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "label= names the series; ax.legend() renders the box.",
+          "Forgetting the legend call is the most common plotting mistake."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "legend added"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Label must be \"Revenue\"",
+      "Call ax.legend()"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "ax.plot(..., label=\"Revenue\")",
+      "ax.legend()"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: label the line and show the legend\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30], label=\"Revenue\")\nax.legend()\n\nprint(\"legend added\")",
     "publicTests": [
       {
         "id": "m16-t3-p04-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t3-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "a legend exists",
+        "assertCode": "assert ax.get_legend() is not None, \"Call ax.legend() to draw the legend\"",
         "visibility": "public"
       },
       {
         "id": "m16-t3-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "the legend shows the label",
+        "assertCode": "assert ([t.get_text() for t in ax.get_legend().get_texts()]) == ([\"Revenue\"]), \"Expected \" + repr([\"Revenue\"]) + \", got \" + repr([t.get_text() for t in ax.get_legend().get_texts()])",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Label the line \"Revenue\" and show a legend so the reader knows what it is.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30], label=\"Revenue\")\nax.legend()\n\nprint(\"legend added\")"
   },
   {
     "id": "m16-t3-p05",
     "topicId": "m16-t3",
-    "slug": "m16_t3-5",
-    "title": "Customizing Plots: Function Stub",
+    "slug": "custom-axis-limits",
+    "title": "Custom: Fix the Y Axis Range",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Force the y axis to run from 0 to 100 with ax.set_ylim and print the range.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "Call "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "ax.set_ylim(0, 100)"
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": " and print "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": "ax.get_ylim()"
         },
         {
           "type": "text",
-          "value": " and call it once."
+          "value": ". Starting bars and lines at zero keeps the chart honest."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# ax.set_ylim(0, 100)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Matplotlib auto-scales by default, which can exaggerate small changes.",
+          "set_ylim pins the range so charts stay comparable."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "(0.0, 100.0)"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Use ax.set_ylim(0, 100)",
+      "Print ax.get_ylim()"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "ax.set_ylim(0, 100)",
+      "print(ax.get_ylim())"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: pin the y axis from 0 to 100\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30])\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30])\nax.set_ylim(0, 100)\n\nprint(ax.get_ylim())",
     "publicTests": [
       {
         "id": "m16-t3-p05-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t3-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
-        "visibility": "public"
-      },
-      {
-        "id": "m16-t3-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "y axis runs 0 to 100",
+        "assertCode": "assert (ax.get_ylim()) == ((0.0, 100.0)), \"Expected \" + repr((0.0, 100.0)) + \", got \" + repr(ax.get_ylim())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Force the y axis to run from 0 to 100 with ax.set_ylim and print the range.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30])\nax.set_ylim(0, 100)\n\nprint(ax.get_ylim())"
   },
   {
     "id": "m16-t3-p06",
     "topicId": "m16-t3",
-    "slug": "m16_t3-6",
-    "title": "Customizing Plots: List Practice",
-    "difficulty": "hard",
+    "slug": "custom-ticks",
+    "title": "Custom: Control the X Ticks",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Set the x ticks to exactly 1, 2, 3 with ax.set_xticks and print them as a list.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Customizing Plots. Print the "
+          "value": "Call "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "ax.set_xticks([1, 2, 3])"
         },
         {
           "type": "text",
-          "value": " using index "
+          "value": " and print "
         },
         {
           "type": "code",
-          "value": "1"
+          "value": "ax.get_xticks().tolist()"
         },
         {
           "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": " — no more half-month ticks like 1.5."
         }
+      ],
+      "editorPlaceholder": "# ax.set_xticks([1, 2, 3])",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "Automatic ticks can land on meaningless values.",
+          "set_xticks takes the exact positions you want."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "[1.0, 2.0, 3.0]"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Use ax.set_xticks([1, 2, 3])",
+      "Print them with .tolist()"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "ax.set_xticks([1, 2, 3])",
+      "print(ax.get_xticks().tolist())"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: set the x ticks explicitly\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30])\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30])\nax.set_xticks([1, 2, 3])\n\nprint(ax.get_xticks().tolist())",
     "publicTests": [
       {
         "id": "m16-t3-p06-t1",
-        "label": "Sample Case",
-        "expectedStdout": "middle",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t3-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
-        "visibility": "public"
-      },
-      {
-        "id": "m16-t3-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "three ticks are set",
+        "assertCode": "assert (ax.get_xticks().tolist()) == ([1.0, 2.0, 3.0]), \"Expected \" + repr([1.0, 2.0, 3.0]) + \", got \" + repr(ax.get_xticks().tolist())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Set the x ticks to exactly 1, 2, 3 with ax.set_xticks and print them as a list.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30])\nax.set_xticks([1, 2, 3])\n\nprint(ax.get_xticks().tolist())"
   },
   {
     "id": "m16-t3-p07",
     "topicId": "m16-t3",
-    "slug": "m16_t3-7",
-    "title": "Customizing Plots: Dict Lookup",
+    "slug": "custom-styled-chart",
+    "title": "Custom: Style a Chart End to End",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Draw a thick red dashed line with a legend, a title, and a y axis pinned from 0 to 50.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Draw the line in "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "red"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": " with "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "linewidth=3"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
+          "value": ", "
         },
         {
           "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "linestyle=\"--\""
+        },
+        {
+          "type": "text",
+          "value": ", label "
+        },
+        {
+          "type": "code",
+          "value": "Target"
+        },
+        {
+          "type": "text",
+          "value": ", title "
+        },
+        {
+          "type": "code",
+          "value": "Sales vs Target"
+        },
+        {
+          "type": "text",
+          "value": ", and y limits "
+        },
+        {
+          "type": "code",
+          "value": "0"
+        },
+        {
+          "type": "text",
+          "value": " to "
+        },
+        {
+          "type": "code",
+          "value": "50"
         },
         {
           "type": "text",
           "value": "."
         }
       ],
+      "editorPlaceholder": "# ax.plot(..., color='red', linewidth=3, ...)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax"
+      ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "All style options can go in the single ax.plot call.",
+          "Then set the title, the legend, and the limits.",
+          "A dashed red line is the convention for a target you have not hit."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "styled chart ready"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "color=\"red\", linewidth=3, linestyle=\"--\", label=\"Target\"",
+      "Title \"Sales vs Target\" and y limits 0 to 50"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "ax.plot(..., color=\"red\", linewidth=3, linestyle=\"--\", label=\"Target\")",
+      "ax.set_ylim(0, 50) then ax.legend()"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: apply every style option\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30], color=\"red\", linewidth=3, linestyle=\"--\", label=\"Target\")\nax.set_title(\"Sales vs Target\")\nax.set_ylim(0, 50)\nax.legend()\n\nprint(\"styled chart ready\")",
     "publicTests": [
       {
         "id": "m16-t3-p07-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Python",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t3-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "colour is red",
+        "assertCode": "assert (ax.lines[0].get_color()) == (\"red\"), \"Expected \" + repr(\"red\") + \", got \" + repr(ax.lines[0].get_color())",
         "visibility": "public"
       },
       {
         "id": "m16-t3-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "line is thick",
+        "assertCode": "assert (ax.lines[0].get_linewidth()) == (3.0), \"Expected \" + repr(3.0) + \", got \" + repr(ax.lines[0].get_linewidth())",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t3-p07-t4",
+        "label": "line is dashed",
+        "assertCode": "assert (ax.lines[0].get_linestyle()) == (\"--\"), \"Expected \" + repr(\"--\") + \", got \" + repr(ax.lines[0].get_linestyle())",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t3-p07-t5",
+        "label": "title is set",
+        "assertCode": "assert (ax.get_title()) == (\"Sales vs Target\"), \"Expected \" + repr(\"Sales vs Target\") + \", got \" + repr(ax.get_title())",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t3-p07-t6",
+        "label": "y limits are pinned",
+        "assertCode": "assert (ax.get_ylim()) == ((0.0, 50.0)), \"Expected \" + repr((0.0, 50.0)) + \", got \" + repr(ax.get_ylim())",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t3-p07-t7",
+        "label": "legend is shown",
+        "assertCode": "assert ax.get_legend() is not None, \"Call ax.legend() so the Target label appears\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Draw a thick red dashed line with a legend, a title, and a y axis pinned from 0 to 50.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.plot([1, 2, 3], [10, 20, 30], color=\"red\", linewidth=3, linestyle=\"--\", label=\"Target\")\nax.set_title(\"Sales vs Target\")\nax.set_ylim(0, 50)\nax.legend()\n\nprint(\"styled chart ready\")"
   },
   {
     "id": "m16-t4-p01",
     "topicId": "m16-t4",
-    "slug": "m16_t4-1",
-    "title": "Introduction to Seaborn: Warm-up",
+    "slug": "tidy-long-frame",
+    "title": "Statistical Plots: Start From Tidy Data",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Introduction to Seaborn. Print Ready on one line.",
+    "description": "Build a tidy long-format DataFrame with one row per observation and print its shape.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Statistical plotting libraries expect "
         },
         {
           "type": "code",
-          "value": "Introduction to Seaborn"
+          "value": "tidy"
         },
         {
           "type": "text",
-          "value": ". Print the word "
+          "value": " data: one row per observation, one column per variable. Build "
         },
         {
           "type": "code",
-          "value": "Ready"
+          "value": "df"
         },
         {
           "type": "text",
-          "value": " on one line."
+          "value": " with category, year, and revenue columns and print its shape."
         }
       ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
-        }
+      "editorPlaceholder": "# df = pd.DataFrame({ ... })",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Tidy (long) format means repeating the category on each row.",
+          "Every statistical chart in this topic starts from a frame shaped like this.",
+          "Seaborn is not available in the in-browser runtime, so build the same statistical view with pandas and Matplotlib. The lesson's seaborn version runs in Colab."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "(6, 3)"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "One row per observation",
+      "Column order: category, year, revenue",
+      "Output must be exactly: (6, 3)"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "df = pd.DataFrame({\"category\": [...], \"year\": [...], \"revenue\": [...]})"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: build the tidy frame\nimport pandas as pd\n\ndf = None\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"category\": [\"pen\", \"book\", \"pen\", \"book\", \"bag\", \"bag\"],\n    \"year\": [2024, 2024, 2025, 2025, 2024, 2025],\n    \"revenue\": [30, 70, 40, 90, 20, 30],\n})\n\nprint(df.shape)",
     "publicTests": [
       {
         "id": "m16-t4-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "(6, 3)",
         "visibility": "public"
       },
       {
         "id": "m16-t4-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "six observations, three columns",
+        "assertCode": "assert (df.shape) == ((6, 3)), \"Expected \" + repr((6, 3)) + \", got \" + repr(df.shape)",
         "visibility": "public"
       },
       {
         "id": "m16-t4-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "columns are category, year, revenue",
+        "assertCode": "assert (list(df.columns)) == ([\"category\", \"year\", \"revenue\"]), \"Expected \" + repr([\"category\", \"year\", \"revenue\"]) + \", got \" + repr(list(df.columns))",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t4-p01-t4",
+        "label": "each category appears twice",
+        "assertCode": "assert (int((df[\"category\"] == \"pen\").sum())) == (2), \"Expected \" + repr(2) + \", got \" + repr(int((df[\"category\"] == \"pen\").sum()))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Introduction to Seaborn. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Build a tidy long-format DataFrame with one row per observation and print its shape.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"category\": [\"pen\", \"book\", \"pen\", \"book\", \"bag\", \"bag\"],\n    \"year\": [2024, 2024, 2025, 2025, 2024, 2025],\n    \"revenue\": [30, 70, 40, 90, 20, 30],\n})\n\nprint(df.shape)"
   },
   {
     "id": "m16-t4-p02",
     "topicId": "m16-t4",
-    "slug": "m16_t4-2",
-    "title": "Introduction to Seaborn: Output Two Values",
+    "slug": "category-means",
+    "title": "Statistical Plots: The Numbers Behind a Bar Plot",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Introduction to Seaborn and print them comma-separated.",
+    "description": "Group the tidy frame by category and print the mean revenue per category as a dict.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Introduction to Seaborn and print them separated by a comma."
+          "value": "A statistical bar plot draws one bar per group using the group's mean. Compute "
+        },
+        {
+          "type": "code",
+          "value": "df.groupby(\"category\")[\"revenue\"].mean()"
+        },
+        {
+          "type": "text",
+          "value": " into "
+        },
+        {
+          "type": "code",
+          "value": "means"
+        },
+        {
+          "type": "text",
+          "value": " and print it as a dict of floats."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# means = df.groupby(\"category\")[\"revenue\"].mean()",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df",
+        "means"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A bar plot in seaborn is a groupby mean plus a bar chart.",
+          "Knowing the numbers first means you can check the chart is right.",
+          "Seaborn is not available in the in-browser runtime, so build the same statistical view with pandas and Matplotlib. The lesson's seaborn version runs in Colab."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "{'bag': 25.0, 'book': 80.0, 'pen': 35.0}"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Use groupby().mean()",
+      "Print values as floats via round(float(v), 2)"
     ],
     "hints": [
-      "Create two variables related to Introduction to Seaborn",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "means = df.groupby(\"category\")[\"revenue\"].mean()",
+      "print({k: round(float(v), 2) for k, v in means.items()})"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Introduction to Seaborn and print them comma-separated. Key points: Create two variables related to Introduction to Seaborn Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: mean revenue per category\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"category\": [\"pen\", \"book\", \"pen\", \"book\", \"bag\", \"bag\"],\n    \"year\": [2024, 2024, 2025, 2025, 2024, 2025],\n    \"revenue\": [30, 70, 40, 90, 20, 30],\n})\n\nmeans = None\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"category\": [\"pen\", \"book\", \"pen\", \"book\", \"bag\", \"bag\"],\n    \"year\": [2024, 2024, 2025, 2025, 2024, 2025],\n    \"revenue\": [30, 70, 40, 90, 20, 30],\n})\n\nmeans = df.groupby(\"category\")[\"revenue\"].mean()\nprint({k: round(float(v), 2) for k, v in means.items()})",
     "publicTests": [
       {
         "id": "m16-t4-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "{'bag': 25.0, 'book': 80.0, 'pen': 35.0}",
         "visibility": "public"
       },
       {
         "id": "m16-t4-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "book average",
+        "assertCode": "assert (round(float(means[\"book\"]), 2)) == (80.0), \"Expected \" + repr(80.0) + \", got \" + repr(round(float(means[\"book\"]), 2))",
         "visibility": "public"
       },
       {
         "id": "m16-t4-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "pen average",
+        "assertCode": "assert (round(float(means[\"pen\"]), 2)) == (35.0), \"Expected \" + repr(35.0) + \", got \" + repr(round(float(means[\"pen\"]), 2))",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t4-p02-t4",
+        "label": "bag average",
+        "assertCode": "assert (round(float(means[\"bag\"]), 2)) == (25.0), \"Expected \" + repr(25.0) + \", got \" + repr(round(float(means[\"bag\"]), 2))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Group the tidy frame by category and print the mean revenue per category as a dict.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"category\": [\"pen\", \"book\", \"pen\", \"book\", \"bag\", \"bag\"],\n    \"year\": [2024, 2024, 2025, 2025, 2024, 2025],\n    \"revenue\": [30, 70, 40, 90, 20, 30],\n})\n\nmeans = df.groupby(\"category\")[\"revenue\"].mean()\nprint({k: round(float(v), 2) for k, v in means.items()})"
   },
   {
     "id": "m16-t4-p03",
     "topicId": "m16-t4",
-    "slug": "m16_t4-3",
-    "title": "Introduction to Seaborn: Simple Loop",
+    "slug": "bar-plot-of-means",
+    "title": "Statistical Plots: Bar Plot of Group Means",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Introduction to Seaborn.",
+    "description": "Chart the mean revenue per category as bars and check the bar heights match the means.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Compute the group means, then draw them with "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "ax.bar(means.index, means.values)"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Introduction to Seaborn."
+          "value": ". This is what a seaborn bar plot does under the hood."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# ax.bar(means.index, means.values)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "pd",
+        "ax",
+        "means"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "The index holds the category names, the values hold the means.",
+          "Groups come back sorted, so the bars are bag, book, pen.",
+          "Seaborn is not available in the in-browser runtime, so build the same statistical view with pandas and Matplotlib. The lesson's seaborn version runs in Colab."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "mean bars drawn"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Compute the means with groupby — do not type them",
+      "One bar per category"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "ax.bar(means.index, means.values)"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Introduction to Seaborn. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: plot the group means as bars\nimport matplotlib.pyplot as plt\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"category\": [\"pen\", \"book\", \"pen\", \"book\", \"bag\", \"bag\"],\n    \"year\": [2024, 2024, 2025, 2025, 2024, 2025],\n    \"revenue\": [30, 70, 40, 90, 20, 30],\n})\n\nmeans = df.groupby(\"category\")[\"revenue\"].mean()\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"category\": [\"pen\", \"book\", \"pen\", \"book\", \"bag\", \"bag\"],\n    \"year\": [2024, 2024, 2025, 2025, 2024, 2025],\n    \"revenue\": [30, 70, 40, 90, 20, 30],\n})\n\nmeans = df.groupby(\"category\")[\"revenue\"].mean()\n\nfig, ax = plt.subplots()\nax.bar(means.index, means.values)\n\nprint(\"mean bars drawn\")",
     "publicTests": [
       {
         "id": "m16-t4-p03-t1",
-        "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t4-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "one bar per category",
+        "assertCode": "assert (len(ax.patches)) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(ax.patches))",
         "visibility": "public"
       },
       {
         "id": "m16-t4-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "bar heights are the group means",
+        "assertCode": "assert ([p.get_height() for p in ax.patches]) == ([25.0, 80.0, 35.0]), \"Expected \" + repr([25.0, 80.0, 35.0]) + \", got \" + repr([p.get_height() for p in ax.patches])",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Chart the mean revenue per category as bars and check the bar heights match the means.\n\nReference solution:\nimport matplotlib.pyplot as plt\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"category\": [\"pen\", \"book\", \"pen\", \"book\", \"bag\", \"bag\"],\n    \"year\": [2024, 2024, 2025, 2025, 2024, 2025],\n    \"revenue\": [30, 70, 40, 90, 20, 30],\n})\n\nmeans = df.groupby(\"category\")[\"revenue\"].mean()\n\nfig, ax = plt.subplots()\nax.bar(means.index, means.values)\n\nprint(\"mean bars drawn\")"
   },
   {
     "id": "m16-t4-p04",
     "topicId": "m16-t4",
-    "slug": "m16_t4-4",
-    "title": "Introduction to Seaborn: Condition",
+    "slug": "count-plot",
+    "title": "Statistical Plots: Count Plot",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Count the rows per category with value_counts and draw them as bars in a fixed order.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "Use "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "df[\"category\"].value_counts().sort_index()"
         },
         {
           "type": "text",
-          "value": ". If "
+          "value": " into "
         },
         {
           "type": "code",
-          "value": "score >= 60"
+          "value": "counts"
         },
         {
           "type": "text",
-          "value": ", print "
-        },
-        {
-          "type": "code",
-          "value": "Pass"
-        },
-        {
-          "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": ", then bar-chart it. Sorting the index keeps the order predictable."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# counts = df[\"category\"].value_counts().sort_index()",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "pd",
+        "ax",
+        "counts"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "value_counts() orders by frequency, which is unstable when counts tie.",
+          "sort_index() puts the categories in alphabetical order instead.",
+          "A count plot answers 'how many rows', not 'how much revenue'."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "counts drawn"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Use value_counts().sort_index()",
+      "Store it in counts before plotting"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "counts = df[\"category\"].value_counts().sort_index()",
+      "ax.bar(counts.index, counts.values)"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: count rows per category, then plot\nimport matplotlib.pyplot as plt\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"category\": [\"pen\", \"book\", \"pen\", \"book\", \"bag\", \"bag\"],\n    \"year\": [2024, 2024, 2025, 2025, 2024, 2025],\n    \"revenue\": [30, 70, 40, 90, 20, 30],\n})\n\ncounts = None\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"category\": [\"pen\", \"book\", \"pen\", \"book\", \"bag\", \"bag\"],\n    \"year\": [2024, 2024, 2025, 2025, 2024, 2025],\n    \"revenue\": [30, 70, 40, 90, 20, 30],\n})\n\ncounts = df[\"category\"].value_counts().sort_index()\n\nfig, ax = plt.subplots()\nax.bar(counts.index, counts.values)\n\nprint(\"counts drawn\")",
     "publicTests": [
       {
         "id": "m16-t4-p04-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t4-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "categories in alphabetical order",
+        "assertCode": "assert (list(counts.index)) == ([\"bag\", \"book\", \"pen\"]), \"Expected \" + repr([\"bag\", \"book\", \"pen\"]) + \", got \" + repr(list(counts.index))",
         "visibility": "public"
       },
       {
         "id": "m16-t4-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "each category has 2 rows",
+        "assertCode": "assert ([int(v) for v in counts.values]) == ([2, 2, 2]), \"Expected \" + repr([2, 2, 2]) + \", got \" + repr([int(v) for v in counts.values])",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t4-p04-t4",
+        "label": "three bars drawn",
+        "assertCode": "assert (len(ax.patches)) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(ax.patches))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Count the rows per category with value_counts and draw them as bars in a fixed order.\n\nReference solution:\nimport matplotlib.pyplot as plt\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"category\": [\"pen\", \"book\", \"pen\", \"book\", \"bag\", \"bag\"],\n    \"year\": [2024, 2024, 2025, 2025, 2024, 2025],\n    \"revenue\": [30, 70, 40, 90, 20, 30],\n})\n\ncounts = df[\"category\"].value_counts().sort_index()\n\nfig, ax = plt.subplots()\nax.bar(counts.index, counts.values)\n\nprint(\"counts drawn\")"
   },
   {
     "id": "m16-t4-p05",
     "topicId": "m16-t4",
-    "slug": "m16_t4-5",
-    "title": "Introduction to Seaborn: Function Stub",
+    "slug": "grouped-bars-by-year",
+    "title": "Statistical Plots: Group Bars by a Second Variable",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Draw two sets of bars — one per year — so each category can be compared across years.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "This is what seaborn's "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "hue"
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": " does. Pivot the frame so each year is a column, then call "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": "ax.bar"
         },
         {
           "type": "text",
-          "value": " and call it once."
+          "value": " twice with an x offset."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# pivot = df.pivot_table(..., columns='year')",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "pd",
+        "ax",
+        "pivot"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "pivot_table with columns=\"year\" gives one column per year.",
+          "Offset the x positions by half a bar width so the pairs sit side by side.",
+          "Two bar calls over three categories gives six patches."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "grouped bars drawn"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Two ax.bar calls, one per year",
+      "Offset the x positions so bars sit side by side",
+      "Add a legend"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "pivot = df.pivot_table(values=\"revenue\", index=\"category\", columns=\"year\", aggfunc=\"sum\", fill_value=0)",
+      "ax.bar([p - 0.2 for p in positions], pivot[2024].values, width=0.4, label=\"2024\")"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: one bar group per year\nimport matplotlib.pyplot as plt\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"category\": [\"pen\", \"book\", \"pen\", \"book\", \"bag\", \"bag\"],\n    \"year\": [2024, 2024, 2025, 2025, 2024, 2025],\n    \"revenue\": [30, 70, 40, 90, 20, 30],\n})\n\npivot = None\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"category\": [\"pen\", \"book\", \"pen\", \"book\", \"bag\", \"bag\"],\n    \"year\": [2024, 2024, 2025, 2025, 2024, 2025],\n    \"revenue\": [30, 70, 40, 90, 20, 30],\n})\n\npivot = df.pivot_table(values=\"revenue\", index=\"category\", columns=\"year\", aggfunc=\"sum\", fill_value=0)\npositions = range(len(pivot.index))\n\nfig, ax = plt.subplots()\nax.bar([p - 0.2 for p in positions], pivot[2024].values, width=0.4, label=\"2024\")\nax.bar([p + 0.2 for p in positions], pivot[2025].values, width=0.4, label=\"2025\")\nax.legend()\n\nprint(\"grouped bars drawn\")",
     "publicTests": [
       {
         "id": "m16-t4-p05-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t4-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "six bars in total",
+        "assertCode": "assert (len(ax.patches)) == (6), \"Expected \" + repr(6) + \", got \" + repr(len(ax.patches))",
         "visibility": "public"
       },
       {
         "id": "m16-t4-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "one column per year",
+        "assertCode": "assert (list(pivot.columns)) == ([2024, 2025]), \"Expected \" + repr([2024, 2025]) + \", got \" + repr(list(pivot.columns))",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t4-p05-t4",
+        "label": "both years are in the legend",
+        "assertCode": "assert len(ax.get_legend().get_texts()) == 2, \"Label both bar groups and call ax.legend()\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Draw two sets of bars — one per year — so each category can be compared across years.\n\nReference solution:\nimport matplotlib.pyplot as plt\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"category\": [\"pen\", \"book\", \"pen\", \"book\", \"bag\", \"bag\"],\n    \"year\": [2024, 2024, 2025, 2025, 2024, 2025],\n    \"revenue\": [30, 70, 40, 90, 20, 30],\n})\n\npivot = df.pivot_table(values=\"revenue\", index=\"category\", columns=\"year\", aggfunc=\"sum\", fill_value=0)\npositions = range(len(pivot.index))\n\nfig, ax = plt.subplots()\nax.bar([p - 0.2 for p in positions], pivot[2024].values, width=0.4, label=\"2024\")\nax.bar([p + 0.2 for p in positions], pivot[2025].values, width=0.4, label=\"2025\")\nax.legend()\n\nprint(\"grouped bars drawn\")"
   },
   {
     "id": "m16-t4-p06",
     "topicId": "m16-t4",
-    "slug": "m16_t4-6",
-    "title": "Introduction to Seaborn: List Practice",
-    "difficulty": "hard",
+    "slug": "label-statistical-chart",
+    "title": "Statistical Plots: Label the Statistic",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Title the mean-revenue chart and label the y axis so the reader knows it shows an average.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Introduction to Seaborn. Print the "
+          "value": "A bar of averages must say so. Set the title to "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "Average Revenue by Category"
         },
         {
           "type": "text",
-          "value": " using index "
+          "value": " and the y label to "
         },
         {
           "type": "code",
-          "value": "1"
+          "value": "Mean revenue"
         },
         {
           "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": "."
         }
+      ],
+      "editorPlaceholder": "# ax.set_title(\"Average Revenue by Category\")",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "pd",
+        "ax"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "Readers assume bars are totals unless you tell them otherwise.",
+          "Naming the statistic prevents the most common misreading of a chart.",
+          "Seaborn is not available in the in-browser runtime, so build the same statistical view with pandas and Matplotlib. The lesson's seaborn version runs in Colab."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "labelled statistic"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Title \"Average Revenue by Category\"",
+      "Y label \"Mean revenue\""
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "ax.set_title(\"Average Revenue by Category\")",
+      "ax.set_ylabel(\"Mean revenue\")"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: title and label the chart\nimport matplotlib.pyplot as plt\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"category\": [\"pen\", \"book\", \"pen\", \"book\", \"bag\", \"bag\"],\n    \"year\": [2024, 2024, 2025, 2025, 2024, 2025],\n    \"revenue\": [30, 70, 40, 90, 20, 30],\n})\n\nmeans = df.groupby(\"category\")[\"revenue\"].mean()\nfig, ax = plt.subplots()\nax.bar(means.index, means.values)\n",
+    "solutionCode": "import matplotlib.pyplot as plt\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"category\": [\"pen\", \"book\", \"pen\", \"book\", \"bag\", \"bag\"],\n    \"year\": [2024, 2024, 2025, 2025, 2024, 2025],\n    \"revenue\": [30, 70, 40, 90, 20, 30],\n})\n\nmeans = df.groupby(\"category\")[\"revenue\"].mean()\n\nfig, ax = plt.subplots()\nax.bar(means.index, means.values)\nax.set_title(\"Average Revenue by Category\")\nax.set_ylabel(\"Mean revenue\")\n\nprint(\"labelled statistic\")",
     "publicTests": [
       {
         "id": "m16-t4-p06-t1",
-        "label": "Sample Case",
-        "expectedStdout": "middle",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t4-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "title names the statistic",
+        "assertCode": "assert (ax.get_title()) == (\"Average Revenue by Category\"), \"Expected \" + repr(\"Average Revenue by Category\") + \", got \" + repr(ax.get_title())",
         "visibility": "public"
       },
       {
         "id": "m16-t4-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "y label names the statistic",
+        "assertCode": "assert (ax.get_ylabel()) == (\"Mean revenue\"), \"Expected \" + repr(\"Mean revenue\") + \", got \" + repr(ax.get_ylabel())",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t4-p06-t4",
+        "label": "the bars are still there",
+        "assertCode": "assert (len(ax.patches)) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(ax.patches))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Title the mean-revenue chart and label the y axis so the reader knows it shows an average.\n\nReference solution:\nimport matplotlib.pyplot as plt\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"category\": [\"pen\", \"book\", \"pen\", \"book\", \"bag\", \"bag\"],\n    \"year\": [2024, 2024, 2025, 2025, 2024, 2025],\n    \"revenue\": [30, 70, 40, 90, 20, 30],\n})\n\nmeans = df.groupby(\"category\")[\"revenue\"].mean()\n\nfig, ax = plt.subplots()\nax.bar(means.index, means.values)\nax.set_title(\"Average Revenue by Category\")\nax.set_ylabel(\"Mean revenue\")\n\nprint(\"labelled statistic\")"
   },
   {
     "id": "m16-t4-p07",
     "topicId": "m16-t4",
-    "slug": "m16_t4-7",
-    "title": "Introduction to Seaborn: Dict Lookup",
+    "slug": "ranked-statistical-chart",
+    "title": "Statistical Plots: Rank the Groups",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Sort the group means from largest to smallest, chart them, and label the axes.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Compute the category means, sort them descending with "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "sort_values(ascending=False)"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": " into "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "ranked"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
+          "value": ", chart the bars, and label the y axis "
         },
         {
           "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "Mean revenue"
         },
         {
           "type": "text",
           "value": "."
         }
       ],
+      "editorPlaceholder": "# ranked = ...sort_values(ascending=False)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "pd",
+        "ax",
+        "ranked"
+      ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "sort_values on a Series reorders by the values, keeping the labels attached.",
+          "Ranked bars are far easier to read than alphabetical ones.",
+          "book (80) leads, then pen (35), then bag (25)."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "ranked means drawn"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Sort with sort_values(ascending=False)",
+      "Store it in ranked before plotting",
+      "Label the y axis \"Mean revenue\""
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "ranked = df.groupby(\"category\")[\"revenue\"].mean().sort_values(ascending=False)",
+      "ax.bar(ranked.index, ranked.values)"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: rank the means, then chart them\nimport matplotlib.pyplot as plt\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"category\": [\"pen\", \"book\", \"pen\", \"book\", \"bag\", \"bag\"],\n    \"year\": [2024, 2024, 2025, 2025, 2024, 2025],\n    \"revenue\": [30, 70, 40, 90, 20, 30],\n})\n\nranked = None\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"category\": [\"pen\", \"book\", \"pen\", \"book\", \"bag\", \"bag\"],\n    \"year\": [2024, 2024, 2025, 2025, 2024, 2025],\n    \"revenue\": [30, 70, 40, 90, 20, 30],\n})\n\nranked = df.groupby(\"category\")[\"revenue\"].mean().sort_values(ascending=False)\n\nfig, ax = plt.subplots()\nax.bar(ranked.index, ranked.values)\nax.set_ylabel(\"Mean revenue\")\n\nprint(\"ranked means drawn\")",
     "publicTests": [
       {
         "id": "m16-t4-p07-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Python",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t4-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "groups are ranked",
+        "assertCode": "assert (list(ranked.index)) == ([\"book\", \"pen\", \"bag\"]), \"Expected \" + repr([\"book\", \"pen\", \"bag\"]) + \", got \" + repr(list(ranked.index))",
         "visibility": "public"
       },
       {
         "id": "m16-t4-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "bars follow the ranking",
+        "assertCode": "assert ([p.get_height() for p in ax.patches]) == ([80.0, 35.0, 25.0]), \"Expected \" + repr([80.0, 35.0, 25.0]) + \", got \" + repr([p.get_height() for p in ax.patches])",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t4-p07-t4",
+        "label": "y axis is labelled",
+        "assertCode": "assert (ax.get_ylabel()) == (\"Mean revenue\"), \"Expected \" + repr(\"Mean revenue\") + \", got \" + repr(ax.get_ylabel())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Sort the group means from largest to smallest, chart them, and label the axes.\n\nReference solution:\nimport matplotlib.pyplot as plt\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"category\": [\"pen\", \"book\", \"pen\", \"book\", \"bag\", \"bag\"],\n    \"year\": [2024, 2024, 2025, 2025, 2024, 2025],\n    \"revenue\": [30, 70, 40, 90, 20, 30],\n})\n\nranked = df.groupby(\"category\")[\"revenue\"].mean().sort_values(ascending=False)\n\nfig, ax = plt.subplots()\nax.bar(ranked.index, ranked.values)\nax.set_ylabel(\"Mean revenue\")\n\nprint(\"ranked means drawn\")"
   },
   {
     "id": "m16-t5-p01",
     "topicId": "m16-t5",
-    "slug": "m16_t5-1",
-    "title": "Statistical and Categorical Plots: Warm-up",
+    "slug": "cat-boxplot",
+    "title": "Distributions: A Box Plot",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Statistical and Categorical Plots. Print Ready on one line.",
+    "description": "Draw a box plot of order values, storing the returned dict so the median line can be checked.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Call "
         },
         {
           "type": "code",
-          "value": "Statistical and Categorical Plots"
+          "value": "bp = ax.boxplot(values)"
         },
         {
           "type": "text",
-          "value": ". Print the word "
+          "value": " on "
         },
         {
           "type": "code",
-          "value": "Ready"
+          "value": "[10, 12, 13, 15, 40]"
         },
         {
           "type": "text",
-          "value": " on one line."
+          "value": ". The returned dict holds the artists, including the median line."
         }
       ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
-        }
+      "editorPlaceholder": "# bp = ax.boxplot(values)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax",
+        "bp"
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A box plot shows the median, the quartiles, and the outliers at a glance.",
+          "boxplot returns a dict with keys like boxes, medians, and whiskers.",
+          "40 sits far from the rest, so it is drawn as an outlier point."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "box drawn"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Use ax.boxplot",
+      "Store the returned dict in bp"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "bp = ax.boxplot(values)"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: draw the box plot and keep the result\nimport matplotlib.pyplot as plt\n\nvalues = [10, 12, 13, 15, 40]\nfig, ax = plt.subplots()\nbp = None\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nvalues = [10, 12, 13, 15, 40]\nfig, ax = plt.subplots()\nbp = ax.boxplot(values)\n\nprint(\"box drawn\")",
     "publicTests": [
       {
         "id": "m16-t5-p01-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t5-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "bp has the right type",
+        "assertCode": "assert \"bp\" in globals(), \"Expected a variable named bp\"\nassert isinstance(bp, dict), \"Expected bp to be dict, got \" + type(bp).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t5-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "one median line",
+        "assertCode": "assert (len(bp[\"medians\"])) == (1), \"Expected \" + repr(1) + \", got \" + repr(len(bp[\"medians\"]))",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t5-p01-t4",
+        "label": "one box",
+        "assertCode": "assert (len(bp[\"boxes\"])) == (1), \"Expected \" + repr(1) + \", got \" + repr(len(bp[\"boxes\"]))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Statistical and Categorical Plots. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Draw a box plot of order values, storing the returned dict so the median line can be checked.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nvalues = [10, 12, 13, 15, 40]\nfig, ax = plt.subplots()\nbp = ax.boxplot(values)\n\nprint(\"box drawn\")"
   },
   {
     "id": "m16-t5-p02",
     "topicId": "m16-t5",
-    "slug": "m16_t5-2",
-    "title": "Statistical and Categorical Plots: Output Two Values",
+    "slug": "cat-histogram-shape",
+    "title": "Distributions: Histogram Shape",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Statistical and Categorical Plots and print them comma-separated.",
+    "description": "Draw a 5-bin histogram of order values and confirm every value was counted.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Statistical and Categorical Plots and print them separated by a comma."
+          "value": "Draw "
+        },
+        {
+          "type": "code",
+          "value": "ax.hist(values, bins=5)"
+        },
+        {
+          "type": "text",
+          "value": " for ten order values. The bar heights must add up to the number of orders."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# ax.hist(values, bins=5)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Each bar counts how many values fall in that bin.",
+          "The heights always sum to the number of observations."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "distribution drawn"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Use bins=5",
+      "Plot all ten values"
     ],
     "hints": [
-      "Create two variables related to Statistical and Categorical Plots",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "ax.hist(values, bins=5)"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Statistical and Categorical Plots and print them comma-separated. Key points: Create two variables related to Statistical and Categorical Plots Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: draw a 5-bin histogram\nimport matplotlib.pyplot as plt\n\nvalues = [5, 6, 8, 11, 12, 14, 15, 19, 21, 25]\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nvalues = [5, 6, 8, 11, 12, 14, 15, 19, 21, 25]\nfig, ax = plt.subplots()\nax.hist(values, bins=5)\n\nprint(\"distribution drawn\")",
     "publicTests": [
       {
         "id": "m16-t5-p02-t1",
-        "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t5-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "five bins",
+        "assertCode": "assert (len(ax.patches)) == (5), \"Expected \" + repr(5) + \", got \" + repr(len(ax.patches))",
         "visibility": "public"
       },
       {
         "id": "m16-t5-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "all ten values counted",
+        "assertCode": "assert (sum(p.get_height() for p in ax.patches)) == (10.0), \"Expected \" + repr(10.0) + \", got \" + repr(sum(p.get_height() for p in ax.patches))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Draw a 5-bin histogram of order values and confirm every value was counted.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nvalues = [5, 6, 8, 11, 12, 14, 15, 19, 21, 25]\nfig, ax = plt.subplots()\nax.hist(values, bins=5)\n\nprint(\"distribution drawn\")"
   },
   {
     "id": "m16-t5-p03",
     "topicId": "m16-t5",
-    "slug": "m16_t5-3",
-    "title": "Statistical and Categorical Plots: Simple Loop",
+    "slug": "cat-count-bars",
+    "title": "Categorical: Count Each Category",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Statistical and Categorical Plots.",
+    "description": "Count how often each region appears using a dict and draw the counts as bars.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Given a list of regions, count them into "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "counts"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Statistical and Categorical Plots."
+          "value": " with "
+        },
+        {
+          "type": "code",
+          "value": "Counter"
+        },
+        {
+          "type": "text",
+          "value": ", then bar-chart the sorted categories."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# counts = Counter(regions)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax",
+        "counts"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "collections.Counter counts occurrences in one call.",
+          "sorted(counts) gives the category names in a stable order.",
+          "Build the matching heights list from the same sorted names."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "category counts drawn"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Use Counter to count",
+      "Sort the category names before plotting"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "counts = Counter(regions)",
+      "names = sorted(counts)"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Statistical and Categorical Plots. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: count the regions, then plot\nimport matplotlib.pyplot as plt\nfrom collections import Counter\n\nregions = [\"South\", \"North\", \"South\", \"East\", \"South\"]\ncounts = None\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\nfrom collections import Counter\n\nregions = [\"South\", \"North\", \"South\", \"East\", \"South\"]\ncounts = Counter(regions)\nnames = sorted(counts)\nheights = [counts[name] for name in names]\n\nfig, ax = plt.subplots()\nax.bar(names, heights)\n\nprint(\"category counts drawn\")",
     "publicTests": [
       {
         "id": "m16-t5-p03-t1",
-        "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t5-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "South appears three times",
+        "assertCode": "assert (counts[\"South\"]) == (3), \"Expected \" + repr(3) + \", got \" + repr(counts[\"South\"])",
         "visibility": "public"
       },
       {
         "id": "m16-t5-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "three distinct regions",
+        "assertCode": "assert (len(counts)) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(counts))",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t5-p03-t4",
+        "label": "three bars",
+        "assertCode": "assert (len(ax.patches)) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(ax.patches))",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t5-p03-t5",
+        "label": "bar heights are the counts",
+        "assertCode": "assert ([p.get_height() for p in ax.patches]) == ([1.0, 1.0, 3.0]), \"Expected \" + repr([1.0, 1.0, 3.0]) + \", got \" + repr([p.get_height() for p in ax.patches])",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Count how often each region appears using a dict and draw the counts as bars.\n\nReference solution:\nimport matplotlib.pyplot as plt\nfrom collections import Counter\n\nregions = [\"South\", \"North\", \"South\", \"East\", \"South\"]\ncounts = Counter(regions)\nnames = sorted(counts)\nheights = [counts[name] for name in names]\n\nfig, ax = plt.subplots()\nax.bar(names, heights)\n\nprint(\"category counts drawn\")"
   },
   {
     "id": "m16-t5-p04",
     "topicId": "m16-t5",
-    "slug": "m16_t5-4",
-    "title": "Statistical and Categorical Plots: Condition",
+    "slug": "cat-grouped-comparison",
+    "title": "Categorical: Compare Two Groups",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Draw side-by-side bars for two regions across three categories and add a legend.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "Plot "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "south = [30, 70, 20]"
         },
         {
           "type": "text",
-          "value": ". If "
+          "value": " and "
         },
         {
           "type": "code",
-          "value": "score >= 60"
+          "value": "north = [40, 20, 10]"
         },
         {
           "type": "text",
-          "value": ", print "
-        },
-        {
-          "type": "code",
-          "value": "Pass"
-        },
-        {
-          "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": " as two offset bar groups with a legend."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# ax.bar([p - 0.2 for p in positions], south, width=0.4, ...)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Use a width of 0.4 and shift each group by 0.2 either side.",
+          "Two calls over three categories gives six patches.",
+          "Side-by-side beats stacked when you want to compare values directly."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "comparison drawn"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Two ax.bar calls with width=0.4",
+      "Labels \"South\" then \"North\"",
+      "Call ax.legend()"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "ax.bar([p - 0.2 for p in positions], south, width=0.4, label=\"South\")",
+      "ax.legend()"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: draw both regions side by side\nimport matplotlib.pyplot as plt\n\nsouth = [30, 70, 20]\nnorth = [40, 20, 10]\npositions = [0, 1, 2]\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nsouth = [30, 70, 20]\nnorth = [40, 20, 10]\npositions = [0, 1, 2]\n\nfig, ax = plt.subplots()\nax.bar([p - 0.2 for p in positions], south, width=0.4, label=\"South\")\nax.bar([p + 0.2 for p in positions], north, width=0.4, label=\"North\")\nax.legend()\n\nprint(\"comparison drawn\")",
     "publicTests": [
       {
         "id": "m16-t5-p04-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
         "id": "m16-t5-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "six bars in total",
+        "assertCode": "assert (len(ax.patches)) == (6), \"Expected \" + repr(6) + \", got \" + repr(len(ax.patches))",
         "visibility": "public"
       },
       {
         "id": "m16-t5-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "both regions are in the legend",
+        "assertCode": "assert ([t.get_text() for t in ax.get_legend().get_texts()]) == ([\"South\", \"North\"]), \"Expected \" + repr([\"South\", \"North\"]) + \", got \" + repr([t.get_text() for t in ax.get_legend().get_texts()])",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t5-p04-t4",
+        "label": "bars are narrowed so they fit side by side",
+        "assertCode": "assert all(abs(p.get_width() - 0.4) < 1e-9 for p in ax.patches), \"Pass width=0.4 to both bar calls\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Draw side-by-side bars for two regions across three categories and add a legend.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nsouth = [30, 70, 20]\nnorth = [40, 20, 10]\npositions = [0, 1, 2]\n\nfig, ax = plt.subplots()\nax.bar([p - 0.2 for p in positions], south, width=0.4, label=\"South\")\nax.bar([p + 0.2 for p in positions], north, width=0.4, label=\"North\")\nax.legend()\n\nprint(\"comparison drawn\")"
   },
   {
     "id": "m16-t5-p05",
     "topicId": "m16-t5",
-    "slug": "m16_t5-5",
-    "title": "Statistical and Categorical Plots: Function Stub",
+    "slug": "cat-heatmap",
+    "title": "Categorical: A Heatmap of a Matrix",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Show a region-by-category matrix as a heatmap with ax.imshow and add a title.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "Use "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "ax.imshow(matrix)"
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": " on "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": "[[30, 70], [40, 20]]"
         },
         {
           "type": "text",
-          "value": " and call it once."
+          "value": " and title it "
+        },
+        {
+          "type": "code",
+          "value": "Revenue Heatmap"
+        },
+        {
+          "type": "text",
+          "value": ". Colour replaces numbers when the grid gets large."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
-    },
-    "examples": [
-      {
-        "output": "Hello"
-      }
-    ],
-    "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
-    ],
-    "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
-    ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
-    "publicTests": [
-      {
-        "id": "m16-t5-p05-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Hello",
-        "visibility": "public"
-      },
-      {
-        "id": "m16-t5-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
-        "visibility": "public"
-      },
-      {
-        "id": "m16-t5-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
-        "visibility": "public"
-      }
-    ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
-  },
-  {
-    "id": "m16-t5-p06",
-    "topicId": "m16-t5",
-    "slug": "m16_t5-6",
-    "title": "Statistical and Categorical Plots: List Practice",
-    "difficulty": "hard",
-    "order": 6,
-    "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
-    "challengeContent": {
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Create a list with three items about Statistical and Categorical Plots. Print the "
-        },
-        {
-          "type": "code",
-          "value": "second item"
-        },
-        {
-          "type": "text",
-          "value": " using index "
-        },
-        {
-          "type": "code",
-          "value": "1"
-        },
-        {
-          "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
-        }
+      "editorPlaceholder": "# ax.imshow(matrix)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "imshow draws a 2-D array as coloured cells.",
+          "It is the Matplotlib engine behind a seaborn heatmap.",
+          "The image is stored on ax.images."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "heatmap drawn"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Use ax.imshow",
+      "Title \"Revenue Heatmap\""
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "ax.imshow(matrix)",
+      "ax.set_title(\"Revenue Heatmap\")"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: draw the heatmap and title it\nimport matplotlib.pyplot as plt\n\nmatrix = [[30, 70], [40, 20]]\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nmatrix = [[30, 70], [40, 20]]\nfig, ax = plt.subplots()\nax.imshow(matrix)\nax.set_title(\"Revenue Heatmap\")\n\nprint(\"heatmap drawn\")",
     "publicTests": [
       {
-        "id": "m16-t5-p06-t1",
-        "label": "Sample Case",
-        "expectedStdout": "middle",
+        "id": "m16-t5-p05-t1",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
         "visibility": "public"
       },
       {
-        "id": "m16-t5-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "id": "m16-t5-p05-t2",
+        "label": "one image was drawn",
+        "assertCode": "assert (len(ax.images)) == (1), \"Expected \" + repr(1) + \", got \" + repr(len(ax.images))",
         "visibility": "public"
       },
       {
-        "id": "m16-t5-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "id": "m16-t5-p05-t3",
+        "label": "title is set",
+        "assertCode": "assert (ax.get_title()) == (\"Revenue Heatmap\"), \"Expected \" + repr(\"Revenue Heatmap\") + \", got \" + repr(ax.get_title())",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t5-p05-t4",
+        "label": "the matrix has 2 rows and 2 columns",
+        "assertCode": "assert (ax.images[0].get_array().shape) == ((2, 2)), \"Expected \" + repr((2, 2)) + \", got \" + repr(ax.images[0].get_array().shape)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Show a region-by-category matrix as a heatmap with ax.imshow and add a title.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nmatrix = [[30, 70], [40, 20]]\nfig, ax = plt.subplots()\nax.imshow(matrix)\nax.set_title(\"Revenue Heatmap\")\n\nprint(\"heatmap drawn\")"
   },
   {
-    "id": "m16-t5-p07",
+    "id": "m16-t5-p06",
     "topicId": "m16-t5",
-    "slug": "m16_t5-7",
-    "title": "Statistical and Categorical Plots: Dict Lookup",
-    "difficulty": "hard",
-    "order": 7,
+    "slug": "cat-scatter-two-groups",
+    "title": "Categorical: Colour Points by Group",
+    "difficulty": "medium",
+    "order": 6,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Scatter two groups of points in separate calls so each gets its own colour, then add a legend.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Call "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "ax.scatter"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": " once per group, labelling them "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "South"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
+          "value": " and "
         },
         {
           "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "North"
+        },
+        {
+          "type": "text",
+          "value": ", then call "
+        },
+        {
+          "type": "code",
+          "value": "ax.legend()"
         },
         {
           "type": "text",
           "value": "."
         }
       ],
+      "editorPlaceholder": "# ax.scatter(..., label=\"South\")",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "ax"
+      ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "One scatter call per group is the simplest way to colour by category.",
+          "Each call adds its own collection, so you get two entries in the legend.",
+          "This is what seaborn's hue parameter automates."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "groups drawn"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "One ax.scatter call per group",
+      "Labels \"South\" then \"North\"",
+      "Call ax.legend()"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "ax.scatter([1, 2, 3], [10, 20, 30], label=\"South\")",
+      "ax.legend()"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: scatter each group separately\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.scatter([1, 2, 3], [10, 20, 30], label=\"South\")\nax.scatter([1, 2, 3], [15, 12, 25], label=\"North\")\nax.legend()\n\nprint(\"groups drawn\")",
+    "publicTests": [
+      {
+        "id": "m16-t5-p06-t1",
+        "label": "ax is a Matplotlib Axes",
+        "assertCode": "assert \"ax\" in globals(), \"Expected a variable named ax from plt.subplots()\"\nassert hasattr(ax, \"plot\"), \"Expected ax to be a Matplotlib Axes, got \" + type(ax).__name__",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t5-p06-t2",
+        "label": "two collections, one per group",
+        "assertCode": "assert (len(ax.collections)) == (2), \"Expected \" + repr(2) + \", got \" + repr(len(ax.collections))",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t5-p06-t3",
+        "label": "both groups are labelled",
+        "assertCode": "assert ([t.get_text() for t in ax.get_legend().get_texts()]) == ([\"South\", \"North\"]), \"Expected \" + repr([\"South\", \"North\"]) + \", got \" + repr([t.get_text() for t in ax.get_legend().get_texts()])",
+        "visibility": "public"
+      }
+    ],
+    "approach": "Scatter two groups of points in separate calls so each gets its own colour, then add a legend.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.scatter([1, 2, 3], [10, 20, 30], label=\"South\")\nax.scatter([1, 2, 3], [15, 12, 25], label=\"North\")\nax.legend()\n\nprint(\"groups drawn\")"
+  },
+  {
+    "id": "m16-t5-p07",
+    "topicId": "m16-t5",
+    "slug": "cat-two-panel-dashboard",
+    "title": "Categorical: A Two-Panel Dashboard",
+    "difficulty": "hard",
+    "order": 7,
+    "layout": "challenge",
+    "description": "Use plt.subplots(1, 2) to put a histogram beside a bar chart, each with its own title.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Create "
+        },
+        {
+          "type": "code",
+          "value": "fig, axes = plt.subplots(1, 2)"
+        },
+        {
+          "type": "text",
+          "value": ". Draw a 4-bin histogram of the order values on "
+        },
+        {
+          "type": "code",
+          "value": "axes[0]"
+        },
+        {
+          "type": "text",
+          "value": " titled "
+        },
+        {
+          "type": "code",
+          "value": "Orders"
+        },
+        {
+          "type": "text",
+          "value": ", and category bars on "
+        },
+        {
+          "type": "code",
+          "value": "axes[1]"
+        },
+        {
+          "type": "text",
+          "value": " titled "
+        },
+        {
+          "type": "code",
+          "value": "Revenue"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ],
+      "editorPlaceholder": "# fig, axes = plt.subplots(1, 2)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "plt",
+        "axes"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "plt.subplots(1, 2) returns an array of two axes.",
+          "Each axes is decorated independently — that is how dashboards are built.",
+          "Distribution on the left, comparison on the right."
+        ]
+      }
+    },
+    "examples": [
+      {
+        "output": "dashboard drawn"
+      }
+    ],
+    "constraints": [
+      "Use plt.subplots(1, 2) and name the result axes",
+      "Histogram on the left with bins=4, bars on the right",
+      "Titles \"Orders\" and \"Revenue\""
+    ],
+    "hints": [
+      "fig, axes = plt.subplots(1, 2)",
+      "axes[0].hist(values, bins=4) then axes[0].set_title(\"Orders\")"
+    ],
+    "starterCode": "# TODO: build both panels\nimport matplotlib.pyplot as plt\n\nvalues = [5, 8, 12, 15, 19, 21]\nrevenue = [30, 70, 40]\nfig, axes = plt.subplots(1, 2)\n",
+    "solutionCode": "import matplotlib.pyplot as plt\n\nvalues = [5, 8, 12, 15, 19, 21]\nrevenue = [30, 70, 40]\n\nfig, axes = plt.subplots(1, 2)\naxes[0].hist(values, bins=4)\naxes[0].set_title(\"Orders\")\naxes[1].bar([\"pen\", \"book\", \"bag\"], revenue)\naxes[1].set_title(\"Revenue\")\n\nprint(\"dashboard drawn\")",
     "publicTests": [
       {
         "id": "m16-t5-p07-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Python",
+        "label": "two panels were created",
+        "assertCode": "assert \"axes\" in globals(), \"Expected a variable named axes from plt.subplots(1, 2)\"\nassert len(axes) == 2, \"Expected 2 panels, got \" + str(len(axes))",
         "visibility": "public"
       },
       {
         "id": "m16-t5-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "left panel has 4 histogram bins",
+        "assertCode": "assert (len(axes[0].patches)) == (4), \"Expected \" + repr(4) + \", got \" + repr(len(axes[0].patches))",
         "visibility": "public"
       },
       {
         "id": "m16-t5-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "right panel has 3 bars",
+        "assertCode": "assert (len(axes[1].patches)) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(axes[1].patches))",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t5-p07-t4",
+        "label": "left panel title",
+        "assertCode": "assert (axes[0].get_title()) == (\"Orders\"), \"Expected \" + repr(\"Orders\") + \", got \" + repr(axes[0].get_title())",
+        "visibility": "public"
+      },
+      {
+        "id": "m16-t5-p07-t5",
+        "label": "right panel title",
+        "assertCode": "assert (axes[1].get_title()) == (\"Revenue\"), \"Expected \" + repr(\"Revenue\") + \", got \" + repr(axes[1].get_title())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Use plt.subplots(1, 2) to put a histogram beside a bar chart, each with its own title.\n\nReference solution:\nimport matplotlib.pyplot as plt\n\nvalues = [5, 8, 12, 15, 19, 21]\nrevenue = [30, 70, 40]\n\nfig, axes = plt.subplots(1, 2)\naxes[0].hist(values, bins=4)\naxes[0].set_title(\"Orders\")\naxes[1].bar([\"pen\", \"book\", \"bag\"], revenue)\naxes[1].set_title(\"Revenue\")\n\nprint(\"dashboard drawn\")"
   }
 ];

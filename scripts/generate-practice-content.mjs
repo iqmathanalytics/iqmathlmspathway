@@ -724,8 +724,49 @@ function buildProblem(
   const {
     constraints: challengeConstraints,
     hints: challengeHints,
+    starter: starterOverride,
+    solution: solutionOverride,
+    tests: testsOverride,
+    approach: approachOverride,
     ...challengeContent
   } = challengeCfg;
+
+  // Concept-true tasks ship their own tests: an exact-output case plus asserts
+  // that fail when the learner prints a hardcoded answer instead of using the API.
+  const publicTests = testsOverride
+    ? testsOverride.map((t, i) => ({
+        id: `${id}-t${i + 1}`,
+        label: t.label,
+        ...(t.setup ? { setup: t.setup } : {}),
+        ...(t.stdin ? { stdin: t.stdin } : {}),
+        ...(t.expectedStdout !== undefined
+          ? { expectedStdout: t.expectedStdout }
+          : {}),
+        ...(t.assertCode ? { assertCode: t.assertCode } : {}),
+        visibility: "public",
+      }))
+    : [
+        {
+          id: `${id}-t1`,
+          label: "Sample Case",
+          expectedStdout: expected,
+          visibility: "public",
+        },
+        {
+          id: `${id}-t2`,
+          label: "Exact Output",
+          expectedStdout: expected,
+          visibility: "public",
+        },
+        {
+          id: `${id}-t3`,
+          label: String(expected).includes("\n")
+            ? "Multi-line Format"
+            : "No Extra Output",
+          expectedStdout: expected,
+          visibility: "public",
+        },
+      ];
 
   const problem = {
     id,
@@ -740,34 +781,17 @@ function buildProblem(
     examples: [{ output: expected }],
     constraints: challengeConstraints,
     hints: challengeHints,
-    starterCode: "",
-    solutionCode: expected
-      .split("\n")
-      .map((line) => `print(${JSON.stringify(line)})`)
-      .join("\n"),
-    publicTests: [
-      {
-        id: `${id}-t1`,
-        label: "Sample Case",
-        expectedStdout: expected,
-        visibility: "public",
-      },
-      {
-        id: `${id}-t2`,
-        label: "Exact Output",
-        expectedStdout: expected,
-        visibility: "public",
-      },
-      {
-        id: `${id}-t3`,
-        label: String(expected).includes("\n")
-          ? "Multi-line Format"
-          : "No Extra Output",
-        expectedStdout: expected,
-        visibility: "public",
-      },
-    ],
+    starterCode: starterOverride ?? "",
+    solutionCode:
+      solutionOverride ??
+      expected
+        .split("\n")
+        .map((line) => `print(${JSON.stringify(line)})`)
+        .join("\n"),
+    publicTests,
   };
+
+  if (approachOverride) problem.approach = approachOverride;
 
   return problem;
 }
@@ -792,14 +816,21 @@ for (const [topicId, title] of CURRICULUM_TOPICS) {
       challengeOverride
     );
     allProblems.push(p);
-    hiddenInserts.push({
-      problem_id: p.id,
-      tests_json: {
-        tests: [
+    // Concept-true tasks carry asserts — reuse them as hidden tests so grading
+    // rejects hardcoded output. Legacy print drills keep the old stdout pair.
+    const usesAsserts = p.publicTests.some((t) => t.assertCode);
+    const hiddenTests = usesAsserts
+      ? p.publicTests.map((t) => {
+          const { id: _id, visibility: _visibility, ...rest } = t;
+          return rest;
+        })
+      : [
           { expectedStdout: expected },
           { setup: "# hidden check", expectedStdout: expected },
-        ],
-      },
+        ];
+    hiddenInserts.push({
+      problem_id: p.id,
+      tests_json: { tests: hiddenTests },
     });
   });
 }
@@ -814,11 +845,38 @@ for (const p of allProblems) {
 const practiceDir = path.join(root, "src", "data", "practice");
 fs.mkdirSync(practiceDir, { recursive: true });
 
+/** `--modules=13,14` limits which module files are rewritten (meta/index always refresh). */
+const modulesArg = process.argv.find((a) => a.startsWith("--modules="));
+const onlyModules = modulesArg
+  ? new Set(
+      modulesArg
+        .slice("--modules=".length)
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean)
+    )
+  : null;
+
 for (const [mod, problems] of Object.entries(byModule)) {
+  if (onlyModules && !onlyModules.has(mod)) continue;
+
   if (mod === "1") {
-    console.log("Skipping module-1.ts (preserving hand-crafted challenge content).");
+    // m1-t1 is hand-crafted and lives in module-1-intro.ts.
+    const generated = problems.filter((p) => p.topicId !== "m1-t1");
+    const content = `import type { PracticeProblem } from "@/lib/types";
+import { module1IntroPractice } from "./module-1-intro";
+
+const environmentPractice: PracticeProblem[] = ${JSON.stringify(generated, null, 2)};
+
+export const module1Practice: PracticeProblem[] = [
+  ...module1IntroPractice,
+  ...environmentPractice,
+];
+`;
+    fs.writeFileSync(path.join(practiceDir, "module-1.ts"), content);
     continue;
   }
+
   const content = `import type { PracticeProblem } from "@/lib/types";
 
 export const module${mod}Practice: PracticeProblem[] = ${JSON.stringify(problems, null, 2)};

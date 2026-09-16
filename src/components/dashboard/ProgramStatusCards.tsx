@@ -92,7 +92,7 @@ export function ProgramStatusCards({
                 href={continueHref}
                 className="inline-flex flex-1 items-center justify-center gap-1 rounded-xl bg-gray-900 px-3 py-2 text-xs font-semibold text-white hover:bg-gray-700"
               >
-                Continue
+                Continue learning
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <Link

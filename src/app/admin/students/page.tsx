@@ -34,6 +34,15 @@ const inputClass =
 
 const ENTITLEMENT_CHUNK = 80;
 
+function normalizeDepartment(raw: string | null | undefined): {
+  key: string;
+  label: string;
+} {
+  const trimmed = (raw ?? "").trim();
+  if (!trimmed) return { key: "__unspecified__", label: "Unspecified" };
+  return { key: trimmed.toLowerCase(), label: trimmed };
+}
+
 function StudentsAdminInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -42,6 +51,7 @@ function StudentsAdminInner() {
   const [students, setStudents] = useState<ProfileRow[]>([]);
   const [query, setQuery] = useState("");
   const [collegeFilter, setCollegeFilter] = useState("");
+  const [departmentFilter, setDepartmentFilter] = useState("");
   const [schemaError, setSchemaError] = useState(false);
   const [loading, setLoading] = useState(true);
   const [detail, setDetail] = useState<StudentExtras | null>(null);
@@ -88,17 +98,43 @@ function StudentsAdminInner() {
     void loadStudents();
   }, [loadStudents]);
 
+  const departmentOptions = useMemo(() => {
+    const scoped = collegeFilter
+      ? students.filter((s) => s.college_id === collegeFilter)
+      : students;
+    const map = new Map<string, { label: string; count: number }>();
+    for (const s of scoped) {
+      const { key, label } = normalizeDepartment(s.department);
+      const prev = map.get(key);
+      if (prev) prev.count += 1;
+      else map.set(key, { label, count: 1 });
+    }
+    return [...map.entries()]
+      .map(([key, v]) => ({ key, ...v }))
+      .sort((a, b) => {
+        if (a.key === "__unspecified__") return 1;
+        if (b.key === "__unspecified__") return -1;
+        return a.label.localeCompare(b.label, undefined, { sensitivity: "base" });
+      });
+  }, [students, collegeFilter]);
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return students.filter((s) => {
       if (collegeFilter && s.college_id !== collegeFilter) return false;
+      if (
+        departmentFilter &&
+        normalizeDepartment(s.department).key !== departmentFilter
+      ) {
+        return false;
+      }
       if (!q) return true;
       return [s.full_name, s.email, s.mobile, s.department]
         .join(" ")
         .toLowerCase()
         .includes(q);
     });
-  }, [students, query, collegeFilter]);
+  }, [students, query, collegeFilter, departmentFilter]);
 
   const filteredIds = useMemo(() => filtered.map((s) => s.id), [filtered]);
 
@@ -135,6 +171,13 @@ function StudentsAdminInner() {
   const filteredCollegeName = collegeFilter
     ? collegeMap.get(collegeFilter)?.name ?? "Selected college"
     : null;
+  const filteredDepartmentName = departmentFilter
+    ? departmentOptions.find((d) => d.key === departmentFilter)?.label ??
+      "Selected department"
+    : null;
+  const accessScopeLabel = [filteredCollegeName, filteredDepartmentName]
+    .filter(Boolean)
+    .join(" · ");
   const needGrant = filtered.filter((s) => !premiumIds.has(s.id)).length;
   const needRevoke = filtered.filter((s) => premiumIds.has(s.id)).length;
 
@@ -241,7 +284,7 @@ function StudentsAdminInner() {
       setBulkError(null);
       return;
     }
-    const collegeLabel = filteredCollegeName ?? "this college";
+    const collegeLabel = accessScopeLabel || "this group";
     if (
       !window.confirm(
         `Grant practice premium to ${targets.length} student(s) at ${collegeLabel}?`
@@ -285,7 +328,7 @@ function StudentsAdminInner() {
       setBulkError(null);
       return;
     }
-    const collegeLabel = filteredCollegeName ?? "this college";
+    const collegeLabel = accessScopeLabel || "this group";
     if (
       !window.confirm(
         `Revoke practice premium from ${targets.length} student(s) at ${collegeLabel}?`
@@ -436,8 +479,8 @@ function StudentsAdminInner() {
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
       <div>
-        <div className="flex flex-col gap-3 sm:flex-row">
-          <label className="relative flex-1">
+        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <label className="relative min-w-[200px] flex-1">
             <Search className="pointer-events-none absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
             <input
               value={query}
@@ -452,6 +495,7 @@ function StudentsAdminInner() {
               value={collegeFilter}
               onChange={(v) => {
                 setCollegeFilter(v);
+                setDepartmentFilter("");
                 setBulkMessage(null);
                 setBulkError(null);
               }}
@@ -459,17 +503,39 @@ function StudentsAdminInner() {
               emptyLabel="All colleges"
             />
           </div>
+          <div className="min-w-[200px] sm:w-56">
+            <select
+              value={departmentFilter}
+              onChange={(e) => {
+                setDepartmentFilter(e.target.value);
+                setBulkMessage(null);
+                setBulkError(null);
+              }}
+              aria-label="Filter by department"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
+            >
+              <option value="">All departments</option>
+              {departmentOptions.map((d) => (
+                <option key={d.key} value={d.key}>
+                  {d.label} ({d.count})
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
 
         <div className="mt-3 rounded-xl border border-brand-100 bg-brand-50/60 p-3">
-          <p className="text-sm font-semibold text-brand-900">Practice access by college</p>
+          <p className="text-sm font-semibold text-brand-900">
+            Practice access by college and department
+          </p>
           <p className="mt-1 text-xs text-brand-800">
-            Filter by college, then unlock or revoke practice premium for those students.
-            Search further narrows who is included.
+            Filter by college, then optionally by department, and unlock or revoke
+            practice premium for those students. Search further narrows who is included.
           </p>
           {!collegeFilter ? (
             <p className="mt-2 text-xs text-gray-600">
-              Select a college above to enable bulk unlock.
+              Select a college above to enable bulk unlock. Add a department to
+              limit access to that department only.
             </p>
           ) : (
             <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -500,7 +566,8 @@ function StudentsAdminInner() {
                 Revoke practice ({needRevoke})
               </button>
               <span className="text-xs text-gray-600">
-                {filtered.length} student(s) · {needRevoke} unlocked · {filteredCollegeName}
+                {filtered.length} student(s) · {needRevoke} unlocked
+                {accessScopeLabel ? ` · ${accessScopeLabel}` : ""}
               </span>
             </div>
           )}
@@ -522,6 +589,7 @@ function StudentsAdminInner() {
                 <tr>
                   <th className="px-4 py-3">Student</th>
                   <th className="px-4 py-3">College</th>
+                  <th className="px-4 py-3">Department</th>
                   <th className="px-4 py-3">Practice</th>
                 </tr>
               </thead>
@@ -540,6 +608,9 @@ function StudentsAdminInner() {
                     </td>
                     <td className="px-4 py-3 text-gray-600">
                       {s.college_id ? collegeMap.get(s.college_id)?.name ?? "—" : "—"}
+                    </td>
+                    <td className="px-4 py-3 text-gray-600">
+                      {normalizeDepartment(s.department).label}
                     </td>
                     <td className="px-4 py-3">
                       {premiumIds.has(s.id) ? (

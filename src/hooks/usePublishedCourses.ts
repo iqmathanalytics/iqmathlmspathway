@@ -45,7 +45,7 @@ export function usePublishedCourses() {
 export function useAccessibleCourses() {
   const { user, profile, loading: authLoading } = useAuth();
   const { publishedIds, loading: publishedLoading } = usePublishedCourses();
-  const [enrolledIds, setEnrolledIds] = useState<Set<CourseId> | null>(null);
+  const [enrolledIds, setEnrolledIds] = useState<Set<CourseId>>(new Set());
   const [enrollLoading, setEnrollLoading] = useState(true);
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export function useAccessibleCourses() {
     async function load() {
       if (!user) {
         if (!cancelled) {
-          setEnrolledIds(null);
+          setEnrolledIds(new Set());
           setEnrollLoading(false);
         }
         return;
@@ -61,7 +61,7 @@ export function useAccessibleCourses() {
       setEnrollLoading(true);
       const ids = await fetchEnrolledCourseIds(user.id);
       if (!cancelled) {
-        setEnrolledIds(ids);
+        setEnrolledIds(ids ?? new Set());
         setEnrollLoading(false);
       }
     }
@@ -70,7 +70,7 @@ export function useAccessibleCourses() {
     function onEnrollmentsUpdated() {
       if (!user) return;
       void fetchEnrolledCourseIds(user.id).then((ids) => {
-        if (!cancelled) setEnrolledIds(ids);
+        if (!cancelled) setEnrolledIds(ids ?? new Set());
       });
     }
 
@@ -96,7 +96,7 @@ export function useAccessibleCourses() {
         courseId: course.id,
         isAdmin: admin,
         publishedIds,
-        enrolledIds: user ? enrolledIds : null,
+        enrolledIds: user ? enrolledIds : new Set(),
       })
     );
   }, [profile, publishedIds, enrolledIds, user]);

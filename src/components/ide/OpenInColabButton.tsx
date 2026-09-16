@@ -4,18 +4,20 @@ import { useState } from "react";
 import { Check, ExternalLink } from "lucide-react";
 import { copyCodeAndOpenColab } from "@/lib/visualization-code";
 
-type ColabButtonVariant = "ide" | "light" | "card";
+type ColabButtonVariant = "ide" | "light" | "card" | "action";
 
 interface OpenInColabButtonProps {
   code?: string;
   variant?: ColabButtonVariant;
   label?: string;
+  title?: string;
 }
 
 export function OpenInColabButton({
   code,
   variant = "light",
   label = "Open in Google Colab",
+  title,
 }: OpenInColabButtonProps) {
   const [copied, setCopied] = useState(false);
 
@@ -30,6 +32,36 @@ export function OpenInColabButton({
   const copiedLabel = code?.trim()
     ? "Copied — paste in Colab"
     : "Opened Colab";
+
+  // Sized to sit in the practice editor's action row next to Run / Submit.
+  if (variant === "action") {
+    return (
+      <button
+        type="button"
+        onMouseDown={(e) => e.preventDefault()}
+        onClick={() => void handleClick()}
+        className="inline-flex h-8 shrink-0 items-center gap-1.5 rounded-md border border-orange-200 bg-orange-50 px-3 text-xs font-semibold text-orange-800 transition hover:bg-orange-100"
+        title={
+          title ??
+          "Opens a Google Colab notebook and copies this question plus your code, so you can practice with the real libraries and see charts."
+        }
+      >
+        <ColabMark className="h-3.5 w-3.5" />
+        {copied ? (
+          <>
+            <Check className="h-3.5 w-3.5" aria-hidden />
+            <span className="hidden sm:inline">Copied — paste in Colab</span>
+            <span className="sm:hidden">Copied</span>
+          </>
+        ) : (
+          <>
+            <span className="hidden sm:inline">{label}</span>
+            <span className="sm:hidden">Colab</span>
+          </>
+        )}
+      </button>
+    );
+  }
 
   if (variant === "ide") {
     return (

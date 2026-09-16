@@ -10,7 +10,7 @@ import { PLATFORM_LOGO, PLATFORM_NAME } from "@/data/platform";
 import { AuthNav } from "@/components/layout/AuthNav";
 import { useAuth } from "@/contexts/AuthContext";
 import { useAccessibleCourses } from "@/hooks/usePublishedCourses";
-import { isAdmin } from "@/lib/admin";
+import { isAdmin, unlocksAllContent } from "@/lib/admin";
 
 export function Header() {
   const pathname = usePathname();
@@ -18,8 +18,9 @@ export function Header() {
   const { user, profile } = useAuth();
   const { accessibleCourses, loading: coursesLoading } = useAccessibleCourses();
   const admin = isAdmin(profile);
+  const unlockAll = unlocksAllContent(profile, user?.email);
   const hasPythonCourse =
-    admin || accessibleCourses.some((c) => c.id === "python");
+    unlockAll || accessibleCourses.some((c) => c.id === "python");
   const showPractice =
     !mounted ||
     !user ||

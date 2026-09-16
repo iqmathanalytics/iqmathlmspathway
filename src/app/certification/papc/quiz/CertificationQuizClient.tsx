@@ -8,6 +8,7 @@ import { ClientOnly } from "@/components/ui/ClientOnly";
 import { CertificationAccessGate } from "@/components/certification/CertificationAccessGate";
 import { PythonCodingWorkspace } from "@/components/practice/PythonCodingWorkspace";
 import { useAuth } from "@/contexts/AuthContext";
+import { unlocksAllContent } from "@/lib/admin";
 import {
   PAPC_ASSESSMENT_TITLE,
   PAPC_QUIZ_QUESTION_COUNT,
@@ -150,7 +151,9 @@ function QuizBody() {
         return;
       }
       const open = getInProgressAttempt(attempts);
-      const lock = getLockUntil(attempts);
+      const lock = unlocksAllContent(profile, user.email)
+        ? null
+        : getLockUntil(attempts);
       if (open) {
         const deadline = quizDeadline(open.started_at);
         let nextAnswers = open.answers;
@@ -178,7 +181,7 @@ function QuizBody() {
     return () => {
       cancelled = true;
     };
-  }, [user]);
+  }, [user, profile]);
 
   useEffect(() => {
     if (!attempt || submitting || !examLive) return;

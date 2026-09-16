@@ -44,7 +44,7 @@ import { LangChainCopyProvider } from "./LangChainCopyContext";
 import { LessonPracticeContext } from "./LessonPracticeContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/contexts/ProgressContext";
-import { isAdmin } from "@/lib/admin";
+import { unlocksAllContent } from "@/lib/admin";
 import {
   areAllExercisesComplete,
   getCompletedExercises,
@@ -82,8 +82,8 @@ export function TopicLessonLayout({
   headerSlot,
   footerSlot,
 }: TopicLessonLayoutProps) {
-  const { profile } = useAuth();
-  const admin = isAdmin(profile);
+  const { user, profile } = useAuth();
+  const unlockAll = unlocksAllContent(profile, user?.email);
   const { markIdeRan } = useProgress();
   const ideRef = useRef<HTMLElement>(null);
 
@@ -192,23 +192,23 @@ export function TopicLessonLayout({
 
   const selectPractice = useCallback(
     (index: number) => {
-      if (sequential && topicId && !admin && !isExerciseUnlocked(topicId, index)) return;
+      if (sequential && topicId && !unlockAll && !isExerciseUnlocked(topicId, index)) return;
       setActivePractice(index);
       setPracticeReloadKey((key) => key + 1);
       scrollToIde();
     },
-    [sequential, topicId, admin, scrollToIde]
+    [sequential, topicId, unlockAll, scrollToIde]
   );
 
   const nextPractice = useCallback(() => {
     setActivePractice((current) => {
       const next = Math.min(current + 1, practices.length - 1);
-      if (sequential && topicId && !admin && !isExerciseUnlocked(topicId, next)) return current;
+      if (sequential && topicId && !unlockAll && !isExerciseUnlocked(topicId, next)) return current;
       return next;
     });
     setPracticeReloadKey((key) => key + 1);
     scrollToIde();
-  }, [practices.length, scrollToIde, sequential, topicId, admin]);
+  }, [practices.length, scrollToIde, sequential, topicId, unlockAll]);
 
   const completeExercise = useCallback(
     (index: number) => {
@@ -227,10 +227,10 @@ export function TopicLessonLayout({
 
   const checkUnlocked = useCallback(
     (index: number) => {
-      if (!sequential || !topicId || admin) return true;
+      if (!sequential || !topicId || unlockAll) return true;
       return isExerciseUnlocked(topicId, index);
     },
-    [sequential, topicId, admin]
+    [sequential, topicId, unlockAll]
   );
 
   const checkComplete = useCallback(

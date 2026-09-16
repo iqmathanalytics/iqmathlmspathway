@@ -7,7 +7,7 @@ import type { PracticeProblem } from "@/lib/types";
 import { getCoursePracticeListByTopic } from "@/data/course-practice-catalog";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePracticeProgress } from "@/hooks/usePracticeProgress";
-import { isAdmin } from "@/lib/admin";
+import { unlocksAllContent } from "@/lib/admin";
 import {
   getSolvedPracticeIds,
   isCoursePracticeProblemUnlocked,
@@ -31,8 +31,8 @@ export function CoursePracticeUnlockGate({
   children,
 }: CoursePracticeUnlockGateProps) {
   const router = useRouter();
-  const { profile } = useAuth();
-  const admin = isAdmin(profile);
+  const { user, profile } = useAuth();
+  const unlockAll = unlocksAllContent(profile, user?.email);
   const problems = useMemo(
     () => getCoursePracticeListByTopic(problem.topicId),
     [problem.topicId]
@@ -40,17 +40,17 @@ export function CoursePracticeUnlockGate({
   const { rows, loading } = usePracticeProgress(problems.map((p) => p.id));
   const solvedIds = getSolvedPracticeIds(rows);
   const unlocked =
-    admin ||
+    unlockAll ||
     isCoursePracticeProblemUnlocked(problems, problem.id, solvedIds);
 
   useEffect(() => {
-    if (admin || loading) return;
+    if (unlockAll || loading) return;
     if (!unlocked) {
       router.replace(courseTopicChallengeHref(moduleSlug, topicSlug));
     }
-  }, [admin, loading, unlocked, router, moduleSlug, topicSlug]);
+  }, [unlockAll, loading, unlocked, router, moduleSlug, topicSlug]);
 
-  if (!admin && loading) {
+  if (!unlockAll && loading) {
     return (
       <div className="flex min-h-[50vh] items-center justify-center">
         <Loader2 className="h-8 w-8 animate-spin text-brand-600" />

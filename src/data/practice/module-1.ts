@@ -1,2201 +1,1834 @@
 import type { PracticeProblem } from "@/lib/types";
+import { module1IntroPractice } from "./module-1-intro";
 
-export const module1Practice: PracticeProblem[] = [
-  {
-    "id": "m1-t1-p01",
-    "topicId": "m1-t1",
-    "slug": "hello-world",
-    "title": "Hello, World!",
-    "difficulty": "easy",
-    "order": 1,
-    "layout": "challenge",
-    "description": "Your very first Python challenge! Write a program that prints Hello, World! exactly to the screen.",
-    "challengeContent": {
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Your very first Python challenge! Write a program that prints "
-        },
-        {
-          "type": "code",
-          "value": "Hello, World!"
-        },
-        {
-          "type": "text",
-          "value": " exactly to the screen."
-        }
-      ],
-      "learnSection": {
-        "title": "What you need to know",
-        "body": "In Python, the print() function displays text on the screen. Whatever you put inside the parentheses (wrapped in quotes) gets printed.",
-        "codeExample": "print(\"anything you want here\")"
-      },
-      "inputLabel": "No input needed"
-    },
-    "examples": [
-      {
-        "input": "No input needed",
-        "output": "Hello, World!"
-      }
-    ],
-    "constraints": [
-      "Use Python 3 syntax",
-      "Output must match exactly — capital H, comma after Hello, and an exclamation mark",
-      "Print exactly one line (no extra blank lines)"
-    ],
-    "hints": [
-      "Use the print() function — it's Python's way of displaying output on the screen.",
-      "Put your text inside quotes: print(\"your text\") — single or double quotes both work.",
-      "The exact answer is: print(\"Hello, World!\") — capital H, comma, space, then World!"
-    ],
-    "starterCode": "",
-    "approach": "In Python, the print() function displays text on the screen. Whatever you put inside the parentheses (wrapped in quotes) gets printed. A correct solution looks like this: print(\"Hello, World!\")",
-    "publicTests": [
-      {
-        "id": "m1-t1-p01-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Hello, World!",
-        "visibility": "public"
-      },
-      {
-        "id": "m1-t1-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello, World!",
-        "visibility": "public"
-      },
-      {
-        "id": "m1-t1-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello, World!",
-        "visibility": "public"
-      }
-    ],
-    "solutionCode": "print(\"Hello, World!\")"
-  },
-  {
-    "id": "m1-t1-p02",
-    "topicId": "m1-t1",
-    "slug": "two-lines",
-    "title": "Two Lines of Output",
-    "difficulty": "easy",
-    "order": 2,
-    "layout": "challenge",
-    "description": "Write a program that prints exactly two lines: Alex and Data Science.",
-    "challengeContent": {
-      "introLead": "Write a program that prints exactly two lines:",
-      "introBullets": [
-        [
-          {
-            "type": "text",
-            "value": "First line: "
-          },
-          {
-            "type": "code",
-            "value": "Alex"
-          }
-        ],
-        [
-          {
-            "type": "text",
-            "value": "Second line: "
-          },
-          {
-            "type": "code",
-            "value": "Data Science"
-          }
-        ]
-      ],
-      "introFooter": [
-        {
-          "type": "text",
-          "value": "Use two "
-        },
-        {
-          "type": "code",
-          "value": "print()"
-        },
-        {
-          "type": "text",
-          "value": " calls. Do not add extra blank lines or spaces."
-        }
-      ],
-      "steps": {
-        "title": "What you need to know",
-        "items": [
-          "Each print() call outputs one line automatically — Python adds a newline at the end for you.",
-          "To print two lines, simply write two print() statements one after the other.",
-          "The order matters — the first print() appears on line 1, the second on line 2."
-        ],
-        "codePreview": {
-          "comment": "# Example: printing two lines",
-          "lines": [
-            "Line one",
-            "Line two"
-          ]
-        }
-      },
-      "inputLabel": "No input needed",
-      "editorPlaceholder": "# Write your two print() statements here...",
-      "liveCheckRules": [
-        {
-          "id": "count",
-          "label": "2 print() calls",
-          "kind": "print-count",
-          "expected": 2
-        },
-        {
-          "id": "line1",
-          "label": "Line 1: Alex",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Alex"
-        },
-        {
-          "id": "line2",
-          "label": "Line 2: Data Science",
-          "kind": "print-value",
-          "index": 1,
-          "expected": "Data Science"
-        }
-      ],
-      "emptyMessage": "Nothing to run! Write your two print() statements first.",
-      "successDetail": "You printed two lines perfectly!"
-    },
-    "examples": [
-      {
-        "input": "No input needed",
-        "output": "Alex\nData Science"
-      }
-    ],
-    "constraints": [
-      "Use exactly two print() statements",
-      "Line 1 must be exactly: Alex",
-      "Line 2 must be exactly: Data Science",
-      "No extra lines, spaces, or blank lines"
-    ],
-    "hints": [
-      "You need two separate print() statements — one for each line of output.",
-      "First print should output Alex and the second should output Data Science — in that exact order.",
-      "The full solution is: print(\"Alex\") then print(\"Data Science\")"
-    ],
-    "starterCode": "",
-    "publicTests": [
-      {
-        "id": "m1-t1-p02-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Alex\nData Science",
-        "visibility": "public"
-      },
-      {
-        "id": "m1-t1-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Alex\nData Science",
-        "visibility": "public"
-      },
-      {
-        "id": "m1-t1-p02-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "Alex\nData Science",
-        "visibility": "public"
-      }
-    ],
-    "solutionCode": "print(\"Alex\")\nprint(\"Data Science\")",
-    "approach": "1. Each print() call outputs one line automatically — Python adds a newline at the end for you. 2. To print two lines, simply write two print() statements one after the other. 3. The order matters — the first print() appears on line 1, the second on line 2.\n\nA correct solution looks like this:\nprint(\"Alex\")\nprint(\"Data Science\")"
-  },
-  {
-    "id": "m1-t1-p03",
-    "topicId": "m1-t1",
-    "slug": "print-numbers",
-    "title": "Print Three Numbers",
-    "difficulty": "easy",
-    "order": 3,
-    "layout": "challenge",
-    "description": "Print the numbers 1, 2, and 3 — each on its own line.",
-    "challengeContent": {
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Print the numbers "
-        },
-        {
-          "type": "code",
-          "value": "1"
-        },
-        {
-          "type": "text",
-          "value": ", "
-        },
-        {
-          "type": "code",
-          "value": "2"
-        },
-        {
-          "type": "text",
-          "value": ", and "
-        },
-        {
-          "type": "code",
-          "value": "3"
-        },
-        {
-          "type": "text",
-          "value": " — each on its own line. You can use strings or numbers inside "
-        },
-        {
-          "type": "code",
-          "value": "print()"
-        },
-        {
-          "type": "text",
-          "value": " — both work!"
-        }
-      ],
-      "approaches": {
-        "title": "Two valid approaches",
-        "items": [
-          {
-            "title": "Using numbers",
-            "note": "Pass the number directly — no quotes needed.",
-            "lines": [
-              {
-                "type": "number",
-                "value": "1"
-              },
-              {
-                "type": "number",
-                "value": "2"
-              },
-              {
-                "type": "number",
-                "value": "3"
-              }
-            ]
-          },
-          {
-            "title": "Using strings",
-            "note": "Wrap in quotes — Python prints the same output.",
-            "lines": [
-              {
-                "type": "string",
-                "value": "1"
-              },
-              {
-                "type": "string",
-                "value": "2"
-              },
-              {
-                "type": "string",
-                "value": "3"
-              }
-            ]
-          }
-        ]
-      },
-      "inputLabel": "No input needed",
-      "editorPlaceholder": "# Write your three print() statements here...",
-      "liveCheckRules": [
-        {
-          "id": "p1",
-          "label": "prints 1",
-          "kind": "print-contains",
-          "value": "1"
-        },
-        {
-          "id": "p2",
-          "label": "prints 2",
-          "kind": "print-contains",
-          "value": "2"
-        },
-        {
-          "id": "p3",
-          "label": "prints 3",
-          "kind": "print-contains",
-          "value": "3"
-        },
-        {
-          "id": "order",
-          "label": "correct order",
-          "kind": "print-sequence",
-          "expected": [
-            "1",
-            "2",
-            "3"
-          ]
-        }
-      ],
-      "emptyMessage": "Nothing to run! Write your three print() statements first.",
-      "successDetail": "Three numbers, three lines — perfect!",
-      "printCountHint": "one for each number"
-    },
-    "examples": [
-      {
-        "input": "No input needed",
-        "output": "1\n2\n3"
-      }
-    ],
-    "constraints": [
-      "Use Python 3 syntax",
-      "Output must be exactly three lines: 1, 2, 3",
-      "No extra lines, spaces, or blank lines"
-    ],
-    "hints": [
-      "You need three separate print() statements — one for each number.",
-      "You can write print(1) (number) or print(\"1\") (string) — both produce the same output.",
-      "Full solution: print(1), print(2), print(3)"
-    ],
-    "starterCode": "",
-    "publicTests": [
-      {
-        "id": "m1-t1-p03-t1",
-        "label": "Sample Case",
-        "expectedStdout": "1\n2\n3",
-        "visibility": "public"
-      },
-      {
-        "id": "m1-t1-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3",
-        "visibility": "public"
-      },
-      {
-        "id": "m1-t1-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3",
-        "visibility": "public"
-      }
-    ],
-    "solutionCode": "print(1)\nprint(2)\nprint(3)",
-    "approach": "Print the numbers 1, 2, and 3 — each on its own line.\n\nKey points: You need three separate print() statements — one for each number. You can write print(1) (number) or print(\"1\") (string) — both produce the same output. Full solution: print(1), print(2), print(3)\n\nA correct solution looks like this:\nprint(1)\nprint(2)\nprint(3)"
-  },
-  {
-    "id": "m1-t1-p04",
-    "topicId": "m1-t1",
-    "slug": "comment-then-print",
-    "title": "Comment and Print",
-    "difficulty": "easy",
-    "order": 4,
-    "layout": "challenge",
-    "description": "Add a comment describing the next line, then print Python is fun.",
-    "challengeContent": {
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Add a comment describing the next line, then print "
-        },
-        {
-          "type": "code",
-          "value": "Python is fun"
-        },
-        {
-          "type": "text",
-          "value": "."
-        }
-      ],
-      "outputOnly": true,
-      "requiresComment": true,
-      "editorPlaceholder": "# write comment + print statement here",
-      "emptyMessage": "Write a comment and a print() statement first.",
-      "successDetail": "Correct! Your comment and print statement work perfectly."
-    },
-    "examples": [
-      {
-        "output": "Python is fun"
-      }
-    ],
-    "constraints": [
-      "Include a comment line starting with #",
-      "Use print() to output exactly: Python is fun"
-    ],
-    "hints": [
-      "Start with a comment line like # This prints a message, then add print(\"Python is fun\") on the next line."
-    ],
-    "starterCode": "",
-    "approach": "Add a comment describing the next line, then print Python is fun. Key points: Start with a comment line like # This prints a message, then add print(\"Python is fun\") on the next line. A correct solution looks like this: print(\"Python is fun\")",
-    "publicTests": [
-      {
-        "id": "m1-t1-p04-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Python is fun",
-        "visibility": "public"
-      },
-      {
-        "id": "m1-t1-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python is fun",
-        "visibility": "public"
-      },
-      {
-        "id": "m1-t1-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python is fun",
-        "visibility": "public"
-      }
-    ],
-    "solutionCode": "print(\"Python is fun\")"
-  },
-  {
-    "id": "m1-t1-p05",
-    "topicId": "m1-t1",
-    "slug": "multiple-prints",
-    "title": "Build a Mini Banner",
-    "difficulty": "medium",
-    "order": 5,
-    "layout": "challenge",
-    "description": "Print three lines: ====, Welcome to Python, ====",
-    "challengeContent": {
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Print three lines exactly: "
-        },
-        {
-          "type": "code",
-          "value": "===="
-        },
-        {
-          "type": "text",
-          "value": ", "
-        },
-        {
-          "type": "code",
-          "value": "Welcome to Python"
-        },
-        {
-          "type": "text",
-          "value": ", "
-        },
-        {
-          "type": "code",
-          "value": "===="
-        },
-        {
-          "type": "text",
-          "value": "."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# print banner here",
-      "liveCheckRules": [
-        {
-          "id": "line1",
-          "label": "Line 1: ====",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "===="
-        },
-        {
-          "id": "line2",
-          "label": "Line 2: Welcome to Python",
-          "kind": "print-value",
-          "index": 1,
-          "expected": "Welcome to Python"
-        },
-        {
-          "id": "line3",
-          "label": "Line 3: ====",
-          "kind": "print-value",
-          "index": 2,
-          "expected": "===="
-        },
-        {
-          "id": "order",
-          "label": "correct order",
-          "kind": "print-sequence",
-          "expected": [
-            "====",
-            "Welcome to Python",
-            "===="
-          ]
-        }
-      ],
-      "emptyMessage": "Write three print() statements to build the banner.",
-      "successDetail": "Your mini banner looks perfect!",
-      "printCountHint": "one for each banner line"
-    },
-    "examples": [
-      {
-        "output": "====\nWelcome to Python\n===="
-      }
-    ],
-    "constraints": [
-      "Use exactly three print() statements",
-      "Line 1 and line 3 must be exactly ====",
-      "Line 2 must be exactly Welcome to Python",
-      "No extra lines or blank lines"
-    ],
-    "hints": [
-      "Use three print() statements. Example: print(\"====\"), print(\"Welcome to Python\"), print(\"====\")"
-    ],
-    "starterCode": "",
-    "publicTests": [
-      {
-        "id": "m1-t1-p05-t1",
-        "label": "Sample Case",
-        "expectedStdout": "====\nWelcome to Python\n====",
-        "visibility": "public"
-      },
-      {
-        "id": "m1-t1-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "====\nWelcome to Python\n====",
-        "visibility": "public"
-      },
-      {
-        "id": "m1-t1-p05-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "====\nWelcome to Python\n====",
-        "visibility": "public"
-      }
-    ],
-    "solutionCode": "print(\"====\")\nprint(\"Welcome to Python\")\nprint(\"====\")",
-    "approach": "Print three lines: ====, Welcome to Python, ====\n\nKey points: Use three print() statements. Example: print(\"====\"), print(\"Welcome to Python\"), print(\"====\")\n\nA correct solution looks like this:\nprint(\"====\")\nprint(\"Welcome to Python\")\nprint(\"====\")"
-  },
-  {
-    "id": "m1-t1-p06",
-    "topicId": "m1-t1",
-    "slug": "format-intro",
-    "title": "Intro Sentence",
-    "difficulty": "medium",
-    "order": 6,
-    "layout": "challenge",
-    "description": "Create two variables and print a sentence that introduces who you are and what you are learning.",
-    "challengeContent": {
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Create variables "
-        },
-        {
-          "type": "code",
-          "value": "name"
-        },
-        {
-          "type": "text",
-          "value": " and "
-        },
-        {
-          "type": "code",
-          "value": "topic"
-        },
-        {
-          "type": "text",
-          "value": ". Set "
-        },
-        {
-          "type": "code",
-          "value": "name = \"Sam\""
-        },
-        {
-          "type": "text",
-          "value": " and "
-        },
-        {
-          "type": "code",
-          "value": "topic = \"Python\""
-        },
-        {
-          "type": "text",
-          "value": ", then print this exact sentence: "
-        },
-        {
-          "type": "code",
-          "value": "I am Sam learning Python"
-        }
-      ],
-      "outputOnly": true,
-      "requiresVariables": [
-        "name",
-        "topic"
-      ],
-      "editorPlaceholder": "# set name and topic, then print the sentence",
-      "liveCheckRules": [
-        {
-          "id": "sentence",
-          "label": "prints intro sentence",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "I am Sam learning Python"
-        }
-      ],
-      "emptyMessage": "Create name and topic variables, then use print() to build the sentence.",
-      "successDetail": "Perfect! You combined variables into a sentence."
-    },
-    "examples": [
-      {
-        "output": "I am Sam learning Python"
-      }
-    ],
-    "constraints": [
-      "Create two variables: name and topic",
-      "Set name to Sam and topic to Python",
-      "Output must be exactly: I am Sam learning Python"
-    ],
-    "hints": [
-      "Example: name = \"Sam\", topic = \"Python\", then print(\"I am\", name, \"learning\", topic)"
-    ],
-    "starterCode": "",
-    "publicTests": [
-      {
-        "id": "m1-t1-p06-t1",
-        "label": "Sample Case",
-        "expectedStdout": "I am Sam learning Python",
-        "visibility": "public"
-      },
-      {
-        "id": "m1-t1-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "I am Sam learning Python",
-        "visibility": "public"
-      },
-      {
-        "id": "m1-t1-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "I am Sam learning Python",
-        "visibility": "public"
-      }
-    ],
-    "solutionCode": "print(\"I am Sam learning Python\")",
-    "approach": "Create two variables and print a sentence that introduces who you are and what you are learning.\n\nKey points: Example: name = \"Sam\", topic = \"Python\", then print(\"I am\", name, \"learning\", topic)\n\nA correct solution looks like this:\nprint(\"I am Sam learning Python\")"
-  },
-  {
-    "id": "m1-t1-p07",
-    "topicId": "m1-t1",
-    "slug": "calc-print",
-    "title": "Print a Sum",
-    "difficulty": "medium",
-    "order": 7,
-    "layout": "challenge",
-    "description": "Use print() to show the result of adding 17 and 25.",
-    "challengeContent": {
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Use "
-        },
-        {
-          "type": "code",
-          "value": "print()"
-        },
-        {
-          "type": "text",
-          "value": " to show the result of "
-        },
-        {
-          "type": "code",
-          "value": "17 + 25"
-        },
-        {
-          "type": "text",
-          "value": "."
-        }
-      ],
-      "steps": {
-        "title": "What you need to know",
-        "items": [
-          "Python can do math inside print() — no quotes needed around numbers.",
-          "The + operator adds two numbers together.",
-          "print(17 + 25) calculates the sum and prints the answer automatically."
-        ],
-        "codePreview": {
-          "comment": "# Example output",
-          "lines": [
-            "42"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "editorPlaceholder": "# print the sum of 17 and 25",
-      "liveCheckRules": [
-        {
-          "id": "sum",
-          "label": "prints 42",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "42"
-        }
-      ],
-      "emptyMessage": "Use print() with an addition expression like 17 + 25.",
-      "successDetail": "Correct! 17 + 25 equals 42."
-    },
-    "examples": [
-      {
-        "output": "42"
-      }
-    ],
-    "constraints": [
-      "Use print() with an addition expression",
-      "Output must be exactly: 42",
-      "No extra lines or text"
-    ],
-    "hints": [
-      "Try: print(17 + 25) — Python adds the numbers and prints the result."
-    ],
-    "starterCode": "",
-    "publicTests": [
-      {
-        "id": "m1-t1-p07-t1",
-        "label": "Sample Case",
-        "expectedStdout": "42",
-        "visibility": "public"
-      },
-      {
-        "id": "m1-t1-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "42",
-        "visibility": "public"
-      },
-      {
-        "id": "m1-t1-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "42",
-        "visibility": "public"
-      }
-    ],
-    "solutionCode": "print(17 + 25)",
-    "approach": "1. Python can do math inside print() — no quotes needed around numbers. 2. The + operator adds two numbers together. 3. print(17 + 25) calculates the sum and prints the answer automatically.\n\nA correct solution looks like this:\nprint(17 + 25)"
-  },
+const environmentPractice: PracticeProblem[] = [
   {
     "id": "m1-t2-p01",
     "topicId": "m1-t2",
-    "slug": "m1_t2-1",
-    "title": "Choosing Python: Warm-up",
+    "slug": "ds-stack-list",
+    "title": "Why Python: The Data Science Stack",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a simple program that prints the word Ready on a single line.",
+    "description": "Store the four core data science libraries in a list named stack and print the list.",
     "challengeContent": {
-      "badgeVariant": "blue",
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a simple program that prints the word "
+          "value": "Python leads data science because of its libraries. Store them in a list named "
         },
         {
           "type": "code",
-          "value": "Ready"
+          "value": "stack"
         },
         {
           "type": "text",
-          "value": " on a single line."
+          "value": " — NumPy, pandas, Matplotlib, scikit-learn — then print the list."
         }
       ],
-      "outputOnly": true,
-      "editorPlaceholder": "# print Ready here",
-      "liveCheckRules": [
-        {
-          "id": "ready",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
-        }
+      "editorPlaceholder": "# build the stack list",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct! That is the toolchain the rest of the course uses.",
+      "requiresVariables": [
+        "stack"
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! You're ready to learn Python."
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A list holds values in order: stack = [\"NumPy\", \"pandas\"]",
+          "print(stack) shows the whole list with square brackets and quotes.",
+          "Keep the spelling exactly as given — pandas is lowercase."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "['NumPy', 'pandas', 'Matplotlib', 'scikit-learn']"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Name the list stack",
+      "Order: NumPy, pandas, Matplotlib, scikit-learn",
+      "Print the list itself, not each item"
     ],
     "hints": [
-      "Use a single print statement: print(\"Ready\")"
+      "Build it with square brackets: stack = [\"NumPy\", ...]",
+      "The full answer is stack = [\"NumPy\", \"pandas\", \"Matplotlib\", \"scikit-learn\"] then print(stack)"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: build the stack list, then print it\nstack = []\n",
+    "solutionCode": "stack = [\"NumPy\", \"pandas\", \"Matplotlib\", \"scikit-learn\"]\nprint(stack)",
     "publicTests": [
       {
         "id": "m1-t2-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "['NumPy', 'pandas', 'Matplotlib', 'scikit-learn']",
         "visibility": "public"
       },
       {
         "id": "m1-t2-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "stack has the right type",
+        "assertCode": "assert \"stack\" in globals(), \"Expected a variable named stack\"\nassert isinstance(stack, list), \"Expected stack to be list, got \" + type(stack).__name__",
         "visibility": "public"
       },
       {
         "id": "m1-t2-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "stack has 4 libraries",
+        "assertCode": "assert (len(stack)) == (4), \"Expected \" + repr(4) + \", got \" + repr(len(stack))",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t2-p01-t4",
+        "label": "stack names are correct",
+        "assertCode": "assert (stack) == ([\"NumPy\", \"pandas\", \"Matplotlib\", \"scikit-learn\"]), \"Expected \" + repr([\"NumPy\", \"pandas\", \"Matplotlib\", \"scikit-learn\"]) + \", got \" + repr(stack)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a simple program that prints the word Ready on a single line.\n\nKey points: Use a single print statement: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Store the four core data science libraries in a list named stack and print the list.\n\nReference solution:\nstack = [\"NumPy\", \"pandas\", \"Matplotlib\", \"scikit-learn\"]\nprint(stack)"
   },
   {
     "id": "m1-t2-p02",
     "topicId": "m1-t2",
-    "slug": "m1_t2-2",
-    "title": "Choosing Python: Output Two Values",
+    "slug": "ds-stack-count",
+    "title": "Why Python: Count the Libraries",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables related to Choosing Python and print them separated by a comma.",
+    "description": "Store the data science stack in a list named stack and print how many libraries it holds.",
     "challengeContent": {
-      "badgeVariant": "blue",
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Choosing Python and print them separated by a comma."
+          "value": "Build the same "
+        },
+        {
+          "type": "code",
+          "value": "stack"
+        },
+        {
+          "type": "text",
+          "value": " list, then print how many libraries it holds using "
+        },
+        {
+          "type": "code",
+          "value": "len()"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create two variables and print with comma",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two variables printed with a comma separator."
+      "editorPlaceholder": "# print(len(stack))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "stack"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "len(some_list) returns the number of items as an integer.",
+          "print(len(stack)) shows the count on its own line."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "4"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Name the list stack",
+      "Use len() to count",
+      "Output must be exactly: 4"
     ],
     "hints": [
-      "Create two variables like lang and choice",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "Use print(len(stack))"
     ],
-    "starterCode": "",
-    "approach": "Create two variables related to Choosing Python and print them separated by a comma. Key points: Create two variables like lang and choice Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: count the libraries with len()\nstack = [\"NumPy\", \"pandas\", \"Matplotlib\", \"scikit-learn\"]\n",
+    "solutionCode": "stack = [\"NumPy\", \"pandas\", \"Matplotlib\", \"scikit-learn\"]\nprint(len(stack))",
     "publicTests": [
       {
         "id": "m1-t2-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "4",
         "visibility": "public"
       },
       {
         "id": "m1-t2-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "stack has the right type",
+        "assertCode": "assert \"stack\" in globals(), \"Expected a variable named stack\"\nassert isinstance(stack, list), \"Expected stack to be list, got \" + type(stack).__name__",
         "visibility": "public"
       },
       {
         "id": "m1-t2-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "stack still holds 4 libraries",
+        "assertCode": "assert (len(stack)) == (4), \"Expected \" + repr(4) + \", got \" + repr(len(stack))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Store the data science stack in a list named stack and print how many libraries it holds.\n\nReference solution:\nstack = [\"NumPy\", \"pandas\", \"Matplotlib\", \"scikit-learn\"]\nprint(len(stack))"
   },
   {
     "id": "m1-t2-p03",
     "topicId": "m1-t2",
-    "slug": "m1_t2-3",
-    "title": "Choosing Python: Simple Loop",
-    "difficulty": "medium",
+    "slug": "ds-one-liner",
+    "title": "Why Python: One Line Instead of a Loop",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print numbers from 1 to 4 for basic practice.",
+    "description": "Store three daily sales values in a list named sales and print the total using the built-in sum().",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Analysts pick Python because built-ins replace loops. Store "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "[12, 7, 21]"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4 for basic practice."
+          "value": " in a list named "
+        },
+        {
+          "type": "code",
+          "value": "sales"
+        },
+        {
+          "type": "text",
+          "value": " and print the total with "
+        },
+        {
+          "type": "code",
+          "value": "sum()"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# print(sum(sales))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "sales"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "sum(list_of_numbers) adds every item and returns the total.",
+          "No loop is needed — that is the readability Python is known for."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "40"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Name the list sales",
+      "Use sum() — do not add by hand",
+      "Output must be exactly: 40"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "print(sum(sales))"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print numbers from 1 to 4 for basic practice. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: total the sales with sum()\nsales = [12, 7, 21]\n",
+    "solutionCode": "sales = [12, 7, 21]\nprint(sum(sales))",
     "publicTests": [
       {
         "id": "m1-t2-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "40",
         "visibility": "public"
       },
       {
         "id": "m1-t2-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "sales has the right type",
+        "assertCode": "assert \"sales\" in globals(), \"Expected a variable named sales\"\nassert isinstance(sales, list), \"Expected sales to be list, got \" + type(sales).__name__",
         "visibility": "public"
       },
       {
         "id": "m1-t2-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "sales holds the given values",
+        "assertCode": "assert (sales) == ([12, 7, 21]), \"Expected \" + repr([12, 7, 21]) + \", got \" + repr(sales)",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t2-p03-t4",
+        "label": "total is correct",
+        "assertCode": "assert (sum(sales)) == (40), \"Expected \" + repr(40) + \", got \" + repr(sum(sales))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Store three daily sales values in a list named sales and print the total using the built-in sum().\n\nReference solution:\nsales = [12, 7, 21]\nprint(sum(sales))"
   },
   {
     "id": "m1-t2-p04",
     "topicId": "m1-t2",
-    "slug": "m1_t2-4",
-    "title": "Choosing Python: Condition",
+    "slug": "ds-library-lookup",
+    "title": "Why Python: Pick the Right Library",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "description": "Create a dict named tools mapping \"arrays\", \"tables\", and \"charts\" to their library, then print the library for tables.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "Each job has a library. Build a dict named "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "tools"
         },
         {
           "type": "text",
-          "value": ". If score is greater than or equal to 60, print "
+          "value": " with \"arrays\" → NumPy, \"tables\" → pandas, \"charts\" → Matplotlib, then print the value for "
         },
         {
           "type": "code",
-          "value": "Pass"
-        },
-        {
-          "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
+          "value": "\"tables\""
         },
         {
           "type": "text",
           "value": "."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# set score and apply condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# tools = { ... }",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "tools"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A dict stores pairs: tools = {\"arrays\": \"NumPy\"}",
+          "Look a value up with the key in brackets: tools[\"tables\"]"
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "pandas"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Name the dict tools",
+      "Keys: \"arrays\", \"tables\", \"charts\"",
+      "Output must be exactly: pandas"
     ],
     "hints": [
-      "Example: score = 75, then if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "Look up with print(tools[\"tables\"])"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else print Fail. Key points: Example: score = 75, then if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: map each job to its library, then look up \"tables\"\ntools = {}\n",
+    "solutionCode": "tools = {\"arrays\": \"NumPy\", \"tables\": \"pandas\", \"charts\": \"Matplotlib\"}\nprint(tools[\"tables\"])",
     "publicTests": [
       {
         "id": "m1-t2-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "pandas",
         "visibility": "public"
       },
       {
         "id": "m1-t2-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "tools has the right type",
+        "assertCode": "assert \"tools\" in globals(), \"Expected a variable named tools\"\nassert isinstance(tools, dict), \"Expected tools to be dict, got \" + type(tools).__name__",
         "visibility": "public"
       },
       {
         "id": "m1-t2-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "tools has 3 entries",
+        "assertCode": "assert (len(tools)) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(tools))",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t2-p04-t4",
+        "label": "arrays maps to NumPy",
+        "assertCode": "assert (tools[\"arrays\"]) == (\"NumPy\"), \"Expected \" + repr(\"NumPy\") + \", got \" + repr(tools[\"arrays\"])",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t2-p04-t5",
+        "label": "charts maps to Matplotlib",
+        "assertCode": "assert (tools[\"charts\"]) == (\"Matplotlib\"), \"Expected \" + repr(\"Matplotlib\") + \", got \" + repr(tools[\"charts\"])",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Create a dict named tools mapping \"arrays\", \"tables\", and \"charts\" to their library, then print the library for tables.\n\nReference solution:\ntools = {\"arrays\": \"NumPy\", \"tables\": \"pandas\", \"charts\": \"Matplotlib\"}\nprint(tools[\"tables\"])"
   },
   {
     "id": "m1-t2-p05",
     "topicId": "m1-t2",
-    "slug": "m1_t2-5",
-    "title": "Choosing Python: Function Stub",
+    "slug": "ds-membership",
+    "title": "Why Python: Is It In the Stack?",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define a function greet() that prints Hello, and call it once.",
+    "description": "Build the stack list and print whether \"pandas\" is in it using the in operator.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define a function "
+          "value": "Use the "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "in"
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": " operator to check membership. Print whether "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": "\"pandas\""
         },
         {
           "type": "text",
-          "value": ", and call it once."
+          "value": " is inside your "
+        },
+        {
+          "type": "code",
+          "value": "stack"
+        },
+        {
+          "type": "text",
+          "value": " list."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() and call it",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# print(... in stack)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "stack"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "\"pandas\" in stack evaluates to True or False.",
+          "print() of that expression shows True or False."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "True"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Name the list stack",
+      "Use the in operator",
+      "Output must be exactly: True"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next indented line, then call greet() on its own line"
+      "print(\"pandas\" in stack)"
     ],
-    "starterCode": "",
-    "approach": "Define a function greet() that prints Hello, and call it once. Key points: Example: def greet(): print(\"Hello\") on the next indented line, then call greet() on its own line A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: check membership with in\nstack = [\"NumPy\", \"pandas\", \"Matplotlib\", \"scikit-learn\"]\n",
+    "solutionCode": "stack = [\"NumPy\", \"pandas\", \"Matplotlib\", \"scikit-learn\"]\nprint(\"pandas\" in stack)",
     "publicTests": [
       {
         "id": "m1-t2-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": "True",
         "visibility": "public"
       },
       {
         "id": "m1-t2-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "stack has the right type",
+        "assertCode": "assert \"stack\" in globals(), \"Expected a variable named stack\"\nassert isinstance(stack, list), \"Expected stack to be list, got \" + type(stack).__name__",
         "visibility": "public"
       },
       {
         "id": "m1-t2-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "pandas really is in the list",
+        "assertCode": "assert \"pandas\" in stack, \"Expected pandas to be one of the items in stack\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Build the stack list and print whether \"pandas\" is in it using the in operator.\n\nReference solution:\nstack = [\"NumPy\", \"pandas\", \"Matplotlib\", \"scikit-learn\"]\nprint(\"pandas\" in stack)"
   },
   {
     "id": "m1-t2-p06",
     "topicId": "m1-t2",
-    "slug": "m1_t2-6",
-    "title": "Choosing Python: List Practice",
-    "difficulty": "hard",
+    "slug": "ds-numbered-stack",
+    "title": "Why Python: Number the Stack",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list with three items and print the second item (at index 1).",
+    "description": "Loop over the stack list with enumerate() and print each library as a numbered line.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Choosing Python. Print the "
+          "value": "Loop over "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "stack"
         },
         {
           "type": "text",
-          "value": " using index "
+          "value": " with "
         },
         {
           "type": "code",
-          "value": "1"
+          "value": "enumerate(stack, 1)"
         },
         {
           "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": " and print each library as "
+        },
+        {
+          "type": "code",
+          "value": "1. NumPy"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
+      ],
+      "editorPlaceholder": "# for number, name in enumerate(stack, 1):",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "stack"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds multiple values in order: items = [\"a\", \"middle\", \"c\"]",
-          "Use square brackets to access one item: items[0] is first, items[1] is second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "enumerate(stack, 1) yields (1, 'NumPy'), (2, 'pandas'), …",
+          "Format each line with an f-string: f\"{n}. {name}\""
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "1. NumPy\n2. pandas\n3. Matplotlib\n4. scikit-learn"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Use a for loop with enumerate",
+      "Start numbering at 1",
+      "One library per line"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "for number, name in enumerate(stack, 1):",
+      "Inside the loop: print(f\"{number}. {name}\")"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: print a numbered list\nstack = [\"NumPy\", \"pandas\", \"Matplotlib\", \"scikit-learn\"]\n",
+    "solutionCode": "stack = [\"NumPy\", \"pandas\", \"Matplotlib\", \"scikit-learn\"]\nfor number, name in enumerate(stack, 1):\n    print(f\"{number}. {name}\")",
     "publicTests": [
       {
         "id": "m1-t2-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "middle",
+        "expectedStdout": "1. NumPy\n2. pandas\n3. Matplotlib\n4. scikit-learn",
         "visibility": "public"
       },
       {
         "id": "m1-t2-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "stack has the right type",
+        "assertCode": "assert \"stack\" in globals(), \"Expected a variable named stack\"\nassert isinstance(stack, list), \"Expected stack to be list, got \" + type(stack).__name__",
         "visibility": "public"
       },
       {
         "id": "m1-t2-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "stack order is unchanged",
+        "assertCode": "assert (stack[3]) == (\"scikit-learn\"), \"Expected \" + repr(\"scikit-learn\") + \", got \" + repr(stack[3])",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds multiple values in order: items = [\"a\", \"middle\", \"c\"] 2. Use square brackets to access one item: items[0] is first, items[1] is second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Loop over the stack list with enumerate() and print each library as a numbered line.\n\nReference solution:\nstack = [\"NumPy\", \"pandas\", \"Matplotlib\", \"scikit-learn\"]\nfor number, name in enumerate(stack, 1):\n    print(f\"{number}. {name}\")"
   },
   {
     "id": "m1-t2-p07",
     "topicId": "m1-t2",
-    "slug": "m1_t2-7",
-    "title": "Choosing Python: Dict Lookup",
+    "slug": "ds-code-saved",
+    "title": "Why Python: How Much Code You Save",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dictionary with key topic and print its value.",
+    "description": "Given 3 lines of pandas versus 27 lines by hand, compute and print the percentage of code saved.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "A grouped summary takes "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "3"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": " lines in pandas and "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "27"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
+          "value": " lines by hand. Store both in "
         },
         {
           "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "lines_pandas"
         },
         {
           "type": "text",
-          "value": "."
+          "value": " and "
+        },
+        {
+          "type": "code",
+          "value": "lines_manual"
+        },
+        {
+          "type": "text",
+          "value": ", compute the percentage saved into "
+        },
+        {
+          "type": "code",
+          "value": "saved"
+        },
+        {
+          "type": "text",
+          "value": ", and print the sentence."
         }
+      ],
+      "editorPlaceholder": "# saved = round(...)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "lines_pandas",
+        "lines_manual",
+        "saved"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets to get a value: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "python",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "Percentage saved = (1 - lines_pandas / lines_manual) * 100",
+          "Wrap it in round() to get a whole number.",
+          "Build the sentence with an f-string: f\"pandas saves {saved}% of the code\""
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "pandas saves 89% of the code"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Use the variables lines_pandas, lines_manual, and saved",
+      "Compute saved with round() — do not type 89",
+      "Output must be exactly: pandas saves 89% of the code"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "saved = round((1 - lines_pandas / lines_manual) * 100)",
+      "print(f\"pandas saves {saved}% of the code\")"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: compute the percentage saved\nlines_pandas = 3\nlines_manual = 27\nsaved = 0\n",
+    "solutionCode": "lines_pandas = 3\nlines_manual = 27\nsaved = round((1 - lines_pandas / lines_manual) * 100)\nprint(f\"pandas saves {saved}% of the code\")",
     "publicTests": [
       {
         "id": "m1-t2-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "pandas saves 89% of the code",
         "visibility": "public"
       },
       {
         "id": "m1-t2-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "saved is computed, not hardcoded text",
+        "assertCode": "assert (saved) == (89), \"Expected \" + repr(89) + \", got \" + repr(saved)",
         "visibility": "public"
       },
       {
         "id": "m1-t2-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "lines_pandas is 3",
+        "assertCode": "assert (lines_pandas) == (3), \"Expected \" + repr(3) + \", got \" + repr(lines_pandas)",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t2-p07-t4",
+        "label": "lines_manual is 27",
+        "assertCode": "assert (lines_manual) == (27), \"Expected \" + repr(27) + \", got \" + repr(lines_manual)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets to get a value: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Given 3 lines of pandas versus 27 lines by hand, compute and print the percentage of code saved.\n\nReference solution:\nlines_pandas = 3\nlines_manual = 27\nsaved = round((1 - lines_pandas / lines_manual) * 100)\nprint(f\"pandas saves {saved}% of the code\")"
   },
   {
     "id": "m1-t3-p01",
     "topicId": "m1-t3",
-    "slug": "m1_t3-1",
-    "title": "Setting up Python Environment: Warm-up",
+    "slug": "env-python-major",
+    "title": "Setup: Check Your Python Version",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Setting up Python Environment. Print the word Ready on one line.",
+    "description": "Import sys, store sys.version_info.major in major, and print it to confirm you are on Python 3.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to Setting up Python Environment. Print the word "
+          "value": "Every setup starts by checking the interpreter. Import "
         },
         {
           "type": "code",
-          "value": "Ready"
+          "value": "sys"
         },
         {
           "type": "text",
-          "value": " on one line."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": ", store "
+        },
         {
-          "id": "ready",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
+          "type": "code",
+          "value": "sys.version_info.major"
+        },
+        {
+          "type": "text",
+          "value": " in "
+        },
+        {
+          "type": "code",
+          "value": "major"
+        },
+        {
+          "type": "text",
+          "value": ", and print it."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Your environment is ready to go."
+      "editorPlaceholder": "# major = sys.version_info.major",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "sys",
+        "major"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "import sys gives you interpreter details.",
+          "sys.version_info.major is 3 on every supported install."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "3"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Import sys",
+      "Store the value in major",
+      "Output must be exactly: 3"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "major = sys.version_info.major",
+      "print(major)"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: read the major version from sys\nimport sys\n\nmajor = None\n",
+    "solutionCode": "import sys\n\nmajor = sys.version_info.major\nprint(major)",
     "publicTests": [
       {
         "id": "m1-t3-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "3",
         "visibility": "public"
       },
       {
         "id": "m1-t3-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "sys was imported",
+        "assertCode": "assert \"sys\" in globals(), \"Import sys before reading the version\"",
         "visibility": "public"
       },
       {
         "id": "m1-t3-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "major comes from sys",
+        "assertCode": "assert (major) == (sys.version_info.major), \"Expected \" + repr(sys.version_info.major) + \", got \" + repr(major)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Setting up Python Environment. Print the word Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Import sys, store sys.version_info.major in major, and print it to confirm you are on Python 3.\n\nReference solution:\nimport sys\n\nmajor = sys.version_info.major\nprint(major)"
   },
   {
     "id": "m1-t3-p02",
     "topicId": "m1-t3",
-    "slug": "m1_t3-2",
-    "title": "Setting up Python Environment: Output Two Values",
+    "slug": "env-version-guard",
+    "title": "Setup: Require Python 3.8 or Newer",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables relevant to Setting up Python Environment and print them separated by a comma.",
+    "description": "Compare sys.version_info against (3, 8), store the result in supported, and print it.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables relevant to Setting up Python Environment and print them separated by a comma."
+          "value": "Libraries declare a minimum version. Compare "
+        },
+        {
+          "type": "code",
+          "value": "sys.version_info >= (3, 8)"
+        },
+        {
+          "type": "text",
+          "value": ", store it in "
+        },
+        {
+          "type": "code",
+          "value": "supported"
+        },
+        {
+          "type": "text",
+          "value": ", and print the result."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two variables printed with a comma separator."
+      "editorPlaceholder": "# supported = sys.version_info >= (3, 8)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "sys",
+        "supported"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "sys.version_info behaves like a tuple, so it compares with (3, 8).",
+          "The comparison gives a bool: True or False."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "True"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Compare against the tuple (3, 8)",
+      "Store the bool in supported",
+      "Output: True"
     ],
     "hints": [
-      "Create two variables like env and python",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "supported = sys.version_info >= (3, 8)"
     ],
-    "starterCode": "",
-    "approach": "Create two variables relevant to Setting up Python Environment and print them separated by a comma. Key points: Create two variables like env and python Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: guard on the minimum version\nimport sys\n\nsupported = None\n",
+    "solutionCode": "import sys\n\nsupported = sys.version_info >= (3, 8)\nprint(supported)",
     "publicTests": [
       {
         "id": "m1-t3-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "True",
         "visibility": "public"
       },
       {
         "id": "m1-t3-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "sys was imported",
+        "assertCode": "assert \"sys\" in globals(), \"Import sys to read the version\"",
         "visibility": "public"
       },
       {
         "id": "m1-t3-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "supported has the right type",
+        "assertCode": "assert \"supported\" in globals(), \"Expected a variable named supported\"\nassert isinstance(supported, bool), \"Expected supported to be bool, got \" + type(supported).__name__",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t3-p02-t4",
+        "label": "supported is the real comparison",
+        "assertCode": "assert (supported) == (sys.version_info >= (3, 8)), \"Expected \" + repr(sys.version_info >= (3, 8)) + \", got \" + repr(supported)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Compare sys.version_info against (3, 8), store the result in supported, and print it.\n\nReference solution:\nimport sys\n\nsupported = sys.version_info >= (3, 8)\nprint(supported)"
   },
   {
     "id": "m1-t3-p03",
     "topicId": "m1-t3",
-    "slug": "m1_t3-3",
-    "title": "Setting up Python Environment: Simple Loop",
-    "difficulty": "medium",
+    "slug": "env-import-check",
+    "title": "Setup: Confirm a Package Imports",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print numbers from 1 to 4 for basic practice.",
+    "description": "Import math and print pi rounded to two decimals to prove the interpreter can load modules.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "A working install can import modules. Import "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "math"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. This is basic loop practice for Setting up Python Environment."
+          "value": " and print "
+        },
+        {
+          "type": "code",
+          "value": "round(math.pi, 2)"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# import math",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "math"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "import math loads a module from the standard library.",
+          "round(value, 2) keeps two decimal places."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "3.14"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Import math",
+      "Use round() with 2 decimals",
+      "Output must be exactly: 3.14"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "import math then print(round(math.pi, 2))"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print numbers from 1 to 4 for basic practice. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: import math and print pi to 2 decimals\n",
+    "solutionCode": "import math\n\nprint(round(math.pi, 2))",
     "publicTests": [
       {
         "id": "m1-t3-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "3.14",
         "visibility": "public"
       },
       {
         "id": "m1-t3-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "math was imported",
+        "assertCode": "assert \"math\" in globals(), \"Import math first\"",
         "visibility": "public"
       },
       {
         "id": "m1-t3-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "pi is rounded to 2 decimals",
+        "assertCode": "assert (round(math.pi, 2)) == (3.14), \"Expected \" + repr(3.14) + \", got \" + repr(round(math.pi, 2))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Import math and print pi rounded to two decimals to prove the interpreter can load modules.\n\nReference solution:\nimport math\n\nprint(round(math.pi, 2))"
   },
   {
     "id": "m1-t3-p04",
     "topicId": "m1-t3",
-    "slug": "m1_t3-4",
-    "title": "Setting up Python Environment: Condition",
+    "slug": "env-package-installed",
+    "title": "Setup: Is NumPy Installed?",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
+    "description": "Use try/except ImportError to set status to \"installed\" or \"missing\" for numpy, then print status.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "This is how scripts check dependencies. Try to "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "import numpy"
         },
         {
           "type": "text",
-          "value": ". If "
+          "value": "; set "
         },
         {
           "type": "code",
-          "value": "score >= 60"
+          "value": "status"
         },
         {
           "type": "text",
-          "value": ", print "
+          "value": " to \"installed\" on success and \"missing\" in the "
         },
         {
           "type": "code",
-          "value": "Pass"
+          "value": "except ImportError"
         },
         {
           "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": " branch, then print it."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# try: import numpy",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "status"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A failed import raises ImportError — catch it instead of crashing.",
+          "Set status inside each branch so exactly one value survives."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "installed"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Use try / except ImportError",
+      "Store the result in status",
+      "Output must be exactly: installed"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "try:\n    import numpy\n    status = \"installed\"",
+      "except ImportError:\n    status = \"missing\""
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else print Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: detect whether numpy is installed\nstatus = \"unknown\"\n\ntry:\n    pass\nexcept ImportError:\n    pass\n",
+    "solutionCode": "try:\n    import numpy\n    status = \"installed\"\nexcept ImportError:\n    status = \"missing\"\n\nprint(status)",
     "publicTests": [
       {
         "id": "m1-t3-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "installed",
         "visibility": "public"
       },
       {
         "id": "m1-t3-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "status reflects the import",
+        "assertCode": "assert (status) == (\"installed\"), \"Expected \" + repr(\"installed\") + \", got \" + repr(status)",
         "visibility": "public"
       },
       {
         "id": "m1-t3-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "the import was actually attempted",
+        "assertCode": "assert \"numpy\" in globals(), \"Import numpy inside the try block\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Use try/except ImportError to set status to \"installed\" or \"missing\" for numpy, then print status.\n\nReference solution:\ntry:\n    import numpy\n    status = \"installed\"\nexcept ImportError:\n    status = \"missing\"\n\nprint(status)"
   },
   {
     "id": "m1-t3-p05",
     "topicId": "m1-t3",
-    "slug": "m1_t3-5",
-    "title": "Setting up Python Environment: Function Stub",
+    "slug": "env-venv-path",
+    "title": "Setup: Build the Virtual Env Path",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it once.",
+    "description": "Use pathlib to build the .venv/bin/activate path and print it with as_posix().",
     "challengeContent": {
-      "badgeVariant": "blue",
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "Activating a virtual environment runs a script inside it. Build "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "Path(\".venv\") / \"bin\" / \"activate\""
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": ", store it in "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": "activate"
         },
         {
           "type": "text",
-          "value": " and call it once."
+          "value": ", and print "
+        },
+        {
+          "type": "code",
+          "value": "activate.as_posix()"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# activate = Path('.venv') / ...",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "Path",
+        "activate"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "pathlib joins path parts with the / operator.",
+          "as_posix() always prints forward slashes, so the output is the same on every OS."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": ".venv/bin/activate"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Use pathlib.Path and the / operator",
+      "Store the path in activate",
+      "Print with as_posix()"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next indented line, then call greet() on its own line"
+      "activate = Path(\".venv\") / \"bin\" / \"activate\"",
+      "print(activate.as_posix())"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it once. Key points: Example: def greet(): print(\"Hello\") on the next indented line, then call greet() on its own line A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: join the venv path parts\nfrom pathlib import Path\n\nactivate = None\n",
+    "solutionCode": "from pathlib import Path\n\nactivate = Path(\".venv\") / \"bin\" / \"activate\"\nprint(activate.as_posix())",
     "publicTests": [
       {
         "id": "m1-t3-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": ".venv/bin/activate",
         "visibility": "public"
       },
       {
         "id": "m1-t3-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "Path was imported",
+        "assertCode": "assert \"Path\" in globals(), \"Import Path from pathlib\"",
         "visibility": "public"
       },
       {
         "id": "m1-t3-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "activate is a Path object",
+        "assertCode": "assert isinstance(activate, Path), \"Expected activate to be a pathlib.Path, not a plain string\"",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t3-p05-t4",
+        "label": "path parts are joined",
+        "assertCode": "assert (activate.as_posix()) == (\".venv/bin/activate\"), \"Expected \" + repr(\".venv/bin/activate\") + \", got \" + repr(activate.as_posix())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Use pathlib to build the .venv/bin/activate path and print it with as_posix().\n\nReference solution:\nfrom pathlib import Path\n\nactivate = Path(\".venv\") / \"bin\" / \"activate\"\nprint(activate.as_posix())"
   },
   {
     "id": "m1-t3-p06",
     "topicId": "m1-t3",
-    "slug": "m1_t3-6",
-    "title": "Setting up Python Environment: List Practice",
-    "difficulty": "hard",
+    "slug": "env-requirements",
+    "title": "Setup: Print requirements.txt",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list with three items and print the second item (at index 1).",
+    "description": "Loop over a dict of package versions and print each pinned requirement line.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Setting up Python Environment. Print the "
+          "value": "A requirements file pins versions. Build a dict named "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "packages"
         },
         {
           "type": "text",
-          "value": " using index "
+          "value": " with numpy 1.26.4, pandas 2.2.0, matplotlib 3.5.2 and print one "
         },
         {
           "type": "code",
-          "value": "1"
+          "value": "name==version"
         },
         {
           "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": " line each."
         }
+      ],
+      "editorPlaceholder": "# packages = { ... }",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "packages"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds multiple values in order: items = [\"a\", \"middle\", \"c\"]",
-          "Use square brackets to access one item: items[0] is first, items[1] is second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "packages.items() gives (name, version) pairs in insertion order.",
+          "f\"{name}=={version}\" builds the pinned line."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "numpy==1.26.4\npandas==2.2.0\nmatplotlib==3.5.2"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Name the dict packages",
+      "Keep the order numpy, pandas, matplotlib",
+      "One requirement per line"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "for name, version in packages.items():",
+      "print(f\"{name}=={version}\")"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: print one pinned line per package\npackages = {}\n",
+    "solutionCode": "packages = {\"numpy\": \"1.26.4\", \"pandas\": \"2.2.0\", \"matplotlib\": \"3.5.2\"}\nfor name, version in packages.items():\n    print(f\"{name}=={version}\")",
     "publicTests": [
       {
         "id": "m1-t3-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "middle",
+        "expectedStdout": "numpy==1.26.4\npandas==2.2.0\nmatplotlib==3.5.2",
         "visibility": "public"
       },
       {
         "id": "m1-t3-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "packages has the right type",
+        "assertCode": "assert \"packages\" in globals(), \"Expected a variable named packages\"\nassert isinstance(packages, dict), \"Expected packages to be dict, got \" + type(packages).__name__",
         "visibility": "public"
       },
       {
         "id": "m1-t3-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "packages has 3 pins",
+        "assertCode": "assert (len(packages)) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(packages))",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t3-p06-t4",
+        "label": "numpy is pinned",
+        "assertCode": "assert (packages[\"numpy\"]) == (\"1.26.4\"), \"Expected \" + repr(\"1.26.4\") + \", got \" + repr(packages[\"numpy\"])",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds multiple values in order: items = [\"a\", \"middle\", \"c\"] 2. Use square brackets to access one item: items[0] is first, items[1] is second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Loop over a dict of package versions and print each pinned requirement line.\n\nReference solution:\npackages = {\"numpy\": \"1.26.4\", \"pandas\": \"2.2.0\", \"matplotlib\": \"3.5.2\"}\nfor name, version in packages.items():\n    print(f\"{name}=={version}\")"
   },
   {
     "id": "m1-t3-p07",
     "topicId": "m1-t3",
-    "slug": "m1_t3-7",
-    "title": "Setting up Python Environment: Dict Lookup",
+    "slug": "env-pip-command",
+    "title": "Setup: Build the pip install Command",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dictionary with key topic and print its value.",
+    "description": "Join a list of package names into a single pip install command and print it.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Turn a list of packages into one shell command. Store the names in "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "packages"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": ", build the command with "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "\" \".join(packages)"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
+          "value": " into "
         },
         {
           "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "command"
         },
         {
           "type": "text",
-          "value": "."
+          "value": ", and print it."
         }
+      ],
+      "editorPlaceholder": "# command = 'pip install ' + ...",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "packages",
+        "command"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets to get a value: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "python",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "\" \".join(list_of_strings) glues items together with a space.",
+          "Prefix the joined names with \"pip install \"."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "pip install numpy pandas matplotlib scikit-learn"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Use \" \".join(packages) — do not type the names twice",
+      "Store the result in command",
+      "Output must be exactly: pip install numpy pandas matplotlib scikit-learn"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "command = \"pip install \" + \" \".join(packages)"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: build the install command with join()\npackages = [\"numpy\", \"pandas\", \"matplotlib\", \"scikit-learn\"]\ncommand = \"\"\n",
+    "solutionCode": "packages = [\"numpy\", \"pandas\", \"matplotlib\", \"scikit-learn\"]\ncommand = \"pip install \" + \" \".join(packages)\nprint(command)",
     "publicTests": [
       {
         "id": "m1-t3-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "pip install numpy pandas matplotlib scikit-learn",
         "visibility": "public"
       },
       {
         "id": "m1-t3-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "packages has the right type",
+        "assertCode": "assert \"packages\" in globals(), \"Expected a variable named packages\"\nassert isinstance(packages, list), \"Expected packages to be list, got \" + type(packages).__name__",
         "visibility": "public"
       },
       {
         "id": "m1-t3-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "packages holds 4 names",
+        "assertCode": "assert (len(packages)) == (4), \"Expected \" + repr(4) + \", got \" + repr(len(packages))",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t3-p07-t4",
+        "label": "command is built from the list",
+        "assertCode": "assert (command) == (\"pip install \" + \" \".join(packages)), \"Expected \" + repr(\"pip install \" + \" \".join(packages)) + \", got \" + repr(command)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets to get a value: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Join a list of package names into a single pip install command and print it.\n\nReference solution:\npackages = [\"numpy\", \"pandas\", \"matplotlib\", \"scikit-learn\"]\ncommand = \"pip install \" + \" \".join(packages)\nprint(command)"
   },
   {
     "id": "m1-t4-p01",
     "topicId": "m1-t4",
-    "slug": "m1_t4-1",
-    "title": "Python IDEs: Warm-up",
+    "slug": "ide-list",
+    "title": "IDEs: List Your Options",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Python IDEs. Print the word Ready on one line.",
+    "description": "Store the three editors used in this course in a list named ides and print how many there are.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to Python IDEs. Print the word "
+          "value": "Store "
         },
         {
           "type": "code",
-          "value": "Ready"
+          "value": "\"VS Code\", \"PyCharm\", \"Jupyter Lab\""
         },
         {
           "type": "text",
-          "value": " on one line."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": " in a list named "
+        },
         {
-          "id": "ready",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
+          "type": "code",
+          "value": "ides"
+        },
+        {
+          "type": "text",
+          "value": " and print the count."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! You're ready to code in your IDE."
+      "editorPlaceholder": "# ides = [ ... ]",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "ides"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Lists keep the order you write.",
+          "len(ides) counts the editors."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "3"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Name the list ides",
+      "Output must be exactly: 3"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "ides = [\"VS Code\", \"PyCharm\", \"Jupyter Lab\"] then print(len(ides))"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: list the editors, then count them\nides = []\n",
+    "solutionCode": "ides = [\"VS Code\", \"PyCharm\", \"Jupyter Lab\"]\nprint(len(ides))",
     "publicTests": [
       {
         "id": "m1-t4-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "3",
         "visibility": "public"
       },
       {
         "id": "m1-t4-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "ides has the right type",
+        "assertCode": "assert \"ides\" in globals(), \"Expected a variable named ides\"\nassert isinstance(ides, list), \"Expected ides to be list, got \" + type(ides).__name__",
         "visibility": "public"
       },
       {
         "id": "m1-t4-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "three editors listed",
+        "assertCode": "assert (len(ides)) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(ides))",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t4-p01-t4",
+        "label": "VS Code is one of them",
+        "assertCode": "assert \"VS Code\" in ides, \"Expected VS Code to be in the ides list\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Python IDEs. Print the word Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Store the three editors used in this course in a list named ides and print how many there are.\n\nReference solution:\nides = [\"VS Code\", \"PyCharm\", \"Jupyter Lab\"]\nprint(len(ides))"
   },
   {
     "id": "m1-t4-p02",
     "topicId": "m1-t4",
-    "slug": "m1_t4-2",
-    "title": "Python IDEs: Output Two Values",
+    "slug": "ide-best-for",
+    "title": "IDEs: Which Editor for Which Job",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables relevant to Python IDEs and print them separated by a comma.",
+    "description": "Map each editor to what it is best at in a dict named best_for and print the entry for Jupyter Lab.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables relevant to Python IDEs and print them separated by a comma."
+          "value": "Build a dict named "
+        },
+        {
+          "type": "code",
+          "value": "best_for"
+        },
+        {
+          "type": "text",
+          "value": " mapping \"VS Code\" → scripts, \"PyCharm\" → large projects, \"Jupyter Lab\" → notebooks, then print the Jupyter Lab value."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two variables printed with a comma separator."
+      "editorPlaceholder": "# best_for = { ... }",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "best_for"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Dict keys can contain spaces: best_for[\"Jupyter Lab\"]"
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "notebooks"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Name the dict best_for",
+      "Output must be exactly: notebooks"
     ],
     "hints": [
-      "Create two variables like editor and python",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "print(best_for[\"Jupyter Lab\"])"
     ],
-    "starterCode": "",
-    "approach": "Create two variables relevant to Python IDEs and print them separated by a comma. Key points: Create two variables like editor and python Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: map editor to strength\nbest_for = {}\n",
+    "solutionCode": "best_for = {\"VS Code\": \"scripts\", \"PyCharm\": \"large projects\", \"Jupyter Lab\": \"notebooks\"}\nprint(best_for[\"Jupyter Lab\"])",
     "publicTests": [
       {
         "id": "m1-t4-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "notebooks",
         "visibility": "public"
       },
       {
         "id": "m1-t4-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "best_for has the right type",
+        "assertCode": "assert \"best_for\" in globals(), \"Expected a variable named best_for\"\nassert isinstance(best_for, dict), \"Expected best_for to be dict, got \" + type(best_for).__name__",
         "visibility": "public"
       },
       {
         "id": "m1-t4-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "three editors mapped",
+        "assertCode": "assert (len(best_for)) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(best_for))",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t4-p02-t4",
+        "label": "VS Code maps to scripts",
+        "assertCode": "assert (best_for[\"VS Code\"]) == (\"scripts\"), \"Expected \" + repr(\"scripts\") + \", got \" + repr(best_for[\"VS Code\"])",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Map each editor to what it is best at in a dict named best_for and print the entry for Jupyter Lab.\n\nReference solution:\nbest_for = {\"VS Code\": \"scripts\", \"PyCharm\": \"large projects\", \"Jupyter Lab\": \"notebooks\"}\nprint(best_for[\"Jupyter Lab\"])"
   },
   {
     "id": "m1-t4-p03",
     "topicId": "m1-t4",
-    "slug": "m1_t4-3",
-    "title": "Python IDEs: Simple Loop",
-    "difficulty": "medium",
+    "slug": "ide-default-choice",
+    "title": "IDEs: Print the Default Choice",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print numbers from 1 to 4 for basic practice.",
+    "description": "Print the first editor in the ides list using index 0.",
     "challengeContent": {
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Use a "
-        },
-        {
-          "type": "code",
-          "value": "for"
-        },
-        {
-          "type": "text",
-          "value": " loop to print numbers from 1 to 4. This is basic loop practice for Python IDEs."
-        }
-      ],
       "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
-    },
-    "examples": [
-      {
-        "output": "1\n2\n3\n4"
-      }
-    ],
-    "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
-    ],
-    "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
-    ],
-    "starterCode": "",
-    "approach": "Use a for loop to print numbers from 1 to 4 for basic practice. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
-    "publicTests": [
-      {
-        "id": "m1-t4-p03-t1",
-        "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
-        "visibility": "public"
-      },
-      {
-        "id": "m1-t4-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
-        "visibility": "public"
-      },
-      {
-        "id": "m1-t4-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
-        "visibility": "public"
-      }
-    ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
-  },
-  {
-    "id": "m1-t4-p04",
-    "topicId": "m1-t4",
-    "slug": "m1_t4-4",
-    "title": "Python IDEs: Condition",
-    "difficulty": "medium",
-    "order": 4,
-    "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else print Fail.",
-    "challengeContent": {
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "The first item in "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "ides"
         },
         {
           "type": "text",
-          "value": ". If "
+          "value": " is the course default. Print "
         },
         {
           "type": "code",
-          "value": "score >= 60"
-        },
-        {
-          "type": "text",
-          "value": ", print "
-        },
-        {
-          "type": "code",
-          "value": "Pass"
-        },
-        {
-          "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
+          "value": "ides[0]"
         },
         {
           "type": "text",
           "value": "."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# print(ides[0])",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "ides"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Index 0 is the first item.",
+          "print(ides[0]) shows just that name."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "VS Code"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Use index 0",
+      "Output must be exactly: VS Code"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "print(ides[0])"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else print Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: print the first editor\nides = [\"VS Code\", \"PyCharm\", \"Jupyter Lab\"]\n",
+    "solutionCode": "ides = [\"VS Code\", \"PyCharm\", \"Jupyter Lab\"]\nprint(ides[0])",
+    "publicTests": [
+      {
+        "id": "m1-t4-p03-t1",
+        "label": "Sample Case",
+        "expectedStdout": "VS Code",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t4-p03-t2",
+        "label": "ides has the right type",
+        "assertCode": "assert \"ides\" in globals(), \"Expected a variable named ides\"\nassert isinstance(ides, list), \"Expected ides to be list, got \" + type(ides).__name__",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t4-p03-t3",
+        "label": "first editor is VS Code",
+        "assertCode": "assert (ides[0]) == (\"VS Code\"), \"Expected \" + repr(\"VS Code\") + \", got \" + repr(ides[0])",
+        "visibility": "public"
+      }
+    ],
+    "approach": "Print the first editor in the ides list using index 0.\n\nReference solution:\nides = [\"VS Code\", \"PyCharm\", \"Jupyter Lab\"]\nprint(ides[0])"
+  },
+  {
+    "id": "m1-t4-p04",
+    "topicId": "m1-t4",
+    "slug": "ide-sorted",
+    "title": "IDEs: Sort the List",
+    "difficulty": "medium",
+    "order": 4,
+    "layout": "challenge",
+    "description": "Print the editors in alphabetical order using sorted().",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "sorted(ides)"
+        },
+        {
+          "type": "text",
+          "value": " to list the editors alphabetically. The original list must stay unchanged."
+        }
+      ],
+      "editorPlaceholder": "# print(sorted(ides))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "ides"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "sorted(ides) returns a new sorted list.",
+          "ides.sort() would change the original — use sorted() here."
+        ]
+      }
+    },
+    "examples": [
+      {
+        "output": "['Jupyter Lab', 'PyCharm', 'VS Code']"
+      }
+    ],
+    "constraints": [
+      "Use sorted() — do not modify ides",
+      "Output must be exactly: ['Jupyter Lab', 'PyCharm', 'VS Code']"
+    ],
+    "hints": [
+      "print(sorted(ides))"
+    ],
+    "starterCode": "# TODO: print the editors alphabetically\nides = [\"VS Code\", \"PyCharm\", \"Jupyter Lab\"]\n",
+    "solutionCode": "ides = [\"VS Code\", \"PyCharm\", \"Jupyter Lab\"]\nprint(sorted(ides))",
     "publicTests": [
       {
         "id": "m1-t4-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "['Jupyter Lab', 'PyCharm', 'VS Code']",
         "visibility": "public"
       },
       {
         "id": "m1-t4-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "ides has the right type",
+        "assertCode": "assert \"ides\" in globals(), \"Expected a variable named ides\"\nassert isinstance(ides, list), \"Expected ides to be list, got \" + type(ides).__name__",
         "visibility": "public"
       },
       {
         "id": "m1-t4-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "the original list order is untouched",
+        "assertCode": "assert (ides) == ([\"VS Code\", \"PyCharm\", \"Jupyter Lab\"]), \"Expected \" + repr([\"VS Code\", \"PyCharm\", \"Jupyter Lab\"]) + \", got \" + repr(ides)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Print the editors in alphabetical order using sorted().\n\nReference solution:\nides = [\"VS Code\", \"PyCharm\", \"Jupyter Lab\"]\nprint(sorted(ides))"
   },
   {
     "id": "m1-t4-p05",
     "topicId": "m1-t4",
-    "slug": "m1_t4-5",
-    "title": "Python IDEs: Function Stub",
+    "slug": "ide-shortcuts",
+    "title": "IDEs: Shortcut Cheat Sheet",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it once.",
+    "description": "Store two editor shortcuts in a dict named shortcuts and print the count and the run shortcut.",
     "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Build a dict named "
+        },
+        {
+          "type": "code",
+          "value": "shortcuts"
+        },
+        {
+          "type": "text",
+          "value": " with \"run cell\" → Shift+Enter and \"command palette\" → Ctrl+Shift+P. Print the number of shortcuts, then the \"run cell\" value."
+        }
+      ],
+      "editorPlaceholder": "# shortcuts = { ... }",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "shortcuts"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Print the count first with len(shortcuts).",
+          "Then print the value: shortcuts[\"run cell\"]"
+        ]
+      }
+    },
+    "examples": [
+      {
+        "output": "2\nShift+Enter"
+      }
+    ],
+    "constraints": [
+      "Name the dict shortcuts",
+      "Print the count on line 1 and the shortcut on line 2"
+    ],
+    "hints": [
+      "print(len(shortcuts))",
+      "print(shortcuts[\"run cell\"])"
+    ],
+    "starterCode": "# TODO: build the cheat sheet, print count then the run shortcut\nshortcuts = {}\n",
+    "solutionCode": "shortcuts = {\"run cell\": \"Shift+Enter\", \"command palette\": \"Ctrl+Shift+P\"}\nprint(len(shortcuts))\nprint(shortcuts[\"run cell\"])",
+    "publicTests": [
+      {
+        "id": "m1-t4-p05-t1",
+        "label": "Sample Case",
+        "expectedStdout": "2\nShift+Enter",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t4-p05-t2",
+        "label": "shortcuts has the right type",
+        "assertCode": "assert \"shortcuts\" in globals(), \"Expected a variable named shortcuts\"\nassert isinstance(shortcuts, dict), \"Expected shortcuts to be dict, got \" + type(shortcuts).__name__",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t4-p05-t3",
+        "label": "two shortcuts stored",
+        "assertCode": "assert (len(shortcuts)) == (2), \"Expected \" + repr(2) + \", got \" + repr(len(shortcuts))",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t4-p05-t4",
+        "label": "run cell shortcut",
+        "assertCode": "assert (shortcuts[\"run cell\"]) == (\"Shift+Enter\"), \"Expected \" + repr(\"Shift+Enter\") + \", got \" + repr(shortcuts[\"run cell\"])",
+        "visibility": "public"
+      }
+    ],
+    "approach": "Store two editor shortcuts in a dict named shortcuts and print the count and the run shortcut.\n\nReference solution:\nshortcuts = {\"run cell\": \"Shift+Enter\", \"command palette\": \"Ctrl+Shift+P\"}\nprint(len(shortcuts))\nprint(shortcuts[\"run cell\"])"
+  },
+  {
+    "id": "m1-t4-p06",
+    "topicId": "m1-t4",
+    "slug": "ide-notebook-support",
+    "title": "IDEs: Filter Notebook-Capable Editors",
+    "difficulty": "medium",
+    "order": 6,
+    "layout": "challenge",
+    "description": "Given a dict of editor → notebook support, use a comprehension to print only the editors that support notebooks.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Given "
+        },
+        {
+          "type": "code",
+          "value": "supports_notebooks"
+        },
+        {
+          "type": "text",
+          "value": " mapping each editor to True or False, build a list named "
+        },
+        {
+          "type": "code",
+          "value": "notebook_ides"
+        },
+        {
+          "type": "text",
+          "value": " of the editors where the value is True, then print it."
+        }
+      ],
+      "editorPlaceholder": "# notebook_ides = [ ... ]",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "supports_notebooks",
+        "notebook_ides"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Loop the pairs: for name, ok in supports_notebooks.items()",
+          "A comprehension with an if keeps only the matching names."
+        ]
+      }
+    },
+    "examples": [
+      {
+        "output": "['VS Code', 'Jupyter Lab']"
+      }
+    ],
+    "constraints": [
+      "Build notebook_ides from the dict — do not retype the names",
+      "Output must be exactly: ['VS Code', 'Jupyter Lab']"
+    ],
+    "hints": [
+      "notebook_ides = [name for name, ok in supports_notebooks.items() if ok]"
+    ],
+    "starterCode": "# TODO: keep only the editors that support notebooks\nsupports_notebooks = {\"VS Code\": True, \"PyCharm\": False, \"Jupyter Lab\": True}\nnotebook_ides = []\n",
+    "solutionCode": "supports_notebooks = {\"VS Code\": True, \"PyCharm\": False, \"Jupyter Lab\": True}\nnotebook_ides = [name for name, ok in supports_notebooks.items() if ok]\nprint(notebook_ides)",
+    "publicTests": [
+      {
+        "id": "m1-t4-p06-t1",
+        "label": "Sample Case",
+        "expectedStdout": "['VS Code', 'Jupyter Lab']",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t4-p06-t2",
+        "label": "notebook_ides has the right type",
+        "assertCode": "assert \"notebook_ides\" in globals(), \"Expected a variable named notebook_ides\"\nassert isinstance(notebook_ides, list), \"Expected notebook_ides to be list, got \" + type(notebook_ides).__name__",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t4-p06-t3",
+        "label": "only notebook editors kept",
+        "assertCode": "assert (notebook_ides) == ([\"VS Code\", \"Jupyter Lab\"]), \"Expected \" + repr([\"VS Code\", \"Jupyter Lab\"]) + \", got \" + repr(notebook_ides)",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t4-p06-t4",
+        "label": "PyCharm was filtered out",
+        "assertCode": "assert \"PyCharm\" not in notebook_ides, \"PyCharm does not support notebooks — it should not be in the list\"",
+        "visibility": "public"
+      }
+    ],
+    "approach": "Given a dict of editor → notebook support, use a comprehension to print only the editors that support notebooks.\n\nReference solution:\nsupports_notebooks = {\"VS Code\": True, \"PyCharm\": False, \"Jupyter Lab\": True}\nnotebook_ides = [name for name, ok in supports_notebooks.items() if ok]\nprint(notebook_ides)"
+  },
+  {
+    "id": "m1-t4-p07",
+    "topicId": "m1-t4",
+    "slug": "ide-recommend",
+    "title": "IDEs: Recommend an Editor",
+    "difficulty": "hard",
+    "order": 7,
+    "layout": "challenge",
+    "description": "Write recommend(job) that returns Jupyter Lab for exploration and VS Code for anything else, then print two calls.",
+    "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
@@ -2203,777 +1836,738 @@ export const module1Practice: PracticeProblem[] = [
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "recommend(job)"
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": " that returns \"Jupyter Lab\" when job is \"exploration\" and \"VS Code\" otherwise. Print "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": "recommend(\"exploration\")"
         },
         {
           "type": "text",
-          "value": " and call it once."
-        }
-      ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
-    },
-    "examples": [
-      {
-        "output": "Hello"
-      }
-    ],
-    "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
-    ],
-    "hints": [
-      "Example: def greet(): print(\"Hello\") on the next indented line, then call greet() on its own line"
-    ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it once. Key points: Example: def greet(): print(\"Hello\") on the next indented line, then call greet() on its own line A correct solution looks like this: def greet(): print(\"Hello\") greet()",
-    "publicTests": [
-      {
-        "id": "m1-t4-p05-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Hello",
-        "visibility": "public"
-      },
-      {
-        "id": "m1-t4-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
-        "visibility": "public"
-      },
-      {
-        "id": "m1-t4-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
-        "visibility": "public"
-      }
-    ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
-  },
-  {
-    "id": "m1-t4-p06",
-    "topicId": "m1-t4",
-    "slug": "m1_t4-6",
-    "title": "Python IDEs: List Practice",
-    "difficulty": "hard",
-    "order": 6,
-    "layout": "challenge",
-    "description": "Create a list with three items and print the second item (at index 1).",
-    "challengeContent": {
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Create a list with three items about Python IDEs. Print the "
+          "value": " then "
         },
         {
           "type": "code",
-          "value": "second item"
-        },
-        {
-          "type": "text",
-          "value": " using index "
-        },
-        {
-          "type": "code",
-          "value": "1"
-        },
-        {
-          "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
-        }
-      ],
-      "steps": {
-        "title": "What you need to know",
-        "items": [
-          "A list holds multiple values in order: items = [\"a\", \"middle\", \"c\"]",
-          "Use square brackets to access one item: items[0] is first, items[1] is second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
-    },
-    "examples": [
-      {
-        "output": "middle"
-      }
-    ],
-    "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
-    ],
-    "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
-    ],
-    "starterCode": "",
-    "publicTests": [
-      {
-        "id": "m1-t4-p06-t1",
-        "label": "Sample Case",
-        "expectedStdout": "middle",
-        "visibility": "public"
-      },
-      {
-        "id": "m1-t4-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
-        "visibility": "public"
-      },
-      {
-        "id": "m1-t4-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
-        "visibility": "public"
-      }
-    ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds multiple values in order: items = [\"a\", \"middle\", \"c\"] 2. Use square brackets to access one item: items[0] is first, items[1] is second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
-  },
-  {
-    "id": "m1-t4-p07",
-    "topicId": "m1-t4",
-    "slug": "m1_t4-7",
-    "title": "Python IDEs: Dict Lookup",
-    "difficulty": "hard",
-    "order": 7,
-    "layout": "challenge",
-    "description": "Create a dictionary with key topic and print its value.",
-    "challengeContent": {
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Create a dictionary with key "
-        },
-        {
-          "type": "code",
-          "value": "topic"
-        },
-        {
-          "type": "text",
-          "value": " and value "
-        },
-        {
-          "type": "code",
-          "value": "Python"
-        },
-        {
-          "type": "text",
-          "value": ". Print the value using "
-        },
-        {
-          "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "recommend(\"deployment\")"
         },
         {
           "type": "text",
           "value": "."
         }
       ],
+      "editorPlaceholder": "# def recommend(job):",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets to get a value: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "python",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "def recommend(job): starts the function.",
+          "Return a value for the exploration case, then return the default."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "Jupyter Lab\nVS Code"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Define a function named recommend",
+      "Return values — do not print inside the function",
+      "Print the two calls in order"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "if job == \"exploration\": return \"Jupyter Lab\"",
+      "End the function with return \"VS Code\""
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: return the right editor for the job\ndef recommend(job):\n    pass\n",
+    "solutionCode": "def recommend(job):\n    if job == \"exploration\":\n        return \"Jupyter Lab\"\n    return \"VS Code\"\n\nprint(recommend(\"exploration\"))\nprint(recommend(\"deployment\"))",
     "publicTests": [
       {
         "id": "m1-t4-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "Jupyter Lab\nVS Code",
         "visibility": "public"
       },
       {
         "id": "m1-t4-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "recommend is defined",
+        "assertCode": "assert callable(recommend), \"Define a function named recommend\"",
         "visibility": "public"
       },
       {
         "id": "m1-t4-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "exploration → Jupyter Lab",
+        "assertCode": "assert (recommend(\"exploration\")) == (\"Jupyter Lab\"), \"Expected \" + repr(\"Jupyter Lab\") + \", got \" + repr(recommend(\"exploration\"))",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t4-p07-t4",
+        "label": "anything else → VS Code",
+        "assertCode": "assert (recommend(\"deployment\")) == (\"VS Code\"), \"Expected \" + repr(\"VS Code\") + \", got \" + repr(recommend(\"deployment\"))",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t4-p07-t5",
+        "label": "unknown jobs fall back too",
+        "assertCode": "assert (recommend(\"scripting\")) == (\"VS Code\"), \"Expected \" + repr(\"VS Code\") + \", got \" + repr(recommend(\"scripting\"))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets to get a value: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Write recommend(job) that returns Jupyter Lab for exploration and VS Code for anything else, then print two calls.\n\nReference solution:\ndef recommend(job):\n    if job == \"exploration\":\n        return \"Jupyter Lab\"\n    return \"VS Code\"\n\nprint(recommend(\"exploration\"))\nprint(recommend(\"deployment\"))"
   },
   {
     "id": "m1-t5-p01",
     "topicId": "m1-t5",
-    "slug": "jupyter-1",
-    "title": "Introduction to Jupyter Notebooks: Warm-up",
+    "slug": "nb-cell-result",
+    "title": "Notebooks: A Cell Produces a Result",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Jupyter. Print Ready on one line.",
+    "description": "Store the result of 2 + 3 in a variable named result and print it, like a notebook cell output.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "A notebook cell runs code and shows a result. Store "
         },
         {
           "type": "code",
-          "value": "Introduction to Jupyter Notebooks"
+          "value": "2 + 3"
         },
         {
           "type": "text",
-          "value": ". Print the expected output."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": " in "
+        },
         {
-          "id": "out",
-          "label": "expected output",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
+          "type": "code",
+          "value": "result"
+        },
+        {
+          "type": "text",
+          "value": " and print it."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# result = 2 + 3",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "result"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "In a notebook, In [1] holds your code and Out [1] shows the value.",
+          "In a script you print the value to see it."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "5"
       }
     ],
     "constraints": [
-      "Match the sample output exactly"
+      "Store the value in result",
+      "Output must be exactly: 5"
     ],
     "hints": [
-      "Use print()"
+      "result = 2 + 3 then print(result)"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: compute the cell result\nresult = None\n",
+    "solutionCode": "result = 2 + 3\nprint(result)",
     "publicTests": [
       {
         "id": "m1-t5-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "5",
         "visibility": "public"
       },
       {
         "id": "m1-t5-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "result is computed",
+        "assertCode": "assert (result) == (5), \"Expected \" + repr(5) + \", got \" + repr(result)",
         "visibility": "public"
       },
       {
         "id": "m1-t5-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "result has the right type",
+        "assertCode": "assert \"result\" in globals(), \"Expected a variable named result\"\nassert isinstance(result, int), \"Expected result to be int, got \" + type(result).__name__",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Jupyter. Print Ready on one line.\n\nKey points: Use print()\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Store the result of 2 + 3 in a variable named result and print it, like a notebook cell output.\n\nReference solution:\nresult = 2 + 3\nprint(result)"
   },
   {
     "id": "m1-t5-p02",
     "topicId": "m1-t5",
-    "slug": "jupyter-2",
-    "title": "Introduction to Jupyter Notebooks: Output Two Values",
+    "slug": "nb-state-carries",
+    "title": "Notebooks: State Carries Between Cells",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Jupyter and print them comma-separated.",
+    "description": "Increment a counter twice to show that notebook variables persist between cells, then print it.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Variables survive from cell to cell. Set "
         },
         {
           "type": "code",
-          "value": "Introduction to Jupyter Notebooks"
+          "value": "counter = 0"
         },
         {
           "type": "text",
-          "value": ". Print the expected output."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": ", add 1 twice (as if in two separate cells), then print "
+        },
         {
-          "id": "out",
-          "label": "expected output",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "A,B"
+          "type": "code",
+          "value": "counter"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# counter += 1",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "counter"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "counter += 1 adds one to the existing value.",
+          "Running the same cell twice keeps adding — a classic notebook surprise."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "2"
       }
     ],
     "constraints": [
-      "Match the sample output exactly"
+      "Use += to increment",
+      "Output must be exactly: 2"
     ],
     "hints": [
-      "Use print()"
+      "counter += 1 twice, then print(counter)"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: run two 'cells' that each add 1\ncounter = 0\n",
+    "solutionCode": "counter = 0\ncounter += 1\ncounter += 1\nprint(counter)",
     "publicTests": [
       {
         "id": "m1-t5-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "2",
         "visibility": "public"
       },
       {
         "id": "m1-t5-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "counter ended at 2",
+        "assertCode": "assert (counter) == (2), \"Expected \" + repr(2) + \", got \" + repr(counter)",
         "visibility": "public"
       },
       {
         "id": "m1-t5-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "counter has the right type",
+        "assertCode": "assert \"counter\" in globals(), \"Expected a variable named counter\"\nassert isinstance(counter, int), \"Expected counter to be int, got \" + type(counter).__name__",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")",
-    "approach": "Create two variables about Jupyter and print them comma-separated.\n\nKey points: Use print()\n\nA correct solution looks like this:\na = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Increment a counter twice to show that notebook variables persist between cells, then print it.\n\nReference solution:\ncounter = 0\ncounter += 1\ncounter += 1\nprint(counter)"
   },
   {
     "id": "m1-t5-p03",
     "topicId": "m1-t5",
-    "slug": "jupyter-3",
-    "title": "Introduction to Jupyter Notebooks: Loop Practice",
-    "difficulty": "medium",
+    "slug": "nb-execution-labels",
+    "title": "Notebooks: Execution Counter Labels",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print numbers from 1 to 4.",
+    "description": "Build the list of execution labels In [1] to In [3] and print each on its own line.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Each run bumps the execution counter. Build a list named "
         },
         {
           "type": "code",
-          "value": "Introduction to Jupyter Notebooks"
+          "value": "labels"
         },
         {
           "type": "text",
-          "value": ". Print the expected output."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": " holding "
+        },
         {
-          "id": "out",
-          "label": "expected output",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "1\n2\n3\n4"
+          "type": "code",
+          "value": "In [1]"
+        },
+        {
+          "type": "text",
+          "value": " through "
+        },
+        {
+          "type": "code",
+          "value": "In [3]"
+        },
+        {
+          "type": "text",
+          "value": ", then print each label."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# labels = [ ... ]",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "labels"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Use a comprehension over range(1, 4).",
+          "Format each label with f\"In [{n}]\""
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "In [1]\nIn [2]\nIn [3]"
       }
     ],
     "constraints": [
-      "Match the sample output exactly"
+      "Build labels with range() — do not type the three strings",
+      "One label per line"
     ],
     "hints": [
-      "Use print()"
+      "labels = [f\"In [{n}]\" for n in range(1, 4)]",
+      "Then loop and print each label"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: build the labels, then print them\nlabels = []\n",
+    "solutionCode": "labels = [f\"In [{n}]\" for n in range(1, 4)]\nfor label in labels:\n    print(label)",
     "publicTests": [
       {
         "id": "m1-t5-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "In [1]\nIn [2]\nIn [3]",
         "visibility": "public"
       },
       {
         "id": "m1-t5-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "labels has the right type",
+        "assertCode": "assert \"labels\" in globals(), \"Expected a variable named labels\"\nassert isinstance(labels, list), \"Expected labels to be list, got \" + type(labels).__name__",
         "visibility": "public"
       },
       {
         "id": "m1-t5-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "labels are built for 1 to 3",
+        "assertCode": "assert (labels) == ([\"In [1]\", \"In [2]\", \"In [3]\"]), \"Expected \" + repr([\"In [1]\", \"In [2]\", \"In [3]\"]) + \", got \" + repr(labels)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)",
-    "approach": "Use a for loop to print numbers from 1 to 4.\n\nKey points: Use print()\n\nA correct solution looks like this:\nfor i in range(1, 5):\n    print(i)"
+    "approach": "Build the list of execution labels In [1] to In [3] and print each on its own line.\n\nReference solution:\nlabels = [f\"In [{n}]\" for n in range(1, 4)]\nfor label in labels:\n    print(label)"
   },
   {
     "id": "m1-t5-p04",
     "topicId": "m1-t5",
-    "slug": "jupyter-4",
-    "title": "Introduction to Jupyter Notebooks: Conditional",
+    "slug": "nb-restart-kernel",
+    "title": "Notebooks: Restarting Clears State",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "If x=10, print Pass when x>=10 else Fail.",
+    "description": "Model the kernel namespace as a dict, clear it to simulate a restart, and print how many variables remain.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Restarting the kernel wipes every variable. Put "
         },
         {
           "type": "code",
-          "value": "Introduction to Jupyter Notebooks"
+          "value": "{\"df\": \"loaded\", \"model\": \"trained\"}"
         },
         {
           "type": "text",
-          "value": ". Print the expected output."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": " in "
+        },
         {
-          "id": "out",
-          "label": "expected output",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Pass"
+          "type": "code",
+          "value": "namespace"
+        },
+        {
+          "type": "text",
+          "value": ", call "
+        },
+        {
+          "type": "code",
+          "value": ".clear()"
+        },
+        {
+          "type": "text",
+          "value": ", then print how many names are left."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# namespace.clear()",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "namespace"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "dict.clear() removes every key in place.",
+          "len(namespace) is 0 after a restart — you must re-run your cells."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "0"
       }
     ],
     "constraints": [
-      "Match the sample output exactly"
+      "Use .clear()",
+      "Output must be exactly: 0"
     ],
     "hints": [
-      "Use print()"
+      "namespace.clear() then print(len(namespace))"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: clear the namespace, then count what is left\nnamespace = {\"df\": \"loaded\", \"model\": \"trained\"}\n",
+    "solutionCode": "namespace = {\"df\": \"loaded\", \"model\": \"trained\"}\nnamespace.clear()\nprint(len(namespace))",
     "publicTests": [
       {
         "id": "m1-t5-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "0",
         "visibility": "public"
       },
       {
         "id": "m1-t5-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "namespace has the right type",
+        "assertCode": "assert \"namespace\" in globals(), \"Expected a variable named namespace\"\nassert isinstance(namespace, dict), \"Expected namespace to be dict, got \" + type(namespace).__name__",
         "visibility": "public"
       },
       {
         "id": "m1-t5-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "namespace was cleared",
+        "assertCode": "assert (namespace) == ({}), \"Expected \" + repr({}) + \", got \" + repr(namespace)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
-    "approach": "If x=10, print Pass when x>=10 else Fail.\n\nKey points: Use print()\n\nA correct solution looks like this:\nscore = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Model the kernel namespace as a dict, clear it to simulate a restart, and print how many variables remain.\n\nReference solution:\nnamespace = {\"df\": \"loaded\", \"model\": \"trained\"}\nnamespace.clear()\nprint(len(namespace))"
   },
   {
     "id": "m1-t5-p05",
     "topicId": "m1-t5",
-    "slug": "jupyter-5",
-    "title": "Introduction to Jupyter Notebooks: List Practice",
+    "slug": "nb-cell-types",
+    "title": "Notebooks: Count Markdown vs Code Cells",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Create a list of three cell types and print index 1.",
+    "description": "Count how many cells are markdown and how many are code, store both in a dict, and print it.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Given "
         },
         {
           "type": "code",
-          "value": "Introduction to Jupyter Notebooks"
+          "value": "cells"
         },
         {
           "type": "text",
-          "value": ". Print the expected output."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": ", build a dict named "
+        },
         {
-          "id": "out",
-          "label": "expected output",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "code"
+          "type": "code",
+          "value": "counts"
+        },
+        {
+          "type": "text",
+          "value": " with the number of markdown and code cells, then print it."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# counts = { ... }",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "cells",
+        "counts"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "cells.count(\"code\") counts matching items.",
+          "Put both counts in a dict with keys markdown and code, in that order."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "code"
+        "output": "{'markdown': 2, 'code': 3}"
       }
     ],
     "constraints": [
-      "Match the sample output exactly"
+      "Count with .count() — do not type the numbers",
+      "Key order: markdown then code"
     ],
     "hints": [
-      "Use print()"
+      "counts = {\"markdown\": cells.count(\"markdown\"), \"code\": cells.count(\"code\")}"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: count each cell type\ncells = [\"markdown\", \"code\", \"code\", \"markdown\", \"code\"]\ncounts = {}\n",
+    "solutionCode": "cells = [\"markdown\", \"code\", \"code\", \"markdown\", \"code\"]\ncounts = {\"markdown\": cells.count(\"markdown\"), \"code\": cells.count(\"code\")}\nprint(counts)",
     "publicTests": [
       {
         "id": "m1-t5-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "code",
+        "expectedStdout": "{'markdown': 2, 'code': 3}",
         "visibility": "public"
       },
       {
         "id": "m1-t5-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "code",
+        "label": "counts has the right type",
+        "assertCode": "assert \"counts\" in globals(), \"Expected a variable named counts\"\nassert isinstance(counts, dict), \"Expected counts to be dict, got \" + type(counts).__name__",
         "visibility": "public"
       },
       {
         "id": "m1-t5-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "code",
+        "label": "markdown count",
+        "assertCode": "assert (counts[\"markdown\"]) == (2), \"Expected \" + repr(2) + \", got \" + repr(counts[\"markdown\"])",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t5-p05-t4",
+        "label": "code count",
+        "assertCode": "assert (counts[\"code\"]) == (3), \"Expected \" + repr(3) + \", got \" + repr(counts[\"code\"])",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"code\")",
-    "approach": "Create a list of three cell types and print index 1.\n\nKey points: Use print()\n\nA correct solution looks like this:\nprint(\"code\")"
+    "approach": "Count how many cells are markdown and how many are code, store both in a dict, and print it.\n\nReference solution:\ncells = [\"markdown\", \"code\", \"code\", \"markdown\", \"code\"]\ncounts = {\"markdown\": cells.count(\"markdown\"), \"code\": cells.count(\"code\")}\nprint(counts)"
   },
   {
     "id": "m1-t5-p06",
     "topicId": "m1-t5",
-    "slug": "jupyter-6",
-    "title": "Introduction to Jupyter Notebooks: Dict Lookup",
-    "difficulty": "hard",
+    "slug": "nb-out-history",
+    "title": "Notebooks: Look Up an Old Output",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Store the Out[] history in a dict keyed by execution number and print the value of Out[2].",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Notebooks keep past outputs. Store "
         },
         {
           "type": "code",
-          "value": "Introduction to Jupyter Notebooks"
+          "value": "{1: 5, 2: 12, 3: 20}"
         },
         {
           "type": "text",
-          "value": ". Print the expected output."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": " in "
+        },
         {
-          "id": "out",
-          "label": "expected output",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Jupyter"
+          "type": "code",
+          "value": "outputs"
+        },
+        {
+          "type": "text",
+          "value": " and print the value for execution "
+        },
+        {
+          "type": "code",
+          "value": "2"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# print(outputs[2])",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "outputs"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Dict keys can be integers: outputs[2]"
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Jupyter"
+        "output": "12"
       }
     ],
     "constraints": [
-      "Match the sample output exactly"
+      "Use the integer key 2",
+      "Output must be exactly: 12"
     ],
     "hints": [
-      "Use print()"
+      "print(outputs[2])"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: look up Out[2]\noutputs = {1: 5, 2: 12, 3: 20}\n",
+    "solutionCode": "outputs = {1: 5, 2: 12, 3: 20}\nprint(outputs[2])",
     "publicTests": [
       {
         "id": "m1-t5-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "Jupyter",
+        "expectedStdout": "12",
         "visibility": "public"
       },
       {
         "id": "m1-t5-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Jupyter",
+        "label": "outputs has the right type",
+        "assertCode": "assert \"outputs\" in globals(), \"Expected a variable named outputs\"\nassert isinstance(outputs, dict), \"Expected outputs to be dict, got \" + type(outputs).__name__",
         "visibility": "public"
       },
       {
         "id": "m1-t5-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Jupyter",
+        "label": "three outputs stored",
+        "assertCode": "assert (len(outputs)) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(outputs))",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t5-p06-t4",
+        "label": "Out[2] is 12",
+        "assertCode": "assert (outputs[2]) == (12), \"Expected \" + repr(12) + \", got \" + repr(outputs[2])",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Jupyter\")",
-    "approach": "Create a dict with key topic and print its value.\n\nKey points: Use print()\n\nA correct solution looks like this:\nprint(\"Jupyter\")"
+    "approach": "Store the Out[] history in a dict keyed by execution number and print the value of Out[2].\n\nReference solution:\noutputs = {1: 5, 2: 12, 3: 20}\nprint(outputs[2])"
   },
   {
     "id": "m1-t5-p07",
     "topicId": "m1-t5",
-    "slug": "jupyter-7",
-    "title": "Introduction to Jupyter Notebooks: Format Output",
+    "slug": "nb-summary",
+    "title": "Notebooks: Summarise a Notebook",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Use an f-string to print Notebook: ready",
+    "description": "Given a list of cell dicts, count the code cells and total their lines, then print a summary line.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Each cell is a dict with "
         },
         {
           "type": "code",
-          "value": "Introduction to Jupyter Notebooks"
+          "value": "type"
         },
         {
           "type": "text",
-          "value": ". Print the expected output."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": " and "
+        },
         {
-          "id": "out",
-          "label": "expected output",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Notebook: ready"
+          "type": "code",
+          "value": "lines"
+        },
+        {
+          "type": "text",
+          "value": ". Count the code cells into "
+        },
+        {
+          "type": "code",
+          "value": "code_cells"
+        },
+        {
+          "type": "text",
+          "value": ", total their lines into "
+        },
+        {
+          "type": "code",
+          "value": "code_lines"
+        },
+        {
+          "type": "text",
+          "value": ", and print the summary."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct!"
+      "editorPlaceholder": "# code_cells = ...",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "cells",
+        "code_cells",
+        "code_lines"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Filter with a comprehension: [c for c in cells if c[\"type\"] == \"code\"]",
+          "sum(c[\"lines\"] for c in ...) totals the lines.",
+          "Format with f\"{code_cells} code cells, {code_lines} lines\""
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Notebook: ready"
+        "output": "2 code cells, 8 lines"
       }
     ],
     "constraints": [
-      "Match the sample output exactly"
+      "Skip markdown cells in both numbers",
+      "Compute the values — do not type 2 or 8",
+      "Output must be exactly: 2 code cells, 8 lines"
     ],
     "hints": [
-      "Use print()"
+      "code_cells = len([c for c in cells if c[\"type\"] == \"code\"])",
+      "code_lines = sum(c[\"lines\"] for c in cells if c[\"type\"] == \"code\")"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: summarise only the code cells\ncells = [\n    {\"type\": \"code\", \"lines\": 3},\n    {\"type\": \"markdown\", \"lines\": 2},\n    {\"type\": \"code\", \"lines\": 5},\n]\ncode_cells = 0\ncode_lines = 0\n",
+    "solutionCode": "cells = [\n    {\"type\": \"code\", \"lines\": 3},\n    {\"type\": \"markdown\", \"lines\": 2},\n    {\"type\": \"code\", \"lines\": 5},\n]\ncode_cells = len([c for c in cells if c[\"type\"] == \"code\"])\ncode_lines = sum(c[\"lines\"] for c in cells if c[\"type\"] == \"code\")\nprint(f\"{code_cells} code cells, {code_lines} lines\")",
     "publicTests": [
       {
         "id": "m1-t5-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Notebook: ready",
+        "expectedStdout": "2 code cells, 8 lines",
         "visibility": "public"
       },
       {
         "id": "m1-t5-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Notebook: ready",
+        "label": "code cells counted",
+        "assertCode": "assert (code_cells) == (2), \"Expected \" + repr(2) + \", got \" + repr(code_cells)",
         "visibility": "public"
       },
       {
         "id": "m1-t5-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Notebook: ready",
+        "label": "markdown lines excluded",
+        "assertCode": "assert (code_lines) == (8), \"Expected \" + repr(8) + \", got \" + repr(code_lines)",
+        "visibility": "public"
+      },
+      {
+        "id": "m1-t5-p07-t4",
+        "label": "source data untouched",
+        "assertCode": "assert (len(cells)) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(cells))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Notebook: ready\"}\nprint(d[\"topic\"])",
-    "approach": "Use an f-string to print Notebook: ready\n\nKey points: Use print()\n\nA correct solution looks like this:\nd = {\"topic\": \"Notebook: ready\"}\nprint(d[\"topic\"])"
+    "approach": "Given a list of cell dicts, count the code cells and total their lines, then print a summary line.\n\nReference solution:\ncells = [\n    {\"type\": \"code\", \"lines\": 3},\n    {\"type\": \"markdown\", \"lines\": 2},\n    {\"type\": \"code\", \"lines\": 5},\n]\ncode_cells = len([c for c in cells if c[\"type\"] == \"code\"])\ncode_lines = sum(c[\"lines\"] for c in cells if c[\"type\"] == \"code\")\nprint(f\"{code_cells} code cells, {code_lines} lines\")"
   }
+];
+
+export const module1Practice: PracticeProblem[] = [
+  ...module1IntroPractice,
+  ...environmentPractice,
 ];

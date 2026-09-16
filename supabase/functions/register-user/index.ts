@@ -164,12 +164,6 @@ Deno.serve(async (req) => {
         department,
         role: "student",
       });
-      if (resolved.id) {
-        await admin.rpc("enroll_student_for_college", {
-          p_user_id: userId,
-          p_college_id: resolved.id,
-        });
-      }
     }
 
     return json({ success: true });

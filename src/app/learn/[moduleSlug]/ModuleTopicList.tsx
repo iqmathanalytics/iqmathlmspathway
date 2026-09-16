@@ -5,7 +5,7 @@ import { CheckCircle2, Circle, Lock, Clock } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/contexts/ProgressContext";
 import { NavigationLink } from "@/components/ui/NavigationLink";
-import { isAdmin } from "@/lib/admin";
+import { unlocksAllContent } from "@/lib/admin";
 import { getUnlockedTopicIds } from "@/lib/topic-locking";
 import { hasQuiz } from "@/data/quizzes/meta";
 
@@ -21,12 +21,12 @@ export function ModuleTopicList({
   courseModules,
   topicExplanations,
 }: ModuleTopicListProps) {
-  const { profile } = useAuth();
+  const { user, profile } = useAuth();
   const { progress, ready } = useProgress();
   const published = courseModule.topics.filter((t) => t.published);
   const completedIds = ready ? progress.completedTopics : [];
   const unlockedTopicIds = getUnlockedTopicIds(courseModules, progress, hasQuiz, {
-    unlockAll: isAdmin(profile),
+    unlockAll: unlocksAllContent(profile, user?.email),
   });
   const firstUnlockedTopic = published.find((topic) => unlockedTopicIds.has(topic.id));
 

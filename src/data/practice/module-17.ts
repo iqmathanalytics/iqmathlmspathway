@@ -4,2901 +4,3149 @@ export const module17Practice: PracticeProblem[] = [
   {
     "id": "m17-t1-p01",
     "topicId": "m17-t1",
-    "slug": "m17_t1-1",
-    "title": "Descriptive Statistics: Warm-up",
+    "slug": "desc-mean",
+    "title": "Descriptive: The Mean",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Descriptive Statistics. Print Ready on one line.",
+    "description": "Use statistics.mean to print the average of five daily sales figures.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Import "
         },
         {
           "type": "code",
-          "value": "Descriptive Statistics"
+          "value": "statistics"
         },
         {
           "type": "text",
-          "value": ". Print the word "
+          "value": " and print "
         },
         {
           "type": "code",
-          "value": "Ready"
+          "value": "statistics.mean(sales)"
         },
         {
           "type": "text",
-          "value": " on one line."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": " for "
+        },
         {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
+          "type": "code",
+          "value": "[12, 15, 20, 25, 28]"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "editorPlaceholder": "# print(statistics.mean(sales))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "statistics",
+        "sales"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "The mean is the sum divided by the count.",
+          "statistics is in the standard library — no install needed.",
+          "It returns an int when the result is whole."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "20"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Use statistics.mean",
+      "Output must be exactly: 20"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "print(statistics.mean(sales))"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: print the mean\nimport statistics\n\nsales = [12, 15, 20, 25, 28]\n",
+    "solutionCode": "import statistics\n\nsales = [12, 15, 20, 25, 28]\nprint(statistics.mean(sales))",
     "publicTests": [
       {
         "id": "m17-t1-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "20",
         "visibility": "public"
       },
       {
         "id": "m17-t1-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "statistics was imported",
+        "assertCode": "assert \"statistics\" in globals(), \"Import statistics first\"",
         "visibility": "public"
       },
       {
         "id": "m17-t1-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "mean is correct",
+        "assertCode": "assert (statistics.mean(sales)) == (20), \"Expected \" + repr(20) + \", got \" + repr(statistics.mean(sales))",
+        "visibility": "public"
+      },
+      {
+        "id": "m17-t1-p01-t4",
+        "label": "the data is unchanged",
+        "assertCode": "assert (sales) == ([12, 15, 20, 25, 28]), \"Expected \" + repr([12, 15, 20, 25, 28]) + \", got \" + repr(sales)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Descriptive Statistics. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Use statistics.mean to print the average of five daily sales figures.\n\nReference solution:\nimport statistics\n\nsales = [12, 15, 20, 25, 28]\nprint(statistics.mean(sales))"
   },
   {
     "id": "m17-t1-p02",
     "topicId": "m17-t1",
-    "slug": "m17_t1-2",
-    "title": "Descriptive Statistics: Output Two Values",
+    "slug": "desc-median",
+    "title": "Descriptive: The Median",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Descriptive Statistics and print them comma-separated.",
+    "description": "Use statistics.median to print the middle value of the sales list.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Descriptive Statistics and print them separated by a comma."
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "statistics.median(sales)"
+        },
+        {
+          "type": "text",
+          "value": ". With five sorted values, the median is the third one."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# print(statistics.median(sales))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "statistics",
+        "sales"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "The median splits the data in half.",
+          "It barely moves when one value is extreme, unlike the mean."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "20"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Use statistics.median",
+      "Output must be exactly: 20"
     ],
     "hints": [
-      "Create two variables related to Descriptive Statistics",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "print(statistics.median(sales))"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Descriptive Statistics and print them comma-separated. Key points: Create two variables related to Descriptive Statistics Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: print the median\nimport statistics\n\nsales = [12, 15, 20, 25, 28]\n",
+    "solutionCode": "import statistics\n\nsales = [12, 15, 20, 25, 28]\nprint(statistics.median(sales))",
     "publicTests": [
       {
         "id": "m17-t1-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "20",
         "visibility": "public"
       },
       {
         "id": "m17-t1-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "median is correct",
+        "assertCode": "assert (statistics.median(sales)) == (20), \"Expected \" + repr(20) + \", got \" + repr(statistics.median(sales))",
         "visibility": "public"
       },
       {
         "id": "m17-t1-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "median resists an outlier",
+        "assertCode": "assert statistics.median(sales + [500]) < statistics.mean(sales + [500]), \"Adding a huge value should move the mean far more than the median\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Use statistics.median to print the middle value of the sales list.\n\nReference solution:\nimport statistics\n\nsales = [12, 15, 20, 25, 28]\nprint(statistics.median(sales))"
   },
   {
     "id": "m17-t1-p03",
     "topicId": "m17-t1",
-    "slug": "m17_t1-3",
-    "title": "Descriptive Statistics: Simple Loop",
-    "difficulty": "medium",
+    "slug": "desc-mode",
+    "title": "Descriptive: The Mode",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Descriptive Statistics.",
+    "description": "Use statistics.mode to print the most common customer rating.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "For ratings "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "[4, 5, 5, 3, 5]"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Descriptive Statistics."
+          "value": " print "
+        },
+        {
+          "type": "code",
+          "value": "statistics.mode(ratings)"
+        },
+        {
+          "type": "text",
+          "value": " — the value that appears most often."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# print(statistics.mode(ratings))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "statistics",
+        "ratings"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "The mode is the only average that works on categories.",
+          "Use it for ratings, regions, and product names."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "5"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Use statistics.mode",
+      "Output must be exactly: 5"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "print(statistics.mode(ratings))"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Descriptive Statistics. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: print the most common rating\nimport statistics\n\nratings = [4, 5, 5, 3, 5]\n",
+    "solutionCode": "import statistics\n\nratings = [4, 5, 5, 3, 5]\nprint(statistics.mode(ratings))",
     "publicTests": [
       {
         "id": "m17-t1-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "5",
         "visibility": "public"
       },
       {
         "id": "m17-t1-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "mode is the most frequent value",
+        "assertCode": "assert (statistics.mode(ratings)) == (5), \"Expected \" + repr(5) + \", got \" + repr(statistics.mode(ratings))",
         "visibility": "public"
       },
       {
         "id": "m17-t1-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "5 really appears three times",
+        "assertCode": "assert (ratings.count(5)) == (3), \"Expected \" + repr(3) + \", got \" + repr(ratings.count(5))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Use statistics.mode to print the most common customer rating.\n\nReference solution:\nimport statistics\n\nratings = [4, 5, 5, 3, 5]\nprint(statistics.mode(ratings))"
   },
   {
     "id": "m17-t1-p04",
     "topicId": "m17-t1",
-    "slug": "m17_t1-4",
-    "title": "Descriptive Statistics: Condition",
+    "slug": "desc-range",
+    "title": "Descriptive: The Range",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Compute max minus min into a variable named spread and print it.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "Store "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "max(sales) - min(sales)"
         },
         {
           "type": "text",
-          "value": ". If "
+          "value": " in "
         },
         {
           "type": "code",
-          "value": "score >= 60"
+          "value": "spread"
         },
         {
           "type": "text",
-          "value": ", print "
-        },
-        {
-          "type": "code",
-          "value": "Pass"
-        },
-        {
-          "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": " and print it. The range is the crudest measure of spread."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# spread = max(sales) - min(sales)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "sales",
+        "spread"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Range = max - min.",
+          "It uses only two values, so a single outlier dominates it."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "16"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Use max() and min() — do not type 16",
+      "Store the result in spread"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "spread = max(sales) - min(sales)"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: compute the range\nsales = [12, 15, 20, 25, 28]\nspread = 0\n",
+    "solutionCode": "sales = [12, 15, 20, 25, 28]\nspread = max(sales) - min(sales)\nprint(spread)",
     "publicTests": [
       {
         "id": "m17-t1-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "16",
         "visibility": "public"
       },
       {
         "id": "m17-t1-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "spread is max minus min",
+        "assertCode": "assert (spread) == (16), \"Expected \" + repr(16) + \", got \" + repr(spread)",
         "visibility": "public"
       },
       {
         "id": "m17-t1-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "computed from the data",
+        "assertCode": "assert (spread) == (max(sales) - min(sales)), \"Expected \" + repr(max(sales) - min(sales)) + \", got \" + repr(spread)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Compute max minus min into a variable named spread and print it.\n\nReference solution:\nsales = [12, 15, 20, 25, 28]\nspread = max(sales) - min(sales)\nprint(spread)"
   },
   {
     "id": "m17-t1-p05",
     "topicId": "m17-t1",
-    "slug": "m17_t1-5",
-    "title": "Descriptive Statistics: Function Stub",
+    "slug": "desc-variance",
+    "title": "Descriptive: The Variance",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Use statistics.pvariance to print the population variance rounded to two decimals.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "round(statistics.pvariance(sales), 2)"
         },
         {
           "type": "text",
-          "value": " that prints "
-        },
-        {
-          "type": "code",
-          "value": "Hello"
-        },
-        {
-          "type": "text",
-          "value": " and call it once."
+          "value": " — the average squared distance from the mean."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# print(round(statistics.pvariance(sales), 2))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "statistics",
+        "sales"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "pvariance treats the data as the whole population.",
+          "variance() would divide by n-1 for a sample instead.",
+          "Variance is in squared units, which is why the standard deviation is easier to read."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "35.6"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Use statistics.pvariance",
+      "Round to 2 decimals",
+      "Output must be exactly: 35.6"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "print(round(statistics.pvariance(sales), 2))"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: print the population variance\nimport statistics\n\nsales = [12, 15, 20, 25, 28]\n",
+    "solutionCode": "import statistics\n\nsales = [12, 15, 20, 25, 28]\nprint(round(statistics.pvariance(sales), 2))",
     "publicTests": [
       {
         "id": "m17-t1-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": "35.6",
         "visibility": "public"
       },
       {
         "id": "m17-t1-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "variance is correct",
+        "assertCode": "assert (round(statistics.pvariance(sales), 2)) == (35.6), \"Expected \" + repr(35.6) + \", got \" + repr(round(statistics.pvariance(sales), 2))",
         "visibility": "public"
       },
       {
         "id": "m17-t1-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "sample variance is larger",
+        "assertCode": "assert statistics.variance(sales) > statistics.pvariance(sales), \"Dividing by n-1 gives a larger number than dividing by n\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Use statistics.pvariance to print the population variance rounded to two decimals.\n\nReference solution:\nimport statistics\n\nsales = [12, 15, 20, 25, 28]\nprint(round(statistics.pvariance(sales), 2))"
   },
   {
     "id": "m17-t1-p06",
     "topicId": "m17-t1",
-    "slug": "m17_t1-6",
-    "title": "Descriptive Statistics: List Practice",
-    "difficulty": "hard",
+    "slug": "desc-stdev",
+    "title": "Descriptive: The Standard Deviation",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Use statistics.pstdev to print the standard deviation rounded to two decimals.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Descriptive Statistics. Print the "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "round(statistics.pstdev(sales), 2)"
         },
         {
           "type": "text",
-          "value": " using index "
-        },
-        {
-          "type": "code",
-          "value": "1"
-        },
-        {
-          "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": " — the square root of the variance, back in the original units."
         }
+      ],
+      "editorPlaceholder": "# print(round(statistics.pstdev(sales), 2))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "statistics",
+        "sales"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "The standard deviation says how far a typical value sits from the mean.",
+          "It is the number you actually report, unlike variance."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "5.97"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Use statistics.pstdev",
+      "Round to 2 decimals",
+      "Output must be exactly: 5.97"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "print(round(statistics.pstdev(sales), 2))"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: print the standard deviation\nimport statistics\n\nsales = [12, 15, 20, 25, 28]\n",
+    "solutionCode": "import statistics\n\nsales = [12, 15, 20, 25, 28]\nprint(round(statistics.pstdev(sales), 2))",
     "publicTests": [
       {
         "id": "m17-t1-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "middle",
+        "expectedStdout": "5.97",
         "visibility": "public"
       },
       {
         "id": "m17-t1-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "standard deviation is correct",
+        "assertCode": "assert (round(statistics.pstdev(sales), 2)) == (5.97), \"Expected \" + repr(5.97) + \", got \" + repr(round(statistics.pstdev(sales), 2))",
         "visibility": "public"
       },
       {
         "id": "m17-t1-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "it is the square root of the variance",
+        "assertCode": "assert abs(statistics.pstdev(sales) ** 2 - statistics.pvariance(sales)) < 1e-9, \"pstdev squared should equal pvariance\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Use statistics.pstdev to print the standard deviation rounded to two decimals.\n\nReference solution:\nimport statistics\n\nsales = [12, 15, 20, 25, 28]\nprint(round(statistics.pstdev(sales), 2))"
   },
   {
     "id": "m17-t1-p07",
     "topicId": "m17-t1",
-    "slug": "m17_t1-7",
-    "title": "Descriptive Statistics: Dict Lookup",
+    "slug": "desc-summary-line",
+    "title": "Descriptive: A Summary Line",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Compute count, mean, and median as floats and print them in one formatted summary line.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Store "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "count"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": ", "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "mean"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
+          "value": ", and "
         },
         {
           "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "median"
+        },
+        {
+          "type": "text",
+          "value": " (the last two as floats) and print "
+        },
+        {
+          "type": "code",
+          "value": "count=5, mean=20.0, median=20.0"
         },
         {
           "type": "text",
           "value": "."
         }
       ],
+      "editorPlaceholder": "# count = len(sales)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "statistics",
+        "count",
+        "mean",
+        "median"
+      ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "len() gives the count.",
+          "Wrap mean and median in float() so both print with a decimal point.",
+          "When mean and median match, the data is symmetric."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "count=5, mean=20.0, median=20.0"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Use len(), statistics.mean, and statistics.median",
+      "Wrap mean and median in float()",
+      "Output must be exactly: count=5, mean=20.0, median=20.0"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "mean = float(statistics.mean(sales))",
+      "print(f\"count={count}, mean={mean}, median={median}\")"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: build the summary\nimport statistics\n\nsales = [12, 15, 20, 25, 28]\ncount = 0\nmean = 0.0\nmedian = 0.0\n",
+    "solutionCode": "import statistics\n\nsales = [12, 15, 20, 25, 28]\ncount = len(sales)\nmean = float(statistics.mean(sales))\nmedian = float(statistics.median(sales))\nprint(f\"count={count}, mean={mean}, median={median}\")",
     "publicTests": [
       {
         "id": "m17-t1-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "count=5, mean=20.0, median=20.0",
         "visibility": "public"
       },
       {
         "id": "m17-t1-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "count is the number of values",
+        "assertCode": "assert (count) == (5), \"Expected \" + repr(5) + \", got \" + repr(count)",
         "visibility": "public"
       },
       {
         "id": "m17-t1-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "mean is a float",
+        "assertCode": "assert (mean) == (20.0), \"Expected \" + repr(20.0) + \", got \" + repr(mean)",
+        "visibility": "public"
+      },
+      {
+        "id": "m17-t1-p07-t4",
+        "label": "median is a float",
+        "assertCode": "assert (median) == (20.0), \"Expected \" + repr(20.0) + \", got \" + repr(median)",
+        "visibility": "public"
+      },
+      {
+        "id": "m17-t1-p07-t5",
+        "label": "mean has the right type",
+        "assertCode": "assert \"mean\" in globals(), \"Expected a variable named mean\"\nassert isinstance(mean, float), \"Expected mean to be float, got \" + type(mean).__name__",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Compute count, mean, and median as floats and print them in one formatted summary line.\n\nReference solution:\nimport statistics\n\nsales = [12, 15, 20, 25, 28]\ncount = len(sales)\nmean = float(statistics.mean(sales))\nmedian = float(statistics.median(sales))\nprint(f\"count={count}, mean={mean}, median={median}\")"
   },
   {
     "id": "m17-t2-p01",
     "topicId": "m17-t2",
-    "slug": "m17_t2-1",
-    "title": "Data Distributions: Warm-up",
+    "slug": "dist-histogram-counts",
+    "title": "Distributions: Count Values per Bin",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Data Distributions. Print Ready on one line.",
+    "description": "Use np.histogram with explicit bin edges and print the counts per bin as a list.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "For "
         },
         {
           "type": "code",
-          "value": "Data Distributions"
+          "value": "[5, 12, 15, 22, 25, 28]"
         },
         {
           "type": "text",
-          "value": ". Print the word "
+          "value": " with edges "
         },
         {
           "type": "code",
-          "value": "Ready"
+          "value": "[0, 10, 20, 30]"
         },
         {
           "type": "text",
-          "value": " on one line."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": ", print "
+        },
         {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
+          "type": "code",
+          "value": "counts.tolist()"
+        },
+        {
+          "type": "text",
+          "value": " from "
+        },
+        {
+          "type": "code",
+          "value": "np.histogram"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "editorPlaceholder": "# counts, edges = np.histogram(...)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "counts"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "np.histogram returns the counts and the edges — take index 0 for counts.",
+          "Explicit edges make the bins reproducible.",
+          "This is the data behind every histogram chart."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "[1, 2, 3]"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Use np.histogram with bins=[0, 10, 20, 30]",
+      "Output must be exactly: [1, 2, 3]"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "counts, edges = np.histogram(values, bins=[0, 10, 20, 30])",
+      "print(counts.tolist())"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: count the values in each bin\nimport numpy as np\n\nvalues = [5, 12, 15, 22, 25, 28]\ncounts = None\n",
+    "solutionCode": "import numpy as np\n\nvalues = [5, 12, 15, 22, 25, 28]\ncounts, edges = np.histogram(values, bins=[0, 10, 20, 30])\n\nprint(counts.tolist())",
     "publicTests": [
       {
         "id": "m17-t2-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "[1, 2, 3]",
         "visibility": "public"
       },
       {
         "id": "m17-t2-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "counts per bin",
+        "assertCode": "assert (counts.tolist()) == ([1, 2, 3]), \"Expected \" + repr([1, 2, 3]) + \", got \" + repr(counts.tolist())",
         "visibility": "public"
       },
       {
         "id": "m17-t2-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "every value was counted",
+        "assertCode": "assert (int(counts.sum())) == (6), \"Expected \" + repr(6) + \", got \" + repr(int(counts.sum()))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Data Distributions. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Use np.histogram with explicit bin edges and print the counts per bin as a list.\n\nReference solution:\nimport numpy as np\n\nvalues = [5, 12, 15, 22, 25, 28]\ncounts, edges = np.histogram(values, bins=[0, 10, 20, 30])\n\nprint(counts.tolist())"
   },
   {
     "id": "m17-t2-p02",
     "topicId": "m17-t2",
-    "slug": "m17_t2-2",
-    "title": "Data Distributions: Output Two Values",
+    "slug": "dist-value-counts",
+    "title": "Distributions: Frequency of Each Rating",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Data Distributions and print them comma-separated.",
+    "description": "Use value_counts with sort_index to print how many times each rating appears.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Data Distributions and print them separated by a comma."
+          "value": "For ratings "
+        },
+        {
+          "type": "code",
+          "value": "[3, 4, 4, 5, 5, 5]"
+        },
+        {
+          "type": "text",
+          "value": " print the frequency of each value as a dict, sorted by rating."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# counts = ratings.value_counts().sort_index()",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "counts"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "value_counts() orders by frequency, which is unstable when counts tie.",
+          "sort_index() orders by the rating instead.",
+          "Convert keys and values with int() so the dict prints plainly."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "{3: 1, 4: 2, 5: 3}"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Use value_counts().sort_index()",
+      "Output must be exactly: {3: 1, 4: 2, 5: 3}"
     ],
     "hints": [
-      "Create two variables related to Data Distributions",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "counts = ratings.value_counts().sort_index()",
+      "print({int(k): int(v) for k, v in counts.items()})"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Data Distributions and print them comma-separated. Key points: Create two variables related to Data Distributions Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: count each rating\nimport pandas as pd\n\nratings = pd.Series([3, 4, 4, 5, 5, 5])\ncounts = None\n",
+    "solutionCode": "import pandas as pd\n\nratings = pd.Series([3, 4, 4, 5, 5, 5])\ncounts = ratings.value_counts().sort_index()\n\nprint({int(k): int(v) for k, v in counts.items()})",
     "publicTests": [
       {
         "id": "m17-t2-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "{3: 1, 4: 2, 5: 3}",
         "visibility": "public"
       },
       {
         "id": "m17-t2-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "three 5-star ratings",
+        "assertCode": "assert (int(counts[5])) == (3), \"Expected \" + repr(3) + \", got \" + repr(int(counts[5]))",
         "visibility": "public"
       },
       {
         "id": "m17-t2-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "one 3-star rating",
+        "assertCode": "assert (int(counts[3])) == (1), \"Expected \" + repr(1) + \", got \" + repr(int(counts[3]))",
+        "visibility": "public"
+      },
+      {
+        "id": "m17-t2-p02-t4",
+        "label": "sorted by rating",
+        "assertCode": "assert ([int(k) for k in counts.index]) == ([3, 4, 5]), \"Expected \" + repr([3, 4, 5]) + \", got \" + repr([int(k) for k in counts.index])",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Use value_counts with sort_index to print how many times each rating appears.\n\nReference solution:\nimport pandas as pd\n\nratings = pd.Series([3, 4, 4, 5, 5, 5])\ncounts = ratings.value_counts().sort_index()\n\nprint({int(k): int(v) for k, v in counts.items()})"
   },
   {
     "id": "m17-t2-p03",
     "topicId": "m17-t2",
-    "slug": "m17_t2-3",
-    "title": "Data Distributions: Simple Loop",
+    "slug": "dist-quartiles",
+    "title": "Distributions: The Quartiles",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Data Distributions.",
+    "description": "Use np.percentile to print the 25th, 50th, and 75th percentiles as a list.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "For "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "[10, 20, 30, 40, 50]"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Data Distributions."
+          "value": " print "
+        },
+        {
+          "type": "code",
+          "value": "np.percentile(values, [25, 50, 75]).tolist()"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# quartiles = np.percentile(values, [25, 50, 75])",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "quartiles"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Percentiles split sorted data into shares.",
+          "The 50th percentile is the median.",
+          "Q1 and Q3 are the edges of the box in a box plot."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "[20.0, 30.0, 40.0]"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Use np.percentile with [25, 50, 75]",
+      "Output must be exactly: [20.0, 30.0, 40.0]"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "quartiles = np.percentile(values, [25, 50, 75])",
+      "print(quartiles.tolist())"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Data Distributions. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: print the three quartiles\nimport numpy as np\n\nvalues = [10, 20, 30, 40, 50]\nquartiles = None\n",
+    "solutionCode": "import numpy as np\n\nvalues = [10, 20, 30, 40, 50]\nquartiles = np.percentile(values, [25, 50, 75])\n\nprint(quartiles.tolist())",
     "publicTests": [
       {
         "id": "m17-t2-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "[20.0, 30.0, 40.0]",
         "visibility": "public"
       },
       {
         "id": "m17-t2-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "quartiles are correct",
+        "assertCode": "assert (quartiles.tolist()) == ([20.0, 30.0, 40.0]), \"Expected \" + repr([20.0, 30.0, 40.0]) + \", got \" + repr(quartiles.tolist())",
         "visibility": "public"
       },
       {
         "id": "m17-t2-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "the middle quartile is the median",
+        "assertCode": "assert (float(quartiles[1])) == (float(np.median(values))), \"Expected \" + repr(float(np.median(values))) + \", got \" + repr(float(quartiles[1]))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Use np.percentile to print the 25th, 50th, and 75th percentiles as a list.\n\nReference solution:\nimport numpy as np\n\nvalues = [10, 20, 30, 40, 50]\nquartiles = np.percentile(values, [25, 50, 75])\n\nprint(quartiles.tolist())"
   },
   {
     "id": "m17-t2-p04",
     "topicId": "m17-t2",
-    "slug": "m17_t2-4",
-    "title": "Data Distributions: Condition",
+    "slug": "dist-skew",
+    "title": "Distributions: Measure the Skew",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Use the pandas .skew() method to print how lopsided a right-skewed series is, to two decimals.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "For "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "[2, 3, 3, 4, 10]"
         },
         {
           "type": "text",
-          "value": ". If "
+          "value": " print "
         },
         {
           "type": "code",
-          "value": "score >= 60"
+          "value": "round(float(values.skew()), 2)"
         },
         {
           "type": "text",
-          "value": ", print "
-        },
-        {
-          "type": "code",
-          "value": "Pass"
-        },
-        {
-          "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": ". A positive result means a long tail to the right."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# print(round(float(values.skew()), 2))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "values"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Skew near 0 means symmetric; positive means a right tail.",
+          "Right-skewed data is normal for revenue and income.",
+          "Skew is why you often report the median rather than the mean."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "1.97"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Use .skew()",
+      "Round to 2 decimals",
+      "Output must be exactly: 1.97"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "print(round(float(values.skew()), 2))"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: measure the skew\nimport pandas as pd\n\nvalues = pd.Series([2, 3, 3, 4, 10])\n",
+    "solutionCode": "import pandas as pd\n\nvalues = pd.Series([2, 3, 3, 4, 10])\nprint(round(float(values.skew()), 2))",
     "publicTests": [
       {
         "id": "m17-t2-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "1.97",
         "visibility": "public"
       },
       {
         "id": "m17-t2-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "skew is correct",
+        "assertCode": "assert (round(float(values.skew()), 2)) == (1.97), \"Expected \" + repr(1.97) + \", got \" + repr(round(float(values.skew()), 2))",
         "visibility": "public"
       },
       {
         "id": "m17-t2-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "the distribution is right-skewed",
+        "assertCode": "assert float(values.skew()) > 0, \"A long right tail gives a positive skew\"",
+        "visibility": "public"
+      },
+      {
+        "id": "m17-t2-p04-t4",
+        "label": "the mean is pulled above the median",
+        "assertCode": "assert float(values.mean()) > float(values.median()), \"Right skew drags the mean above the median\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Use the pandas .skew() method to print how lopsided a right-skewed series is, to two decimals.\n\nReference solution:\nimport pandas as pd\n\nvalues = pd.Series([2, 3, 3, 4, 10])\nprint(round(float(values.skew()), 2))"
   },
   {
     "id": "m17-t2-p05",
     "topicId": "m17-t2",
-    "slug": "m17_t2-5",
-    "title": "Data Distributions: Function Stub",
+    "slug": "dist-cut-bins",
+    "title": "Distributions: Bucket Into Labelled Bins",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Use pd.cut with low/mid/high labels and print how many values fall in each bucket.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "Bucket "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "[5, 12, 15, 22, 25, 28]"
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": " with "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": "pd.cut"
         },
         {
           "type": "text",
-          "value": " and call it once."
+          "value": " using edges "
+        },
+        {
+          "type": "code",
+          "value": "[0, 10, 20, 30]"
+        },
+        {
+          "type": "text",
+          "value": " and labels "
+        },
+        {
+          "type": "code",
+          "value": "low, mid, high"
+        },
+        {
+          "type": "text",
+          "value": ", then print the counts."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# buckets = pd.cut(values, bins=[...], labels=[...])",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "buckets"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "pd.cut turns a numeric column into labelled categories.",
+          "The labels keep their given order, so sort_index gives low, mid, high.",
+          "Binning is how continuous data becomes a segment you can report on."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "{'low': 1, 'mid': 2, 'high': 3}"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Use pd.cut with the given edges and labels",
+      "Output must be exactly: {'low': 1, 'mid': 2, 'high': 3}"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "buckets = pd.cut(values, bins=[0, 10, 20, 30], labels=[\"low\", \"mid\", \"high\"])",
+      "counts = buckets.value_counts().sort_index()"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: bucket the values, then count them\nimport pandas as pd\n\nvalues = pd.Series([5, 12, 15, 22, 25, 28])\nbuckets = None\n",
+    "solutionCode": "import pandas as pd\n\nvalues = pd.Series([5, 12, 15, 22, 25, 28])\nbuckets = pd.cut(values, bins=[0, 10, 20, 30], labels=[\"low\", \"mid\", \"high\"])\ncounts = buckets.value_counts().sort_index()\n\nprint({str(k): int(v) for k, v in counts.items()})",
     "publicTests": [
       {
         "id": "m17-t2-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": "{'low': 1, 'mid': 2, 'high': 3}",
         "visibility": "public"
       },
       {
         "id": "m17-t2-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "three values are high",
+        "assertCode": "assert (int(counts[\"high\"])) == (3), \"Expected \" + repr(3) + \", got \" + repr(int(counts[\"high\"]))",
         "visibility": "public"
       },
       {
         "id": "m17-t2-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "one value is low",
+        "assertCode": "assert (int(counts[\"low\"])) == (1), \"Expected \" + repr(1) + \", got \" + repr(int(counts[\"low\"]))",
+        "visibility": "public"
+      },
+      {
+        "id": "m17-t2-p05-t4",
+        "label": "labels keep their given order",
+        "assertCode": "assert ([str(k) for k in counts.index]) == ([\"low\", \"mid\", \"high\"]), \"Expected \" + repr([\"low\", \"mid\", \"high\"]) + \", got \" + repr([str(k) for k in counts.index])",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Use pd.cut with low/mid/high labels and print how many values fall in each bucket.\n\nReference solution:\nimport pandas as pd\n\nvalues = pd.Series([5, 12, 15, 22, 25, 28])\nbuckets = pd.cut(values, bins=[0, 10, 20, 30], labels=[\"low\", \"mid\", \"high\"])\ncounts = buckets.value_counts().sort_index()\n\nprint({str(k): int(v) for k, v in counts.items()})"
   },
   {
     "id": "m17-t2-p06",
     "topicId": "m17-t2",
-    "slug": "m17_t2-6",
-    "title": "Data Distributions: List Practice",
-    "difficulty": "hard",
+    "slug": "dist-min-max-scale",
+    "title": "Distributions: Scale to 0-1",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Min-max scale an array so the smallest value becomes 0 and the largest becomes 1.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Data Distributions. Print the "
+          "value": "Scale "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "[10, 20, 30, 40]"
         },
         {
           "type": "text",
-          "value": " using index "
+          "value": " with "
         },
         {
           "type": "code",
-          "value": "1"
+          "value": "(values - values.min()) / (values.max() - values.min())"
         },
         {
           "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": " into "
+        },
+        {
+          "type": "code",
+          "value": "scaled"
+        },
+        {
+          "type": "text",
+          "value": ", then print it rounded to 2 decimals."
         }
+      ],
+      "editorPlaceholder": "# scaled = (values - values.min()) / ...",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "scaled"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "Min-max scaling squeezes any range into 0 to 1.",
+          "The smallest value always becomes 0 and the largest 1.",
+          "Use it before comparing columns measured in different units."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "[0.0, 0.33, 0.67, 1.0]"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Use .min() and .max() — do not hardcode 10 or 40",
+      "Round only when printing"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "scaled = (values - values.min()) / (values.max() - values.min())",
+      "print(np.round(scaled, 2).tolist())"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: scale the values to 0-1\nimport numpy as np\n\nvalues = np.array([10, 20, 30, 40])\nscaled = None\n",
+    "solutionCode": "import numpy as np\n\nvalues = np.array([10, 20, 30, 40])\nscaled = (values - values.min()) / (values.max() - values.min())\n\nprint(np.round(scaled, 2).tolist())",
     "publicTests": [
       {
         "id": "m17-t2-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "middle",
+        "expectedStdout": "[0.0, 0.33, 0.67, 1.0]",
         "visibility": "public"
       },
       {
         "id": "m17-t2-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "values scaled to 0-1",
+        "assertCode": "assert (np.round(scaled, 2).tolist()) == ([0.0, 0.33, 0.67, 1.0]), \"Expected \" + repr([0.0, 0.33, 0.67, 1.0]) + \", got \" + repr(np.round(scaled, 2).tolist())",
         "visibility": "public"
       },
       {
         "id": "m17-t2-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "the smallest value became 0",
+        "assertCode": "assert abs(float(scaled.min())) < 1e-9, \"After min-max scaling the minimum must be 0\"",
+        "visibility": "public"
+      },
+      {
+        "id": "m17-t2-p06-t4",
+        "label": "the largest value became 1",
+        "assertCode": "assert abs(float(scaled.max()) - 1.0) < 1e-9, \"After min-max scaling the maximum must be 1\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Min-max scale an array so the smallest value becomes 0 and the largest becomes 1.\n\nReference solution:\nimport numpy as np\n\nvalues = np.array([10, 20, 30, 40])\nscaled = (values - values.min()) / (values.max() - values.min())\n\nprint(np.round(scaled, 2).tolist())"
   },
   {
     "id": "m17-t2-p07",
     "topicId": "m17-t2",
-    "slug": "m17_t2-7",
-    "title": "Data Distributions: Dict Lookup",
+    "slug": "dist-spread-summary",
+    "title": "Distributions: Range and IQR",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Print the full range on line 1 and the interquartile range on line 2 to compare the two spread measures.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "For "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "[10, 20, 30, 40, 50]"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": " print "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "spread"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
+          "value": " (max minus min), then "
         },
         {
           "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "iqr"
         },
         {
           "type": "text",
-          "value": "."
+          "value": " (Q3 minus Q1)."
         }
+      ],
+      "editorPlaceholder": "# q1, q3 = np.percentile(values, [25, 75])",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "spread",
+        "iqr"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "Range uses the two extremes; IQR uses the middle half.",
+          "np.percentile returns floats, so the IQR prints as 20.0.",
+          "IQR is the spread measure that ignores outliers."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "40\n20.0"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Use np.percentile for Q1 and Q3",
+      "Print the range first, then the IQR"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "q1, q3 = np.percentile(values, [25, 75])",
+      "iqr = q3 - q1"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: compute both spread measures\nimport numpy as np\n\nvalues = [10, 20, 30, 40, 50]\nspread = 0\niqr = 0.0\n",
+    "solutionCode": "import numpy as np\n\nvalues = [10, 20, 30, 40, 50]\nspread = max(values) - min(values)\nq1, q3 = np.percentile(values, [25, 75])\niqr = q3 - q1\n\nprint(spread)\nprint(iqr)",
     "publicTests": [
       {
         "id": "m17-t2-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "40\n20.0",
         "visibility": "public"
       },
       {
         "id": "m17-t2-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "range is max minus min",
+        "assertCode": "assert (spread) == (40), \"Expected \" + repr(40) + \", got \" + repr(spread)",
         "visibility": "public"
       },
       {
         "id": "m17-t2-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "IQR is Q3 minus Q1",
+        "assertCode": "assert (round(float(iqr), 2)) == (20.0), \"Expected \" + repr(20.0) + \", got \" + repr(round(float(iqr), 2))",
+        "visibility": "public"
+      },
+      {
+        "id": "m17-t2-p07-t4",
+        "label": "IQR is narrower than the range",
+        "assertCode": "assert float(iqr) < spread, \"The middle half must span less than the whole range\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Print the full range on line 1 and the interquartile range on line 2 to compare the two spread measures.\n\nReference solution:\nimport numpy as np\n\nvalues = [10, 20, 30, 40, 50]\nspread = max(values) - min(values)\nq1, q3 = np.percentile(values, [25, 75])\niqr = q3 - q1\n\nprint(spread)\nprint(iqr)"
   },
   {
     "id": "m17-t3-p01",
     "topicId": "m17-t3",
-    "slug": "m17_t3-1",
-    "title": "Correlation and Covariance: Warm-up",
+    "slug": "corr-perfect-positive",
+    "title": "Correlation: A Perfect Positive",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Correlation and Covariance. Print Ready on one line.",
+    "description": "Use np.corrcoef on two arrays that move together exactly and print the coefficient.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "For "
         },
         {
           "type": "code",
-          "value": "Correlation and Covariance"
+          "value": "[1, 2, 3]"
         },
         {
           "type": "text",
-          "value": ". Print the word "
+          "value": " and "
         },
         {
           "type": "code",
-          "value": "Ready"
+          "value": "[2, 4, 6]"
         },
         {
           "type": "text",
-          "value": " on one line."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": " print "
+        },
         {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
+          "type": "code",
+          "value": "round(float(np.corrcoef(a, b)[0, 1]), 2)"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "editorPlaceholder": "# print(round(float(np.corrcoef(a, b)[0, 1]), 2))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "a",
+        "b"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "corrcoef returns a matrix; the [0, 1] cell is the correlation between the two inputs.",
+          "1.0 means a perfect straight-line relationship.",
+          "Correlation has no units, so it always sits between -1 and 1."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "1.0"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Use np.corrcoef and index [0, 1]",
+      "Output must be exactly: 1.0"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "print(round(float(np.corrcoef(a, b)[0, 1]), 2))"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: print the correlation\nimport numpy as np\n\na = [1, 2, 3]\nb = [2, 4, 6]\n",
+    "solutionCode": "import numpy as np\n\na = [1, 2, 3]\nb = [2, 4, 6]\nprint(round(float(np.corrcoef(a, b)[0, 1]), 2))",
     "publicTests": [
       {
         "id": "m17-t3-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "1.0",
         "visibility": "public"
       },
       {
         "id": "m17-t3-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "correlation is 1.0",
+        "assertCode": "assert (round(float(np.corrcoef(a, b)[0, 1]), 2)) == (1.0), \"Expected \" + repr(1.0) + \", got \" + repr(round(float(np.corrcoef(a, b)[0, 1]), 2))",
         "visibility": "public"
       },
       {
         "id": "m17-t3-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "the matrix is 2 by 2",
+        "assertCode": "assert (np.corrcoef(a, b).shape) == ((2, 2)), \"Expected \" + repr((2, 2)) + \", got \" + repr(np.corrcoef(a, b).shape)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Correlation and Covariance. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Use np.corrcoef on two arrays that move together exactly and print the coefficient.\n\nReference solution:\nimport numpy as np\n\na = [1, 2, 3]\nb = [2, 4, 6]\nprint(round(float(np.corrcoef(a, b)[0, 1]), 2))"
   },
   {
     "id": "m17-t3-p02",
     "topicId": "m17-t3",
-    "slug": "m17_t3-2",
-    "title": "Correlation and Covariance: Output Two Values",
+    "slug": "corr-perfect-negative",
+    "title": "Correlation: A Perfect Negative",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Correlation and Covariance and print them comma-separated.",
+    "description": "Print the correlation of two arrays that move in exactly opposite directions.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Correlation and Covariance and print them separated by a comma."
+          "value": "For "
+        },
+        {
+          "type": "code",
+          "value": "[1, 2, 3]"
+        },
+        {
+          "type": "text",
+          "value": " and "
+        },
+        {
+          "type": "code",
+          "value": "[6, 4, 2]"
+        },
+        {
+          "type": "text",
+          "value": " print the correlation. As one rises the other falls."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# print(round(float(np.corrcoef(a, b)[0, 1]), 2))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "a",
+        "b"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "-1.0 is just as strong a relationship as 1.0, only inverted.",
+          "The sign tells you the direction, the size tells you the strength."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "-1.0"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Use np.corrcoef",
+      "Output must be exactly: -1.0"
     ],
     "hints": [
-      "Create two variables related to Correlation and Covariance",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "print(round(float(np.corrcoef(a, b)[0, 1]), 2))"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Correlation and Covariance and print them comma-separated. Key points: Create two variables related to Correlation and Covariance Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: print the negative correlation\nimport numpy as np\n\na = [1, 2, 3]\nb = [6, 4, 2]\n",
+    "solutionCode": "import numpy as np\n\na = [1, 2, 3]\nb = [6, 4, 2]\nprint(round(float(np.corrcoef(a, b)[0, 1]), 2))",
     "publicTests": [
       {
         "id": "m17-t3-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "-1.0",
         "visibility": "public"
       },
       {
         "id": "m17-t3-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "correlation is -1.0",
+        "assertCode": "assert (round(float(np.corrcoef(a, b)[0, 1]), 2)) == (-1.0), \"Expected \" + repr(-1.0) + \", got \" + repr(round(float(np.corrcoef(a, b)[0, 1]), 2))",
         "visibility": "public"
       },
       {
         "id": "m17-t3-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "the strength is still perfect",
+        "assertCode": "assert abs(float(np.corrcoef(a, b)[0, 1])) == 1.0, \"The magnitude should be 1 even though the sign is negative\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Print the correlation of two arrays that move in exactly opposite directions.\n\nReference solution:\nimport numpy as np\n\na = [1, 2, 3]\nb = [6, 4, 2]\nprint(round(float(np.corrcoef(a, b)[0, 1]), 2))"
   },
   {
     "id": "m17-t3-p03",
     "topicId": "m17-t3",
-    "slug": "m17_t3-3",
-    "title": "Correlation and Covariance: Simple Loop",
+    "slug": "corr-real-data",
+    "title": "Correlation: Units vs Revenue",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Correlation and Covariance.",
+    "description": "Print the correlation between units sold and revenue for five real-looking observations.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "For "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "units"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Correlation and Covariance."
+          "value": " and "
+        },
+        {
+          "type": "code",
+          "value": "revenue"
+        },
+        {
+          "type": "text",
+          "value": " print the correlation rounded to 2 decimals. Real data is rarely exactly 1."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# print(round(float(np.corrcoef(units, revenue)[0, 1]), 2))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "units",
+        "revenue"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "0.99 is a very strong positive relationship.",
+          "Strong correlation is not causation — sales drive both here."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "0.99"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Use np.corrcoef",
+      "Round to 2 decimals",
+      "Output must be exactly: 0.99"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "print(round(float(np.corrcoef(units, revenue)[0, 1]), 2))"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Correlation and Covariance. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: correlate units and revenue\nimport numpy as np\n\nunits = [1, 2, 3, 4, 5]\nrevenue = [12, 18, 22, 33, 38]\n",
+    "solutionCode": "import numpy as np\n\nunits = [1, 2, 3, 4, 5]\nrevenue = [12, 18, 22, 33, 38]\nprint(round(float(np.corrcoef(units, revenue)[0, 1]), 2))",
     "publicTests": [
       {
         "id": "m17-t3-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "0.99",
         "visibility": "public"
       },
       {
         "id": "m17-t3-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "correlation is 0.99",
+        "assertCode": "assert (round(float(np.corrcoef(units, revenue)[0, 1]), 2)) == (0.99), \"Expected \" + repr(0.99) + \", got \" + repr(round(float(np.corrcoef(units, revenue)[0, 1]), 2))",
         "visibility": "public"
       },
       {
         "id": "m17-t3-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "it is strong but not perfect",
+        "assertCode": "assert float(np.corrcoef(units, revenue)[0, 1]) < 1.0, \"Real data should fall just short of a perfect 1.0\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Print the correlation between units sold and revenue for five real-looking observations.\n\nReference solution:\nimport numpy as np\n\nunits = [1, 2, 3, 4, 5]\nrevenue = [12, 18, 22, 33, 38]\nprint(round(float(np.corrcoef(units, revenue)[0, 1]), 2))"
   },
   {
     "id": "m17-t3-p04",
     "topicId": "m17-t3",
-    "slug": "m17_t3-4",
-    "title": "Correlation and Covariance: Condition",
+    "slug": "corr-negative-real",
+    "title": "Correlation: Price vs Demand",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Print the correlation between price and units sold, which should come out negative.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "For price "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "[1, 2, 3, 4, 5]"
         },
         {
           "type": "text",
-          "value": ". If "
+          "value": " and demand "
         },
         {
           "type": "code",
-          "value": "score >= 60"
+          "value": "[30, 22, 26, 14, 10]"
         },
         {
           "type": "text",
-          "value": ", print "
-        },
-        {
-          "type": "code",
-          "value": "Pass"
-        },
-        {
-          "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": " print the correlation. Higher price, lower demand."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# print(round(float(np.corrcoef(price, demand)[0, 1]), 2))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "price",
+        "demand"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "-0.91 is strong and negative — the classic demand curve.",
+          "The single bump at 26 keeps it from reaching -1."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "-0.91"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Use np.corrcoef",
+      "Output must be exactly: -0.91"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "print(round(float(np.corrcoef(price, demand)[0, 1]), 2))"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: correlate price and demand\nimport numpy as np\n\nprice = [1, 2, 3, 4, 5]\ndemand = [30, 22, 26, 14, 10]\n",
+    "solutionCode": "import numpy as np\n\nprice = [1, 2, 3, 4, 5]\ndemand = [30, 22, 26, 14, 10]\nprint(round(float(np.corrcoef(price, demand)[0, 1]), 2))",
     "publicTests": [
       {
         "id": "m17-t3-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "-0.91",
         "visibility": "public"
       },
       {
         "id": "m17-t3-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "correlation is -0.91",
+        "assertCode": "assert (round(float(np.corrcoef(price, demand)[0, 1]), 2)) == (-0.91), \"Expected \" + repr(-0.91) + \", got \" + repr(round(float(np.corrcoef(price, demand)[0, 1]), 2))",
         "visibility": "public"
       },
       {
         "id": "m17-t3-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "the relationship is negative",
+        "assertCode": "assert float(np.corrcoef(price, demand)[0, 1]) < 0, \"Demand falls as price rises, so the correlation must be negative\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Print the correlation between price and units sold, which should come out negative.\n\nReference solution:\nimport numpy as np\n\nprice = [1, 2, 3, 4, 5]\ndemand = [30, 22, 26, 14, 10]\nprint(round(float(np.corrcoef(price, demand)[0, 1]), 2))"
   },
   {
     "id": "m17-t3-p05",
     "topicId": "m17-t3",
-    "slug": "m17_t3-5",
-    "title": "Correlation and Covariance: Function Stub",
+    "slug": "cov-value",
+    "title": "Covariance: The Unscaled Cousin",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Use np.cov to print the covariance of units and revenue, rounded to two decimals.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "round(float(np.cov(units, revenue)[0, 1]), 2)"
         },
         {
           "type": "text",
-          "value": " that prints "
-        },
-        {
-          "type": "code",
-          "value": "Hello"
-        },
-        {
-          "type": "text",
-          "value": " and call it once."
+          "value": ". Covariance shows direction but its size depends on the units."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# print(round(float(np.cov(units, revenue)[0, 1]), 2))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "units",
+        "revenue"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Covariance and correlation share a sign but not a scale.",
+          "Correlation is covariance divided by both standard deviations.",
+          "That is why correlation is comparable across datasets and covariance is not."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "16.75"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Use np.cov and index [0, 1]",
+      "Output must be exactly: 16.75"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "print(round(float(np.cov(units, revenue)[0, 1]), 2))"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: print the covariance\nimport numpy as np\n\nunits = [1, 2, 3, 4, 5]\nrevenue = [12, 18, 22, 33, 38]\n",
+    "solutionCode": "import numpy as np\n\nunits = [1, 2, 3, 4, 5]\nrevenue = [12, 18, 22, 33, 38]\nprint(round(float(np.cov(units, revenue)[0, 1]), 2))",
     "publicTests": [
       {
         "id": "m17-t3-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": "16.75",
         "visibility": "public"
       },
       {
         "id": "m17-t3-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "covariance is 16.75",
+        "assertCode": "assert (round(float(np.cov(units, revenue)[0, 1]), 2)) == (16.75), \"Expected \" + repr(16.75) + \", got \" + repr(round(float(np.cov(units, revenue)[0, 1]), 2))",
         "visibility": "public"
       },
       {
         "id": "m17-t3-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "covariance and correlation agree on direction",
+        "assertCode": "assert float(np.cov(units, revenue)[0, 1]) > 0 and float(np.corrcoef(units, revenue)[0, 1]) > 0, \"Both should be positive for this data\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Use np.cov to print the covariance of units and revenue, rounded to two decimals.\n\nReference solution:\nimport numpy as np\n\nunits = [1, 2, 3, 4, 5]\nrevenue = [12, 18, 22, 33, 38]\nprint(round(float(np.cov(units, revenue)[0, 1]), 2))"
   },
   {
     "id": "m17-t3-p06",
     "topicId": "m17-t3",
-    "slug": "m17_t3-6",
-    "title": "Correlation and Covariance: List Practice",
-    "difficulty": "hard",
+    "slug": "corr-dataframe",
+    "title": "Correlation: Straight From a DataFrame",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Build a DataFrame of units and revenue and read the correlation out of df.corr().",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Correlation and Covariance. Print the "
+          "value": "Build "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "df"
         },
         {
           "type": "text",
-          "value": " using index "
+          "value": " with units and revenue columns, then print "
         },
         {
           "type": "code",
-          "value": "1"
+          "value": "round(float(df.corr().loc[\"units\", \"revenue\"]), 2)"
         },
         {
           "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": "."
         }
+      ],
+      "editorPlaceholder": "# print(round(float(df.corr().loc['units', 'revenue']), 2))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "df.corr() correlates every numeric column with every other.",
+          "loc[row, column] pulls out the pair you care about.",
+          "This is how you scan a whole dataset for relationships at once."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "0.99"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Use df.corr()",
+      "Output must be exactly: 0.99"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "print(round(float(df.corr().loc[\"units\", \"revenue\"]), 2))"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: correlate the two columns\nimport pandas as pd\n\ndf = pd.DataFrame({\"units\": [1, 2, 3, 4, 5], \"revenue\": [12, 18, 22, 33, 38]})\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\"units\": [1, 2, 3, 4, 5], \"revenue\": [12, 18, 22, 33, 38]})\nprint(round(float(df.corr().loc[\"units\", \"revenue\"]), 2))",
     "publicTests": [
       {
         "id": "m17-t3-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "middle",
+        "expectedStdout": "0.99",
         "visibility": "public"
       },
       {
         "id": "m17-t3-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "correlation from the frame",
+        "assertCode": "assert (round(float(df.corr().loc[\"units\", \"revenue\"]), 2)) == (0.99), \"Expected \" + repr(0.99) + \", got \" + repr(round(float(df.corr().loc[\"units\", \"revenue\"]), 2))",
         "visibility": "public"
       },
       {
         "id": "m17-t3-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "a column correlates perfectly with itself",
+        "assertCode": "assert (round(float(df.corr().loc[\"units\", \"units\"]), 2)) == (1.0), \"Expected \" + repr(1.0) + \", got \" + repr(round(float(df.corr().loc[\"units\", \"units\"]), 2))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Build a DataFrame of units and revenue and read the correlation out of df.corr().\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\"units\": [1, 2, 3, 4, 5], \"revenue\": [12, 18, 22, 33, 38]})\nprint(round(float(df.corr().loc[\"units\", \"revenue\"]), 2))"
   },
   {
     "id": "m17-t3-p07",
     "topicId": "m17-t3",
-    "slug": "m17_t3-7",
-    "title": "Correlation and Covariance: Dict Lookup",
+    "slug": "corr-matrix-strength",
+    "title": "Correlation: Matrix and Verdict",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Print the rounded correlation matrix, then print whether the relationship is strong or weak.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "np.round(df.corr().values, 2).tolist()"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": ", then print "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "strong"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
+          "value": " if the absolute correlation is above "
         },
         {
           "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "0.7"
         },
         {
           "type": "text",
-          "value": "."
+          "value": " and "
+        },
+        {
+          "type": "code",
+          "value": "weak"
+        },
+        {
+          "type": "text",
+          "value": " otherwise."
         }
+      ],
+      "editorPlaceholder": "# matrix = df.corr()",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "pd",
+        "verdict"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "The diagonal is always 1.0 — every column matches itself.",
+          "The matrix is symmetric, so [0][1] equals [1][0].",
+          "Above 0.7 in absolute terms is the usual rule of thumb for strong."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "[[1.0, 0.99], [0.99, 1.0]]\nstrong"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Print the matrix first, then the verdict",
+      "Decide the verdict with a 0.7 threshold — do not type it"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "print(np.round(matrix.values, 2).tolist())",
+      "verdict = \"strong\" if strength > 0.7 else \"weak\""
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: print the matrix, then the verdict\nimport numpy as np\nimport pandas as pd\n\ndf = pd.DataFrame({\"units\": [1, 2, 3, 4, 5], \"revenue\": [12, 18, 22, 33, 38]})\nverdict = \"\"\n",
+    "solutionCode": "import numpy as np\nimport pandas as pd\n\ndf = pd.DataFrame({\"units\": [1, 2, 3, 4, 5], \"revenue\": [12, 18, 22, 33, 38]})\nmatrix = df.corr()\nprint(np.round(matrix.values, 2).tolist())\n\nstrength = abs(float(matrix.loc[\"units\", \"revenue\"]))\nverdict = \"strong\" if strength > 0.7 else \"weak\"\nprint(verdict)",
     "publicTests": [
       {
         "id": "m17-t3-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "[[1.0, 0.99], [0.99, 1.0]]\nstrong",
         "visibility": "public"
       },
       {
         "id": "m17-t3-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "verdict is strong",
+        "assertCode": "assert (verdict) == (\"strong\"), \"Expected \" + repr(\"strong\") + \", got \" + repr(verdict)",
         "visibility": "public"
       },
       {
         "id": "m17-t3-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "matrix rounds as expected",
+        "assertCode": "assert (np.round(matrix.values, 2).tolist()) == ([[1.0, 0.99], [0.99, 1.0]]), \"Expected \" + repr([[1.0, 0.99], [0.99, 1.0]]) + \", got \" + repr(np.round(matrix.values, 2).tolist())",
+        "visibility": "public"
+      },
+      {
+        "id": "m17-t3-p07-t4",
+        "label": "the diagonal is 1.0",
+        "assertCode": "assert abs(float(matrix.iloc[0, 0]) - 1.0) < 1e-9, \"Every column correlates perfectly with itself\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Print the rounded correlation matrix, then print whether the relationship is strong or weak.\n\nReference solution:\nimport numpy as np\nimport pandas as pd\n\ndf = pd.DataFrame({\"units\": [1, 2, 3, 4, 5], \"revenue\": [12, 18, 22, 33, 38]})\nmatrix = df.corr()\nprint(np.round(matrix.values, 2).tolist())\n\nstrength = abs(float(matrix.loc[\"units\", \"revenue\"]))\nverdict = \"strong\" if strength > 0.7 else \"weak\"\nprint(verdict)"
   },
   {
     "id": "m17-t4-p01",
     "topicId": "m17-t4",
-    "slug": "m17_t4-1",
-    "title": "Outlier Detection: Warm-up",
+    "slug": "outlier-mean-vs-median",
+    "title": "Outliers: Mean vs Median",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Outlier Detection. Print Ready on one line.",
+    "description": "Print the mean and then the median of an order list containing one huge value to show how the mean is dragged.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "For "
         },
         {
           "type": "code",
-          "value": "Outlier Detection"
+          "value": "[12, 14, 15, 16, 18, 60]"
         },
         {
           "type": "text",
-          "value": ". Print the word "
-        },
-        {
-          "type": "code",
-          "value": "Ready"
-        },
-        {
-          "type": "text",
-          "value": " on one line."
+          "value": " print the mean, then the median. The gap between them is your first outlier warning."
         }
       ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
-        }
+      "editorPlaceholder": "# print(float(np.mean(orders)))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "orders"
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Use float(np.mean(orders)) and float(np.median(orders)).",
+          "One large order pulls the mean far above the median.",
+          "A big mean-median gap always deserves a second look."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "22.5\n15.5"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Print the mean first, then the median",
+      "Wrap both in float()"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "print(float(np.mean(orders)))",
+      "print(float(np.median(orders)))"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: print the mean, then the median\nimport numpy as np\n\norders = [12, 14, 15, 16, 18, 60]\n",
+    "solutionCode": "import numpy as np\n\norders = [12, 14, 15, 16, 18, 60]\nprint(float(np.mean(orders)))\nprint(float(np.median(orders)))",
     "publicTests": [
       {
         "id": "m17-t4-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "22.5\n15.5",
         "visibility": "public"
       },
       {
         "id": "m17-t4-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "mean is dragged up",
+        "assertCode": "assert (float(np.mean(orders))) == (22.5), \"Expected \" + repr(22.5) + \", got \" + repr(float(np.mean(orders)))",
         "visibility": "public"
       },
       {
         "id": "m17-t4-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "median stays central",
+        "assertCode": "assert (float(np.median(orders))) == (15.5), \"Expected \" + repr(15.5) + \", got \" + repr(float(np.median(orders)))",
+        "visibility": "public"
+      },
+      {
+        "id": "m17-t4-p01-t4",
+        "label": "the mean sits above the median",
+        "assertCode": "assert float(np.mean(orders)) > float(np.median(orders)), \"The outlier should pull the mean above the median\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Outlier Detection. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Print the mean and then the median of an order list containing one huge value to show how the mean is dragged.\n\nReference solution:\nimport numpy as np\n\norders = [12, 14, 15, 16, 18, 60]\nprint(float(np.mean(orders)))\nprint(float(np.median(orders)))"
   },
   {
     "id": "m17-t4-p02",
     "topicId": "m17-t4",
-    "slug": "m17_t4-2",
-    "title": "Outlier Detection: Output Two Values",
+    "slug": "outlier-iqr-bounds",
+    "title": "Outliers: Compute the IQR Fences",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Outlier Detection and print them comma-separated.",
+    "description": "Compute Q1, Q3, and the 1.5x IQR fences, then print the lower and upper bound rounded to two decimals.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Outlier Detection and print them separated by a comma."
+          "value": "Compute "
+        },
+        {
+          "type": "code",
+          "value": "q1, q3 = np.percentile(orders, [25, 75])"
+        },
+        {
+          "type": "text",
+          "value": ", then "
+        },
+        {
+          "type": "code",
+          "value": "lower = q1 - 1.5 * iqr"
+        },
+        {
+          "type": "text",
+          "value": " and "
+        },
+        {
+          "type": "code",
+          "value": "upper = q3 + 1.5 * iqr"
+        },
+        {
+          "type": "text",
+          "value": ". Print both rounded to 2 decimals."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# q1, q3 = np.percentile(orders, [25, 75])",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "lower",
+        "upper"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "IQR = Q3 - Q1, the span of the middle half.",
+          "The 1.5x fence is the standard cut-off for flagging outliers.",
+          "Print the lower bound first."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "9.38\n22.38"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Use np.percentile for Q1 and Q3",
+      "Use the 1.5 x IQR rule",
+      "Print the lower bound, then the upper bound"
     ],
     "hints": [
-      "Create two variables related to Outlier Detection",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "q1, q3 = np.percentile(orders, [25, 75])",
+      "lower = q1 - 1.5 * (q3 - q1)"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Outlier Detection and print them comma-separated. Key points: Create two variables related to Outlier Detection Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: compute the fences\nimport numpy as np\n\norders = [12, 14, 15, 16, 18, 60]\nlower = 0.0\nupper = 0.0\n",
+    "solutionCode": "import numpy as np\n\norders = [12, 14, 15, 16, 18, 60]\nq1, q3 = np.percentile(orders, [25, 75])\niqr = q3 - q1\nlower = q1 - 1.5 * iqr\nupper = q3 + 1.5 * iqr\n\nprint(round(float(lower), 2))\nprint(round(float(upper), 2))",
     "publicTests": [
       {
         "id": "m17-t4-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "9.38\n22.38",
         "visibility": "public"
       },
       {
         "id": "m17-t4-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "lower fence",
+        "assertCode": "assert (round(float(lower), 2)) == (9.38), \"Expected \" + repr(9.38) + \", got \" + repr(round(float(lower), 2))",
         "visibility": "public"
       },
       {
         "id": "m17-t4-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "upper fence",
+        "assertCode": "assert (round(float(upper), 2)) == (22.38), \"Expected \" + repr(22.38) + \", got \" + repr(round(float(upper), 2))",
+        "visibility": "public"
+      },
+      {
+        "id": "m17-t4-p02-t4",
+        "label": "the fences come from the IQR",
+        "assertCode": "assert float(upper) > float(lower), \"The upper fence must sit above the lower fence\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Compute Q1, Q3, and the 1.5x IQR fences, then print the lower and upper bound rounded to two decimals.\n\nReference solution:\nimport numpy as np\n\norders = [12, 14, 15, 16, 18, 60]\nq1, q3 = np.percentile(orders, [25, 75])\niqr = q3 - q1\nlower = q1 - 1.5 * iqr\nupper = q3 + 1.5 * iqr\n\nprint(round(float(lower), 2))\nprint(round(float(upper), 2))"
   },
   {
     "id": "m17-t4-p03",
     "topicId": "m17-t4",
-    "slug": "m17_t4-3",
-    "title": "Outlier Detection: Simple Loop",
+    "slug": "outlier-filter-iqr",
+    "title": "Outliers: Keep Only the Normal Rows",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Outlier Detection.",
+    "description": "Use the IQR fences to build a list of values inside the bounds and print it.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Build "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "clean"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Outlier Detection."
+          "value": " with every order between "
+        },
+        {
+          "type": "code",
+          "value": "lower"
+        },
+        {
+          "type": "text",
+          "value": " and "
+        },
+        {
+          "type": "code",
+          "value": "upper"
+        },
+        {
+          "type": "text",
+          "value": ", then print it. The 60 should disappear."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# clean = [v for v in orders if ...]",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "clean"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Filter with a comprehension and an inclusive range test.",
+          "Compute the fences from the data — never type them in.",
+          "Always report how many rows you dropped."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "[12, 14, 15, 16, 18]"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Filter with the computed fences",
+      "Do not modify orders",
+      "Output must be exactly: [12, 14, 15, 16, 18]"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "clean = [value for value in orders if lower <= value <= upper]"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Outlier Detection. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: keep values inside the fences\nimport numpy as np\n\norders = [12, 14, 15, 16, 18, 60]\nq1, q3 = np.percentile(orders, [25, 75])\niqr = q3 - q1\nlower = q1 - 1.5 * iqr\nupper = q3 + 1.5 * iqr\nclean = []\n",
+    "solutionCode": "import numpy as np\n\norders = [12, 14, 15, 16, 18, 60]\nq1, q3 = np.percentile(orders, [25, 75])\niqr = q3 - q1\nlower = q1 - 1.5 * iqr\nupper = q3 + 1.5 * iqr\n\nclean = [value for value in orders if lower <= value <= upper]\nprint(clean)",
     "publicTests": [
       {
         "id": "m17-t4-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "[12, 14, 15, 16, 18]",
         "visibility": "public"
       },
       {
         "id": "m17-t4-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "the outlier is gone",
+        "assertCode": "assert (clean) == ([12, 14, 15, 16, 18]), \"Expected \" + repr([12, 14, 15, 16, 18]) + \", got \" + repr(clean)",
         "visibility": "public"
       },
       {
         "id": "m17-t4-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "60 was excluded",
+        "assertCode": "assert 60 not in clean, \"The 60 order sits outside the fences and should be dropped\"",
+        "visibility": "public"
+      },
+      {
+        "id": "m17-t4-p03-t4",
+        "label": "the source list is unchanged",
+        "assertCode": "assert (len(orders)) == (6), \"Expected \" + repr(6) + \", got \" + repr(len(orders))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Use the IQR fences to build a list of values inside the bounds and print it.\n\nReference solution:\nimport numpy as np\n\norders = [12, 14, 15, 16, 18, 60]\nq1, q3 = np.percentile(orders, [25, 75])\niqr = q3 - q1\nlower = q1 - 1.5 * iqr\nupper = q3 + 1.5 * iqr\n\nclean = [value for value in orders if lower <= value <= upper]\nprint(clean)"
   },
   {
     "id": "m17-t4-p04",
     "topicId": "m17-t4",
-    "slug": "m17_t4-4",
-    "title": "Outlier Detection: Condition",
+    "slug": "outlier-count",
+    "title": "Outliers: How Many Are There?",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Count how many orders fall outside the IQR fences and print the count.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "Count the orders outside "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "[lower, upper]"
         },
         {
           "type": "text",
-          "value": ". If "
+          "value": " into "
         },
         {
           "type": "code",
-          "value": "score >= 60"
+          "value": "outlier_count"
         },
         {
           "type": "text",
-          "value": ", print "
-        },
-        {
-          "type": "code",
-          "value": "Pass"
-        },
-        {
-          "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": " and print it."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# outlier_count = len([...])",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "outlier_count"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Invert the earlier condition: below lower or above upper.",
+          "Reporting the count is how you justify cleaning the data."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "1"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Count values below lower or above upper",
+      "Store the count in outlier_count",
+      "Output must be exactly: 1"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "outlier_count = len([v for v in orders if v < lower or v > upper])"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: count the outliers\nimport numpy as np\n\norders = [12, 14, 15, 16, 18, 60]\nq1, q3 = np.percentile(orders, [25, 75])\niqr = q3 - q1\nlower = q1 - 1.5 * iqr\nupper = q3 + 1.5 * iqr\noutlier_count = 0\n",
+    "solutionCode": "import numpy as np\n\norders = [12, 14, 15, 16, 18, 60]\nq1, q3 = np.percentile(orders, [25, 75])\niqr = q3 - q1\nlower = q1 - 1.5 * iqr\nupper = q3 + 1.5 * iqr\n\noutlier_count = len([value for value in orders if value < lower or value > upper])\nprint(outlier_count)",
     "publicTests": [
       {
         "id": "m17-t4-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "1",
         "visibility": "public"
       },
       {
         "id": "m17-t4-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "one outlier found",
+        "assertCode": "assert (outlier_count) == (1), \"Expected \" + repr(1) + \", got \" + repr(outlier_count)",
         "visibility": "public"
       },
       {
         "id": "m17-t4-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "outlier_count has the right type",
+        "assertCode": "assert \"outlier_count\" in globals(), \"Expected a variable named outlier_count\"\nassert isinstance(outlier_count, int), \"Expected outlier_count to be int, got \" + type(outlier_count).__name__",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Count how many orders fall outside the IQR fences and print the count.\n\nReference solution:\nimport numpy as np\n\norders = [12, 14, 15, 16, 18, 60]\nq1, q3 = np.percentile(orders, [25, 75])\niqr = q3 - q1\nlower = q1 - 1.5 * iqr\nupper = q3 + 1.5 * iqr\n\noutlier_count = len([value for value in orders if value < lower or value > upper])\nprint(outlier_count)"
   },
   {
     "id": "m17-t4-p05",
     "topicId": "m17-t4",
-    "slug": "m17_t4-5",
-    "title": "Outlier Detection: Function Stub",
+    "slug": "outlier-zscore",
+    "title": "Outliers: The Z-Score Method",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Convert the orders to z-scores and print the largest one rounded to two decimals.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "Compute "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "z = (values - values.mean()) / values.std()"
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": " and print "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": "round(float(z.max()), 2)"
         },
         {
           "type": "text",
-          "value": " and call it once."
+          "value": ". A z-score above 3 is the usual outlier threshold."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# z = (values - values.mean()) / values.std()",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "z"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A z-score says how many standard deviations a value sits from the mean.",
+          "The outlier inflates the standard deviation, which shrinks its own z-score.",
+          "That is why IQR is often the better method for small samples."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "2.22"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Use .mean() and .std() — no hardcoded numbers",
+      "Output must be exactly: 2.22"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "z = (values - values.mean()) / values.std()",
+      "print(round(float(z.max()), 2))"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: compute the z-scores\nimport numpy as np\n\nvalues = np.array([12, 14, 15, 16, 18, 60])\nz = None\n",
+    "solutionCode": "import numpy as np\n\nvalues = np.array([12, 14, 15, 16, 18, 60])\nz = (values - values.mean()) / values.std()\n\nprint(round(float(z.max()), 2))",
     "publicTests": [
       {
         "id": "m17-t4-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": "2.22",
         "visibility": "public"
       },
       {
         "id": "m17-t4-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "largest z-score",
+        "assertCode": "assert (round(float(z.max()), 2)) == (2.22), \"Expected \" + repr(2.22) + \", got \" + repr(round(float(z.max()), 2))",
         "visibility": "public"
       },
       {
         "id": "m17-t4-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "the z-scores average to zero",
+        "assertCode": "assert abs(float(z.mean())) < 1e-9, \"Z-scores are centred, so their mean must be 0\"",
+        "visibility": "public"
+      },
+      {
+        "id": "m17-t4-p05-t4",
+        "label": "the largest z-score belongs to the 60",
+        "assertCode": "assert int(np.argmax(z)) == 5, \"The biggest order should have the highest z-score\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Convert the orders to z-scores and print the largest one rounded to two decimals.\n\nReference solution:\nimport numpy as np\n\nvalues = np.array([12, 14, 15, 16, 18, 60])\nz = (values - values.mean()) / values.std()\n\nprint(round(float(z.max()), 2))"
   },
   {
     "id": "m17-t4-p06",
     "topicId": "m17-t4",
-    "slug": "m17_t4-6",
-    "title": "Outlier Detection: List Practice",
-    "difficulty": "hard",
+    "slug": "outlier-clip",
+    "title": "Outliers: Cap Instead of Drop",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Use np.clip to cap every order at 20 instead of deleting the outlier, then print the result.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Outlier Detection. Print the "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "np.clip(values, None, 20).tolist()"
         },
         {
           "type": "text",
-          "value": " using index "
-        },
-        {
-          "type": "code",
-          "value": "1"
-        },
-        {
-          "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": " — capping keeps the row but limits its influence. This is called winsorising."
         }
+      ],
+      "editorPlaceholder": "# capped = np.clip(values, None, 20)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "capped"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "np.clip(values, minimum, maximum) squeezes values into a range.",
+          "None as the minimum means no lower limit.",
+          "Capping keeps your row count intact, unlike dropping."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "[12, 14, 15, 16, 18, 20]"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Use np.clip with an upper bound of 20",
+      "Keep all six values",
+      "Output must be exactly: [12, 14, 15, 16, 18, 20]"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "capped = np.clip(values, None, 20)",
+      "print(capped.tolist())"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: cap the values at 20\nimport numpy as np\n\nvalues = np.array([12, 14, 15, 16, 18, 60])\ncapped = None\n",
+    "solutionCode": "import numpy as np\n\nvalues = np.array([12, 14, 15, 16, 18, 60])\ncapped = np.clip(values, None, 20)\n\nprint(capped.tolist())",
     "publicTests": [
       {
         "id": "m17-t4-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "middle",
+        "expectedStdout": "[12, 14, 15, 16, 18, 20]",
         "visibility": "public"
       },
       {
         "id": "m17-t4-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "the 60 was capped to 20",
+        "assertCode": "assert (capped.tolist()) == ([12, 14, 15, 16, 18, 20]), \"Expected \" + repr([12, 14, 15, 16, 18, 20]) + \", got \" + repr(capped.tolist())",
         "visibility": "public"
       },
       {
         "id": "m17-t4-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "no rows were lost",
+        "assertCode": "assert (len(capped)) == (6), \"Expected \" + repr(6) + \", got \" + repr(len(capped))",
+        "visibility": "public"
+      },
+      {
+        "id": "m17-t4-p06-t4",
+        "label": "nothing exceeds the cap",
+        "assertCode": "assert (int(capped.max())) == (20), \"Expected \" + repr(20) + \", got \" + repr(int(capped.max()))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Use np.clip to cap every order at 20 instead of deleting the outlier, then print the result.\n\nReference solution:\nimport numpy as np\n\nvalues = np.array([12, 14, 15, 16, 18, 60])\ncapped = np.clip(values, None, 20)\n\nprint(capped.tolist())"
   },
   {
     "id": "m17-t4-p07",
     "topicId": "m17-t4",
-    "slug": "m17_t4-7",
-    "title": "Outlier Detection: Dict Lookup",
+    "slug": "outlier-report",
+    "title": "Outliers: Report What You Removed",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Print the list of outlier values, then the mean of the remaining orders rounded to two decimals.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Using the IQR fences, build "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "outliers"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": " and "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "clean"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
-        },
-        {
-          "type": "code",
-          "value": "d[\"topic\"]"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": ". Print the outlier list, then the mean of the clean values."
         }
+      ],
+      "editorPlaceholder": "# outliers = [...]",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "outliers",
+        "clean"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "Build both lists from the same fences so nothing is double counted.",
+          "The clean mean (15.0) is far below the raw mean (22.5).",
+          "Never remove rows without reporting which ones and why."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "[60]\n15.0"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Split the data into outliers and clean",
+      "Print the outliers, then the clean mean"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "outliers = [v for v in orders if v < lower or v > upper]",
+      "print(round(float(np.mean(clean)), 2))"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: report the outliers and the clean mean\nimport numpy as np\n\norders = [12, 14, 15, 16, 18, 60]\nq1, q3 = np.percentile(orders, [25, 75])\niqr = q3 - q1\nlower = q1 - 1.5 * iqr\nupper = q3 + 1.5 * iqr\noutliers = []\nclean = []\n",
+    "solutionCode": "import numpy as np\n\norders = [12, 14, 15, 16, 18, 60]\nq1, q3 = np.percentile(orders, [25, 75])\niqr = q3 - q1\nlower = q1 - 1.5 * iqr\nupper = q3 + 1.5 * iqr\n\noutliers = [value for value in orders if value < lower or value > upper]\nclean = [value for value in orders if lower <= value <= upper]\n\nprint(outliers)\nprint(round(float(np.mean(clean)), 2))",
     "publicTests": [
       {
         "id": "m17-t4-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "[60]\n15.0",
         "visibility": "public"
       },
       {
         "id": "m17-t4-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "the outlier list",
+        "assertCode": "assert (outliers) == ([60]), \"Expected \" + repr([60]) + \", got \" + repr(outliers)",
         "visibility": "public"
       },
       {
         "id": "m17-t4-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "clean mean",
+        "assertCode": "assert (round(float(np.mean(clean)), 2)) == (15.0), \"Expected \" + repr(15.0) + \", got \" + repr(round(float(np.mean(clean)), 2))",
+        "visibility": "public"
+      },
+      {
+        "id": "m17-t4-p07-t4",
+        "label": "every order is in exactly one list",
+        "assertCode": "assert (len(outliers) + len(clean)) == (len(orders)), \"Expected \" + repr(len(orders)) + \", got \" + repr(len(outliers) + len(clean))",
+        "visibility": "public"
+      },
+      {
+        "id": "m17-t4-p07-t5",
+        "label": "removing the outlier lowered the mean",
+        "assertCode": "assert float(np.mean(clean)) < float(np.mean(orders)), \"The clean mean should be lower than the raw mean\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Print the list of outlier values, then the mean of the remaining orders rounded to two decimals.\n\nReference solution:\nimport numpy as np\n\norders = [12, 14, 15, 16, 18, 60]\nq1, q3 = np.percentile(orders, [25, 75])\niqr = q3 - q1\nlower = q1 - 1.5 * iqr\nupper = q3 + 1.5 * iqr\n\noutliers = [value for value in orders if value < lower or value > upper]\nclean = [value for value in orders if lower <= value <= upper]\n\nprint(outliers)\nprint(round(float(np.mean(clean)), 2))"
   },
   {
     "id": "m17-t5-p01",
     "topicId": "m17-t5",
-    "slug": "m17_t5-1",
-    "title": "Performing EDA on a Real Dataset: Warm-up",
+    "slug": "eda-shape",
+    "title": "EDA: How Big Is the Dataset?",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Performing EDA on a Real Dataset. Print Ready on one line.",
+    "description": "Load the retail sales frame and print its shape as the first step of any EDA.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Build the retail frame with region, category, units, and revenue, then print "
         },
         {
           "type": "code",
-          "value": "Performing EDA on a Real Dataset"
+          "value": "df.shape"
         },
         {
           "type": "text",
-          "value": ". Print the word "
-        },
-        {
-          "type": "code",
-          "value": "Ready"
-        },
-        {
-          "type": "text",
-          "value": " on one line."
+          "value": ". Step one of EDA is always: how many rows and columns?"
         }
       ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
-        }
+      "editorPlaceholder": "# df = pd.DataFrame({ ... })",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Note that one revenue value is None — that matters later.",
+          "Knowing the size tells you whether your later numbers are plausible."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "(5, 4)"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Column order: region, category, units, revenue",
+      "Output must be exactly: (5, 4)"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "print(df.shape)"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: build the frame and print its shape\nimport pandas as pd\n\ndf = None\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"North\", \"South\", \"East\", \"North\"],\n    \"category\": [\"pen\", \"book\", \"bag\", \"pen\", \"bag\"],\n    \"units\": [10, 5, 8, 12, 6],\n    \"revenue\": [100.0, 150.0, None, 120.0, 90.0],\n})\n\nprint(df.shape)",
     "publicTests": [
       {
         "id": "m17-t5-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "(5, 4)",
         "visibility": "public"
       },
       {
         "id": "m17-t5-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "five rows, four columns",
+        "assertCode": "assert (df.shape) == ((5, 4)), \"Expected \" + repr((5, 4)) + \", got \" + repr(df.shape)",
         "visibility": "public"
       },
       {
         "id": "m17-t5-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "columns in order",
+        "assertCode": "assert (list(df.columns)) == ([\"region\", \"category\", \"units\", \"revenue\"]), \"Expected \" + repr([\"region\", \"category\", \"units\", \"revenue\"]) + \", got \" + repr(list(df.columns))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Performing EDA on a Real Dataset. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Load the retail sales frame and print its shape as the first step of any EDA.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"North\", \"South\", \"East\", \"North\"],\n    \"category\": [\"pen\", \"book\", \"bag\", \"pen\", \"bag\"],\n    \"units\": [10, 5, 8, 12, 6],\n    \"revenue\": [100.0, 150.0, None, 120.0, 90.0],\n})\n\nprint(df.shape)"
   },
   {
     "id": "m17-t5-p02",
     "topicId": "m17-t5",
-    "slug": "m17_t5-2",
-    "title": "Performing EDA on a Real Dataset: Output Two Values",
+    "slug": "eda-missing-total",
+    "title": "EDA: Count Every Missing Value",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Performing EDA on a Real Dataset and print them comma-separated.",
+    "description": "Print the total number of missing values across the whole frame using isna().sum().sum().",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Performing EDA on a Real Dataset and print them separated by a comma."
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "int(df.isna().sum().sum())"
+        },
+        {
+          "type": "text",
+          "value": " — the first sum counts per column, the second totals them."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# print(int(df.isna().sum().sum()))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "df.isna() gives a True/False frame the same shape as your data.",
+          "Summing twice collapses it to one number.",
+          "Step two of EDA is always: what is missing?"
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "1"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Use isna().sum().sum()",
+      "Output must be exactly: 1"
     ],
     "hints": [
-      "Create two variables related to Performing EDA on a Real Dataset",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "print(int(df.isna().sum().sum()))"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Performing EDA on a Real Dataset and print them comma-separated. Key points: Create two variables related to Performing EDA on a Real Dataset Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: total the missing values\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"North\", \"South\", \"East\", \"North\"],\n    \"category\": [\"pen\", \"book\", \"bag\", \"pen\", \"bag\"],\n    \"units\": [10, 5, 8, 12, 6],\n    \"revenue\": [100.0, 150.0, None, 120.0, 90.0],\n})\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"North\", \"South\", \"East\", \"North\"],\n    \"category\": [\"pen\", \"book\", \"bag\", \"pen\", \"bag\"],\n    \"units\": [10, 5, 8, 12, 6],\n    \"revenue\": [100.0, 150.0, None, 120.0, 90.0],\n})\n\nprint(int(df.isna().sum().sum()))",
     "publicTests": [
       {
         "id": "m17-t5-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "1",
         "visibility": "public"
       },
       {
         "id": "m17-t5-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "one missing value",
+        "assertCode": "assert (int(df.isna().sum().sum())) == (1), \"Expected \" + repr(1) + \", got \" + repr(int(df.isna().sum().sum()))",
         "visibility": "public"
       },
       {
         "id": "m17-t5-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "it is in the revenue column",
+        "assertCode": "assert (int(df[\"revenue\"].isna().sum())) == (1), \"Expected \" + repr(1) + \", got \" + repr(int(df[\"revenue\"].isna().sum()))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Print the total number of missing values across the whole frame using isna().sum().sum().\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"North\", \"South\", \"East\", \"North\"],\n    \"category\": [\"pen\", \"book\", \"bag\", \"pen\", \"bag\"],\n    \"units\": [10, 5, 8, 12, 6],\n    \"revenue\": [100.0, 150.0, None, 120.0, 90.0],\n})\n\nprint(int(df.isna().sum().sum()))"
   },
   {
     "id": "m17-t5-p03",
     "topicId": "m17-t5",
-    "slug": "m17_t5-3",
-    "title": "Performing EDA on a Real Dataset: Simple Loop",
+    "slug": "eda-mean-revenue",
+    "title": "EDA: Average Revenue",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Performing EDA on a Real Dataset.",
+    "description": "Print the mean revenue rounded to two decimals, noting that pandas skips the missing value.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "round(float(df[\"revenue\"].mean()), 2)"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Performing EDA on a Real Dataset."
+          "value": ". pandas divides by 4, not 5, because one value is missing."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# print(round(float(df[\"revenue\"].mean()), 2))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          ".mean() ignores NaN by default.",
+          "So the denominator is the count of present values.",
+          "Know that rule or your averages will quietly mislead you."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "115.0"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Use .mean()",
+      "Round to 2 decimals",
+      "Output must be exactly: 115.0"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "print(round(float(df[\"revenue\"].mean()), 2))"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Performing EDA on a Real Dataset. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: average the revenue\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"North\", \"South\", \"East\", \"North\"],\n    \"category\": [\"pen\", \"book\", \"bag\", \"pen\", \"bag\"],\n    \"units\": [10, 5, 8, 12, 6],\n    \"revenue\": [100.0, 150.0, None, 120.0, 90.0],\n})\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"North\", \"South\", \"East\", \"North\"],\n    \"category\": [\"pen\", \"book\", \"bag\", \"pen\", \"bag\"],\n    \"units\": [10, 5, 8, 12, 6],\n    \"revenue\": [100.0, 150.0, None, 120.0, 90.0],\n})\n\nprint(round(float(df[\"revenue\"].mean()), 2))",
     "publicTests": [
       {
         "id": "m17-t5-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "115.0",
         "visibility": "public"
       },
       {
         "id": "m17-t5-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "mean revenue",
+        "assertCode": "assert (round(float(df[\"revenue\"].mean()), 2)) == (115.0), \"Expected \" + repr(115.0) + \", got \" + repr(round(float(df[\"revenue\"].mean()), 2))",
         "visibility": "public"
       },
       {
         "id": "m17-t5-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "only four values counted",
+        "assertCode": "assert (int(df[\"revenue\"].count())) == (4), \"Expected \" + repr(4) + \", got \" + repr(int(df[\"revenue\"].count()))",
+        "visibility": "public"
+      },
+      {
+        "id": "m17-t5-p03-t4",
+        "label": "the missing value was skipped, not treated as zero",
+        "assertCode": "assert abs(float(df[\"revenue\"].mean()) - 460 / 4) < 1e-9, \"The mean divides by 4 present values, not 5 rows\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Print the mean revenue rounded to two decimals, noting that pandas skips the missing value.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"North\", \"South\", \"East\", \"North\"],\n    \"category\": [\"pen\", \"book\", \"bag\", \"pen\", \"bag\"],\n    \"units\": [10, 5, 8, 12, 6],\n    \"revenue\": [100.0, 150.0, None, 120.0, 90.0],\n})\n\nprint(round(float(df[\"revenue\"].mean()), 2))"
   },
   {
     "id": "m17-t5-p04",
     "topicId": "m17-t5",
-    "slug": "m17_t5-4",
-    "title": "Performing EDA on a Real Dataset: Condition",
+    "slug": "eda-group-means",
+    "title": "EDA: Revenue per Region",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Group by region and print the mean revenue for each as a dict of rounded floats.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "Group by "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "region"
         },
         {
           "type": "text",
-          "value": ". If "
-        },
-        {
-          "type": "code",
-          "value": "score >= 60"
-        },
-        {
-          "type": "text",
-          "value": ", print "
-        },
-        {
-          "type": "code",
-          "value": "Pass"
-        },
-        {
-          "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": " and print the mean revenue per region. South has only one usable value because of the missing row."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# by_region = df.groupby(\"region\")[\"revenue\"].mean()",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "by_region"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "groupby().mean() skips missing values within each group.",
+          "Regions come back in alphabetical order.",
+          "Segment averages are where the story usually is."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "{'East': 120.0, 'North': 120.0, 'South': 100.0}"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Use groupby().mean()",
+      "Print values as rounded floats"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "by_region = df.groupby(\"region\")[\"revenue\"].mean()",
+      "print({k: round(float(v), 2) for k, v in by_region.items()})"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: mean revenue per region\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"North\", \"South\", \"East\", \"North\"],\n    \"category\": [\"pen\", \"book\", \"bag\", \"pen\", \"bag\"],\n    \"units\": [10, 5, 8, 12, 6],\n    \"revenue\": [100.0, 150.0, None, 120.0, 90.0],\n})\n\nby_region = None\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"North\", \"South\", \"East\", \"North\"],\n    \"category\": [\"pen\", \"book\", \"bag\", \"pen\", \"bag\"],\n    \"units\": [10, 5, 8, 12, 6],\n    \"revenue\": [100.0, 150.0, None, 120.0, 90.0],\n})\n\nby_region = df.groupby(\"region\")[\"revenue\"].mean()\nprint({k: round(float(v), 2) for k, v in by_region.items()})",
     "publicTests": [
       {
         "id": "m17-t5-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "{'East': 120.0, 'North': 120.0, 'South': 100.0}",
         "visibility": "public"
       },
       {
         "id": "m17-t5-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "North average",
+        "assertCode": "assert (round(float(by_region[\"North\"]), 2)) == (120.0), \"Expected \" + repr(120.0) + \", got \" + repr(round(float(by_region[\"North\"]), 2))",
         "visibility": "public"
       },
       {
         "id": "m17-t5-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "South average",
+        "assertCode": "assert (round(float(by_region[\"South\"]), 2)) == (100.0), \"Expected \" + repr(100.0) + \", got \" + repr(round(float(by_region[\"South\"]), 2))",
+        "visibility": "public"
+      },
+      {
+        "id": "m17-t5-p04-t4",
+        "label": "three regions",
+        "assertCode": "assert (len(by_region)) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(by_region))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Group by region and print the mean revenue for each as a dict of rounded floats.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"North\", \"South\", \"East\", \"North\"],\n    \"category\": [\"pen\", \"book\", \"bag\", \"pen\", \"bag\"],\n    \"units\": [10, 5, 8, 12, 6],\n    \"revenue\": [100.0, 150.0, None, 120.0, 90.0],\n})\n\nby_region = df.groupby(\"region\")[\"revenue\"].mean()\nprint({k: round(float(v), 2) for k, v in by_region.items()})"
   },
   {
     "id": "m17-t5-p05",
     "topicId": "m17-t5",
-    "slug": "m17_t5-5",
-    "title": "Performing EDA on a Real Dataset: Function Stub",
+    "slug": "eda-top-region",
+    "title": "EDA: Which Region Leads?",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Use groupby sum and idxmax to print the name of the region with the highest total revenue.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "df.groupby(\"region\")[\"revenue\"].sum().idxmax()"
         },
         {
           "type": "text",
-          "value": " that prints "
-        },
-        {
-          "type": "code",
-          "value": "Hello"
-        },
-        {
-          "type": "text",
-          "value": " and call it once."
+          "value": " — idxmax returns the label of the largest value, not the value itself."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# top_region = totals.idxmax()",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "top_region"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "max() gives the number; idxmax() gives the name.",
+          "The name is what belongs in a report sentence.",
+          "North totals 240 from its two rows."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "North"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Use groupby().sum() and idxmax()",
+      "Output must be exactly: North"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "totals = df.groupby(\"region\")[\"revenue\"].sum()",
+      "top_region = totals.idxmax()"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: find the leading region\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"North\", \"South\", \"East\", \"North\"],\n    \"category\": [\"pen\", \"book\", \"bag\", \"pen\", \"bag\"],\n    \"units\": [10, 5, 8, 12, 6],\n    \"revenue\": [100.0, 150.0, None, 120.0, 90.0],\n})\n\ntop_region = \"\"\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"North\", \"South\", \"East\", \"North\"],\n    \"category\": [\"pen\", \"book\", \"bag\", \"pen\", \"bag\"],\n    \"units\": [10, 5, 8, 12, 6],\n    \"revenue\": [100.0, 150.0, None, 120.0, 90.0],\n})\n\ntotals = df.groupby(\"region\")[\"revenue\"].sum()\ntop_region = totals.idxmax()\n\nprint(top_region)",
     "publicTests": [
       {
         "id": "m17-t5-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": "North",
         "visibility": "public"
       },
       {
         "id": "m17-t5-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "North leads",
+        "assertCode": "assert (top_region) == (\"North\"), \"Expected \" + repr(\"North\") + \", got \" + repr(top_region)",
         "visibility": "public"
       },
       {
         "id": "m17-t5-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "North total is 240",
+        "assertCode": "assert (round(float(totals[\"North\"]), 2)) == (240.0), \"Expected \" + repr(240.0) + \", got \" + repr(round(float(totals[\"North\"]), 2))",
+        "visibility": "public"
+      },
+      {
+        "id": "m17-t5-p05-t4",
+        "label": "the label was found, not typed",
+        "assertCode": "assert top_region == totals.idxmax(), \"Use idxmax() to find the leading region\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Use groupby sum and idxmax to print the name of the region with the highest total revenue.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"North\", \"South\", \"East\", \"North\"],\n    \"category\": [\"pen\", \"book\", \"bag\", \"pen\", \"bag\"],\n    \"units\": [10, 5, 8, 12, 6],\n    \"revenue\": [100.0, 150.0, None, 120.0, 90.0],\n})\n\ntotals = df.groupby(\"region\")[\"revenue\"].sum()\ntop_region = totals.idxmax()\n\nprint(top_region)"
   },
   {
     "id": "m17-t5-p06",
     "topicId": "m17-t5",
-    "slug": "m17_t5-6",
-    "title": "Performing EDA on a Real Dataset: List Practice",
-    "difficulty": "hard",
+    "slug": "eda-correlation",
+    "title": "EDA: Do Units Drive Revenue?",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Print the correlation between units and revenue for this dataset, rounded to two decimals.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Performing EDA on a Real Dataset. Print the "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "round(float(df[[\"units\", \"revenue\"]].corr().loc[\"units\", \"revenue\"]), 2)"
         },
         {
           "type": "text",
-          "value": " using index "
-        },
-        {
-          "type": "code",
-          "value": "1"
-        },
-        {
-          "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": ". The answer is negative here — a good reminder to check rather than assume."
         }
+      ],
+      "editorPlaceholder": "# print(round(float(df[[...]].corr().loc[...]), 2))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "corr() drops rows where either value is missing.",
+          "-0.25 is weak, so units alone do not explain revenue in this sample.",
+          "Five rows is far too few to conclude anything — sample size matters."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "-0.25"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Use .corr()",
+      "Round to 2 decimals",
+      "Output must be exactly: -0.25"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "print(round(float(df[[\"units\", \"revenue\"]].corr().loc[\"units\", \"revenue\"]), 2))"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: correlate units and revenue\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"North\", \"South\", \"East\", \"North\"],\n    \"category\": [\"pen\", \"book\", \"bag\", \"pen\", \"bag\"],\n    \"units\": [10, 5, 8, 12, 6],\n    \"revenue\": [100.0, 150.0, None, 120.0, 90.0],\n})\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"North\", \"South\", \"East\", \"North\"],\n    \"category\": [\"pen\", \"book\", \"bag\", \"pen\", \"bag\"],\n    \"units\": [10, 5, 8, 12, 6],\n    \"revenue\": [100.0, 150.0, None, 120.0, 90.0],\n})\n\nprint(round(float(df[[\"units\", \"revenue\"]].corr().loc[\"units\", \"revenue\"]), 2))",
     "publicTests": [
       {
         "id": "m17-t5-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "middle",
+        "expectedStdout": "-0.25",
         "visibility": "public"
       },
       {
         "id": "m17-t5-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "correlation is -0.25",
+        "assertCode": "assert (round(float(df[[\"units\", \"revenue\"]].corr().loc[\"units\", \"revenue\"]), 2)) == (-0.25), \"Expected \" + repr(-0.25) + \", got \" + repr(round(float(df[[\"units\", \"revenue\"]].corr().loc[\"units\", \"revenue\"]), 2))",
         "visibility": "public"
       },
       {
         "id": "m17-t5-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "the relationship is weak",
+        "assertCode": "assert abs(float(df[[\"units\", \"revenue\"]].corr().loc[\"units\", \"revenue\"])) < 0.7, \"This correlation is weak, well under the 0.7 rule of thumb\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Print the correlation between units and revenue for this dataset, rounded to two decimals.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"North\", \"South\", \"East\", \"North\"],\n    \"category\": [\"pen\", \"book\", \"bag\", \"pen\", \"bag\"],\n    \"units\": [10, 5, 8, 12, 6],\n    \"revenue\": [100.0, 150.0, None, 120.0, 90.0],\n})\n\nprint(round(float(df[[\"units\", \"revenue\"]].corr().loc[\"units\", \"revenue\"]), 2))"
   },
   {
     "id": "m17-t5-p07",
     "topicId": "m17-t5",
-    "slug": "m17_t5-7",
-    "title": "Performing EDA on a Real Dataset: Dict Lookup",
+    "slug": "eda-final-report",
+    "title": "EDA: Write the Three-Line Summary",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Print the row count, the leading region, and the total revenue as a three-line EDA summary.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Finish the EDA with three lines: "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "rows=5"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": ", "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "top_region=North"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
+          "value": ", and "
         },
         {
           "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "total_revenue=460.0"
         },
         {
           "type": "text",
-          "value": "."
+          "value": ". Every number must be computed."
         }
+      ],
+      "editorPlaceholder": "# rows = len(df)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "rows",
+        "top_region",
+        "total_revenue"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "rows = len(df); total = float(df[\"revenue\"].sum()).",
+          "sum() skips the missing value, so the total is 460.0.",
+          "Format each line with an f-string like f\"rows={rows}\""
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "rows=5\ntop_region=North\ntotal_revenue=460.0"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Compute all three values from df",
+      "One line each, in the order rows, top_region, total_revenue"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "top_region = df.groupby(\"region\")[\"revenue\"].sum().idxmax()",
+      "print(f\"rows={rows}\")"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: build the three-line summary\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"North\", \"South\", \"East\", \"North\"],\n    \"category\": [\"pen\", \"book\", \"bag\", \"pen\", \"bag\"],\n    \"units\": [10, 5, 8, 12, 6],\n    \"revenue\": [100.0, 150.0, None, 120.0, 90.0],\n})\n\nrows = 0\ntop_region = \"\"\ntotal_revenue = 0.0\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"North\", \"South\", \"East\", \"North\"],\n    \"category\": [\"pen\", \"book\", \"bag\", \"pen\", \"bag\"],\n    \"units\": [10, 5, 8, 12, 6],\n    \"revenue\": [100.0, 150.0, None, 120.0, 90.0],\n})\n\nrows = len(df)\ntop_region = df.groupby(\"region\")[\"revenue\"].sum().idxmax()\ntotal_revenue = round(float(df[\"revenue\"].sum()), 2)\n\nprint(f\"rows={rows}\")\nprint(f\"top_region={top_region}\")\nprint(f\"total_revenue={total_revenue}\")",
     "publicTests": [
       {
         "id": "m17-t5-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "rows=5\ntop_region=North\ntotal_revenue=460.0",
         "visibility": "public"
       },
       {
         "id": "m17-t5-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "row count",
+        "assertCode": "assert (rows) == (5), \"Expected \" + repr(5) + \", got \" + repr(rows)",
         "visibility": "public"
       },
       {
         "id": "m17-t5-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "leading region",
+        "assertCode": "assert (top_region) == (\"North\"), \"Expected \" + repr(\"North\") + \", got \" + repr(top_region)",
+        "visibility": "public"
+      },
+      {
+        "id": "m17-t5-p07-t4",
+        "label": "total revenue",
+        "assertCode": "assert (total_revenue) == (460.0), \"Expected \" + repr(460.0) + \", got \" + repr(total_revenue)",
+        "visibility": "public"
+      },
+      {
+        "id": "m17-t5-p07-t5",
+        "label": "every figure came from the frame",
+        "assertCode": "assert rows == len(df) and abs(total_revenue - float(df[\"revenue\"].sum())) < 1e-9, \"Compute the numbers from df rather than typing them\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Print the row count, the leading region, and the total revenue as a three-line EDA summary.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"North\", \"South\", \"East\", \"North\"],\n    \"category\": [\"pen\", \"book\", \"bag\", \"pen\", \"bag\"],\n    \"units\": [10, 5, 8, 12, 6],\n    \"revenue\": [100.0, 150.0, None, 120.0, 90.0],\n})\n\nrows = len(df)\ntop_region = df.groupby(\"region\")[\"revenue\"].sum().idxmax()\ntotal_revenue = round(float(df[\"revenue\"].sum()), 2)\n\nprint(f\"rows={rows}\")\nprint(f\"top_region={top_region}\")\nprint(f\"total_revenue={total_revenue}\")"
   }
 ];

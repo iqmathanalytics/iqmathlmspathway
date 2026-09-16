@@ -5,6 +5,11 @@ import Link from "next/link";
 import type { PracticeProblem } from "@/lib/types";
 import { CodeEditor } from "@/components/ide/CodeEditor";
 import { ConsolePanel } from "@/components/ide/ConsolePanel";
+import { OpenInColabButton } from "@/components/ide/OpenInColabButton";
+import {
+  buildColabPracticeCell,
+  isColabPracticeProblem,
+} from "@/lib/colab-practice";
 import { usePyodideRunner } from "@/components/ide/usePyodideRunner";
 import { runPublicTests, submitForGrading, type TestRunResult } from "@/lib/practice-runner";
 import { useAuth } from "@/contexts/AuthContext";
@@ -171,6 +176,15 @@ export function PracticeWorkspaceEditor({
 
   const actionsBusy = loading || running || testing || submitting;
 
+  const colabEnabled = useMemo(() => isColabPracticeProblem(problem), [problem]);
+  const colabCell = useMemo(
+    () =>
+      colabEnabled
+        ? buildColabPracticeCell({ problem, moduleName, topicTitle, code })
+        : "",
+    [colabEnabled, problem, moduleName, topicTitle, code]
+  );
+
   if (problem.layout === "challenge") {
     return (
       <ChallengePracticeLayout
@@ -321,6 +335,13 @@ export function PracticeWorkspaceEditor({
                 >
                   {testing ? "Testing…" : "Test"}
                 </button>
+                {colabEnabled && (
+                  <OpenInColabButton
+                    code={colabCell}
+                    variant="action"
+                    label="Practice in Colab"
+                  />
+                )}
                 <button
                   type="button"
                   onMouseDown={(e) => e.preventDefault()}

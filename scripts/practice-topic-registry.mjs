@@ -23,13 +23,51 @@ import {
   finalProjectFunctionsTasks, finalProjectCapstoneTasks,
 } from "./practice-topic-builders-part3.mjs";
 
+import {
+  whyPythonTasks, pythonSetupTasks, pythonIdeTasks, jupyterTasks,
+} from "./practice-topic-builders-env.mjs";
+
+import {
+  fileReadWriteTasks, filePathTasks, tryExceptTasks, customExceptionTasks,
+  apiTasks,
+} from "./practice-topic-builders-files.mjs";
+
+import {
+  numpyIntroTasks, numpyCreationTasks, numpyIndexingTasks,
+  numpyOperationsTasks, numpyStatsTasks,
+} from "./practice-topic-builders-numpy.mjs";
+
+import {
+  pandasBasicsTasks, pandasIoTasks, pandasSelectionTasks,
+} from "./practice-topic-builders-pandas.mjs";
+
+import {
+  pandasCleaningTasks, pandasGroupTasks, pandasPivotTasks,
+} from "./practice-topic-builders-pandas2.mjs";
+
+import {
+  matplotlibIntroTasks, chartTypeTasks, customizePlotTasks,
+} from "./practice-topic-builders-viz.mjs";
+
+import {
+  seabornStyleTasks, categoricalPlotTasks,
+} from "./practice-topic-builders-viz2.mjs";
+
+import {
+  descriptiveStatsTasks, distributionTasks, correlationTasks,
+} from "./practice-topic-builders-stats.mjs";
+
+import {
+  outlierTasks, edaTasks,
+} from "./practice-topic-builders-stats2.mjs";
+
 /** Maps every curriculum topic to a concept-aligned task builder. */
 export const TOPIC_BUILDERS = {
-  "m1-t1": null, // hand-crafted in module-1.ts
-  "m1-t2": introTopicTasks,
-  "m1-t3": introTopicTasks,
-  "m1-t4": introTopicTasks,
-  "m1-t5": introTopicTasks,
+  "m1-t1": null, // hand-crafted in module-1-intro.ts
+  "m1-t2": whyPythonTasks,
+  "m1-t3": pythonSetupTasks,
+  "m1-t4": pythonIdeTasks,
+  "m1-t5": jupyterTasks,
   "m2-t1": null, // ENHANCED in generator
   "m2-t2": commentsTasks,
   "m2-t3": null, // ENHANCED in generator
@@ -84,7 +122,32 @@ export const TOPIC_BUILDERS = {
   "m12-t4": functionVarsTasks,
   "m12-t5": recursionTasks,
   "m12-t6": lambdaTasks,
-  // m13–m17: unmapped → defaultTemplate fallback
+  "m13-t1": fileReadWriteTasks,
+  "m13-t2": filePathTasks,
+  "m13-t3": tryExceptTasks,
+  "m13-t4": customExceptionTasks,
+  "m13-t5": apiTasks,
+  "m14-t1": numpyIntroTasks,
+  "m14-t2": numpyCreationTasks,
+  "m14-t3": numpyIndexingTasks,
+  "m14-t4": numpyOperationsTasks,
+  "m14-t5": numpyStatsTasks,
+  "m15-t1": pandasBasicsTasks,
+  "m15-t2": pandasIoTasks,
+  "m15-t3": pandasSelectionTasks,
+  "m15-t4": pandasCleaningTasks,
+  "m15-t5": pandasGroupTasks,
+  "m15-t6": pandasPivotTasks,
+  "m16-t1": matplotlibIntroTasks,
+  "m16-t2": chartTypeTasks,
+  "m16-t3": customizePlotTasks,
+  "m16-t4": seabornStyleTasks,
+  "m16-t5": categoricalPlotTasks,
+  "m17-t1": descriptiveStatsTasks,
+  "m17-t2": distributionTasks,
+  "m17-t3": correlationTasks,
+  "m17-t4": outlierTasks,
+  "m17-t5": edaTasks,
   "m18-t1": finalProjectOverviewTasks,
   "m18-t2": finalProjectDataTasks,
   "m18-t3": finalProjectLogicTasks,

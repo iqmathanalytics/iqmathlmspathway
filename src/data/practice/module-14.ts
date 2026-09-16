@@ -4,1399 +4,1615 @@ export const module14Practice: PracticeProblem[] = [
   {
     "id": "m14-t1-p01",
     "topicId": "m14-t1",
-    "slug": "m14_t1-1",
-    "title": "Introduction to NumPy Arrays: Warm-up",
+    "slug": "np-first-array",
+    "title": "NumPy: Your First Array",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Introduction to NumPy Arrays. Print Ready on one line.",
+    "description": "Create a NumPy array named arr from [3, 6, 9] and print it as a plain list with .tolist().",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Import NumPy as "
         },
         {
           "type": "code",
-          "value": "Introduction to NumPy Arrays"
+          "value": "np"
         },
         {
           "type": "text",
-          "value": ". Print the word "
+          "value": ", build "
         },
         {
           "type": "code",
-          "value": "Ready"
+          "value": "arr"
         },
         {
           "type": "text",
-          "value": " on one line."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": " from "
+        },
         {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
+          "type": "code",
+          "value": "[3, 6, 9]"
+        },
+        {
+          "type": "text",
+          "value": " with "
+        },
+        {
+          "type": "code",
+          "value": "np.array()"
+        },
+        {
+          "type": "text",
+          "value": ", and print "
+        },
+        {
+          "type": "code",
+          "value": "arr.tolist()"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "editorPlaceholder": "# arr = np.array([...])",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct! arr is a real ndarray, not a Python list.",
+      "requiresVariables": [
+        "np",
+        "arr"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "import numpy as np is the universal convention.",
+          "np.array(list) converts a Python list into an ndarray.",
+          ".tolist() converts it back, which prints cleanly on every platform."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "[3, 6, 9]"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Use np.array() — a plain list will not pass",
+      "Name the array arr",
+      "Print with .tolist()"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "arr = np.array([3, 6, 9])",
+      "print(arr.tolist())"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: build the array and print it as a list\nimport numpy as np\n\narr = None\n",
+    "solutionCode": "import numpy as np\n\narr = np.array([3, 6, 9])\nprint(arr.tolist())",
     "publicTests": [
       {
         "id": "m14-t1-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "[3, 6, 9]",
         "visibility": "public"
       },
       {
         "id": "m14-t1-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "arr is a NumPy array",
+        "assertCode": "import numpy as _np\nassert \"arr\" in globals(), \"Expected a variable named arr\"\nassert isinstance(arr, _np.ndarray), \"Expected arr to be a NumPy array, got \" + type(arr).__name__",
         "visibility": "public"
       },
       {
         "id": "m14-t1-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "arr holds the given values",
+        "assertCode": "assert (arr.tolist()) == ([3, 6, 9]), \"Expected \" + repr([3, 6, 9]) + \", got \" + repr(arr.tolist())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Introduction to NumPy Arrays. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Create a NumPy array named arr from [3, 6, 9] and print it as a plain list with .tolist().\n\nReference solution:\nimport numpy as np\n\narr = np.array([3, 6, 9])\nprint(arr.tolist())"
   },
   {
     "id": "m14-t1-p02",
     "topicId": "m14-t1",
-    "slug": "m14_t1-2",
-    "title": "Introduction to NumPy Arrays: Output Two Values",
+    "slug": "np-vectorized-double",
+    "title": "NumPy: Double Every Value at Once",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Introduction to NumPy Arrays and print them comma-separated.",
+    "description": "Multiply the whole array by 2 in one expression and print the result as a list.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Introduction to NumPy Arrays and print them separated by a comma."
+          "value": "NumPy applies maths to every element at once. Print "
+        },
+        {
+          "type": "code",
+          "value": "(arr * 2).tolist()"
+        },
+        {
+          "type": "text",
+          "value": " — no loop needed."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# print((arr * 2).tolist())",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "arr"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "arr * 2 multiplies every element — this is called vectorisation.",
+          "On a Python list, * 2 would repeat the list instead."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "[6, 12, 18]"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "No for loop",
+      "Do not modify arr",
+      "Output must be exactly: [6, 12, 18]"
     ],
     "hints": [
-      "Create two variables related to Introduction to NumPy Arrays",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "print((arr * 2).tolist())"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Introduction to NumPy Arrays and print them comma-separated. Key points: Create two variables related to Introduction to NumPy Arrays Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: double every value without a loop\nimport numpy as np\n\narr = np.array([3, 6, 9])\n",
+    "solutionCode": "import numpy as np\n\narr = np.array([3, 6, 9])\nprint((arr * 2).tolist())",
     "publicTests": [
       {
         "id": "m14-t1-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "[6, 12, 18]",
         "visibility": "public"
       },
       {
         "id": "m14-t1-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "arr is a NumPy array",
+        "assertCode": "import numpy as _np\nassert \"arr\" in globals(), \"Expected a variable named arr\"\nassert isinstance(arr, _np.ndarray), \"Expected arr to be a NumPy array, got \" + type(arr).__name__",
         "visibility": "public"
       },
       {
         "id": "m14-t1-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "arr itself is unchanged",
+        "assertCode": "assert (arr.tolist()) == ([3, 6, 9]), \"Expected \" + repr([3, 6, 9]) + \", got \" + repr(arr.tolist())",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t1-p02-t4",
+        "label": "doubling works elementwise",
+        "assertCode": "assert ((arr * 2).tolist()) == ([6, 12, 18]), \"Expected \" + repr([6, 12, 18]) + \", got \" + repr((arr * 2).tolist())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Multiply the whole array by 2 in one expression and print the result as a list.\n\nReference solution:\nimport numpy as np\n\narr = np.array([3, 6, 9])\nprint((arr * 2).tolist())"
   },
   {
     "id": "m14-t1-p03",
     "topicId": "m14-t1",
-    "slug": "m14_t1-3",
-    "title": "Introduction to NumPy Arrays: Simple Loop",
-    "difficulty": "medium",
+    "slug": "np-array-sum",
+    "title": "NumPy: Total an Array",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Introduction to NumPy Arrays.",
+    "description": "Print the sum of the array using arr.sum() wrapped in int().",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "int(arr.sum())"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Introduction to NumPy Arrays."
+          "value": ". Wrapping in "
+        },
+        {
+          "type": "code",
+          "value": "int()"
+        },
+        {
+          "type": "text",
+          "value": " turns the NumPy scalar into a plain Python int."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# print(int(arr.sum()))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "arr"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "arr.sum() adds every element.",
+          "NumPy returns its own scalar type — int() makes the output predictable."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "18"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Use arr.sum()",
+      "Wrap the result in int()",
+      "Output must be exactly: 18"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "print(int(arr.sum()))"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Introduction to NumPy Arrays. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: total the array\nimport numpy as np\n\narr = np.array([3, 6, 9])\n",
+    "solutionCode": "import numpy as np\n\narr = np.array([3, 6, 9])\nprint(int(arr.sum()))",
     "publicTests": [
       {
         "id": "m14-t1-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "18",
         "visibility": "public"
       },
       {
         "id": "m14-t1-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "arr is a NumPy array",
+        "assertCode": "import numpy as _np\nassert \"arr\" in globals(), \"Expected a variable named arr\"\nassert isinstance(arr, _np.ndarray), \"Expected arr to be a NumPy array, got \" + type(arr).__name__",
         "visibility": "public"
       },
       {
         "id": "m14-t1-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "the total is correct",
+        "assertCode": "assert (int(arr.sum())) == (18), \"Expected \" + repr(18) + \", got \" + repr(int(arr.sum()))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Print the sum of the array using arr.sum() wrapped in int().\n\nReference solution:\nimport numpy as np\n\narr = np.array([3, 6, 9])\nprint(int(arr.sum()))"
   },
   {
     "id": "m14-t1-p04",
     "topicId": "m14-t1",
-    "slug": "m14_t1-4",
-    "title": "Introduction to NumPy Arrays: Condition",
-    "difficulty": "medium",
+    "slug": "np-array-type",
+    "title": "NumPy: What Type Is It?",
+    "difficulty": "easy",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Print the class name of a NumPy array using type(arr).__name__ to confirm it is an ndarray.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "type(arr).__name__"
         },
         {
           "type": "text",
-          "value": ". If "
+          "value": ". The answer, "
         },
         {
           "type": "code",
-          "value": "score >= 60"
+          "value": "ndarray"
         },
         {
           "type": "text",
-          "value": ", print "
-        },
-        {
-          "type": "code",
-          "value": "Pass"
-        },
-        {
-          "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": ", is the N-dimensional array at the heart of NumPy."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# print(type(arr).__name__)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "arr"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "type(x) gives the class; .__name__ gives its name as a string.",
+          "Every NumPy array is an ndarray no matter its shape."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "ndarray"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Use type(arr).__name__ — do not type the word yourself",
+      "Output must be exactly: ndarray"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "print(type(arr).__name__)"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: print the class name of the array\nimport numpy as np\n\narr = np.array([3, 6, 9])\n",
+    "solutionCode": "import numpy as np\n\narr = np.array([3, 6, 9])\nprint(type(arr).__name__)",
     "publicTests": [
       {
         "id": "m14-t1-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "ndarray",
         "visibility": "public"
       },
       {
         "id": "m14-t1-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "arr is a NumPy array",
+        "assertCode": "import numpy as _np\nassert \"arr\" in globals(), \"Expected a variable named arr\"\nassert isinstance(arr, _np.ndarray), \"Expected arr to be a NumPy array, got \" + type(arr).__name__",
         "visibility": "public"
       },
       {
         "id": "m14-t1-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "the class name is ndarray",
+        "assertCode": "assert (type(arr).__name__) == (\"ndarray\"), \"Expected \" + repr(\"ndarray\") + \", got \" + repr(type(arr).__name__)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Print the class name of a NumPy array using type(arr).__name__ to confirm it is an ndarray.\n\nReference solution:\nimport numpy as np\n\narr = np.array([3, 6, 9])\nprint(type(arr).__name__)"
   },
   {
     "id": "m14-t1-p05",
     "topicId": "m14-t1",
-    "slug": "m14_t1-5",
-    "title": "Introduction to NumPy Arrays: Function Stub",
+    "slug": "np-add-arrays",
+    "title": "NumPy: Add Two Arrays",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Add two arrays elementwise into a variable named total and print it as a list.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "Add "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "[1, 2, 3]"
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": " and "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": "[10, 20, 30]"
         },
         {
           "type": "text",
-          "value": " and call it once."
+          "value": " elementwise into "
+        },
+        {
+          "type": "code",
+          "value": "total"
+        },
+        {
+          "type": "text",
+          "value": " and print "
+        },
+        {
+          "type": "code",
+          "value": "total.tolist()"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# total = a + b",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "total"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "a + b pairs up matching positions when the shapes match.",
+          "The result is a new array — neither input changes."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "[11, 22, 33]"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Use + on the arrays",
+      "Store the result in total",
+      "No loops"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "total = a + b",
+      "print(total.tolist())"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: add the two arrays\nimport numpy as np\n\na = np.array([1, 2, 3])\nb = np.array([10, 20, 30])\ntotal = None\n",
+    "solutionCode": "import numpy as np\n\na = np.array([1, 2, 3])\nb = np.array([10, 20, 30])\ntotal = a + b\nprint(total.tolist())",
     "publicTests": [
       {
         "id": "m14-t1-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": "[11, 22, 33]",
         "visibility": "public"
       },
       {
         "id": "m14-t1-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "total is a NumPy array",
+        "assertCode": "import numpy as _np\nassert \"total\" in globals(), \"Expected a variable named total\"\nassert isinstance(total, _np.ndarray), \"Expected total to be a NumPy array, got \" + type(total).__name__",
         "visibility": "public"
       },
       {
         "id": "m14-t1-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "elementwise sum",
+        "assertCode": "assert (total.tolist()) == ([11, 22, 33]), \"Expected \" + repr([11, 22, 33]) + \", got \" + repr(total.tolist())",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t1-p05-t4",
+        "label": "input a is unchanged",
+        "assertCode": "assert (a.tolist()) == ([1, 2, 3]), \"Expected \" + repr([1, 2, 3]) + \", got \" + repr(a.tolist())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Add two arrays elementwise into a variable named total and print it as a list.\n\nReference solution:\nimport numpy as np\n\na = np.array([1, 2, 3])\nb = np.array([10, 20, 30])\ntotal = a + b\nprint(total.tolist())"
   },
   {
     "id": "m14-t1-p06",
     "topicId": "m14-t1",
-    "slug": "m14_t1-6",
-    "title": "Introduction to NumPy Arrays: List Practice",
-    "difficulty": "hard",
+    "slug": "np-list-vs-array",
+    "title": "NumPy: List vs Array Multiplication",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Show that * 2 repeats a Python list but doubles a NumPy array by printing both results.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Introduction to NumPy Arrays. Print the "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "numbers * 2"
         },
         {
           "type": "text",
-          "value": " using index "
+          "value": " for the Python list, then "
         },
         {
           "type": "code",
-          "value": "1"
+          "value": "(arr * 2).tolist()"
         },
         {
           "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": " for the array. Same operator, very different meaning."
         }
+      ],
+      "editorPlaceholder": "# print(numbers * 2)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "numbers",
+        "arr"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "For a list, * 2 concatenates the list with itself.",
+          "For an array, * 2 multiplies every element.",
+          "This is the single biggest surprise when moving from lists to NumPy."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "[1, 2, 1, 2]\n[2, 4]"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Keep numbers as a plain list and arr as an array",
+      "Print the list result first"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "print(numbers * 2)",
+      "print((arr * 2).tolist())"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: print the list result, then the array result\nimport numpy as np\n\nnumbers = [1, 2]\narr = np.array([1, 2])\n",
+    "solutionCode": "import numpy as np\n\nnumbers = [1, 2]\narr = np.array([1, 2])\nprint(numbers * 2)\nprint((arr * 2).tolist())",
     "publicTests": [
       {
         "id": "m14-t1-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "middle",
+        "expectedStdout": "[1, 2, 1, 2]\n[2, 4]",
         "visibility": "public"
       },
       {
         "id": "m14-t1-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "numbers has the right type",
+        "assertCode": "assert \"numbers\" in globals(), \"Expected a variable named numbers\"\nassert isinstance(numbers, list), \"Expected numbers to be list, got \" + type(numbers).__name__",
         "visibility": "public"
       },
       {
         "id": "m14-t1-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "arr is a NumPy array",
+        "assertCode": "import numpy as _np\nassert \"arr\" in globals(), \"Expected a variable named arr\"\nassert isinstance(arr, _np.ndarray), \"Expected arr to be a NumPy array, got \" + type(arr).__name__",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t1-p06-t4",
+        "label": "list repeats",
+        "assertCode": "assert (numbers * 2) == ([1, 2, 1, 2]), \"Expected \" + repr([1, 2, 1, 2]) + \", got \" + repr(numbers * 2)",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t1-p06-t5",
+        "label": "array doubles",
+        "assertCode": "assert ((arr * 2).tolist()) == ([2, 4]), \"Expected \" + repr([2, 4]) + \", got \" + repr((arr * 2).tolist())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Show that * 2 repeats a Python list but doubles a NumPy array by printing both results.\n\nReference solution:\nimport numpy as np\n\nnumbers = [1, 2]\narr = np.array([1, 2])\nprint(numbers * 2)\nprint((arr * 2).tolist())"
   },
   {
     "id": "m14-t1-p07",
     "topicId": "m14-t1",
-    "slug": "m14_t1-7",
-    "title": "Introduction to NumPy Arrays: Dict Lookup",
+    "slug": "np-astype-float",
+    "title": "NumPy: Convert to Floats",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Convert an integer array to float64 with astype and print the converted values.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Convert "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "arr"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": " to floats with "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "astype(\"float64\")"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
+          "value": " into "
         },
         {
           "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "floats"
+        },
+        {
+          "type": "text",
+          "value": ", then print "
+        },
+        {
+          "type": "code",
+          "value": "floats.tolist()"
         },
         {
           "type": "text",
           "value": "."
         }
       ],
+      "editorPlaceholder": "# floats = arr.astype('float64')",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "arr",
+        "floats"
+      ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "An array has one dtype for every element.",
+          "astype(\"float64\") returns a new array — the original keeps its dtype.",
+          "Float conversion matters before dividing, or integer division will surprise you."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "[3.0, 6.0, 9.0]"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Use astype(\"float64\")",
+      "Do not change arr itself",
+      "Output must be exactly: [3.0, 6.0, 9.0]"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "floats = arr.astype(\"float64\")",
+      "print(floats.tolist())"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: convert the array to float64\nimport numpy as np\n\narr = np.array([3, 6, 9])\nfloats = None\n",
+    "solutionCode": "import numpy as np\n\narr = np.array([3, 6, 9])\nfloats = arr.astype(\"float64\")\nprint(floats.tolist())",
     "publicTests": [
       {
         "id": "m14-t1-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "[3.0, 6.0, 9.0]",
         "visibility": "public"
       },
       {
         "id": "m14-t1-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "floats is a NumPy array",
+        "assertCode": "import numpy as _np\nassert \"floats\" in globals(), \"Expected a variable named floats\"\nassert isinstance(floats, _np.ndarray), \"Expected floats to be a NumPy array, got \" + type(floats).__name__",
         "visibility": "public"
       },
       {
         "id": "m14-t1-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "dtype is float64",
+        "assertCode": "assert (str(floats.dtype)) == (\"float64\"), \"Expected \" + repr(\"float64\") + \", got \" + repr(str(floats.dtype))",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t1-p07-t4",
+        "label": "values converted",
+        "assertCode": "assert (floats.tolist()) == ([3.0, 6.0, 9.0]), \"Expected \" + repr([3.0, 6.0, 9.0]) + \", got \" + repr(floats.tolist())",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t1-p07-t5",
+        "label": "the original array stays integer",
+        "assertCode": "assert arr.dtype.kind == \"i\", \"astype returns a new array — arr should still hold integers\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Convert an integer array to float64 with astype and print the converted values.\n\nReference solution:\nimport numpy as np\n\narr = np.array([3, 6, 9])\nfloats = arr.astype(\"float64\")\nprint(floats.tolist())"
   },
   {
     "id": "m14-t2-p01",
     "topicId": "m14-t2",
-    "slug": "m14_t2-1",
-    "title": "Array Creation and Properties: Warm-up",
+    "slug": "np-zeros",
+    "title": "Creation: An Array of Zeros",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Array Creation and Properties. Print Ready on one line.",
+    "description": "Create a length-4 array of zeros with np.zeros and print it as a list.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Build "
         },
         {
           "type": "code",
-          "value": "Array Creation and Properties"
+          "value": "np.zeros(4)"
         },
         {
           "type": "text",
-          "value": ". Print the word "
+          "value": " into "
         },
         {
           "type": "code",
-          "value": "Ready"
+          "value": "blanks"
         },
         {
           "type": "text",
-          "value": " on one line."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": " and print "
+        },
         {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
+          "type": "code",
+          "value": "blanks.tolist()"
+        },
+        {
+          "type": "text",
+          "value": ". Note the values are floats."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "editorPlaceholder": "# blanks = np.zeros(4)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "blanks"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "np.zeros(n) pre-allocates an array you fill in later.",
+          "The default dtype is float64, so you get 0.0 not 0."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "[0.0, 0.0, 0.0, 0.0]"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Use np.zeros()",
+      "Length must be 4",
+      "Print with .tolist()"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "blanks = np.zeros(4)"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: make four zeros\nimport numpy as np\n\nblanks = None\n",
+    "solutionCode": "import numpy as np\n\nblanks = np.zeros(4)\nprint(blanks.tolist())",
     "publicTests": [
       {
         "id": "m14-t2-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "[0.0, 0.0, 0.0, 0.0]",
         "visibility": "public"
       },
       {
         "id": "m14-t2-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "four zeros created",
+        "assertCode": "assert (blanks.tolist()) == ([0.0, 0.0, 0.0, 0.0]), \"Expected \" + repr([0.0, 0.0, 0.0, 0.0]) + \", got \" + repr(blanks.tolist())",
         "visibility": "public"
       },
       {
         "id": "m14-t2-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "length is 4",
+        "assertCode": "assert (len(blanks)) == (4), \"Expected \" + repr(4) + \", got \" + repr(len(blanks))",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t2-p01-t4",
+        "label": "dtype is float64",
+        "assertCode": "assert (str(blanks.dtype)) == (\"float64\"), \"Expected \" + repr(\"float64\") + \", got \" + repr(str(blanks.dtype))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Array Creation and Properties. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Create a length-4 array of zeros with np.zeros and print it as a list.\n\nReference solution:\nimport numpy as np\n\nblanks = np.zeros(4)\nprint(blanks.tolist())"
   },
   {
     "id": "m14-t2-p02",
     "topicId": "m14-t2",
-    "slug": "m14_t2-2",
-    "title": "Array Creation and Properties: Output Two Values",
+    "slug": "np-arange",
+    "title": "Creation: Even Numbers with arange",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Array Creation and Properties and print them comma-separated.",
+    "description": "Use np.arange to build the even numbers from 0 up to (not including) 10 and print them.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Array Creation and Properties and print them separated by a comma."
+          "value": "Build "
+        },
+        {
+          "type": "code",
+          "value": "np.arange(0, 10, 2)"
+        },
+        {
+          "type": "text",
+          "value": " into "
+        },
+        {
+          "type": "code",
+          "value": "evens"
+        },
+        {
+          "type": "text",
+          "value": " and print the list. The stop value is excluded, just like "
+        },
+        {
+          "type": "code",
+          "value": "range()"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# evens = np.arange(0, 10, 2)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "evens"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "np.arange(start, stop, step) works like range() but returns an array.",
+          "10 is not included — the last value is 8."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "[0, 2, 4, 6, 8]"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Use np.arange with a step of 2",
+      "Output must be exactly: [0, 2, 4, 6, 8]"
     ],
     "hints": [
-      "Create two variables related to Array Creation and Properties",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "evens = np.arange(0, 10, 2)"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Array Creation and Properties and print them comma-separated. Key points: Create two variables related to Array Creation and Properties Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: build the even numbers below 10\nimport numpy as np\n\nevens = None\n",
+    "solutionCode": "import numpy as np\n\nevens = np.arange(0, 10, 2)\nprint(evens.tolist())",
     "publicTests": [
       {
         "id": "m14-t2-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "[0, 2, 4, 6, 8]",
         "visibility": "public"
       },
       {
         "id": "m14-t2-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "evens are 0 to 8",
+        "assertCode": "assert (evens.tolist()) == ([0, 2, 4, 6, 8]), \"Expected \" + repr([0, 2, 4, 6, 8]) + \", got \" + repr(evens.tolist())",
         "visibility": "public"
       },
       {
         "id": "m14-t2-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "10 is excluded",
+        "assertCode": "assert 10 not in evens.tolist(), \"arange excludes the stop value — 10 should not appear\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Use np.arange to build the even numbers from 0 up to (not including) 10 and print them.\n\nReference solution:\nimport numpy as np\n\nevens = np.arange(0, 10, 2)\nprint(evens.tolist())"
   },
   {
     "id": "m14-t2-p03",
     "topicId": "m14-t2",
-    "slug": "m14_t2-3",
-    "title": "Array Creation and Properties: Simple Loop",
-    "difficulty": "medium",
+    "slug": "np-linspace",
+    "title": "Creation: Evenly Spaced with linspace",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Array Creation and Properties.",
+    "description": "Use np.linspace to build 5 evenly spaced values from 0 to 1 inclusive and print them.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Build "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "np.linspace(0, 1, 5)"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Array Creation and Properties."
+          "value": " into "
+        },
+        {
+          "type": "code",
+          "value": "grid"
+        },
+        {
+          "type": "text",
+          "value": " and print the list. Unlike arange, the stop value "
+        },
+        {
+          "type": "code",
+          "value": "1"
+        },
+        {
+          "type": "text",
+          "value": " is included."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# grid = np.linspace(0, 1, 5)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "grid"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "np.linspace(start, stop, count) picks how many points you want.",
+          "Use it for plot axes and probability grids where the endpoints matter."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "[0.0, 0.25, 0.5, 0.75, 1.0]"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Use np.linspace",
+      "Exactly 5 values",
+      "Print with .tolist()"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "grid = np.linspace(0, 1, 5)"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Array Creation and Properties. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: five points from 0 to 1\nimport numpy as np\n\ngrid = None\n",
+    "solutionCode": "import numpy as np\n\ngrid = np.linspace(0, 1, 5)\nprint(grid.tolist())",
     "publicTests": [
       {
         "id": "m14-t2-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "[0.0, 0.25, 0.5, 0.75, 1.0]",
         "visibility": "public"
       },
       {
         "id": "m14-t2-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "five evenly spaced points",
+        "assertCode": "assert (grid.tolist()) == ([0.0, 0.25, 0.5, 0.75, 1.0]), \"Expected \" + repr([0.0, 0.25, 0.5, 0.75, 1.0]) + \", got \" + repr(grid.tolist())",
         "visibility": "public"
       },
       {
         "id": "m14-t2-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "count is 5",
+        "assertCode": "assert (len(grid)) == (5), \"Expected \" + repr(5) + \", got \" + repr(len(grid))",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t2-p03-t4",
+        "label": "the endpoint is included",
+        "assertCode": "assert grid.tolist()[-1] == 1.0, \"linspace includes the stop value — the last item should be 1.0\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Use np.linspace to build 5 evenly spaced values from 0 to 1 inclusive and print them.\n\nReference solution:\nimport numpy as np\n\ngrid = np.linspace(0, 1, 5)\nprint(grid.tolist())"
   },
   {
     "id": "m14-t2-p04",
     "topicId": "m14-t2",
-    "slug": "m14_t2-4",
-    "title": "Array Creation and Properties: Condition",
+    "slug": "np-shape",
+    "title": "Properties: Read the Shape",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Create a 2x3 array from nested lists and print its .shape.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "Build "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "grid"
         },
         {
           "type": "text",
-          "value": ". If "
+          "value": " from "
         },
         {
           "type": "code",
-          "value": "score >= 60"
+          "value": "[[1, 2, 3], [4, 5, 6]]"
         },
         {
           "type": "text",
-          "value": ", print "
+          "value": " and print "
         },
         {
           "type": "code",
-          "value": "Pass"
+          "value": "grid.shape"
         },
         {
           "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": " — rows first, then columns."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# grid = np.array([[...], [...]])",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "grid"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Nested lists become a 2-D array.",
+          ".shape is a tuple of plain ints, so it prints as (2, 3)."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "(2, 3)"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Build a 2x3 array",
+      "Print .shape",
+      "Output must be exactly: (2, 3)"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "grid = np.array([[1, 2, 3], [4, 5, 6]])",
+      "print(grid.shape)"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: build the 2x3 array and print its shape\nimport numpy as np\n\ngrid = None\n",
+    "solutionCode": "import numpy as np\n\ngrid = np.array([[1, 2, 3], [4, 5, 6]])\nprint(grid.shape)",
     "publicTests": [
       {
         "id": "m14-t2-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "(2, 3)",
         "visibility": "public"
       },
       {
         "id": "m14-t2-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "grid is a NumPy array",
+        "assertCode": "import numpy as _np\nassert \"grid\" in globals(), \"Expected a variable named grid\"\nassert isinstance(grid, _np.ndarray), \"Expected grid to be a NumPy array, got \" + type(grid).__name__",
         "visibility": "public"
       },
       {
         "id": "m14-t2-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "shape is 2 rows by 3 columns",
+        "assertCode": "assert (grid.shape) == ((2, 3)), \"Expected \" + repr((2, 3)) + \", got \" + repr(grid.shape)",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t2-p04-t4",
+        "label": "values are correct",
+        "assertCode": "assert (grid.tolist()) == ([[1, 2, 3], [4, 5, 6]]), \"Expected \" + repr([[1, 2, 3], [4, 5, 6]]) + \", got \" + repr(grid.tolist())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Create a 2x3 array from nested lists and print its .shape.\n\nReference solution:\nimport numpy as np\n\ngrid = np.array([[1, 2, 3], [4, 5, 6]])\nprint(grid.shape)"
   },
   {
     "id": "m14-t2-p05",
     "topicId": "m14-t2",
-    "slug": "m14_t2-5",
-    "title": "Array Creation and Properties: Function Stub",
+    "slug": "np-dtype",
+    "title": "Properties: Check the dtype",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Create an array with an explicit \"float64\" dtype and print str(arr.dtype).",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "Create "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "np.array([1, 2, 3], dtype=\"float64\")"
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": " as "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": "arr"
         },
         {
           "type": "text",
-          "value": " and call it once."
+          "value": " and print "
+        },
+        {
+          "type": "code",
+          "value": "str(arr.dtype)"
+        },
+        {
+          "type": "text",
+          "value": ". Setting dtype explicitly keeps results identical everywhere."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# arr = np.array([1, 2, 3], dtype='float64')",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "arr"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Every array has exactly one dtype for all its elements.",
+          "The default integer width depends on the machine — so state it when it matters."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "float64"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Pass dtype=\"float64\" to np.array",
+      "Output must be exactly: float64"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "arr = np.array([1, 2, 3], dtype=\"float64\")",
+      "print(str(arr.dtype))"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: create a float64 array and print its dtype\nimport numpy as np\n\narr = None\n",
+    "solutionCode": "import numpy as np\n\narr = np.array([1, 2, 3], dtype=\"float64\")\nprint(str(arr.dtype))",
     "publicTests": [
       {
         "id": "m14-t2-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": "float64",
         "visibility": "public"
       },
       {
         "id": "m14-t2-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "arr is a NumPy array",
+        "assertCode": "import numpy as _np\nassert \"arr\" in globals(), \"Expected a variable named arr\"\nassert isinstance(arr, _np.ndarray), \"Expected arr to be a NumPy array, got \" + type(arr).__name__",
         "visibility": "public"
       },
       {
         "id": "m14-t2-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "dtype is float64",
+        "assertCode": "assert (str(arr.dtype)) == (\"float64\"), \"Expected \" + repr(\"float64\") + \", got \" + repr(str(arr.dtype))",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t2-p05-t4",
+        "label": "values stored as floats",
+        "assertCode": "assert (arr.tolist()) == ([1.0, 2.0, 3.0]), \"Expected \" + repr([1.0, 2.0, 3.0]) + \", got \" + repr(arr.tolist())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Create an array with an explicit \"float64\" dtype and print str(arr.dtype).\n\nReference solution:\nimport numpy as np\n\narr = np.array([1, 2, 3], dtype=\"float64\")\nprint(str(arr.dtype))"
   },
   {
     "id": "m14-t2-p06",
     "topicId": "m14-t2",
-    "slug": "m14_t2-6",
-    "title": "Array Creation and Properties: List Practice",
-    "difficulty": "hard",
+    "slug": "np-ndim-size",
+    "title": "Properties: Dimensions and Size",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Print how many dimensions the 2x3 array has, then how many elements it holds.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Array Creation and Properties. Print the "
+          "value": "For the 2x3 array, print "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "grid.ndim"
         },
         {
           "type": "text",
-          "value": " using index "
+          "value": " then "
         },
         {
           "type": "code",
-          "value": "1"
+          "value": "grid.size"
         },
         {
           "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": " — the number of axes, then the total element count."
         }
+      ],
+      "editorPlaceholder": "# print(grid.ndim)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "grid"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          ".ndim is the number of axes (2 for a table).",
+          ".size is rows * columns, not the shape."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "2\n6"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Print ndim on line 1 and size on line 2"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "print(grid.ndim)",
+      "print(grid.size)"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: print ndim then size\nimport numpy as np\n\ngrid = np.array([[1, 2, 3], [4, 5, 6]])\n",
+    "solutionCode": "import numpy as np\n\ngrid = np.array([[1, 2, 3], [4, 5, 6]])\nprint(grid.ndim)\nprint(grid.size)",
     "publicTests": [
       {
         "id": "m14-t2-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "middle",
+        "expectedStdout": "2\n6",
         "visibility": "public"
       },
       {
         "id": "m14-t2-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "two dimensions",
+        "assertCode": "assert (grid.ndim) == (2), \"Expected \" + repr(2) + \", got \" + repr(grid.ndim)",
         "visibility": "public"
       },
       {
         "id": "m14-t2-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "six elements",
+        "assertCode": "assert (grid.size) == (6), \"Expected \" + repr(6) + \", got \" + repr(grid.size)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Print how many dimensions the 2x3 array has, then how many elements it holds.\n\nReference solution:\nimport numpy as np\n\ngrid = np.array([[1, 2, 3], [4, 5, 6]])\nprint(grid.ndim)\nprint(grid.size)"
   },
   {
     "id": "m14-t2-p07",
     "topicId": "m14-t2",
-    "slug": "m14_t2-7",
-    "title": "Array Creation and Properties: Dict Lookup",
+    "slug": "np-reshape",
+    "title": "Properties: Reshape a Range",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Build np.arange(6), reshape it into 2 rows by 3 columns, and print the nested list.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Create "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "np.arange(6)"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": " and reshape it to "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "(2, 3)"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
+          "value": " into "
         },
         {
           "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "grid"
+        },
+        {
+          "type": "text",
+          "value": ", then print "
+        },
+        {
+          "type": "code",
+          "value": "grid.tolist()"
         },
         {
           "type": "text",
           "value": "."
         }
       ],
+      "editorPlaceholder": "# grid = np.arange(6).reshape(2, 3)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "grid"
+      ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "reshape only works when the element count matches: 2 * 3 == 6.",
+          "Values fill row by row.",
+          "The result shares data with the original — it is a view, not a copy."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "[[0, 1, 2], [3, 4, 5]]"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Use np.arange(6) and .reshape(2, 3)",
+      "Output must be exactly: [[0, 1, 2], [3, 4, 5]]"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "grid = np.arange(6).reshape(2, 3)"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: reshape 6 values into 2 rows of 3\nimport numpy as np\n\ngrid = None\n",
+    "solutionCode": "import numpy as np\n\ngrid = np.arange(6).reshape(2, 3)\nprint(grid.tolist())",
     "publicTests": [
       {
         "id": "m14-t2-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "[[0, 1, 2], [3, 4, 5]]",
         "visibility": "public"
       },
       {
         "id": "m14-t2-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "grid is a NumPy array",
+        "assertCode": "import numpy as _np\nassert \"grid\" in globals(), \"Expected a variable named grid\"\nassert isinstance(grid, _np.ndarray), \"Expected grid to be a NumPy array, got \" + type(grid).__name__",
         "visibility": "public"
       },
       {
         "id": "m14-t2-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "shape is (2, 3)",
+        "assertCode": "assert (grid.shape) == ((2, 3)), \"Expected \" + repr((2, 3)) + \", got \" + repr(grid.shape)",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t2-p07-t4",
+        "label": "values fill row by row",
+        "assertCode": "assert (grid.tolist()) == ([[0, 1, 2], [3, 4, 5]]), \"Expected \" + repr([[0, 1, 2], [3, 4, 5]]) + \", got \" + repr(grid.tolist())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Build np.arange(6), reshape it into 2 rows by 3 columns, and print the nested list.\n\nReference solution:\nimport numpy as np\n\ngrid = np.arange(6).reshape(2, 3)\nprint(grid.tolist())"
   },
   {
     "id": "m14-t3-p01",
     "topicId": "m14-t3",
-    "slug": "m14_t3-1",
-    "title": "Indexing and Slicing Arrays: Warm-up",
+    "slug": "np-index-first",
+    "title": "Indexing: The First Element",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Indexing and Slicing Arrays. Print Ready on one line.",
+    "description": "Print the first element of the sales array using index 0.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "Indexing and Slicing Arrays"
+          "value": "int(sales[0])"
         },
         {
           "type": "text",
-          "value": ". Print the word "
-        },
-        {
-          "type": "code",
-          "value": "Ready"
-        },
-        {
-          "type": "text",
-          "value": " on one line."
+          "value": " — indexing an array works exactly like a list."
         }
       ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
-        }
+      "editorPlaceholder": "# print(int(sales[0]))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "sales"
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Index 0 is the first element.",
+          "int() keeps the printed value a plain integer."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "10"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Use index 0",
+      "Output must be exactly: 10"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "print(int(sales[0]))"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: print the first value\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40, 50])\n",
+    "solutionCode": "import numpy as np\n\nsales = np.array([10, 20, 30, 40, 50])\nprint(int(sales[0]))",
     "publicTests": [
       {
         "id": "m14-t3-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "10",
         "visibility": "public"
       },
       {
         "id": "m14-t3-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "sales is a NumPy array",
+        "assertCode": "import numpy as _np\nassert \"sales\" in globals(), \"Expected a variable named sales\"\nassert isinstance(sales, _np.ndarray), \"Expected sales to be a NumPy array, got \" + type(sales).__name__",
         "visibility": "public"
       },
       {
         "id": "m14-t3-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "first element",
+        "assertCode": "assert (int(sales[0])) == (10), \"Expected \" + repr(10) + \", got \" + repr(int(sales[0]))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Indexing and Slicing Arrays. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Print the first element of the sales array using index 0.\n\nReference solution:\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40, 50])\nprint(int(sales[0]))"
   },
   {
     "id": "m14-t3-p02",
     "topicId": "m14-t3",
-    "slug": "m14_t3-2",
-    "title": "Indexing and Slicing Arrays: Output Two Values",
+    "slug": "np-slice-middle",
+    "title": "Indexing: Slice the Middle",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Indexing and Slicing Arrays and print them comma-separated.",
+    "description": "Print elements at index 1 and 2 using a slice, as a list.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Indexing and Slicing Arrays and print them separated by a comma."
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "sales[1:3].tolist()"
+        },
+        {
+          "type": "text",
+          "value": ". The start is included, the stop is not."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# print(sales[1:3].tolist())",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "sales"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "arr[1:3] returns index 1 and 2.",
+          "Slicing an array returns another array."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "[20, 30]"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Use a slice, not two indexes",
+      "Output must be exactly: [20, 30]"
     ],
     "hints": [
-      "Create two variables related to Indexing and Slicing Arrays",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "print(sales[1:3].tolist())"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Indexing and Slicing Arrays and print them comma-separated. Key points: Create two variables related to Indexing and Slicing Arrays Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: slice index 1 and 2\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40, 50])\n",
+    "solutionCode": "import numpy as np\n\nsales = np.array([10, 20, 30, 40, 50])\nprint(sales[1:3].tolist())",
     "publicTests": [
       {
         "id": "m14-t3-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "[20, 30]",
         "visibility": "public"
       },
       {
         "id": "m14-t3-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "slice holds two values",
+        "assertCode": "assert (sales[1:3].tolist()) == ([20, 30]), \"Expected \" + repr([20, 30]) + \", got \" + repr(sales[1:3].tolist())",
         "visibility": "public"
       },
       {
         "id": "m14-t3-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "the array is unchanged",
+        "assertCode": "assert (sales.tolist()) == ([10, 20, 30, 40, 50]), \"Expected \" + repr([10, 20, 30, 40, 50]) + \", got \" + repr(sales.tolist())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Print elements at index 1 and 2 using a slice, as a list.\n\nReference solution:\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40, 50])\nprint(sales[1:3].tolist())"
   },
   {
     "id": "m14-t3-p03",
     "topicId": "m14-t3",
-    "slug": "m14_t3-3",
-    "title": "Indexing and Slicing Arrays: Simple Loop",
-    "difficulty": "medium",
+    "slug": "np-negative-index",
+    "title": "Indexing: Count From the End",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Indexing and Slicing Arrays.",
+    "description": "Print the last element of the array using a negative index.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "int(sales[-1])"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Indexing and Slicing Arrays."
+          "value": " — negative indexes count backwards from the end."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# print(int(sales[-1]))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "sales"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "-1 is the last element, -2 the second to last."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "50"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Use a negative index",
+      "Output must be exactly: 50"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "print(int(sales[-1]))"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Indexing and Slicing Arrays. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: print the last value\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40, 50])\n",
+    "solutionCode": "import numpy as np\n\nsales = np.array([10, 20, 30, 40, 50])\nprint(int(sales[-1]))",
     "publicTests": [
       {
         "id": "m14-t3-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "50",
         "visibility": "public"
       },
       {
         "id": "m14-t3-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "last element",
+        "assertCode": "assert (int(sales[-1])) == (50), \"Expected \" + repr(50) + \", got \" + repr(int(sales[-1]))",
         "visibility": "public"
       },
       {
         "id": "m14-t3-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "second to last works too",
+        "assertCode": "assert (int(sales[-2])) == (40), \"Expected \" + repr(40) + \", got \" + repr(int(sales[-2]))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Print the last element of the array using a negative index.\n\nReference solution:\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40, 50])\nprint(int(sales[-1]))"
   },
   {
     "id": "m14-t3-p04",
     "topicId": "m14-t3",
-    "slug": "m14_t3-4",
-    "title": "Indexing and Slicing Arrays: Condition",
+    "slug": "np-2d-element",
+    "title": "Indexing: One Cell of a 2-D Array",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Print the value in row 1, column 2 of a 2-D array using grid[1, 2].",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "For "
         },
         {
           "type": "code",
-          "value": "score = 75"
-        },
-        {
-          "type": "text",
-          "value": ". If "
-        },
-        {
-          "type": "code",
-          "value": "score >= 60"
+          "value": "[[10, 20, 30], [40, 50, 60]]"
         },
         {
           "type": "text",
@@ -1404,1501 +1620,1582 @@ export const module14Practice: PracticeProblem[] = [
         },
         {
           "type": "code",
-          "value": "Pass"
+          "value": "int(grid[1, 2])"
         },
         {
           "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": " — row first, then column, in one pair of brackets."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# print(int(grid[1, 2]))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "grid"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "grid[1, 2] is the NumPy way; grid[1][2] also works but is slower.",
+          "Both indexes start at 0."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "60"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Use grid[row, column]",
+      "Output must be exactly: 60"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "print(int(grid[1, 2]))"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: read row 1, column 2\nimport numpy as np\n\ngrid = np.array([[10, 20, 30], [40, 50, 60]])\n",
+    "solutionCode": "import numpy as np\n\ngrid = np.array([[10, 20, 30], [40, 50, 60]])\nprint(int(grid[1, 2]))",
     "publicTests": [
       {
         "id": "m14-t3-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "60",
         "visibility": "public"
       },
       {
         "id": "m14-t3-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "row 1 column 2",
+        "assertCode": "assert (int(grid[1, 2])) == (60), \"Expected \" + repr(60) + \", got \" + repr(int(grid[1, 2]))",
         "visibility": "public"
       },
       {
         "id": "m14-t3-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "shape is (2, 3)",
+        "assertCode": "assert (grid.shape) == ((2, 3)), \"Expected \" + repr((2, 3)) + \", got \" + repr(grid.shape)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Print the value in row 1, column 2 of a 2-D array using grid[1, 2].\n\nReference solution:\nimport numpy as np\n\ngrid = np.array([[10, 20, 30], [40, 50, 60]])\nprint(int(grid[1, 2]))"
   },
   {
     "id": "m14-t3-p05",
     "topicId": "m14-t3",
-    "slug": "m14_t3-5",
-    "title": "Indexing and Slicing Arrays: Function Stub",
+    "slug": "np-2d-column",
+    "title": "Indexing: Take a Whole Column",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Print the first column of a 2-D array using grid[:, 0] as a list.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "grid[:, 0].tolist()"
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": ". The "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": ":"
         },
         {
           "type": "text",
-          "value": " and call it once."
+          "value": " means every row, and "
+        },
+        {
+          "type": "code",
+          "value": "0"
+        },
+        {
+          "type": "text",
+          "value": " picks the first column."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# print(grid[:, 0].tolist())",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "grid"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Column selection is the everyday move for feature extraction.",
+          "grid[0, :] would give the first row instead."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "[10, 40]"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Use grid[:, 0]",
+      "Output must be exactly: [10, 40]"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "print(grid[:, 0].tolist())"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: take column 0\nimport numpy as np\n\ngrid = np.array([[10, 20, 30], [40, 50, 60]])\n",
+    "solutionCode": "import numpy as np\n\ngrid = np.array([[10, 20, 30], [40, 50, 60]])\nprint(grid[:, 0].tolist())",
     "publicTests": [
       {
         "id": "m14-t3-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": "[10, 40]",
         "visibility": "public"
       },
       {
         "id": "m14-t3-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "first column",
+        "assertCode": "assert (grid[:, 0].tolist()) == ([10, 40]), \"Expected \" + repr([10, 40]) + \", got \" + repr(grid[:, 0].tolist())",
         "visibility": "public"
       },
       {
         "id": "m14-t3-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "first row is different",
+        "assertCode": "assert (grid[0, :].tolist()) == ([10, 20, 30]), \"Expected \" + repr([10, 20, 30]) + \", got \" + repr(grid[0, :].tolist())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Print the first column of a 2-D array using grid[:, 0] as a list.\n\nReference solution:\nimport numpy as np\n\ngrid = np.array([[10, 20, 30], [40, 50, 60]])\nprint(grid[:, 0].tolist())"
   },
   {
     "id": "m14-t3-p06",
     "topicId": "m14-t3",
-    "slug": "m14_t3-6",
-    "title": "Indexing and Slicing Arrays: List Practice",
-    "difficulty": "hard",
+    "slug": "np-boolean-mask",
+    "title": "Indexing: Filter with a Boolean Mask",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Keep only the sales above 25 using boolean indexing and print them as a list.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Indexing and Slicing Arrays. Print the "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "sales[sales > 25].tolist()"
         },
         {
           "type": "text",
-          "value": " using index "
-        },
-        {
-          "type": "code",
-          "value": "1"
-        },
-        {
-          "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": " — the condition builds a True/False mask that selects the rows you keep."
         }
+      ],
+      "editorPlaceholder": "# print(sales[sales > 25].tolist())",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "sales"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "sales > 25 produces an array of booleans.",
+          "Indexing with that mask keeps only the True positions.",
+          "This is how filtering works in pandas too."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "[30, 40, 50]"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Use boolean indexing — no loop, no filter()",
+      "Output must be exactly: [30, 40, 50]"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "print(sales[sales > 25].tolist())"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: keep values above 25\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40, 50])\n",
+    "solutionCode": "import numpy as np\n\nsales = np.array([10, 20, 30, 40, 50])\nprint(sales[sales > 25].tolist())",
     "publicTests": [
       {
         "id": "m14-t3-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "middle",
+        "expectedStdout": "[30, 40, 50]",
         "visibility": "public"
       },
       {
         "id": "m14-t3-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "values above 25 kept",
+        "assertCode": "assert (sales[sales > 25].tolist()) == ([30, 40, 50]), \"Expected \" + repr([30, 40, 50]) + \", got \" + repr(sales[sales > 25].tolist())",
         "visibility": "public"
       },
       {
         "id": "m14-t3-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "the mask itself is boolean",
+        "assertCode": "assert ((sales > 25).tolist()) == ([False, False, True, True, True]), \"Expected \" + repr([False, False, True, True, True]) + \", got \" + repr((sales > 25).tolist())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Keep only the sales above 25 using boolean indexing and print them as a list.\n\nReference solution:\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40, 50])\nprint(sales[sales > 25].tolist())"
   },
   {
     "id": "m14-t3-p07",
     "topicId": "m14-t3",
-    "slug": "m14_t3-7",
-    "title": "Indexing and Slicing Arrays: Dict Lookup",
+    "slug": "np-step-slice",
+    "title": "Indexing: Every Other Value",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Print every second element of the array using a step slice.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "sales[::2].tolist()"
         },
         {
           "type": "text",
-          "value": " and value "
-        },
-        {
-          "type": "code",
-          "value": "Python"
-        },
-        {
-          "type": "text",
-          "value": ". Print the value using "
-        },
-        {
-          "type": "code",
-          "value": "d[\"topic\"]"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": " — the third slice number is the step. Handy for downsampling a series."
         }
+      ],
+      "editorPlaceholder": "# print(sales[::2].tolist())",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "sales"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "arr[start:stop:step] — leave start and stop empty to cover everything.",
+          "A step of 2 takes index 0, 2, 4, …"
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "[10, 30, 50]"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Use a step slice",
+      "Output must be exactly: [10, 30, 50]"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "print(sales[::2].tolist())"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: take every second value\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40, 50])\n",
+    "solutionCode": "import numpy as np\n\nsales = np.array([10, 20, 30, 40, 50])\nprint(sales[::2].tolist())",
     "publicTests": [
       {
         "id": "m14-t3-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "[10, 30, 50]",
         "visibility": "public"
       },
       {
         "id": "m14-t3-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "every second value",
+        "assertCode": "assert (sales[::2].tolist()) == ([10, 30, 50]), \"Expected \" + repr([10, 30, 50]) + \", got \" + repr(sales[::2].tolist())",
         "visibility": "public"
       },
       {
         "id": "m14-t3-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "offset by one gives the others",
+        "assertCode": "assert (sales[1::2].tolist()) == ([20, 40]), \"Expected \" + repr([20, 40]) + \", got \" + repr(sales[1::2].tolist())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Print every second element of the array using a step slice.\n\nReference solution:\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40, 50])\nprint(sales[::2].tolist())"
   },
   {
     "id": "m14-t4-p01",
     "topicId": "m14-t4",
-    "slug": "m14_t4-1",
-    "title": "Array Operations and Broadcasting: Warm-up",
+    "slug": "np-add-scalar",
+    "title": "Operations: Add a Number to Every Element",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Array Operations and Broadcasting. Print Ready on one line.",
+    "description": "Add 10 to every element of an array and print the result as a list.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "Array Operations and Broadcasting"
+          "value": "(prices + 10).tolist()"
         },
         {
           "type": "text",
-          "value": ". Print the word "
-        },
-        {
-          "type": "code",
-          "value": "Ready"
-        },
-        {
-          "type": "text",
-          "value": " on one line."
+          "value": " — the scalar is broadcast to every element."
         }
       ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
-        }
+      "editorPlaceholder": "# print((prices + 10).tolist())",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "prices"
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A single number stretches to match the array's shape.",
+          "That is the simplest form of broadcasting."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "[15, 25, 35]"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "No loop",
+      "Do not modify prices",
+      "Output must be exactly: [15, 25, 35]"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "print((prices + 10).tolist())"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: add 10 to every price\nimport numpy as np\n\nprices = np.array([5, 15, 25])\n",
+    "solutionCode": "import numpy as np\n\nprices = np.array([5, 15, 25])\nprint((prices + 10).tolist())",
     "publicTests": [
       {
         "id": "m14-t4-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "[15, 25, 35]",
         "visibility": "public"
       },
       {
         "id": "m14-t4-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "each element grew by 10",
+        "assertCode": "assert ((prices + 10).tolist()) == ([15, 25, 35]), \"Expected \" + repr([15, 25, 35]) + \", got \" + repr((prices + 10).tolist())",
         "visibility": "public"
       },
       {
         "id": "m14-t4-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "prices is unchanged",
+        "assertCode": "assert (prices.tolist()) == ([5, 15, 25]), \"Expected \" + repr([5, 15, 25]) + \", got \" + repr(prices.tolist())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Array Operations and Broadcasting. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Add 10 to every element of an array and print the result as a list.\n\nReference solution:\nimport numpy as np\n\nprices = np.array([5, 15, 25])\nprint((prices + 10).tolist())"
   },
   {
     "id": "m14-t4-p02",
     "topicId": "m14-t4",
-    "slug": "m14_t4-2",
-    "title": "Array Operations and Broadcasting: Output Two Values",
+    "slug": "np-multiply-arrays",
+    "title": "Operations: Units Times Price",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Array Operations and Broadcasting and print them comma-separated.",
+    "description": "Multiply a units array by a price array elementwise to get revenue and print it.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Array Operations and Broadcasting and print them separated by a comma."
+          "value": "Multiply "
+        },
+        {
+          "type": "code",
+          "value": "units"
+        },
+        {
+          "type": "text",
+          "value": " by "
+        },
+        {
+          "type": "code",
+          "value": "price"
+        },
+        {
+          "type": "text",
+          "value": " into "
+        },
+        {
+          "type": "code",
+          "value": "revenue"
+        },
+        {
+          "type": "text",
+          "value": " and print "
+        },
+        {
+          "type": "code",
+          "value": "revenue.tolist()"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# revenue = units * price",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "revenue"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Matching shapes multiply position by position.",
+          "This one line replaces a whole loop over rows."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "[20, 90, 40]"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Use * on the two arrays",
+      "Store the result in revenue"
     ],
     "hints": [
-      "Create two variables related to Array Operations and Broadcasting",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "revenue = units * price"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Array Operations and Broadcasting and print them comma-separated. Key points: Create two variables related to Array Operations and Broadcasting Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: revenue = units * price\nimport numpy as np\n\nunits = np.array([2, 9, 4])\nprice = np.array([10, 10, 10])\nrevenue = None\n",
+    "solutionCode": "import numpy as np\n\nunits = np.array([2, 9, 4])\nprice = np.array([10, 10, 10])\nrevenue = units * price\nprint(revenue.tolist())",
     "publicTests": [
       {
         "id": "m14-t4-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "[20, 90, 40]",
         "visibility": "public"
       },
       {
         "id": "m14-t4-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "revenue is a NumPy array",
+        "assertCode": "import numpy as _np\nassert \"revenue\" in globals(), \"Expected a variable named revenue\"\nassert isinstance(revenue, _np.ndarray), \"Expected revenue to be a NumPy array, got \" + type(revenue).__name__",
         "visibility": "public"
       },
       {
         "id": "m14-t4-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "elementwise product",
+        "assertCode": "assert (revenue.tolist()) == ([20, 90, 40]), \"Expected \" + repr([20, 90, 40]) + \", got \" + repr(revenue.tolist())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Multiply a units array by a price array elementwise to get revenue and print it.\n\nReference solution:\nimport numpy as np\n\nunits = np.array([2, 9, 4])\nprice = np.array([10, 10, 10])\nrevenue = units * price\nprint(revenue.tolist())"
   },
   {
     "id": "m14-t4-p03",
     "topicId": "m14-t4",
-    "slug": "m14_t4-3",
-    "title": "Array Operations and Broadcasting: Simple Loop",
+    "slug": "np-broadcast-row",
+    "title": "Operations: Broadcast a Row",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Array Operations and Broadcasting.",
+    "description": "Add a 3-element row to every row of a 2x3 array and print the nested result.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Add "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "[1, 2, 3]"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Array Operations and Broadcasting."
+          "value": " to every row of "
+        },
+        {
+          "type": "code",
+          "value": "grid"
+        },
+        {
+          "type": "text",
+          "value": " into "
+        },
+        {
+          "type": "code",
+          "value": "shifted"
+        },
+        {
+          "type": "text",
+          "value": " and print "
+        },
+        {
+          "type": "code",
+          "value": "shifted.tolist()"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# shifted = grid + row",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "shifted"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A (3,) array stretches across both rows of a (2, 3) array.",
+          "Broadcasting needs the trailing dimensions to match — here both are 3.",
+          "No loop and no copying of the row."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "[[11, 22, 33], [41, 52, 63]]"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Rely on broadcasting — no loop",
+      "Store the result in shifted"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "shifted = grid + row"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Array Operations and Broadcasting. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: add the row to every row\nimport numpy as np\n\ngrid = np.array([[10, 20, 30], [40, 50, 60]])\nrow = np.array([1, 2, 3])\nshifted = None\n",
+    "solutionCode": "import numpy as np\n\ngrid = np.array([[10, 20, 30], [40, 50, 60]])\nrow = np.array([1, 2, 3])\nshifted = grid + row\nprint(shifted.tolist())",
     "publicTests": [
       {
         "id": "m14-t4-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "[[11, 22, 33], [41, 52, 63]]",
         "visibility": "public"
       },
       {
         "id": "m14-t4-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "shifted is a NumPy array",
+        "assertCode": "import numpy as _np\nassert \"shifted\" in globals(), \"Expected a variable named shifted\"\nassert isinstance(shifted, _np.ndarray), \"Expected shifted to be a NumPy array, got \" + type(shifted).__name__",
         "visibility": "public"
       },
       {
         "id": "m14-t4-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "the row was added to both rows",
+        "assertCode": "assert (shifted.tolist()) == ([[11, 22, 33], [41, 52, 63]]), \"Expected \" + repr([[11, 22, 33], [41, 52, 63]]) + \", got \" + repr(shifted.tolist())",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t4-p03-t4",
+        "label": "shape is preserved",
+        "assertCode": "assert (shifted.shape) == ((2, 3)), \"Expected \" + repr((2, 3)) + \", got \" + repr(shifted.shape)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Add a 3-element row to every row of a 2x3 array and print the nested result.\n\nReference solution:\nimport numpy as np\n\ngrid = np.array([[10, 20, 30], [40, 50, 60]])\nrow = np.array([1, 2, 3])\nshifted = grid + row\nprint(shifted.tolist())"
   },
   {
     "id": "m14-t4-p04",
     "topicId": "m14-t4",
-    "slug": "m14_t4-4",
-    "title": "Array Operations and Broadcasting: Condition",
+    "slug": "np-comparison-mask",
+    "title": "Operations: Build a Comparison Mask",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Compare an array against 25 and print the resulting boolean mask as a list.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "Store "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "sales > 25"
         },
         {
           "type": "text",
-          "value": ". If "
+          "value": " in "
         },
         {
           "type": "code",
-          "value": "score >= 60"
+          "value": "mask"
         },
         {
           "type": "text",
-          "value": ", print "
+          "value": " and print "
         },
         {
           "type": "code",
-          "value": "Pass"
-        },
-        {
-          "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
+          "value": "mask.tolist()"
         },
         {
           "type": "text",
           "value": "."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# mask = sales > 25",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "mask"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Comparison operators are vectorised too.",
+          "The mask has the same length as the array.",
+          "int(mask.sum()) would then count how many passed."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "[False, False, True, True]"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Store the comparison in mask",
+      "Print with .tolist()"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "mask = sales > 25"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: build the boolean mask\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40])\nmask = None\n",
+    "solutionCode": "import numpy as np\n\nsales = np.array([10, 20, 30, 40])\nmask = sales > 25\nprint(mask.tolist())",
     "publicTests": [
       {
         "id": "m14-t4-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "[False, False, True, True]",
         "visibility": "public"
       },
       {
         "id": "m14-t4-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "mask flags values above 25",
+        "assertCode": "assert (mask.tolist()) == ([False, False, True, True]), \"Expected \" + repr([False, False, True, True]) + \", got \" + repr(mask.tolist())",
         "visibility": "public"
       },
       {
         "id": "m14-t4-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "mask is boolean",
+        "assertCode": "assert (str(mask.dtype)) == (\"bool\"), \"Expected \" + repr(\"bool\") + \", got \" + repr(str(mask.dtype))",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t4-p04-t4",
+        "label": "two values passed",
+        "assertCode": "assert (int(mask.sum())) == (2), \"Expected \" + repr(2) + \", got \" + repr(int(mask.sum()))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Compare an array against 25 and print the resulting boolean mask as a list.\n\nReference solution:\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40])\nmask = sales > 25\nprint(mask.tolist())"
   },
   {
     "id": "m14-t4-p05",
     "topicId": "m14-t4",
-    "slug": "m14_t4-5",
-    "title": "Array Operations and Broadcasting: Function Stub",
+    "slug": "np-where",
+    "title": "Operations: Label Values with np.where",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Use np.where to turn sales into 1 when above 25 and 0 otherwise, then print the list.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "Use "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "np.where(sales > 25, 1, 0)"
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": " into "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": "flags"
         },
         {
           "type": "text",
-          "value": " and call it once."
+          "value": " and print "
+        },
+        {
+          "type": "code",
+          "value": "flags.tolist()"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# flags = np.where(sales > 25, 1, 0)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "flags"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "np.where(condition, value_if_true, value_if_false) works elementwise.",
+          "It is the vectorised version of an if/else — used constantly for feature flags."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "[0, 0, 1, 1]"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Use np.where",
+      "Store the result in flags",
+      "No loop"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "flags = np.where(sales > 25, 1, 0)"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: flag the high sales with 1\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40])\nflags = None\n",
+    "solutionCode": "import numpy as np\n\nsales = np.array([10, 20, 30, 40])\nflags = np.where(sales > 25, 1, 0)\nprint(flags.tolist())",
     "publicTests": [
       {
         "id": "m14-t4-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": "[0, 0, 1, 1]",
         "visibility": "public"
       },
       {
         "id": "m14-t4-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "high sales flagged",
+        "assertCode": "assert (flags.tolist()) == ([0, 0, 1, 1]), \"Expected \" + repr([0, 0, 1, 1]) + \", got \" + repr(flags.tolist())",
         "visibility": "public"
       },
       {
         "id": "m14-t4-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "two rows flagged",
+        "assertCode": "assert (int(flags.sum())) == (2), \"Expected \" + repr(2) + \", got \" + repr(int(flags.sum()))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Use np.where to turn sales into 1 when above 25 and 0 otherwise, then print the list.\n\nReference solution:\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40])\nflags = np.where(sales > 25, 1, 0)\nprint(flags.tolist())"
   },
   {
     "id": "m14-t4-p06",
     "topicId": "m14-t4",
-    "slug": "m14_t4-6",
-    "title": "Array Operations and Broadcasting: List Practice",
-    "difficulty": "hard",
+    "slug": "np-dot-product",
+    "title": "Operations: Dot Product for Total Revenue",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Use np.dot to multiply units by prices and sum in one step, then print the total.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Array Operations and Broadcasting. Print the "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "int(np.dot(units, price))"
         },
         {
           "type": "text",
-          "value": " using index "
-        },
-        {
-          "type": "code",
-          "value": "1"
-        },
-        {
-          "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": " — multiply matching elements and add them up in a single call."
         }
+      ],
+      "editorPlaceholder": "# print(int(np.dot(units, price)))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "units",
+        "price"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "np.dot(a, b) is sum(a * b) for 1-D arrays.",
+          "It is the core operation behind linear models."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "80"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Use np.dot",
+      "Output must be exactly: 80"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "print(int(np.dot(units, price)))"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: total revenue with a dot product\nimport numpy as np\n\nunits = np.array([2, 3, 1])\nprice = np.array([10, 20, 0])\n",
+    "solutionCode": "import numpy as np\n\nunits = np.array([2, 3, 1])\nprice = np.array([10, 20, 0])\nprint(int(np.dot(units, price)))",
     "publicTests": [
       {
         "id": "m14-t4-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "middle",
+        "expectedStdout": "80",
         "visibility": "public"
       },
       {
         "id": "m14-t4-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "dot product is the revenue",
+        "assertCode": "assert (int(np.dot(units, price))) == (80), \"Expected \" + repr(80) + \", got \" + repr(int(np.dot(units, price)))",
         "visibility": "public"
       },
       {
         "id": "m14-t4-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "it matches the manual sum",
+        "assertCode": "assert (int(np.dot(units, price))) == (int((units * price).sum())), \"Expected \" + repr(int((units * price).sum())) + \", got \" + repr(int(np.dot(units, price)))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Use np.dot to multiply units by prices and sum in one step, then print the total.\n\nReference solution:\nimport numpy as np\n\nunits = np.array([2, 3, 1])\nprice = np.array([10, 20, 0])\nprint(int(np.dot(units, price)))"
   },
   {
     "id": "m14-t4-p07",
     "topicId": "m14-t4",
-    "slug": "m14_t4-7",
-    "title": "Array Operations and Broadcasting: Dict Lookup",
+    "slug": "np-standardize",
+    "title": "Operations: Standardise an Array",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Subtract the mean and divide by the standard deviation, then print the values rounded to 2 decimals.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Standardise "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "[10, 20, 30]"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": " with "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "(values - values.mean()) / values.std()"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
+          "value": " into "
         },
         {
           "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "scaled"
+        },
+        {
+          "type": "text",
+          "value": ", then print "
+        },
+        {
+          "type": "code",
+          "value": "np.round(scaled, 2).tolist()"
         },
         {
           "type": "text",
           "value": "."
         }
       ],
+      "editorPlaceholder": "# scaled = (values - values.mean()) / values.std()",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "values",
+        "scaled"
+      ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "Both the subtraction and the division broadcast over the whole array.",
+          "Standardising puts features on the same scale before modelling.",
+          "np.round(arr, 2) rounds every element at once."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "[-1.22, 0.0, 1.22]"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Use .mean() and .std() — do not hardcode 20 or 8.16",
+      "Round only when printing",
+      "Output must be exactly: [-1.22, 0.0, 1.22]"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "scaled = (values - values.mean()) / values.std()",
+      "print(np.round(scaled, 2).tolist())"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: standardise the values\nimport numpy as np\n\nvalues = np.array([10, 20, 30])\nscaled = None\n",
+    "solutionCode": "import numpy as np\n\nvalues = np.array([10, 20, 30])\nscaled = (values - values.mean()) / values.std()\nprint(np.round(scaled, 2).tolist())",
     "publicTests": [
       {
         "id": "m14-t4-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "[-1.22, 0.0, 1.22]",
         "visibility": "public"
       },
       {
         "id": "m14-t4-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "scaled is a NumPy array",
+        "assertCode": "import numpy as _np\nassert \"scaled\" in globals(), \"Expected a variable named scaled\"\nassert isinstance(scaled, _np.ndarray), \"Expected scaled to be a NumPy array, got \" + type(scaled).__name__",
         "visibility": "public"
       },
       {
         "id": "m14-t4-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "values are standardised",
+        "assertCode": "assert (np.round(scaled, 2).tolist()) == ([-1.22, 0.0, 1.22]), \"Expected \" + repr([-1.22, 0.0, 1.22]) + \", got \" + repr(np.round(scaled, 2).tolist())",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t4-p07-t4",
+        "label": "the mean of the result is 0",
+        "assertCode": "assert abs(float(scaled.mean())) < 1e-9, \"A standardised array must have mean 0\"",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t4-p07-t5",
+        "label": "the middle value sits at the mean",
+        "assertCode": "assert abs(float(scaled[1])) < 1e-9, \"20 is the mean, so its standardised value should be 0\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Subtract the mean and divide by the standard deviation, then print the values rounded to 2 decimals.\n\nReference solution:\nimport numpy as np\n\nvalues = np.array([10, 20, 30])\nscaled = (values - values.mean()) / values.std()\nprint(np.round(scaled, 2).tolist())"
   },
   {
     "id": "m14-t5-p01",
     "topicId": "m14-t5",
-    "slug": "m14_t5-1",
-    "title": "Statistical Functions in NumPy: Warm-up",
+    "slug": "np-mean",
+    "title": "Stats: Average of an Array",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Statistical Functions in NumPy. Print Ready on one line.",
+    "description": "Print the mean of the sales array as a plain float.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "Statistical Functions in NumPy"
+          "value": "float(np.mean(sales))"
         },
         {
           "type": "text",
-          "value": ". Print the word "
+          "value": " for "
         },
         {
           "type": "code",
-          "value": "Ready"
+          "value": "[10, 20, 30, 40]"
         },
         {
           "type": "text",
-          "value": " on one line."
+          "value": "."
         }
       ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
-        }
+      "editorPlaceholder": "# print(float(np.mean(sales)))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "sales"
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "np.mean(arr) and arr.mean() do the same thing.",
+          "float() makes the printed value a plain Python float."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "25.0"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Use np.mean or .mean()",
+      "Output must be exactly: 25.0"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "print(float(np.mean(sales)))"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: print the average\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40])\n",
+    "solutionCode": "import numpy as np\n\nsales = np.array([10, 20, 30, 40])\nprint(float(np.mean(sales)))",
     "publicTests": [
       {
         "id": "m14-t5-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "25.0",
         "visibility": "public"
       },
       {
         "id": "m14-t5-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "sales is a NumPy array",
+        "assertCode": "import numpy as _np\nassert \"sales\" in globals(), \"Expected a variable named sales\"\nassert isinstance(sales, _np.ndarray), \"Expected sales to be a NumPy array, got \" + type(sales).__name__",
         "visibility": "public"
       },
       {
         "id": "m14-t5-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "mean is correct",
+        "assertCode": "assert (float(np.mean(sales))) == (25.0), \"Expected \" + repr(25.0) + \", got \" + repr(float(np.mean(sales)))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Statistical Functions in NumPy. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Print the mean of the sales array as a plain float.\n\nReference solution:\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40])\nprint(float(np.mean(sales)))"
   },
   {
     "id": "m14-t5-p02",
     "topicId": "m14-t5",
-    "slug": "m14_t5-2",
-    "title": "Statistical Functions in NumPy: Output Two Values",
+    "slug": "np-max-min",
+    "title": "Stats: Best and Worst Day",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Statistical Functions in NumPy and print them comma-separated.",
+    "description": "Print the maximum then the minimum of the sales array as ints.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Statistical Functions in NumPy and print them separated by a comma."
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "int(sales.max())"
+        },
+        {
+          "type": "text",
+          "value": " then "
+        },
+        {
+          "type": "code",
+          "value": "int(sales.min())"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# print(int(sales.max()))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "sales"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          ".max() and .min() scan the whole array.",
+          "Print the maximum first."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "40\n10"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Maximum on line 1, minimum on line 2"
     ],
     "hints": [
-      "Create two variables related to Statistical Functions in NumPy",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "print(int(sales.max()))",
+      "print(int(sales.min()))"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Statistical Functions in NumPy and print them comma-separated. Key points: Create two variables related to Statistical Functions in NumPy Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: print max then min\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40])\n",
+    "solutionCode": "import numpy as np\n\nsales = np.array([10, 20, 30, 40])\nprint(int(sales.max()))\nprint(int(sales.min()))",
     "publicTests": [
       {
         "id": "m14-t5-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "40\n10",
         "visibility": "public"
       },
       {
         "id": "m14-t5-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "maximum",
+        "assertCode": "assert (int(sales.max())) == (40), \"Expected \" + repr(40) + \", got \" + repr(int(sales.max()))",
         "visibility": "public"
       },
       {
         "id": "m14-t5-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "minimum",
+        "assertCode": "assert (int(sales.min())) == (10), \"Expected \" + repr(10) + \", got \" + repr(int(sales.min()))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Print the maximum then the minimum of the sales array as ints.\n\nReference solution:\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40])\nprint(int(sales.max()))\nprint(int(sales.min()))"
   },
   {
     "id": "m14-t5-p03",
     "topicId": "m14-t5",
-    "slug": "m14_t5-3",
-    "title": "Statistical Functions in NumPy: Simple Loop",
-    "difficulty": "medium",
+    "slug": "np-median",
+    "title": "Stats: The Median",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Statistical Functions in NumPy.",
+    "description": "Print the median of [10, 20, 30, 40] — the average of the two middle values.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "float(np.median(sales))"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Statistical Functions in NumPy."
+          "value": ". With an even count, the median is the average of the two middle values."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# print(float(np.median(sales)))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "sales"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "np.median sorts internally, so the input order does not matter.",
+          "The median resists outliers far better than the mean."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "25.0"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Use np.median",
+      "Output must be exactly: 25.0"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "print(float(np.median(sales)))"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Statistical Functions in NumPy. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: print the median\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40])\n",
+    "solutionCode": "import numpy as np\n\nsales = np.array([10, 20, 30, 40])\nprint(float(np.median(sales)))",
     "publicTests": [
       {
         "id": "m14-t5-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "25.0",
         "visibility": "public"
       },
       {
         "id": "m14-t5-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "median of four values",
+        "assertCode": "assert (float(np.median(sales))) == (25.0), \"Expected \" + repr(25.0) + \", got \" + repr(float(np.median(sales)))",
         "visibility": "public"
       },
       {
         "id": "m14-t5-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "order does not matter",
+        "assertCode": "assert (float(np.median(np.array([40, 10, 30, 20])))) == (25.0), \"Expected \" + repr(25.0) + \", got \" + repr(float(np.median(np.array([40, 10, 30, 20]))))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Print the median of [10, 20, 30, 40] — the average of the two middle values.\n\nReference solution:\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40])\nprint(float(np.median(sales)))"
   },
   {
     "id": "m14-t5-p04",
     "topicId": "m14-t5",
-    "slug": "m14_t5-4",
-    "title": "Statistical Functions in NumPy: Condition",
+    "slug": "np-std-round",
+    "title": "Stats: Standard Deviation",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Print the standard deviation of the sales array rounded to 2 decimal places.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "round(float(sales.std()), 2)"
         },
         {
           "type": "text",
-          "value": ". If "
-        },
-        {
-          "type": "code",
-          "value": "score >= 60"
-        },
-        {
-          "type": "text",
-          "value": ", print "
-        },
-        {
-          "type": "code",
-          "value": "Pass"
-        },
-        {
-          "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": " — how far values spread from the mean."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# print(round(float(sales.std()), 2))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "sales"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "NumPy's .std() is the population standard deviation by default.",
+          "Round when printing so the output is stable."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "11.18"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Use .std()",
+      "Round to 2 decimals",
+      "Output must be exactly: 11.18"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "print(round(float(sales.std()), 2))"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: print the standard deviation to 2 decimals\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40])\n",
+    "solutionCode": "import numpy as np\n\nsales = np.array([10, 20, 30, 40])\nprint(round(float(sales.std()), 2))",
     "publicTests": [
       {
         "id": "m14-t5-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "11.18",
         "visibility": "public"
       },
       {
         "id": "m14-t5-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "std rounded to 2 dp",
+        "assertCode": "assert (round(float(sales.std()), 2)) == (11.18), \"Expected \" + repr(11.18) + \", got \" + repr(round(float(sales.std()), 2))",
         "visibility": "public"
       },
       {
         "id": "m14-t5-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "variance is std squared",
+        "assertCode": "assert abs(float(sales.var()) - float(sales.std()) ** 2) < 1e-9, \"var() should equal std() squared\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Print the standard deviation of the sales array rounded to 2 decimal places.\n\nReference solution:\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40])\nprint(round(float(sales.std()), 2))"
   },
   {
     "id": "m14-t5-p05",
     "topicId": "m14-t5",
-    "slug": "m14_t5-5",
-    "title": "Statistical Functions in NumPy: Function Stub",
+    "slug": "np-argmax",
+    "title": "Stats: Which Day Was Best?",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Use np.argmax to print the index of the largest value rather than the value itself.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "int(np.argmax(sales))"
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": " — argmax returns the position of the maximum, which is how you find "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": "which"
         },
         {
           "type": "text",
-          "value": " and call it once."
+          "value": " row won."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# print(int(np.argmax(sales)))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "sales"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "argmax gives an index; max gives a value.",
+          "Use the index to look up the matching label in another array."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "3"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Use np.argmax",
+      "Output must be exactly: 3"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "print(int(np.argmax(sales)))"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: print the index of the largest value\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40])\n",
+    "solutionCode": "import numpy as np\n\nsales = np.array([10, 20, 30, 40])\nprint(int(np.argmax(sales)))",
     "publicTests": [
       {
         "id": "m14-t5-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": "3",
         "visibility": "public"
       },
       {
         "id": "m14-t5-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "index of the maximum",
+        "assertCode": "assert (int(np.argmax(sales))) == (3), \"Expected \" + repr(3) + \", got \" + repr(int(np.argmax(sales)))",
         "visibility": "public"
       },
       {
         "id": "m14-t5-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "that index really holds the max",
+        "assertCode": "assert (int(sales[np.argmax(sales)])) == (int(sales.max())), \"Expected \" + repr(int(sales.max())) + \", got \" + repr(int(sales[np.argmax(sales)]))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Use np.argmax to print the index of the largest value rather than the value itself.\n\nReference solution:\nimport numpy as np\n\nsales = np.array([10, 20, 30, 40])\nprint(int(np.argmax(sales)))"
   },
   {
     "id": "m14-t5-p06",
     "topicId": "m14-t5",
-    "slug": "m14_t5-6",
-    "title": "Statistical Functions in NumPy: List Practice",
-    "difficulty": "hard",
+    "slug": "np-axis-mean",
+    "title": "Stats: Column Averages",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Compute the mean down each column of a 2-D array with axis=0 and print the list.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Statistical Functions in NumPy. Print the "
+          "value": "For "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "[[10, 20], [30, 40]]"
         },
         {
           "type": "text",
-          "value": " using index "
+          "value": " print "
         },
         {
           "type": "code",
-          "value": "1"
+          "value": "grid.mean(axis=0).tolist()"
         },
         {
           "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": " — axis=0 collapses the rows, giving one mean per column."
         }
+      ],
+      "editorPlaceholder": "# print(grid.mean(axis=0).tolist())",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "grid"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "axis=0 goes down the columns; axis=1 goes across the rows.",
+          "Getting the axis right is most of the work in 2-D statistics."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "[20.0, 30.0]"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Use axis=0",
+      "Output must be exactly: [20.0, 30.0]"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "print(grid.mean(axis=0).tolist())"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: mean of each column\nimport numpy as np\n\ngrid = np.array([[10, 20], [30, 40]])\n",
+    "solutionCode": "import numpy as np\n\ngrid = np.array([[10, 20], [30, 40]])\nprint(grid.mean(axis=0).tolist())",
     "publicTests": [
       {
         "id": "m14-t5-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "middle",
+        "expectedStdout": "[20.0, 30.0]",
         "visibility": "public"
       },
       {
         "id": "m14-t5-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "column means",
+        "assertCode": "assert (grid.mean(axis=0).tolist()) == ([20.0, 30.0]), \"Expected \" + repr([20.0, 30.0]) + \", got \" + repr(grid.mean(axis=0).tolist())",
         "visibility": "public"
       },
       {
         "id": "m14-t5-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "row means differ",
+        "assertCode": "assert (grid.mean(axis=1).tolist()) == ([15.0, 35.0]), \"Expected \" + repr([15.0, 35.0]) + \", got \" + repr(grid.mean(axis=1).tolist())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Compute the mean down each column of a 2-D array with axis=0 and print the list.\n\nReference solution:\nimport numpy as np\n\ngrid = np.array([[10, 20], [30, 40]])\nprint(grid.mean(axis=0).tolist())"
   },
   {
     "id": "m14-t5-p07",
     "topicId": "m14-t5",
-    "slug": "m14_t5-7",
-    "title": "Statistical Functions in NumPy: Dict Lookup",
+    "slug": "np-stats-summary",
+    "title": "Stats: A One-Line Summary",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Compute mean, median, and standard deviation of a sales array and print them in one formatted line.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "For "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "[12, 15, 20, 25, 28]"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": " compute "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "mean"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
+          "value": ", "
         },
         {
           "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "median"
         },
         {
           "type": "text",
-          "value": "."
+          "value": ", and "
+        },
+        {
+          "type": "code",
+          "value": "std"
+        },
+        {
+          "type": "text",
+          "value": " (rounded to 2 decimals) and print the summary line."
         }
+      ],
+      "editorPlaceholder": "# mean = float(np.mean(sales))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "np",
+        "mean",
+        "median",
+        "std"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "Wrap each result in float() and round the standard deviation to 2 decimals.",
+          "Build the line with f\"mean={mean}, median={median}, std={std}\"",
+          "This three-number summary is the first thing to check on any new column."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "mean=20.0, median=20.0, std=5.97"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Use np.mean, np.median, and np.std",
+      "Round only the standard deviation, to 2 decimals",
+      "Output must be exactly: mean=20.0, median=20.0, std=5.97"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "mean = float(np.mean(sales))",
+      "print(f\"mean={mean}, median={median}, std={std}\")"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: compute the three statistics\nimport numpy as np\n\nsales = np.array([12, 15, 20, 25, 28])\nmean = 0.0\nmedian = 0.0\nstd = 0.0\n",
+    "solutionCode": "import numpy as np\n\nsales = np.array([12, 15, 20, 25, 28])\nmean = float(np.mean(sales))\nmedian = float(np.median(sales))\nstd = round(float(np.std(sales)), 2)\nprint(f\"mean={mean}, median={median}, std={std}\")",
     "publicTests": [
       {
         "id": "m14-t5-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "mean=20.0, median=20.0, std=5.97",
         "visibility": "public"
       },
       {
         "id": "m14-t5-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "mean is computed",
+        "assertCode": "assert (mean) == (20.0), \"Expected \" + repr(20.0) + \", got \" + repr(mean)",
         "visibility": "public"
       },
       {
         "id": "m14-t5-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "median is computed",
+        "assertCode": "assert (median) == (20.0), \"Expected \" + repr(20.0) + \", got \" + repr(median)",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t5-p07-t4",
+        "label": "std is rounded to 2 dp",
+        "assertCode": "assert (std) == (5.97), \"Expected \" + repr(5.97) + \", got \" + repr(std)",
+        "visibility": "public"
+      },
+      {
+        "id": "m14-t5-p07-t5",
+        "label": "values come from NumPy, not typed by hand",
+        "assertCode": "assert abs(mean - float(np.mean(sales))) < 1e-9 and abs(median - float(np.median(sales))) < 1e-9, \"Compute mean and median from the array with NumPy\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Compute mean, median, and standard deviation of a sales array and print them in one formatted line.\n\nReference solution:\nimport numpy as np\n\nsales = np.array([12, 15, 20, 25, 28])\nmean = float(np.mean(sales))\nmedian = float(np.median(sales))\nstd = round(float(np.std(sales)), 2)\nprint(f\"mean={mean}, median={median}, std={std}\")"
   }
 ];

@@ -1,10 +1,12 @@
 "use client";
 
+import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/contexts/ProgressContext";
 import { isIdeRan, isQuizDone } from "@/lib/progress";
 import { NavigationLink } from "@/components/ui/NavigationLink";
 import { ChevronRight, Lock, CheckCircle2, Circle, X, ArrowRight } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
+import { unlocksAllContent } from "@/lib/admin";
 
 interface NextTopicButtonProps {
   topicId: string;
@@ -35,11 +37,12 @@ function NextTopicPopup({
   label: string;
   onClose: () => void;
 }) {
+  const { user, profile } = useAuth();
   const { progress, ready } = useProgress();
 
   const ideDone  = !hasIde || (ready && isIdeRan(progress, topicId));
   const quizDone = ready && (!hasQuiz || isQuizDone(progress, topicId));
-  const canProceed = TEMPORARILY_DISABLE_TOPIC_LOCK || (ideDone && quizDone);
+  const canProceed = TEMPORARILY_DISABLE_TOPIC_LOCK || unlocksAllContent(profile, user?.email) || (ideDone && quizDone);
 
   // Close on Escape
   useEffect(() => {
@@ -150,13 +153,14 @@ export function NextTopicButton({
   label,
   variant = "footer",
 }: NextTopicButtonProps) {
+  const { user, profile } = useAuth();
   const { progress, ready } = useProgress();
   const [popupOpen, setPopupOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
 
   const ideDone  = !hasIde || (ready && isIdeRan(progress, topicId));
   const quizDone = ready && (!hasQuiz || isQuizDone(progress, topicId));
-  const canProceed = TEMPORARILY_DISABLE_TOPIC_LOCK || (ideDone && quizDone);
+  const canProceed = TEMPORARILY_DISABLE_TOPIC_LOCK || unlocksAllContent(profile, user?.email) || (ideDone && quizDone);
 
   const closePopup = useCallback(() => setPopupOpen(false), []);
 

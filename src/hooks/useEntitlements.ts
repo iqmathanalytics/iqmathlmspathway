@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
-import { isAdmin } from "@/lib/admin";
+import { unlocksAllContent } from "@/lib/admin";
 import { PRACTICE_PREMIUM_PRODUCT } from "@/lib/practice-config";
 import { getSupabase, isSupabaseConfigured } from "@/lib/supabase/client";
 
@@ -29,13 +29,13 @@ function writeCache(userId: string, hasPremium: boolean) {
 
 export function useEntitlements() {
   const { user, profile } = useAuth();
-  const admin = isAdmin(profile);
+  const unlockAll = unlocksAllContent(profile, user?.email);
   const cached = user ? readCache(user.id) : null;
-  const [hasPremium, setHasPremium] = useState(admin || cached || false);
-  const [loading, setLoading] = useState(Boolean(user) && !admin);
+  const [hasPremium, setHasPremium] = useState(unlockAll || cached || false);
+  const [loading, setLoading] = useState(Boolean(user) && !unlockAll);
 
   const refresh = useCallback(async () => {
-    if (admin) {
+    if (unlockAll) {
       setHasPremium(true);
       setLoading(false);
       return;
@@ -71,7 +71,7 @@ export function useEntitlements() {
     setHasPremium(premium);
     writeCache(user.id, premium);
     setLoading(false);
-  }, [user, admin]);
+  }, [user, unlockAll]);
 
   useEffect(() => {
     if (!user) {
@@ -80,7 +80,7 @@ export function useEntitlements() {
       return;
     }
 
-    if (admin) {
+    if (unlockAll) {
       setHasPremium(true);
       setLoading(false);
       return;
@@ -93,7 +93,7 @@ export function useEntitlements() {
     }
     setLoading(true);
     void refresh();
-  }, [user, admin, refresh]);
+  }, [user, unlockAll, refresh]);
 
-  return { hasPremium: admin || hasPremium, loading: admin ? false : loading, refresh };
+  return { hasPremium: unlockAll || hasPremium, loading: unlockAll ? false : loading, refresh };
 }

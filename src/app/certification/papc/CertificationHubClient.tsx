@@ -14,6 +14,7 @@ import {
 import { CertificationAccessGate } from "@/components/certification/CertificationAccessGate";
 import { ClientOnly } from "@/components/ui/ClientOnly";
 import { useAuth } from "@/contexts/AuthContext";
+import { unlocksAllContent } from "@/lib/admin";
 import {
   PAPC_ASSESSMENT_TITLE,
   PAPC_PASS_POINTS,
@@ -102,7 +103,9 @@ function HubBody() {
 
   const lastSubmitted = attempts.find((a) => a.submitted_at) ?? null;
   const inProgress = getInProgressAttempt(attempts);
-  const lockUntil = getLockUntil(attempts);
+  const lockUntil = unlocksAllContent(profile, user?.email)
+    ? null
+    : getLockUntil(attempts);
   const quizHref = inProgress
     ? "/certification/papc/quiz"
     : lockUntil
@@ -167,7 +170,7 @@ function HubBody() {
       <div className="grid gap-4 lg:grid-cols-2">
         <Link
           href="/certification/papc/practice"
-          className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:border-brand-300 hover:shadow-md"
+          className="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:border-brand-300 hover:shadow-md"
         >
           <Code2 className="h-8 w-8 text-brand-700" />
           <h2 className="mt-3 text-xl font-semibold text-gray-900">Practice problems</h2>
@@ -175,13 +178,13 @@ function HubBody() {
             {PAPC_PRACTICE_COUNT} IDE challenges, unlimited attempts, any order. Optional prep — you
             can take the assessment anytime.
           </p>
-          <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-700">
+          <span className="mt-auto inline-flex items-center justify-end gap-1 pt-4 text-sm font-semibold text-brand-700">
             Open problem list
             <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
           </span>
         </Link>
 
-        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+        <div className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
           <Clock className="h-8 w-8 text-brand-700" />
           <h2 className="mt-3 text-xl font-semibold text-gray-900">
             {PAPC_ASSESSMENT_TITLE}
@@ -191,19 +194,21 @@ function HubBody() {
             to pass. No copy or tab switching. Submit or exit asks for confirmation.
             Failed or ended attempts wait {PAPC_RETAKE_DAYS} days.
           </p>
-          {lockUntil && !inProgress ? (
-            <p className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-amber-800">
-              <Lock className="h-4 w-4" />
-              Next attempt {lockUntil.toLocaleDateString()}
-            </p>
-          ) : null}
-          <Link
-            href={certificate && !inProgress && !lockUntil ? "/certification/papc/results" : quizHref}
-            className="mt-4 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-700"
-          >
-            {quizLabel}
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+          <div className="mt-auto flex flex-wrap items-center justify-end gap-3 pt-4">
+            {lockUntil && !inProgress ? (
+              <p className="mr-auto inline-flex items-center gap-1.5 text-sm font-medium text-amber-800">
+                <Lock className="h-4 w-4" />
+                Next attempt {lockUntil.toLocaleDateString()}
+              </p>
+            ) : null}
+            <Link
+              href={certificate && !inProgress && !lockUntil ? "/certification/papc/results" : quizHref}
+              className="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-700"
+            >
+              {quizLabel}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </div>
 

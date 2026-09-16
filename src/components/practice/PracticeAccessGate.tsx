@@ -5,7 +5,7 @@ import { ChevronRight, Loader2, Lock } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useEntitlements } from "@/hooks/useEntitlements";
 import { useAccessibleCourses } from "@/hooks/usePublishedCourses";
-import { isAdmin } from "@/lib/admin";
+import { unlocksAllContent } from "@/lib/admin";
 import type { ReactNode } from "react";
 
 function LoadingShell() {
@@ -34,7 +34,7 @@ interface PracticeAccessGateProps {
  * Gates hub practice (Basics / Algorithms) behind:
  * 1) Python course enrollment (college/department plan or manual enroll)
  * 2) Premium entitlement (purchase or admin grant)
- * Admins always pass.
+ * Admins and the IQ demo account always pass.
  */
 export function PracticeAccessGate({
   children,
@@ -49,14 +49,14 @@ export function PracticeAccessGate({
   const { user, profile, loading: authLoading } = useAuth();
   const { hasPremium, loading: entLoading } = useEntitlements();
   const { accessibleCourses, loading: coursesLoading } = useAccessibleCourses();
-  const admin = isAdmin(profile);
+  const unlockAll = unlocksAllContent(profile, user?.email);
   const hasPythonCourse = accessibleCourses.some((c) => c.id === "python");
 
-  if (authLoading || (user && (entLoading || coursesLoading))) {
+  if (authLoading || (user && (entLoading || coursesLoading) && !unlockAll)) {
     return <LoadingShell />;
   }
 
-  if (admin || (hasPremium && hasPythonCourse)) {
+  if (unlockAll || (hasPremium && hasPythonCourse)) {
     return <>{children}</>;
   }
 

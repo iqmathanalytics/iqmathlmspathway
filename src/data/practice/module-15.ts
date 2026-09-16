@@ -4,3481 +4,3967 @@ export const module15Practice: PracticeProblem[] = [
   {
     "id": "m15-t1-p01",
     "topicId": "m15-t1",
-    "slug": "m15_t1-1",
-    "title": "Series and DataFrames: Warm-up",
+    "slug": "pd-series-create",
+    "title": "pandas: Your First Series",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Series and DataFrames. Print Ready on one line.",
+    "description": "Create a pandas Series named sales from [10, 20, 30] and print its values with .tolist().",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Import pandas as "
         },
         {
           "type": "code",
-          "value": "Series and DataFrames"
+          "value": "pd"
         },
         {
           "type": "text",
-          "value": ". Print the word "
+          "value": ", build "
         },
         {
           "type": "code",
-          "value": "Ready"
+          "value": "sales"
         },
         {
           "type": "text",
-          "value": " on one line."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": " with "
+        },
         {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
+          "type": "code",
+          "value": "pd.Series([10, 20, 30])"
+        },
+        {
+          "type": "text",
+          "value": ", and print "
+        },
+        {
+          "type": "code",
+          "value": "sales.tolist()"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "editorPlaceholder": "# sales = pd.Series([...])",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct! A Series is the building block of every DataFrame column.",
+      "requiresVariables": [
+        "pd",
+        "sales"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A Series is one labelled column of data.",
+          "import pandas as pd is the standard alias.",
+          ".tolist() prints the values without the index or dtype line."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "[10, 20, 30]"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Use pd.Series() — a plain list will not pass",
+      "Name it sales",
+      "Print with .tolist()"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "sales = pd.Series([10, 20, 30])",
+      "print(sales.tolist())"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: build the Series\nimport pandas as pd\n\nsales = None\n",
+    "solutionCode": "import pandas as pd\n\nsales = pd.Series([10, 20, 30])\nprint(sales.tolist())",
     "publicTests": [
       {
         "id": "m15-t1-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "[10, 20, 30]",
         "visibility": "public"
       },
       {
         "id": "m15-t1-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "sales is a Series",
+        "assertCode": "import pandas as _pd\nassert \"sales\" in globals(), \"Expected a variable named sales\"\nassert isinstance(sales, _pd.Series), \"Expected sales to be a Series, got \" + type(sales).__name__",
         "visibility": "public"
       },
       {
         "id": "m15-t1-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "values are correct",
+        "assertCode": "assert (sales.tolist()) == ([10, 20, 30]), \"Expected \" + repr([10, 20, 30]) + \", got \" + repr(sales.tolist())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Series and DataFrames. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Create a pandas Series named sales from [10, 20, 30] and print its values with .tolist().\n\nReference solution:\nimport pandas as pd\n\nsales = pd.Series([10, 20, 30])\nprint(sales.tolist())"
   },
   {
     "id": "m15-t1-p02",
     "topicId": "m15-t1",
-    "slug": "m15_t1-2",
-    "title": "Series and DataFrames: Output Two Values",
+    "slug": "pd-series-labels",
+    "title": "pandas: Label the Index",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Series and DataFrames and print them comma-separated.",
+    "description": "Create a Series with region labels as the index and print the value for \"North\".",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Series and DataFrames and print them separated by a comma."
+          "value": "Build "
+        },
+        {
+          "type": "code",
+          "value": "pd.Series([250, 400], index=[\"South\", \"North\"])"
+        },
+        {
+          "type": "text",
+          "value": " as "
+        },
+        {
+          "type": "code",
+          "value": "revenue"
+        },
+        {
+          "type": "text",
+          "value": ", then print "
+        },
+        {
+          "type": "code",
+          "value": "int(revenue[\"North\"])"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# revenue = pd.Series([...], index=[...])",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "revenue"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A Series index can be text, not just numbers.",
+          "That makes lookups read like a dictionary."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "400"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Pass index= to pd.Series",
+      "Look up by label, not position",
+      "Output must be exactly: 400"
     ],
     "hints": [
-      "Create two variables related to Series and DataFrames",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "revenue = pd.Series([250, 400], index=[\"South\", \"North\"])",
+      "print(int(revenue[\"North\"]))"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Series and DataFrames and print them comma-separated. Key points: Create two variables related to Series and DataFrames Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: label the index, then look up North\nimport pandas as pd\n\nrevenue = None\n",
+    "solutionCode": "import pandas as pd\n\nrevenue = pd.Series([250, 400], index=[\"South\", \"North\"])\nprint(int(revenue[\"North\"]))",
     "publicTests": [
       {
         "id": "m15-t1-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "400",
         "visibility": "public"
       },
       {
         "id": "m15-t1-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "revenue is a Series",
+        "assertCode": "import pandas as _pd\nassert \"revenue\" in globals(), \"Expected a variable named revenue\"\nassert isinstance(revenue, _pd.Series), \"Expected revenue to be a Series, got \" + type(revenue).__name__",
         "visibility": "public"
       },
       {
         "id": "m15-t1-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "index holds the region labels",
+        "assertCode": "assert (list(revenue.index)) == ([\"South\", \"North\"]), \"Expected \" + repr([\"South\", \"North\"]) + \", got \" + repr(list(revenue.index))",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t1-p02-t4",
+        "label": "North lookup",
+        "assertCode": "assert (int(revenue[\"North\"])) == (400), \"Expected \" + repr(400) + \", got \" + repr(int(revenue[\"North\"]))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Create a Series with region labels as the index and print the value for \"North\".\n\nReference solution:\nimport pandas as pd\n\nrevenue = pd.Series([250, 400], index=[\"South\", \"North\"])\nprint(int(revenue[\"North\"]))"
   },
   {
     "id": "m15-t1-p03",
     "topicId": "m15-t1",
-    "slug": "m15_t1-3",
-    "title": "Series and DataFrames: Simple Loop",
-    "difficulty": "medium",
+    "slug": "pd-dataframe-columns",
+    "title": "pandas: Build a DataFrame",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Series and DataFrames.",
+    "description": "Create a DataFrame from a dict of columns and print its column names as a list.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Build "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "df"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Series and DataFrames."
+          "value": " from a dict with keys "
+        },
+        {
+          "type": "code",
+          "value": "item"
+        },
+        {
+          "type": "text",
+          "value": ", "
+        },
+        {
+          "type": "code",
+          "value": "region"
+        },
+        {
+          "type": "text",
+          "value": ", "
+        },
+        {
+          "type": "code",
+          "value": "revenue"
+        },
+        {
+          "type": "text",
+          "value": ", then print "
+        },
+        {
+          "type": "code",
+          "value": "list(df.columns)"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# df = pd.DataFrame({ ... })",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "pd.DataFrame(dict) makes each key a column.",
+          "df.columns is an Index — wrap it in list() to print it plainly."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "['item', 'region', 'revenue']"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Use pd.DataFrame with a dict",
+      "Column order: item, region, revenue",
+      "Print with list(df.columns)"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "df = pd.DataFrame({\"item\": [...], \"region\": [...], \"revenue\": [...]})",
+      "print(list(df.columns))"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Series and DataFrames. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: build the DataFrame\nimport pandas as pd\n\ndf = None\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nprint(list(df.columns))",
     "publicTests": [
       {
         "id": "m15-t1-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "['item', 'region', 'revenue']",
         "visibility": "public"
       },
       {
         "id": "m15-t1-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "df is a DataFrame",
+        "assertCode": "import pandas as _pd\nassert \"df\" in globals(), \"Expected a variable named df\"\nassert isinstance(df, _pd.DataFrame), \"Expected df to be a DataFrame, got \" + type(df).__name__",
         "visibility": "public"
       },
       {
         "id": "m15-t1-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "three columns in order",
+        "assertCode": "assert (list(df.columns)) == ([\"item\", \"region\", \"revenue\"]), \"Expected \" + repr([\"item\", \"region\", \"revenue\"]) + \", got \" + repr(list(df.columns))",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t1-p03-t4",
+        "label": "three rows of data",
+        "assertCode": "assert (len(df)) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(df))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Create a DataFrame from a dict of columns and print its column names as a list.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nprint(list(df.columns))"
   },
   {
     "id": "m15-t1-p04",
     "topicId": "m15-t1",
-    "slug": "m15_t1-4",
-    "title": "Series and DataFrames: Condition",
+    "slug": "pd-dataframe-shape",
+    "title": "pandas: Rows and Columns",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Print the shape of the sales DataFrame as (rows, columns).",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "df.shape"
         },
         {
           "type": "text",
-          "value": ". If "
-        },
-        {
-          "type": "code",
-          "value": "score >= 60"
-        },
-        {
-          "type": "text",
-          "value": ", print "
-        },
-        {
-          "type": "code",
-          "value": "Pass"
-        },
-        {
-          "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": " — the first number is rows, the second is columns. It is the first thing to check after loading data."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# print(df.shape)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          ".shape is a tuple of plain ints.",
+          "len(df) gives just the row count."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "(3, 3)"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Print df.shape",
+      "Output must be exactly: (3, 3)"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "print(df.shape)"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: print the shape\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nprint(df.shape)",
     "publicTests": [
       {
         "id": "m15-t1-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "(3, 3)",
         "visibility": "public"
       },
       {
         "id": "m15-t1-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "df is a DataFrame",
+        "assertCode": "import pandas as _pd\nassert \"df\" in globals(), \"Expected a variable named df\"\nassert isinstance(df, _pd.DataFrame), \"Expected df to be a DataFrame, got \" + type(df).__name__",
         "visibility": "public"
       },
       {
         "id": "m15-t1-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "3 rows and 3 columns",
+        "assertCode": "assert (df.shape) == ((3, 3)), \"Expected \" + repr((3, 3)) + \", got \" + repr(df.shape)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Print the shape of the sales DataFrame as (rows, columns).\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nprint(df.shape)"
   },
   {
     "id": "m15-t1-p05",
     "topicId": "m15-t1",
-    "slug": "m15_t1-5",
-    "title": "Series and DataFrames: Function Stub",
+    "slug": "pd-column-sum",
+    "title": "pandas: Total a Column",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Print the total revenue by summing the revenue column.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "int(df[\"revenue\"].sum())"
         },
         {
           "type": "text",
-          "value": " that prints "
-        },
-        {
-          "type": "code",
-          "value": "Hello"
-        },
-        {
-          "type": "text",
-          "value": " and call it once."
+          "value": " — selecting a column gives a Series, and a Series knows how to sum itself."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# print(int(df[\"revenue\"].sum()))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "df[\"revenue\"] selects one column as a Series.",
+          ".sum() aggregates it; int() keeps the printed value plain."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "140"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Select the column, then call .sum()",
+      "Output must be exactly: 140"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "print(int(df[\"revenue\"].sum()))"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: total the revenue column\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nprint(int(df[\"revenue\"].sum()))",
     "publicTests": [
       {
         "id": "m15-t1-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": "140",
         "visibility": "public"
       },
       {
         "id": "m15-t1-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "df is a DataFrame",
+        "assertCode": "import pandas as _pd\nassert \"df\" in globals(), \"Expected a variable named df\"\nassert isinstance(df, _pd.DataFrame), \"Expected df to be a DataFrame, got \" + type(df).__name__",
         "visibility": "public"
       },
       {
         "id": "m15-t1-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "total revenue",
+        "assertCode": "assert (int(df[\"revenue\"].sum())) == (140), \"Expected \" + repr(140) + \", got \" + repr(int(df[\"revenue\"].sum()))",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t1-p05-t4",
+        "label": "the column is untouched",
+        "assertCode": "assert (df[\"revenue\"].tolist()) == ([30, 40, 70]), \"Expected \" + repr([30, 40, 70]) + \", got \" + repr(df[\"revenue\"].tolist())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Print the total revenue by summing the revenue column.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nprint(int(df[\"revenue\"].sum()))"
   },
   {
     "id": "m15-t1-p06",
     "topicId": "m15-t1",
-    "slug": "m15_t1-6",
-    "title": "Series and DataFrames: List Practice",
-    "difficulty": "hard",
+    "slug": "pd-column-mean",
+    "title": "pandas: Average a Column",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Print the mean revenue rounded to two decimal places.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Series and DataFrames. Print the "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "round(float(df[\"revenue\"].mean()), 2)"
         },
         {
           "type": "text",
-          "value": " using index "
-        },
-        {
-          "type": "code",
-          "value": "1"
-        },
-        {
-          "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": ". Rounding keeps the output readable and stable."
         }
+      ],
+      "editorPlaceholder": "# print(round(float(df[\"revenue\"].mean()), 2))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          ".mean() ignores missing values automatically.",
+          "round(value, 2) trims the long decimal tail."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "46.67"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Use .mean()",
+      "Round to 2 decimals",
+      "Output must be exactly: 46.67"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "print(round(float(df[\"revenue\"].mean()), 2))"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: average the revenue column\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nprint(round(float(df[\"revenue\"].mean()), 2))",
     "publicTests": [
       {
         "id": "m15-t1-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "middle",
+        "expectedStdout": "46.67",
         "visibility": "public"
       },
       {
         "id": "m15-t1-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "mean rounded to 2 dp",
+        "assertCode": "assert (round(float(df[\"revenue\"].mean()), 2)) == (46.67), \"Expected \" + repr(46.67) + \", got \" + repr(round(float(df[\"revenue\"].mean()), 2))",
         "visibility": "public"
       },
       {
         "id": "m15-t1-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "the mean comes from the column",
+        "assertCode": "assert abs(float(df[\"revenue\"].mean()) - 140 / 3) < 1e-9, \"Compute the mean from the revenue column\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Print the mean revenue rounded to two decimal places.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nprint(round(float(df[\"revenue\"].mean()), 2))"
   },
   {
     "id": "m15-t1-p07",
     "topicId": "m15-t1",
-    "slug": "m15_t1-7",
-    "title": "Series and DataFrames: Dict Lookup",
+    "slug": "pd-add-column",
+    "title": "pandas: Add a Calculated Column",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Add a total column equal to units times price and print the new column as a list.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Given "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "units"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": " and "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "price"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
+          "value": " columns, create "
         },
         {
           "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "df[\"total\"]"
+        },
+        {
+          "type": "text",
+          "value": " as their product and print "
+        },
+        {
+          "type": "code",
+          "value": "df[\"total\"].tolist()"
         },
         {
           "type": "text",
           "value": "."
         }
       ],
+      "editorPlaceholder": "# df[\"total\"] = ...",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
+      ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "Multiplying two columns works elementwise — no loop.",
+          "Assigning to a new key adds a column in place.",
+          "This is the everyday way to build derived features."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "[20, 60, 20]"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Name the new column \"total\"",
+      "Multiply the two columns — no loop",
+      "Output must be exactly: [20, 60, 20]"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "df[\"total\"] = df[\"units\"] * df[\"price\"]",
+      "print(df[\"total\"].tolist())"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: add the total column\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"units\": [2, 3, 4],\n    \"price\": [10, 20, 5],\n})\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"units\": [2, 3, 4],\n    \"price\": [10, 20, 5],\n})\n\ndf[\"total\"] = df[\"units\"] * df[\"price\"]\nprint(df[\"total\"].tolist())",
     "publicTests": [
       {
         "id": "m15-t1-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "[20, 60, 20]",
         "visibility": "public"
       },
       {
         "id": "m15-t1-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "df is a DataFrame",
+        "assertCode": "import pandas as _pd\nassert \"df\" in globals(), \"Expected a variable named df\"\nassert isinstance(df, _pd.DataFrame), \"Expected df to be a DataFrame, got \" + type(df).__name__",
         "visibility": "public"
       },
       {
         "id": "m15-t1-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "a total column was added",
+        "assertCode": "assert \"total\" in df.columns, \"Expected a new column named \\\"total\\\"\"",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t1-p07-t4",
+        "label": "totals are units * price",
+        "assertCode": "assert (df[\"total\"].tolist()) == ([20, 60, 20]), \"Expected \" + repr([20, 60, 20]) + \", got \" + repr(df[\"total\"].tolist())",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t1-p07-t5",
+        "label": "the frame now has 3 columns",
+        "assertCode": "assert (df.shape) == ((3, 3)), \"Expected \" + repr((3, 3)) + \", got \" + repr(df.shape)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Add a total column equal to units times price and print the new column as a list.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"units\": [2, 3, 4],\n    \"price\": [10, 20, 5],\n})\n\ndf[\"total\"] = df[\"units\"] * df[\"price\"]\nprint(df[\"total\"].tolist())"
   },
   {
     "id": "m15-t2-p01",
     "topicId": "m15-t2",
-    "slug": "m15_t2-1",
-    "title": "Reading and Writing Data: Warm-up",
+    "slug": "pd-read-csv-string",
+    "title": "IO: Read CSV Text",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Reading and Writing Data. Print Ready on one line.",
+    "description": "Use StringIO and pd.read_csv to load CSV text into a DataFrame, then print its shape.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Wrap the CSV text in "
         },
         {
           "type": "code",
-          "value": "Reading and Writing Data"
+          "value": "StringIO"
         },
         {
           "type": "text",
-          "value": ". Print the word "
+          "value": ", load it with "
         },
         {
           "type": "code",
-          "value": "Ready"
+          "value": "pd.read_csv"
         },
         {
           "type": "text",
-          "value": " on one line."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": " into "
+        },
         {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
+          "type": "code",
+          "value": "df"
+        },
+        {
+          "type": "text",
+          "value": ", and print "
+        },
+        {
+          "type": "code",
+          "value": "df.shape"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "editorPlaceholder": "# df = pd.read_csv(StringIO(csv_text))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "read_csv normally takes a filename, but it accepts any file-like object.",
+          "StringIO turns a string into a file-like object.",
+          "The header row becomes the column names, so 3 lines give 2 rows."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "(2, 2)"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Use pd.read_csv with StringIO",
+      "Do not build the DataFrame by hand",
+      "Output must be exactly: (2, 2)"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "df = pd.read_csv(StringIO(csv_text))",
+      "print(df.shape)"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: read the CSV text into a DataFrame\nimport pandas as pd\nfrom io import StringIO\n\ncsv_text = \"item,revenue\\npen,30\\nbook,70\\n\"\ndf = None\n",
+    "solutionCode": "import pandas as pd\nfrom io import StringIO\n\ncsv_text = \"item,revenue\\npen,30\\nbook,70\\n\"\ndf = pd.read_csv(StringIO(csv_text))\n\nprint(df.shape)",
     "publicTests": [
       {
         "id": "m15-t2-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "(2, 2)",
         "visibility": "public"
       },
       {
         "id": "m15-t2-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "df is a DataFrame",
+        "assertCode": "import pandas as _pd\nassert \"df\" in globals(), \"Expected a variable named df\"\nassert isinstance(df, _pd.DataFrame), \"Expected df to be a DataFrame, got \" + type(df).__name__",
         "visibility": "public"
       },
       {
         "id": "m15-t2-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "header became column names",
+        "assertCode": "assert (list(df.columns)) == ([\"item\", \"revenue\"]), \"Expected \" + repr([\"item\", \"revenue\"]) + \", got \" + repr(list(df.columns))",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t2-p01-t4",
+        "label": "two data rows",
+        "assertCode": "assert (df.shape) == ((2, 2)), \"Expected \" + repr((2, 2)) + \", got \" + repr(df.shape)",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t2-p01-t5",
+        "label": "numbers were parsed as ints",
+        "assertCode": "assert (int(df[\"revenue\"].sum())) == (100), \"Expected \" + repr(100) + \", got \" + repr(int(df[\"revenue\"].sum()))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Reading and Writing Data. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Use StringIO and pd.read_csv to load CSV text into a DataFrame, then print its shape.\n\nReference solution:\nimport pandas as pd\nfrom io import StringIO\n\ncsv_text = \"item,revenue\\npen,30\\nbook,70\\n\"\ndf = pd.read_csv(StringIO(csv_text))\n\nprint(df.shape)"
   },
   {
     "id": "m15-t2-p02",
     "topicId": "m15-t2",
-    "slug": "m15_t2-2",
-    "title": "Reading and Writing Data: Output Two Values",
+    "slug": "pd-to-csv-file",
+    "title": "IO: Write a CSV File",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Reading and Writing Data and print them comma-separated.",
+    "description": "Save a DataFrame to sales_out.csv without the index, then print the file's header line.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Reading and Writing Data and print them separated by a comma."
+          "value": "Write "
+        },
+        {
+          "type": "code",
+          "value": "df"
+        },
+        {
+          "type": "text",
+          "value": " to "
+        },
+        {
+          "type": "code",
+          "value": "sales_out.csv"
+        },
+        {
+          "type": "text",
+          "value": " with "
+        },
+        {
+          "type": "code",
+          "value": "index=False"
+        },
+        {
+          "type": "text",
+          "value": ", then open the file and print its first line."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# df.to_csv(\"sales_out.csv\", index=False)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "to_csv(path, index=False) leaves out the row numbers.",
+          "Without index=False you get a stray unnamed first column.",
+          "read().splitlines()[0] is the header row."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "item,revenue"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "File name must be sales_out.csv",
+      "Pass index=False",
+      "Output must be exactly: item,revenue"
     ],
     "hints": [
-      "Create two variables related to Reading and Writing Data",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "df.to_csv(\"sales_out.csv\", index=False)",
+      "print(f.read().splitlines()[0])"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Reading and Writing Data and print them comma-separated. Key points: Create two variables related to Reading and Writing Data Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: write the CSV, then print its header line\nimport pandas as pd\n\ndf = pd.DataFrame({\"item\": [\"pen\", \"book\"], \"revenue\": [30, 70]})\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\"item\": [\"pen\", \"book\"], \"revenue\": [30, 70]})\ndf.to_csv(\"sales_out.csv\", index=False)\n\nwith open(\"sales_out.csv\") as f:\n    header = f.read().splitlines()[0]\n\nprint(header)",
     "publicTests": [
       {
         "id": "m15-t2-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "item,revenue",
         "visibility": "public"
       },
       {
         "id": "m15-t2-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "the CSV file was written",
+        "assertCode": "assert __import__(\"os\").path.exists(\"sales_out.csv\"), \"Expected sales_out.csv to exist\"",
         "visibility": "public"
       },
       {
         "id": "m15-t2-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "the index column was excluded",
+        "assertCode": "assert (open(\"sales_out.csv\").read().splitlines()[0]) == (\"item,revenue\"), \"Expected \" + repr(\"item,revenue\") + \", got \" + repr(open(\"sales_out.csv\").read().splitlines()[0])",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t2-p02-t4",
+        "label": "header plus two data rows",
+        "assertCode": "assert (len(open(\"sales_out.csv\").read().splitlines())) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(open(\"sales_out.csv\").read().splitlines()))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Save a DataFrame to sales_out.csv without the index, then print the file's header line.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\"item\": [\"pen\", \"book\"], \"revenue\": [30, 70]})\ndf.to_csv(\"sales_out.csv\", index=False)\n\nwith open(\"sales_out.csv\") as f:\n    header = f.read().splitlines()[0]\n\nprint(header)"
   },
   {
     "id": "m15-t2-p03",
     "topicId": "m15-t2",
-    "slug": "m15_t2-3",
-    "title": "Reading and Writing Data: Simple Loop",
+    "slug": "pd-read-csv-file",
+    "title": "IO: Load a CSV From Disk",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Reading and Writing Data.",
+    "description": "Write a CSV with open(), load it with pd.read_csv, and print the total of its revenue column.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Write the CSV to "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "revenue.csv"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Reading and Writing Data."
+          "value": ", load it with "
+        },
+        {
+          "type": "code",
+          "value": "pd.read_csv"
+        },
+        {
+          "type": "text",
+          "value": " into "
+        },
+        {
+          "type": "code",
+          "value": "df"
+        },
+        {
+          "type": "text",
+          "value": ", then print the revenue total."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# df = pd.read_csv(\"revenue.csv\")",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "This is the everyday pipeline: file on disk to DataFrame to number.",
+          "read_csv infers the numeric type, so .sum() works right away."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "100"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Read the file with pd.read_csv",
+      "Do not build the DataFrame by hand",
+      "Output must be exactly: 100"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "df = pd.read_csv(\"revenue.csv\")",
+      "print(int(df[\"revenue\"].sum()))"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Reading and Writing Data. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: load the file and total the column\nimport pandas as pd\n\nwith open(\"revenue.csv\", \"w\") as f:\n    f.write(\"item,revenue\\npen,30\\nbook,70\\n\")\n\ndf = None\n",
+    "solutionCode": "import pandas as pd\n\nwith open(\"revenue.csv\", \"w\") as f:\n    f.write(\"item,revenue\\npen,30\\nbook,70\\n\")\n\ndf = pd.read_csv(\"revenue.csv\")\nprint(int(df[\"revenue\"].sum()))",
     "publicTests": [
       {
         "id": "m15-t2-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "100",
         "visibility": "public"
       },
       {
         "id": "m15-t2-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "df is a DataFrame",
+        "assertCode": "import pandas as _pd\nassert \"df\" in globals(), \"Expected a variable named df\"\nassert isinstance(df, _pd.DataFrame), \"Expected df to be a DataFrame, got \" + type(df).__name__",
         "visibility": "public"
       },
       {
         "id": "m15-t2-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "two rows loaded",
+        "assertCode": "assert (df.shape) == ((2, 2)), \"Expected \" + repr((2, 2)) + \", got \" + repr(df.shape)",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t2-p03-t4",
+        "label": "revenue total",
+        "assertCode": "assert (int(df[\"revenue\"].sum())) == (100), \"Expected \" + repr(100) + \", got \" + repr(int(df[\"revenue\"].sum()))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Write a CSV with open(), load it with pd.read_csv, and print the total of its revenue column.\n\nReference solution:\nimport pandas as pd\n\nwith open(\"revenue.csv\", \"w\") as f:\n    f.write(\"item,revenue\\npen,30\\nbook,70\\n\")\n\ndf = pd.read_csv(\"revenue.csv\")\nprint(int(df[\"revenue\"].sum()))"
   },
   {
     "id": "m15-t2-p04",
     "topicId": "m15-t2",
-    "slug": "m15_t2-4",
-    "title": "Reading and Writing Data: Condition",
+    "slug": "pd-json-records",
+    "title": "IO: JSON Records to DataFrame",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Parse a JSON array of records with json.loads and build a DataFrame from it, then print its columns.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "Parse the JSON text with "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "json.loads"
         },
         {
           "type": "text",
-          "value": ". If "
+          "value": " into "
         },
         {
           "type": "code",
-          "value": "score >= 60"
+          "value": "records"
         },
         {
           "type": "text",
-          "value": ", print "
+          "value": ", build "
         },
         {
           "type": "code",
-          "value": "Pass"
+          "value": "df"
         },
         {
           "type": "text",
-          "value": ", otherwise print "
+          "value": " with "
         },
         {
           "type": "code",
-          "value": "Fail"
+          "value": "pd.DataFrame(records)"
         },
         {
           "type": "text",
-          "value": "."
+          "value": ", and print its columns."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# records = json.loads(response)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "json",
+        "pd",
+        "records",
+        "df"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A JSON array of objects becomes a list of dicts.",
+          "pd.DataFrame(list_of_dicts) uses the dict keys as columns.",
+          "This is the usual shape of an API response."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "['item', 'revenue']"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Parse with json.loads first",
+      "Build the frame with pd.DataFrame(records)",
+      "Output must be exactly: ['item', 'revenue']"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "records = json.loads(response)",
+      "df = pd.DataFrame(records)"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: build a DataFrame from the records\nimport json\nimport pandas as pd\n\nresponse = '[{\"item\": \"pen\", \"revenue\": 30}, {\"item\": \"book\", \"revenue\": 70}]'\nrecords = []\ndf = None\n",
+    "solutionCode": "import json\nimport pandas as pd\n\nresponse = '[{\"item\": \"pen\", \"revenue\": 30}, {\"item\": \"book\", \"revenue\": 70}]'\nrecords = json.loads(response)\ndf = pd.DataFrame(records)\n\nprint(list(df.columns))",
     "publicTests": [
       {
         "id": "m15-t2-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "['item', 'revenue']",
         "visibility": "public"
       },
       {
         "id": "m15-t2-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "records has the right type",
+        "assertCode": "assert \"records\" in globals(), \"Expected a variable named records\"\nassert isinstance(records, list), \"Expected records to be list, got \" + type(records).__name__",
         "visibility": "public"
       },
       {
         "id": "m15-t2-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "df is a DataFrame",
+        "assertCode": "import pandas as _pd\nassert \"df\" in globals(), \"Expected a variable named df\"\nassert isinstance(df, _pd.DataFrame), \"Expected df to be a DataFrame, got \" + type(df).__name__",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t2-p04-t4",
+        "label": "columns come from the keys",
+        "assertCode": "assert (list(df.columns)) == ([\"item\", \"revenue\"]), \"Expected \" + repr([\"item\", \"revenue\"]) + \", got \" + repr(list(df.columns))",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t2-p04-t5",
+        "label": "both records loaded",
+        "assertCode": "assert (df.shape) == ((2, 2)), \"Expected \" + repr((2, 2)) + \", got \" + repr(df.shape)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Parse a JSON array of records with json.loads and build a DataFrame from it, then print its columns.\n\nReference solution:\nimport json\nimport pandas as pd\n\nresponse = '[{\"item\": \"pen\", \"revenue\": 30}, {\"item\": \"book\", \"revenue\": 70}]'\nrecords = json.loads(response)\ndf = pd.DataFrame(records)\n\nprint(list(df.columns))"
   },
   {
     "id": "m15-t2-p05",
     "topicId": "m15-t2",
-    "slug": "m15_t2-5",
-    "title": "Reading and Writing Data: Function Stub",
+    "slug": "pd-to-json-file",
+    "title": "IO: Export to JSON",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Export a DataFrame to JSON records, load the file back with json.load, and print the first item.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "Write "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "df"
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": " to "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": "sales.json"
         },
         {
           "type": "text",
-          "value": " and call it once."
+          "value": " using "
+        },
+        {
+          "type": "code",
+          "value": "orient=\"records\""
+        },
+        {
+          "type": "text",
+          "value": ", read it back with "
+        },
+        {
+          "type": "code",
+          "value": "json.load"
+        },
+        {
+          "type": "text",
+          "value": " into "
+        },
+        {
+          "type": "code",
+          "value": "records"
+        },
+        {
+          "type": "text",
+          "value": ", and print the first item's name."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# df.to_json(\"sales.json\", orient=\"records\")",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "json",
+        "pd",
+        "records"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "orient=\"records\" produces a list of objects — the friendliest shape for APIs.",
+          "Loading it back proves the export is valid JSON."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "pen"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Export with orient=\"records\"",
+      "Read the file back with json.load",
+      "Output must be exactly: pen"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "df.to_json(\"sales.json\", orient=\"records\")",
+      "records = json.load(f)"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: export to JSON, then read it back\nimport json\nimport pandas as pd\n\ndf = pd.DataFrame({\"item\": [\"pen\", \"book\"], \"revenue\": [30, 70]})\nrecords = []\n",
+    "solutionCode": "import json\nimport pandas as pd\n\ndf = pd.DataFrame({\"item\": [\"pen\", \"book\"], \"revenue\": [30, 70]})\ndf.to_json(\"sales.json\", orient=\"records\")\n\nwith open(\"sales.json\") as f:\n    records = json.load(f)\n\nprint(records[0][\"item\"])",
     "publicTests": [
       {
         "id": "m15-t2-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": "pen",
         "visibility": "public"
       },
       {
         "id": "m15-t2-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "records has the right type",
+        "assertCode": "assert \"records\" in globals(), \"Expected a variable named records\"\nassert isinstance(records, list), \"Expected records to be list, got \" + type(records).__name__",
         "visibility": "public"
       },
       {
         "id": "m15-t2-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "both records exported",
+        "assertCode": "assert (len(records)) == (2), \"Expected \" + repr(2) + \", got \" + repr(len(records))",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t2-p05-t4",
+        "label": "first record is the pen",
+        "assertCode": "assert (records[0][\"item\"]) == (\"pen\"), \"Expected \" + repr(\"pen\") + \", got \" + repr(records[0][\"item\"])",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t2-p05-t5",
+        "label": "revenue survived the export",
+        "assertCode": "assert (records[1][\"revenue\"]) == (70), \"Expected \" + repr(70) + \", got \" + repr(records[1][\"revenue\"])",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Export a DataFrame to JSON records, load the file back with json.load, and print the first item.\n\nReference solution:\nimport json\nimport pandas as pd\n\ndf = pd.DataFrame({\"item\": [\"pen\", \"book\"], \"revenue\": [30, 70]})\ndf.to_json(\"sales.json\", orient=\"records\")\n\nwith open(\"sales.json\") as f:\n    records = json.load(f)\n\nprint(records[0][\"item\"])"
   },
   {
     "id": "m15-t2-p06",
     "topicId": "m15-t2",
-    "slug": "m15_t2-6",
-    "title": "Reading and Writing Data: List Practice",
-    "difficulty": "hard",
+    "slug": "pd-write-selected-columns",
+    "title": "IO: Export Only Some Columns",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Write just the item and revenue columns to a CSV and print the header line.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Reading and Writing Data. Print the "
+          "value": "Select "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "[\"item\", \"revenue\"]"
         },
         {
           "type": "text",
-          "value": " using index "
+          "value": " from "
         },
         {
           "type": "code",
-          "value": "1"
+          "value": "df"
         },
         {
           "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": ", write it to "
+        },
+        {
+          "type": "code",
+          "value": "subset.csv"
+        },
+        {
+          "type": "text",
+          "value": " without the index, and print the header line."
         }
+      ],
+      "editorPlaceholder": "# subset = df[[\"item\", \"revenue\"]]",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "df[[\"a\", \"b\"]] with a list of names selects several columns.",
+          "The result is a smaller DataFrame you can write straight out."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "item,revenue"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Select the columns with a list of names",
+      "Write to subset.csv with index=False",
+      "Output must be exactly: item,revenue"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "subset = df[[\"item\", \"revenue\"]]",
+      "subset.to_csv(\"subset.csv\", index=False)"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: export only two columns\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nsubset = df[[\"item\", \"revenue\"]]\nsubset.to_csv(\"subset.csv\", index=False)\n\nwith open(\"subset.csv\") as f:\n    print(f.read().splitlines()[0])",
     "publicTests": [
       {
         "id": "m15-t2-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "middle",
+        "expectedStdout": "item,revenue",
         "visibility": "public"
       },
       {
         "id": "m15-t2-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "only two columns were written",
+        "assertCode": "assert (open(\"subset.csv\").read().splitlines()[0]) == (\"item,revenue\"), \"Expected \" + repr(\"item,revenue\") + \", got \" + repr(open(\"subset.csv\").read().splitlines()[0])",
         "visibility": "public"
       },
       {
         "id": "m15-t2-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "all three rows were written",
+        "assertCode": "assert (len(open(\"subset.csv\").read().splitlines())) == (4), \"Expected \" + repr(4) + \", got \" + repr(len(open(\"subset.csv\").read().splitlines()))",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t2-p06-t4",
+        "label": "the original frame still has 3 columns",
+        "assertCode": "assert (df.shape) == ((3, 3)), \"Expected \" + repr((3, 3)) + \", got \" + repr(df.shape)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Write just the item and revenue columns to a CSV and print the header line.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nsubset = df[[\"item\", \"revenue\"]]\nsubset.to_csv(\"subset.csv\", index=False)\n\nwith open(\"subset.csv\") as f:\n    print(f.read().splitlines()[0])"
   },
   {
     "id": "m15-t2-p07",
     "topicId": "m15-t2",
-    "slug": "m15_t2-7",
-    "title": "Reading and Writing Data: Dict Lookup",
+    "slug": "pd-csv-roundtrip",
+    "title": "IO: Round-Trip a DataFrame",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Write a DataFrame to CSV, read it back into a new variable, and print the reloaded shape and revenue total.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Write "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "df"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": " to "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "roundtrip.csv"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
+          "value": ", read it back as "
         },
         {
           "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "reloaded"
         },
         {
           "type": "text",
-          "value": "."
+          "value": ", then print "
+        },
+        {
+          "type": "code",
+          "value": "reloaded.shape"
+        },
+        {
+          "type": "text",
+          "value": " and the revenue total."
         }
+      ],
+      "editorPlaceholder": "# df.to_csv(\"roundtrip.csv\", index=False)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df",
+        "reloaded"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "A round trip is how you check an export really preserved the data.",
+          "index=False on the way out keeps the shape identical on the way back.",
+          "Print the shape first, then the total."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "(3, 3)\n140"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Use index=False when writing",
+      "Reload into a variable named reloaded",
+      "Print the shape, then the total"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "df.to_csv(\"roundtrip.csv\", index=False)",
+      "reloaded = pd.read_csv(\"roundtrip.csv\")"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: write, reload, and verify\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nreloaded = None\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ndf.to_csv(\"roundtrip.csv\", index=False)\nreloaded = pd.read_csv(\"roundtrip.csv\")\n\nprint(reloaded.shape)\nprint(int(reloaded[\"revenue\"].sum()))",
     "publicTests": [
       {
         "id": "m15-t2-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "(3, 3)\n140",
         "visibility": "public"
       },
       {
         "id": "m15-t2-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "reloaded is a DataFrame",
+        "assertCode": "import pandas as _pd\nassert \"reloaded\" in globals(), \"Expected a variable named reloaded\"\nassert isinstance(reloaded, _pd.DataFrame), \"Expected reloaded to be a DataFrame, got \" + type(reloaded).__name__",
         "visibility": "public"
       },
       {
         "id": "m15-t2-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "shape survived the round trip",
+        "assertCode": "assert (reloaded.shape) == (df.shape), \"Expected \" + repr(df.shape) + \", got \" + repr(reloaded.shape)",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t2-p07-t4",
+        "label": "columns survived too",
+        "assertCode": "assert (list(reloaded.columns)) == (list(df.columns)), \"Expected \" + repr(list(df.columns)) + \", got \" + repr(list(reloaded.columns))",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t2-p07-t5",
+        "label": "revenue total matches",
+        "assertCode": "assert (int(reloaded[\"revenue\"].sum())) == (140), \"Expected \" + repr(140) + \", got \" + repr(int(reloaded[\"revenue\"].sum()))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Write a DataFrame to CSV, read it back into a new variable, and print the reloaded shape and revenue total.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ndf.to_csv(\"roundtrip.csv\", index=False)\nreloaded = pd.read_csv(\"roundtrip.csv\")\n\nprint(reloaded.shape)\nprint(int(reloaded[\"revenue\"].sum()))"
   },
   {
     "id": "m15-t3-p01",
     "topicId": "m15-t3",
-    "slug": "m15_t3-1",
-    "title": "Indexing Filtering and Selecting: Warm-up",
+    "slug": "pd-select-column",
+    "title": "Select: One Column",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Indexing Filtering and Selecting. Print Ready on one line.",
+    "description": "Select the region column and print its values as a list.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "Indexing Filtering and Selecting"
+          "value": "df[\"region\"].tolist()"
         },
         {
           "type": "text",
-          "value": ". Print the word "
-        },
-        {
-          "type": "code",
-          "value": "Ready"
-        },
-        {
-          "type": "text",
-          "value": " on one line."
+          "value": " — square brackets with a column name give you that column as a Series."
         }
       ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
-        }
+      "editorPlaceholder": "# print(df[\"region\"].tolist())",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "df[\"region\"] returns a Series.",
+          ".tolist() prints the values without the index."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "['South', 'North', 'South']"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Select by column name",
+      "Print with .tolist()"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "print(df[\"region\"].tolist())"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: print the region column\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nprint(df[\"region\"].tolist())",
     "publicTests": [
       {
         "id": "m15-t3-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "['South', 'North', 'South']",
         "visibility": "public"
       },
       {
         "id": "m15-t3-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "region values",
+        "assertCode": "assert (df[\"region\"].tolist()) == ([\"South\", \"North\", \"South\"]), \"Expected \" + repr([\"South\", \"North\", \"South\"]) + \", got \" + repr(df[\"region\"].tolist())",
         "visibility": "public"
       },
       {
         "id": "m15-t3-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "selecting a column gives a Series",
+        "assertCode": "assert type(df[\"region\"]).__name__ == \"Series\", \"Expected df[\\\"region\\\"] to be a Series\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Indexing Filtering and Selecting. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Select the region column and print its values as a list.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nprint(df[\"region\"].tolist())"
   },
   {
     "id": "m15-t3-p02",
     "topicId": "m15-t3",
-    "slug": "m15_t3-2",
-    "title": "Indexing Filtering and Selecting: Output Two Values",
+    "slug": "pd-loc-cell",
+    "title": "Select: One Cell with loc",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Indexing Filtering and Selecting and print them comma-separated.",
+    "description": "Use df.loc to read the revenue of row 1 and print it as an int.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Indexing Filtering and Selecting and print them separated by a comma."
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "int(df.loc[1, \"revenue\"])"
+        },
+        {
+          "type": "text",
+          "value": " — "
+        },
+        {
+          "type": "code",
+          "value": "loc"
+        },
+        {
+          "type": "text",
+          "value": " takes the row label first, then the column name."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# print(int(df.loc[1, \"revenue\"]))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "loc works with labels: row index label, then column name.",
+          "The default index labels are 0, 1, 2 …"
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "40"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Use df.loc[row, column]",
+      "Output must be exactly: 40"
     ],
     "hints": [
-      "Create two variables related to Indexing Filtering and Selecting",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "print(int(df.loc[1, \"revenue\"]))"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Indexing Filtering and Selecting and print them comma-separated. Key points: Create two variables related to Indexing Filtering and Selecting Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: read row 1's revenue\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nprint(int(df.loc[1, \"revenue\"]))",
     "publicTests": [
       {
         "id": "m15-t3-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "40",
         "visibility": "public"
       },
       {
         "id": "m15-t3-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "row 1 revenue",
+        "assertCode": "assert (int(df.loc[1, \"revenue\"])) == (40), \"Expected \" + repr(40) + \", got \" + repr(int(df.loc[1, \"revenue\"]))",
         "visibility": "public"
       },
       {
         "id": "m15-t3-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "row 1 is the book",
+        "assertCode": "assert (df.loc[1, \"item\"]) == (\"book\"), \"Expected \" + repr(\"book\") + \", got \" + repr(df.loc[1, \"item\"])",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Use df.loc to read the revenue of row 1 and print it as an int.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nprint(int(df.loc[1, \"revenue\"]))"
   },
   {
     "id": "m15-t3-p03",
     "topicId": "m15-t3",
-    "slug": "m15_t3-3",
-    "title": "Indexing Filtering and Selecting: Simple Loop",
-    "difficulty": "medium",
+    "slug": "pd-iloc-row",
+    "title": "Select: By Position with iloc",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Indexing Filtering and Selecting.",
+    "description": "Use df.iloc to read the first row by position and print its item name.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "df.iloc[0][\"item\"]"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Indexing Filtering and Selecting."
+          "value": " — "
+        },
+        {
+          "type": "code",
+          "value": "iloc"
+        },
+        {
+          "type": "text",
+          "value": " is positional, so it works even when the index labels are not numbers."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# print(df.iloc[0][\"item\"])",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "iloc[0] is always the first row, whatever the index says.",
+          "loc uses labels; iloc uses positions."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "pen"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Use df.iloc",
+      "Output must be exactly: pen"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "print(df.iloc[0][\"item\"])"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Indexing Filtering and Selecting. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: read the first row by position\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nprint(df.iloc[0][\"item\"])",
     "publicTests": [
       {
         "id": "m15-t3-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "pen",
         "visibility": "public"
       },
       {
         "id": "m15-t3-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "first row item",
+        "assertCode": "assert (df.iloc[0][\"item\"]) == (\"pen\"), \"Expected \" + repr(\"pen\") + \", got \" + repr(df.iloc[0][\"item\"])",
         "visibility": "public"
       },
       {
         "id": "m15-t3-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "last row item",
+        "assertCode": "assert (df.iloc[-1][\"item\"]) == (\"bag\"), \"Expected \" + repr(\"bag\") + \", got \" + repr(df.iloc[-1][\"item\"])",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Use df.iloc to read the first row by position and print its item name.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nprint(df.iloc[0][\"item\"])"
   },
   {
     "id": "m15-t3-p04",
     "topicId": "m15-t3",
-    "slug": "m15_t3-4",
-    "title": "Indexing Filtering and Selecting: Condition",
+    "slug": "pd-filter-rows",
+    "title": "Select: Filter Rows by Value",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Keep rows where revenue is above 35 and print the matching item names.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "Filter with "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "df[df[\"revenue\"] > 35]"
         },
         {
           "type": "text",
-          "value": ". If "
+          "value": " and print the "
         },
         {
           "type": "code",
-          "value": "score >= 60"
+          "value": "item"
         },
         {
           "type": "text",
-          "value": ", print "
-        },
-        {
-          "type": "code",
-          "value": "Pass"
-        },
-        {
-          "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": " column of the result as a list."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# high = df[df[\"revenue\"] > 35]",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "df[\"revenue\"] > 35 builds a True/False mask.",
+          "Passing the mask back into df keeps only the True rows.",
+          "This is boolean indexing, the same idea as in NumPy."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "['book', 'bag']"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Use boolean indexing — no loop",
+      "Do not modify df",
+      "Output must be exactly: ['book', 'bag']"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "high = df[df[\"revenue\"] > 35]",
+      "print(high[\"item\"].tolist())"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: keep the high-revenue rows\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nhigh = df[df[\"revenue\"] > 35]\nprint(high[\"item\"].tolist())",
     "publicTests": [
       {
         "id": "m15-t3-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "['book', 'bag']",
         "visibility": "public"
       },
       {
         "id": "m15-t3-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "only rows above 35 kept",
+        "assertCode": "assert (df[df[\"revenue\"] > 35][\"item\"].tolist()) == ([\"book\", \"bag\"]), \"Expected \" + repr([\"book\", \"bag\"]) + \", got \" + repr(df[df[\"revenue\"] > 35][\"item\"].tolist())",
         "visibility": "public"
       },
       {
         "id": "m15-t3-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "the original frame is unchanged",
+        "assertCode": "assert (len(df)) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(df))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Keep rows where revenue is above 35 and print the matching item names.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nhigh = df[df[\"revenue\"] > 35]\nprint(high[\"item\"].tolist())"
   },
   {
     "id": "m15-t3-p05",
     "topicId": "m15-t3",
-    "slug": "m15_t3-5",
-    "title": "Indexing Filtering and Selecting: Function Stub",
+    "slug": "pd-isin",
+    "title": "Select: Match a List of Values",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Use .isin() to count how many rows are in the South region and print the count.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "Use "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "df[\"region\"].isin([\"South\"])"
         },
         {
           "type": "text",
-          "value": " that prints "
-        },
-        {
-          "type": "code",
-          "value": "Hello"
-        },
-        {
-          "type": "text",
-          "value": " and call it once."
+          "value": " to filter, then print how many rows matched."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# south = df[df[\"region\"].isin([\"South\"])]",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          ".isin(list) tests membership for every row at once.",
+          "It is much cleaner than chaining several == checks with |.",
+          "len() of the filtered frame gives the count."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "2"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Use .isin()",
+      "Output must be exactly: 2"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "south = df[df[\"region\"].isin([\"South\"])]",
+      "print(len(south))"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: count the South rows with isin\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nsouth = df[df[\"region\"].isin([\"South\"])]\nprint(len(south))",
     "publicTests": [
       {
         "id": "m15-t3-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": "2",
         "visibility": "public"
       },
       {
         "id": "m15-t3-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "two South rows",
+        "assertCode": "assert (len(df[df[\"region\"].isin([\"South\"])])) == (2), \"Expected \" + repr(2) + \", got \" + repr(len(df[df[\"region\"].isin([\"South\"])]))",
         "visibility": "public"
       },
       {
         "id": "m15-t3-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "isin also matches several values",
+        "assertCode": "assert (len(df[df[\"region\"].isin([\"South\", \"North\"])])) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(df[df[\"region\"].isin([\"South\", \"North\"])]))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Use .isin() to count how many rows are in the South region and print the count.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nsouth = df[df[\"region\"].isin([\"South\"])]\nprint(len(south))"
   },
   {
     "id": "m15-t3-p06",
     "topicId": "m15-t3",
-    "slug": "m15_t3-6",
-    "title": "Indexing Filtering and Selecting: List Practice",
-    "difficulty": "hard",
+    "slug": "pd-multi-condition",
+    "title": "Select: Two Conditions at Once",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Combine two conditions with & to keep South rows above 25 revenue, then print the item names.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Indexing Filtering and Selecting. Print the "
+          "value": "Combine "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "df[\"revenue\"] > 25"
         },
         {
           "type": "text",
-          "value": " using index "
+          "value": " and "
         },
         {
           "type": "code",
-          "value": "1"
+          "value": "df[\"region\"] == \"South\""
         },
         {
           "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": " with "
+        },
+        {
+          "type": "code",
+          "value": "&"
+        },
+        {
+          "type": "text",
+          "value": ", then print the matching item names."
         }
+      ],
+      "editorPlaceholder": "# matches = df[( ... ) & ( ... )]",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "Use & for and, | for or — the words and/or do not work on Series.",
+          "Wrap each condition in its own brackets, or precedence will bite you."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "['pen', 'bag']"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Use & with each condition in brackets",
+      "Output must be exactly: ['pen', 'bag']"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "matches = df[(df[\"revenue\"] > 25) & (df[\"region\"] == \"South\")]",
+      "print(matches[\"item\"].tolist())"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: combine both conditions\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nmatches = df[(df[\"revenue\"] > 25) & (df[\"region\"] == \"South\")]\nprint(matches[\"item\"].tolist())",
     "publicTests": [
       {
         "id": "m15-t3-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "middle",
+        "expectedStdout": "['pen', 'bag']",
         "visibility": "public"
       },
       {
         "id": "m15-t3-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "both conditions applied",
+        "assertCode": "assert ((df[(df[\"revenue\"] > 25) & (df[\"region\"] == \"South\")])[\"item\"].tolist()) == ([\"pen\", \"bag\"]), \"Expected \" + repr([\"pen\", \"bag\"]) + \", got \" + repr((df[(df[\"revenue\"] > 25) & (df[\"region\"] == \"South\")])[\"item\"].tolist())",
         "visibility": "public"
       },
       {
         "id": "m15-t3-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "the North row was excluded",
+        "assertCode": "assert (len(df[(df[\"revenue\"] > 25) & (df[\"region\"] == \"South\")])) == (2), \"Expected \" + repr(2) + \", got \" + repr(len(df[(df[\"revenue\"] > 25) & (df[\"region\"] == \"South\")]))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Combine two conditions with & to keep South rows above 25 revenue, then print the item names.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nmatches = df[(df[\"revenue\"] > 25) & (df[\"region\"] == \"South\")]\nprint(matches[\"item\"].tolist())"
   },
   {
     "id": "m15-t3-p07",
     "topicId": "m15-t3",
-    "slug": "m15_t3-7",
-    "title": "Indexing Filtering and Selecting: Dict Lookup",
+    "slug": "pd-loc-rows-columns",
+    "title": "Select: Rows and Columns Together",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Use df.loc with a condition and a column list to print item and revenue for rows of 40 or more.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Use "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "df.loc[df[\"revenue\"] >= 40, [\"item\", \"revenue\"]]"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": " and print "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": ".values.tolist()"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
-        },
-        {
-          "type": "code",
-          "value": "d[\"topic\"]"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": " to see the selected block as nested lists."
         }
+      ],
+      "editorPlaceholder": "# block = df.loc[mask, [columns]]",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df",
+        "block"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "loc takes a row selector and a column selector at the same time.",
+          "The row selector can be a boolean mask.",
+          ".values.tolist() turns the block into plain nested lists."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "[['book', 40], ['bag', 70]]"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Do it in a single df.loc call",
+      "Keep only the item and revenue columns",
+      "Output must be exactly: [['book', 40], ['bag', 70]]"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "block = df.loc[df[\"revenue\"] >= 40, [\"item\", \"revenue\"]]",
+      "print(block.values.tolist())"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: select rows and columns in one call\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nblock = None\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nblock = df.loc[df[\"revenue\"] >= 40, [\"item\", \"revenue\"]]\nprint(block.values.tolist())",
     "publicTests": [
       {
         "id": "m15-t3-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "[['book', 40], ['bag', 70]]",
         "visibility": "public"
       },
       {
         "id": "m15-t3-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "only the two big rows, two columns",
+        "assertCode": "assert (block.values.tolist()) == ([[\"book\", 40], [\"bag\", 70]]), \"Expected \" + repr([[\"book\", 40], [\"bag\", 70]]) + \", got \" + repr(block.values.tolist())",
         "visibility": "public"
       },
       {
         "id": "m15-t3-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "the region column was dropped",
+        "assertCode": "assert (list(block.columns)) == ([\"item\", \"revenue\"]), \"Expected \" + repr([\"item\", \"revenue\"]) + \", got \" + repr(list(block.columns))",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t3-p07-t4",
+        "label": "the original frame is unchanged",
+        "assertCode": "assert (df.shape) == ((3, 3)), \"Expected \" + repr((3, 3)) + \", got \" + repr(df.shape)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Use df.loc with a condition and a column list to print item and revenue for rows of 40 or more.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nblock = df.loc[df[\"revenue\"] >= 40, [\"item\", \"revenue\"]]\nprint(block.values.tolist())"
   },
   {
     "id": "m15-t4-p01",
     "topicId": "m15-t4",
-    "slug": "m15_t4-1",
-    "title": "Data Cleaning: Warm-up",
+    "slug": "pd-count-missing",
+    "title": "Cleaning: Count Missing Values",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Data Cleaning. Print Ready on one line.",
+    "description": "Count how many revenue values are missing using isna().sum() and print the count.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "Data Cleaning"
+          "value": "int(df[\"revenue\"].isna().sum())"
         },
         {
           "type": "text",
-          "value": ". Print the word "
-        },
-        {
-          "type": "code",
-          "value": "Ready"
-        },
-        {
-          "type": "text",
-          "value": " on one line."
+          "value": " — the first question to ask about any new column."
         }
       ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
-        }
+      "editorPlaceholder": "# print(int(df[\"revenue\"].isna().sum()))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "isna() returns True for each missing value.",
+          "Summing booleans counts the Trues.",
+          "None in a numeric column becomes NaN when pandas loads it."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "1"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Use isna().sum()",
+      "Do not modify the data",
+      "Output must be exactly: 1"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "print(int(df[\"revenue\"].isna().sum()))"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: count the missing revenue values\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\" South\", \"North \", \"South\"],\n    \"revenue\": [30.0, None, 70.0],\n})\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\" South\", \"North \", \"South\"],\n    \"revenue\": [30.0, None, 70.0],\n})\n\nprint(int(df[\"revenue\"].isna().sum()))",
     "publicTests": [
       {
         "id": "m15-t4-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "1",
         "visibility": "public"
       },
       {
         "id": "m15-t4-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "df is a DataFrame",
+        "assertCode": "import pandas as _pd\nassert \"df\" in globals(), \"Expected a variable named df\"\nassert isinstance(df, _pd.DataFrame), \"Expected df to be a DataFrame, got \" + type(df).__name__",
         "visibility": "public"
       },
       {
         "id": "m15-t4-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "one value is missing",
+        "assertCode": "assert (int(df[\"revenue\"].isna().sum())) == (1), \"Expected \" + repr(1) + \", got \" + repr(int(df[\"revenue\"].isna().sum()))",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t4-p01-t4",
+        "label": "the missing value was not filled in",
+        "assertCode": "assert df[\"revenue\"].isna().any(), \"Do not fill the gap yet — this task only counts it\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Data Cleaning. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Count how many revenue values are missing using isna().sum() and print the count.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\" South\", \"North \", \"South\"],\n    \"revenue\": [30.0, None, 70.0],\n})\n\nprint(int(df[\"revenue\"].isna().sum()))"
   },
   {
     "id": "m15-t4-p02",
     "topicId": "m15-t4",
-    "slug": "m15_t4-2",
-    "title": "Data Cleaning: Output Two Values",
+    "slug": "pd-fillna",
+    "title": "Cleaning: Fill the Gaps",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Data Cleaning and print them comma-separated.",
+    "description": "Replace missing revenue with 0 using fillna and print the filled values as a list.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Data Cleaning and print them separated by a comma."
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "df[\"revenue\"].fillna(0).tolist()"
+        },
+        {
+          "type": "text",
+          "value": ". The values stay floats because the column held a NaN."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# print(df[\"revenue\"].fillna(0).tolist())",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "fillna(value) returns a new Series — the original is untouched.",
+          "Filling with 0 is right for counts, but a mean may suit measurements better."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "[30.0, 0.0, 70.0]"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Use fillna(0)",
+      "Output must be exactly: [30.0, 0.0, 70.0]"
     ],
     "hints": [
-      "Create two variables related to Data Cleaning",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "print(df[\"revenue\"].fillna(0).tolist())"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Data Cleaning and print them comma-separated. Key points: Create two variables related to Data Cleaning Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: fill the missing revenue with 0\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\" South\", \"North \", \"South\"],\n    \"revenue\": [30.0, None, 70.0],\n})\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\" South\", \"North \", \"South\"],\n    \"revenue\": [30.0, None, 70.0],\n})\n\nprint(df[\"revenue\"].fillna(0).tolist())",
     "publicTests": [
       {
         "id": "m15-t4-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "[30.0, 0.0, 70.0]",
         "visibility": "public"
       },
       {
         "id": "m15-t4-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "gap filled with 0",
+        "assertCode": "assert (df[\"revenue\"].fillna(0).tolist()) == ([30.0, 0.0, 70.0]), \"Expected \" + repr([30.0, 0.0, 70.0]) + \", got \" + repr(df[\"revenue\"].fillna(0).tolist())",
         "visibility": "public"
       },
       {
         "id": "m15-t4-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "no missing values remain after filling",
+        "assertCode": "assert (int(df[\"revenue\"].fillna(0).isna().sum())) == (0), \"Expected \" + repr(0) + \", got \" + repr(int(df[\"revenue\"].fillna(0).isna().sum()))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Replace missing revenue with 0 using fillna and print the filled values as a list.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\" South\", \"North \", \"South\"],\n    \"revenue\": [30.0, None, 70.0],\n})\n\nprint(df[\"revenue\"].fillna(0).tolist())"
   },
   {
     "id": "m15-t4-p03",
     "topicId": "m15-t4",
-    "slug": "m15_t4-3",
-    "title": "Data Cleaning: Simple Loop",
-    "difficulty": "medium",
+    "slug": "pd-dropna",
+    "title": "Cleaning: Drop Incomplete Rows",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Data Cleaning.",
+    "description": "Drop rows with any missing value using dropna and print the resulting shape.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "df.dropna().shape"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Data Cleaning."
+          "value": " — one row goes away, so 3 rows become 2."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# print(df.dropna().shape)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "dropna() removes any row containing a missing value.",
+          "Dropping loses data, so prefer filling when the column is important."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "(2, 3)"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Use dropna()",
+      "Output must be exactly: (2, 3)"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "print(df.dropna().shape)"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Data Cleaning. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: drop the incomplete row\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\" South\", \"North \", \"South\"],\n    \"revenue\": [30.0, None, 70.0],\n})\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\" South\", \"North \", \"South\"],\n    \"revenue\": [30.0, None, 70.0],\n})\n\nprint(df.dropna().shape)",
     "publicTests": [
       {
         "id": "m15-t4-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "(2, 3)",
         "visibility": "public"
       },
       {
         "id": "m15-t4-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "two complete rows remain",
+        "assertCode": "assert (df.dropna().shape) == ((2, 3)), \"Expected \" + repr((2, 3)) + \", got \" + repr(df.dropna().shape)",
         "visibility": "public"
       },
       {
         "id": "m15-t4-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "the original frame still has 3 rows",
+        "assertCode": "assert (len(df)) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(df))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Drop rows with any missing value using dropna and print the resulting shape.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\" South\", \"North \", \"South\"],\n    \"revenue\": [30.0, None, 70.0],\n})\n\nprint(df.dropna().shape)"
   },
   {
     "id": "m15-t4-p04",
     "topicId": "m15-t4",
-    "slug": "m15_t4-4",
-    "title": "Data Cleaning: Condition",
+    "slug": "pd-strip-strings",
+    "title": "Cleaning: Trim Whitespace",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Use .str.strip() to remove stray spaces from the region column and print the cleaned values.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "The region values have stray spaces. Print "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "df[\"region\"].str.strip().tolist()"
         },
         {
           "type": "text",
-          "value": ". If "
-        },
-        {
-          "type": "code",
-          "value": "score >= 60"
-        },
-        {
-          "type": "text",
-          "value": ", print "
-        },
-        {
-          "type": "code",
-          "value": "Pass"
-        },
-        {
-          "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": " to clean them."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# print(df[\"region\"].str.strip().tolist())",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          ".str gives you Python string methods across the whole column.",
+          "Untrimmed values are a classic bug: \" South\" and \"South\" group separately."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "['South', 'North', 'South']"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Use .str.strip()",
+      "Do not rebuild the column by hand",
+      "Output must be exactly: ['South', 'North', 'South']"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "print(df[\"region\"].str.strip().tolist())"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: trim the whitespace\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\" South\", \"North \", \"South\"],\n    \"revenue\": [30.0, None, 70.0],\n})\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\" South\", \"North \", \"South\"],\n    \"revenue\": [30.0, None, 70.0],\n})\n\nprint(df[\"region\"].str.strip().tolist())",
     "publicTests": [
       {
         "id": "m15-t4-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "['South', 'North', 'South']",
         "visibility": "public"
       },
       {
         "id": "m15-t4-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "values are trimmed",
+        "assertCode": "assert (df[\"region\"].str.strip().tolist()) == ([\"South\", \"North\", \"South\"]), \"Expected \" + repr([\"South\", \"North\", \"South\"]) + \", got \" + repr(df[\"region\"].str.strip().tolist())",
         "visibility": "public"
       },
       {
         "id": "m15-t4-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "the raw column really had spaces",
+        "assertCode": "assert df[\"region\"].tolist() != [\"South\", \"North\", \"South\"], \"Do not retype the values — clean them with .str.strip()\"",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t4-p04-t4",
+        "label": "trimming makes the two South rows match",
+        "assertCode": "assert (df[\"region\"].str.strip().tolist().count(\"South\")) == (2), \"Expected \" + repr(2) + \", got \" + repr(df[\"region\"].str.strip().tolist().count(\"South\"))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Use .str.strip() to remove stray spaces from the region column and print the cleaned values.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\" South\", \"North \", \"South\"],\n    \"revenue\": [30.0, None, 70.0],\n})\n\nprint(df[\"region\"].str.strip().tolist())"
   },
   {
     "id": "m15-t4-p05",
     "topicId": "m15-t4",
-    "slug": "m15_t4-5",
-    "title": "Data Cleaning: Function Stub",
+    "slug": "pd-drop-duplicates",
+    "title": "Cleaning: Remove Duplicate Rows",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Drop duplicate rows with drop_duplicates and print how many unique rows remain.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "The pen row appears twice. Print "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "len(df.drop_duplicates())"
         },
         {
           "type": "text",
-          "value": " that prints "
-        },
-        {
-          "type": "code",
-          "value": "Hello"
-        },
-        {
-          "type": "text",
-          "value": " and call it once."
+          "value": " to see how many unique rows are left."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# print(len(df.drop_duplicates()))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "drop_duplicates() keeps the first occurrence of each identical row.",
+          "Duplicates usually come from re-running an import — they silently inflate totals."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "2"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Use drop_duplicates()",
+      "Output must be exactly: 2"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "print(len(df.drop_duplicates()))"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: drop the duplicate row\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"pen\", \"bag\"],\n    \"revenue\": [30, 30, 70],\n})\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"pen\", \"bag\"],\n    \"revenue\": [30, 30, 70],\n})\n\nprint(len(df.drop_duplicates()))",
     "publicTests": [
       {
         "id": "m15-t4-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": "2",
         "visibility": "public"
       },
       {
         "id": "m15-t4-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "two unique rows",
+        "assertCode": "assert (len(df.drop_duplicates())) == (2), \"Expected \" + repr(2) + \", got \" + repr(len(df.drop_duplicates()))",
         "visibility": "public"
       },
       {
         "id": "m15-t4-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "the original still has 3 rows",
+        "assertCode": "assert (len(df)) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(df))",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t4-p05-t4",
+        "label": "the duplicate inflated the total",
+        "assertCode": "assert (int(df[\"revenue\"].sum()) - int(df.drop_duplicates()[\"revenue\"].sum())) == (30), \"Expected \" + repr(30) + \", got \" + repr(int(df[\"revenue\"].sum()) - int(df.drop_duplicates()[\"revenue\"].sum()))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Drop duplicate rows with drop_duplicates and print how many unique rows remain.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"pen\", \"bag\"],\n    \"revenue\": [30, 30, 70],\n})\n\nprint(len(df.drop_duplicates()))"
   },
   {
     "id": "m15-t4-p06",
     "topicId": "m15-t4",
-    "slug": "m15_t4-6",
-    "title": "Data Cleaning: List Practice",
-    "difficulty": "hard",
+    "slug": "pd-astype-int",
+    "title": "Cleaning: Fix the Column Type",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Fill the missing revenue then convert the column to int with astype and print the values.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Data Cleaning. Print the "
+          "value": "Chain "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "fillna(0)"
         },
         {
           "type": "text",
-          "value": " using index "
+          "value": " then "
         },
         {
           "type": "code",
-          "value": "1"
+          "value": "astype(int)"
         },
         {
           "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": " on the revenue column and print the list. You must fill first — "
+        },
+        {
+          "type": "code",
+          "value": "NaN"
+        },
+        {
+          "type": "text",
+          "value": " cannot become an int."
         }
+      ],
+      "editorPlaceholder": "# revenue = df[\"revenue\"].fillna(0).astype(int)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df",
+        "revenue"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "A single NaN forces the whole column to float.",
+          "Fill the gaps, then astype(int) to get clean whole numbers.",
+          "Converting before filling raises an error."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "[30, 0, 70]"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "fillna(0) before astype(int)",
+      "Store the result in revenue",
+      "Output must be exactly: [30, 0, 70]"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "revenue = df[\"revenue\"].fillna(0).astype(int)",
+      "print(revenue.tolist())"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: fill, then convert to int\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\" South\", \"North \", \"South\"],\n    \"revenue\": [30.0, None, 70.0],\n})\n\nrevenue = None\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\" South\", \"North \", \"South\"],\n    \"revenue\": [30.0, None, 70.0],\n})\n\nrevenue = df[\"revenue\"].fillna(0).astype(int)\nprint(revenue.tolist())",
     "publicTests": [
       {
         "id": "m15-t4-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "middle",
+        "expectedStdout": "[30, 0, 70]",
         "visibility": "public"
       },
       {
         "id": "m15-t4-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "values are whole numbers",
+        "assertCode": "assert (revenue.tolist()) == ([30, 0, 70]), \"Expected \" + repr([30, 0, 70]) + \", got \" + repr(revenue.tolist())",
         "visibility": "public"
       },
       {
         "id": "m15-t4-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "the column is an integer type",
+        "assertCode": "assert revenue.dtype.kind == \"i\", \"Expected an integer dtype after astype(int)\"",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t4-p06-t4",
+        "label": "the total is unchanged",
+        "assertCode": "assert (int(revenue.sum())) == (100), \"Expected \" + repr(100) + \", got \" + repr(int(revenue.sum()))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Fill the missing revenue then convert the column to int with astype and print the values.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\" South\", \"North \", \"South\"],\n    \"revenue\": [30.0, None, 70.0],\n})\n\nrevenue = df[\"revenue\"].fillna(0).astype(int)\nprint(revenue.tolist())"
   },
   {
     "id": "m15-t4-p07",
     "topicId": "m15-t4",
-    "slug": "m15_t4-7",
-    "title": "Data Cleaning: Dict Lookup",
+    "slug": "pd-clean-pipeline",
+    "title": "Cleaning: A Full Cleaning Pass",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Trim the region text, fill missing revenue, convert it to int, then print the cleaned regions and the total.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Clean both columns in place: trim "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "region"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": " with "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": ".str.strip()"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
+          "value": " and fix "
         },
         {
           "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "revenue"
         },
         {
           "type": "text",
-          "value": "."
+          "value": " with "
+        },
+        {
+          "type": "code",
+          "value": "fillna(0).astype(int)"
+        },
+        {
+          "type": "text",
+          "value": ". Then print the region list and the revenue total."
         }
+      ],
+      "editorPlaceholder": "# df[\"region\"] = df[\"region\"].str.strip()",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "Assign back to df[\"region\"] and df[\"revenue\"] to keep the changes.",
+          "Clean text before grouping and fix types before doing maths.",
+          "Print the regions first, then the total."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "['South', 'North', 'South']\n100"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Assign the cleaned values back into df",
+      "Print the region list, then the total"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "df[\"region\"] = df[\"region\"].str.strip()",
+      "df[\"revenue\"] = df[\"revenue\"].fillna(0).astype(int)"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: clean both columns, then report\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\" South\", \"North \", \"South\"],\n    \"revenue\": [30.0, None, 70.0],\n})\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\" South\", \"North \", \"South\"],\n    \"revenue\": [30.0, None, 70.0],\n})\n\ndf[\"region\"] = df[\"region\"].str.strip()\ndf[\"revenue\"] = df[\"revenue\"].fillna(0).astype(int)\n\nprint(df[\"region\"].tolist())\nprint(int(df[\"revenue\"].sum()))",
     "publicTests": [
       {
         "id": "m15-t4-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "['South', 'North', 'South']\n100",
         "visibility": "public"
       },
       {
         "id": "m15-t4-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "regions were trimmed in place",
+        "assertCode": "assert (df[\"region\"].tolist()) == ([\"South\", \"North\", \"South\"]), \"Expected \" + repr([\"South\", \"North\", \"South\"]) + \", got \" + repr(df[\"region\"].tolist())",
         "visibility": "public"
       },
       {
         "id": "m15-t4-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "revenue was filled and converted",
+        "assertCode": "assert (df[\"revenue\"].tolist()) == ([30, 0, 70]), \"Expected \" + repr([30, 0, 70]) + \", got \" + repr(df[\"revenue\"].tolist())",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t4-p07-t4",
+        "label": "revenue is now an integer column",
+        "assertCode": "assert df[\"revenue\"].dtype.kind == \"i\", \"Expected the revenue column to be integers after cleaning\"",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t4-p07-t5",
+        "label": "total revenue",
+        "assertCode": "assert (int(df[\"revenue\"].sum())) == (100), \"Expected \" + repr(100) + \", got \" + repr(int(df[\"revenue\"].sum()))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Trim the region text, fill missing revenue, convert it to int, then print the cleaned regions and the total.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\" South\", \"North \", \"South\"],\n    \"revenue\": [30.0, None, 70.0],\n})\n\ndf[\"region\"] = df[\"region\"].str.strip()\ndf[\"revenue\"] = df[\"revenue\"].fillna(0).astype(int)\n\nprint(df[\"region\"].tolist())\nprint(int(df[\"revenue\"].sum()))"
   },
   {
     "id": "m15-t5-p01",
     "topicId": "m15-t5",
-    "slug": "m15_t5-1",
-    "title": "GroupBy Merging and Joining: Warm-up",
+    "slug": "pd-groupby-sum",
+    "title": "GroupBy: Revenue per Region",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to GroupBy Merging and Joining. Print Ready on one line.",
+    "description": "Group by region, sum the revenue, and print the result as a dict of ints.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Group with "
         },
         {
           "type": "code",
-          "value": "GroupBy Merging and Joining"
+          "value": "df.groupby(\"region\")[\"revenue\"].sum()"
         },
         {
           "type": "text",
-          "value": ". Print the word "
+          "value": ", then print "
         },
         {
           "type": "code",
-          "value": "Ready"
+          "value": "{k: int(v) for k, v in totals.items()}"
         },
         {
           "type": "text",
-          "value": " on one line."
+          "value": " so the numbers print as plain ints."
         }
       ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
-        }
+      "editorPlaceholder": "# totals = df.groupby(\"region\")[\"revenue\"].sum()",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df",
+        "totals"
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "groupby splits the rows, then the aggregation combines each group.",
+          "Groups come back sorted by key, so North comes before South.",
+          "int(v) keeps the printed dict free of NumPy types."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "{'North': 40, 'South': 100}"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Use groupby",
+      "Convert values with int() when printing",
+      "Output must be exactly: {'North': 40, 'South': 100}"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "totals = df.groupby(\"region\")[\"revenue\"].sum()",
+      "print({k: int(v) for k, v in totals.items()})"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: sum revenue per region\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ntotals = None\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ntotals = df.groupby(\"region\")[\"revenue\"].sum()\nprint({k: int(v) for k, v in totals.items()})",
     "publicTests": [
       {
         "id": "m15-t5-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "{'North': 40, 'South': 100}",
         "visibility": "public"
       },
       {
         "id": "m15-t5-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "South total",
+        "assertCode": "assert (int(totals[\"South\"])) == (100), \"Expected \" + repr(100) + \", got \" + repr(int(totals[\"South\"]))",
         "visibility": "public"
       },
       {
         "id": "m15-t5-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "North total",
+        "assertCode": "assert (int(totals[\"North\"])) == (40), \"Expected \" + repr(40) + \", got \" + repr(int(totals[\"North\"]))",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t5-p01-t4",
+        "label": "one row per region",
+        "assertCode": "assert (len(totals)) == (2), \"Expected \" + repr(2) + \", got \" + repr(len(totals))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to GroupBy Merging and Joining. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Group by region, sum the revenue, and print the result as a dict of ints.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ntotals = df.groupby(\"region\")[\"revenue\"].sum()\nprint({k: int(v) for k, v in totals.items()})"
   },
   {
     "id": "m15-t5-p02",
     "topicId": "m15-t5",
-    "slug": "m15_t5-2",
-    "title": "GroupBy Merging and Joining: Output Two Values",
+    "slug": "pd-groupby-size",
+    "title": "GroupBy: Rows per Region",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about GroupBy Merging and Joining and print them comma-separated.",
+    "description": "Count how many rows each region has using groupby().size() and print it as a dict.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to GroupBy Merging and Joining and print them separated by a comma."
+          "value": "Use "
+        },
+        {
+          "type": "code",
+          "value": "df.groupby(\"region\").size()"
+        },
+        {
+          "type": "text",
+          "value": " into "
+        },
+        {
+          "type": "code",
+          "value": "counts"
+        },
+        {
+          "type": "text",
+          "value": " and print it as a dict of ints."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# counts = df.groupby(\"region\").size()",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df",
+        "counts"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          ".size() counts rows per group — no column needed.",
+          "It counts every row, including ones with missing values."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "{'North': 1, 'South': 2}"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Use groupby().size()",
+      "Output must be exactly: {'North': 1, 'South': 2}"
     ],
     "hints": [
-      "Create two variables related to GroupBy Merging and Joining",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "counts = df.groupby(\"region\").size()"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about GroupBy Merging and Joining and print them comma-separated. Key points: Create two variables related to GroupBy Merging and Joining Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: count rows per region\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ncounts = None\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ncounts = df.groupby(\"region\").size()\nprint({k: int(v) for k, v in counts.items()})",
     "publicTests": [
       {
         "id": "m15-t5-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "{'North': 1, 'South': 2}",
         "visibility": "public"
       },
       {
         "id": "m15-t5-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "South has 2 rows",
+        "assertCode": "assert (int(counts[\"South\"])) == (2), \"Expected \" + repr(2) + \", got \" + repr(int(counts[\"South\"]))",
         "visibility": "public"
       },
       {
         "id": "m15-t5-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "North has 1 row",
+        "assertCode": "assert (int(counts[\"North\"])) == (1), \"Expected \" + repr(1) + \", got \" + repr(int(counts[\"North\"]))",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t5-p02-t4",
+        "label": "counts add up to the frame length",
+        "assertCode": "assert (int(counts.sum())) == (3), \"Expected \" + repr(3) + \", got \" + repr(int(counts.sum()))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Count how many rows each region has using groupby().size() and print it as a dict.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\ncounts = df.groupby(\"region\").size()\nprint({k: int(v) for k, v in counts.items()})"
   },
   {
     "id": "m15-t5-p03",
     "topicId": "m15-t5",
-    "slug": "m15_t5-3",
-    "title": "GroupBy Merging and Joining: Simple Loop",
+    "slug": "pd-groupby-mean",
+    "title": "GroupBy: Average per Region",
     "difficulty": "medium",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for GroupBy Merging and Joining.",
+    "description": "Group by region, average the revenue, and print the result rounded to two decimals.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Use "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": ".mean()"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for GroupBy Merging and Joining."
+          "value": " instead of "
+        },
+        {
+          "type": "code",
+          "value": ".sum()"
+        },
+        {
+          "type": "text",
+          "value": " and print "
+        },
+        {
+          "type": "code",
+          "value": "{k: round(float(v), 2) for k, v in averages.items()}"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# averages = df.groupby(\"region\")[\"revenue\"].mean()",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df",
+        "averages"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Swapping the aggregation is the only change from summing.",
+          "South averages 50.0 from 30 and 70; North has a single row."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "{'North': 40.0, 'South': 50.0}"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Use .mean()",
+      "Round to 2 decimals when printing",
+      "Output must be exactly: {'North': 40.0, 'South': 50.0}"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "averages = df.groupby(\"region\")[\"revenue\"].mean()"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for GroupBy Merging and Joining. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: average revenue per region\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\naverages = None\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\naverages = df.groupby(\"region\")[\"revenue\"].mean()\nprint({k: round(float(v), 2) for k, v in averages.items()})",
     "publicTests": [
       {
         "id": "m15-t5-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "{'North': 40.0, 'South': 50.0}",
         "visibility": "public"
       },
       {
         "id": "m15-t5-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "South average",
+        "assertCode": "assert (round(float(averages[\"South\"]), 2)) == (50.0), \"Expected \" + repr(50.0) + \", got \" + repr(round(float(averages[\"South\"]), 2))",
         "visibility": "public"
       },
       {
         "id": "m15-t5-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "North average",
+        "assertCode": "assert (round(float(averages[\"North\"]), 2)) == (40.0), \"Expected \" + repr(40.0) + \", got \" + repr(round(float(averages[\"North\"]), 2))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Group by region, average the revenue, and print the result rounded to two decimals.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\naverages = df.groupby(\"region\")[\"revenue\"].mean()\nprint({k: round(float(v), 2) for k, v in averages.items()})"
   },
   {
     "id": "m15-t5-p04",
     "topicId": "m15-t5",
-    "slug": "m15_t5-4",
-    "title": "GroupBy Merging and Joining: Condition",
+    "slug": "pd-merge-on-key",
+    "title": "Merge: Join Sales to the Catalogue",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Merge the sales and catalog frames on \"item\" and print the merged column names.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "Use "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "pd.merge(sales, catalog, on=\"item\")"
         },
         {
           "type": "text",
-          "value": ". If "
+          "value": " into "
         },
         {
           "type": "code",
-          "value": "score >= 60"
+          "value": "merged"
         },
         {
           "type": "text",
-          "value": ", print "
+          "value": " and print "
         },
         {
           "type": "code",
-          "value": "Pass"
-        },
-        {
-          "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
+          "value": "list(merged.columns)"
         },
         {
           "type": "text",
           "value": "."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# merged = pd.merge(sales, catalog, on=\"item\")",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "merged"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "merge is a SQL join: matching rows are lined up on the key.",
+          "The key column appears once; the other columns come along.",
+          "The default is an inner join, so unmatched rows drop out."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "['item', 'revenue', 'category']"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Merge on the \"item\" column",
+      "Store the result in merged",
+      "Output must be exactly: ['item', 'revenue', 'category']"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "merged = pd.merge(sales, catalog, on=\"item\")",
+      "print(list(merged.columns))"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: join the two frames on item\nimport pandas as pd\n\nsales = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"pencil\"],\n    \"revenue\": [30, 70, 20],\n})\ncatalog = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"pencil\"],\n    \"category\": [\"stationery\", \"media\", \"stationery\"],\n})\n\nmerged = None\n",
+    "solutionCode": "import pandas as pd\n\nsales = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"pencil\"],\n    \"revenue\": [30, 70, 20],\n})\ncatalog = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"pencil\"],\n    \"category\": [\"stationery\", \"media\", \"stationery\"],\n})\n\nmerged = pd.merge(sales, catalog, on=\"item\")\nprint(list(merged.columns))",
     "publicTests": [
       {
         "id": "m15-t5-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "['item', 'revenue', 'category']",
         "visibility": "public"
       },
       {
         "id": "m15-t5-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "columns from both frames",
+        "assertCode": "assert (list(merged.columns)) == ([\"item\", \"revenue\", \"category\"]), \"Expected \" + repr([\"item\", \"revenue\", \"category\"]) + \", got \" + repr(list(merged.columns))",
         "visibility": "public"
       },
       {
         "id": "m15-t5-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "all three items matched",
+        "assertCode": "assert (len(merged)) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(merged))",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t5-p04-t4",
+        "label": "the pen row kept its category",
+        "assertCode": "assert (merged.loc[merged[\"item\"] == \"pen\", \"category\"].iloc[0]) == (\"stationery\"), \"Expected \" + repr(\"stationery\") + \", got \" + repr(merged.loc[merged[\"item\"] == \"pen\", \"category\"].iloc[0])",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Merge the sales and catalog frames on \"item\" and print the merged column names.\n\nReference solution:\nimport pandas as pd\n\nsales = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"pencil\"],\n    \"revenue\": [30, 70, 20],\n})\ncatalog = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"pencil\"],\n    \"category\": [\"stationery\", \"media\", \"stationery\"],\n})\n\nmerged = pd.merge(sales, catalog, on=\"item\")\nprint(list(merged.columns))"
   },
   {
     "id": "m15-t5-p05",
     "topicId": "m15-t5",
-    "slug": "m15_t5-5",
-    "title": "GroupBy Merging and Joining: Function Stub",
+    "slug": "pd-merge-then-group",
+    "title": "Merge: Group After Joining",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Merge sales with the catalogue, then group by category and print revenue totals as a dict.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "Merge on "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "item"
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": ", then group by "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": "category"
         },
         {
           "type": "text",
-          "value": " and call it once."
+          "value": " and sum the revenue into "
+        },
+        {
+          "type": "code",
+          "value": "totals"
+        },
+        {
+          "type": "text",
+          "value": ". Print it as a dict of ints."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# merged = pd.merge(...)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "totals"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Joining first gives you the column you want to group by.",
+          "Merge then group is the backbone of most reporting queries.",
+          "stationery combines the pen (30) and pencil (20)."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "{'media': 70, 'stationery': 50}"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Merge before grouping",
+      "Group by category",
+      "Output must be exactly: {'media': 70, 'stationery': 50}"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "merged = pd.merge(sales, catalog, on=\"item\")",
+      "totals = merged.groupby(\"category\")[\"revenue\"].sum()"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: merge, then total by category\nimport pandas as pd\n\nsales = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"pencil\"],\n    \"revenue\": [30, 70, 20],\n})\ncatalog = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"pencil\"],\n    \"category\": [\"stationery\", \"media\", \"stationery\"],\n})\n\ntotals = None\n",
+    "solutionCode": "import pandas as pd\n\nsales = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"pencil\"],\n    \"revenue\": [30, 70, 20],\n})\ncatalog = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"pencil\"],\n    \"category\": [\"stationery\", \"media\", \"stationery\"],\n})\n\nmerged = pd.merge(sales, catalog, on=\"item\")\ntotals = merged.groupby(\"category\")[\"revenue\"].sum()\nprint({k: int(v) for k, v in totals.items()})",
     "publicTests": [
       {
         "id": "m15-t5-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": "{'media': 70, 'stationery': 50}",
         "visibility": "public"
       },
       {
         "id": "m15-t5-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "stationery total",
+        "assertCode": "assert (int(totals[\"stationery\"])) == (50), \"Expected \" + repr(50) + \", got \" + repr(int(totals[\"stationery\"]))",
         "visibility": "public"
       },
       {
         "id": "m15-t5-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "media total",
+        "assertCode": "assert (int(totals[\"media\"])) == (70), \"Expected \" + repr(70) + \", got \" + repr(int(totals[\"media\"]))",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t5-p05-t4",
+        "label": "nothing was lost in the join",
+        "assertCode": "assert (int(totals.sum())) == (120), \"Expected \" + repr(120) + \", got \" + repr(int(totals.sum()))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Merge sales with the catalogue, then group by category and print revenue totals as a dict.\n\nReference solution:\nimport pandas as pd\n\nsales = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"pencil\"],\n    \"revenue\": [30, 70, 20],\n})\ncatalog = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"pencil\"],\n    \"category\": [\"stationery\", \"media\", \"stationery\"],\n})\n\nmerged = pd.merge(sales, catalog, on=\"item\")\ntotals = merged.groupby(\"category\")[\"revenue\"].sum()\nprint({k: int(v) for k, v in totals.items()})"
   },
   {
     "id": "m15-t5-p06",
     "topicId": "m15-t5",
-    "slug": "m15_t5-6",
-    "title": "GroupBy Merging and Joining: List Practice",
-    "difficulty": "hard",
+    "slug": "pd-concat",
+    "title": "Concat: Stack Two Months",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Stack two DataFrames with pd.concat and print the combined shape.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about GroupBy Merging and Joining. Print the "
+          "value": "Stack "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "january"
         },
         {
           "type": "text",
-          "value": " using index "
+          "value": " and "
         },
         {
           "type": "code",
-          "value": "1"
+          "value": "february"
         },
         {
           "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": " with "
+        },
+        {
+          "type": "code",
+          "value": "pd.concat([january, february], ignore_index=True)"
+        },
+        {
+          "type": "text",
+          "value": " and print the shape."
         }
+      ],
+      "editorPlaceholder": "# combined = pd.concat([...], ignore_index=True)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "combined"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "concat stacks rows; merge joins columns — do not mix them up.",
+          "ignore_index=True renumbers the rows so the index has no duplicates."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "(4, 2)"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Use pd.concat with ignore_index=True",
+      "Store the result in combined",
+      "Output must be exactly: (4, 2)"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "combined = pd.concat([january, february], ignore_index=True)"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: stack the two months\nimport pandas as pd\n\njanuary = pd.DataFrame({\"item\": [\"pen\", \"book\"], \"revenue\": [30, 70]})\nfebruary = pd.DataFrame({\"item\": [\"bag\", \"pencil\"], \"revenue\": [40, 20]})\ncombined = None\n",
+    "solutionCode": "import pandas as pd\n\njanuary = pd.DataFrame({\"item\": [\"pen\", \"book\"], \"revenue\": [30, 70]})\nfebruary = pd.DataFrame({\"item\": [\"bag\", \"pencil\"], \"revenue\": [40, 20]})\ncombined = pd.concat([january, february], ignore_index=True)\n\nprint(combined.shape)",
     "publicTests": [
       {
         "id": "m15-t5-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "middle",
+        "expectedStdout": "(4, 2)",
         "visibility": "public"
       },
       {
         "id": "m15-t5-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "four rows, two columns",
+        "assertCode": "assert (combined.shape) == ((4, 2)), \"Expected \" + repr((4, 2)) + \", got \" + repr(combined.shape)",
         "visibility": "public"
       },
       {
         "id": "m15-t5-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "the index was renumbered",
+        "assertCode": "assert (list(combined.index)) == ([0, 1, 2, 3]), \"Expected \" + repr([0, 1, 2, 3]) + \", got \" + repr(list(combined.index))",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t5-p06-t4",
+        "label": "revenue from both months",
+        "assertCode": "assert (int(combined[\"revenue\"].sum())) == (160), \"Expected \" + repr(160) + \", got \" + repr(int(combined[\"revenue\"].sum()))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Stack two DataFrames with pd.concat and print the combined shape.\n\nReference solution:\nimport pandas as pd\n\njanuary = pd.DataFrame({\"item\": [\"pen\", \"book\"], \"revenue\": [30, 70]})\nfebruary = pd.DataFrame({\"item\": [\"bag\", \"pencil\"], \"revenue\": [40, 20]})\ncombined = pd.concat([january, february], ignore_index=True)\n\nprint(combined.shape)"
   },
   {
     "id": "m15-t5-p07",
     "topicId": "m15-t5",
-    "slug": "m15_t5-7",
-    "title": "GroupBy Merging and Joining: Dict Lookup",
+    "slug": "pd-groupby-agg",
+    "title": "GroupBy: Two Aggregations at Once",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Use agg([\"sum\", \"max\"]) per region and print the South total then the South maximum.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Use "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "df.groupby(\"region\")[\"revenue\"].agg([\"sum\", \"max\"])"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": " into "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "summary"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
+          "value": ", then print "
         },
         {
           "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "int(summary.loc[\"South\", \"sum\"])"
         },
         {
           "type": "text",
-          "value": "."
+          "value": " and the South maximum."
         }
+      ],
+      "editorPlaceholder": "# summary = df.groupby(\"region\")[\"revenue\"].agg([...])",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df",
+        "summary"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "agg takes a list of aggregation names and returns one column each.",
+          "The result is a DataFrame indexed by group, so loc[region, name] reads a cell.",
+          "Print the sum first, then the max."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "100\n70"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Use agg([\"sum\", \"max\"]) — one call, not two",
+      "Print the sum, then the max"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "summary = df.groupby(\"region\")[\"revenue\"].agg([\"sum\", \"max\"])",
+      "print(int(summary.loc[\"South\", \"sum\"]))"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: aggregate twice in one call\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nsummary = None\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nsummary = df.groupby(\"region\")[\"revenue\"].agg([\"sum\", \"max\"])\n\nprint(int(summary.loc[\"South\", \"sum\"]))\nprint(int(summary.loc[\"South\", \"max\"]))",
     "publicTests": [
       {
         "id": "m15-t5-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "100\n70",
         "visibility": "public"
       },
       {
         "id": "m15-t5-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "both aggregations present",
+        "assertCode": "assert (list(summary.columns)) == ([\"sum\", \"max\"]), \"Expected \" + repr([\"sum\", \"max\"]) + \", got \" + repr(list(summary.columns))",
         "visibility": "public"
       },
       {
         "id": "m15-t5-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "South total",
+        "assertCode": "assert (int(summary.loc[\"South\", \"sum\"])) == (100), \"Expected \" + repr(100) + \", got \" + repr(int(summary.loc[\"South\", \"sum\"]))",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t5-p07-t4",
+        "label": "South maximum",
+        "assertCode": "assert (int(summary.loc[\"South\", \"max\"])) == (70), \"Expected \" + repr(70) + \", got \" + repr(int(summary.loc[\"South\", \"max\"]))",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t5-p07-t5",
+        "label": "one row per region",
+        "assertCode": "assert (len(summary)) == (2), \"Expected \" + repr(2) + \", got \" + repr(len(summary))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Use agg([\"sum\", \"max\"]) per region and print the South total then the South maximum.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"item\": [\"pen\", \"book\", \"bag\"],\n    \"region\": [\"South\", \"North\", \"South\"],\n    \"revenue\": [30, 40, 70],\n})\n\nsummary = df.groupby(\"region\")[\"revenue\"].agg([\"sum\", \"max\"])\n\nprint(int(summary.loc[\"South\", \"sum\"]))\nprint(int(summary.loc[\"South\", \"max\"]))"
   },
   {
     "id": "m15-t6-p01",
     "topicId": "m15-t6",
-    "slug": "m15_t6-1",
-    "title": "Pivot Tables: Warm-up",
+    "slug": "pd-pivot-basic",
+    "title": "Pivot: Totals by Region",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Pivot Tables. Print Ready on one line.",
+    "description": "Build a pivot table of revenue summed by region and print it as a dict of ints.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Use "
         },
         {
           "type": "code",
-          "value": "Pivot Tables"
+          "value": "df.pivot_table(values=\"revenue\", index=\"region\", aggfunc=\"sum\")"
         },
         {
           "type": "text",
-          "value": ". Print the word "
+          "value": " into "
         },
         {
           "type": "code",
-          "value": "Ready"
+          "value": "pivot"
         },
         {
           "type": "text",
-          "value": " on one line."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": ", then print the "
+        },
         {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
+          "type": "code",
+          "value": "revenue"
+        },
+        {
+          "type": "text",
+          "value": " column as a dict of ints."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "editorPlaceholder": "# pivot = df.pivot_table(...)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df",
+        "pivot"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "index= chooses the row grouping.",
+          "aggfunc= chooses how values combine — sum here.",
+          "With one value column, the result has a single column named revenue."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "{'North': 60, 'South': 100}"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Use pivot_table with index and aggfunc",
+      "Output must be exactly: {'North': 60, 'South': 100}"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "pivot = df.pivot_table(values=\"revenue\", index=\"region\", aggfunc=\"sum\")",
+      "print({k: int(v) for k, v in pivot[\"revenue\"].items()})"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: pivot revenue by region\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"South\", \"North\", \"North\"],\n    \"category\": [\"pen\", \"bag\", \"pen\", \"bag\"],\n    \"revenue\": [30, 70, 40, 20],\n})\n\npivot = None\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"South\", \"North\", \"North\"],\n    \"category\": [\"pen\", \"bag\", \"pen\", \"bag\"],\n    \"revenue\": [30, 70, 40, 20],\n})\n\npivot = df.pivot_table(values=\"revenue\", index=\"region\", aggfunc=\"sum\")\nprint({k: int(v) for k, v in pivot[\"revenue\"].items()})",
     "publicTests": [
       {
         "id": "m15-t6-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "{'North': 60, 'South': 100}",
         "visibility": "public"
       },
       {
         "id": "m15-t6-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "South total",
+        "assertCode": "assert (int(pivot.loc[\"South\", \"revenue\"])) == (100), \"Expected \" + repr(100) + \", got \" + repr(int(pivot.loc[\"South\", \"revenue\"]))",
         "visibility": "public"
       },
       {
         "id": "m15-t6-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "North total",
+        "assertCode": "assert (int(pivot.loc[\"North\", \"revenue\"])) == (60), \"Expected \" + repr(60) + \", got \" + repr(int(pivot.loc[\"North\", \"revenue\"]))",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t6-p01-t4",
+        "label": "one row per region",
+        "assertCode": "assert (len(pivot)) == (2), \"Expected \" + repr(2) + \", got \" + repr(len(pivot))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Pivot Tables. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Build a pivot table of revenue summed by region and print it as a dict of ints.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"South\", \"North\", \"North\"],\n    \"category\": [\"pen\", \"bag\", \"pen\", \"bag\"],\n    \"revenue\": [30, 70, 40, 20],\n})\n\npivot = df.pivot_table(values=\"revenue\", index=\"region\", aggfunc=\"sum\")\nprint({k: int(v) for k, v in pivot[\"revenue\"].items()})"
   },
   {
     "id": "m15-t6-p02",
     "topicId": "m15-t6",
-    "slug": "m15_t6-2",
-    "title": "Pivot Tables: Output Two Values",
+    "slug": "pd-pivot-columns",
+    "title": "Pivot: Region by Category Grid",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Pivot Tables and print them comma-separated.",
+    "description": "Add columns=\"category\" to build a region-by-category grid and print its values as nested lists.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Pivot Tables and print them separated by a comma."
+          "value": "Add "
+        },
+        {
+          "type": "code",
+          "value": "columns=\"category\""
+        },
+        {
+          "type": "text",
+          "value": " and "
+        },
+        {
+          "type": "code",
+          "value": "fill_value=0"
+        },
+        {
+          "type": "text",
+          "value": " to the pivot, then print "
+        },
+        {
+          "type": "code",
+          "value": "pivot.values.tolist()"
+        },
+        {
+          "type": "text",
+          "value": ". Rows are regions, columns are categories, both sorted."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# pivot = df.pivot_table(..., columns='category', fill_value=0)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df",
+        "pivot"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "index becomes the rows and columns becomes the columns — a cross-tab.",
+          "fill_value=0 replaces empty combinations so the values stay integers.",
+          "Row order is North, South; column order is bag, pen."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "[[20, 40], [70, 30]]"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Pass columns=\"category\" and fill_value=0",
+      "Output must be exactly: [[20, 40], [70, 30]]"
     ],
     "hints": [
-      "Create two variables related to Pivot Tables",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "pivot = df.pivot_table(values=\"revenue\", index=\"region\", columns=\"category\", aggfunc=\"sum\", fill_value=0)",
+      "print(pivot.values.tolist())"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Pivot Tables and print them comma-separated. Key points: Create two variables related to Pivot Tables Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: build the cross-tab\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"South\", \"North\", \"North\"],\n    \"category\": [\"pen\", \"bag\", \"pen\", \"bag\"],\n    \"revenue\": [30, 70, 40, 20],\n})\n\npivot = None\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"South\", \"North\", \"North\"],\n    \"category\": [\"pen\", \"bag\", \"pen\", \"bag\"],\n    \"revenue\": [30, 70, 40, 20],\n})\n\npivot = df.pivot_table(values=\"revenue\", index=\"region\", columns=\"category\", aggfunc=\"sum\", fill_value=0)\nprint(pivot.values.tolist())",
     "publicTests": [
       {
         "id": "m15-t6-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "[[20, 40], [70, 30]]",
         "visibility": "public"
       },
       {
         "id": "m15-t6-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "grid values",
+        "assertCode": "assert (pivot.values.tolist()) == ([[20, 40], [70, 30]]), \"Expected \" + repr([[20, 40], [70, 30]]) + \", got \" + repr(pivot.values.tolist())",
         "visibility": "public"
       },
       {
         "id": "m15-t6-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "rows are the regions",
+        "assertCode": "assert (list(pivot.index)) == ([\"North\", \"South\"]), \"Expected \" + repr([\"North\", \"South\"]) + \", got \" + repr(list(pivot.index))",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t6-p02-t4",
+        "label": "columns are the categories",
+        "assertCode": "assert (list(pivot.columns)) == ([\"bag\", \"pen\"]), \"Expected \" + repr([\"bag\", \"pen\"]) + \", got \" + repr(list(pivot.columns))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Add columns=\"category\" to build a region-by-category grid and print its values as nested lists.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"South\", \"North\", \"North\"],\n    \"category\": [\"pen\", \"bag\", \"pen\", \"bag\"],\n    \"revenue\": [30, 70, 40, 20],\n})\n\npivot = df.pivot_table(values=\"revenue\", index=\"region\", columns=\"category\", aggfunc=\"sum\", fill_value=0)\nprint(pivot.values.tolist())"
   },
   {
     "id": "m15-t6-p03",
     "topicId": "m15-t6",
-    "slug": "m15_t6-3",
-    "title": "Pivot Tables: Simple Loop",
-    "difficulty": "medium",
+    "slug": "pd-pivot-index",
+    "title": "Pivot: Read the Row Labels",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Pivot Tables.",
+    "description": "Print the pivot table's row labels with list(pivot.index).",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "list(pivot.index)"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Pivot Tables."
+          "value": " — the pivot's row labels are the values of the column you grouped by."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# print(list(pivot.index))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "pivot"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "The index holds the group keys, sorted alphabetically.",
+          "Knowing the order matters before you read values by position."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "['North', 'South']"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Use list(pivot.index)",
+      "Output must be exactly: ['North', 'South']"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "print(list(pivot.index))"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Pivot Tables. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: print the row labels\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"South\", \"North\", \"North\"],\n    \"category\": [\"pen\", \"bag\", \"pen\", \"bag\"],\n    \"revenue\": [30, 70, 40, 20],\n})\n\npivot = df.pivot_table(values=\"revenue\", index=\"region\", aggfunc=\"sum\")\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"South\", \"North\", \"North\"],\n    \"category\": [\"pen\", \"bag\", \"pen\", \"bag\"],\n    \"revenue\": [30, 70, 40, 20],\n})\n\npivot = df.pivot_table(values=\"revenue\", index=\"region\", aggfunc=\"sum\")\nprint(list(pivot.index))",
     "publicTests": [
       {
         "id": "m15-t6-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "['North', 'South']",
         "visibility": "public"
       },
       {
         "id": "m15-t6-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "row labels sorted",
+        "assertCode": "assert (list(pivot.index)) == ([\"North\", \"South\"]), \"Expected \" + repr([\"North\", \"South\"]) + \", got \" + repr(list(pivot.index))",
         "visibility": "public"
       },
       {
         "id": "m15-t6-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "two groups",
+        "assertCode": "assert (len(pivot.index)) == (2), \"Expected \" + repr(2) + \", got \" + repr(len(pivot.index))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Print the pivot table's row labels with list(pivot.index).\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"South\", \"North\", \"North\"],\n    \"category\": [\"pen\", \"bag\", \"pen\", \"bag\"],\n    \"revenue\": [30, 70, 40, 20],\n})\n\npivot = df.pivot_table(values=\"revenue\", index=\"region\", aggfunc=\"sum\")\nprint(list(pivot.index))"
   },
   {
     "id": "m15-t6-p04",
     "topicId": "m15-t6",
-    "slug": "m15_t6-4",
-    "title": "Pivot Tables: Condition",
+    "slug": "pd-pivot-lookup",
+    "title": "Pivot: Read One Cell",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Look up the South/pen cell of the cross-tab pivot and print it as an int.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "int(pivot.loc[\"South\", \"pen\"])"
         },
         {
           "type": "text",
-          "value": ". If "
+          "value": " — with a cross-tab, "
         },
         {
           "type": "code",
-          "value": "score >= 60"
+          "value": "loc[row, column]"
         },
         {
           "type": "text",
-          "value": ", print "
-        },
-        {
-          "type": "code",
-          "value": "Pass"
-        },
-        {
-          "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": " reads one combination."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# print(int(pivot.loc[\"South\", \"pen\"]))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "pivot"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "The row label is the region and the column label is the category.",
+          "This is how you answer 'how much did pens make in the South?'"
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "30"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Use pivot.loc[row, column]",
+      "Output must be exactly: 30"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "print(int(pivot.loc[\"South\", \"pen\"]))"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: read the South pen cell\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"South\", \"North\", \"North\"],\n    \"category\": [\"pen\", \"bag\", \"pen\", \"bag\"],\n    \"revenue\": [30, 70, 40, 20],\n})\n\npivot = df.pivot_table(values=\"revenue\", index=\"region\", columns=\"category\", aggfunc=\"sum\", fill_value=0)\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"South\", \"North\", \"North\"],\n    \"category\": [\"pen\", \"bag\", \"pen\", \"bag\"],\n    \"revenue\": [30, 70, 40, 20],\n})\n\npivot = df.pivot_table(values=\"revenue\", index=\"region\", columns=\"category\", aggfunc=\"sum\", fill_value=0)\nprint(int(pivot.loc[\"South\", \"pen\"]))",
     "publicTests": [
       {
         "id": "m15-t6-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "30",
         "visibility": "public"
       },
       {
         "id": "m15-t6-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "South pen revenue",
+        "assertCode": "assert (int(pivot.loc[\"South\", \"pen\"])) == (30), \"Expected \" + repr(30) + \", got \" + repr(int(pivot.loc[\"South\", \"pen\"]))",
         "visibility": "public"
       },
       {
         "id": "m15-t6-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "North bag revenue",
+        "assertCode": "assert (int(pivot.loc[\"North\", \"bag\"])) == (20), \"Expected \" + repr(20) + \", got \" + repr(int(pivot.loc[\"North\", \"bag\"]))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Look up the South/pen cell of the cross-tab pivot and print it as an int.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"South\", \"North\", \"North\"],\n    \"category\": [\"pen\", \"bag\", \"pen\", \"bag\"],\n    \"revenue\": [30, 70, 40, 20],\n})\n\npivot = df.pivot_table(values=\"revenue\", index=\"region\", columns=\"category\", aggfunc=\"sum\", fill_value=0)\nprint(int(pivot.loc[\"South\", \"pen\"]))"
   },
   {
     "id": "m15-t6-p05",
     "topicId": "m15-t6",
-    "slug": "m15_t6-5",
-    "title": "Pivot Tables: Function Stub",
+    "slug": "pd-pivot-mean",
+    "title": "Pivot: Averages Instead of Totals",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Switch the pivot aggfunc to \"mean\" and print the grid values as nested lists.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "Change "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "aggfunc"
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": " to "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": "\"mean\""
         },
         {
           "type": "text",
-          "value": " and call it once."
+          "value": " and print "
+        },
+        {
+          "type": "code",
+          "value": "pivot.values.tolist()"
+        },
+        {
+          "type": "text",
+          "value": ". Each cell has one row here, so the averages match the values — but they print as floats."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# aggfunc='mean'",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "df",
+        "pivot"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "aggfunc is the only change from the summed version.",
+          "Averaging always produces floats, even when the inputs are integers."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "[[20.0, 40.0], [70.0, 30.0]]"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Use aggfunc=\"mean\"",
+      "Output must be exactly: [[20.0, 40.0], [70.0, 30.0]]"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "pivot = df.pivot_table(values=\"revenue\", index=\"region\", columns=\"category\", aggfunc=\"mean\", fill_value=0)"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: average instead of summing\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"South\", \"North\", \"North\"],\n    \"category\": [\"pen\", \"bag\", \"pen\", \"bag\"],\n    \"revenue\": [30, 70, 40, 20],\n})\n\npivot = None\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"South\", \"North\", \"North\"],\n    \"category\": [\"pen\", \"bag\", \"pen\", \"bag\"],\n    \"revenue\": [30, 70, 40, 20],\n})\n\npivot = df.pivot_table(values=\"revenue\", index=\"region\", columns=\"category\", aggfunc=\"mean\", fill_value=0)\nprint(pivot.values.tolist())",
     "publicTests": [
       {
         "id": "m15-t6-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": "[[20.0, 40.0], [70.0, 30.0]]",
         "visibility": "public"
       },
       {
         "id": "m15-t6-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "values are floats",
+        "assertCode": "assert (pivot.values.tolist()) == ([[20.0, 40.0], [70.0, 30.0]]), \"Expected \" + repr([[20.0, 40.0], [70.0, 30.0]]) + \", got \" + repr(pivot.values.tolist())",
         "visibility": "public"
       },
       {
         "id": "m15-t6-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "shape is 2 by 2",
+        "assertCode": "assert (pivot.shape) == ((2, 2)), \"Expected \" + repr((2, 2)) + \", got \" + repr(pivot.shape)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Switch the pivot aggfunc to \"mean\" and print the grid values as nested lists.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"South\", \"North\", \"North\"],\n    \"category\": [\"pen\", \"bag\", \"pen\", \"bag\"],\n    \"revenue\": [30, 70, 40, 20],\n})\n\npivot = df.pivot_table(values=\"revenue\", index=\"region\", columns=\"category\", aggfunc=\"mean\", fill_value=0)\nprint(pivot.values.tolist())"
   },
   {
     "id": "m15-t6-p06",
     "topicId": "m15-t6",
-    "slug": "m15_t6-6",
-    "title": "Pivot Tables: List Practice",
-    "difficulty": "hard",
+    "slug": "pd-pivot-columns-list",
+    "title": "Pivot: Read the Column Labels",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Print the cross-tab pivot's column labels with list(pivot.columns).",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Pivot Tables. Print the "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "list(pivot.columns)"
         },
         {
           "type": "text",
-          "value": " using index "
-        },
-        {
-          "type": "code",
-          "value": "1"
-        },
-        {
-          "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": " — these come from the distinct values of the column you pivoted on, sorted."
         }
+      ],
+      "editorPlaceholder": "# print(list(pivot.columns))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "pivot"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "Every distinct category becomes its own column.",
+          "New categories in next month's data would add new columns automatically."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "['bag', 'pen']"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Use list(pivot.columns)",
+      "Output must be exactly: ['bag', 'pen']"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "print(list(pivot.columns))"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: print the column labels\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"South\", \"North\", \"North\"],\n    \"category\": [\"pen\", \"bag\", \"pen\", \"bag\"],\n    \"revenue\": [30, 70, 40, 20],\n})\n\npivot = df.pivot_table(values=\"revenue\", index=\"region\", columns=\"category\", aggfunc=\"sum\", fill_value=0)\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"South\", \"North\", \"North\"],\n    \"category\": [\"pen\", \"bag\", \"pen\", \"bag\"],\n    \"revenue\": [30, 70, 40, 20],\n})\n\npivot = df.pivot_table(values=\"revenue\", index=\"region\", columns=\"category\", aggfunc=\"sum\", fill_value=0)\nprint(list(pivot.columns))",
     "publicTests": [
       {
         "id": "m15-t6-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "middle",
+        "expectedStdout": "['bag', 'pen']",
         "visibility": "public"
       },
       {
         "id": "m15-t6-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "column labels sorted",
+        "assertCode": "assert (list(pivot.columns)) == ([\"bag\", \"pen\"]), \"Expected \" + repr([\"bag\", \"pen\"]) + \", got \" + repr(list(pivot.columns))",
         "visibility": "public"
       },
       {
         "id": "m15-t6-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "two categories",
+        "assertCode": "assert (len(pivot.columns)) == (2), \"Expected \" + repr(2) + \", got \" + repr(len(pivot.columns))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Print the cross-tab pivot's column labels with list(pivot.columns).\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"South\", \"North\", \"North\"],\n    \"category\": [\"pen\", \"bag\", \"pen\", \"bag\"],\n    \"revenue\": [30, 70, 40, 20],\n})\n\npivot = df.pivot_table(values=\"revenue\", index=\"region\", columns=\"category\", aggfunc=\"sum\", fill_value=0)\nprint(list(pivot.columns))"
   },
   {
     "id": "m15-t6-p07",
     "topicId": "m15-t6",
-    "slug": "m15_t6-7",
-    "title": "Pivot Tables: Dict Lookup",
+    "slug": "pd-pivot-row-totals",
+    "title": "Pivot: Total Each Row",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Sum across the pivot's columns with axis=1 to get a total per region and print it as a dict.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Build the cross-tab, then use "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "pivot.sum(axis=1)"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": " into "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "region_totals"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
-        },
-        {
-          "type": "code",
-          "value": "d[\"topic\"]"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": " and print it as a dict of ints."
         }
+      ],
+      "editorPlaceholder": "# region_totals = pivot.sum(axis=1)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "pd",
+        "pivot",
+        "region_totals"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "axis=1 sums across the columns, giving one number per row.",
+          "axis=0 would total each category instead.",
+          "This is the margin row you see at the edge of a spreadsheet pivot."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "{'North': 60, 'South': 100}"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Use sum(axis=1)",
+      "Store the result in region_totals",
+      "Output must be exactly: {'North': 60, 'South': 100}"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "region_totals = pivot.sum(axis=1)",
+      "print({k: int(v) for k, v in region_totals.items()})"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: total each region across categories\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"South\", \"North\", \"North\"],\n    \"category\": [\"pen\", \"bag\", \"pen\", \"bag\"],\n    \"revenue\": [30, 70, 40, 20],\n})\n\npivot = df.pivot_table(values=\"revenue\", index=\"region\", columns=\"category\", aggfunc=\"sum\", fill_value=0)\nregion_totals = None\n",
+    "solutionCode": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"South\", \"North\", \"North\"],\n    \"category\": [\"pen\", \"bag\", \"pen\", \"bag\"],\n    \"revenue\": [30, 70, 40, 20],\n})\n\npivot = df.pivot_table(values=\"revenue\", index=\"region\", columns=\"category\", aggfunc=\"sum\", fill_value=0)\nregion_totals = pivot.sum(axis=1)\nprint({k: int(v) for k, v in region_totals.items()})",
     "publicTests": [
       {
         "id": "m15-t6-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "{'North': 60, 'South': 100}",
         "visibility": "public"
       },
       {
         "id": "m15-t6-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "South row total",
+        "assertCode": "assert (int(region_totals[\"South\"])) == (100), \"Expected \" + repr(100) + \", got \" + repr(int(region_totals[\"South\"]))",
         "visibility": "public"
       },
       {
         "id": "m15-t6-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "North row total",
+        "assertCode": "assert (int(region_totals[\"North\"])) == (60), \"Expected \" + repr(60) + \", got \" + repr(int(region_totals[\"North\"]))",
+        "visibility": "public"
+      },
+      {
+        "id": "m15-t6-p07-t4",
+        "label": "the totals match the whole frame",
+        "assertCode": "assert (int(region_totals.sum())) == (int(df[\"revenue\"].sum())), \"Expected \" + repr(int(df[\"revenue\"].sum())) + \", got \" + repr(int(region_totals.sum()))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Sum across the pivot's columns with axis=1 to get a total per region and print it as a dict.\n\nReference solution:\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"region\": [\"South\", \"South\", \"North\", \"North\"],\n    \"category\": [\"pen\", \"bag\", \"pen\", \"bag\"],\n    \"revenue\": [30, 70, 40, 20],\n})\n\npivot = df.pivot_table(values=\"revenue\", index=\"region\", columns=\"category\", aggfunc=\"sum\", fill_value=0)\nregion_totals = pivot.sum(axis=1)\nprint({k: int(v) for k, v in region_totals.items()})"
   }
 ];

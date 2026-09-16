@@ -4,2054 +4,2499 @@ export const module13Practice: PracticeProblem[] = [
   {
     "id": "m13-t1-p01",
     "topicId": "m13-t1",
-    "slug": "m13_t1-1",
-    "title": "Reading and Writing Files: Warm-up",
+    "slug": "file-write-then-read",
+    "title": "Files: Write Then Read It Back",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Reading and Writing Files. Print Ready on one line.",
+    "description": "Write \"Data Science\" to notes.txt with open(), then read the file and print its contents.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Open "
         },
         {
           "type": "code",
-          "value": "Reading and Writing Files"
+          "value": "notes.txt"
         },
         {
           "type": "text",
-          "value": ". Print the word "
+          "value": " in write mode and write "
         },
         {
           "type": "code",
-          "value": "Ready"
+          "value": "Data Science"
         },
         {
           "type": "text",
-          "value": " on one line."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": ", then open it again and print what "
+        },
         {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
+          "type": "code",
+          "value": "f.read()"
+        },
+        {
+          "type": "text",
+          "value": " returns."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "editorPlaceholder": "# with open(\"notes.txt\", \"w\") as f:",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct! with open(...) wrote the file and closed it for you.",
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "with open(\"notes.txt\", \"w\") as f: opens for writing and closes automatically.",
+          "f.write(text) writes without adding a newline.",
+          "Mode \"r\" (the default) reads the file back."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "Data Science"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Write to a file named notes.txt",
+      "Use with open(...) so the file closes itself",
+      "Output must be exactly: Data Science"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "with open(\"notes.txt\", \"w\") as f: then f.write(\"Data Science\")",
+      "Read it with: with open(\"notes.txt\") as f: print(f.read())"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: write the text, then read it back and print it\nwith open(\"notes.txt\", \"w\") as f:\n    pass\n",
+    "solutionCode": "with open(\"notes.txt\", \"w\") as f:\n    f.write(\"Data Science\")\n\nwith open(\"notes.txt\") as f:\n    print(f.read())",
     "publicTests": [
       {
         "id": "m13-t1-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "Data Science",
         "visibility": "public"
       },
       {
         "id": "m13-t1-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "notes.txt was created",
+        "assertCode": "assert __import__(\"os\").path.exists(\"notes.txt\"), \"Expected notes.txt to exist after your code runs\"",
         "visibility": "public"
       },
       {
         "id": "m13-t1-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "file holds the right text",
+        "assertCode": "assert (open(\"notes.txt\").read()) == (\"Data Science\"), \"Expected \" + repr(\"Data Science\") + \", got \" + repr(open(\"notes.txt\").read())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Reading and Writing Files. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Write \"Data Science\" to notes.txt with open(), then read the file and print its contents.\n\nReference solution:\nwith open(\"notes.txt\", \"w\") as f:\n    f.write(\"Data Science\")\n\nwith open(\"notes.txt\") as f:\n    print(f.read())"
   },
   {
     "id": "m13-t1-p02",
     "topicId": "m13-t1",
-    "slug": "m13_t1-2",
-    "title": "Reading and Writing Files: Output Two Values",
+    "slug": "file-append-mode",
+    "title": "Files: Append a Second Line",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Reading and Writing Files and print them comma-separated.",
+    "description": "Write one line to log.txt in \"w\" mode, append a second in \"a\" mode, then print how many lines the file holds.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Reading and Writing Files and print them separated by a comma."
+          "value": "Write "
+        },
+        {
+          "type": "code",
+          "value": "start"
+        },
+        {
+          "type": "text",
+          "value": " to "
+        },
+        {
+          "type": "code",
+          "value": "log.txt"
+        },
+        {
+          "type": "text",
+          "value": " using mode \"w\", then append "
+        },
+        {
+          "type": "code",
+          "value": "end"
+        },
+        {
+          "type": "text",
+          "value": " using mode \"a\". Print how many lines the file now has."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# with open(\"log.txt\", \"a\") as f:",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Mode \"w\" replaces the file; mode \"a\" adds to the end.",
+          "End each line with \"\\n\" so they are separate lines.",
+          "read().splitlines() gives a list of lines to count."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "2"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Use mode \"w\" first, then mode \"a\"",
+      "End both lines with a newline",
+      "Output must be exactly: 2"
     ],
     "hints": [
-      "Create two variables related to Reading and Writing Files",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "with open(\"log.txt\", \"a\") as f: f.write(\"end\\n\")",
+      "Count with len(f.read().splitlines())"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Reading and Writing Files and print them comma-separated. Key points: Create two variables related to Reading and Writing Files Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: write, then append, then count the lines\nwith open(\"log.txt\", \"w\") as f:\n    pass\n",
+    "solutionCode": "with open(\"log.txt\", \"w\") as f:\n    f.write(\"start\\n\")\n\nwith open(\"log.txt\", \"a\") as f:\n    f.write(\"end\\n\")\n\nwith open(\"log.txt\") as f:\n    lines = f.read().splitlines()\n\nprint(len(lines))",
     "publicTests": [
       {
         "id": "m13-t1-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "2",
         "visibility": "public"
       },
       {
         "id": "m13-t1-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "both lines are in the file",
+        "assertCode": "assert (open(\"log.txt\").read().splitlines()) == ([\"start\", \"end\"]), \"Expected \" + repr([\"start\", \"end\"]) + \", got \" + repr(open(\"log.txt\").read().splitlines())",
         "visibility": "public"
       },
       {
         "id": "m13-t1-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "append mode kept the first line",
+        "assertCode": "assert open(\"log.txt\").read().startswith(\"start\"), \"Mode \\\"a\\\" must append — \\\"w\\\" would have erased the first line\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Write one line to log.txt in \"w\" mode, append a second in \"a\" mode, then print how many lines the file holds.\n\nReference solution:\nwith open(\"log.txt\", \"w\") as f:\n    f.write(\"start\\n\")\n\nwith open(\"log.txt\", \"a\") as f:\n    f.write(\"end\\n\")\n\nwith open(\"log.txt\") as f:\n    lines = f.read().splitlines()\n\nprint(len(lines))"
   },
   {
     "id": "m13-t1-p03",
     "topicId": "m13-t1",
-    "slug": "m13_t1-3",
-    "title": "Reading and Writing Files: Simple Loop",
-    "difficulty": "medium",
+    "slug": "file-read-second-line",
+    "title": "Files: Read One Line Out of Many",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Reading and Writing Files.",
+    "description": "Write three city names to cities.txt, read the file with readlines(), and print the second city.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Write "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "Mumbai, Chennai, Pune"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Reading and Writing Files."
+          "value": " as three lines in "
+        },
+        {
+          "type": "code",
+          "value": "cities.txt"
+        },
+        {
+          "type": "text",
+          "value": ", then use "
+        },
+        {
+          "type": "code",
+          "value": "f.readlines()"
+        },
+        {
+          "type": "text",
+          "value": " and print the second city without its newline."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# lines = f.readlines()",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "readlines() returns a list — one string per line, newline included.",
+          "Index 1 is the second line; .strip() removes the trailing newline."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "Chennai"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Write all three cities, one per line",
+      "Use readlines() and index 1",
+      "Strip the newline before printing"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "lines = f.readlines()",
+      "print(lines[1].strip())"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Reading and Writing Files. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: write three lines, then print the second one\nwith open(\"cities.txt\", \"w\") as f:\n    pass\n",
+    "solutionCode": "with open(\"cities.txt\", \"w\") as f:\n    f.write(\"Mumbai\\nChennai\\nPune\\n\")\n\nwith open(\"cities.txt\") as f:\n    lines = f.readlines()\n\nprint(lines[1].strip())",
     "publicTests": [
       {
         "id": "m13-t1-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "Chennai",
         "visibility": "public"
       },
       {
         "id": "m13-t1-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "three cities were written",
+        "assertCode": "assert (len(open(\"cities.txt\").read().splitlines())) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(open(\"cities.txt\").read().splitlines()))",
         "visibility": "public"
       },
       {
         "id": "m13-t1-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "second city is Chennai",
+        "assertCode": "assert (open(\"cities.txt\").read().splitlines()[1]) == (\"Chennai\"), \"Expected \" + repr(\"Chennai\") + \", got \" + repr(open(\"cities.txt\").read().splitlines()[1])",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Write three city names to cities.txt, read the file with readlines(), and print the second city.\n\nReference solution:\nwith open(\"cities.txt\", \"w\") as f:\n    f.write(\"Mumbai\\nChennai\\nPune\\n\")\n\nwith open(\"cities.txt\") as f:\n    lines = f.readlines()\n\nprint(lines[1].strip())"
   },
   {
     "id": "m13-t1-p04",
     "topicId": "m13-t1",
-    "slug": "m13_t1-4",
-    "title": "Reading and Writing Files: Condition",
+    "slug": "file-csv-total",
+    "title": "Files: Total a CSV Column",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Write a small CSV with a header, then read it back skipping the header and print the total amount.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "Write this CSV to "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "sales.csv"
         },
         {
           "type": "text",
-          "value": ". If "
+          "value": ": header "
         },
         {
           "type": "code",
-          "value": "score >= 60"
+          "value": "item,amount"
         },
         {
           "type": "text",
-          "value": ", print "
+          "value": ", then "
         },
         {
           "type": "code",
-          "value": "Pass"
+          "value": "pen,30"
         },
         {
           "type": "text",
-          "value": ", otherwise print "
+          "value": " and "
         },
         {
           "type": "code",
-          "value": "Fail"
+          "value": "book,70"
+        },
+        {
+          "type": "text",
+          "value": ". Read it back, skip the header, and print the total in "
+        },
+        {
+          "type": "code",
+          "value": "total"
         },
         {
           "type": "text",
           "value": "."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# total = 0",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "total"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A CSV line splits on commas: line.split(\",\")",
+          "The amount is the second field, so index 1 — convert it with int().",
+          "Skip the header row before adding anything up."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "100"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Skip the header row",
+      "Convert each amount with int()",
+      "Store the running total in total"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "rows = f.read().splitlines()[1:] drops the header",
+      "total += int(row.split(\",\")[1])"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: write the CSV, then total the amount column\nwith open(\"sales.csv\", \"w\") as f:\n    f.write(\"item,amount\\npen,30\\nbook,70\\n\")\n\ntotal = 0\n",
+    "solutionCode": "with open(\"sales.csv\", \"w\") as f:\n    f.write(\"item,amount\\npen,30\\nbook,70\\n\")\n\ntotal = 0\nwith open(\"sales.csv\") as f:\n    rows = f.read().splitlines()[1:]\n\nfor row in rows:\n    total += int(row.split(\",\")[1])\n\nprint(total)",
     "publicTests": [
       {
         "id": "m13-t1-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "100",
         "visibility": "public"
       },
       {
         "id": "m13-t1-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "total is the sum of the column",
+        "assertCode": "assert (total) == (100), \"Expected \" + repr(100) + \", got \" + repr(total)",
         "visibility": "public"
       },
       {
         "id": "m13-t1-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "total has the right type",
+        "assertCode": "assert \"total\" in globals(), \"Expected a variable named total\"\nassert isinstance(total, int), \"Expected total to be int, got \" + type(total).__name__",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t1-p04-t4",
+        "label": "the CSV still has a header plus two rows",
+        "assertCode": "assert (len(open(\"sales.csv\").read().splitlines())) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(open(\"sales.csv\").read().splitlines()))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Write a small CSV with a header, then read it back skipping the header and print the total amount.\n\nReference solution:\nwith open(\"sales.csv\", \"w\") as f:\n    f.write(\"item,amount\\npen,30\\nbook,70\\n\")\n\ntotal = 0\nwith open(\"sales.csv\") as f:\n    rows = f.read().splitlines()[1:]\n\nfor row in rows:\n    total += int(row.split(\",\")[1])\n\nprint(total)"
   },
   {
     "id": "m13-t1-p05",
     "topicId": "m13-t1",
-    "slug": "m13_t1-5",
-    "title": "Reading and Writing Files: Function Stub",
+    "slug": "file-json-roundtrip",
+    "title": "Files: Save and Load JSON",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Use json.dump to save a dict to config.json, load it back with json.load, and print one value.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "Save "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "{\"city\": \"Bangalore\", \"pincode\": 560001}"
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": " to "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": "config.json"
         },
         {
           "type": "text",
-          "value": " and call it once."
+          "value": " with "
+        },
+        {
+          "type": "code",
+          "value": "json.dump"
+        },
+        {
+          "type": "text",
+          "value": ", load it into "
+        },
+        {
+          "type": "code",
+          "value": "loaded"
+        },
+        {
+          "type": "text",
+          "value": " with "
+        },
+        {
+          "type": "code",
+          "value": "json.load"
+        },
+        {
+          "type": "text",
+          "value": ", and print the city."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# json.dump(config, f)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "json",
+        "loaded"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "json.dump(data, f) writes JSON to an open file.",
+          "json.load(f) reads it back as a Python dict.",
+          "Structured data survives the round trip — keys and types stay intact."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "Bangalore"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Use json.dump to write and json.load to read",
+      "Store the loaded dict in loaded",
+      "Output must be exactly: Bangalore"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "json.dump(config, f) inside a with open(..., \"w\")",
+      "loaded = json.load(f)"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: dump the dict, then load it back\nimport json\n\nconfig = {\"city\": \"Bangalore\", \"pincode\": 560001}\nloaded = {}\n",
+    "solutionCode": "import json\n\nconfig = {\"city\": \"Bangalore\", \"pincode\": 560001}\n\nwith open(\"config.json\", \"w\") as f:\n    json.dump(config, f)\n\nwith open(\"config.json\") as f:\n    loaded = json.load(f)\n\nprint(loaded[\"city\"])",
     "publicTests": [
       {
         "id": "m13-t1-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": "Bangalore",
         "visibility": "public"
       },
       {
         "id": "m13-t1-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "loaded has the right type",
+        "assertCode": "assert \"loaded\" in globals(), \"Expected a variable named loaded\"\nassert isinstance(loaded, dict), \"Expected loaded to be dict, got \" + type(loaded).__name__",
         "visibility": "public"
       },
       {
         "id": "m13-t1-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "the dict survived the round trip",
+        "assertCode": "assert (loaded) == (config), \"Expected \" + repr(config) + \", got \" + repr(loaded)",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t1-p05-t4",
+        "label": "pincode stayed an int",
+        "assertCode": "assert (type(loaded[\"pincode\"]).__name__) == (\"int\"), \"Expected \" + repr(\"int\") + \", got \" + repr(type(loaded[\"pincode\"]).__name__)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Use json.dump to save a dict to config.json, load it back with json.load, and print one value.\n\nReference solution:\nimport json\n\nconfig = {\"city\": \"Bangalore\", \"pincode\": 560001}\n\nwith open(\"config.json\", \"w\") as f:\n    json.dump(config, f)\n\nwith open(\"config.json\") as f:\n    loaded = json.load(f)\n\nprint(loaded[\"city\"])"
   },
   {
     "id": "m13-t1-p06",
     "topicId": "m13-t1",
-    "slug": "m13_t1-6",
-    "title": "Reading and Writing Files: List Practice",
-    "difficulty": "hard",
+    "slug": "file-loop-lines",
+    "title": "Files: Loop Over Every Line",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Write three product names to products.txt, then loop over the file object and print each name in uppercase.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Reading and Writing Files. Print the "
+          "value": "Write "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "pen, book, bag"
         },
         {
           "type": "text",
-          "value": " using index "
+          "value": " as three lines in "
         },
         {
           "type": "code",
-          "value": "1"
+          "value": "products.txt"
         },
         {
           "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": ", then loop over the file object and print each name uppercased."
         }
       ],
+      "editorPlaceholder": "# for line in f:",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "for line in f: reads one line at a time — memory friendly for big files.",
+          "Each line ends with a newline, so call .strip() before .upper()."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "PEN\nBOOK\nBAG"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Loop over the file object directly",
+      "Strip the newline before printing",
+      "One uppercase name per line"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "for line in f:",
+      "print(line.strip().upper())"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: write the products, then print each in uppercase\nwith open(\"products.txt\", \"w\") as f:\n    f.write(\"pen\\nbook\\nbag\\n\")\n",
+    "solutionCode": "with open(\"products.txt\", \"w\") as f:\n    f.write(\"pen\\nbook\\nbag\\n\")\n\nwith open(\"products.txt\") as f:\n    for line in f:\n        print(line.strip().upper())",
     "publicTests": [
       {
         "id": "m13-t1-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "middle",
+        "expectedStdout": "PEN\nBOOK\nBAG",
         "visibility": "public"
       },
       {
         "id": "m13-t1-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
-        "visibility": "public"
-      },
-      {
-        "id": "m13-t1-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "file holds the three products in order",
+        "assertCode": "assert (open(\"products.txt\").read().splitlines()) == ([\"pen\", \"book\", \"bag\"]), \"Expected \" + repr([\"pen\", \"book\", \"bag\"]) + \", got \" + repr(open(\"products.txt\").read().splitlines())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Write three product names to products.txt, then loop over the file object and print each name in uppercase.\n\nReference solution:\nwith open(\"products.txt\", \"w\") as f:\n    f.write(\"pen\\nbook\\nbag\\n\")\n\nwith open(\"products.txt\") as f:\n    for line in f:\n        print(line.strip().upper())"
   },
   {
     "id": "m13-t1-p07",
     "topicId": "m13-t1",
-    "slug": "m13_t1-7",
-    "title": "Reading and Writing Files: Dict Lookup",
+    "slug": "file-filter-to-new-file",
+    "title": "Files: Filter One File Into Another",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Read numbers from numbers.txt, write only the even ones to evens.txt, then print the list of evens.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Given "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "numbers.txt"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": " with 3, 4, 7, 8, 12, read it, keep only even numbers in a list named "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "evens"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
+          "value": ", write them to "
         },
         {
           "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "evens.txt"
         },
         {
           "type": "text",
-          "value": "."
+          "value": " one per line, and print the list."
         }
+      ],
+      "editorPlaceholder": "# evens = [ ... ]",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "evens"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "Convert each line with int() before testing it.",
+          "A number is even when n % 2 == 0.",
+          "Write with f.write(f\"{n}\\n\") so each value lands on its own line."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "[4, 8, 12]"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Read from numbers.txt and write to evens.txt",
+      "Keep only even numbers",
+      "Output must be exactly: [4, 8, 12]"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "numbers = [int(line) for line in f.read().splitlines()]",
+      "evens = [n for n in numbers if n % 2 == 0]"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: keep the even numbers, write them out, print the list\nwith open(\"numbers.txt\", \"w\") as f:\n    f.write(\"3\\n4\\n7\\n8\\n12\\n\")\n\nevens = []\n",
+    "solutionCode": "with open(\"numbers.txt\", \"w\") as f:\n    f.write(\"3\\n4\\n7\\n8\\n12\\n\")\n\nwith open(\"numbers.txt\") as f:\n    numbers = [int(line) for line in f.read().splitlines()]\n\nevens = [n for n in numbers if n % 2 == 0]\n\nwith open(\"evens.txt\", \"w\") as f:\n    for n in evens:\n        f.write(f\"{n}\\n\")\n\nprint(evens)",
     "publicTests": [
       {
         "id": "m13-t1-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "[4, 8, 12]",
         "visibility": "public"
       },
       {
         "id": "m13-t1-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "evens list is correct",
+        "assertCode": "assert (evens) == ([4, 8, 12]), \"Expected \" + repr([4, 8, 12]) + \", got \" + repr(evens)",
         "visibility": "public"
       },
       {
         "id": "m13-t1-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "evens.txt holds the same numbers",
+        "assertCode": "assert (open(\"evens.txt\").read().splitlines()) == ([\"4\", \"8\", \"12\"]), \"Expected \" + repr([\"4\", \"8\", \"12\"]) + \", got \" + repr(open(\"evens.txt\").read().splitlines())",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t1-p07-t4",
+        "label": "the source file was not changed",
+        "assertCode": "assert (open(\"numbers.txt\").read().splitlines()) == ([\"3\", \"4\", \"7\", \"8\", \"12\"]), \"Expected \" + repr([\"3\", \"4\", \"7\", \"8\", \"12\"]) + \", got \" + repr(open(\"numbers.txt\").read().splitlines())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Read numbers from numbers.txt, write only the even ones to evens.txt, then print the list of evens.\n\nReference solution:\nwith open(\"numbers.txt\", \"w\") as f:\n    f.write(\"3\\n4\\n7\\n8\\n12\\n\")\n\nwith open(\"numbers.txt\") as f:\n    numbers = [int(line) for line in f.read().splitlines()]\n\nevens = [n for n in numbers if n % 2 == 0]\n\nwith open(\"evens.txt\", \"w\") as f:\n    for n in evens:\n        f.write(f\"{n}\\n\")\n\nprint(evens)"
   },
   {
     "id": "m13-t2-p01",
     "topicId": "m13-t2",
-    "slug": "m13_t2-1",
-    "title": "Working with File Paths: Warm-up",
+    "slug": "path-filename",
+    "title": "Paths: Get the File Name",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Working with File Paths. Print Ready on one line.",
+    "description": "Create Path(\"data/raw/sales.csv\") and print just the file name using .name.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Store "
         },
         {
           "type": "code",
-          "value": "Working with File Paths"
+          "value": "Path(\"data/raw/sales.csv\")"
         },
         {
           "type": "text",
-          "value": ". Print the word "
+          "value": " in "
         },
         {
           "type": "code",
-          "value": "Ready"
+          "value": "path"
         },
         {
           "type": "text",
-          "value": " on one line."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": " and print "
+        },
         {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
+          "type": "code",
+          "value": "path.name"
+        },
+        {
+          "type": "text",
+          "value": " — the last part of the path."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "editorPlaceholder": "# print(path.name)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "Path",
+        "path"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "from pathlib import Path gives you the modern path object.",
+          ".name is the file name with its extension, no folders."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "sales.csv"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Use pathlib.Path",
+      "Print .name",
+      "Output must be exactly: sales.csv"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "print(path.name)"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: print only the file name\nfrom pathlib import Path\n\npath = Path(\"data/raw/sales.csv\")\n",
+    "solutionCode": "from pathlib import Path\n\npath = Path(\"data/raw/sales.csv\")\nprint(path.name)",
     "publicTests": [
       {
         "id": "m13-t2-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "sales.csv",
         "visibility": "public"
       },
       {
         "id": "m13-t2-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "Path was imported",
+        "assertCode": "assert \"Path\" in globals(), \"Import Path from pathlib\"",
         "visibility": "public"
       },
       {
         "id": "m13-t2-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "path points at the CSV",
+        "assertCode": "assert (path.as_posix()) == (\"data/raw/sales.csv\"), \"Expected \" + repr(\"data/raw/sales.csv\") + \", got \" + repr(path.as_posix())",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t2-p01-t4",
+        "label": "name is the last part",
+        "assertCode": "assert (path.name) == (\"sales.csv\"), \"Expected \" + repr(\"sales.csv\") + \", got \" + repr(path.name)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Working with File Paths. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Create Path(\"data/raw/sales.csv\") and print just the file name using .name.\n\nReference solution:\nfrom pathlib import Path\n\npath = Path(\"data/raw/sales.csv\")\nprint(path.name)"
   },
   {
     "id": "m13-t2-p02",
     "topicId": "m13-t2",
-    "slug": "m13_t2-2",
-    "title": "Working with File Paths: Output Two Values",
+    "slug": "path-suffix",
+    "title": "Paths: Read the Extension",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Working with File Paths and print them comma-separated.",
+    "description": "Print the file extension of data/raw/sales.csv using .suffix.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Working with File Paths and print them separated by a comma."
+          "value": "Print "
+        },
+        {
+          "type": "code",
+          "value": "path.suffix"
+        },
+        {
+          "type": "text",
+          "value": " for "
+        },
+        {
+          "type": "code",
+          "value": "data/raw/sales.csv"
+        },
+        {
+          "type": "text",
+          "value": ". Notice the dot is included — that is how you branch on file type."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# print(path.suffix)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "Path",
+        "path"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          ".suffix returns the extension including the leading dot."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": ".csv"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Print .suffix",
+      "Output must be exactly: .csv"
     ],
     "hints": [
-      "Create two variables related to Working with File Paths",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "print(path.suffix)"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Working with File Paths and print them comma-separated. Key points: Create two variables related to Working with File Paths Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: print the extension\nfrom pathlib import Path\n\npath = Path(\"data/raw/sales.csv\")\n",
+    "solutionCode": "from pathlib import Path\n\npath = Path(\"data/raw/sales.csv\")\nprint(path.suffix)",
     "publicTests": [
       {
         "id": "m13-t2-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": ".csv",
         "visibility": "public"
       },
       {
         "id": "m13-t2-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "suffix includes the dot",
+        "assertCode": "assert (path.suffix) == (\".csv\"), \"Expected \" + repr(\".csv\") + \", got \" + repr(path.suffix)",
         "visibility": "public"
       },
       {
         "id": "m13-t2-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "path is unchanged",
+        "assertCode": "assert (path.as_posix()) == (\"data/raw/sales.csv\"), \"Expected \" + repr(\"data/raw/sales.csv\") + \", got \" + repr(path.as_posix())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Print the file extension of data/raw/sales.csv using .suffix.\n\nReference solution:\nfrom pathlib import Path\n\npath = Path(\"data/raw/sales.csv\")\nprint(path.suffix)"
   },
   {
     "id": "m13-t2-p03",
     "topicId": "m13-t2",
-    "slug": "m13_t2-3",
-    "title": "Working with File Paths: Simple Loop",
-    "difficulty": "medium",
+    "slug": "path-stem",
+    "title": "Paths: Name Without Extension",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Working with File Paths.",
+    "description": "Print the file name without its extension using .stem.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Print "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "path.stem"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Working with File Paths."
+          "value": " — the file name with the extension removed. Handy for naming outputs after inputs."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# print(path.stem)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "Path",
+        "path"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          ".stem is .name minus .suffix."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "sales"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Print .stem",
+      "Output must be exactly: sales"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "print(path.stem)"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Working with File Paths. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: print the stem\nfrom pathlib import Path\n\npath = Path(\"data/raw/sales.csv\")\n",
+    "solutionCode": "from pathlib import Path\n\npath = Path(\"data/raw/sales.csv\")\nprint(path.stem)",
     "publicTests": [
       {
         "id": "m13-t2-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "sales",
         "visibility": "public"
       },
       {
         "id": "m13-t2-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "stem drops the extension",
+        "assertCode": "assert (path.stem) == (\"sales\"), \"Expected \" + repr(\"sales\") + \", got \" + repr(path.stem)",
         "visibility": "public"
       },
       {
         "id": "m13-t2-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "suffix is still available",
+        "assertCode": "assert (path.suffix) == (\".csv\"), \"Expected \" + repr(\".csv\") + \", got \" + repr(path.suffix)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Print the file name without its extension using .stem.\n\nReference solution:\nfrom pathlib import Path\n\npath = Path(\"data/raw/sales.csv\")\nprint(path.stem)"
   },
   {
     "id": "m13-t2-p04",
     "topicId": "m13-t2",
-    "slug": "m13_t2-4",
-    "title": "Working with File Paths: Condition",
+    "slug": "path-join-parts",
+    "title": "Paths: Join Folders Safely",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Build reports/q1/summary.txt with the / operator and print it with as_posix().",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "Join "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "reports"
         },
         {
           "type": "text",
-          "value": ". If "
+          "value": ", "
         },
         {
           "type": "code",
-          "value": "score >= 60"
+          "value": "q1"
         },
         {
           "type": "text",
-          "value": ", print "
+          "value": ", and "
         },
         {
           "type": "code",
-          "value": "Pass"
+          "value": "summary.txt"
         },
         {
           "type": "text",
-          "value": ", otherwise print "
+          "value": " with the "
         },
         {
           "type": "code",
-          "value": "Fail"
+          "value": "/"
+        },
+        {
+          "type": "text",
+          "value": " operator into "
+        },
+        {
+          "type": "code",
+          "value": "report_path"
+        },
+        {
+          "type": "text",
+          "value": ", then print "
+        },
+        {
+          "type": "code",
+          "value": "report_path.as_posix()"
         },
         {
           "type": "text",
           "value": "."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# report_path = Path('reports') / ...",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "Path",
+        "report_path"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Path objects join with / instead of string concatenation.",
+          "as_posix() prints forward slashes on every operating system."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "reports/q1/summary.txt"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Use the / operator to join",
+      "Print with as_posix()",
+      "Output must be exactly: reports/q1/summary.txt"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "report_path = Path(\"reports\") / \"q1\" / \"summary.txt\""
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: join the three parts\nfrom pathlib import Path\n\nreport_path = None\n",
+    "solutionCode": "from pathlib import Path\n\nreport_path = Path(\"reports\") / \"q1\" / \"summary.txt\"\nprint(report_path.as_posix())",
     "publicTests": [
       {
         "id": "m13-t2-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "reports/q1/summary.txt",
         "visibility": "public"
       },
       {
         "id": "m13-t2-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "parts joined in order",
+        "assertCode": "assert (report_path.as_posix()) == (\"reports/q1/summary.txt\"), \"Expected \" + repr(\"reports/q1/summary.txt\") + \", got \" + repr(report_path.as_posix())",
         "visibility": "public"
       },
       {
         "id": "m13-t2-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "file name is correct",
+        "assertCode": "assert (report_path.name) == (\"summary.txt\"), \"Expected \" + repr(\"summary.txt\") + \", got \" + repr(report_path.name)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Build reports/q1/summary.txt with the / operator and print it with as_posix().\n\nReference solution:\nfrom pathlib import Path\n\nreport_path = Path(\"reports\") / \"q1\" / \"summary.txt\"\nprint(report_path.as_posix())"
   },
   {
     "id": "m13-t2-p05",
     "topicId": "m13-t2",
-    "slug": "m13_t2-5",
-    "title": "Working with File Paths: Function Stub",
+    "slug": "path-parent",
+    "title": "Paths: Find the Folder",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Print the folder that contains data/raw/sales.csv using .parent and as_posix().",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "Print the containing folder of "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "data/raw/sales.csv"
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": " with "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": "path.parent.as_posix()"
         },
         {
           "type": "text",
-          "value": " and call it once."
+          "value": "."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# print(path.parent.as_posix())",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "Path",
+        "path"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          ".parent gives the folder as another Path.",
+          "Chain as_posix() so the separator is always a forward slash."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "data/raw"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Use .parent",
+      "Print with as_posix()",
+      "Output must be exactly: data/raw"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "print(path.parent.as_posix())"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: print the parent folder\nfrom pathlib import Path\n\npath = Path(\"data/raw/sales.csv\")\n",
+    "solutionCode": "from pathlib import Path\n\npath = Path(\"data/raw/sales.csv\")\nprint(path.parent.as_posix())",
     "publicTests": [
       {
         "id": "m13-t2-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": "data/raw",
         "visibility": "public"
       },
       {
         "id": "m13-t2-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "parent is the folder",
+        "assertCode": "assert (path.parent.as_posix()) == (\"data/raw\"), \"Expected \" + repr(\"data/raw\") + \", got \" + repr(path.parent.as_posix())",
         "visibility": "public"
       },
       {
         "id": "m13-t2-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "grandparent works too",
+        "assertCode": "assert (path.parent.parent.as_posix()) == (\"data\"), \"Expected \" + repr(\"data\") + \", got \" + repr(path.parent.parent.as_posix())",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Print the folder that contains data/raw/sales.csv using .parent and as_posix().\n\nReference solution:\nfrom pathlib import Path\n\npath = Path(\"data/raw/sales.csv\")\nprint(path.parent.as_posix())"
   },
   {
     "id": "m13-t2-p06",
     "topicId": "m13-t2",
-    "slug": "m13_t2-6",
-    "title": "Working with File Paths: List Practice",
-    "difficulty": "hard",
+    "slug": "path-with-suffix",
+    "title": "Paths: Swap the Extension",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Turn sales.csv into sales.json using with_suffix() and print the new file name.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Working with File Paths. Print the "
+          "value": "Convert "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "data/raw/sales.csv"
         },
         {
           "type": "text",
-          "value": " using index "
+          "value": " to a JSON path with "
         },
         {
           "type": "code",
-          "value": "1"
+          "value": "with_suffix(\".json\")"
         },
         {
           "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": ", store it in "
+        },
+        {
+          "type": "code",
+          "value": "json_path"
+        },
+        {
+          "type": "text",
+          "value": ", and print its "
+        },
+        {
+          "type": "code",
+          "value": "name"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
+      ],
+      "editorPlaceholder": "# json_path = path.with_suffix('.json')",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "Path",
+        "path",
+        "json_path"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "with_suffix(\".json\") returns a new Path — the original is unchanged.",
+          "This is the safe way to derive an output file from an input file."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "sales.json"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Use with_suffix()",
+      "Keep the original path unchanged",
+      "Output must be exactly: sales.json"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "json_path = path.with_suffix(\".json\")",
+      "print(json_path.name)"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: swap .csv for .json\nfrom pathlib import Path\n\npath = Path(\"data/raw/sales.csv\")\njson_path = None\n",
+    "solutionCode": "from pathlib import Path\n\npath = Path(\"data/raw/sales.csv\")\njson_path = path.with_suffix(\".json\")\nprint(json_path.name)",
     "publicTests": [
       {
         "id": "m13-t2-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "middle",
+        "expectedStdout": "sales.json",
         "visibility": "public"
       },
       {
         "id": "m13-t2-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "extension swapped",
+        "assertCode": "assert (json_path.suffix) == (\".json\"), \"Expected \" + repr(\".json\") + \", got \" + repr(json_path.suffix)",
         "visibility": "public"
       },
       {
         "id": "m13-t2-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "folder is preserved",
+        "assertCode": "assert (json_path.as_posix()) == (\"data/raw/sales.json\"), \"Expected \" + repr(\"data/raw/sales.json\") + \", got \" + repr(json_path.as_posix())",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t2-p06-t4",
+        "label": "original path untouched",
+        "assertCode": "assert (path.suffix) == (\".csv\"), \"Expected \" + repr(\".csv\") + \", got \" + repr(path.suffix)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Turn sales.csv into sales.json using with_suffix() and print the new file name.\n\nReference solution:\nfrom pathlib import Path\n\npath = Path(\"data/raw/sales.csv\")\njson_path = path.with_suffix(\".json\")\nprint(json_path.name)"
   },
   {
     "id": "m13-t2-p07",
     "topicId": "m13-t2",
-    "slug": "m13_t2-7",
-    "title": "Working with File Paths: Dict Lookup",
+    "slug": "path-exists-check",
+    "title": "Paths: Does the File Exist?",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Create a real file, then print exists() for that file and for one that was never created.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Write a file called "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "found.txt"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": ", then print "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "Path(\"found.txt\").exists()"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
+          "value": " and "
         },
         {
           "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "Path(\"missing.txt\").exists()"
         },
         {
           "type": "text",
-          "value": "."
+          "value": " — the guard every data script needs before reading."
         }
+      ],
+      "editorPlaceholder": "# Path('found.txt').write_text('ok')",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "Path"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "exists() returns True only when the path is really on disk.",
+          "Path objects have write_text() as a one-line way to create a file."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "True\nFalse"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Create found.txt but not missing.txt",
+      "Print True on line 1 and False on line 2"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "Path(\"found.txt\").write_text(\"ok\")",
+      "print(Path(\"found.txt\").exists())"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: create one file, then check both paths\nfrom pathlib import Path\n",
+    "solutionCode": "from pathlib import Path\n\nPath(\"found.txt\").write_text(\"ok\")\n\nprint(Path(\"found.txt\").exists())\nprint(Path(\"missing.txt\").exists())",
     "publicTests": [
       {
         "id": "m13-t2-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "True\nFalse",
         "visibility": "public"
       },
       {
         "id": "m13-t2-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "found.txt was really created",
+        "assertCode": "assert Path(\"found.txt\").exists(), \"Create found.txt before checking it\"",
         "visibility": "public"
       },
       {
         "id": "m13-t2-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "missing.txt must not be created",
+        "assertCode": "assert not Path(\"missing.txt\").exists(), \"missing.txt should stay missing — that is the False case\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Create a real file, then print exists() for that file and for one that was never created.\n\nReference solution:\nfrom pathlib import Path\n\nPath(\"found.txt\").write_text(\"ok\")\n\nprint(Path(\"found.txt\").exists())\nprint(Path(\"missing.txt\").exists())"
   },
   {
     "id": "m13-t3-p01",
     "topicId": "m13-t3",
-    "slug": "m13_t3-1",
-    "title": "try-except-finally: Warm-up",
+    "slug": "try-zero-division",
+    "title": "Errors: Catch a Division by Zero",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to try-except-finally. Print Ready on one line.",
+    "description": "Divide 10 by 0 inside try, set message to \"Cannot divide by zero\" in the except block, and print it.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Put "
         },
         {
           "type": "code",
-          "value": "try-except-finally"
+          "value": "10 / 0"
         },
         {
           "type": "text",
-          "value": ". Print the word "
+          "value": " inside a "
         },
         {
           "type": "code",
-          "value": "Ready"
+          "value": "try"
         },
         {
           "type": "text",
-          "value": " on one line."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": " block. In "
+        },
         {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
+          "type": "code",
+          "value": "except ZeroDivisionError"
+        },
+        {
+          "type": "text",
+          "value": ", set "
+        },
+        {
+          "type": "code",
+          "value": "message"
+        },
+        {
+          "type": "text",
+          "value": " to \"Cannot divide by zero\", then print it."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "editorPlaceholder": "# try: 10 / 0",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "message"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "An uncaught error stops the whole program — catching it keeps you running.",
+          "Name the specific error type so unrelated bugs still surface."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "Cannot divide by zero"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Use try / except ZeroDivisionError",
+      "Set message inside the except block",
+      "Output must be exactly: Cannot divide by zero"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "try:\n    value = 10 / 0",
+      "except ZeroDivisionError:\n    message = \"Cannot divide by zero\""
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: catch the division error and set message\nmessage = \"\"\n\ntry:\n    pass\nexcept ZeroDivisionError:\n    pass\n",
+    "solutionCode": "message = \"\"\n\ntry:\n    value = 10 / 0\nexcept ZeroDivisionError:\n    message = \"Cannot divide by zero\"\n\nprint(message)",
     "publicTests": [
       {
         "id": "m13-t3-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "Cannot divide by zero",
         "visibility": "public"
       },
       {
         "id": "m13-t3-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "message was set by the except block",
+        "assertCode": "assert (message) == (\"Cannot divide by zero\"), \"Expected \" + repr(\"Cannot divide by zero\") + \", got \" + repr(message)",
         "visibility": "public"
       },
       {
         "id": "m13-t3-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "ZeroDivisionError really is the right error",
+        "assertCode": "assert issubclass(ZeroDivisionError, ArithmeticError), \"ZeroDivisionError is the error Python raises for x / 0\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to try-except-finally. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Divide 10 by 0 inside try, set message to \"Cannot divide by zero\" in the except block, and print it.\n\nReference solution:\nmessage = \"\"\n\ntry:\n    value = 10 / 0\nexcept ZeroDivisionError:\n    message = \"Cannot divide by zero\"\n\nprint(message)"
   },
   {
     "id": "m13-t3-p02",
     "topicId": "m13-t3",
-    "slug": "m13_t3-2",
-    "title": "try-except-finally: Output Two Values",
+    "slug": "try-value-error",
+    "title": "Errors: Handle a Bad Number",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about try-except-finally and print them comma-separated.",
+    "description": "Convert \"abc\" with int() inside try and set status to \"invalid number\" when ValueError is raised.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to try-except-finally and print them separated by a comma."
+          "value": "Calling "
+        },
+        {
+          "type": "code",
+          "value": "int(\"abc\")"
+        },
+        {
+          "type": "text",
+          "value": " raises "
+        },
+        {
+          "type": "code",
+          "value": "ValueError"
+        },
+        {
+          "type": "text",
+          "value": ". Catch it and set "
+        },
+        {
+          "type": "code",
+          "value": "status"
+        },
+        {
+          "type": "text",
+          "value": " to \"invalid number\", then print status."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# try: int(raw)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "raw",
+        "status"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Dirty data is the usual source of ValueError when casting.",
+          "Catching it lets you flag the row instead of crashing the run."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "invalid number"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Use try / except ValueError",
+      "Convert raw with int() inside the try",
+      "Output must be exactly: invalid number"
     ],
     "hints": [
-      "Create two variables related to try-except-finally",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "try:\n    number = int(raw)",
+      "except ValueError:\n    status = \"invalid number\""
     ],
-    "starterCode": "",
-    "approach": "Create two variables about try-except-finally and print them comma-separated. Key points: Create two variables related to try-except-finally Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: catch the bad conversion\nraw = \"abc\"\nstatus = \"ok\"\n\ntry:\n    pass\nexcept ValueError:\n    pass\n",
+    "solutionCode": "raw = \"abc\"\nstatus = \"ok\"\n\ntry:\n    number = int(raw)\nexcept ValueError:\n    status = \"invalid number\"\n\nprint(status)",
     "publicTests": [
       {
         "id": "m13-t3-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "invalid number",
         "visibility": "public"
       },
       {
         "id": "m13-t3-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "status was flipped by the except block",
+        "assertCode": "assert (status) == (\"invalid number\"), \"Expected \" + repr(\"invalid number\") + \", got \" + repr(status)",
         "visibility": "public"
       },
       {
         "id": "m13-t3-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "the raw value is untouched",
+        "assertCode": "assert (raw) == (\"abc\"), \"Expected \" + repr(\"abc\") + \", got \" + repr(raw)",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Convert \"abc\" with int() inside try and set status to \"invalid number\" when ValueError is raised.\n\nReference solution:\nraw = \"abc\"\nstatus = \"ok\"\n\ntry:\n    number = int(raw)\nexcept ValueError:\n    status = \"invalid number\"\n\nprint(status)"
   },
   {
     "id": "m13-t3-p03",
     "topicId": "m13-t3",
-    "slug": "m13_t3-3",
-    "title": "try-except-finally: Simple Loop",
-    "difficulty": "medium",
+    "slug": "try-finally-order",
+    "title": "Errors: finally Always Runs",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for try-except-finally.",
+    "description": "Record the order of a try block and a finally block in a list named steps, then print the list.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Append "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "\"open\""
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for try-except-finally."
+          "value": " inside "
+        },
+        {
+          "type": "code",
+          "value": "try"
+        },
+        {
+          "type": "text",
+          "value": " and "
+        },
+        {
+          "type": "code",
+          "value": "\"close\""
+        },
+        {
+          "type": "text",
+          "value": " inside "
+        },
+        {
+          "type": "code",
+          "value": "finally"
+        },
+        {
+          "type": "text",
+          "value": ", then print "
+        },
+        {
+          "type": "code",
+          "value": "steps"
+        },
+        {
+          "type": "text",
+          "value": " to prove cleanup ran."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# try: steps.append('open')",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "steps"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "finally runs whether or not an error happened.",
+          "That is why it is the right place to close files and connections."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "['open', 'close']"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Use try / finally",
+      "Append \"open\" in try and \"close\" in finally",
+      "Output must be exactly: ['open', 'close']"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "steps.append(\"open\") inside try",
+      "steps.append(\"close\") inside finally"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for try-except-finally. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: record both steps in order\nsteps = []\n\ntry:\n    pass\nfinally:\n    pass\n",
+    "solutionCode": "steps = []\n\ntry:\n    steps.append(\"open\")\nfinally:\n    steps.append(\"close\")\n\nprint(steps)",
     "publicTests": [
       {
         "id": "m13-t3-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "['open', 'close']",
         "visibility": "public"
       },
       {
         "id": "m13-t3-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "both blocks ran in order",
+        "assertCode": "assert (steps) == ([\"open\", \"close\"]), \"Expected \" + repr([\"open\", \"close\"]) + \", got \" + repr(steps)",
         "visibility": "public"
       },
       {
         "id": "m13-t3-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "steps has the right type",
+        "assertCode": "assert \"steps\" in globals(), \"Expected a variable named steps\"\nassert isinstance(steps, list), \"Expected steps to be list, got \" + type(steps).__name__",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Record the order of a try block and a finally block in a list named steps, then print the list.\n\nReference solution:\nsteps = []\n\ntry:\n    steps.append(\"open\")\nfinally:\n    steps.append(\"close\")\n\nprint(steps)"
   },
   {
     "id": "m13-t3-p04",
     "topicId": "m13-t3",
-    "slug": "m13_t3-4",
-    "title": "try-except-finally: Condition",
+    "slug": "try-key-error",
+    "title": "Errors: Missing Dictionary Key",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Read a missing key from a dict inside try and set region to \"unknown\" when KeyError is raised.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "Read "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "row[\"region\"]"
         },
         {
           "type": "text",
-          "value": ". If "
+          "value": " from a row that has no region. Catch "
         },
         {
           "type": "code",
-          "value": "score >= 60"
+          "value": "KeyError"
         },
         {
           "type": "text",
-          "value": ", print "
+          "value": " and set "
         },
         {
           "type": "code",
-          "value": "Pass"
+          "value": "region"
         },
         {
           "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
-        },
-        {
-          "type": "text",
-          "value": "."
+          "value": " to \"unknown\", then print it."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# try: row['region']",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "row",
+        "region"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Square-bracket access raises KeyError when the key is absent.",
+          "Catching it is how you survive incomplete records."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "unknown"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Use try / except KeyError",
+      "Do not add the missing key to the dict",
+      "Output must be exactly: unknown"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "try:\n    region = row[\"region\"]",
+      "except KeyError:\n    region = \"unknown\""
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: handle the missing key\nrow = {\"item\": \"pen\", \"revenue\": 30}\nregion = \"\"\n\ntry:\n    pass\nexcept KeyError:\n    pass\n",
+    "solutionCode": "row = {\"item\": \"pen\", \"revenue\": 30}\nregion = \"\"\n\ntry:\n    region = row[\"region\"]\nexcept KeyError:\n    region = \"unknown\"\n\nprint(region)",
     "publicTests": [
       {
         "id": "m13-t3-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "unknown",
         "visibility": "public"
       },
       {
         "id": "m13-t3-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "region fell back to unknown",
+        "assertCode": "assert (region) == (\"unknown\"), \"Expected \" + repr(\"unknown\") + \", got \" + repr(region)",
         "visibility": "public"
       },
       {
         "id": "m13-t3-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "the row really has no region key",
+        "assertCode": "assert \"region\" not in row, \"Do not add a region key to the row — handle the KeyError instead\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Read a missing key from a dict inside try and set region to \"unknown\" when KeyError is raised.\n\nReference solution:\nrow = {\"item\": \"pen\", \"revenue\": 30}\nregion = \"\"\n\ntry:\n    region = row[\"region\"]\nexcept KeyError:\n    region = \"unknown\"\n\nprint(region)"
   },
   {
     "id": "m13-t3-p05",
     "topicId": "m13-t3",
-    "slug": "m13_t3-5",
-    "title": "try-except-finally: Function Stub",
+    "slug": "try-else-clause",
+    "title": "Errors: The else Branch",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Use try / except / else so the else branch reports a successful conversion of \"42\".",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Define "
+          "value": "Convert "
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "\"42\""
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": " with "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": "int()"
         },
         {
           "type": "text",
-          "value": " and call it once."
+          "value": ". Set "
+        },
+        {
+          "type": "code",
+          "value": "outcome"
+        },
+        {
+          "type": "text",
+          "value": " to \"invalid\" in except and to "
+        },
+        {
+          "type": "code",
+          "value": "f\"parsed {number}\""
+        },
+        {
+          "type": "text",
+          "value": " in the "
+        },
+        {
+          "type": "code",
+          "value": "else"
+        },
+        {
+          "type": "text",
+          "value": " branch, then print it."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# else: outcome = ...",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "raw",
+        "outcome"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "else runs only when the try block raised nothing.",
+          "Keeping the success path in else makes the happy path obvious."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "parsed 42"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Use try / except ValueError / else",
+      "Build the message with an f-string in else",
+      "Output must be exactly: parsed 42"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "else:\n    outcome = f\"parsed {number}\""
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: report success from the else branch\nraw = \"42\"\noutcome = \"\"\n\ntry:\n    pass\nexcept ValueError:\n    pass\nelse:\n    pass\n",
+    "solutionCode": "raw = \"42\"\noutcome = \"\"\n\ntry:\n    number = int(raw)\nexcept ValueError:\n    outcome = \"invalid\"\nelse:\n    outcome = f\"parsed {number}\"\n\nprint(outcome)",
     "publicTests": [
       {
         "id": "m13-t3-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": "parsed 42",
         "visibility": "public"
       },
       {
         "id": "m13-t3-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "else branch produced the message",
+        "assertCode": "assert (outcome) == (\"parsed 42\"), \"Expected \" + repr(\"parsed 42\") + \", got \" + repr(outcome)",
         "visibility": "public"
       },
       {
         "id": "m13-t3-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "the conversion really happened",
+        "assertCode": "assert (number) == (42), \"Expected \" + repr(42) + \", got \" + repr(number)",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t3-p05-t4",
+        "label": "number has the right type",
+        "assertCode": "assert \"number\" in globals(), \"Expected a variable named number\"\nassert isinstance(number, int), \"Expected number to be int, got \" + type(number).__name__",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Use try / except / else so the else branch reports a successful conversion of \"42\".\n\nReference solution:\nraw = \"42\"\noutcome = \"\"\n\ntry:\n    number = int(raw)\nexcept ValueError:\n    outcome = \"invalid\"\nelse:\n    outcome = f\"parsed {number}\"\n\nprint(outcome)"
   },
   {
     "id": "m13-t3-p06",
     "topicId": "m13-t3",
-    "slug": "m13_t3-6",
-    "title": "try-except-finally: List Practice",
-    "difficulty": "hard",
+    "slug": "try-collect-valid",
+    "title": "Errors: Skip the Bad Rows",
+    "difficulty": "medium",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Convert [\"4\", \"x\", \"7\"] to ints, skipping values that raise ValueError, and print the clean list.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about try-except-finally. Print the "
+          "value": "Loop over "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "[\"4\", \"x\", \"7\"]"
         },
         {
           "type": "text",
-          "value": " using index "
+          "value": " and convert each with "
         },
         {
           "type": "code",
-          "value": "1"
+          "value": "int()"
         },
         {
           "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": ". Collect successful values in "
+        },
+        {
+          "type": "code",
+          "value": "clean"
+        },
+        {
+          "type": "text",
+          "value": " and skip the ones that raise "
+        },
+        {
+          "type": "code",
+          "value": "ValueError"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
+      ],
+      "editorPlaceholder": "# for raw in raw_values:",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "raw_values",
+        "clean"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "Put the try block inside the loop so one bad value does not stop the rest.",
+          "continue (or simply pass) skips the failing row."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "[4, 7]"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Handle the error inside the loop",
+      "Do not remove items from raw_values",
+      "Output must be exactly: [4, 7]"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "for raw in raw_values:\n    try:\n        clean.append(int(raw))",
+      "except ValueError:\n        continue"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: keep only the values that convert\nraw_values = [\"4\", \"x\", \"7\"]\nclean = []\n",
+    "solutionCode": "raw_values = [\"4\", \"x\", \"7\"]\nclean = []\n\nfor raw in raw_values:\n    try:\n        clean.append(int(raw))\n    except ValueError:\n        continue\n\nprint(clean)",
     "publicTests": [
       {
         "id": "m13-t3-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "middle",
+        "expectedStdout": "[4, 7]",
         "visibility": "public"
       },
       {
         "id": "m13-t3-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "label": "only convertible values kept",
+        "assertCode": "assert (clean) == ([4, 7]), \"Expected \" + repr([4, 7]) + \", got \" + repr(clean)",
         "visibility": "public"
       },
       {
         "id": "m13-t3-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "label": "the source list is unchanged",
+        "assertCode": "assert (raw_values) == ([\"4\", \"x\", \"7\"]), \"Expected \" + repr([\"4\", \"x\", \"7\"]) + \", got \" + repr(raw_values)",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t3-p06-t4",
+        "label": "values were converted to int",
+        "assertCode": "assert all(isinstance(v, int) for v in clean), \"Expected clean to hold integers, not strings\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Convert [\"4\", \"x\", \"7\"] to ints, skipping values that raise ValueError, and print the clean list.\n\nReference solution:\nraw_values = [\"4\", \"x\", \"7\"]\nclean = []\n\nfor raw in raw_values:\n    try:\n        clean.append(int(raw))\n    except ValueError:\n        continue\n\nprint(clean)"
   },
   {
     "id": "m13-t3-p07",
     "topicId": "m13-t3",
-    "slug": "m13_t3-7",
-    "title": "try-except-finally: Dict Lookup",
+    "slug": "try-safe-divide",
+    "title": "Errors: A Safe Divide Function",
     "difficulty": "hard",
     "order": 7,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Write safe_divide(a, b) that returns the quotient or None when b is zero, then print two calls.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Define "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "safe_divide(a, b)"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": " that returns "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "a / b"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
+          "value": " but returns "
         },
         {
           "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "None"
+        },
+        {
+          "type": "text",
+          "value": " when "
+        },
+        {
+          "type": "code",
+          "value": "ZeroDivisionError"
+        },
+        {
+          "type": "text",
+          "value": " is raised. Print "
+        },
+        {
+          "type": "code",
+          "value": "safe_divide(10, 2)"
+        },
+        {
+          "type": "text",
+          "value": " then "
+        },
+        {
+          "type": "code",
+          "value": "safe_divide(5, 0)"
         },
         {
           "type": "text",
           "value": "."
         }
       ],
+      "editorPlaceholder": "# def safe_divide(a, b):",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "Put try / except inside the function and return from both branches.",
+          "Returning None lets the caller decide what a failed division means.",
+          "10 / 2 is 5.0 — true division always returns a float."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "5.0\nNone"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Define a function named safe_divide",
+      "Return values — do not print inside the function",
+      "Handle ZeroDivisionError only"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "def safe_divide(a, b):\n    try:\n        return a / b",
+      "except ZeroDivisionError:\n        return None"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: return the quotient, or None when b is 0\ndef safe_divide(a, b):\n    pass\n",
+    "solutionCode": "def safe_divide(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return None\n\nprint(safe_divide(10, 2))\nprint(safe_divide(5, 0))",
     "publicTests": [
       {
         "id": "m13-t3-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "5.0\nNone",
         "visibility": "public"
       },
       {
         "id": "m13-t3-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "safe_divide is defined",
+        "assertCode": "assert callable(safe_divide), \"Define a function named safe_divide\"",
         "visibility": "public"
       },
       {
         "id": "m13-t3-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "normal division works",
+        "assertCode": "assert (safe_divide(10, 2)) == (5.0), \"Expected \" + repr(5.0) + \", got \" + repr(safe_divide(10, 2))",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t3-p07-t4",
+        "label": "divide by zero returns None",
+        "assertCode": "assert safe_divide(5, 0) is None, \"Expected safe_divide(5, 0) to return None\"",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t3-p07-t5",
+        "label": "works for other inputs too",
+        "assertCode": "assert (safe_divide(9, 3)) == (3.0), \"Expected \" + repr(3.0) + \", got \" + repr(safe_divide(9, 3))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Write safe_divide(a, b) that returns the quotient or None when b is zero, then print two calls.\n\nReference solution:\ndef safe_divide(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return None\n\nprint(safe_divide(10, 2))\nprint(safe_divide(5, 0))"
   },
   {
     "id": "m13-t4-p01",
     "topicId": "m13-t4",
-    "slug": "m13_t4-1",
-    "title": "Raising Custom Exceptions: Warm-up",
+    "slug": "raise-value-error",
+    "title": "Raise: Reject Bad Input",
     "difficulty": "easy",
     "order": 1,
     "layout": "challenge",
-    "description": "Write a short program related to Raising Custom Exceptions. Print Ready on one line.",
+    "description": "Raise ValueError(\"Age cannot be negative\"), catch it, and print the message with str(e).",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Write a short program related to "
+          "value": "Use "
         },
         {
           "type": "code",
-          "value": "Raising Custom Exceptions"
+          "value": "raise ValueError(\"Age cannot be negative\")"
         },
         {
           "type": "text",
-          "value": ". Print the word "
+          "value": " inside a try block, catch it as "
         },
         {
           "type": "code",
-          "value": "Ready"
+          "value": "e"
         },
         {
           "type": "text",
-          "value": " on one line."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
+          "value": ", store "
+        },
         {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
+          "type": "code",
+          "value": "str(e)"
+        },
+        {
+          "type": "text",
+          "value": " in "
+        },
+        {
+          "type": "code",
+          "value": "message"
+        },
+        {
+          "type": "text",
+          "value": ", and print it."
         }
       ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
+      "editorPlaceholder": "# raise ValueError(...)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "message"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "raise creates an error on purpose — that is how you reject bad input.",
+          "except ValueError as e binds the exception object to e.",
+          "str(e) is the message you passed in."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Ready"
+        "output": "Age cannot be negative"
       }
     ],
     "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
+      "Raise the error yourself with raise",
+      "Read the text with str(e)",
+      "Output must be exactly: Age cannot be negative"
     ],
     "hints": [
-      "Use: print(\"Ready\")"
+      "raise ValueError(\"Age cannot be negative\")",
+      "except ValueError as e:\n    message = str(e)"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: raise, catch, and read the message\nmessage = \"\"\n\ntry:\n    pass\nexcept ValueError as e:\n    pass\n",
+    "solutionCode": "message = \"\"\n\ntry:\n    raise ValueError(\"Age cannot be negative\")\nexcept ValueError as e:\n    message = str(e)\n\nprint(message)",
     "publicTests": [
       {
         "id": "m13-t4-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "Ready",
+        "expectedStdout": "Age cannot be negative",
         "visibility": "public"
       },
       {
         "id": "m13-t4-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
+        "label": "message came from the exception",
+        "assertCode": "assert (message) == (\"Age cannot be negative\"), \"Expected \" + repr(\"Age cannot be negative\") + \", got \" + repr(message)",
         "visibility": "public"
       },
       {
         "id": "m13-t4-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
+        "label": "message has the right type",
+        "assertCode": "assert \"message\" in globals(), \"Expected a variable named message\"\nassert isinstance(message, str), \"Expected message to be str, got \" + type(message).__name__",
         "visibility": "public"
       }
     ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Raising Custom Exceptions. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
+    "approach": "Raise ValueError(\"Age cannot be negative\"), catch it, and print the message with str(e).\n\nReference solution:\nmessage = \"\"\n\ntry:\n    raise ValueError(\"Age cannot be negative\")\nexcept ValueError as e:\n    message = str(e)\n\nprint(message)"
   },
   {
     "id": "m13-t4-p02",
     "topicId": "m13-t4",
-    "slug": "m13_t4-2",
-    "title": "Raising Custom Exceptions: Output Two Values",
+    "slug": "custom-exception-class",
+    "title": "Raise: Your Own Exception Class",
     "difficulty": "easy",
     "order": 2,
     "layout": "challenge",
-    "description": "Create two variables about Raising Custom Exceptions and print them comma-separated.",
+    "description": "Define DataError as a subclass of Exception, raise it, catch it, and print its message.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create two variables related to Raising Custom Exceptions and print them separated by a comma."
+          "value": "Define "
+        },
+        {
+          "type": "code",
+          "value": "class DataError(Exception)"
+        },
+        {
+          "type": "text",
+          "value": ", raise it with the message "
+        },
+        {
+          "type": "code",
+          "value": "bad row"
+        },
+        {
+          "type": "text",
+          "value": ", then catch "
+        },
+        {
+          "type": "code",
+          "value": "DataError"
+        },
+        {
+          "type": "text",
+          "value": " and print the message."
         }
       ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
+      "editorPlaceholder": "# class DataError(Exception):",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Subclassing Exception is all it takes to create a domain-specific error.",
+          "pass is a valid body when the class adds no new behaviour.",
+          "Named errors let callers catch exactly your failure and nothing else."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "A,B"
+        "output": "bad row"
       }
     ],
     "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
+      "Define a class named DataError that inherits from Exception",
+      "Raise and catch it in the same program",
+      "Output must be exactly: bad row"
     ],
     "hints": [
-      "Create two variables related to Raising Custom Exceptions",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
+      "class DataError(Exception):\n    pass",
+      "raise DataError(\"bad row\")"
     ],
-    "starterCode": "",
-    "approach": "Create two variables about Raising Custom Exceptions and print them comma-separated. Key points: Create two variables related to Raising Custom Exceptions Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
+    "starterCode": "# TODO: define, raise, and catch your own error\nclass DataError(Exception):\n    pass\n",
+    "solutionCode": "class DataError(Exception):\n    pass\n\ntry:\n    raise DataError(\"bad row\")\nexcept DataError as e:\n    print(e)",
     "publicTests": [
       {
         "id": "m13-t4-p02-t1",
         "label": "Sample Case",
-        "expectedStdout": "A,B",
+        "expectedStdout": "bad row",
         "visibility": "public"
       },
       {
         "id": "m13-t4-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
+        "label": "DataError subclasses Exception",
+        "assertCode": "assert issubclass(DataError, Exception), \"DataError must inherit from Exception\"",
         "visibility": "public"
       },
       {
         "id": "m13-t4-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
+        "label": "the message is carried",
+        "assertCode": "assert (str(DataError(\"bad row\"))) == (\"bad row\"), \"Expected \" + repr(\"bad row\") + \", got \" + repr(str(DataError(\"bad row\")))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
+    "approach": "Define DataError as a subclass of Exception, raise it, catch it, and print its message.\n\nReference solution:\nclass DataError(Exception):\n    pass\n\ntry:\n    raise DataError(\"bad row\")\nexcept DataError as e:\n    print(e)"
   },
   {
     "id": "m13-t4-p03",
     "topicId": "m13-t4",
-    "slug": "m13_t4-3",
-    "title": "Raising Custom Exceptions: Simple Loop",
-    "difficulty": "medium",
+    "slug": "raise-error-name",
+    "title": "Raise: Report the Error Type",
+    "difficulty": "easy",
     "order": 3,
     "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Raising Custom Exceptions.",
+    "description": "Catch your own DataError and print the class name using type(e).__name__.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Use a "
+          "value": "Raise "
         },
         {
           "type": "code",
-          "value": "for"
+          "value": "DataError"
         },
         {
           "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Raising Custom Exceptions."
+          "value": " and, in the except block, store "
+        },
+        {
+          "type": "code",
+          "value": "type(e).__name__"
+        },
+        {
+          "type": "text",
+          "value": " in "
+        },
+        {
+          "type": "code",
+          "value": "error_name"
+        },
+        {
+          "type": "text",
+          "value": " and print it. Logs use this to say which error occurred."
         }
       ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
+      "editorPlaceholder": "# error_name = type(e).__name__",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "error_name"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "type(e) is the exception class; .__name__ is its name as a string.",
+          "This is what appears in a traceback's last line."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "1\n2\n3\n4"
+        "output": "DataError"
       }
     ],
     "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
+      "Use type(e).__name__ — do not type the name as a string",
+      "Output must be exactly: DataError"
     ],
     "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
+      "error_name = type(e).__name__"
     ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Raising Custom Exceptions. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
+    "starterCode": "# TODO: capture the error class name\nclass DataError(Exception):\n    pass\n\nerror_name = \"\"\n",
+    "solutionCode": "class DataError(Exception):\n    pass\n\nerror_name = \"\"\n\ntry:\n    raise DataError(\"row 12 failed\")\nexcept DataError as e:\n    error_name = type(e).__name__\n\nprint(error_name)",
     "publicTests": [
       {
         "id": "m13-t4-p03-t1",
         "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
+        "expectedStdout": "DataError",
         "visibility": "public"
       },
       {
         "id": "m13-t4-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "error_name is the class name",
+        "assertCode": "assert (error_name) == (\"DataError\"), \"Expected \" + repr(\"DataError\") + \", got \" + repr(error_name)",
         "visibility": "public"
       },
       {
         "id": "m13-t4-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
+        "label": "DataError is a real exception class",
+        "assertCode": "assert issubclass(DataError, Exception), \"DataError must inherit from Exception\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
+    "approach": "Catch your own DataError and print the class name using type(e).__name__.\n\nReference solution:\nclass DataError(Exception):\n    pass\n\nerror_name = \"\"\n\ntry:\n    raise DataError(\"row 12 failed\")\nexcept DataError as e:\n    error_name = type(e).__name__\n\nprint(error_name)"
   },
   {
     "id": "m13-t4-p04",
     "topicId": "m13-t4",
-    "slug": "m13_t4-4",
-    "title": "Raising Custom Exceptions: Condition",
+    "slug": "raise-validate-units",
+    "title": "Raise: Validate Units Sold",
     "difficulty": "medium",
     "order": 4,
     "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
+    "description": "Write check_units(n) that returns n but raises ValueError for non-positive input, then show both paths.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Set "
+          "value": "Define "
         },
         {
           "type": "code",
-          "value": "score = 75"
+          "value": "check_units(n)"
         },
         {
           "type": "text",
-          "value": ". If "
+          "value": " that returns "
         },
         {
           "type": "code",
-          "value": "score >= 60"
+          "value": "n"
         },
         {
           "type": "text",
-          "value": ", print "
+          "value": " when it is positive and raises "
         },
         {
           "type": "code",
-          "value": "Pass"
+          "value": "ValueError(\"units must be positive\")"
         },
         {
           "type": "text",
-          "value": ", otherwise print "
+          "value": " otherwise. Print "
         },
         {
           "type": "code",
-          "value": "Fail"
+          "value": "check_units(5)"
         },
         {
           "type": "text",
-          "value": "."
+          "value": ", then catch the error from "
+        },
+        {
+          "type": "code",
+          "value": "check_units(-2)"
+        },
+        {
+          "type": "text",
+          "value": " and print it."
         }
       ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
+      "editorPlaceholder": "# def check_units(n):",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Validate first, then return — a guard clause keeps the happy path flat.",
+          "The caller decides how to handle the error, so raise instead of printing."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Pass"
+        "output": "5\nunits must be positive"
       }
     ],
     "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
+      "Define a function named check_units",
+      "Raise ValueError with the exact message",
+      "Reject zero as well as negatives"
     ],
     "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
+      "if n <= 0:\n        raise ValueError(\"units must be positive\")",
+      "Catch it with except ValueError as e: print(e)"
     ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
+    "starterCode": "# TODO: guard against non-positive units\ndef check_units(n):\n    pass\n",
+    "solutionCode": "def check_units(n):\n    if n <= 0:\n        raise ValueError(\"units must be positive\")\n    return n\n\nprint(check_units(5))\n\ntry:\n    check_units(-2)\nexcept ValueError as e:\n    print(e)",
     "publicTests": [
       {
         "id": "m13-t4-p04-t1",
         "label": "Sample Case",
-        "expectedStdout": "Pass",
+        "expectedStdout": "5\nunits must be positive",
         "visibility": "public"
       },
       {
         "id": "m13-t4-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
+        "label": "valid input is returned",
+        "assertCode": "assert (check_units(5)) == (5), \"Expected \" + repr(5) + \", got \" + repr(check_units(5))",
         "visibility": "public"
       },
       {
         "id": "m13-t4-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
+        "label": "negative input raises ValueError",
+        "assertCode": "try:\n    check_units(-1)\n    raise AssertionError(\"Expected ValueError for -1, got no error\")\nexcept ValueError:\n    pass",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t4-p04-t4",
+        "label": "zero is rejected too",
+        "assertCode": "try:\n    check_units(0)\n    raise AssertionError(\"Expected ValueError for 0, got no error\")\nexcept ValueError:\n    pass",
         "visibility": "public"
       }
     ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+    "approach": "Write check_units(n) that returns n but raises ValueError for non-positive input, then show both paths.\n\nReference solution:\ndef check_units(n):\n    if n <= 0:\n        raise ValueError(\"units must be positive\")\n    return n\n\nprint(check_units(5))\n\ntry:\n    check_units(-2)\nexcept ValueError as e:\n    print(e)"
   },
   {
     "id": "m13-t4-p05",
     "topicId": "m13-t4",
-    "slug": "m13_t4-5",
-    "title": "Raising Custom Exceptions: Function Stub",
+    "slug": "raise-exception-attribute",
+    "title": "Raise: Carry Data on the Exception",
     "difficulty": "medium",
     "order": 5,
     "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
+    "description": "Give MissingColumn a .column attribute so the handler can print which column was missing.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
@@ -2059,579 +2504,111 @@ export const module13Practice: PracticeProblem[] = [
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "MissingColumn"
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": " with an "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": "__init__"
         },
         {
           "type": "text",
-          "value": " and call it once."
+          "value": " that stores "
+        },
+        {
+          "type": "code",
+          "value": "self.column"
+        },
+        {
+          "type": "text",
+          "value": ". Raise it for "
+        },
+        {
+          "type": "code",
+          "value": "revenue"
+        },
+        {
+          "type": "text",
+          "value": ", then print "
+        },
+        {
+          "type": "code",
+          "value": "e.column"
+        },
+        {
+          "type": "text",
+          "value": " in the handler."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# self.column = column",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Call super().__init__(message) so the exception still has readable text.",
+          "Extra attributes let the handler react without parsing the message."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "revenue"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "Store the column name in self.column",
+      "Call super().__init__ with a readable message",
+      "Output must be exactly: revenue"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "super().__init__(f\"missing column: {column}\")",
+      "self.column = column"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: store the column name on the exception\nclass MissingColumn(Exception):\n    def __init__(self, column):\n        pass\n",
+    "solutionCode": "class MissingColumn(Exception):\n    def __init__(self, column):\n        super().__init__(f\"missing column: {column}\")\n        self.column = column\n\ntry:\n    raise MissingColumn(\"revenue\")\nexcept MissingColumn as e:\n    print(e.column)",
     "publicTests": [
       {
         "id": "m13-t4-p05-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": "revenue",
         "visibility": "public"
       },
       {
         "id": "m13-t4-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "label": "MissingColumn subclasses Exception",
+        "assertCode": "assert issubclass(MissingColumn, Exception), \"MissingColumn must inherit from Exception\"",
         "visibility": "public"
       },
       {
         "id": "m13-t4-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "label": "the column is stored on the instance",
+        "assertCode": "assert (MissingColumn(\"units\").column) == (\"units\"), \"Expected \" + repr(\"units\") + \", got \" + repr(MissingColumn(\"units\").column)",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t4-p05-t4",
+        "label": "the message still mentions the column",
+        "assertCode": "assert \"units\" in str(MissingColumn(\"units\")), \"Pass the message to super().__init__ so str(e) stays useful\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Give MissingColumn a .column attribute so the handler can print which column was missing.\n\nReference solution:\nclass MissingColumn(Exception):\n    def __init__(self, column):\n        super().__init__(f\"missing column: {column}\")\n        self.column = column\n\ntry:\n    raise MissingColumn(\"revenue\")\nexcept MissingColumn as e:\n    print(e.column)"
   },
   {
     "id": "m13-t4-p06",
     "topicId": "m13-t4",
-    "slug": "m13_t4-6",
-    "title": "Raising Custom Exceptions: List Practice",
+    "slug": "raise-exception-hierarchy",
+    "title": "Raise: An Error Hierarchy",
     "difficulty": "hard",
     "order": 6,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Define PipelineError and a LoadError subclass, raise the subclass, catch it by the base class, and print its name.",
     "challengeContent": {
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Create a list with three items about Raising Custom Exceptions. Print the "
-        },
-        {
-          "type": "code",
-          "value": "second item"
-        },
-        {
-          "type": "text",
-          "value": " using index "
-        },
-        {
-          "type": "code",
-          "value": "1"
-        },
-        {
-          "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
-        }
-      ],
-      "steps": {
-        "title": "What you need to know",
-        "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
       "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
-    },
-    "examples": [
-      {
-        "output": "middle"
-      }
-    ],
-    "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
-    ],
-    "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
-    ],
-    "starterCode": "",
-    "publicTests": [
-      {
-        "id": "m13-t4-p06-t1",
-        "label": "Sample Case",
-        "expectedStdout": "middle",
-        "visibility": "public"
-      },
-      {
-        "id": "m13-t4-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
-        "visibility": "public"
-      },
-      {
-        "id": "m13-t4-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
-        "visibility": "public"
-      }
-    ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
-  },
-  {
-    "id": "m13-t4-p07",
-    "topicId": "m13-t4",
-    "slug": "m13_t4-7",
-    "title": "Raising Custom Exceptions: Dict Lookup",
-    "difficulty": "hard",
-    "order": 7,
-    "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
-    "challengeContent": {
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Create a dictionary with key "
-        },
-        {
-          "type": "code",
-          "value": "topic"
-        },
-        {
-          "type": "text",
-          "value": " and value "
-        },
-        {
-          "type": "code",
-          "value": "Python"
-        },
-        {
-          "type": "text",
-          "value": ". Print the value using "
-        },
-        {
-          "type": "code",
-          "value": "d[\"topic\"]"
-        },
-        {
-          "type": "text",
-          "value": "."
-        }
-      ],
-      "steps": {
-        "title": "What you need to know",
-        "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
-    },
-    "examples": [
-      {
-        "output": "Python"
-      }
-    ],
-    "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
-    ],
-    "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
-    ],
-    "starterCode": "",
-    "publicTests": [
-      {
-        "id": "m13-t4-p07-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Python",
-        "visibility": "public"
-      },
-      {
-        "id": "m13-t4-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
-        "visibility": "public"
-      },
-      {
-        "id": "m13-t4-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
-        "visibility": "public"
-      }
-    ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
-  },
-  {
-    "id": "m13-t5-p01",
-    "topicId": "m13-t5",
-    "slug": "m13_t5-1",
-    "title": "Working with APIs: Warm-up",
-    "difficulty": "easy",
-    "order": 1,
-    "layout": "challenge",
-    "description": "Write a short program related to Working with APIs. Print Ready on one line.",
-    "challengeContent": {
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Write a short program related to "
-        },
-        {
-          "type": "code",
-          "value": "Working with APIs"
-        },
-        {
-          "type": "text",
-          "value": ". Print the word "
-        },
-        {
-          "type": "code",
-          "value": "Ready"
-        },
-        {
-          "type": "text",
-          "value": " on one line."
-        }
-      ],
-      "outputOnly": true,
-      "editorPlaceholder": "# Write your solution here",
-      "liveCheckRules": [
-        {
-          "id": "out",
-          "label": "prints Ready",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Ready"
-        }
-      ],
-      "emptyMessage": "Use print() to display output.",
-      "successDetail": "Correct! Great warm-up."
-    },
-    "examples": [
-      {
-        "output": "Ready"
-      }
-    ],
-    "constraints": [
-      "Use a single print() statement",
-      "Output must be exactly: Ready"
-    ],
-    "hints": [
-      "Use: print(\"Ready\")"
-    ],
-    "starterCode": "",
-    "publicTests": [
-      {
-        "id": "m13-t5-p01-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Ready",
-        "visibility": "public"
-      },
-      {
-        "id": "m13-t5-p01-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Ready",
-        "visibility": "public"
-      },
-      {
-        "id": "m13-t5-p01-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Ready",
-        "visibility": "public"
-      }
-    ],
-    "solutionCode": "print(\"Ready\")",
-    "approach": "Write a short program related to Working with APIs. Print Ready on one line.\n\nKey points: Use: print(\"Ready\")\n\nA correct solution looks like this:\nprint(\"Ready\")"
-  },
-  {
-    "id": "m13-t5-p02",
-    "topicId": "m13-t5",
-    "slug": "m13_t5-2",
-    "title": "Working with APIs: Output Two Values",
-    "difficulty": "easy",
-    "order": 2,
-    "layout": "challenge",
-    "description": "Create two variables about Working with APIs and print them comma-separated.",
-    "challengeContent": {
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Create two variables related to Working with APIs and print them separated by a comma."
-        }
-      ],
-      "outputOnly": true,
-      "expectCommaPrint": true,
-      "editorPlaceholder": "# create variables and print A,B format",
-      "emptyMessage": "Create two variables and use print() to display them.",
-      "successDetail": "Correct! Two values printed with a comma separator."
-    },
-    "examples": [
-      {
-        "output": "A,B"
-      }
-    ],
-    "constraints": [
-      "Create two variables before printing",
-      "Print output must be exactly: A,B",
-      "Use a comma separator between the two values"
-    ],
-    "hints": [
-      "Create two variables related to Working with APIs",
-      "Use comma in print: print(a, b, sep=\",\")",
-      "Output must be exactly A,B"
-    ],
-    "starterCode": "",
-    "approach": "Create two variables about Working with APIs and print them comma-separated. Key points: Create two variables related to Working with APIs Use comma in print: print(a, b, sep=\",\") Output must be exactly A,B A correct solution looks like this: a = \"A\" b = \"B\" print(a, b, sep=\",\")",
-    "publicTests": [
-      {
-        "id": "m13-t5-p02-t1",
-        "label": "Sample Case",
-        "expectedStdout": "A,B",
-        "visibility": "public"
-      },
-      {
-        "id": "m13-t5-p02-t2",
-        "label": "Exact Output",
-        "expectedStdout": "A,B",
-        "visibility": "public"
-      },
-      {
-        "id": "m13-t5-p02-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "A,B",
-        "visibility": "public"
-      }
-    ],
-    "solutionCode": "a = \"A\"\nb = \"B\"\nprint(a, b, sep=\",\")"
-  },
-  {
-    "id": "m13-t5-p03",
-    "topicId": "m13-t5",
-    "slug": "m13_t5-3",
-    "title": "Working with APIs: Simple Loop",
-    "difficulty": "medium",
-    "order": 3,
-    "layout": "challenge",
-    "description": "Use a for loop to print 1 through 4 for Working with APIs.",
-    "challengeContent": {
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Use a "
-        },
-        {
-          "type": "code",
-          "value": "for"
-        },
-        {
-          "type": "text",
-          "value": " loop to print numbers from 1 to 4. Practice loops for Working with APIs."
-        }
-      ],
-      "outputOnly": true,
-      "requiresForLoop": true,
-      "editorPlaceholder": "# use for loop to print 1 to 4",
-      "emptyMessage": "Use a for loop with print() to display the numbers.",
-      "successDetail": "Correct! Your loop printed 1 through 4 perfectly."
-    },
-    "examples": [
-      {
-        "output": "1\n2\n3\n4"
-      }
-    ],
-    "constraints": [
-      "Use a for loop with range()",
-      "Print numbers 1, 2, 3, and 4 — each on its own line",
-      "No extra lines or blank lines"
-    ],
-    "hints": [
-      "Example: for i in range(1, 5): then indent print(i) on the next line"
-    ],
-    "starterCode": "",
-    "approach": "Use a for loop to print 1 through 4 for Working with APIs. Key points: Example: for i in range(1, 5): then indent print(i) on the next line A correct solution looks like this: for i in range(1, 5): print(i)",
-    "publicTests": [
-      {
-        "id": "m13-t5-p03-t1",
-        "label": "Sample Case",
-        "expectedStdout": "1\n2\n3\n4",
-        "visibility": "public"
-      },
-      {
-        "id": "m13-t5-p03-t2",
-        "label": "Exact Output",
-        "expectedStdout": "1\n2\n3\n4",
-        "visibility": "public"
-      },
-      {
-        "id": "m13-t5-p03-t3",
-        "label": "Multi-line Format",
-        "expectedStdout": "1\n2\n3\n4",
-        "visibility": "public"
-      }
-    ],
-    "solutionCode": "for i in range(1, 5):\n    print(i)"
-  },
-  {
-    "id": "m13-t5-p04",
-    "topicId": "m13-t5",
-    "slug": "m13_t5-4",
-    "title": "Working with APIs: Condition",
-    "difficulty": "medium",
-    "order": 4,
-    "layout": "challenge",
-    "description": "Set score = 75. If score >= 60 print Pass else Fail.",
-    "challengeContent": {
-      "introSegments": [
-        {
-          "type": "text",
-          "value": "Set "
-        },
-        {
-          "type": "code",
-          "value": "score = 75"
-        },
-        {
-          "type": "text",
-          "value": ". If "
-        },
-        {
-          "type": "code",
-          "value": "score >= 60"
-        },
-        {
-          "type": "text",
-          "value": ", print "
-        },
-        {
-          "type": "code",
-          "value": "Pass"
-        },
-        {
-          "type": "text",
-          "value": ", otherwise print "
-        },
-        {
-          "type": "code",
-          "value": "Fail"
-        },
-        {
-          "type": "text",
-          "value": "."
-        }
-      ],
-      "outputOnly": true,
-      "requiresIfCondition": true,
-      "editorPlaceholder": "# write if-else condition",
-      "emptyMessage": "Define score and use an if condition to print the result.",
-      "successDetail": "Correct! Your condition evaluated to Pass."
-    },
-    "examples": [
-      {
-        "output": "Pass"
-      }
-    ],
-    "constraints": [
-      "Define score = 75",
-      "Use an if/else to compare score against 60",
-      "Output must be exactly: Pass"
-    ],
-    "hints": [
-      "Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\")"
-    ],
-    "starterCode": "",
-    "approach": "Set score = 75. If score >= 60 print Pass else Fail. Key points: Example: score = 75, if score >= 60: print(\"Pass\") else: print(\"Fail\") A correct solution looks like this: score = 75 if score >= 60: print(\"Pass\") else: print(\"Fail\")",
-    "publicTests": [
-      {
-        "id": "m13-t5-p04-t1",
-        "label": "Sample Case",
-        "expectedStdout": "Pass",
-        "visibility": "public"
-      },
-      {
-        "id": "m13-t5-p04-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Pass",
-        "visibility": "public"
-      },
-      {
-        "id": "m13-t5-p04-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Pass",
-        "visibility": "public"
-      }
-    ],
-    "solutionCode": "score = 75\nif score >= 60:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
-  },
-  {
-    "id": "m13-t5-p05",
-    "topicId": "m13-t5",
-    "slug": "m13_t5-5",
-    "title": "Working with APIs: Function Stub",
-    "difficulty": "medium",
-    "order": 5,
-    "layout": "challenge",
-    "description": "Define greet() that prints Hello and call it.",
-    "challengeContent": {
       "introSegments": [
         {
           "type": "text",
@@ -2639,266 +2616,846 @@ export const module13Practice: PracticeProblem[] = [
         },
         {
           "type": "code",
-          "value": "greet()"
+          "value": "PipelineError(Exception)"
         },
         {
           "type": "text",
-          "value": " that prints "
+          "value": " and "
         },
         {
           "type": "code",
-          "value": "Hello"
+          "value": "LoadError(PipelineError)"
         },
         {
           "type": "text",
-          "value": " and call it once."
+          "value": ". Raise "
+        },
+        {
+          "type": "code",
+          "value": "LoadError"
+        },
+        {
+          "type": "text",
+          "value": ", catch "
+        },
+        {
+          "type": "code",
+          "value": "PipelineError"
+        },
+        {
+          "type": "text",
+          "value": ", and print the actual class name."
         }
       ],
-      "outputOnly": true,
-      "requiresFunction": "greet",
-      "editorPlaceholder": "# define greet() function",
-      "emptyMessage": "Define greet() with a print inside, then call it.",
-      "successDetail": "Correct! Your function printed Hello."
+      "editorPlaceholder": "# class LoadError(PipelineError):",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A base class lets callers catch every failure from your pipeline at once.",
+          "Catching the base still catches every subclass.",
+          "type(e).__name__ reveals which specific error was raised."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Hello"
+        "output": "LoadError"
       }
     ],
     "constraints": [
-      "Define a function named greet",
-      "The function must print Hello",
-      "Call greet() once after defining it"
+      "LoadError must subclass PipelineError",
+      "Catch PipelineError, not LoadError",
+      "Output must be exactly: LoadError"
     ],
     "hints": [
-      "Example: def greet(): print(\"Hello\") on the next line, then call greet()"
+      "class LoadError(PipelineError):\n    pass",
+      "print(type(e).__name__)"
     ],
-    "starterCode": "",
-    "approach": "Define greet() that prints Hello and call it. Key points: Example: def greet(): print(\"Hello\") on the next line, then call greet() A correct solution looks like this: def greet(): print(\"Hello\") greet()",
+    "starterCode": "# TODO: build the hierarchy, raise the child, catch the parent\nclass PipelineError(Exception):\n    pass\n",
+    "solutionCode": "class PipelineError(Exception):\n    pass\n\nclass LoadError(PipelineError):\n    pass\n\ntry:\n    raise LoadError(\"could not read the CSV\")\nexcept PipelineError as e:\n    print(type(e).__name__)",
     "publicTests": [
       {
-        "id": "m13-t5-p05-t1",
+        "id": "m13-t4-p06-t1",
         "label": "Sample Case",
-        "expectedStdout": "Hello",
+        "expectedStdout": "LoadError",
         "visibility": "public"
       },
       {
-        "id": "m13-t5-p05-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Hello",
+        "id": "m13-t4-p06-t2",
+        "label": "LoadError inherits from PipelineError",
+        "assertCode": "assert issubclass(LoadError, PipelineError), \"LoadError must be a subclass of PipelineError\"",
         "visibility": "public"
       },
       {
-        "id": "m13-t5-p05-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Hello",
+        "id": "m13-t4-p06-t3",
+        "label": "PipelineError inherits from Exception",
+        "assertCode": "assert issubclass(PipelineError, Exception), \"PipelineError must inherit from Exception\"",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t4-p06-t4",
+        "label": "catching the base catches the child",
+        "assertCode": "assert isinstance(LoadError('x'), PipelineError), \"A LoadError instance must also be a PipelineError\"",
         "visibility": "public"
       }
     ],
-    "solutionCode": "def greet():\n    print(\"Hello\")\ngreet()"
+    "approach": "Define PipelineError and a LoadError subclass, raise the subclass, catch it by the base class, and print its name.\n\nReference solution:\nclass PipelineError(Exception):\n    pass\n\nclass LoadError(PipelineError):\n    pass\n\ntry:\n    raise LoadError(\"could not read the CSV\")\nexcept PipelineError as e:\n    print(type(e).__name__)"
   },
   {
-    "id": "m13-t5-p06",
-    "topicId": "m13-t5",
-    "slug": "m13_t5-6",
-    "title": "Working with APIs: List Practice",
+    "id": "m13-t4-p07",
+    "topicId": "m13-t4",
+    "slug": "raise-validate-row",
+    "title": "Raise: Validate a Data Row",
     "difficulty": "hard",
-    "order": 6,
+    "order": 7,
     "layout": "challenge",
-    "description": "Create a list of three items and print index 1.",
+    "description": "Write validate(row) that raises MissingColumn for absent required columns and returns the revenue otherwise.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a list with three items about Working with APIs. Print the "
+          "value": "Define "
         },
         {
           "type": "code",
-          "value": "second item"
+          "value": "MissingColumn"
         },
         {
           "type": "text",
-          "value": " using index "
+          "value": " and "
         },
         {
           "type": "code",
-          "value": "1"
+          "value": "validate(row)"
         },
         {
           "type": "text",
-          "value": " (Python counts from 0, so index 1 is the middle item)."
+          "value": " which checks that both "
+        },
+        {
+          "type": "code",
+          "value": "region"
+        },
+        {
+          "type": "text",
+          "value": " and "
+        },
+        {
+          "type": "code",
+          "value": "revenue"
+        },
+        {
+          "type": "text",
+          "value": " are present, raising "
+        },
+        {
+          "type": "code",
+          "value": "MissingColumn(column)"
+        },
+        {
+          "type": "text",
+          "value": " for the first one missing and otherwise returning the revenue."
         }
+      ],
+      "editorPlaceholder": "# def validate(row):",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Loop the required column names and check each with the in operator.",
+          "Raise as soon as one is missing — fail fast on bad rows.",
+          "Print the caught error as f\"missing {e}\" for the second line."
+        ]
+      }
+    },
+    "examples": [
+      {
+        "output": "250\nmissing revenue"
+      }
+    ],
+    "constraints": [
+      "Required columns: region and revenue",
+      "Raise MissingColumn naming the missing column",
+      "Return row[\"revenue\"] when the row is complete"
+    ],
+    "hints": [
+      "for column in (\"region\", \"revenue\"):\n        if column not in row:\n            raise MissingColumn(column)",
+      "print(f\"missing {e}\")"
+    ],
+    "starterCode": "# TODO: validate the required columns\nclass MissingColumn(Exception):\n    pass\n\ndef validate(row):\n    pass\n",
+    "solutionCode": "class MissingColumn(Exception):\n    pass\n\ndef validate(row):\n    for column in (\"region\", \"revenue\"):\n        if column not in row:\n            raise MissingColumn(column)\n    return row[\"revenue\"]\n\nprint(validate({\"region\": \"South\", \"revenue\": 250}))\n\ntry:\n    validate({\"region\": \"North\"})\nexcept MissingColumn as e:\n    print(f\"missing {e}\")",
+    "publicTests": [
+      {
+        "id": "m13-t4-p07-t1",
+        "label": "Sample Case",
+        "expectedStdout": "250\nmissing revenue",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t4-p07-t2",
+        "label": "a complete row returns its revenue",
+        "assertCode": "assert (validate({\"region\": \"South\", \"revenue\": 250})) == (250), \"Expected \" + repr(250) + \", got \" + repr(validate({\"region\": \"South\", \"revenue\": 250}))",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t4-p07-t3",
+        "label": "a row without revenue raises MissingColumn",
+        "assertCode": "try:\n    validate({\"region\": \"North\"})\n    raise AssertionError(\"Expected MissingColumn when revenue is absent\")\nexcept MissingColumn as _e:\n    assert str(_e) == \"revenue\", f\"Expected the error to name revenue, got {str(_e)!r}\"",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t4-p07-t4",
+        "label": "a row without region raises too",
+        "assertCode": "try:\n    validate({\"revenue\": 10})\n    raise AssertionError(\"Expected MissingColumn when region is absent\")\nexcept MissingColumn:\n    pass",
+        "visibility": "public"
+      }
+    ],
+    "approach": "Write validate(row) that raises MissingColumn for absent required columns and returns the revenue otherwise.\n\nReference solution:\nclass MissingColumn(Exception):\n    pass\n\ndef validate(row):\n    for column in (\"region\", \"revenue\"):\n        if column not in row:\n            raise MissingColumn(column)\n    return row[\"revenue\"]\n\nprint(validate({\"region\": \"South\", \"revenue\": 250}))\n\ntry:\n    validate({\"region\": \"North\"})\nexcept MissingColumn as e:\n    print(f\"missing {e}\")"
+  },
+  {
+    "id": "m13-t5-p01",
+    "topicId": "m13-t5",
+    "slug": "api-parse-status",
+    "title": "APIs: Parse a JSON Response",
+    "difficulty": "easy",
+    "order": 1,
+    "layout": "challenge",
+    "description": "Parse an API response with json.loads and print the \"status\" field.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "An API replies with JSON text. Parse "
+        },
+        {
+          "type": "code",
+          "value": "response"
+        },
+        {
+          "type": "text",
+          "value": " using "
+        },
+        {
+          "type": "code",
+          "value": "json.loads"
+        },
+        {
+          "type": "text",
+          "value": " into "
+        },
+        {
+          "type": "code",
+          "value": "data"
+        },
+        {
+          "type": "text",
+          "value": " and print the "
+        },
+        {
+          "type": "code",
+          "value": "status"
+        },
+        {
+          "type": "text",
+          "value": " field."
+        }
+      ],
+      "editorPlaceholder": "# data = json.loads(response)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "json",
+        "data"
       ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A list holds values in order: items = [\"a\", \"middle\", \"c\"]",
-          "items[0] is the first item, items[1] is the second.",
-          "print(items[1]) displays the second item on its own line."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "middle"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresListAccess": true,
-      "editorPlaceholder": "# create a list and print items[1]",
-      "liveCheckRules": [
-        {
-          "id": "middle",
-          "label": "prints middle",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "middle"
-        }
-      ],
-      "emptyMessage": "Create a list with three items, then print the item at index 1.",
-      "successDetail": "Correct! You accessed the second list item with items[1]."
+          "json.loads turns a JSON string into a Python dict.",
+          "After parsing, it is an ordinary dict — use square brackets.",
+          "The browser runtime has no network, so the response text is given to you."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "middle"
+        "output": "ok"
       }
     ],
     "constraints": [
-      "Create a list with exactly three items",
-      "Print the item at index 1 (the second item)",
-      "Output must be exactly: middle"
+      "Use json.loads — do not build the dict by hand",
+      "Store the parsed dict in data",
+      "Output must be exactly: ok"
     ],
     "hints": [
-      "Example: items = [\"a\", \"middle\", \"c\"], then print(items[1])"
+      "data = json.loads(response)",
+      "print(data[\"status\"])"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: parse the response text\nimport json\n\nresponse = '{\"status\": \"ok\", \"count\": 3}'\ndata = {}\n",
+    "solutionCode": "import json\n\nresponse = '{\"status\": \"ok\", \"count\": 3}'\ndata = json.loads(response)\n\nprint(data[\"status\"])",
     "publicTests": [
       {
-        "id": "m13-t5-p06-t1",
+        "id": "m13-t5-p01-t1",
         "label": "Sample Case",
-        "expectedStdout": "middle",
+        "expectedStdout": "ok",
         "visibility": "public"
       },
       {
-        "id": "m13-t5-p06-t2",
-        "label": "Exact Output",
-        "expectedStdout": "middle",
+        "id": "m13-t5-p01-t2",
+        "label": "data has the right type",
+        "assertCode": "assert \"data\" in globals(), \"Expected a variable named data\"\nassert isinstance(data, dict), \"Expected data to be dict, got \" + type(data).__name__",
         "visibility": "public"
       },
       {
-        "id": "m13-t5-p06-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "middle",
+        "id": "m13-t5-p01-t3",
+        "label": "status was parsed",
+        "assertCode": "assert (data[\"status\"]) == (\"ok\"), \"Expected \" + repr(\"ok\") + \", got \" + repr(data[\"status\"])",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t5-p01-t4",
+        "label": "count parsed as an int",
+        "assertCode": "assert (data[\"count\"]) == (3), \"Expected \" + repr(3) + \", got \" + repr(data[\"count\"])",
         "visibility": "public"
       }
     ],
-    "solutionCode": "items = [\"a\", \"middle\", \"c\"]\nprint(items[1])",
-    "approach": "1. A list holds values in order: items = [\"a\", \"middle\", \"c\"] 2. items[0] is the first item, items[1] is the second. 3. print(items[1]) displays the second item on its own line.\n\nA correct solution looks like this:\nitems = [\"a\", \"middle\", \"c\"]\nprint(items[1])"
+    "approach": "Parse an API response with json.loads and print the \"status\" field.\n\nReference solution:\nimport json\n\nresponse = '{\"status\": \"ok\", \"count\": 3}'\ndata = json.loads(response)\n\nprint(data[\"status\"])"
   },
   {
-    "id": "m13-t5-p07",
+    "id": "m13-t5-p02",
     "topicId": "m13-t5",
-    "slug": "m13_t5-7",
-    "title": "Working with APIs: Dict Lookup",
-    "difficulty": "hard",
-    "order": 7,
+    "slug": "api-nested-field",
+    "title": "APIs: Read a Nested Field",
+    "difficulty": "easy",
+    "order": 2,
     "layout": "challenge",
-    "description": "Create a dict with key topic and print its value.",
+    "description": "Parse a nested JSON response and print the user's name from inside the nested object.",
     "challengeContent": {
+      "outputOnly": true,
       "introSegments": [
         {
           "type": "text",
-          "value": "Create a dictionary with key "
+          "value": "Parse the response and print "
         },
         {
           "type": "code",
-          "value": "topic"
+          "value": "data[\"user\"][\"name\"]"
         },
         {
           "type": "text",
-          "value": " and value "
+          "value": " — real payloads nest objects inside objects."
+        }
+      ],
+      "editorPlaceholder": "# print(data['user']['name'])",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "json",
+        "data"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Chain the keys to walk down one level at a time.",
+          "Each level is just another dict."
+        ]
+      }
+    },
+    "examples": [
+      {
+        "output": "Asha"
+      }
+    ],
+    "constraints": [
+      "Use json.loads",
+      "Chain both keys",
+      "Output must be exactly: Asha"
+    ],
+    "hints": [
+      "print(data[\"user\"][\"name\"])"
+    ],
+    "starterCode": "# TODO: reach the nested name\nimport json\n\nresponse = '{\"user\": {\"name\": \"Asha\", \"city\": \"Pune\"}}'\ndata = {}\n",
+    "solutionCode": "import json\n\nresponse = '{\"user\": {\"name\": \"Asha\", \"city\": \"Pune\"}}'\ndata = json.loads(response)\n\nprint(data[\"user\"][\"name\"])",
+    "publicTests": [
+      {
+        "id": "m13-t5-p02-t1",
+        "label": "Sample Case",
+        "expectedStdout": "Asha",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t5-p02-t2",
+        "label": "data has the right type",
+        "assertCode": "assert \"data\" in globals(), \"Expected a variable named data\"\nassert isinstance(data, dict), \"Expected data to be dict, got \" + type(data).__name__",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t5-p02-t3",
+        "label": "nested name read",
+        "assertCode": "assert (data[\"user\"][\"name\"]) == (\"Asha\"), \"Expected \" + repr(\"Asha\") + \", got \" + repr(data[\"user\"][\"name\"])",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t5-p02-t4",
+        "label": "the nested object is a dict",
+        "assertCode": "assert (type(data[\"user\"]).__name__) == (\"dict\"), \"Expected \" + repr(\"dict\") + \", got \" + repr(type(data[\"user\"]).__name__)",
+        "visibility": "public"
+      }
+    ],
+    "approach": "Parse a nested JSON response and print the user's name from inside the nested object.\n\nReference solution:\nimport json\n\nresponse = '{\"user\": {\"name\": \"Asha\", \"city\": \"Pune\"}}'\ndata = json.loads(response)\n\nprint(data[\"user\"][\"name\"])"
+  },
+  {
+    "id": "m13-t5-p03",
+    "topicId": "m13-t5",
+    "slug": "api-count-records",
+    "title": "APIs: Count the Records",
+    "difficulty": "easy",
+    "order": 3,
+    "layout": "challenge",
+    "description": "Parse a JSON list of records and print how many records the response returned.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "The "
         },
         {
           "type": "code",
-          "value": "Python"
+          "value": "results"
         },
         {
           "type": "text",
-          "value": ". Print the value using "
+          "value": " key holds a list. Parse the response and print how many records it contains."
+        }
+      ],
+      "editorPlaceholder": "# print(len(data['results']))",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "json",
+        "data"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "A JSON array becomes a Python list.",
+          "len(data[\"results\"]) counts the records."
+        ]
+      }
+    },
+    "examples": [
+      {
+        "output": "3"
+      }
+    ],
+    "constraints": [
+      "Use json.loads and len()",
+      "Output must be exactly: 3"
+    ],
+    "hints": [
+      "print(len(data[\"results\"]))"
+    ],
+    "starterCode": "# TODO: count the returned records\nimport json\n\nresponse = '{\"results\": [{\"id\": 1}, {\"id\": 2}, {\"id\": 3}]}'\ndata = {}\n",
+    "solutionCode": "import json\n\nresponse = '{\"results\": [{\"id\": 1}, {\"id\": 2}, {\"id\": 3}]}'\ndata = json.loads(response)\n\nprint(len(data[\"results\"]))",
+    "publicTests": [
+      {
+        "id": "m13-t5-p03-t1",
+        "label": "Sample Case",
+        "expectedStdout": "3",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t5-p03-t2",
+        "label": "results parsed as a list",
+        "assertCode": "assert (type(data[\"results\"]).__name__) == (\"list\"), \"Expected \" + repr(\"list\") + \", got \" + repr(type(data[\"results\"]).__name__)",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t5-p03-t3",
+        "label": "three records found",
+        "assertCode": "assert (len(data[\"results\"])) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(data[\"results\"]))",
+        "visibility": "public"
+      }
+    ],
+    "approach": "Parse a JSON list of records and print how many records the response returned.\n\nReference solution:\nimport json\n\nresponse = '{\"results\": [{\"id\": 1}, {\"id\": 2}, {\"id\": 3}]}'\ndata = json.loads(response)\n\nprint(len(data[\"results\"]))"
+  },
+  {
+    "id": "m13-t5-p04",
+    "topicId": "m13-t5",
+    "slug": "api-loop-records",
+    "title": "APIs: Loop Over the Results",
+    "difficulty": "medium",
+    "order": 4,
+    "layout": "challenge",
+    "description": "Parse a JSON response and print the city of every record, one per line.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Parse the response, then loop over "
         },
         {
           "type": "code",
-          "value": "d[\"topic\"]"
+          "value": "data[\"results\"]"
+        },
+        {
+          "type": "text",
+          "value": " and print each record's "
+        },
+        {
+          "type": "code",
+          "value": "city"
         },
         {
           "type": "text",
           "value": "."
         }
       ],
+      "editorPlaceholder": "# for record in data['results']:",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "json",
+        "data"
+      ],
       "steps": {
         "title": "What you need to know",
         "items": [
-          "A dictionary stores key-value pairs: d = {\"topic\": \"Python\"}",
-          "Use the key inside square brackets: d[\"topic\"]",
-          "print(d[\"topic\"]) displays Python on the screen."
-        ],
-        "codePreview": {
-          "comment": "# Expected output",
-          "lines": [
-            "Python"
-          ]
-        }
-      },
-      "outputOnly": true,
-      "requiresDictKey": "topic",
-      "editorPlaceholder": "# create dict and print d[\"topic\"]",
-      "liveCheckRules": [
-        {
-          "id": "val",
-          "label": "prints Python",
-          "kind": "print-value",
-          "index": 0,
-          "expected": "Python"
-        }
-      ],
-      "emptyMessage": "Create a dictionary with key topic, then print its value.",
-      "successDetail": "Correct! You looked up a dictionary value by key."
+          "Each item in the list is a dict.",
+          "Inside the loop, read record[\"city\"]."
+        ]
+      }
     },
     "examples": [
       {
-        "output": "Python"
+        "output": "Pune\nChennai\nSurat"
       }
     ],
     "constraints": [
-      "Create a dictionary with key topic",
-      "The value must be Python",
-      "Print the value using the key topic"
+      "Loop over the parsed list",
+      "One city per line, in order"
     ],
     "hints": [
-      "Example: d = {\"topic\": \"Python\"}, then print(d[\"topic\"])"
+      "for record in data[\"results\"]:",
+      "print(record[\"city\"])"
     ],
-    "starterCode": "",
+    "starterCode": "# TODO: print every city\nimport json\n\nresponse = '{\"results\": [{\"city\": \"Pune\"}, {\"city\": \"Chennai\"}, {\"city\": \"Surat\"}]}'\ndata = {}\n",
+    "solutionCode": "import json\n\nresponse = '{\"results\": [{\"city\": \"Pune\"}, {\"city\": \"Chennai\"}, {\"city\": \"Surat\"}]}'\ndata = json.loads(response)\n\nfor record in data[\"results\"]:\n    print(record[\"city\"])",
+    "publicTests": [
+      {
+        "id": "m13-t5-p04-t1",
+        "label": "Sample Case",
+        "expectedStdout": "Pune\nChennai\nSurat",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t5-p04-t2",
+        "label": "all three records parsed",
+        "assertCode": "assert ([r[\"city\"] for r in data[\"results\"]]) == ([\"Pune\", \"Chennai\", \"Surat\"]), \"Expected \" + repr([\"Pune\", \"Chennai\", \"Surat\"]) + \", got \" + repr([r[\"city\"] for r in data[\"results\"]])",
+        "visibility": "public"
+      }
+    ],
+    "approach": "Parse a JSON response and print the city of every record, one per line.\n\nReference solution:\nimport json\n\nresponse = '{\"results\": [{\"city\": \"Pune\"}, {\"city\": \"Chennai\"}, {\"city\": \"Surat\"}]}'\ndata = json.loads(response)\n\nfor record in data[\"results\"]:\n    print(record[\"city\"])"
+  },
+  {
+    "id": "m13-t5-p05",
+    "topicId": "m13-t5",
+    "slug": "api-missing-field",
+    "title": "APIs: Handle a Missing Field",
+    "difficulty": "medium",
+    "order": 5,
+    "layout": "challenge",
+    "description": "Use .get() with a default so a response without an email prints \"not provided\".",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "This response has no "
+        },
+        {
+          "type": "code",
+          "value": "email"
+        },
+        {
+          "type": "text",
+          "value": " key. Read it with "
+        },
+        {
+          "type": "code",
+          "value": "data.get(\"email\", \"not provided\")"
+        },
+        {
+          "type": "text",
+          "value": " into "
+        },
+        {
+          "type": "code",
+          "value": "email"
+        },
+        {
+          "type": "text",
+          "value": " and print it."
+        }
+      ],
+      "editorPlaceholder": "# email = data.get('email', 'not provided')",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "json",
+        "data",
+        "email"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "Optional fields are normal in APIs — square brackets would raise KeyError.",
+          ".get(key, default) returns the default instead of raising."
+        ]
+      }
+    },
+    "examples": [
+      {
+        "output": "not provided"
+      }
+    ],
+    "constraints": [
+      "Use .get() with a default",
+      "Do not add the missing key",
+      "Output must be exactly: not provided"
+    ],
+    "hints": [
+      "email = data.get(\"email\", \"not provided\")"
+    ],
+    "starterCode": "# TODO: read email safely\nimport json\n\nresponse = '{\"name\": \"Asha\", \"city\": \"Pune\"}'\ndata = json.loads(response)\nemail = \"\"\n",
+    "solutionCode": "import json\n\nresponse = '{\"name\": \"Asha\", \"city\": \"Pune\"}'\ndata = json.loads(response)\n\nemail = data.get(\"email\", \"not provided\")\nprint(email)",
+    "publicTests": [
+      {
+        "id": "m13-t5-p05-t1",
+        "label": "Sample Case",
+        "expectedStdout": "not provided",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t5-p05-t2",
+        "label": "the default was used",
+        "assertCode": "assert (email) == (\"not provided\"), \"Expected \" + repr(\"not provided\") + \", got \" + repr(email)",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t5-p05-t3",
+        "label": "the response really has no email key",
+        "assertCode": "assert \"email\" not in data, \"Do not add an email key — use .get() with a default\"",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t5-p05-t4",
+        "label": "present keys still read normally",
+        "assertCode": "assert (data.get(\"name\")) == (\"Asha\"), \"Expected \" + repr(\"Asha\") + \", got \" + repr(data.get(\"name\"))",
+        "visibility": "public"
+      }
+    ],
+    "approach": "Use .get() with a default so a response without an email prints \"not provided\".\n\nReference solution:\nimport json\n\nresponse = '{\"name\": \"Asha\", \"city\": \"Pune\"}'\ndata = json.loads(response)\n\nemail = data.get(\"email\", \"not provided\")\nprint(email)"
+  },
+  {
+    "id": "m13-t5-p06",
+    "topicId": "m13-t5",
+    "slug": "api-query-string",
+    "title": "APIs: Build the Query String",
+    "difficulty": "medium",
+    "order": 6,
+    "layout": "challenge",
+    "description": "Use urllib.parse.urlencode to turn a dict of parameters into a query string and print it.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Build the query string for "
+        },
+        {
+          "type": "code",
+          "value": "{\"q\": \"python\", \"page\": 2}"
+        },
+        {
+          "type": "text",
+          "value": " using "
+        },
+        {
+          "type": "code",
+          "value": "urlencode"
+        },
+        {
+          "type": "text",
+          "value": ", store it in "
+        },
+        {
+          "type": "code",
+          "value": "query"
+        },
+        {
+          "type": "text",
+          "value": ", and print it."
+        }
+      ],
+      "editorPlaceholder": "# query = urlencode(params)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "urlencode",
+        "params",
+        "query"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "from urllib.parse import urlencode imports the helper.",
+          "urlencode escapes values for you — safer than string concatenation.",
+          "Pairs keep the dict's order and are joined with &."
+        ]
+      }
+    },
+    "examples": [
+      {
+        "output": "q=python&page=2"
+      }
+    ],
+    "constraints": [
+      "Use urlencode — do not build the string by hand",
+      "Store the result in query",
+      "Output must be exactly: q=python&page=2"
+    ],
+    "hints": [
+      "query = urlencode(params)"
+    ],
+    "starterCode": "# TODO: encode the parameters\nfrom urllib.parse import urlencode\n\nparams = {\"q\": \"python\", \"page\": 2}\nquery = \"\"\n",
+    "solutionCode": "from urllib.parse import urlencode\n\nparams = {\"q\": \"python\", \"page\": 2}\nquery = urlencode(params)\n\nprint(query)",
+    "publicTests": [
+      {
+        "id": "m13-t5-p06-t1",
+        "label": "Sample Case",
+        "expectedStdout": "q=python&page=2",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t5-p06-t2",
+        "label": "query is built from the params",
+        "assertCode": "assert (query) == (urlencode(params)), \"Expected \" + repr(urlencode(params)) + \", got \" + repr(query)",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t5-p06-t3",
+        "label": "params were not modified",
+        "assertCode": "assert (params) == ({\"q\": \"python\", \"page\": 2}), \"Expected \" + repr({\"q\": \"python\", \"page\": 2}) + \", got \" + repr(params)",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t5-p06-t4",
+        "label": "urlencode was used",
+        "assertCode": "assert \"&\" in query and \"=\" in query, \"Expected an encoded query string like q=python&page=2\"",
+        "visibility": "public"
+      }
+    ],
+    "approach": "Use urllib.parse.urlencode to turn a dict of parameters into a query string and print it.\n\nReference solution:\nfrom urllib.parse import urlencode\n\nparams = {\"q\": \"python\", \"page\": 2}\nquery = urlencode(params)\n\nprint(query)"
+  },
+  {
+    "id": "m13-t5-p07",
+    "topicId": "m13-t5",
+    "slug": "api-summarize-active",
+    "title": "APIs: Summarise Active Users",
+    "difficulty": "hard",
+    "order": 7,
+    "layout": "challenge",
+    "description": "Parse a users response, keep only active users, print their names sorted and then the count.",
+    "challengeContent": {
+      "outputOnly": true,
+      "introSegments": [
+        {
+          "type": "text",
+          "value": "Parse the response, keep records where "
+        },
+        {
+          "type": "code",
+          "value": "active"
+        },
+        {
+          "type": "text",
+          "value": " is true, collect their names into "
+        },
+        {
+          "type": "code",
+          "value": "active_names"
+        },
+        {
+          "type": "text",
+          "value": " sorted alphabetically, print the list, then print how many there are."
+        }
+      ],
+      "editorPlaceholder": "# active_names = sorted(...)",
+      "emptyMessage": "Write your solution, then print the result.",
+      "successDetail": "Correct!",
+      "requiresVariables": [
+        "json",
+        "data",
+        "active_names"
+      ],
+      "steps": {
+        "title": "What you need to know",
+        "items": [
+          "JSON true/false becomes Python True/False after parsing.",
+          "Filter with a comprehension, then wrap it in sorted().",
+          "Print the list first, then len(active_names)."
+        ]
+      }
+    },
+    "examples": [
+      {
+        "output": "['Asha', 'Ravi']\n2"
+      }
+    ],
+    "constraints": [
+      "Filter on the active flag",
+      "Sort the names alphabetically",
+      "Print the list, then the count"
+    ],
+    "hints": [
+      "active_names = sorted(u[\"name\"] for u in data[\"users\"] if u[\"active\"])",
+      "print(active_names) then print(len(active_names))"
+    ],
+    "starterCode": "# TODO: keep active users, sort their names\nimport json\n\nresponse = '{\"users\": [{\"name\": \"Ravi\", \"active\": true}, {\"name\": \"Meera\", \"active\": false}, {\"name\": \"Asha\", \"active\": true}]}'\ndata = json.loads(response)\nactive_names = []\n",
+    "solutionCode": "import json\n\nresponse = '{\"users\": [{\"name\": \"Ravi\", \"active\": true}, {\"name\": \"Meera\", \"active\": false}, {\"name\": \"Asha\", \"active\": true}]}'\ndata = json.loads(response)\n\nactive_names = sorted(u[\"name\"] for u in data[\"users\"] if u[\"active\"])\n\nprint(active_names)\nprint(len(active_names))",
     "publicTests": [
       {
         "id": "m13-t5-p07-t1",
         "label": "Sample Case",
-        "expectedStdout": "Python",
+        "expectedStdout": "['Asha', 'Ravi']\n2",
         "visibility": "public"
       },
       {
         "id": "m13-t5-p07-t2",
-        "label": "Exact Output",
-        "expectedStdout": "Python",
+        "label": "only active users, sorted",
+        "assertCode": "assert (active_names) == ([\"Asha\", \"Ravi\"]), \"Expected \" + repr([\"Asha\", \"Ravi\"]) + \", got \" + repr(active_names)",
         "visibility": "public"
       },
       {
         "id": "m13-t5-p07-t3",
-        "label": "No Extra Output",
-        "expectedStdout": "Python",
+        "label": "inactive users were dropped",
+        "assertCode": "assert \"Meera\" not in active_names, \"Meera is inactive and should not appear\"",
+        "visibility": "public"
+      },
+      {
+        "id": "m13-t5-p07-t4",
+        "label": "all three users were parsed",
+        "assertCode": "assert (len(data[\"users\"])) == (3), \"Expected \" + repr(3) + \", got \" + repr(len(data[\"users\"]))",
         "visibility": "public"
       }
     ],
-    "solutionCode": "d = {\"topic\": \"Python\"}\nprint(d[\"topic\"])",
-    "approach": "1. A dictionary stores key-value pairs: d = {\"topic\": \"Python\"} 2. Use the key inside square brackets: d[\"topic\"] 3. print(d[\"topic\"]) displays Python on the screen.\n\nA correct solution looks like this:\nd = {\"topic\": \"Python\"}\nprint(d[\"topic\"])"
+    "approach": "Parse a users response, keep only active users, print their names sorted and then the count.\n\nReference solution:\nimport json\n\nresponse = '{\"users\": [{\"name\": \"Ravi\", \"active\": true}, {\"name\": \"Meera\", \"active\": false}, {\"name\": \"Asha\", \"active\": true}]}'\ndata = json.loads(response)\n\nactive_names = sorted(u[\"name\"] for u in data[\"users\"] if u[\"active\"])\n\nprint(active_names)\nprint(len(active_names))"
   }
 ];

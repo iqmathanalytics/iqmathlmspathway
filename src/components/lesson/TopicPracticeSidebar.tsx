@@ -15,7 +15,7 @@ import type { Module, Topic } from "@/lib/types";
 import type { PracticeListItem } from "@/lib/practice-list";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePracticeProgress } from "@/hooks/usePracticeProgress";
-import { isAdmin } from "@/lib/admin";
+import { unlocksAllContent } from "@/lib/admin";
 import {
   getSolvedPracticeIds,
   isCoursePracticeProblemUnlocked,
@@ -38,8 +38,8 @@ export function TopicPracticeSidebar({
   open,
   onClose,
 }: TopicPracticeSidebarProps) {
-  const { profile } = useAuth();
-  const admin = isAdmin(profile);
+  const { user, profile } = useAuth();
+  const unlockAll = unlocksAllContent(profile, user?.email);
   const problemIds = problems.map((p) => p.id);
   const { rows, loading } = usePracticeProgress(problemIds);
   const solvedIds = getSolvedPracticeIds(rows);
@@ -148,7 +148,7 @@ export function TopicPracticeSidebar({
                     problems,
                     p.id,
                     solvedIds,
-                    { unlockAll: admin }
+                    { unlockAll }
                   );
                   const solved = solvedIds.has(p.id);
                   const canOpen = unlocked;

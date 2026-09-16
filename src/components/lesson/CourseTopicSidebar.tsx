@@ -17,7 +17,7 @@ import { getCourse } from "@/data/courses";
 import { hasQuiz as topicHasQuiz } from "@/data/quizzes/meta";
 import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/contexts/ProgressContext";
-import { isAdmin } from "@/lib/admin";
+import { unlocksAllContent } from "@/lib/admin";
 import { isTopicProgressionDone, isTopicUnlocked } from "@/lib/topic-locking";
 import { modules } from "@/data/curriculum";
 import { NavigationLink } from "@/components/ui/NavigationLink";
@@ -254,9 +254,9 @@ export function CourseTopicSidebar({
   onClose,
   className,
 }: CourseTopicSidebarProps) {
-  const { profile } = useAuth();
+  const { user, profile } = useAuth();
   const { progress, ready } = useProgress();
-  const unlockAll = isAdmin(profile);
+  const unlockAll = unlocksAllContent(profile, user?.email);
   const scrollRef = useRef<HTMLDivElement>(null);
   const course = getCourse(courseId);
   const accent = ACCENT[courseId];

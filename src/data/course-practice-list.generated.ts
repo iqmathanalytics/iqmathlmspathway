@@ -63,56 +63,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m1-t2": [
     {
       "id": "m1-t2-p01",
-      "slug": "m1_t2-1",
-      "title": "Choosing Python: Warm-up",
+      "slug": "ds-stack-list",
+      "title": "Why Python: The Data Science Stack",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m1-t2"
     },
     {
       "id": "m1-t2-p02",
-      "slug": "m1_t2-2",
-      "title": "Choosing Python: Output Two Values",
+      "slug": "ds-stack-count",
+      "title": "Why Python: Count the Libraries",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m1-t2"
     },
     {
       "id": "m1-t2-p03",
-      "slug": "m1_t2-3",
-      "title": "Choosing Python: Simple Loop",
-      "difficulty": "medium",
+      "slug": "ds-one-liner",
+      "title": "Why Python: One Line Instead of a Loop",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m1-t2"
     },
     {
       "id": "m1-t2-p04",
-      "slug": "m1_t2-4",
-      "title": "Choosing Python: Condition",
+      "slug": "ds-library-lookup",
+      "title": "Why Python: Pick the Right Library",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m1-t2"
     },
     {
       "id": "m1-t2-p05",
-      "slug": "m1_t2-5",
-      "title": "Choosing Python: Function Stub",
+      "slug": "ds-membership",
+      "title": "Why Python: Is It In the Stack?",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m1-t2"
     },
     {
       "id": "m1-t2-p06",
-      "slug": "m1_t2-6",
-      "title": "Choosing Python: List Practice",
-      "difficulty": "hard",
+      "slug": "ds-numbered-stack",
+      "title": "Why Python: Number the Stack",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m1-t2"
     },
     {
       "id": "m1-t2-p07",
-      "slug": "m1_t2-7",
-      "title": "Choosing Python: Dict Lookup",
+      "slug": "ds-code-saved",
+      "title": "Why Python: How Much Code You Save",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m1-t2"
@@ -121,56 +121,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m1-t3": [
     {
       "id": "m1-t3-p01",
-      "slug": "m1_t3-1",
-      "title": "Setting up Python Environment: Warm-up",
+      "slug": "env-python-major",
+      "title": "Setup: Check Your Python Version",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m1-t3"
     },
     {
       "id": "m1-t3-p02",
-      "slug": "m1_t3-2",
-      "title": "Setting up Python Environment: Output Two Values",
+      "slug": "env-version-guard",
+      "title": "Setup: Require Python 3.8 or Newer",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m1-t3"
     },
     {
       "id": "m1-t3-p03",
-      "slug": "m1_t3-3",
-      "title": "Setting up Python Environment: Simple Loop",
-      "difficulty": "medium",
+      "slug": "env-import-check",
+      "title": "Setup: Confirm a Package Imports",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m1-t3"
     },
     {
       "id": "m1-t3-p04",
-      "slug": "m1_t3-4",
-      "title": "Setting up Python Environment: Condition",
+      "slug": "env-package-installed",
+      "title": "Setup: Is NumPy Installed?",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m1-t3"
     },
     {
       "id": "m1-t3-p05",
-      "slug": "m1_t3-5",
-      "title": "Setting up Python Environment: Function Stub",
+      "slug": "env-venv-path",
+      "title": "Setup: Build the Virtual Env Path",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m1-t3"
     },
     {
       "id": "m1-t3-p06",
-      "slug": "m1_t3-6",
-      "title": "Setting up Python Environment: List Practice",
-      "difficulty": "hard",
+      "slug": "env-requirements",
+      "title": "Setup: Print requirements.txt",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m1-t3"
     },
     {
       "id": "m1-t3-p07",
-      "slug": "m1_t3-7",
-      "title": "Setting up Python Environment: Dict Lookup",
+      "slug": "env-pip-command",
+      "title": "Setup: Build the pip install Command",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m1-t3"
@@ -179,56 +179,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m1-t4": [
     {
       "id": "m1-t4-p01",
-      "slug": "m1_t4-1",
-      "title": "Python IDEs: Warm-up",
+      "slug": "ide-list",
+      "title": "IDEs: List Your Options",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m1-t4"
     },
     {
       "id": "m1-t4-p02",
-      "slug": "m1_t4-2",
-      "title": "Python IDEs: Output Two Values",
+      "slug": "ide-best-for",
+      "title": "IDEs: Which Editor for Which Job",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m1-t4"
     },
     {
       "id": "m1-t4-p03",
-      "slug": "m1_t4-3",
-      "title": "Python IDEs: Simple Loop",
-      "difficulty": "medium",
+      "slug": "ide-default-choice",
+      "title": "IDEs: Print the Default Choice",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m1-t4"
     },
     {
       "id": "m1-t4-p04",
-      "slug": "m1_t4-4",
-      "title": "Python IDEs: Condition",
+      "slug": "ide-sorted",
+      "title": "IDEs: Sort the List",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m1-t4"
     },
     {
       "id": "m1-t4-p05",
-      "slug": "m1_t4-5",
-      "title": "Python IDEs: Function Stub",
+      "slug": "ide-shortcuts",
+      "title": "IDEs: Shortcut Cheat Sheet",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m1-t4"
     },
     {
       "id": "m1-t4-p06",
-      "slug": "m1_t4-6",
-      "title": "Python IDEs: List Practice",
-      "difficulty": "hard",
+      "slug": "ide-notebook-support",
+      "title": "IDEs: Filter Notebook-Capable Editors",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m1-t4"
     },
     {
       "id": "m1-t4-p07",
-      "slug": "m1_t4-7",
-      "title": "Python IDEs: Dict Lookup",
+      "slug": "ide-recommend",
+      "title": "IDEs: Recommend an Editor",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m1-t4"
@@ -237,56 +237,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m1-t5": [
     {
       "id": "m1-t5-p01",
-      "slug": "jupyter-1",
-      "title": "Introduction to Jupyter Notebooks: Warm-up",
+      "slug": "nb-cell-result",
+      "title": "Notebooks: A Cell Produces a Result",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m1-t5"
     },
     {
       "id": "m1-t5-p02",
-      "slug": "jupyter-2",
-      "title": "Introduction to Jupyter Notebooks: Output Two Values",
+      "slug": "nb-state-carries",
+      "title": "Notebooks: State Carries Between Cells",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m1-t5"
     },
     {
       "id": "m1-t5-p03",
-      "slug": "jupyter-3",
-      "title": "Introduction to Jupyter Notebooks: Loop Practice",
-      "difficulty": "medium",
+      "slug": "nb-execution-labels",
+      "title": "Notebooks: Execution Counter Labels",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m1-t5"
     },
     {
       "id": "m1-t5-p04",
-      "slug": "jupyter-4",
-      "title": "Introduction to Jupyter Notebooks: Conditional",
+      "slug": "nb-restart-kernel",
+      "title": "Notebooks: Restarting Clears State",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m1-t5"
     },
     {
       "id": "m1-t5-p05",
-      "slug": "jupyter-5",
-      "title": "Introduction to Jupyter Notebooks: List Practice",
+      "slug": "nb-cell-types",
+      "title": "Notebooks: Count Markdown vs Code Cells",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m1-t5"
     },
     {
       "id": "m1-t5-p06",
-      "slug": "jupyter-6",
-      "title": "Introduction to Jupyter Notebooks: Dict Lookup",
-      "difficulty": "hard",
+      "slug": "nb-out-history",
+      "title": "Notebooks: Look Up an Old Output",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m1-t5"
     },
     {
       "id": "m1-t5-p07",
-      "slug": "jupyter-7",
-      "title": "Introduction to Jupyter Notebooks: Format Output",
+      "slug": "nb-summary",
+      "title": "Notebooks: Summarise a Notebook",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m1-t5"
@@ -3427,56 +3427,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m13-t1": [
     {
       "id": "m13-t1-p01",
-      "slug": "m13_t1-1",
-      "title": "Reading and Writing Files: Warm-up",
+      "slug": "file-write-then-read",
+      "title": "Files: Write Then Read It Back",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m13-t1"
     },
     {
       "id": "m13-t1-p02",
-      "slug": "m13_t1-2",
-      "title": "Reading and Writing Files: Output Two Values",
+      "slug": "file-append-mode",
+      "title": "Files: Append a Second Line",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m13-t1"
     },
     {
       "id": "m13-t1-p03",
-      "slug": "m13_t1-3",
-      "title": "Reading and Writing Files: Simple Loop",
-      "difficulty": "medium",
+      "slug": "file-read-second-line",
+      "title": "Files: Read One Line Out of Many",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m13-t1"
     },
     {
       "id": "m13-t1-p04",
-      "slug": "m13_t1-4",
-      "title": "Reading and Writing Files: Condition",
+      "slug": "file-csv-total",
+      "title": "Files: Total a CSV Column",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m13-t1"
     },
     {
       "id": "m13-t1-p05",
-      "slug": "m13_t1-5",
-      "title": "Reading and Writing Files: Function Stub",
+      "slug": "file-json-roundtrip",
+      "title": "Files: Save and Load JSON",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m13-t1"
     },
     {
       "id": "m13-t1-p06",
-      "slug": "m13_t1-6",
-      "title": "Reading and Writing Files: List Practice",
-      "difficulty": "hard",
+      "slug": "file-loop-lines",
+      "title": "Files: Loop Over Every Line",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m13-t1"
     },
     {
       "id": "m13-t1-p07",
-      "slug": "m13_t1-7",
-      "title": "Reading and Writing Files: Dict Lookup",
+      "slug": "file-filter-to-new-file",
+      "title": "Files: Filter One File Into Another",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m13-t1"
@@ -3485,56 +3485,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m13-t2": [
     {
       "id": "m13-t2-p01",
-      "slug": "m13_t2-1",
-      "title": "Working with File Paths: Warm-up",
+      "slug": "path-filename",
+      "title": "Paths: Get the File Name",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m13-t2"
     },
     {
       "id": "m13-t2-p02",
-      "slug": "m13_t2-2",
-      "title": "Working with File Paths: Output Two Values",
+      "slug": "path-suffix",
+      "title": "Paths: Read the Extension",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m13-t2"
     },
     {
       "id": "m13-t2-p03",
-      "slug": "m13_t2-3",
-      "title": "Working with File Paths: Simple Loop",
-      "difficulty": "medium",
+      "slug": "path-stem",
+      "title": "Paths: Name Without Extension",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m13-t2"
     },
     {
       "id": "m13-t2-p04",
-      "slug": "m13_t2-4",
-      "title": "Working with File Paths: Condition",
+      "slug": "path-join-parts",
+      "title": "Paths: Join Folders Safely",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m13-t2"
     },
     {
       "id": "m13-t2-p05",
-      "slug": "m13_t2-5",
-      "title": "Working with File Paths: Function Stub",
+      "slug": "path-parent",
+      "title": "Paths: Find the Folder",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m13-t2"
     },
     {
       "id": "m13-t2-p06",
-      "slug": "m13_t2-6",
-      "title": "Working with File Paths: List Practice",
-      "difficulty": "hard",
+      "slug": "path-with-suffix",
+      "title": "Paths: Swap the Extension",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m13-t2"
     },
     {
       "id": "m13-t2-p07",
-      "slug": "m13_t2-7",
-      "title": "Working with File Paths: Dict Lookup",
+      "slug": "path-exists-check",
+      "title": "Paths: Does the File Exist?",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m13-t2"
@@ -3543,56 +3543,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m13-t3": [
     {
       "id": "m13-t3-p01",
-      "slug": "m13_t3-1",
-      "title": "try-except-finally: Warm-up",
+      "slug": "try-zero-division",
+      "title": "Errors: Catch a Division by Zero",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m13-t3"
     },
     {
       "id": "m13-t3-p02",
-      "slug": "m13_t3-2",
-      "title": "try-except-finally: Output Two Values",
+      "slug": "try-value-error",
+      "title": "Errors: Handle a Bad Number",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m13-t3"
     },
     {
       "id": "m13-t3-p03",
-      "slug": "m13_t3-3",
-      "title": "try-except-finally: Simple Loop",
-      "difficulty": "medium",
+      "slug": "try-finally-order",
+      "title": "Errors: finally Always Runs",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m13-t3"
     },
     {
       "id": "m13-t3-p04",
-      "slug": "m13_t3-4",
-      "title": "try-except-finally: Condition",
+      "slug": "try-key-error",
+      "title": "Errors: Missing Dictionary Key",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m13-t3"
     },
     {
       "id": "m13-t3-p05",
-      "slug": "m13_t3-5",
-      "title": "try-except-finally: Function Stub",
+      "slug": "try-else-clause",
+      "title": "Errors: The else Branch",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m13-t3"
     },
     {
       "id": "m13-t3-p06",
-      "slug": "m13_t3-6",
-      "title": "try-except-finally: List Practice",
-      "difficulty": "hard",
+      "slug": "try-collect-valid",
+      "title": "Errors: Skip the Bad Rows",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m13-t3"
     },
     {
       "id": "m13-t3-p07",
-      "slug": "m13_t3-7",
-      "title": "try-except-finally: Dict Lookup",
+      "slug": "try-safe-divide",
+      "title": "Errors: A Safe Divide Function",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m13-t3"
@@ -3601,56 +3601,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m13-t4": [
     {
       "id": "m13-t4-p01",
-      "slug": "m13_t4-1",
-      "title": "Raising Custom Exceptions: Warm-up",
+      "slug": "raise-value-error",
+      "title": "Raise: Reject Bad Input",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m13-t4"
     },
     {
       "id": "m13-t4-p02",
-      "slug": "m13_t4-2",
-      "title": "Raising Custom Exceptions: Output Two Values",
+      "slug": "custom-exception-class",
+      "title": "Raise: Your Own Exception Class",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m13-t4"
     },
     {
       "id": "m13-t4-p03",
-      "slug": "m13_t4-3",
-      "title": "Raising Custom Exceptions: Simple Loop",
-      "difficulty": "medium",
+      "slug": "raise-error-name",
+      "title": "Raise: Report the Error Type",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m13-t4"
     },
     {
       "id": "m13-t4-p04",
-      "slug": "m13_t4-4",
-      "title": "Raising Custom Exceptions: Condition",
+      "slug": "raise-validate-units",
+      "title": "Raise: Validate Units Sold",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m13-t4"
     },
     {
       "id": "m13-t4-p05",
-      "slug": "m13_t4-5",
-      "title": "Raising Custom Exceptions: Function Stub",
+      "slug": "raise-exception-attribute",
+      "title": "Raise: Carry Data on the Exception",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m13-t4"
     },
     {
       "id": "m13-t4-p06",
-      "slug": "m13_t4-6",
-      "title": "Raising Custom Exceptions: List Practice",
+      "slug": "raise-exception-hierarchy",
+      "title": "Raise: An Error Hierarchy",
       "difficulty": "hard",
       "order": 6,
       "topicId": "m13-t4"
     },
     {
       "id": "m13-t4-p07",
-      "slug": "m13_t4-7",
-      "title": "Raising Custom Exceptions: Dict Lookup",
+      "slug": "raise-validate-row",
+      "title": "Raise: Validate a Data Row",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m13-t4"
@@ -3659,56 +3659,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m13-t5": [
     {
       "id": "m13-t5-p01",
-      "slug": "m13_t5-1",
-      "title": "Working with APIs: Warm-up",
+      "slug": "api-parse-status",
+      "title": "APIs: Parse a JSON Response",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m13-t5"
     },
     {
       "id": "m13-t5-p02",
-      "slug": "m13_t5-2",
-      "title": "Working with APIs: Output Two Values",
+      "slug": "api-nested-field",
+      "title": "APIs: Read a Nested Field",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m13-t5"
     },
     {
       "id": "m13-t5-p03",
-      "slug": "m13_t5-3",
-      "title": "Working with APIs: Simple Loop",
-      "difficulty": "medium",
+      "slug": "api-count-records",
+      "title": "APIs: Count the Records",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m13-t5"
     },
     {
       "id": "m13-t5-p04",
-      "slug": "m13_t5-4",
-      "title": "Working with APIs: Condition",
+      "slug": "api-loop-records",
+      "title": "APIs: Loop Over the Results",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m13-t5"
     },
     {
       "id": "m13-t5-p05",
-      "slug": "m13_t5-5",
-      "title": "Working with APIs: Function Stub",
+      "slug": "api-missing-field",
+      "title": "APIs: Handle a Missing Field",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m13-t5"
     },
     {
       "id": "m13-t5-p06",
-      "slug": "m13_t5-6",
-      "title": "Working with APIs: List Practice",
-      "difficulty": "hard",
+      "slug": "api-query-string",
+      "title": "APIs: Build the Query String",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m13-t5"
     },
     {
       "id": "m13-t5-p07",
-      "slug": "m13_t5-7",
-      "title": "Working with APIs: Dict Lookup",
+      "slug": "api-summarize-active",
+      "title": "APIs: Summarise Active Users",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m13-t5"
@@ -3717,56 +3717,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m14-t1": [
     {
       "id": "m14-t1-p01",
-      "slug": "m14_t1-1",
-      "title": "Introduction to NumPy Arrays: Warm-up",
+      "slug": "np-first-array",
+      "title": "NumPy: Your First Array",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m14-t1"
     },
     {
       "id": "m14-t1-p02",
-      "slug": "m14_t1-2",
-      "title": "Introduction to NumPy Arrays: Output Two Values",
+      "slug": "np-vectorized-double",
+      "title": "NumPy: Double Every Value at Once",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m14-t1"
     },
     {
       "id": "m14-t1-p03",
-      "slug": "m14_t1-3",
-      "title": "Introduction to NumPy Arrays: Simple Loop",
-      "difficulty": "medium",
+      "slug": "np-array-sum",
+      "title": "NumPy: Total an Array",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m14-t1"
     },
     {
       "id": "m14-t1-p04",
-      "slug": "m14_t1-4",
-      "title": "Introduction to NumPy Arrays: Condition",
-      "difficulty": "medium",
+      "slug": "np-array-type",
+      "title": "NumPy: What Type Is It?",
+      "difficulty": "easy",
       "order": 4,
       "topicId": "m14-t1"
     },
     {
       "id": "m14-t1-p05",
-      "slug": "m14_t1-5",
-      "title": "Introduction to NumPy Arrays: Function Stub",
+      "slug": "np-add-arrays",
+      "title": "NumPy: Add Two Arrays",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m14-t1"
     },
     {
       "id": "m14-t1-p06",
-      "slug": "m14_t1-6",
-      "title": "Introduction to NumPy Arrays: List Practice",
-      "difficulty": "hard",
+      "slug": "np-list-vs-array",
+      "title": "NumPy: List vs Array Multiplication",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m14-t1"
     },
     {
       "id": "m14-t1-p07",
-      "slug": "m14_t1-7",
-      "title": "Introduction to NumPy Arrays: Dict Lookup",
+      "slug": "np-astype-float",
+      "title": "NumPy: Convert to Floats",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m14-t1"
@@ -3775,56 +3775,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m14-t2": [
     {
       "id": "m14-t2-p01",
-      "slug": "m14_t2-1",
-      "title": "Array Creation and Properties: Warm-up",
+      "slug": "np-zeros",
+      "title": "Creation: An Array of Zeros",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m14-t2"
     },
     {
       "id": "m14-t2-p02",
-      "slug": "m14_t2-2",
-      "title": "Array Creation and Properties: Output Two Values",
+      "slug": "np-arange",
+      "title": "Creation: Even Numbers with arange",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m14-t2"
     },
     {
       "id": "m14-t2-p03",
-      "slug": "m14_t2-3",
-      "title": "Array Creation and Properties: Simple Loop",
-      "difficulty": "medium",
+      "slug": "np-linspace",
+      "title": "Creation: Evenly Spaced with linspace",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m14-t2"
     },
     {
       "id": "m14-t2-p04",
-      "slug": "m14_t2-4",
-      "title": "Array Creation and Properties: Condition",
+      "slug": "np-shape",
+      "title": "Properties: Read the Shape",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m14-t2"
     },
     {
       "id": "m14-t2-p05",
-      "slug": "m14_t2-5",
-      "title": "Array Creation and Properties: Function Stub",
+      "slug": "np-dtype",
+      "title": "Properties: Check the dtype",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m14-t2"
     },
     {
       "id": "m14-t2-p06",
-      "slug": "m14_t2-6",
-      "title": "Array Creation and Properties: List Practice",
-      "difficulty": "hard",
+      "slug": "np-ndim-size",
+      "title": "Properties: Dimensions and Size",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m14-t2"
     },
     {
       "id": "m14-t2-p07",
-      "slug": "m14_t2-7",
-      "title": "Array Creation and Properties: Dict Lookup",
+      "slug": "np-reshape",
+      "title": "Properties: Reshape a Range",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m14-t2"
@@ -3833,56 +3833,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m14-t3": [
     {
       "id": "m14-t3-p01",
-      "slug": "m14_t3-1",
-      "title": "Indexing and Slicing Arrays: Warm-up",
+      "slug": "np-index-first",
+      "title": "Indexing: The First Element",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m14-t3"
     },
     {
       "id": "m14-t3-p02",
-      "slug": "m14_t3-2",
-      "title": "Indexing and Slicing Arrays: Output Two Values",
+      "slug": "np-slice-middle",
+      "title": "Indexing: Slice the Middle",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m14-t3"
     },
     {
       "id": "m14-t3-p03",
-      "slug": "m14_t3-3",
-      "title": "Indexing and Slicing Arrays: Simple Loop",
-      "difficulty": "medium",
+      "slug": "np-negative-index",
+      "title": "Indexing: Count From the End",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m14-t3"
     },
     {
       "id": "m14-t3-p04",
-      "slug": "m14_t3-4",
-      "title": "Indexing and Slicing Arrays: Condition",
+      "slug": "np-2d-element",
+      "title": "Indexing: One Cell of a 2-D Array",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m14-t3"
     },
     {
       "id": "m14-t3-p05",
-      "slug": "m14_t3-5",
-      "title": "Indexing and Slicing Arrays: Function Stub",
+      "slug": "np-2d-column",
+      "title": "Indexing: Take a Whole Column",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m14-t3"
     },
     {
       "id": "m14-t3-p06",
-      "slug": "m14_t3-6",
-      "title": "Indexing and Slicing Arrays: List Practice",
-      "difficulty": "hard",
+      "slug": "np-boolean-mask",
+      "title": "Indexing: Filter with a Boolean Mask",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m14-t3"
     },
     {
       "id": "m14-t3-p07",
-      "slug": "m14_t3-7",
-      "title": "Indexing and Slicing Arrays: Dict Lookup",
+      "slug": "np-step-slice",
+      "title": "Indexing: Every Other Value",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m14-t3"
@@ -3891,56 +3891,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m14-t4": [
     {
       "id": "m14-t4-p01",
-      "slug": "m14_t4-1",
-      "title": "Array Operations and Broadcasting: Warm-up",
+      "slug": "np-add-scalar",
+      "title": "Operations: Add a Number to Every Element",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m14-t4"
     },
     {
       "id": "m14-t4-p02",
-      "slug": "m14_t4-2",
-      "title": "Array Operations and Broadcasting: Output Two Values",
+      "slug": "np-multiply-arrays",
+      "title": "Operations: Units Times Price",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m14-t4"
     },
     {
       "id": "m14-t4-p03",
-      "slug": "m14_t4-3",
-      "title": "Array Operations and Broadcasting: Simple Loop",
+      "slug": "np-broadcast-row",
+      "title": "Operations: Broadcast a Row",
       "difficulty": "medium",
       "order": 3,
       "topicId": "m14-t4"
     },
     {
       "id": "m14-t4-p04",
-      "slug": "m14_t4-4",
-      "title": "Array Operations and Broadcasting: Condition",
+      "slug": "np-comparison-mask",
+      "title": "Operations: Build a Comparison Mask",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m14-t4"
     },
     {
       "id": "m14-t4-p05",
-      "slug": "m14_t4-5",
-      "title": "Array Operations and Broadcasting: Function Stub",
+      "slug": "np-where",
+      "title": "Operations: Label Values with np.where",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m14-t4"
     },
     {
       "id": "m14-t4-p06",
-      "slug": "m14_t4-6",
-      "title": "Array Operations and Broadcasting: List Practice",
-      "difficulty": "hard",
+      "slug": "np-dot-product",
+      "title": "Operations: Dot Product for Total Revenue",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m14-t4"
     },
     {
       "id": "m14-t4-p07",
-      "slug": "m14_t4-7",
-      "title": "Array Operations and Broadcasting: Dict Lookup",
+      "slug": "np-standardize",
+      "title": "Operations: Standardise an Array",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m14-t4"
@@ -3949,56 +3949,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m14-t5": [
     {
       "id": "m14-t5-p01",
-      "slug": "m14_t5-1",
-      "title": "Statistical Functions in NumPy: Warm-up",
+      "slug": "np-mean",
+      "title": "Stats: Average of an Array",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m14-t5"
     },
     {
       "id": "m14-t5-p02",
-      "slug": "m14_t5-2",
-      "title": "Statistical Functions in NumPy: Output Two Values",
+      "slug": "np-max-min",
+      "title": "Stats: Best and Worst Day",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m14-t5"
     },
     {
       "id": "m14-t5-p03",
-      "slug": "m14_t5-3",
-      "title": "Statistical Functions in NumPy: Simple Loop",
-      "difficulty": "medium",
+      "slug": "np-median",
+      "title": "Stats: The Median",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m14-t5"
     },
     {
       "id": "m14-t5-p04",
-      "slug": "m14_t5-4",
-      "title": "Statistical Functions in NumPy: Condition",
+      "slug": "np-std-round",
+      "title": "Stats: Standard Deviation",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m14-t5"
     },
     {
       "id": "m14-t5-p05",
-      "slug": "m14_t5-5",
-      "title": "Statistical Functions in NumPy: Function Stub",
+      "slug": "np-argmax",
+      "title": "Stats: Which Day Was Best?",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m14-t5"
     },
     {
       "id": "m14-t5-p06",
-      "slug": "m14_t5-6",
-      "title": "Statistical Functions in NumPy: List Practice",
-      "difficulty": "hard",
+      "slug": "np-axis-mean",
+      "title": "Stats: Column Averages",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m14-t5"
     },
     {
       "id": "m14-t5-p07",
-      "slug": "m14_t5-7",
-      "title": "Statistical Functions in NumPy: Dict Lookup",
+      "slug": "np-stats-summary",
+      "title": "Stats: A One-Line Summary",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m14-t5"
@@ -4007,56 +4007,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m15-t1": [
     {
       "id": "m15-t1-p01",
-      "slug": "m15_t1-1",
-      "title": "Series and DataFrames: Warm-up",
+      "slug": "pd-series-create",
+      "title": "pandas: Your First Series",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m15-t1"
     },
     {
       "id": "m15-t1-p02",
-      "slug": "m15_t1-2",
-      "title": "Series and DataFrames: Output Two Values",
+      "slug": "pd-series-labels",
+      "title": "pandas: Label the Index",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m15-t1"
     },
     {
       "id": "m15-t1-p03",
-      "slug": "m15_t1-3",
-      "title": "Series and DataFrames: Simple Loop",
-      "difficulty": "medium",
+      "slug": "pd-dataframe-columns",
+      "title": "pandas: Build a DataFrame",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m15-t1"
     },
     {
       "id": "m15-t1-p04",
-      "slug": "m15_t1-4",
-      "title": "Series and DataFrames: Condition",
+      "slug": "pd-dataframe-shape",
+      "title": "pandas: Rows and Columns",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m15-t1"
     },
     {
       "id": "m15-t1-p05",
-      "slug": "m15_t1-5",
-      "title": "Series and DataFrames: Function Stub",
+      "slug": "pd-column-sum",
+      "title": "pandas: Total a Column",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m15-t1"
     },
     {
       "id": "m15-t1-p06",
-      "slug": "m15_t1-6",
-      "title": "Series and DataFrames: List Practice",
-      "difficulty": "hard",
+      "slug": "pd-column-mean",
+      "title": "pandas: Average a Column",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m15-t1"
     },
     {
       "id": "m15-t1-p07",
-      "slug": "m15_t1-7",
-      "title": "Series and DataFrames: Dict Lookup",
+      "slug": "pd-add-column",
+      "title": "pandas: Add a Calculated Column",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m15-t1"
@@ -4065,56 +4065,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m15-t2": [
     {
       "id": "m15-t2-p01",
-      "slug": "m15_t2-1",
-      "title": "Reading and Writing Data: Warm-up",
+      "slug": "pd-read-csv-string",
+      "title": "IO: Read CSV Text",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m15-t2"
     },
     {
       "id": "m15-t2-p02",
-      "slug": "m15_t2-2",
-      "title": "Reading and Writing Data: Output Two Values",
+      "slug": "pd-to-csv-file",
+      "title": "IO: Write a CSV File",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m15-t2"
     },
     {
       "id": "m15-t2-p03",
-      "slug": "m15_t2-3",
-      "title": "Reading and Writing Data: Simple Loop",
+      "slug": "pd-read-csv-file",
+      "title": "IO: Load a CSV From Disk",
       "difficulty": "medium",
       "order": 3,
       "topicId": "m15-t2"
     },
     {
       "id": "m15-t2-p04",
-      "slug": "m15_t2-4",
-      "title": "Reading and Writing Data: Condition",
+      "slug": "pd-json-records",
+      "title": "IO: JSON Records to DataFrame",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m15-t2"
     },
     {
       "id": "m15-t2-p05",
-      "slug": "m15_t2-5",
-      "title": "Reading and Writing Data: Function Stub",
+      "slug": "pd-to-json-file",
+      "title": "IO: Export to JSON",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m15-t2"
     },
     {
       "id": "m15-t2-p06",
-      "slug": "m15_t2-6",
-      "title": "Reading and Writing Data: List Practice",
-      "difficulty": "hard",
+      "slug": "pd-write-selected-columns",
+      "title": "IO: Export Only Some Columns",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m15-t2"
     },
     {
       "id": "m15-t2-p07",
-      "slug": "m15_t2-7",
-      "title": "Reading and Writing Data: Dict Lookup",
+      "slug": "pd-csv-roundtrip",
+      "title": "IO: Round-Trip a DataFrame",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m15-t2"
@@ -4123,56 +4123,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m15-t3": [
     {
       "id": "m15-t3-p01",
-      "slug": "m15_t3-1",
-      "title": "Indexing Filtering and Selecting: Warm-up",
+      "slug": "pd-select-column",
+      "title": "Select: One Column",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m15-t3"
     },
     {
       "id": "m15-t3-p02",
-      "slug": "m15_t3-2",
-      "title": "Indexing Filtering and Selecting: Output Two Values",
+      "slug": "pd-loc-cell",
+      "title": "Select: One Cell with loc",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m15-t3"
     },
     {
       "id": "m15-t3-p03",
-      "slug": "m15_t3-3",
-      "title": "Indexing Filtering and Selecting: Simple Loop",
-      "difficulty": "medium",
+      "slug": "pd-iloc-row",
+      "title": "Select: By Position with iloc",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m15-t3"
     },
     {
       "id": "m15-t3-p04",
-      "slug": "m15_t3-4",
-      "title": "Indexing Filtering and Selecting: Condition",
+      "slug": "pd-filter-rows",
+      "title": "Select: Filter Rows by Value",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m15-t3"
     },
     {
       "id": "m15-t3-p05",
-      "slug": "m15_t3-5",
-      "title": "Indexing Filtering and Selecting: Function Stub",
+      "slug": "pd-isin",
+      "title": "Select: Match a List of Values",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m15-t3"
     },
     {
       "id": "m15-t3-p06",
-      "slug": "m15_t3-6",
-      "title": "Indexing Filtering and Selecting: List Practice",
-      "difficulty": "hard",
+      "slug": "pd-multi-condition",
+      "title": "Select: Two Conditions at Once",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m15-t3"
     },
     {
       "id": "m15-t3-p07",
-      "slug": "m15_t3-7",
-      "title": "Indexing Filtering and Selecting: Dict Lookup",
+      "slug": "pd-loc-rows-columns",
+      "title": "Select: Rows and Columns Together",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m15-t3"
@@ -4181,56 +4181,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m15-t4": [
     {
       "id": "m15-t4-p01",
-      "slug": "m15_t4-1",
-      "title": "Data Cleaning: Warm-up",
+      "slug": "pd-count-missing",
+      "title": "Cleaning: Count Missing Values",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m15-t4"
     },
     {
       "id": "m15-t4-p02",
-      "slug": "m15_t4-2",
-      "title": "Data Cleaning: Output Two Values",
+      "slug": "pd-fillna",
+      "title": "Cleaning: Fill the Gaps",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m15-t4"
     },
     {
       "id": "m15-t4-p03",
-      "slug": "m15_t4-3",
-      "title": "Data Cleaning: Simple Loop",
-      "difficulty": "medium",
+      "slug": "pd-dropna",
+      "title": "Cleaning: Drop Incomplete Rows",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m15-t4"
     },
     {
       "id": "m15-t4-p04",
-      "slug": "m15_t4-4",
-      "title": "Data Cleaning: Condition",
+      "slug": "pd-strip-strings",
+      "title": "Cleaning: Trim Whitespace",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m15-t4"
     },
     {
       "id": "m15-t4-p05",
-      "slug": "m15_t4-5",
-      "title": "Data Cleaning: Function Stub",
+      "slug": "pd-drop-duplicates",
+      "title": "Cleaning: Remove Duplicate Rows",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m15-t4"
     },
     {
       "id": "m15-t4-p06",
-      "slug": "m15_t4-6",
-      "title": "Data Cleaning: List Practice",
-      "difficulty": "hard",
+      "slug": "pd-astype-int",
+      "title": "Cleaning: Fix the Column Type",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m15-t4"
     },
     {
       "id": "m15-t4-p07",
-      "slug": "m15_t4-7",
-      "title": "Data Cleaning: Dict Lookup",
+      "slug": "pd-clean-pipeline",
+      "title": "Cleaning: A Full Cleaning Pass",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m15-t4"
@@ -4239,56 +4239,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m15-t5": [
     {
       "id": "m15-t5-p01",
-      "slug": "m15_t5-1",
-      "title": "GroupBy Merging and Joining: Warm-up",
+      "slug": "pd-groupby-sum",
+      "title": "GroupBy: Revenue per Region",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m15-t5"
     },
     {
       "id": "m15-t5-p02",
-      "slug": "m15_t5-2",
-      "title": "GroupBy Merging and Joining: Output Two Values",
+      "slug": "pd-groupby-size",
+      "title": "GroupBy: Rows per Region",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m15-t5"
     },
     {
       "id": "m15-t5-p03",
-      "slug": "m15_t5-3",
-      "title": "GroupBy Merging and Joining: Simple Loop",
+      "slug": "pd-groupby-mean",
+      "title": "GroupBy: Average per Region",
       "difficulty": "medium",
       "order": 3,
       "topicId": "m15-t5"
     },
     {
       "id": "m15-t5-p04",
-      "slug": "m15_t5-4",
-      "title": "GroupBy Merging and Joining: Condition",
+      "slug": "pd-merge-on-key",
+      "title": "Merge: Join Sales to the Catalogue",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m15-t5"
     },
     {
       "id": "m15-t5-p05",
-      "slug": "m15_t5-5",
-      "title": "GroupBy Merging and Joining: Function Stub",
+      "slug": "pd-merge-then-group",
+      "title": "Merge: Group After Joining",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m15-t5"
     },
     {
       "id": "m15-t5-p06",
-      "slug": "m15_t5-6",
-      "title": "GroupBy Merging and Joining: List Practice",
-      "difficulty": "hard",
+      "slug": "pd-concat",
+      "title": "Concat: Stack Two Months",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m15-t5"
     },
     {
       "id": "m15-t5-p07",
-      "slug": "m15_t5-7",
-      "title": "GroupBy Merging and Joining: Dict Lookup",
+      "slug": "pd-groupby-agg",
+      "title": "GroupBy: Two Aggregations at Once",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m15-t5"
@@ -4297,56 +4297,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m15-t6": [
     {
       "id": "m15-t6-p01",
-      "slug": "m15_t6-1",
-      "title": "Pivot Tables: Warm-up",
+      "slug": "pd-pivot-basic",
+      "title": "Pivot: Totals by Region",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m15-t6"
     },
     {
       "id": "m15-t6-p02",
-      "slug": "m15_t6-2",
-      "title": "Pivot Tables: Output Two Values",
+      "slug": "pd-pivot-columns",
+      "title": "Pivot: Region by Category Grid",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m15-t6"
     },
     {
       "id": "m15-t6-p03",
-      "slug": "m15_t6-3",
-      "title": "Pivot Tables: Simple Loop",
-      "difficulty": "medium",
+      "slug": "pd-pivot-index",
+      "title": "Pivot: Read the Row Labels",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m15-t6"
     },
     {
       "id": "m15-t6-p04",
-      "slug": "m15_t6-4",
-      "title": "Pivot Tables: Condition",
+      "slug": "pd-pivot-lookup",
+      "title": "Pivot: Read One Cell",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m15-t6"
     },
     {
       "id": "m15-t6-p05",
-      "slug": "m15_t6-5",
-      "title": "Pivot Tables: Function Stub",
+      "slug": "pd-pivot-mean",
+      "title": "Pivot: Averages Instead of Totals",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m15-t6"
     },
     {
       "id": "m15-t6-p06",
-      "slug": "m15_t6-6",
-      "title": "Pivot Tables: List Practice",
-      "difficulty": "hard",
+      "slug": "pd-pivot-columns-list",
+      "title": "Pivot: Read the Column Labels",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m15-t6"
     },
     {
       "id": "m15-t6-p07",
-      "slug": "m15_t6-7",
-      "title": "Pivot Tables: Dict Lookup",
+      "slug": "pd-pivot-row-totals",
+      "title": "Pivot: Total Each Row",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m15-t6"
@@ -4355,56 +4355,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m16-t1": [
     {
       "id": "m16-t1-p01",
-      "slug": "m16_t1-1",
-      "title": "Introduction to Matplotlib: Warm-up",
+      "slug": "plt-first-chart",
+      "title": "Matplotlib: Your First Line Chart",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m16-t1"
     },
     {
       "id": "m16-t1-p02",
-      "slug": "m16_t1-2",
-      "title": "Introduction to Matplotlib: Output Two Values",
+      "slug": "plt-title",
+      "title": "Matplotlib: Give the Chart a Title",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m16-t1"
     },
     {
       "id": "m16-t1-p03",
-      "slug": "m16_t1-3",
-      "title": "Introduction to Matplotlib: Simple Loop",
-      "difficulty": "medium",
+      "slug": "plt-axis-labels",
+      "title": "Matplotlib: Label Both Axes",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m16-t1"
     },
     {
       "id": "m16-t1-p04",
-      "slug": "m16_t1-4",
-      "title": "Introduction to Matplotlib: Condition",
+      "slug": "plt-figure-size",
+      "title": "Matplotlib: Set the Figure Size",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m16-t1"
     },
     {
       "id": "m16-t1-p05",
-      "slug": "m16_t1-5",
-      "title": "Introduction to Matplotlib: Function Stub",
+      "slug": "plt-two-lines",
+      "title": "Matplotlib: Compare Two Series",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m16-t1"
     },
     {
       "id": "m16-t1-p06",
-      "slug": "m16_t1-6",
-      "title": "Introduction to Matplotlib: List Practice",
-      "difficulty": "hard",
+      "slug": "plt-savefig",
+      "title": "Matplotlib: Save the Chart to a File",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m16-t1"
     },
     {
       "id": "m16-t1-p07",
-      "slug": "m16_t1-7",
-      "title": "Introduction to Matplotlib: Dict Lookup",
+      "slug": "plt-complete-chart",
+      "title": "Matplotlib: A Report-Ready Chart",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m16-t1"
@@ -4413,56 +4413,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m16-t2": [
     {
       "id": "m16-t2-p01",
-      "slug": "m16_t2-1",
-      "title": "Line Bar Scatter and Histogram: Warm-up",
+      "slug": "chart-line-trend",
+      "title": "Charts: A Line for Trends",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m16-t2"
     },
     {
       "id": "m16-t2-p02",
-      "slug": "m16_t2-2",
-      "title": "Line Bar Scatter and Histogram: Output Two Values",
+      "slug": "chart-bar-categories",
+      "title": "Charts: A Bar for Categories",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m16-t2"
     },
     {
       "id": "m16-t2-p03",
-      "slug": "m16_t2-3",
-      "title": "Line Bar Scatter and Histogram: Simple Loop",
-      "difficulty": "medium",
+      "slug": "chart-scatter-relationship",
+      "title": "Charts: A Scatter for Relationships",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m16-t2"
     },
     {
       "id": "m16-t2-p04",
-      "slug": "m16_t2-4",
-      "title": "Line Bar Scatter and Histogram: Condition",
+      "slug": "chart-histogram-bins",
+      "title": "Charts: A Histogram for Distributions",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m16-t2"
     },
     {
       "id": "m16-t2-p05",
-      "slug": "m16_t2-5",
-      "title": "Line Bar Scatter and Histogram: Function Stub",
+      "slug": "chart-horizontal-bar",
+      "title": "Charts: Horizontal Bars for Long Labels",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m16-t2"
     },
     {
       "id": "m16-t2-p06",
-      "slug": "m16_t2-6",
-      "title": "Line Bar Scatter and Histogram: List Practice",
-      "difficulty": "hard",
+      "slug": "chart-pie-share",
+      "title": "Charts: A Pie for Shares of a Whole",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m16-t2"
     },
     {
       "id": "m16-t2-p07",
-      "slug": "m16_t2-7",
-      "title": "Line Bar Scatter and Histogram: Dict Lookup",
+      "slug": "chart-pick-the-right-one",
+      "title": "Charts: Pick the Right Chart",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m16-t2"
@@ -4471,56 +4471,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m16-t3": [
     {
       "id": "m16-t3-p01",
-      "slug": "m16_t3-1",
-      "title": "Customizing Plots: Warm-up",
+      "slug": "custom-color",
+      "title": "Custom: Set the Line Colour",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m16-t3"
     },
     {
       "id": "m16-t3-p02",
-      "slug": "m16_t3-2",
-      "title": "Customizing Plots: Output Two Values",
+      "slug": "custom-linestyle",
+      "title": "Custom: Dash the Line",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m16-t3"
     },
     {
       "id": "m16-t3-p03",
-      "slug": "m16_t3-3",
-      "title": "Customizing Plots: Simple Loop",
-      "difficulty": "medium",
+      "slug": "custom-marker",
+      "title": "Custom: Mark Each Data Point",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m16-t3"
     },
     {
       "id": "m16-t3-p04",
-      "slug": "m16_t3-4",
-      "title": "Customizing Plots: Condition",
+      "slug": "custom-legend",
+      "title": "Custom: Add a Legend",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m16-t3"
     },
     {
       "id": "m16-t3-p05",
-      "slug": "m16_t3-5",
-      "title": "Customizing Plots: Function Stub",
+      "slug": "custom-axis-limits",
+      "title": "Custom: Fix the Y Axis Range",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m16-t3"
     },
     {
       "id": "m16-t3-p06",
-      "slug": "m16_t3-6",
-      "title": "Customizing Plots: List Practice",
-      "difficulty": "hard",
+      "slug": "custom-ticks",
+      "title": "Custom: Control the X Ticks",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m16-t3"
     },
     {
       "id": "m16-t3-p07",
-      "slug": "m16_t3-7",
-      "title": "Customizing Plots: Dict Lookup",
+      "slug": "custom-styled-chart",
+      "title": "Custom: Style a Chart End to End",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m16-t3"
@@ -4529,56 +4529,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m16-t4": [
     {
       "id": "m16-t4-p01",
-      "slug": "m16_t4-1",
-      "title": "Introduction to Seaborn: Warm-up",
+      "slug": "tidy-long-frame",
+      "title": "Statistical Plots: Start From Tidy Data",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m16-t4"
     },
     {
       "id": "m16-t4-p02",
-      "slug": "m16_t4-2",
-      "title": "Introduction to Seaborn: Output Two Values",
+      "slug": "category-means",
+      "title": "Statistical Plots: The Numbers Behind a Bar Plot",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m16-t4"
     },
     {
       "id": "m16-t4-p03",
-      "slug": "m16_t4-3",
-      "title": "Introduction to Seaborn: Simple Loop",
+      "slug": "bar-plot-of-means",
+      "title": "Statistical Plots: Bar Plot of Group Means",
       "difficulty": "medium",
       "order": 3,
       "topicId": "m16-t4"
     },
     {
       "id": "m16-t4-p04",
-      "slug": "m16_t4-4",
-      "title": "Introduction to Seaborn: Condition",
+      "slug": "count-plot",
+      "title": "Statistical Plots: Count Plot",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m16-t4"
     },
     {
       "id": "m16-t4-p05",
-      "slug": "m16_t4-5",
-      "title": "Introduction to Seaborn: Function Stub",
+      "slug": "grouped-bars-by-year",
+      "title": "Statistical Plots: Group Bars by a Second Variable",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m16-t4"
     },
     {
       "id": "m16-t4-p06",
-      "slug": "m16_t4-6",
-      "title": "Introduction to Seaborn: List Practice",
-      "difficulty": "hard",
+      "slug": "label-statistical-chart",
+      "title": "Statistical Plots: Label the Statistic",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m16-t4"
     },
     {
       "id": "m16-t4-p07",
-      "slug": "m16_t4-7",
-      "title": "Introduction to Seaborn: Dict Lookup",
+      "slug": "ranked-statistical-chart",
+      "title": "Statistical Plots: Rank the Groups",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m16-t4"
@@ -4587,56 +4587,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m16-t5": [
     {
       "id": "m16-t5-p01",
-      "slug": "m16_t5-1",
-      "title": "Statistical and Categorical Plots: Warm-up",
+      "slug": "cat-boxplot",
+      "title": "Distributions: A Box Plot",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m16-t5"
     },
     {
       "id": "m16-t5-p02",
-      "slug": "m16_t5-2",
-      "title": "Statistical and Categorical Plots: Output Two Values",
+      "slug": "cat-histogram-shape",
+      "title": "Distributions: Histogram Shape",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m16-t5"
     },
     {
       "id": "m16-t5-p03",
-      "slug": "m16_t5-3",
-      "title": "Statistical and Categorical Plots: Simple Loop",
+      "slug": "cat-count-bars",
+      "title": "Categorical: Count Each Category",
       "difficulty": "medium",
       "order": 3,
       "topicId": "m16-t5"
     },
     {
       "id": "m16-t5-p04",
-      "slug": "m16_t5-4",
-      "title": "Statistical and Categorical Plots: Condition",
+      "slug": "cat-grouped-comparison",
+      "title": "Categorical: Compare Two Groups",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m16-t5"
     },
     {
       "id": "m16-t5-p05",
-      "slug": "m16_t5-5",
-      "title": "Statistical and Categorical Plots: Function Stub",
+      "slug": "cat-heatmap",
+      "title": "Categorical: A Heatmap of a Matrix",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m16-t5"
     },
     {
       "id": "m16-t5-p06",
-      "slug": "m16_t5-6",
-      "title": "Statistical and Categorical Plots: List Practice",
-      "difficulty": "hard",
+      "slug": "cat-scatter-two-groups",
+      "title": "Categorical: Colour Points by Group",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m16-t5"
     },
     {
       "id": "m16-t5-p07",
-      "slug": "m16_t5-7",
-      "title": "Statistical and Categorical Plots: Dict Lookup",
+      "slug": "cat-two-panel-dashboard",
+      "title": "Categorical: A Two-Panel Dashboard",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m16-t5"
@@ -4645,56 +4645,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m17-t1": [
     {
       "id": "m17-t1-p01",
-      "slug": "m17_t1-1",
-      "title": "Descriptive Statistics: Warm-up",
+      "slug": "desc-mean",
+      "title": "Descriptive: The Mean",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m17-t1"
     },
     {
       "id": "m17-t1-p02",
-      "slug": "m17_t1-2",
-      "title": "Descriptive Statistics: Output Two Values",
+      "slug": "desc-median",
+      "title": "Descriptive: The Median",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m17-t1"
     },
     {
       "id": "m17-t1-p03",
-      "slug": "m17_t1-3",
-      "title": "Descriptive Statistics: Simple Loop",
-      "difficulty": "medium",
+      "slug": "desc-mode",
+      "title": "Descriptive: The Mode",
+      "difficulty": "easy",
       "order": 3,
       "topicId": "m17-t1"
     },
     {
       "id": "m17-t1-p04",
-      "slug": "m17_t1-4",
-      "title": "Descriptive Statistics: Condition",
+      "slug": "desc-range",
+      "title": "Descriptive: The Range",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m17-t1"
     },
     {
       "id": "m17-t1-p05",
-      "slug": "m17_t1-5",
-      "title": "Descriptive Statistics: Function Stub",
+      "slug": "desc-variance",
+      "title": "Descriptive: The Variance",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m17-t1"
     },
     {
       "id": "m17-t1-p06",
-      "slug": "m17_t1-6",
-      "title": "Descriptive Statistics: List Practice",
-      "difficulty": "hard",
+      "slug": "desc-stdev",
+      "title": "Descriptive: The Standard Deviation",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m17-t1"
     },
     {
       "id": "m17-t1-p07",
-      "slug": "m17_t1-7",
-      "title": "Descriptive Statistics: Dict Lookup",
+      "slug": "desc-summary-line",
+      "title": "Descriptive: A Summary Line",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m17-t1"
@@ -4703,56 +4703,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m17-t2": [
     {
       "id": "m17-t2-p01",
-      "slug": "m17_t2-1",
-      "title": "Data Distributions: Warm-up",
+      "slug": "dist-histogram-counts",
+      "title": "Distributions: Count Values per Bin",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m17-t2"
     },
     {
       "id": "m17-t2-p02",
-      "slug": "m17_t2-2",
-      "title": "Data Distributions: Output Two Values",
+      "slug": "dist-value-counts",
+      "title": "Distributions: Frequency of Each Rating",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m17-t2"
     },
     {
       "id": "m17-t2-p03",
-      "slug": "m17_t2-3",
-      "title": "Data Distributions: Simple Loop",
+      "slug": "dist-quartiles",
+      "title": "Distributions: The Quartiles",
       "difficulty": "medium",
       "order": 3,
       "topicId": "m17-t2"
     },
     {
       "id": "m17-t2-p04",
-      "slug": "m17_t2-4",
-      "title": "Data Distributions: Condition",
+      "slug": "dist-skew",
+      "title": "Distributions: Measure the Skew",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m17-t2"
     },
     {
       "id": "m17-t2-p05",
-      "slug": "m17_t2-5",
-      "title": "Data Distributions: Function Stub",
+      "slug": "dist-cut-bins",
+      "title": "Distributions: Bucket Into Labelled Bins",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m17-t2"
     },
     {
       "id": "m17-t2-p06",
-      "slug": "m17_t2-6",
-      "title": "Data Distributions: List Practice",
-      "difficulty": "hard",
+      "slug": "dist-min-max-scale",
+      "title": "Distributions: Scale to 0-1",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m17-t2"
     },
     {
       "id": "m17-t2-p07",
-      "slug": "m17_t2-7",
-      "title": "Data Distributions: Dict Lookup",
+      "slug": "dist-spread-summary",
+      "title": "Distributions: Range and IQR",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m17-t2"
@@ -4761,56 +4761,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m17-t3": [
     {
       "id": "m17-t3-p01",
-      "slug": "m17_t3-1",
-      "title": "Correlation and Covariance: Warm-up",
+      "slug": "corr-perfect-positive",
+      "title": "Correlation: A Perfect Positive",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m17-t3"
     },
     {
       "id": "m17-t3-p02",
-      "slug": "m17_t3-2",
-      "title": "Correlation and Covariance: Output Two Values",
+      "slug": "corr-perfect-negative",
+      "title": "Correlation: A Perfect Negative",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m17-t3"
     },
     {
       "id": "m17-t3-p03",
-      "slug": "m17_t3-3",
-      "title": "Correlation and Covariance: Simple Loop",
+      "slug": "corr-real-data",
+      "title": "Correlation: Units vs Revenue",
       "difficulty": "medium",
       "order": 3,
       "topicId": "m17-t3"
     },
     {
       "id": "m17-t3-p04",
-      "slug": "m17_t3-4",
-      "title": "Correlation and Covariance: Condition",
+      "slug": "corr-negative-real",
+      "title": "Correlation: Price vs Demand",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m17-t3"
     },
     {
       "id": "m17-t3-p05",
-      "slug": "m17_t3-5",
-      "title": "Correlation and Covariance: Function Stub",
+      "slug": "cov-value",
+      "title": "Covariance: The Unscaled Cousin",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m17-t3"
     },
     {
       "id": "m17-t3-p06",
-      "slug": "m17_t3-6",
-      "title": "Correlation and Covariance: List Practice",
-      "difficulty": "hard",
+      "slug": "corr-dataframe",
+      "title": "Correlation: Straight From a DataFrame",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m17-t3"
     },
     {
       "id": "m17-t3-p07",
-      "slug": "m17_t3-7",
-      "title": "Correlation and Covariance: Dict Lookup",
+      "slug": "corr-matrix-strength",
+      "title": "Correlation: Matrix and Verdict",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m17-t3"
@@ -4819,56 +4819,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m17-t4": [
     {
       "id": "m17-t4-p01",
-      "slug": "m17_t4-1",
-      "title": "Outlier Detection: Warm-up",
+      "slug": "outlier-mean-vs-median",
+      "title": "Outliers: Mean vs Median",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m17-t4"
     },
     {
       "id": "m17-t4-p02",
-      "slug": "m17_t4-2",
-      "title": "Outlier Detection: Output Two Values",
+      "slug": "outlier-iqr-bounds",
+      "title": "Outliers: Compute the IQR Fences",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m17-t4"
     },
     {
       "id": "m17-t4-p03",
-      "slug": "m17_t4-3",
-      "title": "Outlier Detection: Simple Loop",
+      "slug": "outlier-filter-iqr",
+      "title": "Outliers: Keep Only the Normal Rows",
       "difficulty": "medium",
       "order": 3,
       "topicId": "m17-t4"
     },
     {
       "id": "m17-t4-p04",
-      "slug": "m17_t4-4",
-      "title": "Outlier Detection: Condition",
+      "slug": "outlier-count",
+      "title": "Outliers: How Many Are There?",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m17-t4"
     },
     {
       "id": "m17-t4-p05",
-      "slug": "m17_t4-5",
-      "title": "Outlier Detection: Function Stub",
+      "slug": "outlier-zscore",
+      "title": "Outliers: The Z-Score Method",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m17-t4"
     },
     {
       "id": "m17-t4-p06",
-      "slug": "m17_t4-6",
-      "title": "Outlier Detection: List Practice",
-      "difficulty": "hard",
+      "slug": "outlier-clip",
+      "title": "Outliers: Cap Instead of Drop",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m17-t4"
     },
     {
       "id": "m17-t4-p07",
-      "slug": "m17_t4-7",
-      "title": "Outlier Detection: Dict Lookup",
+      "slug": "outlier-report",
+      "title": "Outliers: Report What You Removed",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m17-t4"
@@ -4877,56 +4877,56 @@ export const COURSE_PRACTICE_BY_TOPIC: Record<string, PracticeListItem[]> = {
   "m17-t5": [
     {
       "id": "m17-t5-p01",
-      "slug": "m17_t5-1",
-      "title": "Performing EDA on a Real Dataset: Warm-up",
+      "slug": "eda-shape",
+      "title": "EDA: How Big Is the Dataset?",
       "difficulty": "easy",
       "order": 1,
       "topicId": "m17-t5"
     },
     {
       "id": "m17-t5-p02",
-      "slug": "m17_t5-2",
-      "title": "Performing EDA on a Real Dataset: Output Two Values",
+      "slug": "eda-missing-total",
+      "title": "EDA: Count Every Missing Value",
       "difficulty": "easy",
       "order": 2,
       "topicId": "m17-t5"
     },
     {
       "id": "m17-t5-p03",
-      "slug": "m17_t5-3",
-      "title": "Performing EDA on a Real Dataset: Simple Loop",
+      "slug": "eda-mean-revenue",
+      "title": "EDA: Average Revenue",
       "difficulty": "medium",
       "order": 3,
       "topicId": "m17-t5"
     },
     {
       "id": "m17-t5-p04",
-      "slug": "m17_t5-4",
-      "title": "Performing EDA on a Real Dataset: Condition",
+      "slug": "eda-group-means",
+      "title": "EDA: Revenue per Region",
       "difficulty": "medium",
       "order": 4,
       "topicId": "m17-t5"
     },
     {
       "id": "m17-t5-p05",
-      "slug": "m17_t5-5",
-      "title": "Performing EDA on a Real Dataset: Function Stub",
+      "slug": "eda-top-region",
+      "title": "EDA: Which Region Leads?",
       "difficulty": "medium",
       "order": 5,
       "topicId": "m17-t5"
     },
     {
       "id": "m17-t5-p06",
-      "slug": "m17_t5-6",
-      "title": "Performing EDA on a Real Dataset: List Practice",
-      "difficulty": "hard",
+      "slug": "eda-correlation",
+      "title": "EDA: Do Units Drive Revenue?",
+      "difficulty": "medium",
       "order": 6,
       "topicId": "m17-t5"
     },
     {
       "id": "m17-t5-p07",
-      "slug": "m17_t5-7",
-      "title": "Performing EDA on a Real Dataset: Dict Lookup",
+      "slug": "eda-final-report",
+      "title": "EDA: Write the Three-Line Summary",
       "difficulty": "hard",
       "order": 7,
       "topicId": "m17-t5"

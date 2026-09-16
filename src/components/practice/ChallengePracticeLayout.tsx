@@ -8,8 +8,14 @@ import type {
 } from "@/lib/types";
 import { CodeEditor } from "@/components/ide/CodeEditor";
 import { ConsolePanel } from "@/components/ide/ConsolePanel";
+import { OpenInColabButton } from "@/components/ide/OpenInColabButton";
 import { usePyodideRunner } from "@/components/ide/usePyodideRunner";
 import { runPublicTests } from "@/lib/practice-runner";
+import {
+  buildColabPracticeCell,
+  isColabPracticeProblem,
+} from "@/lib/colab-practice";
+import { isVisualizationCode } from "@/lib/visualization-code";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePracticeProgress } from "@/hooks/usePracticeProgress";
 import { useCoursePracticeReturn } from "@/hooks/useCoursePracticeReturn";
@@ -258,6 +264,22 @@ export function ChallengePracticeLayout({
 
   const printCount = useMemo(() => countPrintCalls(code), [code]);
   const printValues = useMemo(() => getPrintValues(code), [code]);
+
+  const colabEnabled = useMemo(() => isColabPracticeProblem(problem), [problem]);
+  const chartProblem = useMemo(
+    () =>
+      isVisualizationCode(
+        `${problem.starterCode ?? ""}\n${problem.solutionCode ?? ""}`
+      ),
+    [problem.starterCode, problem.solutionCode]
+  );
+  const colabCell = useMemo(
+    () =>
+      colabEnabled
+        ? buildColabPracticeCell({ problem, moduleName, topicTitle, code })
+        : "",
+    [colabEnabled, problem, moduleName, topicTitle, code]
+  );
 
   const liveCheckStates = useMemo(() => {
     if (!content?.liveCheckRules) return [];
@@ -899,6 +921,32 @@ export function ChallengePracticeLayout({
             </section>
           )}
 
+          {/* Colab hand-off for library / chart / advanced work */}
+          {colabEnabled && (
+            <section className="mb-5">
+              <p className={sectionLabel}>Practice in Google Colab</p>
+              <div className="rounded-[10px] border border-orange-200 bg-orange-50 px-4 py-3.5">
+                <p className="text-sm leading-relaxed text-orange-900">
+                  {chartProblem
+                    ? "Charts never display in the course editor. Open Colab to run the same code with the plot visible inline."
+                    : "This question uses the data-science libraries. Colab gives you a full notebook with NumPy, pandas, matplotlib and SciPy already installed."}
+                </p>
+                <p className="mt-1.5 text-[13px] leading-relaxed text-orange-800">
+                  The question, the expected output, and your current code are
+                  copied to the clipboard — paste them into the first Colab cell.
+                  Grading still happens here with Submit &amp; Check.
+                </p>
+                <div className="mt-3">
+                  <OpenInColabButton
+                    code={colabCell}
+                    variant="card"
+                    label="Open in Google Colab"
+                  />
+                </div>
+              </div>
+            </section>
+          )}
+
           {/* Constraints */}
           {problem.constraints && problem.constraints.length > 0 && (
             <section className="mb-5">
@@ -1138,6 +1186,13 @@ export function ChallengePracticeLayout({
                   )}
                   Submit &amp; Check
                 </button>
+                {colabEnabled && (
+                  <OpenInColabButton
+                    code={colabCell}
+                    variant="action"
+                    label="Practice in Colab"
+                  />
+                )}
                 {explanation && (
                   <button
                     type="button"

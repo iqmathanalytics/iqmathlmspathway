@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ArrowRight, BookOpen, Clock, Layers, Loader2 } from "lucide-react";
 import { getModulesByCourse } from "@/data/curriculum";
 import {
@@ -14,20 +15,19 @@ import { IconImage } from "@/components/ui/IconImage";
 import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/contexts/ProgressContext";
 import { usePublishedCourses } from "@/hooks/usePublishedCourses";
-import { isAdmin } from "@/lib/admin";
 import { enrollInCourse, ENROLLMENTS_UPDATED_EVENT } from "@/lib/enroll-course";
 import { fetchEnrolledCourseIds } from "@/lib/course-visibility";
 import type { CourseId } from "@/lib/types";
 
 export function ProgramGrid() {
-  const { user, profile } = useAuth();
+  const router = useRouter();
+  const { user } = useAuth();
   const { progress } = useProgress();
   const { visibleCourses, loading: catalogLoading } = usePublishedCourses();
   const [enrolledIds, setEnrolledIds] = useState<Set<CourseId>>(new Set());
   const [enrollLoading, setEnrollLoading] = useState(Boolean(user));
   const [enrollingId, setEnrollingId] = useState<CourseId | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const admin = isAdmin(profile);
 
   useEffect(() => {
     let cancelled = false;
@@ -74,6 +74,7 @@ export function ProgramGrid() {
       return;
     }
     setEnrolledIds((prev) => new Set(prev).add(courseId));
+    router.push(dashboardCourseHref(courseId));
   }
 
   if (catalogLoading) {
@@ -108,7 +109,6 @@ export function ProgramGrid() {
             0
           );
           const enrolled = enrolledIds.has(course.id);
-          const canOpen = admin || enrolled;
           const continueHref = nextLessonHref(
             course.id,
             progress.completedTopics
@@ -186,13 +186,18 @@ export function ProgramGrid() {
                       Enroll
                       <ArrowRight className="h-4 w-4" />
                     </Link>
-                  ) : canOpen ? (
+                  ) : enrollLoading ? (
+                    <div className="inline-flex items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-500 sm:col-span-2">
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      Checking enrollment…
+                    </div>
+                  ) : enrolled ? (
                     <>
                       <Link
                         href={continueHref}
                         className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gray-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-gray-700"
                       >
-                        Continue
+                        Continue learning
                         <ArrowRight className="h-4 w-4" />
                       </Link>
                       <Link

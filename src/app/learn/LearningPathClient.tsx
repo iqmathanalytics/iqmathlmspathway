@@ -7,7 +7,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/contexts/ProgressContext";
 import { ClientOnly } from "@/components/ui/ClientOnly";
 import { Loader2 } from "lucide-react";
-import { isAdmin } from "@/lib/admin";
+import { unlocksAllContent } from "@/lib/admin";
 import { getUnlockedTopicIds } from "@/lib/topic-locking";
 import { hasQuiz } from "@/data/quizzes/meta";
 
@@ -43,9 +43,9 @@ function ModuleGrid({
 }
 
 function LearningPathInner({ modules }: LearningPathClientProps) {
-  const { profile } = useAuth();
+  const { user, profile } = useAuth();
   const { progress, ready } = useProgress();
-  const unlockAll = isAdmin(profile);
+  const unlockAll = unlocksAllContent(profile, user?.email);
 
   if (!ready) {
     return (

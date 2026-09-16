@@ -27,7 +27,7 @@ export async function fetchPublishedCourseIds(): Promise<Set<CourseId>> {
   return published;
 }
 
-/** Course IDs the user is enrolled in. Null means "enrollment check unavailable → fail-open". */
+/** Course IDs the user is enrolled in. Null means the check could not run. */
 export async function fetchEnrolledCourseIds(
   userId: string
 ): Promise<Set<CourseId> | null> {
@@ -62,7 +62,7 @@ export function canAccessCourse(options: {
   const { courseId, isAdmin, publishedIds, enrolledIds } = options;
   if (isAdmin) return true;
   if (!publishedIds.has(courseId)) return false;
-  // Enrollment table missing / unreadable → published alone is enough.
-  if (enrolledIds === null) return true;
+  // Students must have an enrollments row. Unknown / error → no access.
+  if (!enrolledIds) return false;
   return enrolledIds.has(courseId);
 }

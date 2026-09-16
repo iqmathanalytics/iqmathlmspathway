@@ -28,12 +28,13 @@ export function CourseAccessGate({
   const [enrollLoading, setEnrollLoading] = useState(true);
   const [enrolling, setEnrolling] = useState(false);
   const [enrollError, setEnrollError] = useState<string | null>(null);
+  const admin = isAdmin(profile);
 
   useEffect(() => {
     let cancelled = false;
 
     async function load(isRefresh = false) {
-      if (!user || isAdmin(profile)) {
+      if (!user || admin) {
         if (!cancelled) {
           setEnrolledIds(new Set());
           setEnrollLoading(false);
@@ -44,7 +45,7 @@ export function CourseAccessGate({
       if (!isRefresh) setEnrollLoading(true);
       const ids = await fetchEnrolledCourseIds(user.id);
       if (!cancelled) {
-        setEnrolledIds(ids);
+        setEnrolledIds(ids ?? new Set());
         setEnrollLoading(false);
       }
     }
@@ -64,9 +65,9 @@ export function CourseAccessGate({
         window.removeEventListener(ENROLLMENTS_UPDATED_EVENT, onUpdated);
       }
     };
-  }, [user, profile]);
+  }, [user, profile, admin]);
 
-  if (authLoading || publishedLoading || (enrollLoading && !isAdmin(profile))) {
+  if (authLoading || publishedLoading || (enrollLoading && !admin)) {
     return (
       <div className="flex min-h-[40vh] items-center justify-center">
         <Loader2 className="h-8 w-8 animate-spin text-brand-600" />
@@ -76,9 +77,9 @@ export function CourseAccessGate({
 
   const allowed = canAccessCourse({
     courseId,
-    isAdmin: isAdmin(profile),
+    isAdmin: admin,
     publishedIds,
-    enrolledIds: user ? enrolledIds : null,
+    enrolledIds: user ? enrolledIds ?? new Set() : new Set(),
   });
 
   if (allowed) {
