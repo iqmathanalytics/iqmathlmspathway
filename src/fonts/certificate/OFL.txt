@@ -1,0 +1,11 @@
+These font files are redistributed under the SIL Open Font License 1.1.
+https://openfontlicense.org
+
+Playfair Display — Copyright 2005 The Playfair Display Project Authors
+https://github.com/clauseggers/Playfair-Display
+
+Source Serif 4 — Copyright 2014-2021 Adobe (http://www.adobe.com/)
+https://github.com/adobe-fonts/source-serif
+
+Great Vibes — Copyright (c) 2015 TypeSETit, LLC (typesetit@att.net)
+https://github.com/googlefonts/great-vibes

@@ -43,6 +43,6 @@ export function isRestrictedExamKey(e: KeyboardEvent): boolean {
   return key === "c" || key === "v" || key === "x" || key === "p" || key === "s" || key === "u";
 }
 
-export function preventExamClipboard(e: Event): void {
+export function preventExamClipboard(e: { preventDefault(): void }): void {
   e.preventDefault();
 }

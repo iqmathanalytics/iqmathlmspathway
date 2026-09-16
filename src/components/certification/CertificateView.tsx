@@ -1,25 +1,46 @@
 "use client";
 
 import Image from "next/image";
-import { Great_Vibes, Playfair_Display, Source_Serif_4 } from "next/font/google";
+import localFont from "next/font/local";
 import { PAPC_TITLE } from "@/data/certification/papc-config";
 import type { CertificateRow } from "@/lib/types";
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+const playfair = localFont({
+  src: [
+    {
+      path: "../../fonts/certificate/PlayfairDisplay-Variable.ttf",
+      weight: "400 700",
+      style: "normal",
+    },
+    {
+      path: "../../fonts/certificate/PlayfairDisplay-Italic-Variable.ttf",
+      weight: "400 700",
+      style: "italic",
+    },
+  ],
+  display: "swap",
 });
 
-const sourceSerif = Source_Serif_4({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+const sourceSerif = localFont({
+  src: [
+    {
+      path: "../../fonts/certificate/SourceSerif4-Variable.ttf",
+      weight: "400 700",
+      style: "normal",
+    },
+    {
+      path: "../../fonts/certificate/SourceSerif4-Italic-Variable.ttf",
+      weight: "400 700",
+      style: "italic",
+    },
+  ],
+  display: "swap",
 });
 
-const signature = Great_Vibes({
-  subsets: ["latin"],
+const signature = localFont({
+  src: "../../fonts/certificate/GreatVibes-Regular.ttf",
   weight: "400",
+  display: "swap",
 });
 
 export function CertificateView({
