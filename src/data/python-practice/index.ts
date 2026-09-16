@@ -1,5 +1,6 @@
 import type { PracticeDifficulty, PracticeProblem } from "@/lib/types";
 import type { PracticeTrackConfig } from "@/lib/practice-track";
+import { difficultyLabel } from "@/lib/practice-difficulty";
 import { arrayProblems } from "./arrays";
 import { stringProblems } from "./strings";
 import { linkedListProblems } from "./linked-lists";
@@ -16,9 +17,11 @@ import {
 } from "./search-greedy-bits-heap";
 import { backtrackingProblems } from "./backtracking";
 import { intervalProblems, matrixProblems, advancedProblems } from "./rest";
+import { interviewPackProblems } from "./interview-pack-a";
+import { interviewPackProblemsB } from "./interview-pack-b";
 
-export { PYTHON_PRACTICE_CATEGORIES } from "./helpers";
-export type { PythonPracticeCategoryId } from "./helpers";
+export { PYTHON_PRACTICE_CATEGORIES } from "./categories";
+export type { PythonPracticeCategoryId } from "./categories";
 
 const pythonPracticeProblems: PracticeProblem[] = [
   ...arrayProblems,
@@ -37,19 +40,17 @@ const pythonPracticeProblems: PracticeProblem[] = [
   ...intervalProblems,
   ...matrixProblems,
   ...advancedProblems,
+  ...interviewPackProblems,
+  ...interviewPackProblemsB,
 ].sort((a, b) => a.order - b.order);
 
 const bySlug = new Map(pythonPracticeProblems.map((p) => [p.slug, p]));
 
-export const PYTHON_PRACTICE_DIFFICULTIES: PracticeDifficulty[] = [
-  "easy",
-  "medium",
-  "hard",
-];
-
-export function isPracticeDifficulty(value: string): value is PracticeDifficulty {
-  return PYTHON_PRACTICE_DIFFICULTIES.includes(value as PracticeDifficulty);
-}
+export {
+  isPracticeDifficulty,
+  difficultyLabel,
+  PRACTICE_DIFFICULTIES as PYTHON_PRACTICE_DIFFICULTIES,
+} from "@/lib/practice-difficulty";
 
 export function getPythonPracticeProblems(): PracticeProblem[] {
   return pythonPracticeProblems;
@@ -103,12 +104,6 @@ export function getPythonPracticeStaticParams() {
     difficulty: p.difficulty,
     slug: p.slug,
   }));
-}
-
-export function difficultyLabel(difficulty: PracticeDifficulty): string {
-  if (difficulty === "easy") return "Easy";
-  if (difficulty === "medium") return "Medium";
-  return "Hard";
 }
 
 export const PYTHON_CHALLENGE_TRACK: PracticeTrackConfig = {

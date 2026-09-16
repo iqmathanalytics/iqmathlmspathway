@@ -5,26 +5,26 @@ const steps = [
   {
     icon: BookOpenCheck,
     label: "01",
-    title: "Learn the concept",
-    text: "Clear explanations, visuals, and business framing — from Python basics to MBA decision labs.",
+    title: "Study the system",
+    text: "Architecture-level explanations with business framing — from code systems to decision labs.",
   },
   {
     icon: Code2,
     label: "02",
-    title: "Practice immediately",
-    text: "Run code in-browser, copy ChatGPT prompts, upload datasets, or paste Colab cells with Groq.",
+    title: "Execute in the IDE",
+    text: "Run code and queries in-browser, call Groq live, or paste notebook cells — the same editor used for certification.",
   },
   {
     icon: GraduationCap,
     label: "03",
-    title: "Check understanding",
-    text: "Quizzes and activity checklists confirm the skill before you move to the next topic.",
+    title: "Validate under pressure",
+    text: "Quizzes, hidden tests, and a timed exam confirm the skill before you move on or get certified.",
   },
   {
     icon: Rocket,
     label: "04",
-    title: "Ship real outcomes",
-    text: "Capstones include LangChain chatbots with tools, RAG knowledge desks, SQL projects, and AI agents.",
+    title: "Ship production artifacts",
+    text: "LangChain agents with tools, RAG knowledge desks, data projects, and a verified IQmath certificate.",
   },
 ];
 
@@ -38,15 +38,15 @@ export function HomeLearningFlow() {
         <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-emerald-300">
-              Learning flow
-            </p>
-            <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Learn in a simple loop: read, run, check, build
-            </h2>
-            <p className="mt-4 max-w-xl text-lg leading-8 text-slate-300">
-              The same loop works across coding tracks and the MBA pathway — so managers and
-              builders share one practice habit.
-            </p>
+            Professional workflow
+          </p>
+          <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            A pro loop: study, execute, validate, ship
+          </h2>
+          <p className="mt-4 max-w-xl text-lg leading-8 text-slate-300">
+            The same discipline across lessons, labs, and certification prep —
+            so builders and managers share one professional practice habit.
+          </p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">

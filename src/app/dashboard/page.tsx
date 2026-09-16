@@ -1,18 +1,20 @@
 "use client";
 
-import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
 import { getModulesByCourse } from "@/data/curriculum";
-import { courses, courseShortName } from "@/data/courses"; // used for URL param validation
-import { getAllPracticeProblems } from "@/data/practice";
-import { getPythonBasicsProblems } from "@/data/python-basics";
-import { getPythonPracticeProblems } from "@/data/python-practice";
+import { courses, courseShortName } from "@/data/courses";
+import { getPracticeCountForTopics } from "@/data/practice/meta";
+import { PYTHON_HUB_PRACTICE_TOTAL } from "@/data/python-hub-stats";
 import { PAGE_CONTAINER } from "@/lib/layout";
 import { useAuth } from "@/contexts/AuthContext";
 import { useProgress } from "@/contexts/ProgressContext";
 import { getSupabase } from "@/lib/supabase/client";
 import { useEntitlements } from "@/hooks/useEntitlements";
 import { useAccessibleCourses } from "@/hooks/usePublishedCourses";
-import { isStandalonePracticeProblemId } from "@/lib/practice-config";
+import {
+  isCourseChallengeProblemId,
+  isStandalonePracticeProblemId,
+} from "@/lib/practice-config";
 import type { CourseId } from "@/lib/types";
 import {
   BookOpen,
@@ -23,14 +25,14 @@ import {
   Zap,
   Code2,
 } from "lucide-react";
+import Link from "next/link";
 import { DashboardRoadmap } from "@/components/dashboard/DashboardRoadmap";
+import { ProgramStatusCards } from "@/components/dashboard/ProgramStatusCards";
 import { TourTrigger } from "@/components/walkthrough/TourTrigger";
 import { IconImage } from "@/components/ui/IconImage";
+import { PROGRAMS_PATH } from "@/data/program-meta";
 
 const COURSE_STORAGE_KEY = "last-active-course";
-
-const HUB_PRACTICE_TOTAL =
-  getPythonBasicsProblems().length + getPythonPracticeProblems().length;
 
 export default function DashboardPage() {
   const { user, profile } = useAuth();
@@ -100,21 +102,7 @@ export default function DashboardPage() {
     ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)
     : 0;
 
-  const coursePracticeIds = useMemo(() => {
-    const topicIds = new Set(
-      getModulesByCourse(activeCourse).flatMap((m) =>
-        m.topics.map((t) => t.id)
-      )
-    );
-    // Module challenges only — do not mix in Practice hub (Basics/Algorithms).
-    return new Set(
-      getAllPracticeProblems()
-        .filter((p) => topicIds.has(p.topicId))
-        .map((p) => p.id)
-    );
-  }, [activeCourse]);
-
-  const totalChallenges = coursePracticeIds.size;
+  const totalChallenges = getPracticeCountForTopics(courseTopicIds);
   const courseHasPractice = totalChallenges > 0;
 
   const loadPracticeStats = useCallback(async () => {
@@ -135,12 +123,13 @@ export default function DashboardPage() {
     setPracticeStatsError(null);
     const solvedIds = (rows ?? []).map((r) => String(r.problem_id));
     setChallengeSolved(
-      solvedIds.filter((id) => coursePracticeIds.has(id)).length
+      solvedIds.filter((id) => isCourseChallengeProblemId(activeCourse, id))
+        .length
     );
     setHubPracticeSolved(
       solvedIds.filter((id) => isStandalonePracticeProblemId(id)).length
     );
-  }, [user, coursePracticeIds]);
+  }, [user, activeCourse]);
 
   useEffect(() => {
     if (ready && user) void loadPracticeStats();
@@ -179,14 +168,43 @@ export default function DashboardPage() {
         Welcome back{profile?.full_name ? `, ${profile.full_name}` : ""}.
       </p>
 
-      {accessibleCourses.length === 0 ? (
+      {coursesLoading ? (
+        <div className="mt-12 flex justify-center">
+          <Loader2 className="h-8 w-8 animate-spin text-brand-600" />
+        </div>
+      ) : accessibleCourses.length === 0 ? (
         <p className="mt-6 rounded-xl border border-gray-200 bg-white p-6 text-sm text-gray-600">
-          No courses are available for your account yet. Ask your administrator
-          to enroll you.
+          No programs on your account yet.{" "}
+          <Link href={PROGRAMS_PATH} className="font-medium text-brand-700 hover:underline">
+            Enroll in a published program
+          </Link>{" "}
+          to start learning.
         </p>
       ) : (
         <>
-          <div className="mt-6 grid w-full grid-cols-2 gap-1.5 rounded-xl border border-gray-200 bg-gray-50 p-1.5 sm:grid-cols-4">
+          <div className="mt-6 flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <h2 className="text-lg font-semibold text-gray-900">Your programs</h2>
+              <p className="mt-1 text-sm text-gray-500">
+                Status for each enrolled course. Select one to open its roadmap.
+              </p>
+            </div>
+            <Link
+              href={PROGRAMS_PATH}
+              className="text-sm font-medium text-brand-700 hover:underline"
+            >
+              Browse programs
+            </Link>
+          </div>
+
+          <ProgramStatusCards
+            courses={accessibleCourses}
+            progress={progress}
+            activeCourse={activeCourse}
+            onSelect={switchCourse}
+          />
+
+          <div className="mt-8 grid w-full grid-cols-2 gap-1.5 rounded-xl border border-gray-200 bg-gray-50 p-1.5 sm:grid-cols-4">
             {accessibleCourses.map((course) => {
               const isActive = activeCourse === course.id;
               const activeClass =
@@ -264,7 +282,7 @@ export default function DashboardPage() {
                   value={
                     practiceStatsError
                       ? "—"
-                      : `${hubPracticeSolved} / ${HUB_PRACTICE_TOTAL}`
+                      : `${hubPracticeSolved} / ${PYTHON_HUB_PRACTICE_TOTAL}`
                   }
                   sublabel={
                     practiceStatsError

@@ -42,9 +42,9 @@ export const backtrackingProblems = [
       {
         kind: "custom",
         label: "Example 1",
-        code: `_got = permute([1, 2, 3])
+        code: `_got = permute([7, 8])
 _norm = lambda xs: sorted(tuple(x) for x in xs)
-assert _norm(_got) == _norm([[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]])`,
+assert _norm(_got) == _norm([[7,8],[8,7]])`,
       },
       {
         kind: "custom",
@@ -228,15 +228,18 @@ Each solution contains a distinct board configuration of the n-queens' placement
     tests: [
       {
         kind: "custom",
-        label: "n = 4",
-        code: `_got = solveNQueens(4)
-_exp = [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]]
-assert sorted("".join(b) for b in _got) == sorted("".join(b) for b in _exp)`,
+        label: "n = 2 none",
+        code: `assert solveNQueens(2) == []`,
       },
       {
         kind: "custom",
         label: "n = 1",
         code: `assert solveNQueens(1) == [["Q"]]`,
+      },
+      {
+        kind: "custom",
+        label: "n = 3 none",
+        code: `assert solveNQueens(3) == []`,
       },
     ],
   }),

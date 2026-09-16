@@ -125,9 +125,9 @@ You may assume that you have an infinite number of each kind of coin.`,
     return dp[amount] if dp[amount] != float("inf") else -1
 `,
     tests: [
-      { label: "Example 1", call: "coinChange([1, 2, 5], 11)", expected: "3" },
-      { label: "Impossible", call: "coinChange([2], 3)", expected: "-1" },
-      { label: "Zero amount", call: "coinChange([1], 0)", expected: "0" },
+      { label: "Example 1", call: "coinChange([1, 3, 4], 6)", expected: "2" },
+      { label: "Impossible", call: "coinChange([5], 3)", expected: "-1" },
+      { label: "Zero amount", call: "coinChange([2], 0)", expected: "0" },
     ],
   }),
 
@@ -165,9 +165,9 @@ You may assume that you have an infinite number of each kind of coin.`,
     return max(dp)
 `,
     tests: [
-      { label: "Example 1", call: "lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18])", expected: "4" },
-      { label: "Increasing", call: "lengthOfLIS([1, 2, 3, 4])", expected: "4" },
-      { label: "Decreasing", call: "lengthOfLIS([4, 3, 2, 1])", expected: "1" },
+      { label: "Example 1", call: "lengthOfLIS([3, 10, 2, 1, 20])", expected: "3" },
+      { label: "Increasing", call: "lengthOfLIS([1, 3, 5])", expected: "3" },
+      { label: "Decreasing", call: "lengthOfLIS([9, 8, 7])", expected: "1" },
     ],
   }),
 
@@ -262,9 +262,9 @@ You have three operations:
     return dp[m][n]
 `,
     tests: [
-      { label: "Example 1", call: 'minDistance("horse", "ros")', expected: "3" },
-      { label: "Example 2", call: 'minDistance("intention", "execution")', expected: "5" },
-      { label: "Empty", call: 'minDistance("", "abc")', expected: "3" },
+      { label: "Example 1", call: 'minDistance("kitten", "sitting")', expected: "3" },
+      { label: "Example 2", call: 'minDistance("flaw", "lawn")', expected: "2" },
+      { label: "Empty", call: 'minDistance("", "ab")', expected: "2" },
     ],
   }),
 ];

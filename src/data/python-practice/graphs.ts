@@ -56,14 +56,14 @@ An island is surrounded by water and is formed by connecting adjacent lands hori
       {
         kind: "custom",
         label: "One island",
-        code: `grid = [["1","1","1","1","0"],["1","1","0","1","0"],["1","1","0","0","0"],["0","0","0","0","0"]]
-assert numIslands(grid) == 1`,
+        code: `grid = [["1","0","1"],["0","1","0"],["1","0","1"]]
+assert numIslands(grid) == 5`,
       },
       {
         kind: "custom",
-        label: "Three islands",
-        code: `grid = [["1","1","0","0","0"],["1","1","0","0","0"],["0","0","1","0","0"],["0","0","0","1","1"]]
-assert numIslands(grid) == 3`,
+        label: "Two islands",
+        code: `grid = [["1","1","0"],["1","0","0"],["0","0","1"]]
+assert numIslands(grid) == 2`,
       },
     ],
   }),
@@ -117,12 +117,11 @@ The graph is represented as an adjacency list. Node values are unique and 1-inde
     tests: [
       {
         kind: "custom",
-        label: "Square graph",
-        code: `nodes = {i: Node(i) for i in range(1, 5)}
-nodes[1].neighbors = [nodes[2], nodes[4]]
+        label: "Triangle graph",
+        code: `nodes = {i: Node(i) for i in range(1, 4)}
+nodes[1].neighbors = [nodes[2], nodes[3]]
 nodes[2].neighbors = [nodes[1], nodes[3]]
-nodes[3].neighbors = [nodes[2], nodes[4]]
-nodes[4].neighbors = [nodes[1], nodes[3]]
+nodes[3].neighbors = [nodes[1], nodes[2]]
 cloned = cloneGraph(nodes[1])
 assert cloned is not nodes[1]
 assert cloned.val == 1
@@ -134,10 +133,9 @@ def to_adj(n):
     for nbr in n.neighbors:
         to_adj(nbr)
 to_adj(cloned)
-assert seen[1] == [2, 4]
+assert seen[1] == [2, 3]
 assert seen[2] == [1, 3]
-assert seen[3] == [2, 4]
-assert seen[4] == [1, 3]`,
+assert seen[3] == [1, 2]`,
       },
       { kind: "custom", label: "Empty", code: "assert cloneGraph(None) is None" },
     ],
@@ -188,9 +186,9 @@ Return true if you can finish all courses. Otherwise, return false.`,
     return True
 `,
     tests: [
-      { label: "Possible", call: "canFinish(2, [[1, 0]])", expected: "True" },
-      { label: "Cycle", call: "canFinish(2, [[1, 0], [0, 1]])", expected: "False" },
-      { label: "No prereqs", call: "canFinish(1, [])", expected: "True" },
+      { label: "Possible", call: "canFinish(3, [[1, 0], [2, 1]])", expected: "True" },
+      { label: "Cycle", call: "canFinish(3, [[1, 0], [0, 2], [2, 1]])", expected: "False" },
+      { label: "No prereqs", call: "canFinish(4, [])", expected: "True" },
     ],
   }),
 

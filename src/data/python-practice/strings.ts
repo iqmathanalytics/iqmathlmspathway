@@ -86,8 +86,8 @@ Given a string s, return true if it is a palindrome, or false otherwise.`,
     return True
 `,
     tests: [
-      { label: "Classic", call: 'isPalindrome("A man, a plan, a canal: Panama")', expected: "True" },
-      { label: "Not palindrome", call: 'isPalindrome("race a car")', expected: "False" },
+      { label: "Classic", call: 'isPalindrome("No lemon, no melon")', expected: "True" },
+      { label: "Not palindrome", call: 'isPalindrome("hello world")', expected: "False" },
       { label: "Empty after strip", call: 'isPalindrome(".,")', expected: "True" },
     ],
   }),
@@ -130,9 +130,9 @@ Given a string s, return true if it is a palindrome, or false otherwise.`,
     return max_length
 `,
     tests: [
-      { label: "Example 1", call: 'lengthOfLongestSubstring("abcabcbb")', expected: "3" },
-      { label: "All same", call: 'lengthOfLongestSubstring("bbbbb")', expected: "1" },
-      { label: "Empty", call: 'lengthOfLongestSubstring("")', expected: "0" },
+      { label: "Example 1", call: 'lengthOfLongestSubstring("dvdf")', expected: "3" },
+      { label: "All same", call: 'lengthOfLongestSubstring("zzzz")', expected: "1" },
+      { label: "Empty", call: 'lengthOfLongestSubstring("abba")', expected: "2" },
     ],
   }),
 
@@ -229,7 +229,9 @@ If there are multiple answers of the same length, return any one of them.`,
       {
         kind: "custom",
         label: "Example 1",
-        code: `_got = groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"])\n_norm = lambda groups: sorted(tuple(sorted(g)) for g in groups)\nassert _norm(_got) == _norm([["bat"], ["nat", "tan"], ["ate", "eat", "tea"]])`,
+        code: `_got = groupAnagrams(["abb", "bab", "bba", "xyz"])
+_norm = lambda groups: sorted(tuple(sorted(g)) for g in groups)
+assert _norm(_got) == _norm([["abb", "bab", "bba"], ["xyz"]])`,
       },
       {
         kind: "custom",
@@ -370,8 +372,8 @@ Two strings s and t are isomorphic if the characters in s can be replaced to get
     return True
 `,
     tests: [
-      { label: "Example 1", call: 'isIsomorphic("egg", "add")', expected: "True" },
-      { label: "Example 2", call: 'isIsomorphic("foo", "bar")', expected: "False" },
+      { label: "Example 1", call: 'isIsomorphic("abba", "cddc")', expected: "True" },
+      { label: "Example 2", call: 'isIsomorphic("ab", "aa")', expected: "False" },
       { label: "Paper title", call: 'isIsomorphic("paper", "title")', expected: "True" },
     ],
   }),
@@ -467,9 +469,9 @@ def minWindow(s, t):
     return "" if min_len == float("inf") else s[min_start:min_start + min_len]
 `,
     tests: [
-      { label: "Example 1", call: 'minWindow("ADOBECODEBANC", "ABC")', expected: '"BANC"' },
-      { label: "Whole string", call: 'minWindow("a", "a")', expected: '"a"' },
-      { label: "Impossible", call: 'minWindow("a", "aa")', expected: '""' },
+      { label: "Example 1", call: 'minWindow("this is a test", "tist")', expected: '"is a test"' },
+      { label: "Whole string", call: 'minWindow("ab", "b")', expected: '"b"' },
+      { label: "Impossible", call: 'minWindow("ab", "abc")', expected: '""' },
     ],
   }),
 ];

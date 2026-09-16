@@ -1,6 +1,6 @@
-import { ClientRedirect } from "@/components/practice/ClientRedirect";
+import { redirect } from "next/navigation";
 
 /** Legacy URL — merged into Python Programming Practice. */
 export default function PythonBasicsRedirectPage() {
-  return <ClientRedirect href="/practice/python" />;
+  redirect("/practice/python");
 }

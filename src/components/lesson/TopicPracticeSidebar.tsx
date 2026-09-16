@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import clsx from "clsx";
 import type { Module, Topic } from "@/lib/types";
-import { getProblemsByTopic } from "@/data/practice";
+import type { PracticeListItem } from "@/lib/practice-list";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePracticeProgress } from "@/hooks/usePracticeProgress";
 import { isAdmin } from "@/lib/admin";
@@ -26,6 +26,7 @@ import { NavigationLink } from "@/components/ui/NavigationLink";
 interface TopicPracticeSidebarProps {
   module: Module;
   topic: Topic;
+  problems: PracticeListItem[];
   open: boolean;
   onClose: () => void;
 }
@@ -33,12 +34,12 @@ interface TopicPracticeSidebarProps {
 export function TopicPracticeSidebar({
   module,
   topic,
+  problems,
   open,
   onClose,
 }: TopicPracticeSidebarProps) {
   const { profile } = useAuth();
   const admin = isAdmin(profile);
-  const problems = getProblemsByTopic(topic.id);
   const problemIds = problems.map((p) => p.id);
   const { rows, loading } = usePracticeProgress(problemIds);
   const solvedIds = getSolvedPracticeIds(rows);

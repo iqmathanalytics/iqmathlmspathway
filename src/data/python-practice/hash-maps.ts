@@ -14,7 +14,7 @@ Return the indices of the two numbers as [index1, index2] (1-indexed).
 You may assume each input has exactly one solution and you cannot use the same element twice.
 
 Use only constant extra space.`,
-    examples: [{ input: "numbers = [2, 7, 11, 15], target = 9", output: "[1, 2]" }],
+    examples: [{ input: "numbers = [1, 3, 8, 12], target = 11", output: "[2, 3]" }],
     constraints: ["2 <= len(numbers) <= 3 * 10^4", "numbers is sorted"],
     hints: [
       "Two pointers at start and end.",
@@ -38,8 +38,8 @@ Use only constant extra space.`,
     return []
 `,
     tests: [
-      { label: "Example 1", call: "twoSum([2, 7, 11, 15], 9)", expected: "[1, 2]" },
-      { label: "Example 2", call: "twoSum([2, 3, 4], 6)", expected: "[1, 3]" },
+      { label: "Example 1", call: "twoSum([1, 3, 8, 12], 11)", expected: "[2, 3]" },
+      { label: "Example 2", call: "twoSum([-3, 0, 5], 2)", expected: "[1, 3]" },
     ],
   }),
 

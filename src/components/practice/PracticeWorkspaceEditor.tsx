@@ -10,7 +10,7 @@ import { runPublicTests, submitForGrading, type TestRunResult } from "@/lib/prac
 import { useAuth } from "@/contexts/AuthContext";
 import { usePracticeProgress } from "@/hooks/usePracticeProgress";
 import { useCoursePracticeReturn } from "@/hooks/useCoursePracticeReturn";
-import { getProblemsByTopic } from "@/data/practice";
+import { getCoursePracticeListByTopic } from "@/data/course-practice-catalog";
 import {
   CheckCircle2,
   ChevronLeft,
@@ -159,7 +159,7 @@ export function PracticeWorkspaceEditor({
   }, [problem.difficulty]);
 
   const { prevProblem, nextProblem, listHref } = useMemo(() => {
-    const list = getProblemsByTopic(problem.topicId);
+    const list = getCoursePracticeListByTopic(problem.topicId);
     const idx = list.findIndex((p) => p.id === problem.id);
     const challengeBase = `/learn/${moduleSlug}/${topicSlug}/challenges`;
     return {

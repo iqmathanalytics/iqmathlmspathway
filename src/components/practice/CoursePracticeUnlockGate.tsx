@@ -4,7 +4,7 @@ import { useEffect, useMemo, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2, Lock } from "lucide-react";
 import type { PracticeProblem } from "@/lib/types";
-import { getProblemsByTopic } from "@/data/practice";
+import { getCoursePracticeListByTopic } from "@/data/course-practice-catalog";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePracticeProgress } from "@/hooks/usePracticeProgress";
 import { isAdmin } from "@/lib/admin";
@@ -34,7 +34,7 @@ export function CoursePracticeUnlockGate({
   const { profile } = useAuth();
   const admin = isAdmin(profile);
   const problems = useMemo(
-    () => getProblemsByTopic(problem.topicId),
+    () => getCoursePracticeListByTopic(problem.topicId),
     [problem.topicId]
   );
   const { rows, loading } = usePracticeProgress(problems.map((p) => p.id));

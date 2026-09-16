@@ -2,7 +2,7 @@ export const PLATFORM_BRAND = "IQmath Technologies";
 export const PLATFORM_NAME = "IQmath Technologies";
 export const PLATFORM_LOGO = "/logo/iqmath-logo.png";
 export const PLATFORM_TAGLINE =
-  "Four tracks — Python, SQL, Agentic AI, and MBA business analytics — with browser labs, Colab, real datasets, and progress that sticks.";
+  "A professional workspace for code, data, and AI — in-browser IDEs, premium practice, Groq/LangChain labs, and verified proficiency certificates.";
 
 /** First published topic — avoids pulling full curriculum into walkthrough. */
 export const FIRST_TOPIC_URL =

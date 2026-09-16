@@ -157,7 +157,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         });
 
         if (res.ok) {
-          const { error: signInError } = await sb.auth.signInWithPassword({
+          const { data: signInData, error: signInError } = await sb.auth.signInWithPassword({
             email: params.email,
             password: params.password,
           });
@@ -168,6 +168,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             };
           }
           await sb.rpc("sync_login_profile", { p_mobile: params.mobile });
+          if (signInData.user) {
+            const patch: {
+              full_name: string;
+              mobile: string;
+              department: string;
+              college_id?: string;
+            } = {
+              full_name: params.fullName,
+              mobile: params.mobile,
+              department: params.department,
+            };
+            if (params.collegeId) patch.college_id = params.collegeId;
+            await sb.from("profiles").update(patch).eq("id", signInData.user.id);
+          }
           return { error: null, needsEmailConfirmation: false };
         }
 
@@ -207,6 +221,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const needsEmailConfirmation = !data.session;
     if (data.session) {
       await sb.rpc("sync_login_profile", { p_mobile: params.mobile });
+      const patch: {
+        full_name: string;
+        mobile: string;
+        department: string;
+        college_id?: string;
+      } = {
+        full_name: params.fullName,
+        mobile: params.mobile,
+        department: params.department,
+      };
+      if (params.collegeId) patch.college_id = params.collegeId;
+      await sb.from("profiles").update(patch).eq("id", data.session.user.id);
     }
     return { error: null, needsEmailConfirmation };
   }, []);

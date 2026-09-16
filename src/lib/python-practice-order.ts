@@ -1,4 +1,6 @@
-import type { PracticeDifficulty, PracticeProblem } from "@/lib/types";
+import type { PracticeDifficulty } from "@/lib/types";
+
+type OrderableProblem = { id: string; slug: string };
 
 /** v2: default ascending catalog order (v1 shuffled on first visit). */
 const STORAGE_PREFIX = "python-practice-order-v2:";
@@ -68,14 +70,14 @@ export function clearPracticeOrder(
   store.removeItem(practiceOrderKey(scope, prefix));
 }
 
-export function applyPracticeOrder(
-  problems: PracticeProblem[],
+export function applyPracticeOrder<T extends OrderableProblem>(
+  problems: T[],
   keys: string[] | null
-): PracticeProblem[] {
+): T[] {
   if (!keys?.length) return problems;
   const byId = new Map(problems.map((p) => [p.id, p]));
   const bySlug = new Map(problems.map((p) => [p.slug, p]));
-  const ordered: PracticeProblem[] = [];
+  const ordered: T[] = [];
   const seen = new Set<string>();
   for (const key of keys) {
     const problem = byId.get(key) ?? bySlug.get(key);
@@ -95,11 +97,11 @@ export function applyPracticeOrder(
  * difficulty / kind / order). Persists that order. Does not shuffle — use
  * shuffleItems + writePracticeOrder for an explicit reshuffle.
  */
-export function ensurePracticeOrder(
-  problems: PracticeProblem[],
+export function ensurePracticeOrder<T extends OrderableProblem>(
+  problems: T[],
   scope: PracticeDifficulty | "all" | string,
   prefix = STORAGE_PREFIX
-): PracticeProblem[] {
+): T[] {
   const existing = readPracticeOrder(scope, prefix);
   if (existing?.length) {
     const ordered = applyPracticeOrder(problems, existing);
@@ -114,10 +116,10 @@ export function ensurePracticeOrder(
   return problems;
 }
 
-export function getAdjacentFromProblems(
-  problems: PracticeProblem[],
+export function getAdjacentFromProblems<T extends OrderableProblem>(
+  problems: T[],
   slug: string
-): { prev?: PracticeProblem; next?: PracticeProblem; isLast: boolean; index: number } {
+): { prev?: T; next?: T; isLast: boolean; index: number } {
   const index = problems.findIndex((p) => p.slug === slug);
   if (index < 0) {
     return { isLast: false, index: -1 };

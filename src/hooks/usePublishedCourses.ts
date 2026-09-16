@@ -10,6 +10,7 @@ import {
   fetchPublishedCourseIds,
   filterPublishedCourses,
 } from "@/lib/course-visibility";
+import { ENROLLMENTS_UPDATED_EVENT } from "@/lib/enroll-course";
 import type { Course, CourseId } from "@/lib/types";
 
 /** Published courses (catalog visibility). Does not apply enrollment. */
@@ -65,8 +66,26 @@ export function useAccessibleCourses() {
       }
     }
     void load();
+
+    function onEnrollmentsUpdated() {
+      if (!user) return;
+      void fetchEnrolledCourseIds(user.id).then((ids) => {
+        if (!cancelled) setEnrolledIds(ids);
+      });
+    }
+
+    if (typeof window !== "undefined") {
+      window.addEventListener(ENROLLMENTS_UPDATED_EVENT, onEnrollmentsUpdated);
+    }
+
     return () => {
       cancelled = true;
+      if (typeof window !== "undefined") {
+        window.removeEventListener(
+          ENROLLMENTS_UPDATED_EVENT,
+          onEnrollmentsUpdated
+        );
+      }
     };
   }, [user]);
 

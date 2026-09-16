@@ -1,13 +1,21 @@
-import type { PracticeProblem } from "@/lib/types";
-
 export type PythonProgrammingKind = "language" | "algorithms";
 
-export function getProblemKind(problem: PracticeProblem): PythonProgrammingKind {
+type ProblemLinkFields = {
+  id: string;
+  slug: string;
+  difficulty: string;
+  category?: string;
+};
+
+export function getProblemKind(problem: { id: string }): PythonProgrammingKind {
   return problem.id.startsWith("pb-") ? "language" : "algorithms";
 }
 
 /** Canonical workspace URL for a merged-list problem. */
-export function getProblemWorkspaceHref(problem: PracticeProblem): string {
+export function getProblemWorkspaceHref(problem: ProblemLinkFields): string {
+  if (problem.id.startsWith("papc-")) {
+    return `/certification/papc/practice/${problem.slug}`;
+  }
   const root =
     getProblemKind(problem) === "language"
       ? "/practice/python-basics"
@@ -16,7 +24,7 @@ export function getProblemWorkspaceHref(problem: PracticeProblem): string {
 }
 
 export function matchesProgrammingCategory(
-  problem: PracticeProblem,
+  problem: ProblemLinkFields,
   categoryId: string
 ): boolean {
   if (categoryId === "all") return true;

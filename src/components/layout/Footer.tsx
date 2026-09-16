@@ -7,10 +7,10 @@ export function Footer() {
         <p>
           <span className="font-semibold text-brand-800 dark:text-brand-300">{PLATFORM_BRAND}</span>
           {" — "}
-          Learn Python for Data Science and Agentic AI with lessons, quizzes, practice, and cloud progress.
+          A professional workspace for code, data, and AI — lessons, quizzes, live labs, practice, and verified certification.
         </p>
         <p className="mt-1">
-          More Python modules, AI workflows, agent tools, and real-world projects coming step by step.
+          More labs, agent tools, and real-world projects coming step by step.
         </p>
         <p className="mt-3 text-xs text-gray-400 dark:text-slate-500">
           © {new Date().getFullYear()} {PLATFORM_NAME}. All rights reserved.

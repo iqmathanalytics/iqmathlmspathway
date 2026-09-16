@@ -1,14 +1,8 @@
-import { CheckCircle2, Sparkles, ArrowRight } from "lucide-react";
+import { Award, CheckCircle2, Code2, Sparkles, ArrowRight, Terminal } from "lucide-react";
 import Link from "next/link";
 import { courses } from "@/data/courses";
 import { getModulesByCourse } from "@/data/curriculum";
-import { IconImage } from "@/components/ui/IconImage";
 import { StarfieldBackground } from "@/components/ui/StarfieldBackground";
-
-const pythonCourse = courses.find((course) => course.id === "python");
-const agenticAiCourse = courses.find((course) => course.id === "agentic-ai");
-const sqlCourse = courses.find((course) => course.id === "sql");
-const mbaCourse = courses.find((course) => course.id === "mba-ai");
 
 const trackIds = ["python", "agentic-ai", "sql", "mba-ai"] as const;
 const totalModules = trackIds.reduce(
@@ -27,25 +21,19 @@ const totalLessons = trackIds.reduce(
 
 const outcomes = [
   {
-    title: "Code foundations",
-    text: "Python syntax, SQL queries, and browser IDEs — practice without installing a stack.",
-    iconImage: pythonCourse?.iconImage,
-    iconAlt: pythonCourse?.iconAlt ?? "Python logo",
-    fallback: pythonCourse?.icon ?? "PY",
+    title: "Live IDEs",
+    text: "Write, query, and test in the browser — no local stack, no tool-switching between the lesson and the editor.",
+    icon: Code2,
   },
   {
-    title: "AI systems",
-    text: "Prompting, Groq APIs, LangChain chatbots with tools, and multi-agent workflows.",
-    iconImage: agenticAiCourse?.iconImage,
-    iconAlt: agenticAiCourse?.iconAlt ?? "Agentic AI logo",
-    fallback: agenticAiCourse?.icon ?? "AI",
+    title: "Premium practice",
+    text: "Language drills and algorithm challenges with instant test feedback — Easy, Medium, and Hard in one arena.",
+    icon: Terminal,
   },
   {
-    title: "Business pathway",
-    text: "4-day MBA track: analytics, Power BI & prompts, LangChain chatbots, and Colab RAG.",
-    iconImage: mbaCourse?.iconImage,
-    iconAlt: mbaCourse?.iconAlt ?? "MBA AI logo",
-    fallback: mbaCourse?.icon ?? "MBA",
+    title: "Verified certification",
+    text: "Timed exams and a public verify link — credentials that stand on their own.",
+    icon: Award,
   },
 ];
 
@@ -59,47 +47,42 @@ export function HomeHero() {
         <div className="mx-auto max-w-5xl text-center">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-sm font-medium text-sky-100 shadow-sm backdrop-blur">
             <Sparkles className="h-4 w-4 text-accent-300" />
-            IQmath Technologies · Python · SQL · Agentic AI · MBA Analytics
+            IQmath Technologies · Practice · Certification · Live labs
           </div>
 
           <h1 className="animate-fade-up mx-auto max-w-4xl text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-[3.75rem] lg:leading-[1.08]">
-            Learn to code, query data, and{" "}
+            Train at pro level — code, data systems, and{" "}
             <span className="bg-gradient-to-r from-sky-300 via-white to-accent-300 bg-clip-text text-transparent">
-              ship AI for business
+              production AI
             </span>
           </h1>
 
           <p className="animate-fade-up mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-300" style={{ animationDelay: "80ms" }}>
-            Four learning tracks in one platform — browser IDEs, ChatGPT and Colab
-            labs, real datasets and PDFs, quizzes, and progress that stays with you.
+            One workspace for everything: in-browser IDEs, Groq and LangChain labs,
+            algorithm challenges, timed proficiency exams, and progress that persists.
           </p>
 
           <div className="animate-fade-up mx-auto mt-8 flex max-w-2xl flex-wrap items-center justify-center gap-3" style={{ animationDelay: "140ms" }}>
             <Link
-              href="/learn/introduction-and-setup/introduction-to-programming"
+              href="/programs"
               className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-brand-900 shadow-lg transition hover:-translate-y-0.5 hover:bg-brand-50"
             >
-              <IconImage
-                src={pythonCourse?.iconImage}
-                alt={pythonCourse?.iconAlt ?? "Python logo"}
-                fallback={pythonCourse?.icon ?? "PY"}
-                className="h-5 w-5"
-              />
-              Start Python
+              Start learning
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
-              href="/practice/python"
+              href="/practice"
               className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-white/15"
             >
               Practice problems
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
-              href="/learn/sql-foundations/introduction-to-databases"
+              href="/certification"
               className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-white/15"
             >
-              SQL track
+              <Award className="h-4 w-4" />
+              Get Certified
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -111,13 +94,7 @@ export function HomeHero() {
                 className="hover-lift flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.07] p-5 backdrop-blur"
               >
                 <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/10">
-                  <IconImage
-                    src={item.iconImage}
-                    alt={item.iconAlt}
-                    fallback={item.fallback}
-                    className="h-7 w-7"
-                    fallbackClassName="text-sm font-bold text-white"
-                  />
+                  <item.icon className="h-5 w-5 text-white" />
                 </div>
                 <p className="font-semibold text-white">{item.title}</p>
                 <p className="mt-2 text-sm leading-6 text-slate-400">{item.text}</p>
@@ -149,15 +126,15 @@ export function HomeHero() {
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-slate-400">
             <span className="inline-flex items-center gap-1.5">
               <CheckCircle2 className="h-4 w-4 text-accent-400" />
-              Browser Python & SQL IDEs
+              In-browser IDEs
             </span>
             <span className="inline-flex items-center gap-1.5">
               <CheckCircle2 className="h-4 w-4 text-accent-400" />
-              LangChain chatbots + RAG
+              Premium practice + timed exams
             </span>
             <span className="inline-flex items-center gap-1.5">
               <CheckCircle2 className="h-4 w-4 text-accent-400" />
-              {sqlCourse ? "SQL · MBA · Groq" : "Progress sync"}
+              LangChain agents · RAG · Groq
             </span>
           </div>
         </div>

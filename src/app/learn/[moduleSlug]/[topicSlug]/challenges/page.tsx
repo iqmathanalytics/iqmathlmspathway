@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getTopic, modules } from "@/data/curriculum";
-import { getProblemsByTopic, getPracticeCountByTopic } from "@/data/practice";
+import { getPracticeCountByTopic } from "@/data/practice/meta";
+import { getCoursePracticeListByTopic } from "@/data/course-practice-catalog";
 import { PAGE_CONTAINER } from "@/lib/layout";
 import { CourseTopicPracticeList } from "@/components/practice/CourseTopicPracticeList";
 
@@ -30,7 +31,7 @@ export default async function ModuleChallengesListPage({ params }: PageProps) {
   if (!result || !result.topic.published) notFound();
 
   const { module, topic } = result;
-  const problems = getProblemsByTopic(topic.id);
+  const problems = getCoursePracticeListByTopic(topic.id);
   if (problems.length === 0) notFound();
 
   return (

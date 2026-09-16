@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Home, LayoutDashboard, Shield, Terminal } from "lucide-react";
+import { Award, GraduationCap, Home, LayoutDashboard, Shield, Terminal } from "lucide-react";
 import clsx from "clsx";
 import { PLATFORM_LOGO, PLATFORM_NAME } from "@/data/platform";
 import { AuthNav } from "@/components/layout/AuthNav";
@@ -25,6 +25,7 @@ export function Header() {
     !user ||
     coursesLoading ||
     hasPythonCourse;
+  const showCertified = showPractice;
 
   useEffect(() => {
     setMounted(true);
@@ -32,8 +33,12 @@ export function Header() {
 
   const items = [
     { href: "/", label: "Home", icon: Home },
+    { href: "/programs", label: "Programs", icon: GraduationCap },
     ...(showPractice
       ? [{ href: "/practice", label: "Practice", icon: Terminal }]
+      : []),
+    ...(showCertified
+      ? [{ href: "/certification", label: "Get Certified", icon: Award }]
       : []),
     { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
     ...(mounted && admin

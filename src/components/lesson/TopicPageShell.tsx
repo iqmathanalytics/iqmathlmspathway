@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react
 import { PanelLeft, Terminal } from "lucide-react";
 import clsx from "clsx";
 import type { CourseId, Module, Topic } from "@/lib/types";
-import { getPracticeCountByTopic } from "@/data/practice";
+import type { PracticeListItem } from "@/lib/practice-list";
 import { CourseAccessGate } from "@/components/courses/CourseAccessGate";
 import { CourseTopicSidebar } from "@/components/lesson/CourseTopicSidebar";
 import { TopicPracticeSidebar } from "@/components/lesson/TopicPracticeSidebar";
@@ -16,19 +16,23 @@ interface TopicPageShellProps {
   courseId: CourseId;
   module: Module;
   topic: Topic;
+  practiceProblems?: PracticeListItem[];
   children: ReactNode;
 }
 
-export function TopicPageShell({ courseId, module, topic, children }: TopicPageShellProps) {
+export function TopicPageShell({
+  courseId,
+  module,
+  topic,
+  practiceProblems = [],
+  children,
+}: TopicPageShellProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [practiceOpen, setPracticeOpen] = useState(false);
   const [hydrated, setHydrated] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
 
-  const practiceCount = useMemo(
-    () => getPracticeCountByTopic(topic.id),
-    [topic.id]
-  );
+  const practiceCount = practiceProblems.length;
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 1024px)");
@@ -141,6 +145,7 @@ export function TopicPageShell({ courseId, module, topic, children }: TopicPageS
               <TopicPracticeSidebar
                 module={module}
                 topic={topic}
+                problems={practiceProblems}
                 open={practiceOpen}
                 onClose={closePractice}
               />

@@ -31,30 +31,26 @@ import { usePyodideRunner } from "@/components/ide/usePyodideRunner";
 import { runPublicTests, type TestRunResult } from "@/lib/practice-runner";
 import { buildRunDemoFromAssertCode } from "@/lib/practice-run-demo";
 import { usePracticeProgress } from "@/hooks/usePracticeProgress";
-import { PYTHON_CHALLENGE_TRACK } from "@/data/python-practice";
-import { PYTHON_BASICS_TRACK } from "@/data/python-basics";
 import type { PracticeTrackId } from "@/lib/practice-track";
-import {
-  applyPracticeOrder,
-  ensurePracticeOrder,
-  getAdjacentFromProblems,
-  readPracticeOrder,
-} from "@/lib/python-practice-order";
-import {
-  getProblemWorkspaceHref,
-  getPythonProgrammingProblems,
-  PYTHON_PROGRAMMING_ORDER_PREFIX,
-} from "@/data/python-programming";
+import type { PracticeNav } from "@/lib/practice-list";
+import { getProblemWorkspaceHref } from "@/lib/python-programming-links";
 import { PracticeBottomPanel } from "@/components/practice/PracticeBottomPanel";
 import { PracticeSplitHandle } from "@/components/practice/PracticeSplitHandle";
 
 type LeftTab = "description" | "hints" | "solution";
 type MobileTab = "problem" | "code" | "console";
 
-const TRACKS = {
-  python: PYTHON_CHALLENGE_TRACK,
-  "python-basics": PYTHON_BASICS_TRACK,
-} as const;
+const TRACK_META: Record<PracticeTrackId, { title: string }> = {
+  python: { title: "Python Programming Practice" },
+  "python-basics": { title: "Python Programming Practice" },
+  papc: { title: "PAPC Practice" },
+};
+
+function labelDifficulty(difficulty: string): string {
+  if (difficulty === "easy") return "Easy";
+  if (difficulty === "medium") return "Medium";
+  return "Hard";
+}
 
 const LEFT_PCT_KEY = "practice-ide-left-pct-v4";
 const CONSOLE_PCT_KEY = "practice-ide-console-pct-v4";
@@ -79,6 +75,13 @@ function breakpointLeftDefault(width: number) {
 interface PythonCodingWorkspaceProps {
   problem: PracticeProblem;
   trackId?: PracticeTrackId;
+  /** Timed certification exam: same IDE/console, no hints/solution, no practice progress. */
+  examMode?: boolean;
+  initialCode?: string;
+  onCodeChange?: (code: string) => void;
+  onGraded?: (passed: boolean, code: string) => void;
+  /** Catalog prev/next — passed from the server so the client does not load the full bank. */
+  nav?: PracticeNav;
 }
 
 const difficultyBadge: Record<string, string> = {
@@ -169,9 +172,17 @@ function usePersistedPct(
 export function PythonCodingWorkspace({
   problem,
   trackId = "python",
+  examMode = false,
+  initialCode,
+  onCodeChange,
+  onGraded,
+  nav,
 }: PythonCodingWorkspaceProps) {
-  const track = TRACKS[trackId];
-  const problemIds = useMemo(() => [problem.id], [problem.id]);
+  const track = TRACK_META[trackId];
+  const problemIds = useMemo(
+    () => (examMode ? [] : [problem.id]),
+    [examMode, problem.id]
+  );
   const { rows, loading: progressLoading, saveDraft, markSolved } =
     usePracticeProgress(problemIds);
 
@@ -179,6 +190,11 @@ export function PythonCodingWorkspace({
   const codeInitializedRef = useRef<string | null>(null);
   const rowsRef = useRef(rows);
   rowsRef.current = rows;
+
+  const onCodeChangeRef = useRef(onCodeChange);
+  onCodeChangeRef.current = onCodeChange;
+  const onGradedRef = useRef(onGraded);
+  onGradedRef.current = onGraded;
 
   const [leftTab, setLeftTab] = useState<LeftTab>("description");
   const [mobileTab, setMobileTab] = useState<MobileTab>("code");
@@ -229,21 +245,11 @@ export function PythonCodingWorkspace({
     submitStdin,
   } = usePyodideRunner();
 
-  const orderedProblems = useMemo(() => {
-    const list = getPythonProgrammingProblems();
-    if (typeof window === "undefined") {
-      return applyPracticeOrder(
-        list,
-        readPracticeOrder("all", PYTHON_PROGRAMMING_ORDER_PREFIX)
-      );
-    }
-    return ensurePracticeOrder(list, "all", PYTHON_PROGRAMMING_ORDER_PREFIX);
-  }, []);
-
-  const { prev, next, isLast, index } = getAdjacentFromProblems(
-    orderedProblems,
-    problem.slug
-  );
+  const prev = examMode ? null : nav?.prev ?? null;
+  const next = examMode ? null : nav?.next ?? null;
+  const index = examMode ? -1 : nav?.index ?? -1;
+  const navTotal = examMode ? 0 : nav?.total ?? 0;
+  const isLast = Boolean(!examMode && nav && next === null && index >= 0);
 
   useEffect(() => {
     codeInitializedRef.current = null;
@@ -256,12 +262,24 @@ export function PythonCodingWorkspace({
   }, [problem.id]);
 
   useEffect(() => {
+    if (examMode) {
+      if (codeInitializedRef.current === problem.id) return;
+      codeInitializedRef.current = problem.id;
+      setCode(initialCode ?? problem.starterCode ?? "");
+      return;
+    }
     if (progressLoading) return;
     if (codeInitializedRef.current === problem.id) return;
     codeInitializedRef.current = problem.id;
     const draft = rowsRef.current[problem.id]?.code_draft;
     setCode(draft ?? problem.starterCode ?? "");
-  }, [problem.id, problem.starterCode, progressLoading]);
+  }, [
+    examMode,
+    initialCode,
+    problem.id,
+    problem.starterCode,
+    progressLoading,
+  ]);
 
   useEffect(() => {
     if (stdinActive) {
@@ -272,11 +290,15 @@ export function PythonCodingWorkspace({
 
   useEffect(() => {
     if (!code.trim()) return;
+    if (examMode) {
+      onCodeChangeRef.current?.(code);
+      return;
+    }
     const t = setTimeout(() => {
       saveDraft(problem.id, code);
     }, 800);
     return () => clearTimeout(t);
-  }, [code, problem.id, saveDraft]);
+  }, [code, problem.id, saveDraft, examMode]);
 
   const status = rows[problem.id]?.status ?? "not_started";
   const solved = status === "solved" || accepted;
@@ -319,7 +341,14 @@ export function PythonCodingWorkspace({
     try {
       const result = await runPublicTests(code, problem.publicTests);
       setTestResults(result.results);
-      if (!result.allPassed) {
+      if (result.allPassed) {
+        if (examMode) {
+          setAccepted(true);
+          onGradedRef.current?.(true, code);
+        }
+      } else if (examMode) {
+        onGradedRef.current?.(false, code);
+      } else {
         void saveDraft(problem.id, code, "attempted");
       }
     } catch {
@@ -327,7 +356,7 @@ export function PythonCodingWorkspace({
     } finally {
       setTesting(false);
     }
-  }, [code, problem, saveDraft, running, testing, submitting]);
+  }, [code, problem, saveDraft, running, testing, submitting, examMode]);
 
   const handleSubmit = useCallback(async () => {
     if (running || testing || submitting) return;
@@ -341,7 +370,14 @@ export function PythonCodingWorkspace({
       setTestResults(result.results);
       if (!result.allPassed) {
         setSubmitMessage("Wrong Answer — fix the failing tests and try again.");
-        void saveDraft(problem.id, code, "attempted");
+        if (examMode) onGradedRef.current?.(false, code);
+        else void saveDraft(problem.id, code, "attempted");
+        return;
+      }
+      if (examMode) {
+        setAccepted(true);
+        setSubmitMessage("Accepted — all tests passed. You can move to the next question.");
+        onGradedRef.current?.(true, code);
         return;
       }
       const save = await markSolved(problem.id, code);
@@ -359,7 +395,7 @@ export function PythonCodingWorkspace({
     } finally {
       setSubmitting(false);
     }
-  }, [code, problem, markSolved, saveDraft, running, testing, submitting]);
+  }, [code, problem, markSolved, saveDraft, running, testing, submitting, examMode]);
 
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
@@ -384,7 +420,11 @@ export function PythonCodingWorkspace({
 
   const examples = problem.examples ?? [];
   const listHref =
-    trackId === "python-basics" ? "/practice/python-basics" : "/practice/python";
+    trackId === "papc"
+      ? "/certification/papc/practice"
+      : trackId === "python-basics"
+        ? "/practice/python-basics"
+        : "/practice/python";
 
   const toolbarBtn =
     "inline-flex h-8 shrink-0 items-center gap-1.5 rounded-md px-2.5 text-xs font-semibold transition-colors disabled:cursor-wait disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/40";
@@ -525,7 +565,7 @@ export function PythonCodingWorkspace({
       {leftTab === "description" && (
         <>
           <h1 className="break-words text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-50 sm:text-[1.65rem]">
-            {problem.order}. {problem.title}
+            {examMode ? problem.title : `${problem.order}. ${problem.title}`}
           </h1>
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <span
@@ -534,7 +574,7 @@ export function PythonCodingWorkspace({
                 difficultyBadge[problem.difficulty]
               )}
             >
-              {track.labelDifficulty(problem.difficulty)}
+              {labelDifficulty(problem.difficulty)}
             </span>
             {problem.categoryLabel && (
               <span className="inline-flex items-center rounded-md bg-sky-50 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-brand-800 ring-1 ring-sky-100 dark:bg-slate-800 dark:text-brand-200 dark:ring-slate-600">
@@ -704,7 +744,7 @@ export function PythonCodingWorkspace({
         </Link>
       )}
       <span className="shrink-0 text-xs font-medium tabular-nums text-slate-400 dark:text-slate-500">
-        {index >= 0 ? `${index + 1} / ${orderedProblems.length}` : null}
+        {index >= 0 && navTotal > 0 ? `${index + 1} / ${navTotal}` : null}
       </span>
       {next ? (
         <Link
@@ -734,14 +774,25 @@ export function PythonCodingWorkspace({
         focusMode && "fixed inset-0 z-40 bg-sky-50 p-2 sm:p-3"
       )}
     >
-      {!focusMode && (
+      {!focusMode && !examMode && (
         <nav className="mb-2 flex h-8 shrink-0 flex-wrap items-center gap-1.5 px-1 text-sm text-slate-500 dark:text-slate-400">
           <Link
-            href="/practice"
+            href={trackId === "papc" ? "/certification" : "/practice"}
             className="transition-colors hover:text-brand-700 dark:hover:text-brand-300"
           >
-            Practice
+            {trackId === "papc" ? "Get Certified" : "Practice"}
           </Link>
+          {trackId === "papc" && (
+            <>
+              <ChevronRight className="h-3.5 w-3.5 shrink-0 opacity-60" aria-hidden />
+              <Link
+                href="/certification/papc"
+                className="transition-colors hover:text-brand-700 dark:hover:text-brand-300"
+              >
+                PAPC
+              </Link>
+            </>
+          )}
           <ChevronRight className="h-3.5 w-3.5 shrink-0 opacity-60" aria-hidden />
           <Link
             href={listHref}
@@ -754,7 +805,7 @@ export function PythonCodingWorkspace({
             href={listHref}
             className="transition-colors hover:text-brand-700 dark:hover:text-brand-300"
           >
-            {track.labelDifficulty(problem.difficulty)}
+            {labelDifficulty(problem.difficulty)}
           </Link>
           <ChevronRight className="h-3.5 w-3.5 shrink-0 opacity-60" aria-hidden />
           <span className="min-w-0 truncate font-medium text-slate-800 dark:text-slate-100">
@@ -812,6 +863,7 @@ export function PythonCodingWorkspace({
             mobileTab === "problem" ? "flex" : "hidden lg:flex"
           )}
         >
+          {!examMode && (
           <div className="flex h-11 shrink-0 items-center gap-1 border-b border-sky-200 bg-sky-50 px-2">
             {(
               [
@@ -835,6 +887,7 @@ export function PythonCodingWorkspace({
               </button>
             ))}
           </div>
+          )}
 
           <div className="practice-tab-content min-h-0 flex-1 overflow-x-hidden overflow-y-auto p-5 [scrollbar-width:thin]">
             {problemBody}
@@ -891,6 +944,7 @@ export function PythonCodingWorkspace({
                 onSubmit={handleSubmit}
                 height="100%"
                 theme="light"
+                restrictClipboard={examMode}
                 className="h-full min-h-0 bg-sky-50 [&_.cm-editor]:h-full [&_.cm-editor]:bg-sky-50 [&_.cm-scroller]:h-full [&_.cm-scroller]:bg-sky-50"
               />
             </div>
@@ -937,11 +991,11 @@ export function PythonCodingWorkspace({
                 testResults={testResults}
                 submitMessage={submitMessage}
                 accepted={accepted}
-                isLast={isLast}
-                nextHref={next ? getProblemWorkspaceHref(next) : undefined}
-                nextTitle={next?.title}
+                isLast={examMode ? false : isLast}
+                nextHref={examMode ? undefined : next ? getProblemWorkspaceHref(next) : undefined}
+                nextTitle={examMode ? undefined : next?.title}
                 finishHref={listHref}
-                finishLabel={track.labelDifficulty(problem.difficulty)}
+                finishLabel={labelDifficulty(problem.difficulty)}
                 lines={lines}
                 loading={loading}
                 running={running}
@@ -961,7 +1015,7 @@ export function PythonCodingWorkspace({
           </div>
         </section>
       </div>
-      {!focusMode && challengeNav}
+      {!focusMode && !examMode && challengeNav}
       </div>
     </div>
   );

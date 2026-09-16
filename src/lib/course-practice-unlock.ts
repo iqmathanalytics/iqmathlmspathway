@@ -1,4 +1,4 @@
-import type { PracticeProblem, PracticeProgressRow } from "@/lib/types";
+import type { PracticeProgressRow } from "@/lib/types";
 
 /** Solved problem ids from practice_progress rows. */
 export function getSolvedPracticeIds(
@@ -16,7 +16,7 @@ export function getSolvedPracticeIds(
  * unlocks only after the previous (by order) is solved.
  */
 export function isCoursePracticeProblemUnlocked(
-  problems: PracticeProblem[],
+  problems: Array<{ id: string; order: number }>,
   problemId: string,
   solvedIds: Set<string>,
   options?: { unlockAll?: boolean }
@@ -31,11 +31,11 @@ export function isCoursePracticeProblemUnlocked(
   return solvedIds.has(sorted[idx - 1]!.id);
 }
 
-export function getFirstUnlockedCoursePractice(
-  problems: PracticeProblem[],
+export function getFirstUnlockedCoursePractice<T extends { id: string; order: number }>(
+  problems: T[],
   solvedIds: Set<string>,
   options?: { unlockAll?: boolean }
-): PracticeProblem | undefined {
+): T | undefined {
   const sorted = [...problems].sort((a, b) => a.order - b.order);
   return sorted.find((p) =>
     isCoursePracticeProblemUnlocked(problems, p.id, solvedIds, options)

@@ -2,9 +2,10 @@ import { notFound } from "next/navigation";
 import {
   getPythonPracticeBySlug,
   getPythonPracticeStaticParams,
-  isPracticeDifficulty,
 } from "@/data/python-practice";
+import { isPracticeDifficulty } from "@/lib/practice-difficulty";
 import { PythonCodingShell } from "@/components/practice/PythonCodingShell";
+import { getPythonProgrammingNav } from "@/data/python-programming-catalog";
 
 interface ProblemPageProps {
   params: Promise<{ difficulty: string; slug: string }>;
@@ -33,7 +34,7 @@ export default async function PythonPracticeProblemPage({ params }: ProblemPageP
 
   return (
     <div className="flex h-[calc(100dvh-3.5rem)] min-h-0 flex-col overflow-hidden px-3 py-2 sm:px-6 lg:px-8">
-      <PythonCodingShell problem={problem} />
+      <PythonCodingShell problem={problem} nav={getPythonProgrammingNav(slug)} />
     </div>
   );
 }

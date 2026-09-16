@@ -7,8 +7,8 @@ import { beginnerExtraProblems } from "./extra-beginner";
 import { intermediateExtraProblems } from "./extra-intermediate";
 import { advancedExtraProblems } from "./extra-advanced";
 
-export { PYTHON_BASICS_CATEGORIES } from "./helpers";
-export type { PythonBasicsCategoryId } from "./helpers";
+export { PYTHON_BASICS_CATEGORIES } from "./categories";
+export type { PythonBasicsCategoryId } from "./categories";
 
 const pythonBasicsProblems: PracticeProblem[] = [
   ...beginnerProblems,
@@ -21,15 +21,10 @@ const pythonBasicsProblems: PracticeProblem[] = [
 
 const bySlug = new Map(pythonBasicsProblems.map((p) => [p.slug, p]));
 
-export const PYTHON_BASICS_DIFFICULTIES: PracticeDifficulty[] = [
-  "easy",
-  "medium",
-  "hard",
-];
-
-export function isBasicsDifficulty(value: string): value is PracticeDifficulty {
-  return PYTHON_BASICS_DIFFICULTIES.includes(value as PracticeDifficulty);
-}
+export {
+  isBasicsDifficulty,
+  PRACTICE_DIFFICULTIES as PYTHON_BASICS_DIFFICULTIES,
+} from "@/lib/practice-difficulty";
 
 export function getPythonBasicsProblems(): PracticeProblem[] {
   return pythonBasicsProblems;

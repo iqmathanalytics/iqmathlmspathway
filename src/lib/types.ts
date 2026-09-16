@@ -456,6 +456,36 @@ export interface PracticeProgressRow {
   updated_at: string;
 }
 
+export interface CertificationQuizAttemptRow {
+  id: string;
+  user_id: string;
+  certification_id: string;
+  started_at: string;
+  submitted_at: string | null;
+  score_points: number | null;
+  score_pct: number | null;
+  passed: boolean | null;
+  answers: Array<{
+    questionId: string;
+    selectedIndex?: number | null;
+    code?: string;
+    passed?: boolean;
+  }>;
+  created_at: string;
+}
+
+export interface CertificateRow {
+  id: string;
+  user_id: string;
+  certification_id: string;
+  recipient_name: string;
+  level: string;
+  score_pct: number;
+  issued_at: string;
+  expires_at: string;
+  verification_code: string;
+}
+
 export interface EntitlementRow {
   id: string;
   user_id: string;

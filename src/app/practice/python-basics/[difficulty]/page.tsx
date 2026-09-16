@@ -1,6 +1,5 @@
-import { notFound } from "next/navigation";
-import { isBasicsDifficulty } from "@/data/python-basics";
-import { ClientRedirect } from "@/components/practice/ClientRedirect";
+import { notFound, redirect } from "next/navigation";
+import { isBasicsDifficulty } from "@/lib/practice-difficulty";
 
 interface DifficultyPageProps {
   params: Promise<{ difficulty: string }>;
@@ -20,5 +19,5 @@ export default async function PythonBasicsDifficultyRedirectPage({
 }: DifficultyPageProps) {
   const { difficulty } = await params;
   if (!isBasicsDifficulty(difficulty)) notFound();
-  return <ClientRedirect href={`/practice/python?difficulty=${difficulty}`} />;
+  redirect(`/practice/python?difficulty=${difficulty}`);
 }

@@ -277,7 +277,7 @@ def levelOrder(root):
         kind: "custom",
         label: "Example 1",
         code: `${TREE_HELPERS}
-assert levelOrder(_tree_from_vals([3, 9, 20, None, None, 15, 7])) == [[3], [9, 20], [15, 7]]`,
+assert levelOrder(_tree_from_vals([1, 2, 3, 4, None, None, 5])) == [[1], [2, 3], [4, 5]]`,
       },
       { kind: "custom", label: "Empty", code: "assert levelOrder(None) == []" },
     ],

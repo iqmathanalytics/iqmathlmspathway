@@ -20,6 +20,8 @@ interface CodeEditorProps {
   className?: string;
   /** Practice studio uses light; lesson IDE keeps dark. */
   theme?: "dark" | "light";
+  /** Block copy / cut / paste (certification exam). */
+  restrictClipboard?: boolean;
 }
 
 const darkEditorTheme = EditorView.theme({
@@ -87,6 +89,7 @@ export function CodeEditor({
   height,
   className,
   theme = "light",
+  restrictClipboard = false,
 }: CodeEditorProps) {
   const isLight = theme !== "dark";
   const onRunRef = useRef(onRun);
@@ -138,6 +141,28 @@ export function CodeEditor({
           },
         },
       ]),
+      ...(restrictClipboard
+        ? [
+            EditorView.domEventHandlers({
+              copy: (e) => {
+                e.preventDefault();
+                return true;
+              },
+              cut: (e) => {
+                e.preventDefault();
+                return true;
+              },
+              paste: (e) => {
+                e.preventDefault();
+                return true;
+              },
+              contextmenu: (e) => {
+                e.preventDefault();
+                return true;
+              },
+            }),
+          ]
+        : []),
       EditorView.editable.of(!readOnly),
       ...(isLight ? [lightEditorTheme] : [darkEditorTheme]),
       EditorView.updateListener.of((update) => {
@@ -147,7 +172,7 @@ export function CodeEditor({
         onCursorChangeRef.current(line.number, pos - line.from + 1);
       }),
     ],
-    [readOnly, isLight]
+    [readOnly, isLight, restrictClipboard]
   );
 
   return (

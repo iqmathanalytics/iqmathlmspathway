@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { PAGE_CONTAINER } from "@/lib/layout";
 import { PracticeHubClient } from "./PracticeHubClient";
-import { getPythonProgrammingStats } from "@/data/python-programming";
+import {
+  PYTHON_HUB_ALGORITHM_COUNT,
+  PYTHON_HUB_BASICS_COUNT,
+  PYTHON_HUB_DIFFICULTIES,
+  PYTHON_HUB_PRACTICE_TOTAL,
+} from "@/data/python-hub-stats";
 
 export default function PracticeHubPage() {
-  const stats = getPythonProgrammingStats();
-
   return (
     <div className={`${PAGE_CONTAINER} py-10`}>
       <header>
@@ -17,10 +20,10 @@ export default function PracticeHubPage() {
         </p>
       </header>
       <PracticeHubClient
-        totalCount={stats.total}
-        stats={stats.difficulties}
-        languageCount={stats.kinds.language}
-        algorithmCount={stats.kinds.algorithms}
+        totalCount={PYTHON_HUB_PRACTICE_TOTAL}
+        stats={PYTHON_HUB_DIFFICULTIES}
+        languageCount={PYTHON_HUB_BASICS_COUNT}
+        algorithmCount={PYTHON_HUB_ALGORITHM_COUNT}
       />
       <p className="mt-8 text-sm text-gray-500">
         Prefer reading first?{" "}

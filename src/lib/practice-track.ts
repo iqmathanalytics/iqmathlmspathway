@@ -1,6 +1,6 @@
 import type { PracticeDifficulty, PracticeProblem } from "@/lib/types";
 
-export type PracticeTrackId = "python" | "python-basics";
+export type PracticeTrackId = "python" | "python-basics" | "papc";
 
 export interface PracticeCategoryOption {
   id: string;

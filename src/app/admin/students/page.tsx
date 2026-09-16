@@ -23,6 +23,10 @@ interface StudentExtras {
   practiceSolved: number;
   lastVisited: string | null;
   hasPremium: boolean;
+  certQuizScore: number | null;
+  certPassed: boolean | null;
+  certIssued: boolean;
+  certRetakeAt: string | null;
 }
 
 const inputClass =
@@ -138,7 +142,7 @@ function StudentsAdminInner() {
     const sb = getSupabase();
     if (!sb) return;
     setDetailLoading(true);
-    const [enrollRes, lessonRes, practiceRes, entRes] = await Promise.all([
+    const [enrollRes, lessonRes, practiceRes, entRes, attemptRes, certRes] = await Promise.all([
       sb.from("enrollments").select("course_id").eq("user_id", student.id),
       sb
         .from("lesson_progress")
@@ -154,6 +158,20 @@ function StudentsAdminInner() {
         .select("id")
         .eq("user_id", student.id)
         .eq("product", PRACTICE_PREMIUM_PRODUCT)
+        .maybeSingle(),
+      sb
+        .from("certification_quiz_attempts")
+        .select("submitted_at, score_pct, passed")
+        .eq("user_id", student.id)
+        .eq("certification_id", "papc")
+        .not("submitted_at", "is", null)
+        .order("submitted_at", { ascending: false })
+        .limit(1),
+      sb
+        .from("certificates")
+        .select("level")
+        .eq("user_id", student.id)
+        .eq("certification_id", "papc")
         .maybeSingle(),
     ]);
 
@@ -174,6 +192,16 @@ function StudentsAdminInner() {
         .sort()
         .at(-1) ?? null;
 
+    const lastAttempt = (attemptRes.data ?? [])[0] as
+      | { submitted_at: string; score_pct: number; passed: boolean }
+      | undefined;
+    let certRetakeAt: string | null = null;
+    if (lastAttempt && lastAttempt.passed === false && lastAttempt.submitted_at) {
+      const unlock = new Date(lastAttempt.submitted_at);
+      unlock.setDate(unlock.getDate() + 25);
+      if (unlock.getTime() > Date.now()) certRetakeAt = unlock.toISOString();
+    }
+
     setDetail({
       enrollments: enrolled,
       lessonsCompleted,
@@ -181,6 +209,10 @@ function StudentsAdminInner() {
       practiceSolved: practiceRes.data?.length ?? 0,
       lastVisited,
       hasPremium: Boolean(entRes.data),
+      certQuizScore: lastAttempt ? Number(lastAttempt.score_pct) : null,
+      certPassed: lastAttempt ? Boolean(lastAttempt.passed) : null,
+      certIssued: Boolean(certRes.data),
+      certRetakeAt,
     });
     setEditName(student.full_name);
     setEditMobile(student.mobile);
@@ -562,6 +594,24 @@ function StudentsAdminInner() {
                       ? new Date(detail.lastVisited).toLocaleString()
                       : "No activity yet"}
                   </p>
+                </div>
+                <div className="col-span-2 rounded-lg border border-brand-100 bg-brand-50/60 p-3">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-brand-800">
+                    PAPC certification
+                  </p>
+                  <p className="mt-1 font-semibold text-gray-900">
+                    {detail.certQuizScore == null
+                      ? "No quiz submitted"
+                      : `${detail.certQuizScore}% · ${detail.certPassed ? "Passed" : "Failed"}`}
+                  </p>
+                  <p className="mt-1 text-sm text-gray-700">
+                    Certificate: {detail.certIssued ? "Issued" : "None"}
+                  </p>
+                  {detail.certRetakeAt && (
+                    <p className="mt-1 text-xs text-amber-800">
+                      Retake available {new Date(detail.certRetakeAt).toLocaleString()}
+                    </p>
+                  )}
                 </div>
               </div>
             )}

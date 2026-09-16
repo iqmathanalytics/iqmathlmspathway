@@ -299,6 +299,19 @@ create policy "Admins insert enrollments"
   on public.enrollments for insert
   with check (public.is_admin());
 
+drop policy if exists "Users enroll in published courses" on public.enrollments;
+create policy "Users enroll in published courses"
+  on public.enrollments for insert
+  with check (
+    auth.uid() = user_id
+    and exists (
+      select 1
+      from public.course_settings cs
+      where cs.course_id = enrollments.course_id
+        and cs.published = true
+    )
+  );
+
 drop policy if exists "Admins delete enrollments" on public.enrollments;
 create policy "Admins delete enrollments"
   on public.enrollments for delete

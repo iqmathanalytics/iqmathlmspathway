@@ -16,6 +16,15 @@ export function isCourseModulePracticeProblemId(problemId: string): boolean {
   return /^(m\d+-t|sql-m)/.test(problemId);
 }
 
+export function isCourseChallengeProblemId(
+  courseId: string,
+  problemId: string
+): boolean {
+  if (courseId === "python") return /^m\d+-t/.test(problemId);
+  if (courseId === "sql") return problemId.startsWith("sql-m");
+  return false;
+}
+
 /** @deprecated Prefer requiresPracticePremium — free tier is disabled. */
 export function isProblemFree(_order: number): boolean {
   return false;

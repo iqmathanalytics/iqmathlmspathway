@@ -19,7 +19,8 @@ import { TopicAccessGate } from "@/components/lesson/TopicAccessGate";
 import { TopicPageShell } from "@/components/lesson/TopicPageShell";
 import { AddOnVideoSectionView } from "@/components/lesson/AddOnVideoSectionView";
 import { TopicPracticeLink } from "@/components/lesson/TopicPracticeLink";
-import { getPracticeCountByTopic } from "@/data/practice";
+import { getPracticeCountByTopic } from "@/data/practice/meta";
+import { getCoursePracticeListByTopic } from "@/data/course-practice-catalog";
 import { getTopicExplanation } from "@/data/module-guides";
 
 interface TopicPageProps {
@@ -42,13 +43,20 @@ export default async function TopicPage({ params }: TopicPageProps) {
   const { module, topic } = result;
   if (!topic.published) notFound();
 
+  const practiceProblems = getCoursePracticeListByTopic(topic.id);
+
   // MBA Add On — video modules (Excel / Power BI): subtopic list → click plays video
   if (module.slug === "mba-add-on") {
     const section = getAddOnVideoSection(topic.slug);
     if (!section) notFound();
 
     return (
-      <TopicPageShell courseId={module.course} module={module} topic={topic}>
+      <TopicPageShell
+        courseId={module.course}
+        module={module}
+        topic={topic}
+        practiceProblems={practiceProblems}
+      >
         <div className="w-full lg:flex-1 lg:overflow-y-auto">
           <AddOnVideoSectionView
             module={module}
@@ -93,7 +101,12 @@ export default async function TopicPage({ params }: TopicPageProps) {
       Viewport-locked below the navbar: lesson column scrolls; IDE stays fixed in its pane.
       Desktop: two columns. Mobile: lesson on top, capped IDE band at the bottom.
       */}
-      <TopicPageShell courseId={module.course} module={module} topic={topic}>
+      <TopicPageShell
+        courseId={module.course}
+        module={module}
+        topic={topic}
+        practiceProblems={practiceProblems}
+      >
       <article className="flex h-full min-h-0 w-full flex-1 flex-col overflow-hidden">
         <TopicLessonLayout
           blocks={lesson.blocks}

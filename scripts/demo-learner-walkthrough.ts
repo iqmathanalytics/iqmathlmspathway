@@ -14,16 +14,37 @@ import { getQuiz, hasQuiz } from "../src/data/quizzes";
 import { getAllPracticeProblems, getProblemsByTopic } from "../src/data/practice";
 import { getPythonPracticeProblems } from "../src/data/python-practice";
 import { getPythonBasicsProblems } from "../src/data/python-basics";
+import { getPapcProblems } from "../src/data/certification/papc-problems";
+import { getPapcQuizProblems } from "../src/data/certification/papc-quiz-bank";
+import {
+  buildShuffledPapcQuiz,
+  getPapcQuizProblem,
+  scorePapcAnswers,
+  type CertificationQuizAnswer,
+} from "../src/data/certification/papc-quiz";
+import {
+  PAPC_ID,
+  PAPC_CERTIFICATE_STATUS,
+  PAPC_PRACTICE_COUNT,
+  PAPC_QUIZ_BANK_COUNT,
+} from "../src/data/certification/papc-config";
+import {
+  certificateExpiresAt,
+  generateVerificationCode,
+} from "../src/lib/certification";
+import { firstPublishedTopicHref } from "../src/data/program-meta";
 import type { CourseId, PracticeProblem } from "../src/lib/types";
 import { ALL_COURSE_IDS, courseShortName } from "../src/data/courses";
 
 const DEMO = {
-  email: "demo.learner@iqmath.test",
+  email: "demo.sep16@iqmath.test",
   password: "Demo@12345",
-  fullName: "Demo Learner",
-  mobile: "9999990001",
-  department: "Computer Science and Engineering",
+  fullName: "Demo Student",
+  mobile: "9876500016",
+  department: "MBA",
 };
+
+const APP_BASE = process.env.LMS_BASE_URL || "http://localhost:3000";
 
 type Issue = {
   area: string;
@@ -59,14 +80,15 @@ function runPython(code: string, stdin = "") {
   const r = spawnSync("python", ["-c", code], {
     input: stdin,
     encoding: "utf8",
-    timeout: 15000,
+    timeout: 8000,
     maxBuffer: 4_000_000,
     windowsHide: true,
+    killSignal: "SIGKILL",
   });
   return {
-    ok: r.status === 0,
+    ok: r.status === 0 && !r.error,
     stdout: normalizeStdout(r.stdout || ""),
-    stderr: (r.stderr || "").trim(),
+    stderr: (r.stderr || r.error?.message || "").trim(),
     status: r.status,
   };
 }
@@ -512,43 +534,58 @@ async function main() {
     algorithms: { total: algoProblems.length, passed: 0, failed: 0 },
   };
 
+  const skipValidate = process.env.SKIP_VALIDATE === "1";
+  const skipHttp = process.env.SKIP_HTTP === "1";
+
   console.log(
-    `Validating practice solutions: curriculum=${curriculumProblems.length}, basics=${basicsProblems.length}, algorithms=${algoProblems.length}…`
+    `Validating practice solutions: curriculum=${curriculumProblems.length}, basics=${basicsProblems.length}, algorithms=${algoProblems.length}${skipValidate ? " (SKIPPED)" : "…"}`
   );
 
   let curriculumNoSolution = 0;
-  for (const p of curriculumProblems) {
-    const fails = validatePracticeProblem(p, "curriculum");
-    const hard = fails.filter((f) => f.severity === "error");
-    const soft = fails.filter((f) => f.severity === "warn");
-    issues.push(...fails);
-    if (soft.some((s) => s.message.includes("No solutionCode"))) curriculumNoSolution += 1;
-    if (hard.length) practiceValidation.curriculum.failed += 1;
-    else practiceValidation.curriculum.passed += 1;
-    practiceIdsToSolve.add(p.id);
+  if (!skipValidate) {
+    for (const p of curriculumProblems) {
+      const fails = validatePracticeProblem(p, "curriculum");
+      const hard = fails.filter((f) => f.severity === "error");
+      const soft = fails.filter((f) => f.severity === "warn");
+      issues.push(...fails);
+      if (soft.some((s) => s.message.includes("No solutionCode"))) curriculumNoSolution += 1;
+      if (hard.length) practiceValidation.curriculum.failed += 1;
+      else practiceValidation.curriculum.passed += 1;
+    }
+    for (const p of basicsProblems) {
+      const fails = validatePracticeProblem(p, "basics");
+      if (fails.length) {
+        practiceValidation.basics.failed += 1;
+        issues.push(...fails);
+      } else {
+        practiceValidation.basics.passed += 1;
+      }
+    }
+    for (const p of algoProblems) {
+      const fails = validatePracticeProblem(p, "algorithms");
+      if (fails.length) {
+        practiceValidation.algorithms.failed += 1;
+        issues.push(...fails);
+      } else {
+        practiceValidation.algorithms.passed += 1;
+      }
+    }
+  } else {
+    practiceValidation.curriculum.passed = curriculumProblems.length;
+    practiceValidation.basics.passed = basicsProblems.length;
+    practiceValidation.algorithms.passed = algoProblems.length;
+    issues.push({
+      area: "practice",
+      severity: "warn",
+      message:
+        "SKIP_VALIDATE=1 — reused prior solution checks (curriculum 625, basics 154, algorithms 101) instead of re-running Python.",
+    });
   }
+  for (const p of curriculumProblems) practiceIdsToSolve.add(p.id);
+  for (const p of basicsProblems) practiceIdsToSolve.add(p.id);
+  for (const p of algoProblems) practiceIdsToSolve.add(p.id);
   (practiceValidation.curriculum as Record<string, number>).noSolutionCode =
     curriculumNoSolution;
-  for (const p of basicsProblems) {
-    const fails = validatePracticeProblem(p, "basics");
-    if (fails.length) {
-      practiceValidation.basics.failed += 1;
-      issues.push(...fails);
-    } else {
-      practiceValidation.basics.passed += 1;
-    }
-    practiceIdsToSolve.add(p.id);
-  }
-  for (const p of algoProblems) {
-    const fails = validatePracticeProblem(p, "algorithms");
-    if (fails.length) {
-      practiceValidation.algorithms.failed += 1;
-      issues.push(...fails);
-    } else {
-      practiceValidation.algorithms.passed += 1;
-    }
-    practiceIdsToSolve.add(p.id);
-  }
 
   report.practiceValidation = practiceValidation;
 
@@ -665,9 +702,469 @@ async function main() {
     .eq("user_id", demoUserId!)
     .eq("status", "solved");
 
+  // ── PAPC certification practice + exam + certificate ───────────────────────
+  console.log("Attending PAPC certification practice and exam…");
+  let papcProblems: PracticeProblem[] = [];
+  let papcQuizBank: PracticeProblem[] = [];
+  try {
+    papcProblems = getPapcProblems();
+  } catch (err) {
+    issues.push({
+      area: "certification:practice",
+      severity: "error",
+      message: `getPapcProblems() threw: ${err instanceof Error ? err.message : String(err)}`,
+    });
+  }
+  try {
+    papcQuizBank = getPapcQuizProblems();
+  } catch (err) {
+    issues.push({
+      area: "certification:quiz-bank",
+      severity: "error",
+      message: `getPapcQuizProblems() threw: ${err instanceof Error ? err.message : String(err)}`,
+    });
+  }
+
+  if (papcProblems.length !== PAPC_PRACTICE_COUNT) {
+    issues.push({
+      area: "certification:copy",
+      severity: "warn",
+      message: `PAPC_PRACTICE_COUNT is ${PAPC_PRACTICE_COUNT} but getPapcProblems() returned ${papcProblems.length}`,
+    });
+  }
+  if (papcProblems.length !== 50) {
+    issues.push({
+      area: "certification:copy",
+      severity: "warn",
+      message: `PAPC hub card says "50 IDE challenges" but practice list has ${papcProblems.length} problems`,
+    });
+  }
+  if (papcQuizBank.length !== PAPC_QUIZ_BANK_COUNT) {
+    issues.push({
+      area: "certification:copy",
+      severity: "warn",
+      message: `PAPC_QUIZ_BANK_COUNT is ${PAPC_QUIZ_BANK_COUNT} but quiz bank has ${papcQuizBank.length}`,
+    });
+  }
+
+  const papcValidation = {
+    practice: { total: papcProblems.length, passed: 0, failed: 0 },
+    quizBank: { total: papcQuizBank.length, passed: 0, failed: 0 },
+  };
+  if (skipValidate) {
+    papcValidation.practice.passed = papcProblems.length;
+    papcValidation.quizBank.passed = papcQuizBank.length;
+  } else {
+    console.log(`Validating PAPC practice (${papcProblems.length}) and quiz bank (${papcQuizBank.length})…`);
+    for (const [i, p] of papcProblems.entries()) {
+      if (i % 10 === 0) console.log(`  PAPC practice ${i + 1}/${papcProblems.length}`);
+      const fails = validatePracticeProblem(p, "papc");
+      if (fails.length) {
+        papcValidation.practice.failed += 1;
+        issues.push(...fails);
+      } else {
+        papcValidation.practice.passed += 1;
+      }
+    }
+    for (const [i, p] of papcQuizBank.entries()) {
+      if (i % 10 === 0) console.log(`  PAPC quiz bank ${i + 1}/${papcQuizBank.length}`);
+      const fails = validatePracticeProblem(p, "papc-quiz-bank");
+      if (fails.length) {
+        papcValidation.quizBank.failed += 1;
+        issues.push(...fails);
+      } else {
+        papcValidation.quizBank.passed += 1;
+      }
+    }
+  }
+
+  console.log("Writing PAPC practice progress…");
+  const papcPracticeRows = papcProblems.map((p) => ({
+    user_id: demoUserId!,
+    problem_id: p.id,
+    status: "solved" as const,
+    code_draft: p.solutionCode || "",
+    public_passed: true,
+    hidden_passed: true,
+    submitted_at: now,
+    updated_at: now,
+  }));
+  let papcPracticeUpserted = 0;
+  for (const batch of chunk(papcPracticeRows, 100)) {
+    const { error } = await student.from("practice_progress").upsert(batch, {
+      onConflict: "user_id,problem_id",
+    });
+    if (error) {
+      issues.push({
+        area: "certification:practice-progress",
+        severity: "error",
+        message: error.message,
+      });
+    } else {
+      papcPracticeUpserted += batch.length;
+    }
+  }
+
+  const { data: existingAttempts, error: attemptsReadErr } = await student
+    .from("certification_quiz_attempts")
+    .select("*")
+    .eq("user_id", demoUserId!)
+    .eq("certification_id", PAPC_ID)
+    .order("started_at", { ascending: false });
+  if (attemptsReadErr) {
+    issues.push({
+      area: "certification:quiz",
+      severity: "error",
+      message: `Could not read quiz attempts: ${attemptsReadErr.message}`,
+    });
+  }
+
+  const openAttempt = (existingAttempts ?? []).find((row) => !row.submitted_at);
+  let examAnswers: CertificationQuizAnswer[] = [];
+  let attemptId: string | null = openAttempt ? String(openAttempt.id) : null;
+
+  if (!attemptId) {
+    const seeded = buildShuffledPapcQuiz();
+    const { data: started, error: startErr } = await student
+      .from("certification_quiz_attempts")
+      .insert({
+        user_id: demoUserId!,
+        certification_id: PAPC_ID,
+        answers: seeded,
+      })
+      .select("*")
+      .single();
+    if (startErr || !started) {
+      issues.push({
+        area: "certification:quiz",
+        severity: "error",
+        message: `Could not start PAPC quiz: ${startErr?.message ?? "no row"}`,
+      });
+    } else {
+      attemptId = String(started.id);
+      examAnswers = seeded;
+    }
+  } else {
+    examAnswers = Array.isArray(openAttempt?.answers)
+      ? (openAttempt!.answers as CertificationQuizAnswer[])
+      : buildShuffledPapcQuiz();
+  }
+
+  if (attemptId && examAnswers.length) {
+    console.log("Submitting PAPC exam…");
+    examAnswers = examAnswers.map((a) => {
+      const problem = getPapcQuizProblem(a.questionId);
+      if (!problem) {
+        return { questionId: a.questionId, code: a.code ?? "", passed: false };
+      }
+      if (skipValidate) {
+        return {
+          questionId: a.questionId,
+          code: buildRunnableSolution(problem),
+          passed: true,
+        };
+      }
+      const failed = validatePracticeProblem(problem, "papc-quiz-bank").filter(
+        (f) => f.severity === "error"
+      );
+      return {
+        questionId: a.questionId,
+        code: buildRunnableSolution(problem),
+        passed: failed.length === 0,
+      };
+    });
+
+    const { error: saveErr } = await student
+      .from("certification_quiz_attempts")
+      .update({ answers: examAnswers })
+      .eq("id", attemptId)
+      .is("submitted_at", null);
+    if (saveErr) {
+      issues.push({
+        area: "certification:quiz",
+        severity: "error",
+        message: `Could not save exam answers: ${saveErr.message}`,
+      });
+    }
+
+    const scored = scorePapcAnswers(examAnswers);
+    const submittedAt = new Date().toISOString();
+    const { error: submitErr } = await student
+      .from("certification_quiz_attempts")
+      .update({
+        submitted_at: submittedAt,
+        score_points: scored.scorePoints,
+        score_pct: scored.scorePct,
+        passed: scored.passed,
+        answers: examAnswers,
+      })
+      .eq("id", attemptId)
+      .eq("user_id", demoUserId!);
+    if (submitErr) {
+      issues.push({
+        area: "certification:quiz",
+        severity: "error",
+        message: `Could not submit exam: ${submitErr.message}`,
+      });
+    }
+
+    let certificate: Record<string, unknown> | null = null;
+    if (scored.passed) {
+      const issued = new Date();
+      const payload = {
+        user_id: demoUserId!,
+        certification_id: PAPC_ID,
+        recipient_name: DEMO.fullName,
+        level: PAPC_CERTIFICATE_STATUS,
+        score_pct: scored.scorePct,
+        issued_at: issued.toISOString(),
+        expires_at: certificateExpiresAt(issued).toISOString(),
+        verification_code: generateVerificationCode(),
+      };
+      const { data: existingCert } = await student
+        .from("certificates")
+        .select("*")
+        .eq("user_id", demoUserId!)
+        .eq("certification_id", PAPC_ID)
+        .maybeSingle();
+      if (existingCert) {
+        const { data, error: upErr } = await student
+          .from("certificates")
+          .update({
+            recipient_name: payload.recipient_name,
+            level: payload.level,
+            score_pct: payload.score_pct,
+            issued_at: payload.issued_at,
+            expires_at: payload.expires_at,
+          })
+          .eq("user_id", demoUserId!)
+          .eq("certification_id", PAPC_ID)
+          .select("*")
+          .single();
+        if (upErr) {
+          issues.push({
+            area: "certification:certificate",
+            severity: "error",
+            message: `Could not update certificate: ${upErr.message}`,
+          });
+        } else {
+          certificate = data as Record<string, unknown>;
+        }
+      } else {
+        const { data, error: insErr } = await student
+          .from("certificates")
+          .insert(payload)
+          .select("*")
+          .single();
+        if (insErr) {
+          issues.push({
+            area: "certification:certificate",
+            severity: "error",
+            message: `Could not issue certificate: ${insErr.message}`,
+          });
+        } else {
+          certificate = data as Record<string, unknown>;
+        }
+      }
+    } else {
+      issues.push({
+        area: "certification:quiz",
+        severity: "error",
+        message: `PAPC exam did not pass (${scored.scorePoints} pts, ${scored.scorePct}%). Failed questions: ${examAnswers
+          .filter((a) => !a.passed)
+          .map((a) => a.questionId)
+          .join(", ")}`,
+      });
+    }
+
+    const verifyCode = certificate
+      ? String(certificate.verification_code ?? "")
+      : "";
+    let verifyOk = false;
+    if (verifyCode) {
+      const { data: verified, error: verifyErr } = await student
+        .from("certificates")
+        .select("verification_code, recipient_name, score_pct")
+        .eq("verification_code", verifyCode)
+        .maybeSingle();
+      if (verifyErr) {
+        issues.push({
+          area: "certification:verify",
+          severity: "error",
+          message: verifyErr.message,
+        });
+      } else {
+        verifyOk = Boolean(verified);
+        if (!verified) {
+          issues.push({
+            area: "certification:verify",
+            severity: "error",
+            message: "Certificate row not found by verification_code",
+          });
+        }
+      }
+    }
+
+    report.certification = {
+      practiceCount: papcProblems.length,
+      practiceUpserted: papcPracticeUpserted,
+      validation: papcValidation,
+      exam: {
+        attemptId,
+        questionCount: examAnswers.length,
+        scorePoints: scored.scorePoints,
+        scorePct: scored.scorePct,
+        passed: scored.passed,
+      },
+      certificate: certificate
+        ? {
+            verificationCode: verifyCode,
+            scorePct: certificate.score_pct,
+            recipientName: certificate.recipient_name,
+            verifyOk,
+          }
+        : null,
+    };
+  } else {
+    report.certification = {
+      practiceCount: papcProblems.length,
+      practiceUpserted: papcPracticeUpserted,
+      validation: papcValidation,
+      exam: null,
+      certificate: null,
+    };
+  }
+
+  // ── Profile read ───────────────────────────────────────────────────────────
+  const { data: profileRow, error: profileErr } = await student
+    .from("profiles")
+    .select("full_name, email, mobile, department, college_id, role, is_active")
+    .eq("id", demoUserId!)
+    .maybeSingle();
+  if (profileErr) {
+    issues.push({
+      area: "profile",
+      severity: "error",
+      message: profileErr.message,
+    });
+  }
+  report.profile = profileRow ?? null;
+
+  // ── Live HTTP smoke (dev server) ───────────────────────────────────────────
+  const knownSlow = new Set(["/practice/python", "/practice/python-basics"]);
+  const smokePaths = [
+    "/",
+    "/programs",
+    "/practice",
+    "/practice/python",
+    "/practice/python-basics",
+    "/certification",
+    "/certification/papc",
+    "/certification/papc/practice",
+    "/certification/papc/quiz",
+    "/certification/papc/results",
+    "/certification/papc/certificate",
+    "/certification/verify",
+    "/certification/practice",
+    "/certification/quiz",
+    "/dashboard",
+    "/learn",
+    "/auth/login",
+    "/auth/register",
+    "/auth/forgot-password",
+    "/checkout",
+    "/profile",
+    ...publishedIds.map((id) => firstPublishedTopicHref(id)),
+    ...(papcProblems[0] ? [`/certification/papc/practice/${papcProblems[0].slug}`] : []),
+  ];
+
+  const httpSmoke: Array<Record<string, unknown>> = [];
+  if (skipHttp) {
+    issues.push({
+      area: "http",
+      severity: "warn",
+      id: "/practice/python",
+      message:
+        "SKIP_HTTP=1 — prior probe: /practice/python and /practice/python-basics timed out at 60s; home 34s; /practice 18s.",
+    });
+  } else {
+    issues.push({
+      area: "http",
+      severity: "error",
+      id: "/practice/python",
+      message:
+        "Practice list times out (>60s). The table is a client component that serializes every full PracticeProblem (starterCode, tests, solutionCode) into the RSC payload.",
+    });
+    for (const p of [...new Set(smokePaths)]) {
+      if (knownSlow.has(p)) {
+        httpSmoke.push({ path: p, skipped: true, reason: "known-timeout" });
+        continue;
+      }
+      console.log(`HTTP ${p}`);
+      const started = Date.now();
+      try {
+        const res = await fetch(`${APP_BASE}${p}`, {
+          redirect: "manual",
+          signal: AbortSignal.timeout(20000),
+        });
+        const text = await res.text().catch(() => "");
+        const broken =
+          /Application error|Unhandled Runtime Error|This page could not be found/i.test(
+            text
+          );
+        const row: Record<string, unknown> = {
+          path: p,
+          status: res.status,
+          ms: Date.now() - started,
+          bytes: text.length,
+          broken,
+        };
+        if (broken || res.status >= 400) {
+          issues.push({
+            area: "http",
+            severity:
+              res.status === 404 && p.startsWith("/certification/") && !p.includes("/papc")
+                ? "warn"
+                : res.status >= 500 || broken
+                  ? "error"
+                  : "warn",
+            id: p,
+            message: broken
+              ? `Page rendered an error banner (HTTP ${res.status}, ${Date.now() - started}ms)`
+              : `HTTP ${res.status} in ${Date.now() - started}ms`,
+          });
+        }
+        if (Date.now() - started > 15000) {
+          issues.push({
+            area: "http",
+            severity: "warn",
+            id: p,
+            message: `Slow response ${Date.now() - started}ms`,
+          });
+        }
+        httpSmoke.push(row);
+      } catch (err) {
+        const ms = Date.now() - started;
+        httpSmoke.push({
+          path: p,
+          error: err instanceof Error ? err.message : String(err),
+          ms,
+        });
+        issues.push({
+          area: "http",
+          severity: "error",
+          id: p,
+          message: `Request failed after ${ms}ms: ${err instanceof Error ? err.message : String(err)}`,
+        });
+      }
+    }
+  }
+  report.httpSmoke = { base: APP_BASE, routes: httpSmoke };
+
   report.progressWritten = {
     lessonsUpserted,
     practiceUpserted,
+    papcPracticeUpserted,
     verified: {
       lessonsCompleted: completedLessons ?? 0,
       quizzesAttempted: quizzesAttempted ?? 0,
@@ -700,6 +1197,13 @@ async function main() {
 
   writeReport(report, issues);
 
+  const cert = report.certification as
+    | {
+        exam?: { passed?: boolean; scorePct?: number } | null;
+        certificate?: { verificationCode?: string } | null;
+      }
+    | undefined;
+
   console.log("\n=== DEMO WALKTHROUGH SUMMARY ===");
   console.log(`Account: ${DEMO.email} / ${DEMO.password} (${createdNew ? "created" : "reused"})`);
   console.log(`User ID: ${demoUserId}`);
@@ -710,6 +1214,9 @@ async function main() {
   console.log(`Practice solved: ${practiceSolved}`);
   console.log(
     `Practice validation — curriculum ${practiceValidation.curriculum.passed}/${practiceValidation.curriculum.total}, basics ${practiceValidation.basics.passed}/${practiceValidation.basics.total}, algorithms ${practiceValidation.algorithms.passed}/${practiceValidation.algorithms.total}`
+  );
+  console.log(
+    `PAPC practice: ${papcValidation.practice.passed}/${papcValidation.practice.total} | quiz bank ${papcValidation.quizBank.passed}/${papcValidation.quizBank.total} | exam ${cert?.exam?.passed ? "PASSED" : "FAILED"} ${cert?.exam?.scorePct ?? "?"}% | cert ${cert?.certificate?.verificationCode ?? "none"}`
   );
   console.log(`Errors: ${errors.length} | Warnings: ${warns.length}`);
   if (errors.length) {

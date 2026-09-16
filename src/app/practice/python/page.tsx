@@ -6,14 +6,18 @@ import {
   PYTHON_PROGRAMMING_ORDER_PREFIX,
   PYTHON_PROGRAMMING_TITLE,
   difficultyLabel,
-  getPythonProgrammingProblems,
-  getPythonProgrammingStats,
-} from "@/data/python-programming";
+  getPythonProgrammingList,
+} from "@/data/python-programming-catalog";
+import {
+  PYTHON_HUB_ALGORITHM_COUNT,
+  PYTHON_HUB_BASICS_COUNT,
+  PYTHON_HUB_DIFFICULTIES,
+  PYTHON_HUB_PRACTICE_TOTAL,
+} from "@/data/python-hub-stats";
 import { PythonPracticeProblemTable } from "@/components/practice/PythonPracticeProblemTable";
 
 export default function PythonProgrammingPracticePage() {
-  const stats = getPythonProgrammingStats();
-  const problems = getPythonProgrammingProblems();
+  const problems = getPythonProgrammingList();
 
   return (
     <div className={`${PAGE_CONTAINER} py-10`}>
@@ -30,19 +34,20 @@ export default function PythonProgrammingPracticePage() {
           {PYTHON_PROGRAMMING_TITLE}
         </h1>
         <p className="mt-2 max-w-2xl text-gray-600">
-          {stats.total} problems in one place — {stats.kinds.language} language
-          drills and {stats.kinds.algorithms} algorithm challenges. Filter by
-          difficulty, type, or topic, then solve in the editor.
+          {PYTHON_HUB_PRACTICE_TOTAL} problems in one place —{" "}
+          {PYTHON_HUB_BASICS_COUNT} language drills and {PYTHON_HUB_ALGORITHM_COUNT}{" "}
+          algorithm challenges. Filter by difficulty, type, or topic, then solve
+          in the editor.
         </p>
         <div className="mt-4 flex flex-wrap gap-2 text-xs font-medium">
           <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-emerald-700">
-            {difficultyLabel("easy")} {stats.difficulties.easy}
+            {difficultyLabel("easy")} {PYTHON_HUB_DIFFICULTIES.easy}
           </span>
           <span className="rounded-full bg-amber-50 px-2.5 py-1 text-amber-700">
-            {difficultyLabel("medium")} {stats.difficulties.medium}
+            {difficultyLabel("medium")} {PYTHON_HUB_DIFFICULTIES.medium}
           </span>
           <span className="rounded-full bg-red-50 px-2.5 py-1 text-red-700">
-            {difficultyLabel("hard")} {stats.difficulties.hard}
+            {difficultyLabel("hard")} {PYTHON_HUB_DIFFICULTIES.hard}
           </span>
         </div>
       </header>

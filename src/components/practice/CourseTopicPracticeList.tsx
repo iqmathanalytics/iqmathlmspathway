@@ -6,7 +6,7 @@ import {
   Circle,
   Lock,
 } from "lucide-react";
-import type { PracticeProblem } from "@/lib/types";
+import type { PracticeListItem } from "@/lib/practice-list";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePracticeProgress } from "@/hooks/usePracticeProgress";
 import { isAdmin } from "@/lib/admin";
@@ -24,7 +24,7 @@ interface CourseTopicPracticeListProps {
   topicSlug: string;
   moduleName: string;
   topicTitle: string;
-  problems: PracticeProblem[];
+  problems: PracticeListItem[];
 }
 
 export function CourseTopicPracticeList({

@@ -17,6 +17,12 @@ import {
   matchesProgrammingCategory,
   type PythonProgrammingKind,
 } from "@/lib/python-programming-links";
+import {
+  neighborsFromList,
+  toPracticeListItem,
+  type PracticeListItem,
+  type PracticeNav,
+} from "@/lib/practice-list";
 
 export type { PythonProgrammingKind };
 export {
@@ -42,6 +48,15 @@ export function getPythonProgrammingProblems(): PracticeProblem[] {
       return a.order - b.order;
     }
   );
+}
+
+/** List rows only — no starter, tests, or solutions (safe to send to the client). */
+export function getPythonProgrammingList(): PracticeListItem[] {
+  return getPythonProgrammingProblems().map(toPracticeListItem);
+}
+
+export function getPythonProgrammingNav(slug: string): PracticeNav {
+  return neighborsFromList(getPythonProgrammingList(), slug);
 }
 
 export function getPythonProgrammingByDifficulty(

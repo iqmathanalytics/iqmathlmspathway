@@ -5,12 +5,13 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import clsx from "clsx";
 import { CheckCircle2, Circle, RotateCcw, Search, Shuffle } from "lucide-react";
-import type { PracticeDifficulty, PracticeProblem } from "@/lib/types";
+import type { PracticeDifficulty } from "@/lib/types";
 import { usePracticeProgress } from "@/hooks/usePracticeProgress";
 import type {
   PracticeCategoryOption,
   PracticeDifficultyLabels,
 } from "@/lib/practice-track";
+import type { PracticeListItem } from "@/lib/practice-list";
 import {
   clearPracticeOrder,
   ensurePracticeOrder,
@@ -23,7 +24,7 @@ import {
   matchesProgrammingCategory,
   type PythonProgrammingKind,
 } from "@/lib/python-programming-links";
-import { isPracticeDifficulty } from "@/data/python-practice";
+import { isPracticeDifficulty } from "@/lib/practice-difficulty";
 
 const difficultyClass: Record<PracticeDifficulty, string> = {
   easy: "text-emerald-600 bg-emerald-50 dark:text-emerald-300 dark:bg-emerald-950/40",
@@ -38,7 +39,7 @@ function defaultDifficultyLabel(d: PracticeDifficulty): string {
 }
 
 interface PythonPracticeProblemTableProps {
-  problems: PracticeProblem[];
+  problems: PracticeListItem[];
   /** When set (single-track difficulty pages), links are `${basePath}/${slug}` */
   basePath?: string;
   /** Used on overview pages: `${trackRoot}/${difficulty}/${slug}` */
@@ -169,7 +170,7 @@ export function PythonPracticeProblemTable({
     setOrderVersion((v) => v + 1);
   }
 
-  function problemHref(p: PracticeProblem) {
+  function problemHref(p: PracticeListItem) {
     if (mergedLinks) return getProblemWorkspaceHref(p);
     if (basePath) return `${basePath}/${p.slug}`;
     return `${trackRoot}/${p.difficulty}/${p.slug}`;

@@ -59,8 +59,11 @@ export default function AdminCoursesPage() {
   return (
     <div>
       <p className="text-sm text-gray-600">
-        Only published courses appear on Home, Dashboard, and Learn. Unpublished tracks stay hidden
-        from students.
+        Published courses appear in Programs for students to enroll. Unpublished
+        tracks stay hidden from Home, Programs, Dashboard, and Learn. If students
+        cannot enroll, run{" "}
+        <code className="rounded bg-gray-100 px-1">supabase/RUN_STUDENT_ENROLL.sql</code>{" "}
+        in the SQL Editor.
       </p>
       <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950">
         <p className="font-semibold">Before publishing a new track</p>

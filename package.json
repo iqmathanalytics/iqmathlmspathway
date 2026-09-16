@@ -12,6 +12,7 @@
     "pages:build": "npm run build",
     "preview:static": "npx --yes serve out -p 8788",
     "generate:practice": "node scripts/generate-practice-content.mjs",
+    "generate:practice-lists": "npx tsx scripts/emit-practice-lists.ts",
     "generate:python-basics-extra": "node scripts/emit-python-basics-extra.mjs",
     "validate:python-basics-extra": "node scripts/validate-python-basics-specs.mjs",
     "setup:sql": "node scripts/copy-sql-wasm.mjs && node scripts/setup-sql-databases.mjs",

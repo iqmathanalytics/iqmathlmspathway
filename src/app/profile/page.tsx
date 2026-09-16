@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useColleges } from "@/hooks/useColleges";
@@ -188,7 +189,13 @@ export default function ProfilePage() {
             <p className="text-sm font-medium text-gray-700">Enrolled courses</p>
             <div className="mt-2 flex flex-wrap gap-2">
               {enrolled.length === 0 ? (
-                <p className="text-sm text-gray-500">No courses assigned yet.</p>
+                <p className="text-sm text-gray-500">
+                  No programs yet.{" "}
+                  <Link href="/programs" className="font-medium text-brand-700 hover:underline">
+                    Enroll in Programs
+                  </Link>
+                  .
+                </p>
               ) : (
                 enrolled.map((id) => {
                   const course = courses.find((c) => c.id === id);

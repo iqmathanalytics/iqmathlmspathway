@@ -37,6 +37,11 @@ body {
   background: var(--background);
 }
 
+body.papc-exam-lock header,
+body.papc-exam-lock footer {
+  display: none !important;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

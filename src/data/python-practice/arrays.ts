@@ -291,7 +291,9 @@ Modify nums in-place.`,
       {
         kind: "custom",
         label: "Example 1",
-        code: `nums = [1, 2, 3, 4, 5, 6, 7]\nrotate(nums, 3)\nassert nums == [5, 6, 7, 1, 2, 3, 4], f"got {nums!r}"`,
+        code: `nums = [10, 20, 30, 40]
+rotate(nums, 1)
+assert nums == [40, 10, 20, 30], f"got {nums!r}"`,
       },
       {
         kind: "custom",
@@ -379,8 +381,8 @@ The algorithm must run in O(n) time and cannot use the division operator.`,
     return result
 `,
     tests: [
-      { label: "Example 1", call: "productExceptSelf([1, 2, 3, 4])", expected: "[24, 12, 8, 6]" },
-      { label: "With zero", call: "productExceptSelf([-1, 1, 0, -3, 3])", expected: "[0, 0, 9, 0, 0]" },
+      { label: "Example 1", call: "productExceptSelf([2, 3, 4, 5])", expected: "[60, 40, 30, 24]" },
+      { label: "With zero", call: "productExceptSelf([2, 0, 3])", expected: "[0, 6, 0]" },
       { label: "Two elements", call: "productExceptSelf([2, 3])", expected: "[3, 2]" },
     ],
   }),
@@ -520,7 +522,7 @@ The majority element is the element that appears more than floor(n / 2) times. Y
     return candidate
 `,
     tests: [
-      { label: "Example 1", call: "majorityElement([3, 2, 3])", expected: "3" },
+      { label: "Example 1", call: "majorityElement([1, 1, 2, 1, 3])", expected: "1" },
       { label: "Example 2", call: "majorityElement([2, 2, 1, 1, 1, 2, 2])", expected: "2" },
       { label: "Single", call: "majorityElement([1])", expected: "1" },
     ],
@@ -562,7 +564,7 @@ You must implement an algorithm that runs in O(n) time and uses constant extra s
     return n + 1
 `,
     tests: [
-      { label: "Example 1", call: "firstMissingPositive([1, 2, 0])", expected: "3" },
+      { label: "Example 1", call: "firstMissingPositive([2, 3, 4])", expected: "1" },
       { label: "Example 2", call: "firstMissingPositive([3, 4, -1, 1])", expected: "2" },
       { label: "All positive sequential", call: "firstMissingPositive([1, 2, 3])", expected: "4" },
     ],
@@ -611,8 +613,8 @@ Given nums and an integer target, return the index of target if it is in nums, o
     return -1
 `,
     tests: [
-      { label: "Found", call: "search([4, 5, 6, 7, 0, 1, 2], 0)", expected: "4" },
-      { label: "Missing", call: "search([4, 5, 6, 7, 0, 1, 2], 3)", expected: "-1" },
+      { label: "Found", call: "search([6, 7, 8, 1, 2, 3, 4], 3)", expected: "5" },
+      { label: "Missing", call: "search([6, 7, 8, 1, 2, 3, 4], 9)", expected: "-1" },
       { label: "Not rotated", call: "search([1, 2, 3, 4], 3)", expected: "2" },
     ],
   }),

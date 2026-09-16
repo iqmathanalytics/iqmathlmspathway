@@ -7,7 +7,7 @@ import { ChunkErrorRecovery } from "@/components/providers/ChunkErrorRecovery";
 import { PLATFORM_BRAND, PLATFORM_LOGO, PLATFORM_NAME, PLATFORM_TAGLINE } from "@/data/platform";
 
 export const metadata: Metadata = {
-  title: `${PLATFORM_NAME} — Python, SQL, Agentic AI & MBA Analytics`,
+  title: `${PLATFORM_NAME} — Professional learning, practice, and certification`,
   description: PLATFORM_TAGLINE,
   applicationName: PLATFORM_BRAND,
   icons: {

@@ -1,5 +1,5 @@
 import { notFound, redirect } from "next/navigation";
-import { isPracticeDifficulty } from "@/data/python-practice";
+import { isPracticeDifficulty } from "@/lib/practice-difficulty";
 
 interface DifficultyPageProps {
   params: Promise<{ difficulty: string }>;

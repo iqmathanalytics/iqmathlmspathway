@@ -26,6 +26,8 @@ interface PracticeAccessGateProps {
   backHref?: string;
   backLabel?: string;
   className?: string;
+  /** Copy for lock screens. Certification uses the same Python + premium gate. */
+  purpose?: "practice" | "certification";
 }
 
 /**
@@ -41,7 +43,9 @@ export function PracticeAccessGate({
   backHref = "/practice",
   backLabel = "Back to practice",
   className,
+  purpose = "practice",
 }: PracticeAccessGateProps) {
+  const noun = purpose === "certification" ? "certification" : "practice";
   const { user, profile, loading: authLoading } = useAuth();
   const { hasPremium, loading: entLoading } = useEntitlements();
   const { accessibleCourses, loading: coursesLoading } = useAccessibleCourses();
@@ -68,8 +72,9 @@ export function PracticeAccessGate({
           <Lock className="mx-auto h-10 w-10 text-brand-600" />
           <h1 className="mt-4 text-xl font-bold text-gray-900">Sign in required</h1>
           <p className="mt-2 text-sm text-gray-600">
-            Practice is for Python course students with premium access. Sign in to
-            continue.
+            {purpose === "certification"
+              ? "Certification is for Python course students with premium access. Sign in to continue."
+              : "Practice is for Python course students with premium access. Sign in to continue."}
           </p>
           <Link
             href={`/auth/login?next=${encodeURIComponent(loginNext)}`}
@@ -101,9 +106,11 @@ export function PracticeAccessGate({
           <Lock className="mx-auto h-10 w-10 text-brand-600" />
           <h1 className="mt-4 text-xl font-bold text-gray-900">{title}</h1>
           <p className="mt-2 text-sm text-gray-600">
-            Python Practice (Basics &amp; Algorithms) is only available if you are
-            enrolled in the <strong>Python for Data Science</strong> course. Ask
-            your admin to publish Python for your college or department.
+            {purpose === "certification"
+              ? "Python Advanced Proficiency Certification is only available if you are enrolled in the "
+              : "Python Practice (Basics & Algorithms) is only available if you are enrolled in the "}
+            <strong>Python for Data Science</strong> course. Ask your admin to
+            publish Python for your college or department.
           </p>
           <Link
             href="/dashboard"
@@ -134,14 +141,14 @@ export function PracticeAccessGate({
         <Lock className="mx-auto h-10 w-10 text-brand-600" />
         <h1 className="mt-4 text-xl font-bold text-gray-900">{title}</h1>
         <p className="mt-2 text-sm text-gray-600">
-          You have the Python course. Unlock practice questions with a one-time
-          purchase, or ask an admin to grant practice access.
+          You have the Python course. Unlock {noun} with a one-time purchase, or
+          ask an admin to grant practice access.
         </p>
         <Link
           href="/checkout"
           className="mt-6 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-700"
         >
-          Unlock all practice
+          Unlock access
           <ChevronRight className="h-4 w-4" />
         </Link>
         <Link

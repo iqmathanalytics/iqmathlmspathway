@@ -133,7 +133,7 @@ Deno.serve(async (req) => {
       return json({ error: resolved.error }, 400);
     }
 
-    const { error } = await admin.auth.admin.createUser({
+    const { data, error } = await admin.auth.admin.createUser({
       email,
       password,
       email_confirm: true,
@@ -151,6 +151,25 @@ Deno.serve(async (req) => {
         return json({ error: "An account with this email already exists. Try signing in." }, 409);
       }
       return json({ error: error.message }, 400);
+    }
+
+    const userId = data?.user?.id;
+    if (userId) {
+      await admin.from("profiles").upsert({
+        id: userId,
+        full_name: fullName,
+        mobile,
+        email,
+        college_id: resolved.id || null,
+        department,
+        role: "student",
+      });
+      if (resolved.id) {
+        await admin.rpc("enroll_student_for_college", {
+          p_user_id: userId,
+          p_college_id: resolved.id,
+        });
+      }
     }
 
     return json({ success: true });

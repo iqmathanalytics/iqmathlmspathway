@@ -9,9 +9,10 @@ export function ConditionalFooter() {
   const parts = pathname.split("/").filter(Boolean);
   const hideLearnTopic = pathname.startsWith("/learn/") && parts.length >= 3;
   const hidePracticeWorkspace =
-    (pathname.startsWith("/practice/python/") ||
+    ((pathname.startsWith("/practice/python/") ||
       pathname.startsWith("/practice/python-basics/")) &&
-    parts.length >= 4;
+      parts.length >= 4) ||
+    (pathname.startsWith("/certification/papc/practice/") && parts.length >= 4);
 
   if (hideLearnTopic || hidePracticeWorkspace) return null;
   return <Footer />;

@@ -113,7 +113,7 @@ export const greedyProblems = [
 Find two lines that together with the x-axis form a container, such that the container contains the most water.
 
 Return the maximum amount of water a container can store. You may not slant the container.`,
-    examples: [{ input: "height = [1, 8, 6, 2, 5, 4, 8, 3, 7]", output: "49" }],
+    examples: [{ input: "height = [1, 2, 4, 3]", output: "4" }],
     constraints: ["2 <= n <= 10^5"],
     hints: [
       "Two pointers at both ends.",
@@ -139,8 +139,8 @@ Return the maximum amount of water a container can store. You may not slant the 
     return max_area
 `,
     tests: [
-      { label: "Example 1", call: "maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7])", expected: "49" },
-      { label: "Two lines", call: "maxArea([1, 1])", expected: "1" },
+      { label: "Example 1", call: "maxArea([1, 2, 4, 3])", expected: "4" },
+      { label: "Two lines", call: "maxArea([4, 4])", expected: "4" },
     ],
   }),
 
@@ -319,8 +319,8 @@ def findKthLargest(nums, k):
     return heap[0]
 `,
     tests: [
-      { label: "Example 1", call: "findKthLargest([3, 2, 1, 5, 6, 4], 2)", expected: "5" },
-      { label: "Example 2", call: "findKthLargest([3, 2, 3, 1, 2, 4, 5, 5, 6], 4)", expected: "4" },
+      { label: "Example 1", call: "findKthLargest([7, 2, 9, 1], 1)", expected: "9" },
+      { label: "Example 2", call: "findKthLargest([4, 2, 8, 1], 3)", expected: "2" },
     ],
   }),
 
@@ -334,7 +334,7 @@ def findKthLargest(nums, k):
 
 Merge all the linked-lists into one sorted linked-list and return it.`,
     examples: [
-      { input: "lists = [[1, 4, 5], [1, 3, 4], [2, 6]]", output: "[1, 1, 2, 3, 4, 4, 5, 6]" },
+      { input: "lists = [[2, 5], [1, 3, 7], [4]]", output: "[1, 2, 3, 4, 5, 7]" },
     ],
     constraints: ["0 <= k <= 10^4"],
     hints: [
@@ -372,8 +372,8 @@ def mergeKLists(lists):
         kind: "custom",
         label: "Example 1",
         code: `${LIST_HELPERS}
-lists = [_list_from_vals([1, 4, 5]), _list_from_vals([1, 3, 4]), _list_from_vals([2, 6])]
-assert _vals_from_list(mergeKLists(lists)) == [1, 1, 2, 3, 4, 4, 5, 6]`,
+lists = [_list_from_vals([2, 5]), _list_from_vals([1, 3, 7]), _list_from_vals([4])]
+assert _vals_from_list(mergeKLists(lists)) == [1, 2, 3, 4, 5, 7]`,
       },
       { kind: "custom", label: "Empty", code: "assert mergeKLists([]) is None" },
     ],
