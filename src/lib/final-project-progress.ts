@@ -3,6 +3,8 @@
  * so topic layouts don't pull module-18 + full curriculum into every page.
  */
 
+import { OPEN_ACCESS } from "@/lib/access-flags";
+
 const STORAGE_KEY = "python-lms-fp-exercises";
 
 export const FINAL_PROJECT_TOPIC_IDS = [
@@ -90,6 +92,7 @@ export function markExerciseComplete(
 }
 
 export function isExerciseUnlocked(topicId: string, index: number): boolean {
+  if (OPEN_ACCESS) return true;
   if (index <= 0) return true;
   const completed = getCompletedExercises(topicId);
   for (let i = 0; i < index; i++) {
@@ -125,6 +128,7 @@ export function areAllExercisesComplete(
 }
 
 export function isFinalProjectTopicUnlocked(topicId: string): boolean {
+  if (OPEN_ACCESS) return true;
   if (!isFinalProjectTopic(topicId)) return true;
   const idx = FINAL_PROJECT_TOPIC_IDS.indexOf(topicId);
   if (idx <= 0) return true;

@@ -4,6 +4,7 @@ import { getPracticeCountByTopic } from "@/data/practice/meta";
 import { getCoursePracticeListByTopic } from "@/data/course-practice-catalog";
 import { PAGE_CONTAINER } from "@/lib/layout";
 import { CourseTopicPracticeList } from "@/components/practice/CourseTopicPracticeList";
+import { CourseAccessGate } from "@/components/courses/CourseAccessGate";
 
 interface PageProps {
   params: Promise<{ moduleSlug: string; topicSlug: string }>;
@@ -35,14 +36,16 @@ export default async function ModuleChallengesListPage({ params }: PageProps) {
   if (problems.length === 0) notFound();
 
   return (
-    <div className={`${PAGE_CONTAINER} py-10`}>
-      <CourseTopicPracticeList
-        moduleSlug={module.slug}
-        topicSlug={topic.slug}
-        moduleName={module.name}
-        topicTitle={topic.title}
-        problems={problems}
-      />
-    </div>
+    <CourseAccessGate courseId={module.course}>
+      <div className={`${PAGE_CONTAINER} py-10`}>
+        <CourseTopicPracticeList
+          moduleSlug={module.slug}
+          topicSlug={topic.slug}
+          moduleName={module.name}
+          topicTitle={topic.title}
+          problems={problems}
+        />
+      </div>
+    </CourseAccessGate>
   );
 }

@@ -10,20 +10,17 @@ import { PLATFORM_LOGO, PLATFORM_NAME } from "@/data/platform";
 import { AuthNav } from "@/components/layout/AuthNav";
 import { useAuth } from "@/contexts/AuthContext";
 import { useAccessibleCourses } from "@/hooks/usePublishedCourses";
-import { isAdmin, unlocksAllContent } from "@/lib/admin";
+import { isAdmin } from "@/lib/admin";
 
 export function Header() {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
-  const { user, profile } = useAuth();
+  const { profile } = useAuth();
   const { accessibleCourses, loading: coursesLoading } = useAccessibleCourses();
   const admin = isAdmin(profile);
-  const unlockAll = unlocksAllContent(profile, user?.email);
-  const hasPythonCourse =
-    unlockAll || accessibleCourses.some((c) => c.id === "python");
+  const hasPythonCourse = accessibleCourses.some((c) => c.id === "python");
   const showPractice =
     !mounted ||
-    !user ||
     coursesLoading ||
     hasPythonCourse;
   const showCertified = showPractice;

@@ -5,7 +5,8 @@ import { ChevronRight, Loader2, Lock } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useEntitlements } from "@/hooks/useEntitlements";
 import { useAccessibleCourses } from "@/hooks/usePublishedCourses";
-import { unlocksAllContent } from "@/lib/admin";
+import { isAdmin, isDemoUnlockAccount } from "@/lib/admin";
+import { OPEN_ACCESS } from "@/lib/access-flags";
 import type { ReactNode } from "react";
 
 function LoadingShell() {
@@ -31,9 +32,8 @@ interface PracticeAccessGateProps {
 }
 
 /**
- * Gates hub practice (Basics / Algorithms) behind:
- * 1) Python course enrollment (college/department plan or manual enroll)
- * 2) Premium entitlement (purchase or admin grant)
+ * Gates hub practice (Basics / Algorithms) behind a published Python course.
+ * OPEN_ACCESS skips premium, but unpublished Python still stays hidden.
  * Admins and the IQ demo account always pass.
  */
 export function PracticeAccessGate({
@@ -49,49 +49,18 @@ export function PracticeAccessGate({
   const { user, profile, loading: authLoading } = useAuth();
   const { hasPremium, loading: entLoading } = useEntitlements();
   const { accessibleCourses, loading: coursesLoading } = useAccessibleCourses();
-  const unlockAll = unlocksAllContent(profile, user?.email);
+  const bypassCatalog =
+    isAdmin(profile) || isDemoUnlockAccount(profile, user?.email);
   const hasPythonCourse = accessibleCourses.some((c) => c.id === "python");
+  const allowed =
+    bypassCatalog || (hasPythonCourse && (OPEN_ACCESS || hasPremium));
 
-  if (authLoading || (user && (entLoading || coursesLoading) && !unlockAll)) {
+  if (authLoading || (user && (entLoading || coursesLoading) && !bypassCatalog)) {
     return <LoadingShell />;
   }
 
-  if (unlockAll || (hasPremium && hasPythonCourse)) {
+  if (allowed) {
     return <>{children}</>;
-  }
-
-  if (!user) {
-    return (
-      <div
-        className={
-          className ??
-          "flex min-h-[50vh] w-full items-center justify-center rounded-2xl border border-gray-200 bg-white p-8 shadow-sm"
-        }
-      >
-        <div className="max-w-md text-center">
-          <Lock className="mx-auto h-10 w-10 text-brand-600" />
-          <h1 className="mt-4 text-xl font-bold text-gray-900">Sign in required</h1>
-          <p className="mt-2 text-sm text-gray-600">
-            {purpose === "certification"
-              ? "Certification is for Python course students with premium access. Sign in to continue."
-              : "Practice is for Python course students with premium access. Sign in to continue."}
-          </p>
-          <Link
-            href={`/auth/login?next=${encodeURIComponent(loginNext)}`}
-            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-700"
-          >
-            Sign in
-            <ChevronRight className="h-4 w-4" />
-          </Link>
-          <Link
-            href={backHref}
-            className="mt-3 block text-sm text-brand-700 hover:underline"
-          >
-            {backLabel}
-          </Link>
-        </div>
-      </div>
-    );
   }
 
   if (!hasPythonCourse) {
@@ -117,6 +86,40 @@ export function PracticeAccessGate({
             className="mt-6 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-700"
           >
             Go to dashboard
+            <ChevronRight className="h-4 w-4" />
+          </Link>
+          <Link
+            href={backHref}
+            className="mt-3 block text-sm text-brand-700 hover:underline"
+          >
+            {backLabel}
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div
+        className={
+          className ??
+          "flex min-h-[50vh] w-full items-center justify-center rounded-2xl border border-gray-200 bg-white p-8 shadow-sm"
+        }
+      >
+        <div className="max-w-md text-center">
+          <Lock className="mx-auto h-10 w-10 text-brand-600" />
+          <h1 className="mt-4 text-xl font-bold text-gray-900">Sign in required</h1>
+          <p className="mt-2 text-sm text-gray-600">
+            {purpose === "certification"
+              ? "Certification is for Python course students with premium access. Sign in to continue."
+              : "Practice is for Python course students with premium access. Sign in to continue."}
+          </p>
+          <Link
+            href={`/auth/login?next=${encodeURIComponent(loginNext)}`}
+            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-700"
+          >
+            Sign in
             <ChevronRight className="h-4 w-4" />
           </Link>
           <Link

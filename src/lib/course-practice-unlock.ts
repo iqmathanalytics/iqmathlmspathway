@@ -1,3 +1,4 @@
+import { OPEN_ACCESS } from "@/lib/access-flags";
 import type { PracticeProgressRow } from "@/lib/types";
 
 /** Solved problem ids from practice_progress rows. */
@@ -21,7 +22,7 @@ export function isCoursePracticeProblemUnlocked(
   solvedIds: Set<string>,
   options?: { unlockAll?: boolean }
 ): boolean {
-  if (options?.unlockAll) {
+  if (OPEN_ACCESS || options?.unlockAll) {
     return problems.some((p) => p.id === problemId);
   }
   const sorted = [...problems].sort((a, b) => a.order - b.order);

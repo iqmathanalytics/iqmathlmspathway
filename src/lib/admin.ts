@@ -1,3 +1,4 @@
+import { OPEN_ACCESS } from "@/lib/access-flags";
 import type { ProfileRow } from "@/lib/types";
 
 /** Student demo account — every course, practice, quiz, and cert is unlocked. */
@@ -20,7 +21,7 @@ export function unlocksAllContent(
   profile: ProfileRow | null | undefined,
   email?: string | null
 ): boolean {
-  return isAdmin(profile) || isDemoUnlockAccount(profile, email);
+  return OPEN_ACCESS || isAdmin(profile) || isDemoUnlockAccount(profile, email);
 }
 
 export function isAccountDisabled(profile: ProfileRow | null | undefined): boolean {

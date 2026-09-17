@@ -43,6 +43,12 @@ export const GRAPH_NODE_STARTER = `class Node:
 `;
 
 export const LIST_HELPERS = `
+if "ListNode" not in globals():
+    class ListNode:
+        def __init__(self, val=0, next=None):
+            self.val = val
+            self.next = next
+
 def _list_from_vals(vals):
     dummy = ListNode(0)
     cur = dummy
@@ -65,6 +71,13 @@ def _vals_from_list(head, limit=200):
 `;
 
 export const TREE_HELPERS = `
+if "TreeNode" not in globals():
+    class TreeNode:
+        def __init__(self, val=0, left=None, right=None):
+            self.val = val
+            self.left = left
+            self.right = right
+
 from collections import deque as _deque
 
 def _tree_from_vals(vals):

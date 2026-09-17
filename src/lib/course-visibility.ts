@@ -1,9 +1,11 @@
 import { ALL_COURSE_IDS, courses } from "@/data/courses";
+import { OPEN_ACCESS } from "@/lib/access-flags";
 import type { Course, CourseId } from "@/lib/types";
 import { getSupabase } from "@/lib/supabase/client";
 
 /**
- * Published course IDs for learners.
+ * Published course IDs for learners. Admin publish is the only catalog switch —
+ * OPEN_ACCESS never bypasses this (it only skips enrollment / premium locks).
  * - No Supabase client (local/build without env) → all catalog (static export needs paths).
  * - Query error or empty `course_settings` → fail-closed (empty set) so unpublished
  *   tracks are never exposed by accident.
@@ -62,6 +64,7 @@ export function canAccessCourse(options: {
   const { courseId, isAdmin, publishedIds, enrolledIds } = options;
   if (isAdmin) return true;
   if (!publishedIds.has(courseId)) return false;
+  if (OPEN_ACCESS) return true;
   // Students must have an enrollments row. Unknown / error → no access.
   if (!enrolledIds) return false;
   return enrolledIds.has(courseId);

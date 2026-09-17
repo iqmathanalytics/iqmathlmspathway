@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { ALL_COURSE_IDS, courses } from "@/data/courses";
+import { courses } from "@/data/courses";
 import { useAuth } from "@/contexts/AuthContext";
 import { isAdmin } from "@/lib/admin";
 import {
@@ -16,7 +16,7 @@ import type { Course, CourseId } from "@/lib/types";
 /** Published courses (catalog visibility). Does not apply enrollment. */
 export function usePublishedCourses() {
   const [publishedIds, setPublishedIds] = useState<Set<CourseId>>(
-    () => new Set(ALL_COURSE_IDS)
+    () => new Set()
   );
   const [loading, setLoading] = useState(true);
 
@@ -41,7 +41,7 @@ export function usePublishedCourses() {
   };
 }
 
-/** Courses the signed-in learner can open (published + enrolled, admins see published). */
+/** Courses the signed-in learner can open (published + enrolled). Admins can also open unpublished tracks. */
 export function useAccessibleCourses() {
   const { user, profile, loading: authLoading } = useAuth();
   const { publishedIds, loading: publishedLoading } = usePublishedCourses();

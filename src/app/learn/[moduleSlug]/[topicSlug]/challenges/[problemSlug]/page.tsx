@@ -7,6 +7,7 @@ import {
 } from "@/data/practice";
 import { PracticeProblemShell } from "@/components/practice/PracticeProblemShell";
 import { CoursePracticeUnlockGate } from "@/components/practice/CoursePracticeUnlockGate";
+import { CourseAccessGate } from "@/components/courses/CourseAccessGate";
 
 interface PageProps {
   params: Promise<{ moduleSlug: string; topicSlug: string; problemSlug: string }>;
@@ -45,20 +46,22 @@ export default async function ModuleChallengeProblemPage({ params }: PageProps) 
   }
 
   return (
-    <div className="flex h-[calc(100dvh-3.5rem)] min-h-0 flex-col overflow-hidden px-3 py-2 sm:px-6 lg:px-8">
-      <CoursePracticeUnlockGate
-        problem={problem}
-        moduleSlug={ctx.module.slug}
-        topicSlug={ctx.topic.slug}
-      >
-        <PracticeProblemShell
+    <CourseAccessGate courseId={ctx.module.course}>
+      <div className="flex h-[calc(100dvh-3.5rem)] min-h-0 flex-col overflow-hidden px-3 py-2 sm:px-6 lg:px-8">
+        <CoursePracticeUnlockGate
           problem={problem}
           moduleSlug={ctx.module.slug}
           topicSlug={ctx.topic.slug}
-          moduleName={ctx.module.name}
-          topicTitle={ctx.topic.title}
-        />
-      </CoursePracticeUnlockGate>
-    </div>
+        >
+          <PracticeProblemShell
+            problem={problem}
+            moduleSlug={ctx.module.slug}
+            topicSlug={ctx.topic.slug}
+            moduleName={ctx.module.name}
+            topicTitle={ctx.topic.title}
+          />
+        </CoursePracticeUnlockGate>
+      </div>
+    </CourseAccessGate>
   );
 }

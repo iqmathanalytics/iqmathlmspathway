@@ -7,7 +7,8 @@ import { getSupabase, isSupabaseConfigured } from "@/lib/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { useEntitlements } from "@/hooks/useEntitlements";
 import { useAccessibleCourses } from "@/hooks/usePublishedCourses";
-import { unlocksAllContent } from "@/lib/admin";
+import { isAdmin, isDemoUnlockAccount } from "@/lib/admin";
+import { OPEN_ACCESS } from "@/lib/access-flags";
 import { isStandalonePracticeProblemId } from "@/lib/practice-config";
 
 interface PracticeHubClientProps {
@@ -26,10 +27,12 @@ export function PracticeHubClient({
   const { user, profile } = useAuth();
   const { hasPremium, loading: entLoading } = useEntitlements();
   const { accessibleCourses, loading: coursesLoading } = useAccessibleCourses();
-  const admin = unlocksAllContent(profile, user?.email);
+  const bypassCatalog =
+    isAdmin(profile) || isDemoUnlockAccount(profile, user?.email);
   const hasPythonCourse =
-    admin || accessibleCourses.some((c) => c.id === "python");
-  const unlocked = admin || (hasPremium && hasPythonCourse);
+    bypassCatalog || accessibleCourses.some((c) => c.id === "python");
+  const unlocked =
+    bypassCatalog || (hasPythonCourse && (OPEN_ACCESS || hasPremium));
   const loading = entLoading || coursesLoading;
   const [solvedCount, setSolvedCount] = useState(0);
 

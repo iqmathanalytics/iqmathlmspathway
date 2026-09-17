@@ -1,3 +1,4 @@
+import { OPEN_ACCESS } from "@/lib/access-flags";
 import type { Module, Topic, UserProgress } from "@/lib/types";
 
 export interface TopicPathEntry {
@@ -22,7 +23,7 @@ export function getUnlockedTopicIds(
   const path = getPublishedTopicEntries(modules);
 
   // Admins preview the full curriculum without sequential unlock.
-  if (options?.unlockAll) {
+  if (OPEN_ACCESS || options?.unlockAll) {
     return new Set(path.map((entry) => entry.topic.id));
   }
 
