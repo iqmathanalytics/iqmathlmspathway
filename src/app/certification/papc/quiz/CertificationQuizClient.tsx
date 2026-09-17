@@ -18,6 +18,7 @@ import {
 } from "@/data/certification/papc-config";
 import {
   buildShuffledPapcQuiz,
+  fillPapcOfficialSolutions,
   getPapcQuizProblem,
   isCodingQuizAnswers,
   papcQuizPoints,
@@ -131,7 +132,9 @@ function QuizBody() {
         setSubmitting(false);
         return;
       }
-      router.replace("/certification/papc/results");
+      router.replace(
+        result.passed ? "/certification/papc/certificate" : "/certification/papc/results"
+      );
     },
     [user, profile, router]
   );
@@ -323,6 +326,27 @@ function QuizBody() {
     setStarting(false);
   }
 
+  async function completeWithOfficialSolutions() {
+    if (!user || starting || submitting) return;
+    setStarting(true);
+    setError(null);
+    let current = attempt;
+    if (!current) {
+      const started = await startPapcAttempt(user.id);
+      if (started.error || !started.attempt) {
+        setError(started.error);
+        setStarting(false);
+        return;
+      }
+      current = started.attempt;
+      setAttempt(current);
+    }
+    const nextAnswers = fillPapcOfficialSolutions(current.answers);
+    setAnswers(nextAnswers);
+    await finish(current, nextAnswers);
+    setStarting(false);
+  }
+
   async function resumeFullscreen() {
     const root = examRootRef.current;
     if (!root) return;
@@ -339,6 +363,7 @@ function QuizBody() {
   const problem = question ? getPapcQuizProblem(question.questionId) : undefined;
   const passedCount = answers.filter((a) => a.passed).length;
   const lowTime = remainingMs <= 5 * 60 * 1000;
+  const canOfficialComplete = unlocksAllContent(profile, user?.email);
 
   const navItems = useMemo(
     () =>
@@ -414,7 +439,7 @@ function QuizBody() {
             {error && <p className="mt-4 text-sm text-red-600">{error}</p>}
             <button
               type="button"
-              disabled={starting}
+              disabled={starting || submitting}
               onClick={() => void beginExam()}
               className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 px-4 py-3 text-sm font-semibold text-white hover:bg-brand-700 disabled:opacity-60"
             >
@@ -425,6 +450,16 @@ function QuizBody() {
               )}
               {attempt ? "Resume in full screen" : "Start assessment"}
             </button>
+            {canOfficialComplete ? (
+              <button
+                type="button"
+                disabled={starting || submitting}
+                onClick={() => void completeWithOfficialSolutions()}
+                className="mt-3 inline-flex w-full items-center justify-center rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 text-sm font-semibold text-brand-800 hover:bg-brand-100 disabled:opacity-60"
+              >
+                {submitting ? "Issuing certificate…" : "Complete with official solutions and view certificate"}
+              </button>
+            ) : null}
           </div>
         </div>
       ) : attempt && question && problem ? (

@@ -37,10 +37,23 @@ function PrintBody() {
 
   useEffect(() => {
     if (!user) return;
-    void fetchPapcCertificate(user.id).then(({ certificate: row }) => {
-      setCertificate(row);
-      setLoading(false);
-    });
+    let cancelled = false;
+    void (async () => {
+      for (let i = 0; i < 5; i++) {
+        const { certificate: row } = await fetchPapcCertificate(user.id);
+        if (cancelled) return;
+        if (row) {
+          setCertificate(row);
+          setLoading(false);
+          return;
+        }
+        await new Promise((r) => setTimeout(r, 400));
+      }
+      if (!cancelled) setLoading(false);
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, [user]);
 
   if (loading) {

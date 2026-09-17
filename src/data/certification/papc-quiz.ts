@@ -56,6 +56,25 @@ export function buildShuffledPapcQuiz(): CertificationQuizAnswer[] {
     }));
 }
 
+/** Fill an attempt with official exam solutions and mark each problem passed. */
+export function fillPapcOfficialSolutions(
+  answers?: CertificationQuizAnswer[]
+): CertificationQuizAnswer[] {
+  const base =
+    isCodingQuizAnswers(answers) && answers?.length
+      ? answers
+      : buildShuffledPapcQuiz();
+  return base.map((row) => {
+    const item = getPapcQuizProblem(row.questionId);
+    const solution = item?.solutionCode?.trim() || "";
+    return {
+      ...row,
+      code: solution || row.code || item?.starterCode || "",
+      passed: Boolean(solution),
+    };
+  });
+}
+
 export function scorePapcAnswers(answers: CertificationQuizAnswer[]): {
   scorePoints: number;
   scorePct: number;

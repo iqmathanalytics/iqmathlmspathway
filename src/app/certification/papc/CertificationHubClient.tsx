@@ -116,7 +116,7 @@ function HubBody() {
     : lockUntil
       ? `Retake in ${daysUntil(lockUntil)} day${daysUntil(lockUntil) === 1 ? "" : "s"}`
       : certificate
-        ? "View results"
+        ? "View certificate"
         : "Start assessment";
 
   return (
@@ -202,7 +202,11 @@ function HubBody() {
               </p>
             ) : null}
             <Link
-              href={certificate && !inProgress && !lockUntil ? "/certification/papc/results" : quizHref}
+              href={
+                certificate && !inProgress && !lockUntil
+                  ? "/certification/papc/certificate"
+                  : quizHref
+              }
               className="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-700"
             >
               {quizLabel}

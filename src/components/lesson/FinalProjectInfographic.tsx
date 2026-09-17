@@ -45,20 +45,12 @@ const PHASE_LINKS: Record<string, string> = {
   capstone: "/learn/capstone-project/capstone",
 };
 
-function avg(scores: number[]) {
-  return scores.length ? scores.reduce((a, b) => a + b, 0) / scores.length : 0;
+function sumSales(revenues: number[]) {
+  return revenues.reduce((a, b) => a + b, 0);
 }
 
-function letterGrade(a: number) {
-  if (a >= 90) return "A";
-  if (a >= 80) return "B";
-  if (a >= 70) return "C";
-  if (a >= 60) return "D";
-  return "F";
-}
-
-function status(a: number) {
-  return a >= 60 ? "PASS" : "FAIL";
+function valueBand(total: number) {
+  return total >= 300 ? "High" : "Standard";
 }
 
 function SectionLabel({
@@ -180,48 +172,51 @@ function Annotation({ children }: { children: React.ReactNode }) {
   );
 }
 
-function GradeSimulator() {
-  const [students, setStudents] = useState<Record<string, number[]>>({
-    Alice: [85, 92, 78],
-    Bob: [70, 88, 91],
-    Cara: [55, 48, 62],
+function SalesSimulator() {
+  const [sales, setSales] = useState<Record<string, number[]>>({
+    North: [120, 90],
+    South: [180, 200, 150],
+    East: [95],
   });
-  const [selected, setSelected] = useState("Alice");
+  const [selected, setSelected] = useState("North");
 
-  const averages = useMemo(
+  const totals = useMemo(
     () =>
       Object.fromEntries(
-        Object.entries(students).map(([name, grades]) => [name, avg(grades)])
+        Object.entries(sales).map(([region, amounts]) => [
+          region,
+          sumSales(amounts),
+        ])
       ),
-    [students]
+    [sales]
   );
 
   const top = useMemo(() => {
-    const entries = Object.entries(averages);
+    const entries = Object.entries(totals);
     if (!entries.length) return null;
     return entries.reduce((best, cur) => (cur[1] > best[1] ? cur : best));
-  }, [averages]);
+  }, [totals]);
 
-  const passing = useMemo(
-    () => Object.entries(averages).filter(([, a]) => a >= 60).map(([n]) => n),
-    [averages]
+  const highRegions = useMemo(
+    () => Object.entries(totals).filter(([, v]) => v >= 300).map(([r]) => r),
+    [totals]
   );
 
-  const addGrade = useCallback(() => {
-    const score = Math.floor(Math.random() * 41) + 60;
-    setStudents((prev) => ({
+  const addSale = useCallback(() => {
+    const amount = Math.floor(Math.random() * 141) + 80;
+    setSales((prev) => ({
       ...prev,
-      [selected]: [...(prev[selected] ?? []), score],
+      [selected]: [...(prev[selected] ?? []), amount],
     }));
   }, [selected]);
 
   const reset = useCallback(() => {
-    setStudents({
-      Alice: [85, 92, 78],
-      Bob: [70, 88, 91],
-      Cara: [55, 48, 62],
+    setSales({
+      North: [120, 90],
+      South: [180, 200, 150],
+      East: [95],
     });
-    setSelected("Alice");
+    setSelected("North");
   }, []);
 
   return (
@@ -230,7 +225,7 @@ function GradeSimulator() {
         <div className="flex items-center gap-2">
           <Sparkles className="h-4 w-4 text-brand-600" />
           <span className="text-sm font-semibold text-gray-900">
-            Live Grade Simulator
+            Live Sales Simulator
           </span>
           <span className="rounded-full bg-brand-100 px-2 py-0.5 text-[10px] font-semibold text-brand-800">
             Interactive
@@ -241,59 +236,58 @@ function GradeSimulator() {
           onClick={reset}
           className="text-[11px] font-medium text-gray-500 hover:text-gray-800"
         >
-          Reset class
+          Reset sales
         </button>
       </div>
 
       <div className="grid gap-4 p-4 lg:grid-cols-2">
         <div>
           <p className="mb-2 text-[12px] font-medium text-gray-500">
-            Select a student, then add a grade
+            Select a region, then add a sale
           </p>
           <div className="mb-3 flex flex-wrap gap-1.5">
-            {Object.keys(students).map((name) => (
+            {Object.keys(sales).map((region) => (
               <button
-                key={name}
+                key={region}
                 type="button"
-                onClick={() => setSelected(name)}
+                onClick={() => setSelected(region)}
                 className={`rounded-full px-3 py-1 text-[12px] font-semibold transition-all ${
-                  selected === name
+                  selected === region
                     ? "bg-brand-600 text-white shadow-sm"
                     : "border border-black/10 bg-white text-gray-700 hover:border-brand-300"
                 }`}
               >
-                {name}
+                {region}
               </button>
             ))}
           </div>
 
           <div className="mb-3 flex min-h-[44px] flex-wrap gap-1.5">
-            {(students[selected] ?? []).map((g, i) => (
+            {(sales[selected] ?? []).map((amount, i) => (
               <span
-                key={`${selected}-${i}-${g}`}
+                key={`${selected}-${i}-${amount}`}
                 className="inline-flex items-center rounded-lg border border-black/10 bg-white px-2.5 py-1 font-mono text-[12px] font-semibold text-gray-800"
               >
-                {g}
+                {amount}
               </span>
             ))}
           </div>
 
           <button
             type="button"
-            onClick={addGrade}
+            onClick={addSale}
             className="inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-3 py-1.5 text-[12px] font-semibold text-white transition hover:bg-brand-700"
           >
             <Plus className="h-3.5 w-3.5" />
-            Add random grade (60–100)
+            Add random sale (80–220)
           </button>
 
           <p className="mt-2 text-[11px] text-gray-500">
-            Avg for {selected}:{" "}
+            Total for {selected}:{" "}
             <strong className="font-mono text-gray-800">
-              {avg(students[selected] ?? []).toFixed(1)}
+              {sumSales(sales[selected] ?? [])}
             </strong>{" "}
-            — {status(avg(students[selected] ?? []))} (
-            {letterGrade(avg(students[selected] ?? []))})
+            — {valueBand(sumSales(sales[selected] ?? []))}
           </p>
         </div>
 
@@ -302,14 +296,14 @@ function GradeSimulator() {
             Live report preview
           </div>
           <pre className="max-h-52 overflow-y-auto px-3 py-2.5 font-mono text-[11.5px] leading-relaxed text-green-300">
-            {`=== Class Report ===\n`}
-            {Object.entries(averages).map(([name, a]) => (
-              <span key={name}>
-                {`${name}: avg ${a.toFixed(1)} — ${status(a)} (${letterGrade(a)})\n`}
+            {`=== Retail Sales Report ===\n`}
+            {Object.entries(totals).map(([region, total]) => (
+              <span key={region}>
+                {`${region}: revenue ${total} — ${valueBand(total)}\n`}
               </span>
             ))}
-            {top && `\nTop student: ${top[0]} (${top[1].toFixed(1)})`}
-            {`\nPassing (${passing.length}): ${JSON.stringify(passing)}`}
+            {top && `\nTop region: ${top[0]} (${top[1]})`}
+            {`\nHigh-value regions (${highRegions.length}): ${JSON.stringify(highRegions)}`}
           </pre>
         </div>
       </div>
@@ -740,7 +734,7 @@ export function FinalProjectInfographic({
       </p>
 
       {(section === "overview" || section === "capstone") && showExtras && (
-        <GradeSimulator />
+        <SalesSimulator />
       )}
 
       {section === "overview" && showExtras && (
