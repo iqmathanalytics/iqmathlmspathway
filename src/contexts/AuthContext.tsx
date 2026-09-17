@@ -137,12 +137,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
 
     async function completeWithPassword() {
-      const { data: signInData, error: signInError } = await sb.auth.signInWithPassword({
+      const client = getSupabase();
+      if (!client) return { error: "Auth is not configured." };
+      const { data: signInData, error: signInError } = await client.auth.signInWithPassword({
         email: params.email,
         password: params.password,
       });
       if (signInError) return { error: formatAuthError(signInError.message) };
-      await sb.rpc("sync_login_profile", { p_mobile: params.mobile });
+      await client.rpc("sync_login_profile", { p_mobile: params.mobile });
       if (signInData.user) {
         const patch: {
           full_name: string;
@@ -155,7 +157,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           department: params.department,
         };
         if (params.collegeId) patch.college_id = params.collegeId;
-        await sb.from("profiles").update(patch).eq("id", signInData.user.id);
+        await client.from("profiles").update(patch).eq("id", signInData.user.id);
       }
       return { error: null };
     }
