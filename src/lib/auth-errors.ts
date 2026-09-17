@@ -15,7 +15,7 @@ export function formatAuthError(message: string): string {
   }
 
   if (lower.includes("email not confirmed")) {
-    return "Confirm your email first, then sign in.";
+    return "Unable to sign in with this account. Try signing in again, or reset your password.";
   }
 
   return message;

@@ -1,6 +1,7 @@
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
 function json(body: Record<string, unknown>, status = 200) {
@@ -67,6 +68,35 @@ async function resolveCollegeId(
 
   if (!inserted?.id) return { id: "", error: "Could not create college." };
   return { id: inserted.id as string };
+}
+
+async function confirmExistingUserEmail(
+  // deno-lint-ignore no-explicit-any
+  admin: any,
+  supabaseUrl: string,
+  serviceRoleKey: string,
+  email: string
+) {
+  try {
+    const res = await fetch(
+      `${supabaseUrl}/auth/v1/admin/users?email=${encodeURIComponent(email)}`,
+      {
+        headers: {
+          Authorization: `Bearer ${serviceRoleKey}`,
+          apikey: serviceRoleKey,
+        },
+      }
+    );
+    const payload = (await res.json().catch(() => ({}))) as {
+      users?: { id?: string }[];
+      user?: { id?: string };
+    };
+    const id = payload.users?.[0]?.id ?? payload.user?.id;
+    if (!id) return;
+    await admin.auth.admin.updateUserById(id, { email_confirm: true });
+  } catch {
+    /* best-effort: duplicate signup can still sign in if already confirmed */
+  }
 }
 
 Deno.serve(async (req) => {
@@ -148,6 +178,7 @@ Deno.serve(async (req) => {
     if (error) {
       const msg = error.message.toLowerCase();
       if (msg.includes("already") || msg.includes("registered")) {
+        await confirmExistingUserEmail(admin, supabaseUrl, serviceRoleKey, email);
         return json({ error: "An account with this email already exists. Try signing in." }, 409);
       }
       return json({ error: error.message }, 400);

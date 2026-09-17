@@ -12,7 +12,9 @@ export const interviewPackProblemsB = [
     examples: [
       {
         input: 'board = [["a","b"],["c","d"]], words = ["ab","ac","db","abcd"]',
-        output: '["ab","ac","abcd","db"]',
+        output: '["ab","ac","db"]',
+        explanation:
+          "ab, ac, and db are 4-direction paths. abcd is impossible: b and c are only diagonal neighbors.",
       },
     ],
     constraints: ["1 <= m, n <= 12"],
@@ -61,7 +63,7 @@ def findWords(board, words):
         kind: "custom",
         label: "2x2",
         code: `_got = sorted(findWords([["a","b"],["c","d"]], ["ab","ac","db","abcd"]))
-assert _got == ["ab","abcd","ac","db"], f"got {_got!r}"`,
+assert _got == ["ab","ac","db"], f"got {_got!r}"`,
       },
       { kind: "custom", label: "Single", code: 'assert findWords([["z"]], ["z","y"]) == ["z"]' },
       { kind: "custom", label: "None", code: 'assert findWords([["a","b"]], ["cd"]) == []' },

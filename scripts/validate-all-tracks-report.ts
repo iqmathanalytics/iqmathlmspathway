@@ -21,7 +21,7 @@ import {
 import type { PracticeProblem, PracticeTest } from "../src/lib/types";
 
 const PYTHON = process.env.PYTHON_BIN ?? "python";
-const CONCURRENCY = Number(process.env.VERIFY_CONCURRENCY ?? 8);
+const CONCURRENCY = Number(process.env.VERIFY_CONCURRENCY ?? 4);
 
 const QUIET_INPUT_SHIM = `import builtins as _b
 _real_input = _b.input
@@ -83,10 +83,28 @@ function buildRunnableSolution(problem: PracticeProblem): string {
 }
 
 function wrapSource(source: string, stdin?: string): string {
-  const runnable = isVisualizationCode(source)
+  const backend = `import os as _os\n_os.environ["MPLBACKEND"] = "Agg"\n`;
+  let runnable = isVisualizationCode(source)
     ? prepareVisualizationRunCode(source)
     : source;
-  return stdin ? `${QUIET_INPUT_SHIM}\n${runnable}` : runnable;
+  runnable = runnable.replace(/\bplt\.show\s*\(\s*\)/g, "pass");
+  const body = `${backend}${runnable}`;
+  return stdin ? `${QUIET_INPUT_SHIM}\n${body}` : body;
+}
+
+function killProcessTree(pid: number) {
+  if (process.platform === "win32") {
+    spawn("taskkill", ["/F", "/T", "/PID", String(pid)], {
+      windowsHide: true,
+      stdio: "ignore",
+    });
+    return;
+  }
+  try {
+    process.kill(pid, "SIGKILL");
+  } catch {
+    /* already gone */
+  }
 }
 
 function runPythonFile(
@@ -95,20 +113,34 @@ function runPythonFile(
   stdin?: string
 ): Promise<{ stdout: string; stderr: string; code: number }> {
   return new Promise((resolve) => {
-    const child = spawn(PYTHON, ["-I", file], {
+    const child = spawn(PYTHON, [file], {
       cwd,
       env: { ...process.env, MPLBACKEND: "Agg", PYTHONIOENCODING: "utf-8" },
+      windowsHide: true,
     });
     let stdout = "";
     let stderr = "";
+    let settled = false;
     const timer = setTimeout(() => {
-      child.kill();
-    }, 15000);
+      if (child.pid) killProcessTree(child.pid);
+      if (!settled) {
+        settled = true;
+        resolve({ stdout, stderr: stderr || "timed out after 12s", code: 124 });
+      }
+    }, 12000);
     child.stdout.on("data", (d) => (stdout += d.toString()));
     child.stderr.on("data", (d) => (stderr += d.toString()));
     child.on("close", (code) => {
       clearTimeout(timer);
+      if (settled) return;
+      settled = true;
       resolve({ stdout, stderr, code: code ?? 1 });
+    });
+    child.on("error", (err) => {
+      clearTimeout(timer);
+      if (settled) return;
+      settled = true;
+      resolve({ stdout, stderr: err.message, code: 1 });
     });
     if (stdin) child.stdin.write(stdin.endsWith("\n") ? stdin : `${stdin}\n`);
     child.stdin.end();
@@ -259,23 +291,49 @@ async function main() {
   const papcExam = getPapcQuizProblems();
 
   const tracks: Array<[TrackId, PracticeProblem[]]> = [
-    ["curriculum", curriculum],
-    ["python-basics", basics],
     ["python-practice", algos],
     ["papc-practice", papcPractice],
     ["papc-exam", papcExam],
+    ["python-basics", basics],
+    ["curriculum", curriculum],
   ];
+  const wanted = process.argv.find((a) => a.startsWith("--tracks="));
+  const trackFilter = wanted
+    ? new Set(wanted.slice("--tracks=".length).split(","))
+    : null;
+  const selected = trackFilter
+    ? tracks.filter(([id]) => trackFilter.has(id))
+    : tracks;
 
   const summaries: TrackSummary[] = [];
   const allFailures: Failure[] = [];
 
-  for (const [track, problems] of tracks) {
+  for (const [track, problems] of selected) {
     console.log(`\n=== ${track}: ${problems.length} problems ===`);
     const { summary, failures } = await verifyTrack(track, problems);
     summaries.push(summary);
     allFailures.push(...failures);
     console.log(
       `  passed ${summary.passed}/${summary.problems}  failed ${summary.failed}`
+    );
+    fs.writeFileSync(
+      path.join("scripts", "all-tracks-validation-report.json"),
+      JSON.stringify(
+        {
+          generatedAt: new Date().toISOString(),
+          python: PYTHON,
+          totals: {
+            problems: summaries.reduce((s, t) => s + t.problems, 0),
+            passed: summaries.reduce((s, t) => s + t.passed, 0),
+            failed: summaries.reduce((s, t) => s + t.failed, 0),
+            checksFailed: allFailures.length,
+          },
+          tracks: summaries,
+          failures: allFailures,
+        },
+        null,
+        2
+      )
     );
   }
 

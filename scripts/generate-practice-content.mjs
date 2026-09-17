@@ -664,11 +664,7 @@ const CURRICULUM_TOPICS = [
   ["m17-t3", "Correlation and Covariance"],
   ["m17-t4", "Outlier Detection"],
   ["m17-t5", "Performing EDA on a Real Dataset"],
-  ["m18-t1", "Project Overview"],
-  ["m18-t2", "Step 1 Data Model"],
-  ["m18-t3", "Step 2 Logic and Loops"],
-  ["m18-t4", "Step 3 Functions and Report"],
-  ["m18-t5", "Capstone Build"],
+  // Capstone Project (module 18) has no standalone challenges.
 ];
 
 const ENHANCED = {
@@ -884,8 +880,21 @@ export const module${mod}Practice: PracticeProblem[] = ${JSON.stringify(problems
   fs.writeFileSync(path.join(practiceDir, `module-${mod}.ts`), content);
 }
 
+if (!onlyModules || onlyModules.has("18")) {
+  fs.writeFileSync(
+    path.join(practiceDir, "module-18.ts"),
+    `import type { PracticeProblem } from "@/lib/types";
+
+/** Capstone uses in-lesson project work; no standalone module challenges. */
+export const module18Practice: PracticeProblem[] = [];
+`
+  );
+}
+
 const sqlModuleIds = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const pythonModuleIds = Object.keys(byModule).sort((a, b) => Number(a) - Number(b));
+const pythonModuleIds = [...new Set([...Object.keys(byModule), "18"])].sort(
+  (a, b) => Number(a) - Number(b)
+);
 
 const indexContent = `import type { PracticeProblem } from "@/lib/types";
 import { modules } from "@/data/curriculum";

@@ -31,7 +31,6 @@ export default function RegisterPage() {
   const [department, setDepartment] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const isOtherCollege = collegeSelect === OTHER_COLLEGE_VALUE;
@@ -88,31 +87,7 @@ export default function RegisterPage() {
       return;
     }
 
-    if (result.needsEmailConfirmation) {
-      setSuccess(true);
-      return;
-    }
-
     router.push("/dashboard?welcome=1");
-  }
-
-  if (success) {
-    return (
-      <div className={`${PAGE_CONTAINER} py-16`}>
-        <div className="mx-auto max-w-md rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm">
-          <h1 className="text-xl font-bold text-gray-900">Check your email</h1>
-          <p className="mt-3 text-sm text-gray-600">
-            We sent a confirmation link to <strong>{email}</strong>. Confirm your email, then sign in.
-          </p>
-          <Link
-            href="/auth/login"
-            className="mt-6 inline-block rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700"
-          >
-            Go to sign in
-          </Link>
-        </div>
-      </div>
-    );
   }
 
   return (

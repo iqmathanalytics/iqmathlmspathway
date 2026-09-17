@@ -20,7 +20,7 @@ export const papcQuizBankPart1 = [
 Return the 1-indexed indices as \`[index1, index2]\` where \`index1 < index2\`.`,
     examples: [
       { input: "numbers = [2,7,11,15], target = 9", output: "[1,2]", explanation: "2 + 7 = 9" },
-      { input: "numbers = [2,3,3,4], target = 6", output: "[1,3]" },
+      { input: "numbers = [2,3,3,4], target = 6", output: "[1,4]", explanation: "2 + 4 = 6" },
     ],
     constraints: ["2 <= numbers.length <= 3 * 10^4", "numbers is sorted non-decreasing"],
     hints: ["Use two pointers.", "One pointer at start, one at end."],
@@ -42,7 +42,7 @@ Return the 1-indexed indices as \`[index1, index2]\` where \`index1 < index2\`.`
 `,
     tests: [
       { label: "Classic", call: "twoSum([2,7,11,15], 9)", expected: "[1, 2]" },
-      { label: "Duplicates", call: "twoSum([2,3,3,4], 6)", expected: "[1, 3]" },
+      { label: "Duplicates", call: "twoSum([2,3,3,4], 6)", expected: "[1, 4]" },
       { label: "Negatives", call: "twoSum([-1,0], -1)", expected: "[1, 2]" },
     ],
   }),

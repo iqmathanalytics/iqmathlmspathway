@@ -33,7 +33,7 @@ interface AuthContextValue {
   loading: boolean;
   profileLoading: boolean;
   configured: boolean;
-  signUp: (params: SignUpParams) => Promise<{ error: string | null; needsEmailConfirmation: boolean }>;
+  signUp: (params: SignUpParams) => Promise<{ error: string | null }>;
   signIn: (
     email: string,
     password: string,
@@ -124,7 +124,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signUp = useCallback(async (params: SignUpParams) => {
     const sb = getSupabase();
-    if (!sb) return { error: "Auth is not configured.", needsEmailConfirmation: false };
+    if (!sb) return { error: "Auth is not configured." };
 
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -135,6 +135,30 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       college_id: params.collegeId ?? "",
       department: params.department,
     };
+
+    async function completeWithPassword() {
+      const { data: signInData, error: signInError } = await sb.auth.signInWithPassword({
+        email: params.email,
+        password: params.password,
+      });
+      if (signInError) return { error: formatAuthError(signInError.message) };
+      await sb.rpc("sync_login_profile", { p_mobile: params.mobile });
+      if (signInData.user) {
+        const patch: {
+          full_name: string;
+          mobile: string;
+          department: string;
+          college_id?: string;
+        } = {
+          full_name: params.fullName,
+          mobile: params.mobile,
+          department: params.department,
+        };
+        if (params.collegeId) patch.college_id = params.collegeId;
+        await sb.from("profiles").update(patch).eq("id", signInData.user.id);
+      }
+      return { error: null };
+    }
 
     if (url && anonKey) {
       try {
@@ -156,41 +180,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           }),
         });
 
-        if (res.ok) {
-          const { data: signInData, error: signInError } = await sb.auth.signInWithPassword({
-            email: params.email,
-            password: params.password,
-          });
-          if (signInError) {
-            return {
-              error: formatAuthError(signInError.message),
-              needsEmailConfirmation: false,
-            };
-          }
-          await sb.rpc("sync_login_profile", { p_mobile: params.mobile });
-          if (signInData.user) {
-            const patch: {
-              full_name: string;
-              mobile: string;
-              department: string;
-              college_id?: string;
-            } = {
-              full_name: params.fullName,
-              mobile: params.mobile,
-              department: params.department,
-            };
-            if (params.collegeId) patch.college_id = params.collegeId;
-            await sb.from("profiles").update(patch).eq("id", signInData.user.id);
-          }
-          return { error: null, needsEmailConfirmation: false };
+        if (res.ok) return completeWithPassword();
+
+        if (res.status === 409) {
+          const signedIn = await completeWithPassword();
+          if (!signedIn.error) return signedIn;
+          return { error: "An account with this email already exists. Try signing in." };
         }
 
         if (res.status !== 404) {
           const payload = (await res.json().catch(() => ({}))) as { error?: string };
-          return {
-            error: formatAuthError(payload.error ?? "Registration failed."),
-            needsEmailConfirmation: false,
-          };
+          return { error: formatAuthError(payload.error ?? "Registration failed.") };
         }
       } catch {
         /* fall through to direct signUp if Edge Function unavailable */
@@ -201,7 +201,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (customCollegeName && !params.collegeId) {
       return {
         error: "Registration service required to add a new college. Please try again later.",
-        needsEmailConfirmation: false,
       };
     }
 
@@ -212,13 +211,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     });
 
     if (error) {
-      return {
-        error: formatAuthError(error.message),
-        needsEmailConfirmation: false,
-      };
+      const already =
+        /already registered|already exists|already been registered/i.test(error.message);
+      if (already) {
+        const signedIn = await completeWithPassword();
+        if (!signedIn.error) return signedIn;
+        return { error: "An account with this email already exists. Try signing in." };
+      }
+      return { error: formatAuthError(error.message) };
     }
 
-    const needsEmailConfirmation = !data.session;
     if (data.session) {
       await sb.rpc("sync_login_profile", { p_mobile: params.mobile });
       const patch: {
@@ -233,8 +235,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       };
       if (params.collegeId) patch.college_id = params.collegeId;
       await sb.from("profiles").update(patch).eq("id", data.session.user.id);
+      return { error: null };
     }
-    return { error: null, needsEmailConfirmation };
+
+    return completeWithPassword();
   }, []);
 
   const signIn = useCallback(async (email: string, password: string, mobile = "") => {
